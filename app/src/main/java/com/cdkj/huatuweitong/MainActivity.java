@@ -33,6 +33,27 @@ public class MainActivity extends AbsBaseLoadActivity {
     public void afterCreate(Bundle savedInstanceState) {
         initListener();
         initViewPager();
+//        测试接口
+//        Map<String, String> loginMp = new HashMap<>();
+//        loginMp.put("kind", "C");
+//        loginMp.put("loginName", "15268501481");
+//        loginMp.put("loginPwd", "888888");
+//      //  Call<BaseResponseModel<UserLoginModel>> baseResponseModelCall = RetrofitUtils.getBaseAPiService().userLogin("80555", StringUtils.getJsonToString(loginMp));
+//
+//        Call<BaseResponseModel<LoginBean>> baseResponseModelCall = RetrofitUtils.createApi(MyApiServer.class).logIn("805050", StringUtils.getJsonToString(loginMp));
+//        Log.i("pppppp", "afterCreate: " + baseResponseModelCall.toString());
+//
+//        baseResponseModelCall.enqueue(new BaseResponseModelCallBack<LoginBean>(this) {
+//            @Override
+//            protected void onSuccess(LoginBean data, String SucMessage) {
+//
+//            }
+//
+//            @Override
+//            protected void onFinish() {
+//
+//            }
+//        });
     }
 
     private void initListener() {

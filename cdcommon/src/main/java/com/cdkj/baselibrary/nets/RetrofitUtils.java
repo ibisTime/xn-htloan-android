@@ -66,7 +66,7 @@ public class RetrofitUtils {
     public static String getBaseURL(int urlType) {
         switch (urlType) {
             case DEBUG:
-                return "";//研发环境
+                return "http://39.104.89.43:2401/forward-service/";//研发环境
             case TEST:
                 return "";//测试
         }

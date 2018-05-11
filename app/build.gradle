@@ -49,7 +49,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':cdcommon')
-
     //路由
     //arouter
     implementation 'com.youth.banner:banner:1.4.10'
