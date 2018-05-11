@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RadioGroup
+        android:id="@+id/radiogroup"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <RadioButton
+            android:id="@+id/radio_main_tab_1"
+            style="@style/main_tab_radio"
+            android:layout_height="43dp"
+            android:layout_gravity="bottom"
+            android:checked="true"
+            android:drawableTop="@drawable/main_buttom_tab_1"
+            android:text="@string/firstpage" />
+
+        <RadioButton
+            android:id="@+id/radio_main_tab_2"
+            style="@style/main_tab_radio"
+            android:drawableTop="@drawable/main_buttom_tab_2"
+            android:text="@string/reimbursement" />
+
+
+        <RadioButton
+            android:id="@+id/radio_main_tab_3"
+            style="@style/main_tab_radio"
+            android:drawableTop="@drawable/main_buttom_tab_3"
+            android:text="@string/mind" />
+
+    </RadioGroup>
+</layout>

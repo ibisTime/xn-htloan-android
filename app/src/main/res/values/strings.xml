@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="mind">我的</string>
+    <string name="firstpage">首页</string>
+    <string name="recommend_car">推荐车型</string>
+    <string name="car_calculator">车贷计算器</string>
+    <string name="recommend_product">推荐商品</string>
+    <string name="reimbursement">还款</string>
+</resources>
