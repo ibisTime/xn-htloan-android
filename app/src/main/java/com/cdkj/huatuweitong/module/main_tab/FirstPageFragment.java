@@ -17,6 +17,9 @@ import com.cdkj.huatuweitong.adapters.RecommendCarAdapter;
 import com.cdkj.huatuweitong.adapters.RecommendProductAdapter;
 import com.cdkj.huatuweitong.common.GlideImageLoader;
 import com.cdkj.huatuweitong.databinding.FragmentFirstpageBinding;
+import com.cdkj.huatuweitong.module.mfirst_page.CarCalculatorActivity;
+import com.cdkj.huatuweitong.module.mfirst_page.CarDetailsActivity;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.youth.banner.BannerConfig;
 
 import java.util.ArrayList;
@@ -55,7 +58,17 @@ public class FirstPageFragment extends BaseLazyFragment {
         initRecommendCarAdatper();
         initRecommendProductAdatper();
 
+        initOnclickList();
+
         return mBinding.getRoot();
+    }
+
+    private void initOnclickList() {
+
+        mBinding.tvCalculator.setOnClickListener(v->{
+            CarCalculatorActivity.open(getContext());
+
+        });
     }
 
     /**
@@ -68,6 +81,13 @@ public class FirstPageFragment extends BaseLazyFragment {
         mBinding.recyclerViewRecommendProduct.setLayoutManager(new ScrollGridLayoutManager(mActivity, 2));
 
         mBinding.recyclerViewRecommendProduct.setAdapter(recommendProductAdapter);
+
+        recommendProductAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                CarDetailsActivity.open(getContext());
+            }
+        });
 
     }
 

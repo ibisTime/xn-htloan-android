@@ -24,6 +24,7 @@
                     android:src="@drawable/more_right" />
 
                 <EditText
+                    android:text="13282838237"
                     android:inputType="phone"
                     android:id="@+id/edit_username"
                     android:layout_width="match_parent"
@@ -59,6 +60,7 @@
                     android:src="@drawable/more_right" />
 
                 <EditText
+                    android:text="111111"
                     android:id="@+id/edit_userpass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

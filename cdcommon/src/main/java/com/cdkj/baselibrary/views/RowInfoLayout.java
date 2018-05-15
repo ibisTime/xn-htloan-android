@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.support.annotation.ColorRes;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
@@ -48,8 +49,8 @@ public class RowInfoLayout extends LinearLayout {
         final TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RowInfoLayout, 0, 0);
         txtLeft = typedArray.getString(R.styleable.RowInfoLayout_txt_left);
         txtRight = typedArray.getString(R.styleable.RowInfoLayout_txt_right);
-        imgLeftId = typedArray.getResourceId(R.styleable.RowInfoLayout_img_left, R.drawable.default_pic);
-        imgRightId = typedArray.getResourceId(R.styleable.RowInfoLayout_img_right, R.drawable.default_pic);
+        imgLeftId = typedArray.getResourceId(R.styleable.RowInfoLayout_img_left, 0);
+        imgRightId = typedArray.getResourceId(R.styleable.RowInfoLayout_img_right, 0);
         typedArray.recycle();
 
         init(context);
@@ -62,6 +63,29 @@ public class RowInfoLayout extends LinearLayout {
         tvRight.setText(txtRight);
         imgLeft.setImageResource(imgLeftId);
         imgRight.setImageResource(imgRightId);
+
+        if (!TextUtils.isEmpty(txtLeft)) {
+            tvLeft.setVisibility(VISIBLE);
+        } else {
+            tvLeft.setVisibility(GONE);
+        }
+        if (!TextUtils.isEmpty(txtRight)) {
+            tvRight.setVisibility(VISIBLE);
+        } else {
+            tvRight.setVisibility(GONE);
+        }
+
+        if (imgLeftId != 0) {
+            imgLeft.setVisibility(VISIBLE);
+        } else {
+            imgLeft.setVisibility(GONE);
+        }
+        if (imgRightId != 0) {
+            imgRight.setVisibility(VISIBLE);
+        } else {
+            imgRight.setVisibility(GONE);
+        }
+
     }
 
     public void setTvLeftColor(@ColorRes int color) {
@@ -70,6 +94,12 @@ public class RowInfoLayout extends LinearLayout {
 
     public void setTvRightColor(@ColorRes int color) {
         tvRight.setTextColor(ContextCompat.getColor(context, color));
+    }
+
+    public void setTvRight(String str) {
+        txtRight = str;
+        tvRight.setText(txtRight);
+        tvRight.setVisibility(VISIBLE);
     }
 
 

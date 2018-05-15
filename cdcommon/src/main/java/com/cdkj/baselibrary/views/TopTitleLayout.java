@@ -84,7 +84,7 @@ public class TopTitleLayout extends FrameLayout {
 
     public void setMidTitle(String text) {
         mTextTitle.setText(text);
-        mTextTitle.setVisibility(text != null ? VISIBLE : GONE);
+//        mTextTitle.setVisibility(text != null ? VISIBLE : GONE);
     }
 
     public void setLeftImg(@DrawableRes int img) {

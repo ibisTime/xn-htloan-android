@@ -100,6 +100,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
+
+
     /**
      * 显示dialog
      */

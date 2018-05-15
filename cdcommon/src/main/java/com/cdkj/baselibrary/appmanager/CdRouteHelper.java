@@ -26,6 +26,8 @@ public class CdRouteHelper {
     public static final String UPDATEPHONE = "/user/UPDATEPHONE";
     public static final String WEBVIEWACTIVITY = "/user/webView";
 
+    public static final String USERMAIN = "/user/main";
+
     //获取数据标志
     public static final String DATASIGN = "dataSign";
 
@@ -41,6 +43,17 @@ public class CdRouteHelper {
                 .greenChannel()                                       //不使用任何拦截器
                 .navigation();
     }
+
+    /**
+     * 打开主页界面
+     */
+    public static void openMain() {
+        ARouter.getInstance().build(USERMAIN)
+//                .withBoolean(DATASIGN, canopenmain)
+//                .greenChannel()                                       //不使用任何拦截器
+                .navigation();
+    }
+
 
     /**
      * 打开找回登录密码界面

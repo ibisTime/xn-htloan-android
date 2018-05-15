@@ -10,18 +10,23 @@ import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cdkj.baselibrary.R;
+import com.cdkj.baselibrary.activitys.login.LoginActivity;
 import com.cdkj.baselibrary.appmanager.CdRouteHelper;
 import com.cdkj.baselibrary.appmanager.MyCdConfig;
+import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.databinding.ActivityModifyPasswordBinding;
 import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.interfaces.SendCodeInterface;
 import com.cdkj.baselibrary.interfaces.SendPhoneCoodePresenter;
 import com.cdkj.baselibrary.model.IsSuccessModes;
+import com.cdkj.baselibrary.model.eventmodels.EventFinishAll;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
 import com.cdkj.baselibrary.utils.AppUtils;
 import com.cdkj.baselibrary.utils.StringUtils;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -39,6 +44,7 @@ public class FindPwdActivity extends AbsBaseLoadActivity implements SendCodeInte
     private ActivityModifyPasswordBinding mBinding;
 
     private String mPhoneNumber;
+    int TYPE;
 
     private SendPhoneCoodePresenter mSendCOdePresenter;
 
@@ -48,12 +54,13 @@ public class FindPwdActivity extends AbsBaseLoadActivity implements SendCodeInte
      *
      * @param context
      */
-    public static void open(Context context, String mPhoneNumber) {
+    public static void open(Context context, String mPhoneNumber, int type) {
         if (context == null) {
             return;
         }
         Intent intent = new Intent(context, FindPwdActivity.class);
         intent.putExtra(DATASIGN, mPhoneNumber);
+        intent.putExtra("TYPE", mPhoneNumber);
         context.startActivity(intent);
     }
 
@@ -71,6 +78,7 @@ public class FindPwdActivity extends AbsBaseLoadActivity implements SendCodeInte
         mSendCOdePresenter = new SendPhoneCoodePresenter(this);
         if (getIntent() != null) {
             mPhoneNumber = getIntent().getStringExtra(DATASIGN);
+            TYPE = getIntent().getIntExtra("TYPE", 0);
         }
 
         if (!TextUtils.isEmpty(mPhoneNumber)) {
@@ -127,8 +135,13 @@ public class FindPwdActivity extends AbsBaseLoadActivity implements SendCodeInte
                     UITipDialog.showFall(FindPwdActivity.this, getString(R.string.check_pwd_info_2));
                     return;
                 }
-
+                if (TYPE == 1) {
+                //修改密码
                 findPwdReqeust();
+
+                } else if (TYPE == 2) {
+                //修改支付密码
+                }
             }
         });
     }
@@ -145,8 +158,6 @@ public class FindPwdActivity extends AbsBaseLoadActivity implements SendCodeInte
         hashMap.put("newLoginPwd", mBinding.edtPassword.getText().toString());
         hashMap.put("smsCaptcha", mBinding.edtCode.getText().toString());
         hashMap.put("kind", MyCdConfig.USERTYPE);
-        hashMap.put("systemCode", MyCdConfig.SYSTEMCODE);
-        hashMap.put("companyCode", MyCdConfig.COMPANYCODE);
 
         Call call = RetrofitUtils.getBaseAPiService().successRequest("805063", StringUtils.getJsonToString(hashMap));
 
@@ -159,6 +170,12 @@ public class FindPwdActivity extends AbsBaseLoadActivity implements SendCodeInte
                     UITipDialog.showSuccess(FindPwdActivity.this, getString(R.string.change_pwd_succ), new DialogInterface.OnDismissListener() {
                         @Override
                         public void onDismiss(DialogInterface dialog) {
+
+//                            清掉用户信息
+                            SPUtilHelpr.logOutClear();
+                            //发送事件  关闭所有的activity
+                            EventBus.getDefault().post(new EventFinishAll());
+                            LoginActivity.open(FindPwdActivity.this, true);
                             finish();
                         }
                     });

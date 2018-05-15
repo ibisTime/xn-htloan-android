@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 
-
-import com.cdkj.baselibrary.MainActivity;
 import com.cdkj.baselibrary.R;
 import com.cdkj.baselibrary.api.BaseApiServer;
 import com.cdkj.baselibrary.appmanager.MyCdConfig;
@@ -23,8 +21,6 @@ import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
 import com.cdkj.baselibrary.utils.AppUtils;
 import com.cdkj.baselibrary.utils.StringUtils;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.util.HashMap;
 
@@ -87,11 +83,11 @@ public class RegisterActivity extends AbsBaseLoadActivity implements SendCodeInt
                     UITipDialog.showFall(RegisterActivity.this, getString(R.string.please_input_verification_code));
                     return;
                 }
-                if (TextUtils.isEmpty(mBinding.edtPassword.getText().toString())) {
+                if (TextUtils.isEmpty(mBinding.edtRepassword.getText().toString())) {
                     UITipDialog.showFall(RegisterActivity.this, getString(R.string.please_input_pwd));
                     return;
                 }
-                if (mBinding.edtPassword.getText().toString().length() < 6) {
+                if (mBinding.edtRepassword.getText().toString().length() < 6) {
                     UITipDialog.showFall(RegisterActivity.this, getString(R.string.check_pwd_info));
                     return;
                 }
@@ -100,10 +96,10 @@ public class RegisterActivity extends AbsBaseLoadActivity implements SendCodeInt
                     UITipDialog.showFall(RegisterActivity.this, getString(R.string.please_reinput_pwd));
                     return;
                 }
-                if (!TextUtils.equals(mBinding.edtRepassword.getText().toString(), mBinding.edtPassword.getText().toString())) {
-                    UITipDialog.showFall(RegisterActivity.this, getString(R.string.check_pwd_info_2));
-                    return;
-                }
+//                if (!TextUtils.equals(mBinding.edtRepassword.getText().toString(), mBinding.edtPassword.getText().toString())) {
+//                    UITipDialog.showFall(RegisterActivity.this, getString(R.string.check_pwd_info_2));
+//                    return;
+//                }
 
                 registeRequest();
             }
@@ -132,11 +128,10 @@ public class RegisterActivity extends AbsBaseLoadActivity implements SendCodeInt
         HashMap<String, String> hashMap = new HashMap<>();
 
         hashMap.put("mobile", mBinding.edtPhone.getText().toString());
-        hashMap.put("loginPwd", mBinding.edtPassword.getText().toString());
+        hashMap.put("loginPwd", mBinding.edtRepassword.getText().toString());
         hashMap.put("kind", MyCdConfig.USERTYPE);
+        hashMap.put("nickname", mBinding.edtNick.getText().toString());
         hashMap.put("smsCaptcha", mBinding.edtCode.getText().toString());
-        hashMap.put("systemCode", MyCdConfig.SYSTEMCODE);
-        hashMap.put("companyCode", MyCdConfig.COMPANYCODE);
 
         Call call = RetrofitUtils.createApi(BaseApiServer.class).userRegister("805041", StringUtils.getJsonToString(hashMap));
 
@@ -146,17 +141,15 @@ public class RegisterActivity extends AbsBaseLoadActivity implements SendCodeInt
         call.enqueue(new BaseResponseModelCallBack<UserLoginModel>(this) {
             @Override
             protected void onSuccess(UserLoginModel data, String SucMessage) {
-                if (!TextUtils.isEmpty(data.getToken()) && !TextUtils.isEmpty(data.getUserId())) {
-
                     showToast(getString(R.string.register_succ));
-
                     SPUtilHelpr.saveUserId(data.getUserId());
-                    SPUtilHelpr.saveUserToken(data.getToken());
+//                    SPUtilHelpr.saveUserToken(data.getToken());
                     SPUtilHelpr.saveUserPhoneNum(mBinding.edtPhone.getText().toString());
-
                     finish();
 
-                }
+                    startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+
+
             }
 
             @Override

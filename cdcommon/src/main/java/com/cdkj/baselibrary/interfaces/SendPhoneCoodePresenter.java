@@ -3,7 +3,6 @@ package com.cdkj.baselibrary.interfaces;
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.cdkj.baselibrary.appmanager.MyCdConfig;
 import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.model.IsSuccessModes;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
@@ -40,19 +39,17 @@ public class SendPhoneCoodePresenter {
         request(phone, bizType, kind);
     }
 
+
     /**
      * 请求
      */
     private void request(String phone, String bizType, String kind) {
 
         HashMap<String, String> hashMap = new HashMap<>();
-
-        hashMap.put("systemCode", MyCdConfig.SYSTEMCODE);
-        hashMap.put("companyCode", MyCdConfig.COMPANYCODE);
         hashMap.put("mobile", phone);
         hashMap.put("bizType", bizType);
 
-        call = RetrofitUtils.getBaseAPiService().successRequest("805950", StringUtils.getJsonToString(hashMap));
+        call = RetrofitUtils.getBaseAPiService().successRequest("630090", StringUtils.getJsonToString(hashMap));
 
         mListener.StartSend();
         call.enqueue(new BaseResponseModelCallBack<IsSuccessModes>(mContext) {

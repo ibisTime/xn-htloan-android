@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp">
+
+                    <com.youth.banner.Banner
+                        android:id="@+id/first_banner"
+                        app:is_auto_play="false"
+                        app:indicator_drawable_selected="@null"
+                        app:indicator_drawable_unselected="@null"
+                        app:indicator_height="0dp"
+                        app:indicator_width="0dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                    <!--设置轮播图的指示点-->
+                    <!--app:indicator_drawable_selected="@drawable/banner_select"-->
+                    <!--app:indicator_drawable_unselected="@drawable/banner_un_select"-->
+                    <!--app:indicator_height="7dp"-->
+                    <!--app:indicator_margin="6dp"-->
+                    <!--app:indicator_width="7dp"-->
+                    <!--app:delay_time="4000"-->
+
+                    <TextView
+                        android:id="@+id/tv_indicator"
+                        android:layout_width="40dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginRight="20dp"
+                        android:background="#99333333"
+                        android:gravity="center"
+                        tools:text="1/16" />
+                </RelativeLayout>
+
+
+                <TextView
+                    android:id="@+id/tv_car_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="18dp"
+                    android:text="奥迪A4L 2015款 自动标准型"
+                    android:textColor="@color/break_text"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_car_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="18dp"
+                    android:text="¥22.58万"
+                    android:textColor="@color/break_text"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_reference_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:text="经销商参考价¥23.90万" />
+
+                    <TextView
+                        android:id="@+id/tv_direction_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:text="经厂商指导价20.89万" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_marginTop="22dp"
+                    android:background="@color/gray_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="2dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="15dp"
+                        android:background="@color/blue"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:text="图文详情" />
+                </LinearLayout>
+
+                <WebView
+                    android:id="@+id/web"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </WebView>
+
+                <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:src="@mipmap/ic_launcher" />-->
+
+                <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="15dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:text="自诞生之日起，奥迪就蕴含着领先科技的血脉，为更好的诠释奥迪百年运动基因的进取精神，一汽-大众奥迪根据不同用户的驾驭需求，设计多层次的培训体验。同时，它还涵盖了一系列国际级的高端体育运动，使得这些体育精神与奥迪品牌“进取、尊贵、动感”的核心价值不谋而合，并且通过赛事影响力的不断扩大，将奥迪品牌的知名度和客户的忠实度得以提升。" />-->
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <TextView
+            android:layout_marginBottom="15dp"
+            android:id="@+id/tv_pay_car"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/btn_updata_psw_bg"
+            android:clickable="true"
+            android:gravity="center"
+
+            android:text="申请购买"
+            android:textColor="@color/white_car_loan" />
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/layout_logo"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/selector_gray"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            >
+
+            <TextView
+                android:id="@+id/tv_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:maxLength="5"
+                android:text="@string/logo"
+                android:textColor="@color/text_black_cd"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/img_logo"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/photo_default" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="15dp"
+                android:src="@mipmap/ic_more" />
+
+        </LinearLayout>
+
+        <View style="@style/style_split_line" />
+
+        <com.cdkj.baselibrary.views.RowInfoLayout
+            android:id="@+id/row_nick_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:img_right="@mipmap/ic_more"
+            app:txt_left="@string/nick_name" />
+
+        <!--<View style="@style/style_split_line" />-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/gray_line" />
+
+        <com.cdkj.baselibrary.views.RowInfoLayout
+            android:id="@+id/row_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:img_right="@mipmap/ic_more"
+            app:txt_left="@string/phone" />
+
+        <View style="@style/style_split_line" />
+
+        <com.cdkj.baselibrary.views.RowInfoLayout
+            android:id="@+id/row_psw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:img_right="@mipmap/ic_more"
+            app:txt_left="@string/psw" />
+
+
+        <View style="@style/style_split_line" />
+
+        <com.cdkj.baselibrary.views.RowInfoLayout
+            android:id="@+id/row_pay_psw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:img_right="@mipmap/ic_more"
+            app:txt_left="@string/pay_psw" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/gray_line" />
+
+        <com.cdkj.baselibrary.views.RowInfoLayout
+            android:id="@+id/row_receive_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:img_right="@mipmap/ic_more"
+            app:txt_left="@string/receive_address" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/gray_line" />
+
+        <com.cdkj.baselibrary.views.RowInfoLayout
+            android:id="@+id/row_signout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:txt_left="@string/sign" />
+    </LinearLayout>
+</layout>

@@ -3,14 +3,12 @@ package com.cdkj.baselibrary.interfaces;
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.cdkj.baselibrary.api.BaseResponseModel;
 import com.cdkj.baselibrary.appmanager.MyCdConfig;
 import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.model.UserLoginModel;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
 import com.cdkj.baselibrary.utils.StringUtils;
-import com.cdkj.baselibrary.utils.ToastUtil;
 
 import java.util.HashMap;
 
@@ -44,10 +42,10 @@ public class LoginPresenter {
         HashMap<String, String> hashMap = new HashMap<>();
 
         hashMap.put("loginName", username);
-        hashMap.put("loginPwd", password);
         hashMap.put("kind", MyCdConfig.USERTYPE);
-        hashMap.put("systemCode", MyCdConfig.SYSTEMCODE);
+        hashMap.put("loginPwd", password);
 
+//        hashMap.put("systemCode", MyCdConfig.SYSTEMCODE);
 
         call = RetrofitUtils.getBaseAPiService().userLogin("805050", StringUtils.getJsonToString(hashMap));
 
@@ -55,7 +53,7 @@ public class LoginPresenter {
         call.enqueue(new BaseResponseModelCallBack<UserLoginModel>(mContext) {
             @Override
             protected void onSuccess(UserLoginModel data, String SucMessage) {
-                if (!TextUtils.isEmpty(data.getToken()) && !TextUtils.isEmpty(data.getUserId())) {
+                if (!TextUtils.isEmpty(data.getUserId())) {
                     mListener.LoginSuccess(data, "登录成功");
                 } else {
                     mListener.LoginFailed("0", "登录失败");

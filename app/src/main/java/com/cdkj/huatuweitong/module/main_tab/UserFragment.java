@@ -4,17 +4,14 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.cdkj.baselibrary.base.BaseLazyFragment;
-import com.cdkj.baselibrary.interfaces.CameraPhotoListener;
-import com.cdkj.baselibrary.utils.CameraHelper;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.databinding.FragmentUserBinding;
+import com.cdkj.huatuweitong.module.user.UserInfoUpdateActivity;
 
 /**
  * Created by cdkj on 2018/5/1.
@@ -37,6 +34,7 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
 
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_user, null, false);
         mBinding.imgUserLogo.setOnClickListener(this);
+
         return mBinding.getRoot();
     }
 
@@ -65,35 +63,37 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
         switch (v.getId()) {
             case R.id.img_user_logo:
 
-                AlertDialog dialog = new AlertDialog.Builder(getActivity())
-                        .create();
-                View view = View.inflate(getActivity(), R.layout.user_poto_dialog_item, null);
-                dialog.setView(view);
-                dialog.show();
+                UserInfoUpdateActivity.open(getContext());
 
-                view.findViewById(R.id.tv_camera).setOnClickListener((a)->{
-                    CameraHelper cameraHelper = new CameraHelper(getActivity(),new CameraPhotoListener(){
-                        @Override
-                        public void onPhotoSuccessful(int requestCode, String path) {
-                            Log.i("ppppp", "onPhotoSuccessful: "+requestCode+path);
-                        }
-
-                        @Override
-                        public void onPhotoFailure(int requestCode, String msg) {
-
-                        }
-
-                        @Override
-                        public void noPermissions(int requestCode) {
-
-                        }
-                    });
-                    cameraHelper.startCamera();
-                });
-
-                view.findViewById(R.id.tv_img).setOnClickListener((a) -> {
-
-                });
+//                AlertDialog dialog = new AlertDialog.Builder(getActivity())
+//                        .create();
+//                View view = View.inflate(getActivity(), R.layout.user_poto_dialog_item, null);
+//                dialog.setView(view);
+//                dialog.show();
+//
+//                view.findViewById(R.id.tv_camera).setOnClickListener((a)->{
+//                    CameraHelper cameraHelper = new CameraHelper(getActivity(),new CameraPhotoListener(){
+//                        @Override
+//                        public void onPhotoSuccessful(int requestCode, String path) {
+//                            Log.i("ppppp", "onPhotoSuccessful: "+requestCode+path);
+//                        }
+//
+//                        @Override
+//                        public void onPhotoFailure(int requestCode, String msg) {
+//
+//                        }
+//
+//                        @Override
+//                        public void noPermissions(int requestCode) {
+//
+//                        }
+//                    });
+//                    cameraHelper.startCamera();
+//                });
+//
+//                view.findViewById(R.id.tv_img).setOnClickListener((a) -> {
+//
+//                });
 
                 break;
         }

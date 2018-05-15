@@ -84,7 +84,7 @@ public class LoginActivity extends AbsBaseLoadActivity implements LoginInterface
         mBinding.tvFindPwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FindPwdActivity.open(LoginActivity.this, "");
+                FindPwdActivity.open(LoginActivity.this, "",0);
             }
         });
 
@@ -92,10 +92,13 @@ public class LoginActivity extends AbsBaseLoadActivity implements LoginInterface
 
     @Override
     public void LoginSuccess(UserLoginModel user, String msg) {
+
         SPUtilHelpr.saveUserId(user.getUserId());
         SPUtilHelpr.saveUserToken(user.getToken());
         SPUtilHelpr.saveUserPhoneNum(mBinding.editUsername.getText().toString());
-        startNext();
+        CdRouteHelper.openMain();
+        finish();
+
     }
 
     @Override
@@ -143,14 +146,6 @@ public class LoginActivity extends AbsBaseLoadActivity implements LoginInterface
     }
 
 
-    /**
-     * 启动聊天
-     */
-    private void startNext() {
-        if (canOpenMain) {
-        } else {
-        }
-        finish();
-    }
+
 
 }
