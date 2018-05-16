@@ -35,21 +35,21 @@ public class PayActivity extends AbsBaseLoadActivity {
     }
 
     private void initOnclick() {
-        mBinding.ivYue.setOnClickListener(v -> {
+        mBinding.llYue.setOnClickListener(v -> {
             mBinding.ivYue.setImageResource(R.mipmap.ic_pay_check);
-            mBinding.ivWecheat.setImageResource(R.mipmap.ic_pay_uncheck);
+            mBinding.ivWechat.setImageResource(R.mipmap.ic_pay_uncheck);
             mBinding.ivAli.setImageResource(R.mipmap.ic_pay_uncheck);
         });
 
-        mBinding.ivWecheat.setOnClickListener(v -> {
+        mBinding.llWechat.setOnClickListener(v -> {
             mBinding.ivYue.setImageResource(R.mipmap.ic_pay_uncheck);
-            mBinding.ivWecheat.setImageResource(R.mipmap.ic_pay_check);
+            mBinding.ivWechat.setImageResource(R.mipmap.ic_pay_check);
             mBinding.ivAli.setImageResource(R.mipmap.ic_pay_uncheck);
         });
 
-        mBinding.ivAli.setOnClickListener(v -> {
+        mBinding.llAli.setOnClickListener(v -> {
             mBinding.ivYue.setImageResource(R.mipmap.ic_pay_uncheck);
-            mBinding.ivWecheat.setImageResource(R.mipmap.ic_pay_uncheck);
+            mBinding.ivWechat.setImageResource(R.mipmap.ic_pay_uncheck);
             mBinding.ivAli.setImageResource(R.mipmap.ic_pay_check);
         });
     }

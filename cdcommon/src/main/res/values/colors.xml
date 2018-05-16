@@ -40,7 +40,7 @@
 
 
     <color name="btn_white">#ffffff</color>
-    <color name="btn_blue">#0eb8ae</color>
+    <color name="btn_blue">#028eff</color>
     <color name="btn_title_bg">#ff6702</color>
 
 
@@ -49,7 +49,7 @@
     <color name="fontColor_hint">#aaaaaa</color>
 
 
-    <color name="btn_select_un">#0eb8ae</color>
+    <color name="btn_select_un">#028eff</color>
     <color name="btn_select">#0e978f</color>
     <color name="tablayout_select">#0eb8ae</color>
     <color name="lineColor">#ebeaea</color>

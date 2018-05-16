@@ -12,22 +12,44 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
+import com.cdkj.baselibrary.dialog.UITipDialog;
+import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
+import com.cdkj.baselibrary.nets.RetrofitUtils;
+import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.R;
+import com.cdkj.huatuweitong.api.MyApiServer;
+import com.cdkj.huatuweitong.bean.CarDetailsBean;
 import com.cdkj.huatuweitong.common.GlideImageLoader;
 import com.cdkj.huatuweitong.databinding.ActivityCarDetailsBinding;
+import com.cdkj.huatuweitong.utlis.MoneyUtils;
 import com.youth.banner.BannerConfig;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import retrofit2.Call;
 
 /**
  * 车辆详情
  */
 public class CarDetailsActivity extends AbsBaseLoadActivity {
     private ActivityCarDetailsBinding mBinding;
-
+    private String code;
+    private ArrayList<String> mBanners = new ArrayList<>();
+    private CarDetailsBean currentData;
     public static void open(Context context) {
         if (context != null) {
             Intent intent = new Intent(context, CarDetailsActivity.class);
+            context.startActivity(intent);
+        }
+    }
+
+    public static void open(Context context, String code) {
+        if (context != null) {
+            Intent intent = new Intent(context, CarDetailsActivity.class);
+            //车的编号
+            intent.putExtra("code", code);
             context.startActivity(intent);
         }
     }
@@ -43,11 +65,63 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
     @Override
     public void afterCreate(Bundle savedInstanceState) {
         mBaseBinding.titleView.setMidTitle(getString(R.string.CarDetails));
+
+        if (getIntent() != null) {
+            code = getIntent().getStringExtra("code");
+        }
+
+
+        initDatas();
         initOnclick();
 
         initBrean();
 
         initwebView();
+    }
+
+    private void initDatas() {
+
+        Map<String, String> map = new HashMap<>();
+        map.put("code", code);
+        Call call = RetrofitUtils.createApi(MyApiServer.class).getCarDetails("630427", StringUtils.getJsonToString(map));
+
+        addCall(call);
+        showLoadingDialog();
+
+        call.enqueue(new BaseResponseModelCallBack<CarDetailsBean>(CarDetailsActivity.this) {
+
+
+
+            @Override
+            protected void onSuccess(CarDetailsBean data, String SucMessage) {
+                currentData = data;
+                mBinding.web.loadUrl(data.getPic());
+                mBinding.tvCarName.setText(data.getSeriesName());
+                mBinding.tvCarPrice.setText("¥" + MoneyUtils.BigDecimalToString(data.getSfAmount()) + "万");
+                mBinding.tvReferencePrice.setText("经销商参考价" + MoneyUtils.BigDecimalToString(data.getOriginalPrice()) + "万");
+                mBinding.tvDirectionPrice.setText("经厂商指导价" + MoneyUtils.BigDecimalToString(data.getSalePrice()) + "万");
+                String advPic = data.getAdvPic();
+
+                String[] split = advPic.split("\\|");
+                for (int i = 0; i < split.length; i++) {
+                    mBanners.add(split[i]);
+                }
+                initBrean();
+
+            }
+
+            @Override
+            protected void onReqFailure(String errorCode, String errorMessage) {
+                super.onReqFailure(errorCode, errorMessage);
+                UITipDialog.showFall(CarDetailsActivity.this, errorMessage);
+            }
+
+            @Override
+            protected void onFinish() {
+                disMissLoading();
+
+            }
+        });
     }
 
     private void initwebView() {
@@ -57,9 +131,12 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
         //设置可以访问文件
         webSettings.setAllowFileAccess(true);
         //设置支持缩放
-        webSettings.setBuiltInZoomControls(true);
+        webSettings.setBuiltInZoomControls(false);
         //加载需要显示的网页
-        mBinding.web.loadUrl("http://www.baidu.com");
+
+        webSettings.setUseWideViewPort(true);
+        webSettings.setLoadWithOverviewMode(true);
+
         //设置Web视图
         mBinding.web.setWebViewClient(new WebViewClient() {
             @Override
@@ -71,11 +148,6 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
     }
 
     private void initBrean() {
-        ArrayList<String> mBanners = new ArrayList<>();
-
-        for (int i = 0; i < 10; i++) {
-            mBanners.add("标题" + i);
-        }
 
         mBinding.firstBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
         mBinding.firstBanner.setIndicatorGravity(BannerConfig.CENTER);
@@ -84,9 +156,7 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
         mBinding.firstBanner.setImages(mBanners);
         mBinding.firstBanner.start();
         //初始化轮播图上面的页码
-        mBinding.tvIndicator.setText("1/" + mBanners.size());
-
-
+        mBinding.tvIndicator.setText("0/" + mBanners.size());
         mBinding.firstBanner.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -107,8 +177,8 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
 
     private void initOnclick() {
         mBinding.tvPayCar.setOnClickListener(v -> {
-            //申请购买 跳转到提交界面
-            OrderSubmitActivity.open(CarDetailsActivity.this);
+            //跳转车贷计算器
+            CarLoanCalculatorActivity.open(CarDetailsActivity.this,currentData);
         });
 
     }

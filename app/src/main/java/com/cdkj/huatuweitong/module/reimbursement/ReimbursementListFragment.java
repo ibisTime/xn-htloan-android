@@ -5,10 +5,12 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.cdkj.baselibrary.base.AbsRefreshListFragment;
 import com.cdkj.huatuweitong.adapters.ReimbursementListAdapter;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import java.util.List;
 
@@ -39,6 +41,7 @@ public class ReimbursementListFragment extends AbsRefreshListFragment {
     @Override
     protected void afterCreate(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         initRefreshHelper(10);
+//        mRefreshBinding.rv.
     }
 
     @Override
@@ -49,7 +52,16 @@ public class ReimbursementListFragment extends AbsRefreshListFragment {
         listData.add("");
         listData.add("");
         listData.add("");
-        return new ReimbursementListAdapter(listData, this);
+        ReimbursementListAdapter adapter = new ReimbursementListAdapter(listData, this);
+
+
+        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                CarLoanDetailsActivity.open(getContext());
+            }
+        });
+        return adapter;
     }
 
     @Override

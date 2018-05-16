@@ -23,7 +23,6 @@ public abstract class AbsBaseLoadActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         mBaseBinding = DataBindingUtil.setContentView(this, R.layout.activity_abs_base_load);
 
-
         mBaseBinding.contentView.addComtentView(addMainView());
 
         initTitleView();
@@ -108,9 +107,9 @@ public abstract class AbsBaseLoadActivity extends BaseActivity {
      */
     protected void setTitleBg() {
         mBaseBinding.titleView.setBackgroundColor(ContextCompat.getColor(this, R.color.title_bg));
-        mBaseBinding.titleView.setLeftTitleColor(R.color.title_bg);
+        mBaseBinding.titleView.setLeftTitleColor(R.color.white);
         mBaseBinding.titleView.setRightTitleColor(R.color.white);
-        mBaseBinding.titleView.setMidTitleColor(R.color.title_bg);
+        mBaseBinding.titleView.setMidTitleColor(R.color.white);
         mBaseBinding.titleView.setLeftImg(R.drawable.back_img);
 //        if (canLoadTopTitleView()) {
 //            UIStatusBarHelper.setStatusBarLightMode(this); // 沉浸式状态栏

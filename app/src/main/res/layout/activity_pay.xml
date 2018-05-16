@@ -51,6 +51,7 @@
         <include layout="@layout/view_1dp_line" />
 
         <LinearLayout
+            android:id="@+id/ll_yue"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginLeft="15dp"
@@ -90,6 +91,7 @@
         <include layout="@layout/view_1dp_line" />
 
         <LinearLayout
+            android:id="@+id/ll_wechat"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginLeft="15dp"
@@ -113,7 +115,7 @@
                 android:layout_weight="1" />
 
             <ImageView
-                android:id="@+id/iv_wecheat"
+                android:id="@+id/iv_wechat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/ic_pay_uncheck" />
@@ -123,6 +125,7 @@
         <include layout="@layout/view_1dp_line" />
 
         <LinearLayout
+            android:id="@+id/ll_ali"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginLeft="15dp"

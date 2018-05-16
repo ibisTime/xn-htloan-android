@@ -53,13 +53,17 @@ public class LoginActivity extends AbsBaseLoadActivity implements LoginInterface
     }
 
     @Override
-    protected boolean canLoadTopTitleView() {
-        return false;
+    public void topTitleViewRightClick() {
+        super.topTitleViewRightClick();
+        RegisterActivity.open(LoginActivity.this);
     }
 
     @Override
     public void afterCreate(Bundle savedInstanceState) {
+        mBaseBinding.titleView.setMidTitle(getString(R.string.login));
 
+        mBaseBinding.titleView.setRightTitle("注册");
+        mBaseBinding.titleView.setVisibility(View.VISIBLE);
 
         mPresenter = new LoginPresenter(this);
 
@@ -67,24 +71,27 @@ public class LoginActivity extends AbsBaseLoadActivity implements LoginInterface
             canOpenMain = getIntent().getBooleanExtra(DATASIGN, false);
         }
 
+        //回显选中的  服务条款
+        mBinding.cbCheckServer.setChecked(SPUtilHelpr.getCheckServer());
+
         //登录
         mBinding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mPresenter.login(mBinding.editUsername.getText().toString(), mBinding.editUserpass.getText().toString(), LoginActivity.this);
-            }
-        });
-        mBinding.tvStartRegistr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                RegisterActivity.open(LoginActivity.this);
+                if (mBinding.cbCheckServer.isChecked()) {
+
+                    mPresenter.login(mBinding.editUsername.getText().toString(), mBinding.editUserpass.getText().toString(), LoginActivity.this);
+                } else {
+                    UITipDialog.showFall(LoginActivity.this, getString(R.string.check_sercer));
+                }
+
             }
         });
 
         mBinding.tvFindPwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FindPwdActivity.open(LoginActivity.this, "",0);
+                FindPwdActivity.open(LoginActivity.this, "", 0);
             }
         });
 
@@ -96,6 +103,7 @@ public class LoginActivity extends AbsBaseLoadActivity implements LoginInterface
         SPUtilHelpr.saveUserId(user.getUserId());
         SPUtilHelpr.saveUserToken(user.getToken());
         SPUtilHelpr.saveUserPhoneNum(mBinding.editUsername.getText().toString());
+        SPUtilHelpr.saveCheckServer(true);
         CdRouteHelper.openMain();
         finish();
 
@@ -144,8 +152,6 @@ public class LoginActivity extends AbsBaseLoadActivity implements LoginInterface
             super.onBackPressed();
         }
     }
-
-
 
 
 }

@@ -153,6 +153,7 @@
             android:id="@+id/tv_pay_car"
             android:layout_width="match_parent"
             android:layout_height="44dp"
+            android:layout_marginTop="15dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:background="@drawable/btn_updata_psw_bg"

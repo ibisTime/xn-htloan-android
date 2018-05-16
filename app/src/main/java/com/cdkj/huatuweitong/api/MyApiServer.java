@@ -1,6 +1,12 @@
 package com.cdkj.huatuweitong.api;
 
+import com.cdkj.baselibrary.api.BaseResponseListModel;
 import com.cdkj.baselibrary.api.BaseResponseModel;
+import com.cdkj.baselibrary.api.ResponseInListModel;
+import com.cdkj.huatuweitong.bean.CarDetailsBean;
+import com.cdkj.huatuweitong.bean.CarLoanCalculatorSendBean;
+import com.cdkj.huatuweitong.bean.ExhibitionCenterBean;
+import com.cdkj.huatuweitong.bean.FirstPageCarRecommendBean;
 import com.cdkj.huatuweitong.bean.LoginBean;
 
 import retrofit2.Call;
@@ -25,6 +31,47 @@ public interface MyApiServer {
      */
     @FormUrlEncoded
     @POST("api")
-    Call<BaseResponseModel<LoginBean>> logIn(@Field("code") String code, @Field("json") String  json);
+       Call<BaseResponseModel<LoginBean>> logIn(@Field("code") String code, @Field("json") String  json);
+
+    /**
+     * 首页的推荐车系
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseListModel<FirstPageCarRecommendBean>> getFirstPageCarRecommendCar(@Field("code") String code, @Field("json") String json);
+
+
+    /**
+     * 首页的推荐车点击跳转ExhibitionCenterActivity请求的数据接口
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<ResponseInListModel<ExhibitionCenterBean>>> getExhibitionCenter(@Field("code") String code, @Field("json") String json);
+
+    /**
+     * c车辆详情数据
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<CarDetailsBean>> getCarDetails(@Field("code") String code, @Field("json") String json);
+
+    /**
+     * c车辆详情数据
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<CarLoanCalculatorSendBean>> sendCarLoanCalculator(@Field("code") String code, @Field("json") String json);
 
 }

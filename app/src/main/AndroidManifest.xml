@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".module.mfirst_page.CarCalculatorActivity"
+            android:name=".module.mfirst_page.CarLoanCalculatorActivity"
             android:label="@string/title_activity_car_calculator"
             android:theme="@style/AppTheme" />
         <activity android:name=".module.user.UserInfoUpdateActivity" />
@@ -32,7 +32,9 @@
         <activity android:name=".module.mfirst_page.PayActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name="com.cdkj.baselibrary.activitys.login.RegisterActivity" />
-        <activity android:name=".module.user.NickNameUpdateActivity"></activity>
+        <activity android:name=".module.user.NickNameUpdateActivity" />
+        <activity android:name=".module.mfirst_page.ExhibitionCenterActivity" />
+        <activity android:name=".module.user.MyCarLoanActivity"></activity>
     </application>
 
 </manifest>

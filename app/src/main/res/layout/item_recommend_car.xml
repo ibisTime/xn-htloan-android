@@ -8,11 +8,13 @@
     android:orientation="vertical">
 
     <ImageView
+        android:id="@+id/iv_src"
         android:layout_width="105dp"
         android:layout_height="70dp"
         android:src="@drawable/default_pic" />
 
     <TextView
+        android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -22,6 +24,7 @@
         tools:text="宝马" />
 
     <TextView
+        android:id="@+id/tv_down_payments"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

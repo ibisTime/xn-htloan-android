@@ -15,6 +15,7 @@ public class SPUtilHelpr {
 
     private static final String USERTOKEN = "user_toke";
     private static final String USERID = "user_id";
+    private static final String USERIDISCHECKSERVER = "ischeck_server";
 
 
     /**
@@ -26,6 +27,7 @@ public class SPUtilHelpr {
         SPUtils.put(CdApplication.getContext(), USERTOKEN, s);
     }
 
+
     /**
      * 设置用户token
      *
@@ -34,7 +36,23 @@ public class SPUtilHelpr {
     public static String getUserToken() {
         return SPUtils.getString(CdApplication.getContext(), USERTOKEN, "");
     }
-
+    /**
+     * 储存用户登录勾选的我同意条款做回显
+     *
+     * @param s
+     */
+    public static void saveCheckServer(Boolean s) {
+        SPUtils.put(CdApplication.getContext(), USERIDISCHECKSERVER, s);
+    }
+    /**
+     * 返回储存用户登录勾选的我同意条款做回显
+     *
+     *
+     */
+    public static boolean getCheckServer() {
+        Boolean aBoolean = SPUtils.getBoolean(CdApplication.getContext(), USERIDISCHECKSERVER, false);
+        return aBoolean;
+    }
 
     /**
      * 设置用户token
