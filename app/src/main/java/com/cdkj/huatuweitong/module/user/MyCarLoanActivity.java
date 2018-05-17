@@ -10,7 +10,6 @@ import com.cdkj.baselibrary.adapters.ViewPagerAdapter;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.databinding.ActivityMyCarLoanBinding;
-import com.cdkj.huatuweitong.module.reimbursement.ReimbursementListFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -58,8 +57,9 @@ public class MyCarLoanActivity extends AbsBaseLoadActivity {
         //设置fragment数据
         ArrayList fragments = new ArrayList<>();
 
-        fragments.add(ReimbursementListFragment.getInstance());
-        fragments.add(ReimbursementListFragment.getInstance());
+        fragments.add(MyCarLoanFragment.getInstance(""));
+        fragments.add(MyCarLoanFragment.getInstance("1"));
+        fragments.add(MyCarLoanFragment.getInstance("0"));
 
         mBinding.viewpager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), fragments));
         mBinding.viewpager.setOffscreenPageLimit(fragments.size());

@@ -102,6 +102,7 @@
                     app:txt_left="我的消息" />
 
                 <com.cdkj.baselibrary.views.RowInfoLayout
+                    android:id="@+id/rfl_my_car_loan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/line_height"

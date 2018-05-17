@@ -114,7 +114,7 @@ public class FirstPageFragment extends BaseLazyFragment {
     private void initOnclickList() {
 
         mBinding.tvCalculator.setOnClickListener(v->{
-            CarLoanCalculatorActivity.open(getContext());
+            CarLoanCalculatorActivity.open(getContext(),0);
 
         });
     }

@@ -4,10 +4,12 @@ import com.cdkj.baselibrary.api.BaseResponseListModel;
 import com.cdkj.baselibrary.api.BaseResponseModel;
 import com.cdkj.baselibrary.api.ResponseInListModel;
 import com.cdkj.huatuweitong.bean.CarDetailsBean;
+import com.cdkj.huatuweitong.bean.CarLoanCalculatorActivityDetailsBean;
 import com.cdkj.huatuweitong.bean.CarLoanCalculatorSendBean;
 import com.cdkj.huatuweitong.bean.ExhibitionCenterBean;
 import com.cdkj.huatuweitong.bean.FirstPageCarRecommendBean;
 import com.cdkj.huatuweitong.bean.LoginBean;
+import com.cdkj.huatuweitong.bean.MyCarLoanFragmentBean;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -73,5 +75,21 @@ public interface MyApiServer {
     @FormUrlEncoded
     @POST("api")
     Call<BaseResponseModel<CarLoanCalculatorSendBean>> sendCarLoanCalculator(@Field("code") String code, @Field("json") String json);
+
+
+    /**
+     * c车贷申请详情列表分页查询
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<ResponseInListModel<MyCarLoanFragmentBean>>> getMyCarLoanFrgmentData(@Field("code") String code, @Field("json") String json);
+
+
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<CarLoanCalculatorActivityDetailsBean>> getCarLoanCalculatorActivityDetails(@Field("code") String code, @Field("json") String json);
 
 }

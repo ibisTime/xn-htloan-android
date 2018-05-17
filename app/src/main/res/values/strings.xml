@@ -63,4 +63,9 @@
     <string name="loan_plan">还款计划</string>
     <string name="ExhibitionCenter">展销中心</string>
     <string name="my_car_loan">我的车贷申请</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="order_type">订单编号:</string>
+    <string name="empty_text">数据为空</string>
 </resources>

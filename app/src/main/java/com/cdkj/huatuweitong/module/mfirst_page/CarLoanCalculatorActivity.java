@@ -19,6 +19,7 @@ import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.CarDetailsBean;
+import com.cdkj.huatuweitong.bean.CarLoanCalculatorActivityDetailsBean;
 import com.cdkj.huatuweitong.bean.CarLoanCalculatorSendBean;
 import com.cdkj.huatuweitong.databinding.CarLoanCalculatorBinding;
 import com.cdkj.huatuweitong.utlis.MoneyUtils;
@@ -45,11 +46,14 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
     private int repayments = 1;//还款年限默认是一年
     private double downPayments = 0.3;//首付默认是30%
     private double rate = 0.1;//利率默认是0.1  利率和还款年限有关
+    private int type;//0代表是从首页直接进入的  1  代表是 从申请车贷的时候进入的  2代表是从我的车贷申请进入的
+    private String code;//从我的车贷详情跳转过来的
 
-    public static void open(Context context) {
+    public static void open(Context context, int type) {
 //        startActivity();
         if (context != null) {
             Intent intent = new Intent(context, CarLoanCalculatorActivity.class);
+            intent.putExtra("type", type);
             context.startActivity(intent);
         }
 
@@ -61,11 +65,20 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
             Intent intent = new Intent(context, CarLoanCalculatorActivity.class);
             //上页数据
             intent.putExtra("data", data);
-
-
+            intent.putExtra("type", 1);
             context.startActivity(intent);
         }
+    }
 
+    public static void open(Context context, String code) {
+//        startActivity();
+        if (context != null) {
+            Intent intent = new Intent(context, CarLoanCalculatorActivity.class);
+            //上页数据
+            intent.putExtra("code", code);
+            intent.putExtra("type", 2);
+            context.startActivity(intent);
+        }
     }
 
     @Override
@@ -78,33 +91,62 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
     public void afterCreate(Bundle savedInstanceState) {
         mBaseBinding.titleView.setMidTitle(getString(R.string.car_calculator_title));
         if (getIntent() != null) {
-            currentdata = (CarDetailsBean) getIntent().getSerializableExtra("data");
+            type = getIntent().getIntExtra("type", 0);
+            if (type == 1) {
+                currentdata = (CarDetailsBean) getIntent().getSerializableExtra("data");
+            } else if (type == 2) {
+                code = getIntent().getStringExtra("code");
+            }
         }
-
         initOnclick();
 
-        setViewData();
-        String s = new BigDecimal("3.00").toPlainString();
-        Log.i("ppppp", "afterCreate: "+s);
+        if (type == 0) {
+
+        } else if (type == 1) {
+            //去计算利息等等
+            setViewData();
+
+        } else if (type == 2) {
+            //去联网请求数据  通过参数code
+            getInitDataDetails();
+        }
+
+
+    }
+
+    public void getInitDataDetails() {
+
+        Map<String, String> map = new HashMap<>();
+        map.put("code",code);
+        showLoadingDialog();
+        Call call = RetrofitUtils.createApi(MyApiServer.class).getCarLoanCalculatorActivityDetails("630437", StringUtils.getJsonToString(map));
+        addCall(call);
+        call.enqueue(new BaseResponseModelCallBack<CarLoanCalculatorActivityDetailsBean>(this) {
+            @Override
+            protected void onSuccess(CarLoanCalculatorActivityDetailsBean data, String SucMessage) {
+
+                //获取数据设置到文本上
+
+//                mBinding.tvMoney.setText(data.get);
+
+            }
+
+            @Override
+            protected void onReqFailure(String errorCode, String errorMessage) {
+                super.onReqFailure(errorCode, errorMessage);
+                UITipDialog.showFall(CarLoanCalculatorActivity.this, errorMessage);
+            }
+
+            @Override
+            protected void onFinish() {
+                disMissLoading();
+
+            }
+        });
 
     }
 
     private void sendRegist() {
-        //        brandCode	品牌编号（必填）	string
-//        brandName	品牌名称（必填）	string
-//        carCode	车型编号（必填）	string
-//        carName	车型名称（必填）	string
-//        createDatetime	申请时间（必填）	string
-//        periods	分期期数（必填）	string
-//        price	车辆总价（必填）	string
-//        remark	备注（选填）	string
-//        saleDesc	计算器信息（必填）	string
-//        seriesCode	车系编号（必填）	string
-//        seriesName	车系名称（必填）	string
-//        sfAmount	首付金额（必填）	string
-//        sfRate	首付比例（必填）	string
-//        userId	申请人编号（必填）	string
-//        userMobile	申请人手机号（必填）
 
         Map map = new HashMap<String, String>();
         map.put("brandCode", currentdata.getBrandCode());
@@ -171,9 +213,21 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
     }
 
     private void initOnclick() {
-        mBinding.llOnePay.setOnClickListener(v -> showPaySingleDialog());
-        mBinding.llControlYear.setOnClickListener(v -> showRateSingleDialog());
-        mBinding.tvPayCar.setOnClickListener(v -> sendRegist());
+        if (type == 0) {
+            mBinding.llOnePay.setOnClickListener(v -> showPaySingleDialog());
+            mBinding.llControlYear.setOnClickListener(v -> showRateSingleDialog());
+            mBinding.tvPayCar.setOnClickListener(v -> sendRegist());
+        } else if (type == 1) {
+            mBinding.llOnePay.setOnClickListener(v -> showPaySingleDialog());
+            mBinding.llControlYear.setOnClickListener(v -> showRateSingleDialog());
+            mBinding.tvPayCar.setOnClickListener(v -> sendRegist());
+
+        } else if (type == 2) {
+            //中间的按钮全部不能点击  也不能提交申请  因为已经申请过了
+            mBinding.tvPayCar.setVisibility(View.GONE);
+        }
+
+
     }
 
     private void showPaySingleDialog() {
@@ -229,4 +283,6 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
                 }).create();
         ad.show();
     }
+
+
 }
