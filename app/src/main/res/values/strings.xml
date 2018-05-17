@@ -68,4 +68,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="order_type">订单编号:</string>
     <string name="empty_text">数据为空</string>
+    <string name="no_recommend_product">暂无推荐商品</string>
+    <string name="product_details">商品详情</string>
 </resources>

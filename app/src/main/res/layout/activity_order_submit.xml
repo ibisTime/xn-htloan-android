@@ -3,172 +3,220 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
         android:orientation="vertical">
 
-
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/iv_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="15dp"
-                android:src="@mipmap/ic_location" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="17dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="收货人:" />
-
-                    <TextView
-                        android:id="@+id/tv_receive_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:maxLength="5"
-                        android:text="郑海清啊啊啊哦哦哦啊啊啊哦哦哦啊啊啊" />
-
-                    <TextView
-                        android:id="@+id/tv_receive_number"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:text="15689745123" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="12dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="" />
-
-                    <TextView
-                        android:id="@+id/tv_receive_address"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_weight="1"
-                        android:maxLines="2"
-                        android:text="收货地址:浙江省 杭州市 余杭区 仓前街道未来小区1栋140房间" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp"
-                        android:background="@mipmap/ic_more" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:layout_marginTop="15dp"
-            android:background="@color/gray_line" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="15dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:src="@mipmap/ic_location" />
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:maxLines="2"
-                    android:text="普罗米修斯牌香皂. Audi Sport品牌以高端的运动项目诠释了奥迪的运动精神，传承了其百年基因的精髓，真正的以多元化服务，满足用户需求。欢迎进入Audi Sport活动网站。" />
-
                 <LinearLayout
+                    android:id="@+id/linLayout_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-
                     android:orientation="horizontal">
 
-                    <TextView
+                    <ImageView
+                        android:id="@+id/iv_location"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="颜色分类: "
-                        android:textColor="@color/gray_text" />
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="15dp"
+                        android:src="@mipmap/ic_location" />
 
-                    <TextView
-                        android:id="@+id/tv_color"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="红色,"
-                        android:textColor="@color/gray_text" />
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=" 尺寸: "
-                        android:textColor="@color/gray_text" />
 
-                    <TextView
-                        android:id="@+id/tv_size"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="s"
-                        android:textColor="@color/gray_text" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="17dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="收货人:" />
+
+                            <TextView
+                                android:id="@+id/tv_receive_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:maxLength="5"
+                                android:text="郑海清啊啊啊哦哦哦啊啊啊哦哦哦啊啊啊" />
+
+                            <TextView
+                                android:id="@+id/tv_receive_number"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:text="15689745123" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="" />
+
+                            <TextView
+                                android:id="@+id/tv_receive_address"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_weight="1"
+                                android:maxLines="2"
+                                android:text="收货地址:浙江省 杭州市 余杭区 仓前街道未来小区1栋140房间" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="15dp"
+                                android:background="@mipmap/ic_more" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
                 </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/gray_line" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:orientation="horizontal">
 
-                    android:layout_marginTop="7dp">
+                    <ImageView
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@mipmap/ic_location" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxLines="2"
+                            android:text="普罗米修斯牌香皂. Audi Sport品牌以高端的运动项目诠释了奥迪的运动精神，传承了其百年基因的精髓，真正的以多元化服务，满足用户需求。欢迎进入Audi Sport活动网站。" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="颜色分类: "
+                                android:textColor="@color/gray_text" />
+
+                            <TextView
+                                android:id="@+id/tv_color"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="红色,"
+                                android:textColor="@color/gray_text" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" 尺寸: "
+                                android:textColor="@color/gray_text" />
+
+                            <TextView
+                                android:id="@+id/tv_size"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="s"
+                                android:textColor="@color/gray_text" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginTop="7dp">
+
+                            <TextView
+                                android:id="@+id/tv_totle_price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="19.90"
+                                android:textColor="@color/orange"
+                                android:textSize="18sp" />
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:id="@+id/tv_pay_number"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="X1"
+                                android:textColor="@color/orange"
+                                android:textSize="18sp" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/gray_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="15dp"
+                    android:gravity="center">
 
                     <TextView
-                        android:id="@+id/tv_totle_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="19.90"
-                        android:textColor="@color/orange"
-                        android:textSize="18sp" />
+                        android:text="首付比例"
+                        android:textColor="@color/break_text"
+                        android:textSize="14sp" />
 
                     <View
                         android:layout_width="0dp"
@@ -176,197 +224,164 @@
                         android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/tv_pay_number"
+                        android:id="@+id/tv_one_pay_bili"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="X1"
-                        android:textColor="@color/orange"
-                        android:textSize="18sp" />
+                        android:text="0首付"
+                        android:textColor="@color/break_text"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="15dp"
+                        android:src="@mipmap/ic_more" />
                 </LinearLayout>
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray_line" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="15dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="分期月数"
+                        android:textColor="@color/break_text"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/tv_monthly_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12月"
+                        android:textColor="@color/break_text"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="15dp"
+                        android:src="@mipmap/ic_more" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="15dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="月供"
+                        android:textColor="@color/break_text"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/tv_monthly_pay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="34¥"
+                        android:textColor="@color/break_text"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="15dp"
+                        android:src="@mipmap/ic_more" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="15dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="首付"
+                        android:textColor="@color/break_text"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/tv_one_pay_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="128.5¥"
+                        android:textColor="@color/break_text"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="15dp"
+                        android:src="@mipmap/ic_more" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="@color/gray_line" />
+
+
+                <TextView
+                    android:id="@+id/tv_discount"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="15dp"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:text="可抵消2.00元,消耗200积分"
+                    android:textColor="@color/break_text"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
 
             </LinearLayout>
-        </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:layout_marginTop="15dp"
-            android:background="@color/gray_line" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginLeft="15dp"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="首付比例"
-                android:textColor="@color/break_text"
-                android:textSize="14sp" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/tv_one_pay_bili"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0首付"
-                android:textColor="@color/break_text"
-                android:textSize="14sp" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="15dp"
-                android:src="@mipmap/ic_more" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/gray_line" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginLeft="15dp"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="分期月数"
-                android:textColor="@color/break_text"
-                android:textSize="14sp" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/tv_monthly_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="12月"
-                android:textColor="@color/break_text"
-                android:textSize="14sp" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="15dp"
-                android:src="@mipmap/ic_more" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/gray_line" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginLeft="15dp"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="月供"
-                android:textColor="@color/break_text"
-                android:textSize="14sp" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/tv_monthly_pay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="34¥"
-                android:textColor="@color/break_text"
-                android:textSize="14sp" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="15dp"
-                android:src="@mipmap/ic_more" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/gray_line" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginLeft="15dp"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="首付"
-                android:textColor="@color/break_text"
-                android:textSize="14sp" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/tv_one_pay_money"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="128.5¥"
-                android:textColor="@color/break_text"
-                android:textSize="14sp" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="15dp"
-                android:src="@mipmap/ic_more" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="@color/gray_line" />
-
-
-        <TextView
-            android:id="@+id/tv_discount"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginLeft="15dp"
-            android:gravity="center_vertical"
-            android:singleLine="true"
-            android:text="可抵消2.00元,消耗200积分"
-            android:textColor="@color/break_text"
-            android:textSize="14sp" />
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+        </ScrollView>
 
         <View
             android:layout_width="match_parent"
@@ -410,4 +425,5 @@
 
         </LinearLayout>
     </LinearLayout>
+
 </layout>

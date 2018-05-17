@@ -14,7 +14,8 @@ import com.cdkj.huatuweitong.module.main_tab.ReimbursementFragment;
 import com.cdkj.huatuweitong.module.main_tab.UserFragment;
 
 import java.util.ArrayList;
-@Route(path = CdRouteHelper.USERMAIN)
+
+@Route(path = CdRouteHelper.APP_MAIN)
 public class MainActivity extends AbsBaseLoadActivity {
 
 
@@ -30,6 +31,7 @@ public class MainActivity extends AbsBaseLoadActivity {
 //
 //    }
 
+
     @Override
     public View addMainView() {
         mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.activity_main, null, false);
@@ -43,8 +45,6 @@ public class MainActivity extends AbsBaseLoadActivity {
 
     @Override
     public void afterCreate(Bundle savedInstanceState) {
-
-
 
 
         initListener();

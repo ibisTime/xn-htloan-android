@@ -34,12 +34,14 @@
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
         <Button
+            android:background="@drawable/selector_blue"
             android:id="@+id/tv_add"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
+            android:textColor="@color/white"
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="添加地址"

@@ -6,9 +6,13 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.View;
 
+import com.cdkj.baselibrary.activitys.address.AddressListActivity;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
+import com.cdkj.baselibrary.model.AddressModel;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.databinding.ActivityOrderSubmitBinding;
+
+import org.greenrobot.eventbus.Subscribe;
 
 /**
  * 提交订单
@@ -39,5 +43,15 @@ public class OrderSubmitActivity extends AbsBaseLoadActivity {
         mBinding.tvSendPay.setOnClickListener(v -> {
             PayActivity.open(OrderSubmitActivity.this);
         });
+        mBinding.linLayoutAddress.setOnClickListener(v -> AddressListActivity.open(this, true));
     }
+
+    @Subscribe
+    public void addressSelect(AddressModel addressModel) {
+        mBinding.tvReceiveName.setText(addressModel.getAddressee());
+        mBinding.tvReceiveNumber.setText(addressModel.getMobile());
+        mBinding.tvReceiveAddress.setText("收货地址:" +addressModel.getProvince() + " " + addressModel.getCity() + " " + addressModel.getArea() + "" + addressModel.getDetail());
+    }
+
+
 }

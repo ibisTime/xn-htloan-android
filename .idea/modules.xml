@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/cdcommon/cdcommon.iml" filepath="$PROJECT_DIR$/cdcommon/cdcommon.iml" />
-      <module fileurl="file://$PROJECT_DIR$/chengdai_code.iml" filepath="$PROJECT_DIR$/chengdai_code.iml" />
+      <module fileurl="file://$PROJECT_DIR$/htwtProject.iml" filepath="$PROJECT_DIR$/htwtProject.iml" />
     </modules>
   </component>
 </project>

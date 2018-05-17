@@ -2,6 +2,8 @@ package com.cdkj.baselibrary.utils;
 
 import java.math.BigDecimal;
 
+import static java.math.BigDecimal.ROUND_HALF_DOWN;
+
 /**
  * Created by cdkj on 2017/7/19.
  */
@@ -49,6 +51,7 @@ public class BigDecimalUtils {
         }
 
         return new BigDecimal(0);
-    }
+    }    //加法
+
 
 }

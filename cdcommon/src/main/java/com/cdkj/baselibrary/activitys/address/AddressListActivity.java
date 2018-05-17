@@ -131,7 +131,9 @@ public class AddressListActivity extends AbsBaseLoadActivity {
                     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                         if (isSelect) { //选择地址
                             AddressModel addr = (AddressModel) addressListAdapter.getItem(position);
-                            EventBus.getDefault().post(addr);
+                            if (addr != null) {
+                                EventBus.getDefault().post(addr);
+                            }
                             finish();
                         }
                     }

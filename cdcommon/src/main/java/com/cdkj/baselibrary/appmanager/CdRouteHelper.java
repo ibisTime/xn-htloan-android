@@ -26,7 +26,8 @@ public class CdRouteHelper {
     public static final String UPDATEPHONE = "/user/UPDATEPHONE";
     public static final String WEBVIEWACTIVITY = "/user/webView";
 
-    public static final String USERMAIN = "/user/main";
+    /*，ARouter允许一个module中存在多个分组，但是不允许多个module中存在相同的分组，会导致映射文件冲突*/
+    public static final String APP_MAIN = "/app/main";
 
     //获取数据标志
     public static final String DATASIGN = "dataSign";
@@ -48,7 +49,7 @@ public class CdRouteHelper {
      * 打开主页界面
      */
     public static void openMain() {
-        ARouter.getInstance().build(USERMAIN)
+        ARouter.getInstance().build(APP_MAIN)
 //                .withBoolean(DATASIGN, canopenmain)
 //                .greenChannel()                                       //不使用任何拦截器
                 .navigation();

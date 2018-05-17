@@ -95,11 +95,11 @@ public class AddAddressActivity extends AbsBaseLoadActivity {
         isDefault = mAddressData.isDefaultAddress();
         mProvince = mAddressData.getProvince();
         mCity = mAddressData.getCity();
-        mDistrict = mAddressData.getDistrict();
-        mBinding.txtAddress.setText(mAddressData.getProvince() + " " + mAddressData.getCity() + " " + mAddressData.getDistrict());
+        mDistrict = mAddressData.getArea();
+        mBinding.txtAddress.setText(mAddressData.getProvince() + " " + mAddressData.getCity() + " " + mAddressData.getArea());
         mBinding.edtName.setText(mAddressData.getAddressee());
         mBinding.edtPhone.setText(mAddressData.getMobile());
-        mBinding.edtDetailed.setText(mAddressData.getDetailAddress());
+        mBinding.edtDetailed.setText(mAddressData.getDetail());
 
 
     }
@@ -130,10 +130,10 @@ public class AddAddressActivity extends AbsBaseLoadActivity {
                     return;
                 }
 
-                if (!StringUtils.isMobileExact(mBinding.edtPhone.getText().toString())) {
-                    UITipDialog.showFall(AddAddressActivity.this, getString(R.string.please_input_phone_2));
-                    return;
-                }
+//                if (!StringUtils.isMobileExact(mBinding.edtPhone.getText().toString())) {
+//                    UITipDialog.showFall(AddAddressActivity.this, getString(R.string.please_input_phone_2));
+//                    return;
+//                }
 
                 if (TextUtils.isEmpty(mBinding.txtAddress.getText().toString())) {
                     UITipDialog.showFall(AddAddressActivity.this, getString(R.string.please_select_city));
@@ -233,8 +233,8 @@ public class AddAddressActivity extends AbsBaseLoadActivity {
         object.put("mobile", mBinding.edtPhone.getText().toString().trim());
         object.put("province", mProvince);
         object.put("city", mCity);
-        object.put("district", mDistrict);
-        object.put("detailAddress", mBinding.edtDetailed.getText().toString().trim());
+        object.put("area", mDistrict);
+        object.put("detail", mBinding.edtDetailed.getText().toString().trim());
         object.put("token", SPUtilHelpr.getUserToken());
         object.put("systemCode", MyCdConfig.SYSTEMCODE);
 
@@ -281,8 +281,8 @@ public class AddAddressActivity extends AbsBaseLoadActivity {
         object.put("mobile", mBinding.edtPhone.getText().toString().trim());
         object.put("province", mProvince);
         object.put("city", mCity);
-        object.put("district", mDistrict);
-        object.put("detailAddress", mBinding.edtDetailed.getText().toString().trim());
+        object.put("area", mDistrict);
+        object.put("detail", mBinding.edtDetailed.getText().toString().trim());
         object.put("token", SPUtilHelpr.getUserToken());
         object.put("systemCode", MyCdConfig.SYSTEMCODE);
         Call call = RetrofitUtils.getBaseAPiService().successRequest("805162", StringUtils.getJsonToString(object));

@@ -371,25 +371,6 @@ public class StringUtils {
         return htmlStr.trim(); // 返回文本字符串
     }
 
-    /**
-     * 以万为单位显示格式化
-     *
-     * @param num
-     * @return
-     */
-    public static String formatNum(BigDecimal num) {
-
-        if (num == null || num.intValue() == 0) return "0";
-        NumberFormat nf = new DecimalFormat("#.##");
-        if (num.doubleValue() < 10000) {
-            return nf.format(num.doubleValue());
-        }
-        if (num.doubleValue() >= 100000000) {
-            return nf.format(num.divide(new BigDecimal(100000000), 2, RoundingMode.HALF_UP).doubleValue()) + "亿";
-        }
-        return nf.format(num.divide(new BigDecimal(10000), 2, RoundingMode.HALF_UP).doubleValue()) + "万";
-
-    }
 
 
 
