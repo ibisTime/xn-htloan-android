@@ -6,10 +6,14 @@ import com.cdkj.baselibrary.api.ResponseInListModel;
 import com.cdkj.huatuweitong.bean.CarDetailsBean;
 import com.cdkj.huatuweitong.bean.CarLoanCalculatorActivityDetailsBean;
 import com.cdkj.huatuweitong.bean.CarLoanCalculatorSendBean;
+import com.cdkj.huatuweitong.bean.CarLoanDetailsActivityBean;
+import com.cdkj.huatuweitong.bean.CarLoanDetailsActivityMonthBean;
 import com.cdkj.huatuweitong.bean.ExhibitionCenterBean;
 import com.cdkj.huatuweitong.bean.FirstPageCarRecommendBean;
 import com.cdkj.huatuweitong.bean.LoginBean;
 import com.cdkj.huatuweitong.bean.MyCarLoanFragmentBean;
+import com.cdkj.huatuweitong.bean.ReimbursementRepaymentBean;
+import com.cdkj.huatuweitong.bean.ReimbursementRepaymentMonthBean;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -87,9 +91,57 @@ public interface MyApiServer {
     @POST("api")
     Call<BaseResponseModel<ResponseInListModel<MyCarLoanFragmentBean>>> getMyCarLoanFrgmentData(@Field("code") String code, @Field("json") String json);
 
-
+    /**
+     * 我的车贷申请  点击里面的条目进行的详情查询
+     * @param code
+     * @param json
+     * @return
+     */
     @FormUrlEncoded
     @POST("api")
     Call<BaseResponseModel<CarLoanCalculatorActivityDetailsBean>> getCarLoanCalculatorActivityDetails(@Field("code") String code, @Field("json") String json);
+
+    /**
+     * 所有贷款
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<ResponseInListModel<ReimbursementRepaymentBean>>> getReimbursementRepaymentData(@Field("code") String code, @Field("json") String json);
+
+    /**
+     * 近期还款列表
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<ResponseInListModel<ReimbursementRepaymentMonthBean>>> getReimbursementRepaymentMonthData(@Field("code") String code, @Field("json") String json);
+
+
+    /**
+     * 单款详情   从还款列表点击跳转到这里
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<CarLoanDetailsActivityBean>> getCarLoanDetailsActivity(@Field("code") String code, @Field("json") String json);
+
+    /**
+     * 本月应还贷款 从还款列表点击跳转到这里
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<CarLoanDetailsActivityMonthBean>> getCarLoanDetailsMonthActivity(@Field("code") String code, @Field("json") String json);
+
+
 
 }

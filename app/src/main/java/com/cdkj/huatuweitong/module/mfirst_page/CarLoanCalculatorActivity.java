@@ -15,6 +15,7 @@ import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
 import com.cdkj.baselibrary.utils.DateUtil;
+import com.cdkj.baselibrary.utils.MoneyUtils;
 import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.api.MyApiServer;
@@ -22,7 +23,6 @@ import com.cdkj.huatuweitong.bean.CarDetailsBean;
 import com.cdkj.huatuweitong.bean.CarLoanCalculatorActivityDetailsBean;
 import com.cdkj.huatuweitong.bean.CarLoanCalculatorSendBean;
 import com.cdkj.huatuweitong.databinding.CarLoanCalculatorBinding;
-import com.cdkj.huatuweitong.utlis.MoneyUtils;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -37,8 +37,6 @@ import retrofit2.Call;
 public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
 
     private CarLoanCalculatorBinding mBinding;
-    private String salePrice = "0";
-
     private CarDetailsBean currentdata;
     String[] ratSingData = new String[]{"1年", "2年", "3年"};
     String[] paySingData = new String[]{"30%", "50%", "70%"};
@@ -48,6 +46,7 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
     private double rate = 0.1;//利率默认是0.1  利率和还款年限有关
     private int type;//0代表是从首页直接进入的  1  代表是 从申请车贷的时候进入的  2代表是从我的车贷申请进入的
     private String code;//从我的车贷详情跳转过来的
+    private BigDecimal salePrice;
 
     public static void open(Context context, int type) {
 //        startActivity();
@@ -104,7 +103,10 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
 
         } else if (type == 1) {
             //去计算利息等等
+            salePrice = currentdata.getSalePrice();
             setViewData();
+            mBinding.tvModel.setText(currentdata.getName());//名字
+            mBinding.tvBrand.setText(currentdata.getSeriesName());//品牌名字
 
         } else if (type == 2) {
             //去联网请求数据  通过参数code
@@ -126,8 +128,21 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
             protected void onSuccess(CarLoanCalculatorActivityDetailsBean data, String SucMessage) {
 
                 //获取数据设置到文本上
+                salePrice=new BigDecimal(data.getPrice());
+                mBinding.tvMoney.setText(MoneyUtils.showPriceDouble(data.getPrice()));
+                mBinding.tvDowanPayments.setText(MoneyUtils.showPriceDouble(data.getSfAmount()));
 
-//                mBinding.tvMoney.setText(data.get);
+//                mBinding.tvMonthlySupply.setText(MoneyUtils.showPriceDouble(data.getSfAmount()));//月供
+//                mBinding.tvManyMoney.setText(MoneyUtils.showPriceDouble(data.getSfAmount()));//多花
+
+                mBinding.tvModel.setText(data.getCarName());//车型
+                mBinding.tvBrand.setText(data.getSeriesName());//品牌
+                mBinding.tvOnePay.setText((data.getSfRate()*100)+"%");//首付
+                mBinding.tvControlYear.setText((int)data.getPeriods()+"");//首付
+                downPayments=data.getSfRate();
+                repayments= (int) data.getPeriods();
+                //去计算并设置值
+                setViewData();
 
             }
 
@@ -157,7 +172,7 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
         Log.i("pppppp", "afterCreate: " + format);
         map.put("createDatetime", format);
         map.put("periods", String.valueOf(repayments));
-        long price = (long) currentdata.getSalePrice().doubleValue() * 1000;
+        long price = (long) salePrice.doubleValue() * 1000;
         map.put("price", price);
         map.put("remark", "我是备注");
         map.put("saleDesc", "1");
@@ -175,6 +190,7 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
             @Override
             protected void onSuccess(CarLoanCalculatorSendBean data, String SucMessage) {
                 UITipDialog.showInfo(CarLoanCalculatorActivity.this, "申请成功");
+                mBinding.tvPayCar.setVisibility(View.GONE);
             }
 
             @Override
@@ -193,22 +209,19 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
 
     private void setViewData() {
 
-        BigDecimal cankaojia = currentdata.getSalePrice();//总价
+        BigDecimal cankaojia = salePrice;//总价
         BigDecimal shoufu = MoneyUtils.bigDecimalRide(cankaojia, downPayments);//首付款
         BigDecimal daikuane = cankaojia.subtract(shoufu);//贷款额   被减数  减数
         BigDecimal shouxufei = daikuane.multiply(new BigDecimal(rate));//手续费总额
         BigDecimal daikuanzonge = daikuane.add(shouxufei);//贷款总额
-
-        Log.i("ppppp", "setViewData: 贷款总额:" + daikuanzonge + "月供:" + repayments * 12);
         BigDecimal yuegong = daikuanzonge.divide(new BigDecimal(repayments * 12), 3);//月供
         BigDecimal duohua = yuegong.multiply(new BigDecimal(repayments * 12)).add(shoufu).subtract(cankaojia);
 
-        mBinding.tvDowanPayments.setText(MoneyUtils.BigDecimalToString2(shoufu));
-        mBinding.tvMonthlySupply.setText(MoneyUtils.BigDecimalToString2(yuegong));
-        mBinding.tvManyMoney.setText(MoneyUtils.BigDecimalToString2(duohua));
-        mBinding.tvMoney.setText(MoneyUtils.BigDecimalToString2(cankaojia));
-        mBinding.tvModel.setText(currentdata.getName());//名字
-        mBinding.tvBrand.setText(currentdata.getSeriesName());//品牌名字
+        mBinding.tvDowanPayments.setText(MoneyUtils.showPrice(shoufu));
+        mBinding.tvMonthlySupply.setText(MoneyUtils.showPrice(yuegong));
+        mBinding.tvManyMoney.setText(MoneyUtils.showPrice(duohua));
+        mBinding.tvMoney.setText(MoneyUtils.showPrice(cankaojia));
+
 
     }
 
@@ -231,6 +244,11 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
     }
 
     private void showPaySingleDialog() {
+        //如果提交按钮不显示了  说明已经申请过了  就不能再进行选择了
+        if (mBinding.tvPayCar.getVisibility()!=View.VISIBLE){
+            return;
+        }
+
 
         AlertDialog ad = new AlertDialog.Builder(CarLoanCalculatorActivity.this).setTitle("选择首付比")
                 .setSingleChoiceItems(paySingData, 0, new DialogInterface.OnClickListener() {
@@ -257,6 +275,11 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
     }
 
     private void showRateSingleDialog() {
+        //如果提交按钮不显示了  说明已经申请过了  就不能再进行选择了
+
+        if (mBinding.tvPayCar.getVisibility()!=View.VISIBLE){
+            return;
+        }
 
         AlertDialog ad = new AlertDialog.Builder(CarLoanCalculatorActivity.this).setTitle("选择还款年限")
                 .setSingleChoiceItems(ratSingData, 0, new DialogInterface.OnClickListener() {

@@ -53,7 +53,7 @@
     <string name="noupdata_phone">手机号码修改失败</string>
     <string name="update_logo_succ">头像更换成功</string>
     <string name="loan_sms">贷款信息</string>
-    <string name="loan_car">贷款车辆</string>
+    <string name="loan_car">贷款名称</string>
     <string name="loan_total">贷款总额</string>
     <string name="loan_term">贷款期限</string>
     <string name="repayment_plan">还款计划</string>

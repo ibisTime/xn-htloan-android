@@ -49,7 +49,7 @@ public class ReimbursementFragment extends BaseLazyFragment {
     private void initViewPagerIndicator() {
         mBinding.viewindicator.setmLinWidth(25);
         mBinding.viewindicator.setVisibleTabCount(2);
-        mBinding.viewindicator.setTabItemTitles(Arrays.asList("近期还款", "还款记录"));
+        mBinding.viewindicator.setTabItemTitles(Arrays.asList("近期还款", "借款记录"));
         mBinding.viewindicator.setViewPager(mBinding.viewpager, 0);
     }
 
@@ -62,8 +62,8 @@ public class ReimbursementFragment extends BaseLazyFragment {
         //设置fragment数据
         ArrayList fragments = new ArrayList<>();
 
-        fragments.add(ReimbursementListFragment.getInstance());
-        fragments.add(ReimbursementListFragment.getInstance());
+        fragments.add(ReimbursementListFragment.getInstance("1"));
+        fragments.add(ReimbursementListFragment.getInstance("2"));
 
         mBinding.viewpager.setAdapter(new ViewPagerAdapter(getChildFragmentManager(), fragments));
         mBinding.viewpager.setOffscreenPageLimit(fragments.size());

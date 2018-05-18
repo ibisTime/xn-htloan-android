@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cdkj.baselibrary.api.ResponseInListModel;
+import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
 import com.cdkj.baselibrary.base.AbsRefreshListFragment;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
@@ -33,7 +34,7 @@ import retrofit2.Call;
  */
 public class MyCarLoanFragment extends AbsRefreshListFragment<MyCarLoanFragmentBean> {
     private MyCarLoanFragmentAdapter adapter;
-    String status;//状态  0代表待处理   1代表已处理
+    String status;//状态  0已处理  1未处理
 
     public static MyCarLoanFragment getInstance(String status) {
         MyCarLoanFragment fragment = new MyCarLoanFragment();
@@ -45,8 +46,6 @@ public class MyCarLoanFragment extends AbsRefreshListFragment<MyCarLoanFragmentB
 
     @Override
     protected void lazyLoad() {
-        Bundle bunndle = getArguments();
-        status = bunndle.getString("status");
 
     }
 
@@ -58,6 +57,9 @@ public class MyCarLoanFragment extends AbsRefreshListFragment<MyCarLoanFragmentB
 
     @Override
     protected void afterCreate(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Bundle bunndle = getArguments();
+        status = bunndle.getString("status");
+
         initRefreshHelper(10);
         mRefreshHelper.onDefaluteMRefresh(true);
     }
@@ -88,6 +90,7 @@ public class MyCarLoanFragment extends AbsRefreshListFragment<MyCarLoanFragmentB
         map.put("limit", limit + "");
         map.put("start", start + "");
         map.put("status", status);
+        map.put("userId", SPUtilHelpr.getUserId());
 
         Call call = RetrofitUtils.createApi(MyApiServer.class).getMyCarLoanFrgmentData("630435", StringUtils.getJsonToString(map));
 //        addCall(call);

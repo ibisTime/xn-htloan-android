@@ -59,7 +59,7 @@ public class FirstPageFragment extends BaseLazyFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_firstpage, null, false);
+         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_firstpage, null, false);
 
         mBanners = new ArrayList<>();
         initCarRecommendBeanData();
@@ -91,7 +91,6 @@ public class FirstPageFragment extends BaseLazyFragment {
 
             @Override
             protected void onSuccess(List<FirstPageCarRecommendBean> data, String SucMessage) {
-               // recommendCarAdapter = new RecommendCarAdapter(data, this);
                 carData.clear();
                 carData.addAll(data);
                 recommendCarAdapter.notifyDataSetChanged();

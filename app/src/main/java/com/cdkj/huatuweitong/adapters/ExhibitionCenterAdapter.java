@@ -35,6 +35,7 @@ public class ExhibitionCenterAdapter extends BaseQuickAdapter<ExhibitionCenterBe
 //                iv_logo
 
         helper.setText(R.id.tv_name, item.getName());
+        helper.setText(R.id.tv_type_name, item.getSeriesName());
         helper.setText(R.id.tv_price, "总价" + MoneyUtils.BigDecimalToString(item.getOriginalPrice()) + "元");
         helper.setText(R.id.tv_first_pay, "首付: " + MoneyUtils.BigDecimalToString(item.getSalePrice()) + "元");
         ImageView imgLogo = helper.getView(R.id.iv_logo);
