@@ -16,6 +16,7 @@ import com.cdkj.huatuweitong.bean.MyCarLoanFragmentBean;
 import com.cdkj.huatuweitong.bean.ReimbursementRepaymentBean;
 import com.cdkj.huatuweitong.bean.ReimbursementRepaymentMonthBean;
 import com.cdkj.huatuweitong.bean.RecommendProductBean;
+import com.cdkj.huatuweitong.bean.UserFragmentBean;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -185,6 +186,16 @@ public interface MyApiServer {
     @FormUrlEncoded
     @POST("api")
     Call<BaseResponseModel<CarLoanDetailsActivityMonthBean>> getCarLoanDetailsMonthActivity(@Field("code") String code, @Field("json") String json);
+
+    /**
+     * 本月应还贷款 从还款列表点击跳转到这里
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<UserFragmentBean>> getUserDetails(@Field("code") String code, @Field("json") String json);
 
 
 

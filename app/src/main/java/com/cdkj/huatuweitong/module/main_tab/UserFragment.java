@@ -8,11 +8,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
 import com.cdkj.baselibrary.base.BaseLazyFragment;
+import com.cdkj.baselibrary.dialog.UITipDialog;
+import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
+import com.cdkj.baselibrary.nets.RetrofitUtils;
+import com.cdkj.baselibrary.utils.ImgUtils;
+import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.R;
+import com.cdkj.huatuweitong.api.MyApiServer;
+import com.cdkj.huatuweitong.bean.UserFragmentBean;
 import com.cdkj.huatuweitong.databinding.FragmentUserBinding;
 import com.cdkj.huatuweitong.module.user.MyCarLoanActivity;
 import com.cdkj.huatuweitong.module.user.UserInfoUpdateActivity;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import retrofit2.Call;
 
 /**
  * Created by cdkj on 2018/5/1.
@@ -43,6 +56,44 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
     @Override
     protected void lazyLoad() {
         setUsetPotoImg();
+//        initData();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        initData();
+    }
+
+    public void initData() {
+        Map<String, String> map = new HashMap();
+        map.put("userId", SPUtilHelpr.getUserId());
+        showLoadingDialog();
+        Call call = RetrofitUtils.createApi(MyApiServer.class).getUserDetails("805121", StringUtils.getJsonToString(map));
+        addCall(call);
+        call.enqueue(new BaseResponseModelCallBack<UserFragmentBean>(mActivity) {
+            @Override
+            protected void onSuccess(UserFragmentBean data, String SucMessage) {
+
+//                mBinding.imgUserLogo
+                ImgUtils.loadQiniuLogo(mActivity, data.getPhoto(), mBinding.imgUserLogo);
+                mBinding.tvUserName.setText(data.getNickname());
+                mBinding.tvUserPhone.setText(data.getMobile());
+            }
+
+            @Override
+            protected void onReqFailure(String errorCode, String errorMessage) {
+                super.onReqFailure(errorCode, errorMessage);
+                UITipDialog.showFall(mActivity, errorMessage);
+            }
+
+            @Override
+            protected void onFinish() {
+                disMissLoading();
+            }
+        });
+
+
     }
 
     private void setUsetPotoImg() {

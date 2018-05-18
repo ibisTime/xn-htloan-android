@@ -68,7 +68,7 @@ public class LoginActivity extends AbsBaseLoadActivity implements LoginInterface
         mPresenter = new LoginPresenter(this);
 
         if (getIntent() != null) {
-            canOpenMain = getIntent().getBooleanExtra(DATASIGN, false);
+            canOpenMain = getIntent().getBooleanExtra(DATASIGN, true);
         }
 
         //回显选中的  服务条款

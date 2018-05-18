@@ -46,7 +46,6 @@ public class MyCarLoanFragment extends AbsRefreshListFragment<MyCarLoanFragmentB
 
     @Override
     protected void lazyLoad() {
-
     }
 
 
@@ -100,7 +99,7 @@ public class MyCarLoanFragment extends AbsRefreshListFragment<MyCarLoanFragmentB
         call.enqueue(new BaseResponseModelCallBack<ResponseInListModel<MyCarLoanFragmentBean>>(mActivity) {
             @Override
             protected void onSuccess(ResponseInListModel<MyCarLoanFragmentBean> data, String SucMessage) {
-                mRefreshHelper.setData(data.getList(), getString(R.string.empty_text), 0);
+                mRefreshHelper.setData(data.getList(), getString(R.string.empty_apply_order), 0);
             }
 
             @Override

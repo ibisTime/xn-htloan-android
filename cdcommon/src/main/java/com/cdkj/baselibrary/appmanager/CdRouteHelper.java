@@ -49,7 +49,7 @@ public class CdRouteHelper {
      * 打开主页界面
      */
     public static void openMain() {
-        ARouter.getInstance().build(USERMAIN)
+        ARouter.getInstance().build(APP_MAIN)
 //                .withBoolean(DATASIGN, canopenmain)
 //                .greenChannel()                                       //不使用任何拦截器
                 .navigation();
