@@ -11,6 +11,7 @@ import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cdkj.baselibrary.R;
+import com.cdkj.baselibrary.activitys.bankcard.AddBankCardActivity;
 import com.cdkj.baselibrary.appmanager.CdRouteHelper;
 import com.cdkj.baselibrary.appmanager.MyCdConfig;
 import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
@@ -109,6 +110,10 @@ public class UpdateBankCardActivity extends AbsBaseLoadActivity {
                     UITipDialog.showFall(UpdateBankCardActivity.this, getString(R.string.please_input_name));
                     return;
                 }
+                if (TextUtils.isEmpty(mBinding.editPhone.getText().toString())) {
+                    UITipDialog.showFall(UpdateBankCardActivity.this, getString(R.string.please_input_phone));
+                    return;
+                }
                 if (TextUtils.isEmpty(mSelectCardId)) {
                     UITipDialog.showFall(UpdateBankCardActivity.this, getString(R.string.please_select_bank));
                     return;
@@ -124,11 +129,10 @@ public class UpdateBankCardActivity extends AbsBaseLoadActivity {
                     return;
                 }
 
-                if (mBinding.edtCardId.getText().toString().length() < 16) {
-                    UITipDialog.showFall(UpdateBankCardActivity.this, getString(R.string.check_bank_num));
+                if (mBinding.edtCardId.getText().toString().length() < 13) {
+                    UITipDialog.showFall(UpdateBankCardActivity.this, getString(R.string.please_succ_bank_card));
                     return;
                 }
-
                 updateBank();
             }
         });
@@ -183,7 +187,7 @@ public class UpdateBankCardActivity extends AbsBaseLoadActivity {
         object.put("bankCode", mSelectCardId);
         object.put("code", mBankModel.getCode());
         object.put("status", "1");
-//        object.put("tradePwd", pwd);
+        object.put("updater",  SPUtilHelpr.getUserId());
         object.put("token", SPUtilHelpr.getUserToken());
         object.put("userId", SPUtilHelpr.getUserId());
         object.put("systemCode", MyCdConfig.SYSTEMCODE);
@@ -232,6 +236,7 @@ public class UpdateBankCardActivity extends AbsBaseLoadActivity {
         mBinding.txtBankName.setText(mBankModel.getBankName());
         mBinding.editName.setText(mBankModel.getRealName());
         mBinding.edtCardId.setText(mBankModel.getBankcardNumber());
+        mBinding.editPhone.setText(mBankModel.getBindMobile());
         mSelectCardId = mBankModel.getBankCode();
 
         mBinding.editBankNameChild.setText(mBankModel.getSubbranch());

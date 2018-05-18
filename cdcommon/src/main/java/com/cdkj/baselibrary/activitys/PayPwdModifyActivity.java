@@ -45,6 +45,17 @@ public class PayPwdModifyActivity extends AbsBaseLoadActivity implements SendCod
     public static final String MOBILE = "mobile";
 
 
+    public static void open(Context context, boolean isSetPwd, String mobile) {
+        if (context == null) {
+            return;
+        }
+        Intent intent = new Intent(context, PayPwdModifyActivity.class);
+        intent.putExtra(ISSETPWD, isSetPwd);
+        intent.putExtra(MOBILE, mobile);
+        context.startActivity(intent);
+    }
+
+
     @Override
     public View addMainView() {
         mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.activity_modify_pay_password, null, false);

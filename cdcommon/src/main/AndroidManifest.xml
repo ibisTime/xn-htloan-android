@@ -87,9 +87,30 @@
             android:name=".activitys.address.AddAddressActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
-      <!--地址列表-->
+        <!--地址列表-->
         <activity
             android:name=".activitys.address.AddressListActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!--地址列表-->
+        <activity
+            android:name=".activitys.login.LoginActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <!--地址列表-->
+        <activity
+            android:name=".activitys.BankCardListActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <!--地址列表-->
+        <activity
+            android:name=".activitys.BankCardListActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <!--地址列表-->
+        <activity
+            android:name=".activitys.bankcard.AddBankCardActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
 

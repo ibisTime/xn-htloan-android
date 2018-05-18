@@ -15,8 +15,7 @@
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            >
+            android:paddingRight="15dp">
 
             <TextView
                 android:id="@+id/tv_left"
@@ -99,6 +98,18 @@
             android:layout_height="wrap_content"
             app:img_right="@mipmap/ic_more"
             app:txt_left="@string/receive_address" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_line" />
+
+        <com.cdkj.baselibrary.views.RowInfoLayout
+            android:id="@+id/row_receive_bank_caard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:img_right="@mipmap/ic_more"
+            app:txt_left="银行卡管理" />
 
         <View
             android:layout_width="match_parent"

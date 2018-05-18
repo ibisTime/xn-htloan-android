@@ -33,7 +33,6 @@ public class AddressListAdapter extends BaseQuickAdapter<AddressModel, BaseViewH
         TextView tvChoose = viewHolder.getView(R.id.tv_is_choose);
         ImageView imgChoose = viewHolder.getView(R.id.img_choose);
 
-
         if (item.isDefaultAddress()) {
             imgChoose.setBackgroundResource(R.drawable.check_on);
             tvChoose.setTextColor(ContextCompat.getColor(mContext, R.color.address_select));
@@ -44,7 +43,7 @@ public class AddressListAdapter extends BaseQuickAdapter<AddressModel, BaseViewH
 
         txtName.setText(item.getAddressee());
         txtPhone.setText(item.getMobile());
-        txtAddress.setText(item.getProvince() + " " + item.getCity() + " " + item.getDistrict() + "" + item.getDetailAddress());
+        txtAddress.setText(item.getProvince() + " " + item.getCity() + " " + item.getArea() + "" + item.getDetail());
 
         viewHolder.addOnClickListener(R.id.layout_delete);
         viewHolder.addOnClickListener(R.id.layout_edit);

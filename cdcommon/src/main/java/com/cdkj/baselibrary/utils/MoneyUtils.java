@@ -106,14 +106,33 @@ public class MoneyUtils {
     public static int getPriceIntValue(BigDecimal bigDecimal) {
         return bigDecimal.intValue() / 1000;
     }
+
+    public static BigDecimal getPriceValue(BigDecimal bigDecimal) {
+        if (bigDecimal == null) {
+            return new BigDecimal(0);
+        }
+        return bigDecimal.divide(new BigDecimal(1000), 2, RoundingMode.HALF_UP);
+    }
+
+
     /**
-     * bigDecimal  做乘法结果保留两位小数返回
-     * @param bigDecimal
+     * 以万为单位显示格式化
+     *
+     * @param num
      * @return
      */
-    public static BigDecimal bigDecimalRide(BigDecimal bigDecimal,double dou) {
-        BigDecimal multiply = bigDecimal.multiply(new BigDecimal(dou));
-        BigDecimal decimal = multiply.setScale(2, BigDecimal.ROUND_DOWN);
-        return decimal;
+    public static String formatNum(BigDecimal num) {
+
+        if (num == null || num.compareTo(BigDecimal.ZERO) == 0) return "0";
+        NumberFormat nf = new DecimalFormat("#.##");
+        if (num.doubleValue() < 10000) {
+            return nf.format(num.doubleValue());
+        }
+        if (num.doubleValue() >= 100000000) {
+            return nf.format(num.divide(new BigDecimal(100000000), 2, RoundingMode.HALF_UP).doubleValue()) + "亿";
+        }
+        return nf.format(num.divide(new BigDecimal(10000), 2, RoundingMode.HALF_UP).doubleValue()) + "万";
+
     }
+
 }

@@ -26,7 +26,8 @@ public class CdRouteHelper {
     public static final String UPDATEPHONE = "/user/UPDATEPHONE";
     public static final String WEBVIEWACTIVITY = "/user/webView";
 
-    public static final String USERMAIN = "/app/main";
+    /*，ARouter允许一个module中存在多个分组，但是不允许多个module中存在相同的分组，会导致映射文件冲突*/
+    public static final String APP_MAIN = "/app/main";
 
     //获取数据标志
     public static final String DATASIGN = "dataSign";

@@ -2,7 +2,11 @@ package com.cdkj.huatuweitong.adapters;
 
 import android.support.annotation.Nullable;
 
+import com.cdkj.baselibrary.utils.ImgUtils;
+import com.cdkj.baselibrary.utils.MoneyUtils;
+import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.R;
+import com.cdkj.huatuweitong.bean.RecommendProductBean;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
@@ -14,19 +18,28 @@ import java.util.List;
  * Created by cdkj on 2018/4/9.
  */
 
-public class RecommendProductAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
+public class RecommendProductAdapter extends BaseQuickAdapter<RecommendProductBean, BaseViewHolder> {
 
     private Object obj;
 
-    public RecommendProductAdapter(@Nullable List<String> data, Object obj) {
+    public RecommendProductAdapter(@Nullable List<RecommendProductBean> data, Object obj) {
         super(R.layout.item_recommend_product, data);
         SoftReference<Object> mS = new SoftReference<>(obj);
         this.obj = mS.get();
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, String item) {
+    protected void convert(BaseViewHolder helper, RecommendProductBean item) {
         if (item == null) return;
 
+        ImgUtils.loadQiniuImg(obj, StringUtils.getAsPicListIndexOne(item.getAdvPic()), helper.getView(R.id.img_product));
+
+        helper.setText(R.id.tv_state, item.getSaleStatus());
+        helper.setText(R.id.tv_product_title, item.getName());
+        helper.setText(R.id.tv_product_price, MoneyUtils.formatNum(MoneyUtils.getPriceValue(item.getPrice())));
+//        helper.setText(R.id.tv_mouth_money, MoneyUtils.formatNum(MoneyUtils.getPriceValue(item.getM())));
+
     }
+
+
 }

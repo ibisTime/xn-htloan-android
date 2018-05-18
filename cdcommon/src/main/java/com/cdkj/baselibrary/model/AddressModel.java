@@ -4,7 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
 
-/**收货地址
+/**
+ * 收货地址
  * Created by cdkj on 2017/6/17.
  */
 
@@ -16,8 +17,8 @@ public class AddressModel implements Parcelable {
     private String mobile;
     private String province;
     private String city;
-    private String district;
-    private String detailAddress;
+    private String area;
+    private String detail;
     private String isDefault = "0";
 
     public String getCode() {
@@ -68,27 +69,28 @@ public class AddressModel implements Parcelable {
         this.city = city;
     }
 
-    public String getDistrict() {
-        return district;
+    public String getArea() {
+        return area;
     }
 
-    public void setDistrict(String district) {
-        this.district = district;
+    public void setArea(String area) {
+        this.area = area;
     }
 
-    public String getDetailAddress() {
-        return detailAddress;
+    public String getDetail() {
+        return detail;
     }
 
-    public void setDetailAddress(String detailAddress) {
-        this.detailAddress = detailAddress;
+    public void setDetail(String detail) {
+        this.detail = detail;
     }
 
     public String getIsDefault() {
         return isDefault;
     }
-   public Boolean isDefaultAddress() {
-        return TextUtils.equals("1",isDefault);
+
+    public Boolean isDefaultAddress() {
+        return TextUtils.equals("1", isDefault);
     }
 
     public void setIsDefault(String isDefault) {
@@ -111,8 +113,8 @@ public class AddressModel implements Parcelable {
         dest.writeString(this.mobile);
         dest.writeString(this.province);
         dest.writeString(this.city);
-        dest.writeString(this.district);
-        dest.writeString(this.detailAddress);
+        dest.writeString(this.area);
+        dest.writeString(this.detail);
         dest.writeString(this.isDefault);
     }
 
@@ -123,8 +125,8 @@ public class AddressModel implements Parcelable {
         this.mobile = in.readString();
         this.province = in.readString();
         this.city = in.readString();
-        this.district = in.readString();
-        this.detailAddress = in.readString();
+        this.area = in.readString();
+        this.detail = in.readString();
         this.isDefault = in.readString();
     }
 

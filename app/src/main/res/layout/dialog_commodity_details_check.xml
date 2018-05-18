@@ -1,180 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="#fff">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="138dp"
-            android:layout_marginTop="17dp"
-            android:singleLine="true"
-            android:text="小米手机"
-            android:textColor="@color/break_text"
-            android:textSize="17sp" />
-
-        <TextView
-            android:id="@+id/tv_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_name"
-            android:layout_marginLeft="138dp"
-            android:layout_marginTop="17dp"
-            android:singleLine="true"
-            android:text="22.8元"
-            android:textColor="#f00"
-            android:textSize="17sp" />
-
-        <TextView
-            android:id="@+id/tv_xianhuo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_name"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="17dp"
-            android:layout_toRightOf="@+id/tv_price"
-            android:singleLine="true"
-            android:text="现货"
-            android:textColor="@color/break_text"
-            android:textSize="17sp" />
-
-        <View
-            android:id="@+id/view1"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="108dp"
-            android:background="#000" />
-
-        <TextView
-            android:id="@+id/tv_baozhuang"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/view1"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:text="包装"
-            android:textColor="#999999" />
-
-
-        <com.cdkj.huatuweitong.view.AutoFlowLayout
-            android:id="@+id/afl_packing"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_baozhuang"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="14dp">
-
-        </com.cdkj.huatuweitong.view.AutoFlowLayout>
-
-        <View
-            android:id="@+id/view2"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/afl_packing"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="24dp"
-            android:background="#000" />
-
-        <TextView
-            android:id="@+id/tv_guige"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/view2"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:text="规格"
-            android:textColor="#999999" />
-
-        <com.cdkj.huatuweitong.view.AutoFlowLayout
-            android:id="@+id/afl_spec"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_guige"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="14dp">
-
-        </com.cdkj.huatuweitong.view.AutoFlowLayout>
-
-        <!--<android.support.v7.widget.RecyclerView-->
-        <!--android:id="@+id/rv_guige"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:layout_below="@+id/tv_guige"-->
-        <!--android:layout_marginTop="14dp">-->
-
-        <!--</android.support.v7.widget.RecyclerView>-->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_below="@+id/afl_spec"
-            android:layout_marginTop="48dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp"
+            android:background="#fff">
 
             <TextView
+                android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:text="月供:" />
+                android:layout_marginLeft="138dp"
+                android:layout_marginTop="17dp"
+                android:singleLine="true"
+                android:textColor="@color/break_text"
+                android:textSize="17sp"
+                tools:text="小米手机" />
 
             <TextView
+                android:id="@+id/tv_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_name"
+                android:layout_marginLeft="138dp"
+                android:layout_marginTop="17dp"
+                android:singleLine="true"
+                android:textColor="#f00"
+                android:textSize="17sp"
+                tools:text="22.8元" />
+
+            <TextView
+                android:id="@+id/tv_xianhuo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_name"
                 android:layout_marginLeft="10dp"
-                android:text="12.93起"
-                android:textColor="@color/blue" />
+                android:layout_marginTop="17dp"
+                android:layout_toRightOf="@+id/tv_price"
+                android:singleLine="true"
+                android:textColor="@color/break_text"
+                android:textSize="17sp"
+                tools:text="现货" />
 
             <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="108dp"
+                android:background="#000" />
+
 
             <TextView
-                android:id="@+id/btn_yes"
+                android:id="@+id/tv_guige"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@color/blue"
-                android:gravity="center"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:text="分期购买"
-                android:textColor="@color/white" />
-        </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:text="规格"
+                android:textColor="#999999" />
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/flexbox_spec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_guige"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="14dp"
+                app:flexWrap="wrap">
+
+            </com.google.android.flexbox.FlexboxLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/flexbox_spec"
+                android:layout_marginTop="48dp">
+
+                <include
+                    android:id="@+id/buttom_layout"
+                    layout="@layout/layout_product_buttom" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_img"
+            android:layout_width="113dp"
+            android:layout_height="113dp"
+            android:layout_marginLeft="15dp"
+            android:background="@color/white"
+            android:src="@mipmap/ic_launcher" />
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="50dp"
+            android:padding="5dp"
+            android:src="@mipmap/ic_clos" />
+
 
     </RelativeLayout>
-
-    <ImageView
-        android:id="@+id/iv_img"
-        android:layout_width="113dp"
-        android:layout_height="113dp"
-        android:layout_marginLeft="15dp"
-
-        android:background="@color/colorPrimary"
-        android:src="@mipmap/ic_launcher" />
-
-    <ImageView
-        android:id="@+id/iv_close"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="50dp"
-        android:padding="5dp"
-        android:src="@mipmap/ic_clos" />
-
-
-</RelativeLayout>
+</layout>

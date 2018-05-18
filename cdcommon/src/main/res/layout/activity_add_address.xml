@@ -190,6 +190,8 @@
                 android:background="@color/lineColor" />
 
             <Button
+                android:background="@drawable/selector_blue"
+                android:textColor="@color/white"
                 android:id="@+id/txt_confirm"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
