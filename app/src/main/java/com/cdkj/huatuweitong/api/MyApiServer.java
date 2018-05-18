@@ -8,6 +8,7 @@ import com.cdkj.huatuweitong.bean.CarLoanCalculatorActivityDetailsBean;
 import com.cdkj.huatuweitong.bean.CarLoanCalculatorSendBean;
 import com.cdkj.huatuweitong.bean.ExhibitionCenterBean;
 import com.cdkj.huatuweitong.bean.FirstPageCarRecommendBean;
+import com.cdkj.huatuweitong.bean.IsSetPayPassWord;
 import com.cdkj.huatuweitong.bean.LoginBean;
 import com.cdkj.huatuweitong.bean.MyCarLoanFragmentBean;
 import com.cdkj.huatuweitong.bean.RecommendProductBean;
@@ -36,6 +37,17 @@ public interface MyApiServer {
     @FormUrlEncoded
     @POST("api")
     Call<BaseResponseModel<LoginBean>> logIn(@Field("code") String code, @Field("json") String json);
+
+    /**
+     * 是否设置过支付密码
+     *
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<IsSetPayPassWord>> isSetPayPassWord(@Field("code") String code, @Field("json") String json);
 
 
     /**

@@ -146,10 +146,6 @@ public class RegisterActivity extends AbsBaseLoadActivity implements SendCodeInt
 //                    SPUtilHelpr.saveUserToken(data.getToken());
                     SPUtilHelpr.saveUserPhoneNum(mBinding.edtPhone.getText().toString());
                     finish();
-
-                    startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
-
-
             }
 
             @Override

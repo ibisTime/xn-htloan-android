@@ -104,7 +104,9 @@ public class LoginActivity extends AbsBaseLoadActivity implements LoginInterface
         SPUtilHelpr.saveUserToken(user.getToken());
         SPUtilHelpr.saveUserPhoneNum(mBinding.editUsername.getText().toString());
         SPUtilHelpr.saveCheckServer(true);
-        CdRouteHelper.openMain();
+        if(canOpenMain){
+            CdRouteHelper.openMain();
+        }
         finish();
 
     }

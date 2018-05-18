@@ -76,5 +76,6 @@
     <string name="forget_psw">忘记密码？</string>
     <string name="check_sercer">请勾选我同意条款</string>
     <string name="login">登录</string>
+    <string name="please_succ_bank_card">请输入正确的银行卡号</string>
 
 </resources>

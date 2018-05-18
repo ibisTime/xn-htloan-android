@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,10 +44,6 @@
                             android:layout_marginLeft="15dp"
                             android:layout_marginTop="17dp">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="收货人:" />
 
                             <TextView
                                 android:id="@+id/tv_receive_name"
@@ -54,14 +51,16 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"
                                 android:maxLength="5"
-                                android:text="郑海清啊啊啊哦哦哦啊啊啊哦哦哦啊啊啊" />
+                                android:textColor="@color/text_black_cd"
+                                tools:text="郑海清啊啊啊哦哦哦啊啊啊哦哦哦啊啊啊" />
 
                             <TextView
                                 android:id="@+id/tv_receive_number"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="15dp"
-                                android:text="15689745123" />
+                                android:textColor="@color/text_black_cd"
+                                tools:text="15689745123" />
 
                         </LinearLayout>
 
@@ -80,10 +79,10 @@
                                 android:id="@+id/tv_receive_address"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
                                 android:layout_weight="1"
                                 android:maxLines="2"
-                                android:text="收货地址:浙江省 杭州市 余杭区 仓前街道未来小区1栋140房间" />
+                                android:textColor="@color/text_black_cd"
+                                tools:text="收货地址:浙江省 杭州市 余杭区 仓前街道未来小区1栋140房间" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -104,6 +103,77 @@
                     android:layout_marginTop="15dp"
                     android:background="@color/gray_line" />
 
+
+                <LinearLayout
+                    android:id="@+id/linLayout_bankcard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:text="还款银行卡:"
+                        android:textColor="@color/text_black_cd" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_bank_user"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="10dp"
+                            android:text="请选择银行卡"
+                            android:textColor="@color/text_black_cd" />
+
+
+                        <TextView
+                            android:id="@+id/tv_bank_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="10dp"
+                            android:textColor="@color/text_black_cd"
+                            android:visibility="gone"
+                            tools:text="开户行：贵阳银行" />
+
+                        <TextView
+                            android:id="@+id/tv_bank_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="10dp"
+                            android:textColor="@color/text_black_cd"
+                            android:visibility="gone"
+                            tools:text="卡号：32323235556565" />
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="15dp"
+                        android:background="@mipmap/ic_more" />
+
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/gray_line" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -111,6 +181,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
+                        android:id="@+id/img_product"
                         android:layout_width="90dp"
                         android:layout_height="90dp"
                         android:layout_marginBottom="10dp"
@@ -131,40 +202,22 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:maxLines="2"
-                            android:text="普罗米修斯牌香皂. Audi Sport品牌以高端的运动项目诠释了奥迪的运动精神，传承了其百年基因的精髓，真正的以多元化服务，满足用户需求。欢迎进入Audi Sport活动网站。" />
+                            android:textColor="@color/text_black_cd"
+                            tools:text="普罗米修斯牌香皂. Audi Sport品牌以高端的运动项目诠释了奥迪的运动精神，传承了其百年基因的精髓，真正的以多元化服务，满足用户需求。欢迎进入Audi Sport活动网站。" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="7dp"
-
                             android:orientation="horizontal">
 
                             <TextView
+                                android:id="@+id/tv_spec"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="颜色分类: "
-                                android:textColor="@color/gray_text" />
+                                android:textColor="@color/gray_text"
+                                tools:text="颜色分类: " />
 
-                            <TextView
-                                android:id="@+id/tv_color"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="红色,"
-                                android:textColor="@color/gray_text" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text=" 尺寸: "
-                                android:textColor="@color/gray_text" />
-
-                            <TextView
-                                android:id="@+id/tv_size"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="s"
-                                android:textColor="@color/gray_text" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -177,9 +230,9 @@
                                 android:id="@+id/tv_totle_price"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="19.90"
                                 android:textColor="@color/orange"
-                                android:textSize="18sp" />
+                                android:textSize="18sp"
+                                tools:text="19.90" />
 
                             <View
                                 android:layout_width="0dp"
@@ -227,16 +280,17 @@
                         android:id="@+id/tv_one_pay_bili"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0首付"
                         android:textColor="@color/break_text"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        tools:text="0首付" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="15dp"
-                        android:src="@mipmap/ic_more" />
+                        android:src="@mipmap/ic_more"
+                        android:visibility="invisible" />
                 </LinearLayout>
 
                 <View
@@ -267,16 +321,17 @@
                         android:id="@+id/tv_monthly_number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="12月"
                         android:textColor="@color/break_text"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        tools:text="12月" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="15dp"
-                        android:src="@mipmap/ic_more" />
+                        android:src="@mipmap/ic_more"
+                        android:visibility="invisible" />
                 </LinearLayout>
 
                 <View
@@ -306,16 +361,17 @@
                         android:id="@+id/tv_monthly_pay"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="34¥"
                         android:textColor="@color/break_text"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        tools:text="34¥" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="15dp"
-                        android:src="@mipmap/ic_more" />
+                        android:src="@mipmap/ic_more"
+                        android:visibility="invisible" />
                 </LinearLayout>
 
                 <View
@@ -345,16 +401,17 @@
                         android:id="@+id/tv_one_pay_money"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="128.5¥"
                         android:textColor="@color/break_text"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        tools:text="128.5¥" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="15dp"
-                        android:src="@mipmap/ic_more" />
+                        android:src="@mipmap/ic_more"
+                        android:visibility="invisible" />
                 </LinearLayout>
 
                 <View
@@ -372,7 +429,8 @@
                     android:singleLine="true"
                     android:text="可抵消2.00元,消耗200积分"
                     android:textColor="@color/break_text"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:visibility="invisible" />
 
                 <View
                     android:layout_width="1dp"
@@ -404,8 +462,8 @@
                 android:id="@+id/tv_need_pay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="¥12.93"
-                android:textColor="@color/blue" />
+                android:textColor="@color/blue"
+                tools:text="¥12.93" />
 
             <View
                 android:layout_width="0dp"

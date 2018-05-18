@@ -1,5 +1,8 @@
 package com.cdkj.huatuweitong.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -195,7 +198,7 @@ public class RecommendProductBean {
         this.productSpecsList = productSpecsList;
     }
 
-    public static class ProductSpecsListBean {
+    public static class ProductSpecsListBean implements Parcelable {
         /**
          * code : PS201805062109137596153
          * name : 1000
@@ -338,5 +341,60 @@ public class RecommendProductBean {
         public void setOrderNo(int orderNo) {
             this.orderNo = orderNo;
         }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeString(this.code);
+            dest.writeString(this.name);
+            dest.writeString(this.pic);
+            dest.writeString(this.productCode);
+            dest.writeInt(this.originalPrice);
+            dest.writeInt(this.price);
+            dest.writeDouble(this.sfRate);
+            dest.writeInt(this.periods);
+            dest.writeDouble(this.bankRate);
+            dest.writeInt(this.quantity);
+            dest.writeString(this.province);
+            dest.writeString(this.weight);
+            dest.writeInt(this.orderNo);
+            dest.writeSerializable(this.monthAmount);
+        }
+
+        public ProductSpecsListBean() {
+        }
+
+        protected ProductSpecsListBean(Parcel in) {
+            this.code = in.readString();
+            this.name = in.readString();
+            this.pic = in.readString();
+            this.productCode = in.readString();
+            this.originalPrice = in.readInt();
+            this.price = in.readInt();
+            this.sfRate = in.readDouble();
+            this.periods = in.readInt();
+            this.bankRate = in.readDouble();
+            this.quantity = in.readInt();
+            this.province = in.readString();
+            this.weight = in.readString();
+            this.orderNo = in.readInt();
+            this.monthAmount = (BigDecimal) in.readSerializable();
+        }
+
+        public static final Parcelable.Creator<ProductSpecsListBean> CREATOR = new Parcelable.Creator<ProductSpecsListBean>() {
+            @Override
+            public ProductSpecsListBean createFromParcel(Parcel source) {
+                return new ProductSpecsListBean(source);
+            }
+
+            @Override
+            public ProductSpecsListBean[] newArray(int size) {
+                return new ProductSpecsListBean[size];
+            }
+        };
     }
 }

@@ -11,41 +11,35 @@ public class BankCardModel implements Parcelable {
 
 
     /**
-     * code : CT2016122415174773687
-     * bankcardNumber : 121321312312312
-     * bankName : 农业银行
-     * subbranch : 余杭
-     * bindMobile : 12312312312
-     * userId : U2016121720251308788
-     * realName : 天雷
-     * type : B
-     * status : 1
-     * currency : CNY
-     * createDatetime : Dec 24, 2016 3:17:47 PM
-     * systemCode : CD-CZH000001
+     * code : BC201805181628070743963
+     * userId : U201805151557468878485
+     * realName : 2323
+     * bankCode : CMB
+     * bankName : 招商银行
+     * subbranch : 232323
+     * bankcardNumber : 23232323232323
+     * bindMobile : 232323
+     * createDatetime : May 18, 2018 4:28:07 PM
+     * status : 0
+     * updater : U201805151557468878485
+     * updateDatetime : May 18, 2018 4:28:07 PM
      */
 
     private String code;
-    private String bankcardNumber;
-    private String bankName;
-    private String bankCode;
-    private String subbranch;
-    private String bindMobile;
     private String userId;
     private String realName;
-    private String type;
-    private String status;
-    private String currency;
+    private String bankCode;
+    private String bankName;
+    private String subbranch;
+    private String bankcardNumber;
+    private String bindMobile;
     private String createDatetime;
-    private String systemCode;
+    private String status;
+    private String updater;
+    private String updateDatetime;
 
-    public String getBankCode() {
-        return bankCode;
-    }
 
-    public void setBankCode(String bankCode) {
-        this.bankCode = bankCode;
-    }
+
 
     public String getCode() {
         return code;
@@ -53,38 +47,6 @@ public class BankCardModel implements Parcelable {
 
     public void setCode(String code) {
         this.code = code;
-    }
-
-    public String getBankcardNumber() {
-        return bankcardNumber;
-    }
-
-    public void setBankcardNumber(String bankcardNumber) {
-        this.bankcardNumber = bankcardNumber;
-    }
-
-    public String getBankName() {
-        return bankName;
-    }
-
-    public void setBankName(String bankName) {
-        this.bankName = bankName;
-    }
-
-    public String getSubbranch() {
-        return subbranch;
-    }
-
-    public void setSubbranch(String subbranch) {
-        this.subbranch = subbranch;
-    }
-
-    public String getBindMobile() {
-        return bindMobile;
-    }
-
-    public void setBindMobile(String bindMobile) {
-        this.bindMobile = bindMobile;
     }
 
     public String getUserId() {
@@ -103,28 +65,44 @@ public class BankCardModel implements Parcelable {
         this.realName = realName;
     }
 
-    public String getType() {
-        return type;
+    public String getBankCode() {
+        return bankCode;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setBankCode(String bankCode) {
+        this.bankCode = bankCode;
     }
 
-    public String getStatus() {
-        return status;
+    public String getBankName() {
+        return bankName;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
     }
 
-    public String getCurrency() {
-        return currency;
+    public String getSubbranch() {
+        return subbranch;
     }
 
-    public void setCurrency(String currency) {
-        this.currency = currency;
+    public void setSubbranch(String subbranch) {
+        this.subbranch = subbranch;
+    }
+
+    public String getBankcardNumber() {
+        return bankcardNumber;
+    }
+
+    public void setBankcardNumber(String bankcardNumber) {
+        this.bankcardNumber = bankcardNumber;
+    }
+
+    public String getBindMobile() {
+        return bindMobile;
+    }
+
+    public void setBindMobile(String bindMobile) {
+        this.bindMobile = bindMobile;
     }
 
     public String getCreateDatetime() {
@@ -135,12 +113,28 @@ public class BankCardModel implements Parcelable {
         this.createDatetime = createDatetime;
     }
 
-    public String getSystemCode() {
-        return systemCode;
+    public String getStatus() {
+        return status;
     }
 
-    public void setSystemCode(String systemCode) {
-        this.systemCode = systemCode;
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getUpdater() {
+        return updater;
+    }
+
+    public void setUpdater(String updater) {
+        this.updater = updater;
+    }
+
+    public String getUpdateDatetime() {
+        return updateDatetime;
+    }
+
+    public void setUpdateDatetime(String updateDatetime) {
+        this.updateDatetime = updateDatetime;
     }
 
     @Override
@@ -151,18 +145,17 @@ public class BankCardModel implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.code);
-        dest.writeString(this.bankcardNumber);
-        dest.writeString(this.bankName);
-        dest.writeString(this.bankCode);
-        dest.writeString(this.subbranch);
-        dest.writeString(this.bindMobile);
         dest.writeString(this.userId);
         dest.writeString(this.realName);
-        dest.writeString(this.type);
-        dest.writeString(this.status);
-        dest.writeString(this.currency);
+        dest.writeString(this.bankCode);
+        dest.writeString(this.bankName);
+        dest.writeString(this.subbranch);
+        dest.writeString(this.bankcardNumber);
+        dest.writeString(this.bindMobile);
         dest.writeString(this.createDatetime);
-        dest.writeString(this.systemCode);
+        dest.writeString(this.status);
+        dest.writeString(this.updater);
+        dest.writeString(this.updateDatetime);
     }
 
     public BankCardModel() {
@@ -170,18 +163,17 @@ public class BankCardModel implements Parcelable {
 
     protected BankCardModel(Parcel in) {
         this.code = in.readString();
-        this.bankcardNumber = in.readString();
-        this.bankName = in.readString();
-        this.bankCode = in.readString();
-        this.subbranch = in.readString();
-        this.bindMobile = in.readString();
         this.userId = in.readString();
         this.realName = in.readString();
-        this.type = in.readString();
-        this.status = in.readString();
-        this.currency = in.readString();
+        this.bankCode = in.readString();
+        this.bankName = in.readString();
+        this.subbranch = in.readString();
+        this.bankcardNumber = in.readString();
+        this.bindMobile = in.readString();
         this.createDatetime = in.readString();
-        this.systemCode = in.readString();
+        this.status = in.readString();
+        this.updater = in.readString();
+        this.updateDatetime = in.readString();
     }
 
     public static final Creator<BankCardModel> CREATOR = new Creator<BankCardModel>() {

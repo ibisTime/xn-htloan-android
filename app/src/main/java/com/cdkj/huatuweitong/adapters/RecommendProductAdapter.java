@@ -36,7 +36,7 @@ public class RecommendProductAdapter extends BaseQuickAdapter<RecommendProductBe
 
         helper.setText(R.id.tv_state, item.getSaleStatus());
         helper.setText(R.id.tv_product_title, item.getName());
-        helper.setText(R.id.tv_product_price, MoneyUtils.formatNum(MoneyUtils.getPriceValue(item.getOriginalPrice())));
+        helper.setText(R.id.tv_product_price, MoneyUtils.formatNum(MoneyUtils.getPriceValue(item.getPrice())));
 
     }
 

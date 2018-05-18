@@ -1,4 +1,4 @@
-package com.cdkj.baselibrary.activitys;
+package com.cdkj.baselibrary.activitys.bankcard;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -9,19 +9,14 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cdkj.baselibrary.R;
-import com.cdkj.baselibrary.activitys.bankcard.AddBankCardActivity;
-import com.cdkj.baselibrary.appmanager.CdRouteHelper;
+import com.cdkj.baselibrary.activitys.UpdateBankCardActivity;
 import com.cdkj.baselibrary.appmanager.MyCdConfig;
 import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.databinding.ActivityBindBankCardBinding;
-import com.cdkj.baselibrary.dialog.CommonDialog;
 import com.cdkj.baselibrary.dialog.UITipDialog;
-import com.cdkj.baselibrary.model.BankCardModel;
 import com.cdkj.baselibrary.model.BankModel;
-import com.cdkj.baselibrary.model.IsSuccessModes;
 import com.cdkj.baselibrary.nets.BaseResponseListCallBack;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
@@ -34,14 +29,12 @@ import java.util.Map;
 
 import retrofit2.Call;
 
-import static com.cdkj.baselibrary.appmanager.CdRouteHelper.DATASIGN;
-
 /**
- * 删除、修改银行卡
- * Created by cdkj on 2017/6/29.
+ * 添加 、删除、修改银行卡
+ * Created by 李先俊 on 2017/6/29.
  */
-@Route(path = CdRouteHelper.UPDATEBANKCARD)
-public class UpdateBankCardActivity extends AbsBaseLoadActivity {
+
+public class AddBankCardActivity extends AbsBaseLoadActivity {
 
     private ActivityBindBankCardBinding mBinding;
 
@@ -50,17 +43,15 @@ public class UpdateBankCardActivity extends AbsBaseLoadActivity {
 
     private String mSelectCardId;//选择的银行卡ID
 
-    private BankCardModel mBankModel;
 
     /**
      * @param context
      */
-    public static void open(Context context, BankCardModel data) {
+    public static void open(Context context) {
         if (context == null) {
             return;
         }
-        Intent intent = new Intent(context, UpdateBankCardActivity.class);
-        intent.putExtra(DATASIGN, data);
+        Intent intent = new Intent(context, AddBankCardActivity.class);
         context.startActivity(intent);
     }
 
@@ -72,27 +63,10 @@ public class UpdateBankCardActivity extends AbsBaseLoadActivity {
     }
 
     @Override
-    public void topTitleViewRightClick() {
-        showDoubleWarnListen(getString(R.string.sure_delete_bank_card), new CommonDialog.OnPositiveListener() {
-            @Override
-            public void onPositive(View view) {
-                deleteBank();
-            }
-        });
-    }
-
-    @Override
     public void afterCreate(Bundle savedInstanceState) {
 
-        if (getIntent() != null) {
-            mBankModel = getIntent().getParcelableExtra(DATASIGN);
-        }
 
-        mBaseBinding.titleView.setMidTitle(getString(R.string.change_bank_card));
-        mBaseBinding.titleView.setRightTitle(getString(R.string.delete));
-
-        setShowData();
-
+        mBaseBinding.titleView.setMidTitle("绑定银行卡");
 
         //添加银行类型
         mBinding.txtBankName.setOnClickListener(new View.OnClickListener() {
@@ -102,116 +76,91 @@ public class UpdateBankCardActivity extends AbsBaseLoadActivity {
             }
         });
 
+
+        //TODO 根据需求决定是否使用
+//        if (!TextUtils.isEmpty(SPUtilHelpr.getUserName())) {
+//            mBinding.editName.setText(SPUtilHelpr.getUserName());
+//            mBinding.editName.setEnabled(false);
+//        } else {
+//            mBinding.editName.setEnabled(true);
+//        }
+
+
         //添加银行卡
         mBinding.txtConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if (TextUtils.isEmpty(mBinding.editName.getText().toString())) {
-                    UITipDialog.showFall(UpdateBankCardActivity.this, getString(R.string.please_input_name));
+                    UITipDialog.showFall(AddBankCardActivity.this, "请输入姓名");
                     return;
                 }
                 if (TextUtils.isEmpty(mBinding.editPhone.getText().toString())) {
-                    UITipDialog.showFall(UpdateBankCardActivity.this, getString(R.string.please_input_phone));
+                    UITipDialog.showFall(AddBankCardActivity.this, "请输入手机号码");
                     return;
                 }
                 if (TextUtils.isEmpty(mSelectCardId)) {
-                    UITipDialog.showFall(UpdateBankCardActivity.this, getString(R.string.please_select_bank));
+                    UITipDialog.showFall(AddBankCardActivity.this, "请选择银行");
                     return;
                 }
 
                 if (TextUtils.isEmpty(mBinding.editBankNameChild.getText().toString())) {
-                    UITipDialog.showFall(UpdateBankCardActivity.this, getString(R.string.please_input_bank_name));
+                    UITipDialog.showFall(AddBankCardActivity.this, "请输入开户支行");
                     return;
                 }
 
                 if (TextUtils.isEmpty(mBinding.edtCardId.getText().toString())) {
-                    UITipDialog.showFall(UpdateBankCardActivity.this, getString(R.string.please_input_bank_num));
+                    UITipDialog.showFall(AddBankCardActivity.this, "请输入卡号");
                     return;
                 }
 
                 if (mBinding.edtCardId.getText().toString().length() < 13) {
-                    UITipDialog.showFall(UpdateBankCardActivity.this, getString(R.string.please_succ_bank_card));
+                    UITipDialog.showFall(AddBankCardActivity.this, getString(R.string.please_succ_bank_card));
                     return;
                 }
-                updateBank();
+
+                bindCard();
             }
         });
 
     }
 
 
-    private void deleteBank() {
-        if (mBankModel == null) return;
+    //绑定银行卡
+    public void bindCard() {
+
         Map<String, String> object = new HashMap<>();
-        object.put("code", mBankModel.getCode());
-        object.put("token", SPUtilHelpr.getUserToken());
-        object.put("systemCode", MyCdConfig.SYSTEMCODE);
-        Call call = RetrofitUtils.getBaseAPiService().successRequest("802011", StringUtils.getJsonToString(object));
 
-
-        addCall(call);
-
-        showLoadingDialog();
-
-        call.enqueue(new BaseResponseModelCallBack<IsSuccessModes>(this) {
-
-            @Override
-            protected void onSuccess(IsSuccessModes data, String SucMessage) {
-                if (data.isSuccess()) {
-                    SPUtilHelpr.saveUserIsBindCard(false);
-                    showToast(getString(R.string.delete_succ));
-                    finish();
-                }
-            }
-
-            @Override
-            protected void onReqFailure(String errorCode, String errorMessage) {
-                UITipDialog.showFall(UpdateBankCardActivity.this, errorMessage);
-            }
-
-            @Override
-            protected void onFinish() {
-                disMissLoading();
-            }
-        });
-    }
-
-    //更新
-    private void updateBank() {
-        if (mBankModel == null) return;
-        Map<String, String> object = new HashMap<>();
         object.put("realName", mBinding.editName.getText().toString().trim());
         object.put("bankcardNumber", mBinding.edtCardId.getText().toString().trim());
         object.put("bankName", mBinding.txtBankName.getText().toString().trim());
         object.put("subbranch", mBinding.editBankNameChild.getText().toString().trim());
         object.put("bankCode", mSelectCardId);
-        object.put("code", mBankModel.getCode());
-        object.put("status", "1");
-        object.put("updater",  SPUtilHelpr.getUserId());
+        object.put("currency", "CNY");
+        object.put("type", "C");
         object.put("token", SPUtilHelpr.getUserToken());
         object.put("userId", SPUtilHelpr.getUserId());
+        object.put("updater", SPUtilHelpr.getUserId());
         object.put("systemCode", MyCdConfig.SYSTEMCODE);
+        object.put("bindMobile", mBinding.editPhone.getText().toString().trim());
 
-        Call call = RetrofitUtils.getBaseAPiService().successRequest("802012", StringUtils.getJsonToString(object));
+        Call call = RetrofitUtils.getBaseAPiService().bindBankCard("802010", StringUtils.getJsonToString(object));
 
         addCall(call);
 
         showLoadingDialog();
 
-        call.enqueue(new BaseResponseModelCallBack<IsSuccessModes>(this) {
-
+        call.enqueue(new BaseResponseModelCallBack(this) {
             @Override
-            protected void onSuccess(IsSuccessModes data, String SucMessage) {
-                if (data.isSuccess()) {
-                    showToast(getString(R.string.change_succ));
-                    SPUtilHelpr.saveUserIsBindCard(true);
-                    finish();
-                }
+            protected void onSuccess(Object data, String SucMessage) {
+                showToast("银行卡添加成功");
+                SPUtilHelpr.saveUserIsBindCard(true);
+                finish();
             }
 
             @Override
             protected void onReqFailure(String errorCode, String errorMessage) {
-                UITipDialog.showFall(UpdateBankCardActivity.this, errorMessage);
+                UITipDialog.showFall(AddBankCardActivity.this, errorMessage);
             }
 
             @Override
@@ -220,32 +169,6 @@ public class UpdateBankCardActivity extends AbsBaseLoadActivity {
             }
         });
 
-
-    }
-
-    /**
-     * 设置显示数据
-     */
-    private void setShowData() {
-
-        if (mBankModel == null) {
-            LogUtil.E("没有数据");
-            return;
-        }
-
-        mBinding.txtBankName.setText(mBankModel.getBankName());
-        mBinding.editName.setText(mBankModel.getRealName());
-        mBinding.edtCardId.setText(mBankModel.getBankcardNumber());
-        mBinding.editPhone.setText(mBankModel.getBindMobile());
-        mSelectCardId = mBankModel.getBankCode();
-
-        mBinding.editBankNameChild.setText(mBankModel.getSubbranch());
-
-        if (!TextUtils.isEmpty(mBankModel.getRealName())) {
-            mBinding.editName.setEnabled(false);
-        } else {
-            mBinding.editName.setEnabled(true);
-        }
 
     }
 
@@ -284,7 +207,7 @@ public class UpdateBankCardActivity extends AbsBaseLoadActivity {
 
             @Override
             protected void onReqFailure(String errorCode, String errorMessage) {
-                UITipDialog.showFall(UpdateBankCardActivity.this, errorMessage);
+                UITipDialog.showFall(AddBankCardActivity.this, errorMessage);
             }
 
             @Override
@@ -309,6 +232,5 @@ public class UpdateBankCardActivity extends AbsBaseLoadActivity {
                     }
                 }).setNegativeButton("取消", null).show();
     }
-
 
 }

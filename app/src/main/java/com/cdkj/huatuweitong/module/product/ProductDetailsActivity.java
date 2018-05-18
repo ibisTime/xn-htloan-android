@@ -11,7 +11,9 @@ import android.widget.TextView;
 
 import com.cdkj.baselibrary.api.BaseResponseModel;
 import com.cdkj.baselibrary.appmanager.CdRouteHelper;
+import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
+import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
 import com.cdkj.baselibrary.utils.ImgUtils;
@@ -20,6 +22,7 @@ import com.cdkj.baselibrary.utils.MoneyUtils;
 import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.api.MyApiServer;
+import com.cdkj.huatuweitong.bean.OrderSubmitIntentBean;
 import com.cdkj.huatuweitong.bean.RecommendProductBean;
 import com.cdkj.huatuweitong.common.GlideImageLoader;
 import com.cdkj.huatuweitong.databinding.ActivityProductDetailsBinding;
@@ -47,7 +50,9 @@ public class ProductDetailsActivity extends AbsBaseLoadActivity {
     private FullBottomDialog productDialog;
     private DialogCommodityDetailsCheckBinding dialogBinding;
 
-    private RecommendProductBean recommendProductBean;
+    private RecommendProductBean recommendProductBean; //产品数据
+
+    private RecommendProductBean.ProductSpecsListBean specsListBean;//用户选择的规格
 
     private List<TextView> specViewList = new ArrayList<>();
 
@@ -81,9 +86,7 @@ public class ProductDetailsActivity extends AbsBaseLoadActivity {
         mBaseBinding.titleView.setMidTitle(getString(R.string.product_details));
         initBanner();
         getProductDetails();
-
         initListener();
-
     }
 
     private void initListener() {
@@ -93,8 +96,26 @@ public class ProductDetailsActivity extends AbsBaseLoadActivity {
                 dialogBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.dialog_commodity_details_check, null, false);
                 dialogBinding.ivClose.setOnClickListener(v1 -> productDialog.dismiss());
                 dialogBinding.buttomLayout.btnYes.setOnClickListener(v1 -> {
-                    OrderSubmitActivity.open(ProductDetailsActivity.this);
+
+                    if (specsListBean == null) {
+                        UITipDialog.showInfo(ProductDetailsActivity.this, getString(R.string.please_select_product_spec));
+                        return;
+                    }
+
+                    if (specsListBean.getQuantity() <= 0) {
+                        UITipDialog.showInfo(ProductDetailsActivity.this, getString(R.string.no_product));
+                        return;
+                    }
+
+                    if (!SPUtilHelpr.isLogin(ProductDetailsActivity.this, false)) {
+                        return;
+                    }
+
                     productDialog.dismiss();
+
+                    OrderSubmitIntentBean orderSubmitIntentBean = new OrderSubmitIntentBean(recommendProductBean.getName(), recommendProductBean.getPrice(), recommendProductBean.getAdvPic(), specsListBean);
+
+                    OrderSubmitActivity.open(ProductDetailsActivity.this, orderSubmitIntentBean);
 
                 });
                 setDialogData(recommendProductBean);
@@ -164,7 +185,7 @@ public class ProductDetailsActivity extends AbsBaseLoadActivity {
         if (data == null) return;
         setBannerData(StringUtils.splitAsPicList(data.getPic()));
         mBinding.tvProductName.setText(data.getName());
-        mBinding.tvProductPrice.setText(MoneyUtils.getShowPriceSign(data.getOriginalPrice()));
+        mBinding.tvProductPrice.setText(MoneyUtils.getShowPriceSign(data.getPrice()));
 
         mBinding.web.loadData(data.getDescription(), "text/html;charset=UTF-8", "UTF-8");
 
@@ -185,7 +206,7 @@ public class ProductDetailsActivity extends AbsBaseLoadActivity {
 
         ImgUtils.loadQiniuImg(this, StringUtils.getAsPicListIndexOne(data.getAdvPic()), dialogBinding.ivImg);
         dialogBinding.tvName.setText(data.getName());
-        dialogBinding.tvPrice.setText(MoneyUtils.getShowPriceSign(data.getOriginalPrice()));
+        dialogBinding.tvPrice.setText(MoneyUtils.getShowPriceSign(data.getPrice()));
 
         if (data.getProductSpecsList() != null && data.getProductSpecsList().size() > 0) {
             RecommendProductBean.ProductSpecsListBean productSpecsListBean = data.getProductSpecsList().get(0);
@@ -211,13 +232,11 @@ public class ProductDetailsActivity extends AbsBaseLoadActivity {
                 dialogBinding.flexboxSpec.addView(tv2);
             }
         }
-
-
     }
 
 
     /**
-     * 包装点击
+     * 规格点击
      *
      * @param position
      */
@@ -229,15 +248,15 @@ public class ProductDetailsActivity extends AbsBaseLoadActivity {
         for (TextView textView : specViewList) {
             if (position == i) {
                 textView.setBackgroundResource(R.drawable.product_spce_bg_blue);
-                int quantity = recommendProductBean.getProductSpecsList().get(i).getQuantity();
+                textView.setTextColor(ContextCompat.getColor(ProductDetailsActivity.this,R.color.white));
+                specsListBean = recommendProductBean.getProductSpecsList().get(i);
+                int quantity = specsListBean.getQuantity();
                 if (quantity <= 0) {
                     dialogBinding.tvXianhuo.setText("缺货");
                 } else {
                     dialogBinding.tvXianhuo.setText("现货");
                 }
-
-                RecommendProductBean.ProductSpecsListBean productSpecsListBean = recommendProductBean.getProductSpecsList().get(0);
-                dialogBinding.buttomLayout.tvMouthMoney.setText(MoneyUtils.showPrice(productSpecsListBean.getMonthAmount()) + "X" + productSpecsListBean.getPeriods() + "期");
+                dialogBinding.buttomLayout.tvMouthMoney.setText(MoneyUtils.showPrice(specsListBean.getMonthAmount()) + "X" + specsListBean.getPeriods() + "期");
             } else {
                 textView.setTextColor(ContextCompat.getColor(ProductDetailsActivity.this, R.color.text_black_cd));
                 textView.setBackgroundResource(R.drawable.product_spce_bg_waite);

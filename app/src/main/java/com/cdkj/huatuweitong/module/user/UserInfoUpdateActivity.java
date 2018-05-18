@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.cdkj.baselibrary.activitys.BankCardListActivity;
 import com.cdkj.baselibrary.activitys.FindPwdActivity;
 import com.cdkj.baselibrary.activitys.ImageSelectActivity;
 import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
@@ -81,6 +82,11 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
         mBinding.rowReceiveAddress.setOnClickListener(v -> {
             //地址
         });
+
+        mBinding.rowReceiveBankCaard.setOnClickListener(v -> {
+            BankCardListActivity.open(this, false);
+        });
+
         mBinding.rowSignout.setOnClickListener(v -> {
             //退出
 

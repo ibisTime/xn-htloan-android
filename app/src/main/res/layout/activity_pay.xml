@@ -32,7 +32,7 @@
                 android:id="@+id/tv_pay_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="¥39.90"
+                tools:text="¥39.90"
                 android:textColor="@color/shell_red"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -71,6 +71,7 @@
                 android:text="@string/yue_pay" />
 
             <TextView
+                android:visibility="invisible"
                 android:id="@+id/tv_yue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -158,6 +159,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/btn_to_pay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
