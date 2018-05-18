@@ -165,7 +165,8 @@ public class OrderSubmitActivity extends AbsBaseLoadActivity {
 
             @Override
             protected void onSuccess(String data, String SucMessage) {
-                PayActivity.open(OrderSubmitActivity.this, data,mBinding.tvNeedPay.getText().toString());
+                PayActivity.open(OrderSubmitActivity.this, data, mBinding.tvNeedPay.getText().toString());
+                finish();
             }
 
             @Override
