@@ -38,7 +38,6 @@ public class OrderListActivity extends AbsRefreshListActivity {
         context.startActivity(intent);
     }
 
-
     @Override
     public RecyclerView.Adapter getListAdapter(List listData) {
         return new OrderListAdapter(listData, this);
