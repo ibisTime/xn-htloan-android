@@ -123,7 +123,7 @@ public class ImgUtils {
     }
     public static void loadQiniuLogo(Object obj, String imgid, ImageView img) {
         loadLogo(obj, MyCdConfig.QINIUURL + imgid, img);
-        //注意这里没有写完,七牛地址还没有 MyCdConfig.QINIUURL ppppppp
+
     }
 
     public static void loadBankBg(Context context, int imgid, ImageView img) {

@@ -70,6 +70,11 @@ public class MoneyUtils {
         return "0.00";
     }
 
+    public static String showPriceDouble(double dou) {
+
+        return  showPrice(new BigDecimal(dou));
+    }
+
     /**
      * 显示金钱乘规格
      *
@@ -101,5 +106,14 @@ public class MoneyUtils {
     public static int getPriceIntValue(BigDecimal bigDecimal) {
         return bigDecimal.intValue() / 1000;
     }
-
+    /**
+     * bigDecimal  做乘法结果保留两位小数返回
+     * @param bigDecimal
+     * @return
+     */
+    public static BigDecimal bigDecimalRide(BigDecimal bigDecimal,double dou) {
+        BigDecimal multiply = bigDecimal.multiply(new BigDecimal(dou));
+        BigDecimal decimal = multiply.setScale(2, BigDecimal.ROUND_DOWN);
+        return decimal;
+    }
 }

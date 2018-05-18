@@ -26,7 +26,7 @@ public class CdRouteHelper {
     public static final String UPDATEPHONE = "/user/UPDATEPHONE";
     public static final String WEBVIEWACTIVITY = "/user/webView";
 
-    public static final String USERMAIN = "/user/main";
+    public static final String USERMAIN = "/app/main";
 
     //获取数据标志
     public static final String DATASIGN = "dataSign";
