@@ -36,6 +36,7 @@
         <activity android:name=".module.mfirst_page.ExhibitionCenterActivity" />
         <activity android:name=".module.user.MyCarLoanActivity"></activity>
         <activity android:name=".module.product.ProductDetailsActivity"></activity>
+        <activity android:name=".module.order.OrderListActivity"></activity>
     </application>
 
 </manifest>

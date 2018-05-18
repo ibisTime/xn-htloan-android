@@ -46,6 +46,7 @@ public class RecommendProductBean {
     private String description;
     private BigDecimal originalPrice;
     private BigDecimal price;
+    private BigDecimal monthAmount;
     private int creditScore;
     private String status;
     private String updater;
@@ -53,6 +54,14 @@ public class RecommendProductBean {
     private String remark;
     private int boughtCount;
     private List<ProductSpecsListBean> productSpecsList;
+
+    public BigDecimal getMonthAmount() {
+        return monthAmount;
+    }
+
+    public void setMonthAmount(BigDecimal monthAmount) {
+        this.monthAmount = monthAmount;
+    }
 
     public String getCode() {
         return code;

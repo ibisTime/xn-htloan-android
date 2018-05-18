@@ -206,7 +206,7 @@ public class FirstPageFragment extends BaseLazyFragment {
                 return false;
             }
         });
-
+        mBinding.recyclerViewRecommendProduct.setNestedScrollingEnabled(false);
         mBinding.recyclerViewRecommendProduct.addItemDecoration(new DividerItemDecoration(mActivity, LinearLayoutManager.VERTICAL));
 
 
