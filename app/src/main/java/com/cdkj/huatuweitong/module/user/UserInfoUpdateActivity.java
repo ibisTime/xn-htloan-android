@@ -10,6 +10,8 @@ import android.view.View;
 import com.cdkj.baselibrary.activitys.BankCardListActivity;
 import com.cdkj.baselibrary.activitys.FindPwdActivity;
 import com.cdkj.baselibrary.activitys.ImageSelectActivity;
+import com.cdkj.baselibrary.activitys.PayPwdModifyActivity;
+import com.cdkj.baselibrary.activitys.address.AddressListActivity;
 import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.dialog.UITipDialog;
@@ -77,10 +79,11 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
         });
         mBinding.rowPayPsw.setOnClickListener(v -> {
             //修改支付密码
-            FindPwdActivity.open(UserInfoUpdateActivity.this, SPUtilHelpr.getUserPhoneNum(), 2);
+//            PayPwdModifyActivity.open(this,);
         });
         mBinding.rowReceiveAddress.setOnClickListener(v -> {
             //地址
+            AddressListActivity.open(this,false);
         });
 
         mBinding.rowReceiveBankCaard.setOnClickListener(v -> {

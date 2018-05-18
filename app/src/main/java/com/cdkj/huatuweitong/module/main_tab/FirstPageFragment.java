@@ -57,13 +57,6 @@ public class FirstPageFragment extends BaseLazyFragment {
 
     private RefreshHelper mRefreshHelper;
 
-    public static FirstPageFragment getInstance() {
-        FirstPageFragment fragment = new FirstPageFragment();
-        Bundle bundle = new Bundle();
-        fragment.setArguments(bundle);
-        return fragment;
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -73,15 +66,28 @@ public class FirstPageFragment extends BaseLazyFragment {
         mBanners = new ArrayList<>();
         initCarRecommendBeanData();
         initBanner();
-
         setBannerData();
-
         initRecommendCarAdatper();
         initRefreshHelper();
         initOnclickList();
         mRefreshHelper.onDefaluteMRefresh(true);
 
         return mBinding.getRoot();
+    }
+
+    @Override
+    public void onDestroy() {
+        if (mBinding != null) {
+            mBinding.firstBanner.stopAutoPlay();
+        }
+        super.onDestroy();
+    }
+
+    public static FirstPageFragment getInstance() {
+        FirstPageFragment fragment = new FirstPageFragment();
+        Bundle bundle = new Bundle();
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     private void initRefreshHelper() {
@@ -184,7 +190,6 @@ public class FirstPageFragment extends BaseLazyFragment {
 
         mBinding.tvCalculator.setOnClickListener(v -> {
             CarLoanCalculatorActivity.open(getContext(), 0);
-
         });
     }
 
@@ -283,11 +288,4 @@ public class FirstPageFragment extends BaseLazyFragment {
         }
     }
 
-    @Override
-    public void onDestroy() {
-        if (mBinding != null) {
-            mBinding.firstBanner.stopAutoPlay();
-        }
-        super.onDestroy();
-    }
 }
