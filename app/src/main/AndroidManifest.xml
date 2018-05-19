@@ -34,7 +34,6 @@
         <activity android:name="com.cdkj.baselibrary.activitys.login.RegisterActivity" />
         <activity android:name=".module.user.NickNameUpdateActivity" />
         <activity android:name=".module.mfirst_page.ExhibitionCenterActivity" />
-        <activity android:name=".module.user.MyCarLoanActivity" />
         <activity android:name=".module.reimbursement.RepaymentPlanActivity" />
         <activity android:name=".module.reimbursement.AdvanceDetailsActivity"></activity>
         <activity android:name=".module.user.MyCarLoanActivity"></activity>
