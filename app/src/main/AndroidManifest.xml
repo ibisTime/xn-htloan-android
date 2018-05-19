@@ -41,6 +41,9 @@
         <activity android:name=".module.reimbursement.RepaymentPlanActivity" />
         <activity android:name=".module.reimbursement.AdvanceDetailsActivity"></activity>
         <activity android:name=".module.product.ProductDetailsActivity"></activity>
+        <activity android:name=".module.order.OrderListActivity"></activity>
+        <activity android:name=".module.order.AllOrderTabActivity"></activity>
+        <activity android:name=".module.order.OrderDetailsActivity"></activity>
     </application>
 
 </manifest>

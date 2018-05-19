@@ -121,12 +121,22 @@ public class ImgUtils {
             }
         }
     }
+
     public static void loadQiniuLogo(Object obj, String imgid, ImageView img) {
+        if (ImgUtils.isHaveHttp(imgid)) {
+            loadLogo(obj, imgid, img);
+            return;
+        }
         loadLogo(obj, MyCdConfig.QINIUURL + imgid, img);
 
     }
+
     public static void loadQiniuImg(Object obj, String imgid, ImageView img) {
-        loadLogo(obj, MyCdConfig.QINIUURL + imgid, img);
+        if (ImgUtils.isHaveHttp(imgid)) {
+            loadImg(obj,  imgid, img);
+            return;
+        }
+        loadImg(obj, MyCdConfig.QINIUURL + imgid, img);
         //注意这里没有写完,七牛地址还没有 MyCdConfig.QINIUURL ppppppp
     }
 
