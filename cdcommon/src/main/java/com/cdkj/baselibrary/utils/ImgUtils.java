@@ -128,7 +128,7 @@ public class ImgUtils {
             return;
         }
         loadLogo(obj, MyCdConfig.QINIUURL + imgid, img);
-        //注意这里没有写完,七牛地址还没有 MyCdConfig.QINIUURL ppppppp
+
     }
 
     public static void loadQiniuImg(Object obj, String imgid, ImageView img) {

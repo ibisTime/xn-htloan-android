@@ -42,6 +42,7 @@ public abstract class AbsRefreshListFragment<T> extends BaseLazyFragment {
      * 初始化刷新相关
      */
     protected void initRefreshHelper(int limit) {
+        //mRefreshBinding.rv.addItemDecoration(new DividerItemDecoration(mActivity, DividerItemDecoration.VERTICAL));
         mRefreshHelper = new RefreshHelper(mActivity, new BaseRefreshCallBack<T>(mActivity) {
             @Override
             public View getRefreshLayout() {

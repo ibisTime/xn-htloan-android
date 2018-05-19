@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.cdkj.baselibrary.activitys.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,10 +30,12 @@
         <activity android:name=".module.mfirst_page.CarDetailsActivity" />
         <activity android:name=".module.mfirst_page.OrderSubmitActivity" />
         <activity android:name=".module.mfirst_page.PayActivity" />
-        <!--<activity android:name=".MainActivity" />-->
+        <activity android:name=".MainActivity" />
         <activity android:name="com.cdkj.baselibrary.activitys.login.RegisterActivity" />
         <activity android:name=".module.user.NickNameUpdateActivity" />
         <activity android:name=".module.mfirst_page.ExhibitionCenterActivity" />
+        <activity android:name=".module.reimbursement.RepaymentPlanActivity" />
+        <activity android:name=".module.reimbursement.AdvanceDetailsActivity"></activity>
         <activity android:name=".module.user.MyCarLoanActivity"></activity>
         <activity android:name=".module.product.ProductDetailsActivity"></activity>
         <activity android:name=".module.order.OrderListActivity"></activity>

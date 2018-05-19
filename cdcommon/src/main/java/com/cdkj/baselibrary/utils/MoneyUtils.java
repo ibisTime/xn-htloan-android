@@ -64,10 +64,16 @@ public class MoneyUtils {
     }
 
     public static String showPrice(BigDecimal big) {
+
         if (big != null) {
             return doubleFormatMoney(((big.doubleValue()) / 1000));
         }
         return "0.00";
+    }
+
+    public static String showPriceDouble(double dou) {
+
+        return  showPrice(new BigDecimal(dou));
     }
 
     /**
@@ -129,5 +135,14 @@ public class MoneyUtils {
         return nf.format(num.divide(new BigDecimal(10000), 2, RoundingMode.HALF_UP).doubleValue()) + "万";
 
     }
-
+    /**
+     * bigDecimal  做乘法结果保留两位小数返回
+     * @param bigDecimal
+     * @return
+     */
+    public static BigDecimal bigDecimalRide(BigDecimal bigDecimal,double dou) {
+        BigDecimal multiply = bigDecimal.multiply(new BigDecimal(dou));
+        BigDecimal decimal = multiply.setScale(2, BigDecimal.ROUND_DOWN);
+        return decimal;
+    }
 }

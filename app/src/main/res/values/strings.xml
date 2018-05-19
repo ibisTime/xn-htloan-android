@@ -72,5 +72,6 @@
     <string name="product_details">商品详情</string>
     <string name="please_select_product_spec">请先选择产品规格</string>
     <string name="no_product">该规格产品缺货</string>
+    <string name="empty_apply_order">申请单为空</string>
     <string name="my_order">我的订单</string>
 </resources>

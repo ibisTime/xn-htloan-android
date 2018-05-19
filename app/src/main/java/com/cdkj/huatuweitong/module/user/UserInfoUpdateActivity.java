@@ -156,7 +156,6 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
             protected void onSuccess(IsSuccessModes data, String SucMessage) {
                 UITipDialog.showSuccess(UserInfoUpdateActivity.this, getString(R.string.update_logo_succ));
                 ImgUtils.loadQiniuLogo(UserInfoUpdateActivity.this, key, mBinding.imgLogo);
-//                ImgUtils.load
             }
 
             @Override

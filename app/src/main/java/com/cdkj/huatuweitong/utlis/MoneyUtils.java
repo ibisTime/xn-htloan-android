@@ -46,8 +46,4 @@ public class MoneyUtils {
         return decimal;
     }
 
-//    public static long bigDecimalRide(double dou) {
-//        String s = new BigDecimal("3.456").toPlainString();
-//        return decimal;
-//    }
 }

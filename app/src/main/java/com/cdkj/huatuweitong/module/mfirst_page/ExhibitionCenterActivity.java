@@ -64,7 +64,7 @@ public class ExhibitionCenterActivity extends AbsBaseLoadActivity {
         initData("");
         initRecyclerView();
 
-         initOnclick();
+        initOnclick();
 
 
     }
@@ -73,7 +73,7 @@ public class ExhibitionCenterActivity extends AbsBaseLoadActivity {
         adapter = new ExhibitionCenterAdapter(datas);
         mBinding.recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         mBinding.recyclerView.setAdapter(adapter);
-        mBinding.recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL_LIST));
+        mBinding.recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
 
     }
 
@@ -82,8 +82,8 @@ public class ExhibitionCenterActivity extends AbsBaseLoadActivity {
         mBinding.btnSearch.setOnClickListener(v -> {
             String text = mBinding.etText.getText().toString();
             if (TextUtils.isEmpty(text)) {
-                UITipDialog.showFall(ExhibitionCenterActivity.this, "请输入要搜索的车名");
-                return;
+               // UITipDialog.showFall(ExhibitionCenterActivity.this, "请输入要搜索的车名");
+//                return;
             }
             initData(text);
         });
@@ -91,7 +91,7 @@ public class ExhibitionCenterActivity extends AbsBaseLoadActivity {
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                CarDetailsActivity.open(ExhibitionCenterActivity.this,datas.get(position).getCode());
+                CarDetailsActivity.open(ExhibitionCenterActivity.this, datas.get(position).getCode());
             }
         });
     }
@@ -119,7 +119,7 @@ public class ExhibitionCenterActivity extends AbsBaseLoadActivity {
 //               datas= (ArrayList<ExhibitionCenterBean>) data.getList();
                 datas.clear();
                 datas.addAll(data.getList());
-                // adapter.notifyDataSetChanged();
+                adapter.notifyDataSetChanged();
             }
 
             @Override
