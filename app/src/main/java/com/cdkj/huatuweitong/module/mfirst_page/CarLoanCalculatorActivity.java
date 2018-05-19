@@ -104,6 +104,8 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
         initOnclick();
 
         if (type == 0) {
+            //从首页跳转过来的
+
 
         } else if (type == 1) {
             //去计算利息等等
@@ -114,6 +116,7 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
 
         } else if (type == 2) {
             //去联网请求数据  通过参数code
+            setRightShow(View.GONE);
             getInitDataDetails();
         }
 

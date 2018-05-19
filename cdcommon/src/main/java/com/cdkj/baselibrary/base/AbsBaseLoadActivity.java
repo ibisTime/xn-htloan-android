@@ -35,7 +35,7 @@ public abstract class AbsBaseLoadActivity extends BaseActivity {
      */
     private void initTitleView() {
         mBaseBinding.titleView.setVisibility(canLoadTopTitleView() ? View.VISIBLE : View.GONE);
-        mBaseBinding.viewV.setVisibility(canLoadTopTitleView() ? View.VISIBLE : View.GONE);
+        //mBaseBinding.viewV.setVisibility(canLoadTopTitleView() ? View.VISIBLE : View.GONE);
         if (canLoadTopTitleView()) {
             mBaseBinding.titleView.setLeftFraClickListener(new View.OnClickListener() {
                 @Override
