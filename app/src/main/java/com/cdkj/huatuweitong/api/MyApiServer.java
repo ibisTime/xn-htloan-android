@@ -7,6 +7,7 @@ import com.cdkj.huatuweitong.bean.CarDetailsBean;
 import com.cdkj.huatuweitong.bean.CarLoanCalculatorActivityDetailsBean;
 import com.cdkj.huatuweitong.bean.CarLoanCalculatorSendBean;
 import com.cdkj.huatuweitong.bean.ExhibitionCenterBean;
+import com.cdkj.huatuweitong.bean.FirstPageBanner;
 import com.cdkj.huatuweitong.bean.FirstPageCarRecommendBean;
 import com.cdkj.huatuweitong.bean.IsSetPayPassWord;
 import com.cdkj.huatuweitong.bean.LoginBean;
@@ -51,7 +52,7 @@ public interface MyApiServer {
     Call<BaseResponseModel<IsSetPayPassWord>> isSetPayPassWord(@Field("code") String code, @Field("json") String json);
 
     /**
-     * 获取用户订单
+     * 获取用户订单列表
      *
      * @param code
      * @param json
@@ -60,6 +61,28 @@ public interface MyApiServer {
     @FormUrlEncoded
     @POST("api")
     Call<BaseResponseModel<ResponseInListModel<OrderBean>>> getOrderList(@Field("code") String code, @Field("json") String json);
+
+
+    /**
+     * 获取用户订单详情
+     *
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<OrderBean>> getOrderDetails(@Field("code") String code, @Field("json") String json);
+
+
+    /**
+     * 获取首页广告
+     *
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseListModel<FirstPageBanner>> getFirstBanner(@Field("code") String code, @Field("json") String json);
 
 
     /**

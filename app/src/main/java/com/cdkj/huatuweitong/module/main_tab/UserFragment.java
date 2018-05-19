@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.cdkj.baselibrary.base.BaseLazyFragment;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.databinding.FragmentUserBinding;
+import com.cdkj.huatuweitong.module.order.AllOrderTabActivity;
 import com.cdkj.huatuweitong.module.order.OrderListActivity;
 import com.cdkj.huatuweitong.module.user.MyCarLoanActivity;
 import com.cdkj.huatuweitong.module.user.UserInfoUpdateActivity;
@@ -74,7 +75,7 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
                 MyCarLoanActivity.open(mActivity);
                 break;
             case R.id.rfl_my_order:
-                OrderListActivity.open(mActivity);
+                AllOrderTabActivity.open(mActivity);
                 break;
         }
     }

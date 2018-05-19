@@ -23,6 +23,7 @@ import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.IsSetPayPassWord;
 import com.cdkj.huatuweitong.databinding.ActivityPayBinding;
+import com.cdkj.huatuweitong.module.order.AllOrderTabActivity;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -140,6 +141,14 @@ public class PayActivity extends AbsBaseLoadActivity {
         call.enqueue(new BaseResponseModelCallBack<IsSuccessModes>(this) {
             @Override
             protected void onSuccess(IsSuccessModes data, String SucMessage) {
+                if (data.isSuccess()) {
+                    UITipDialog.showSuccess(PayActivity.this, "支付成功", dialog -> {
+                        AllOrderTabActivity.open(PayActivity.this);
+                        finish();
+                    });
+                } else {
+                    UITipDialog.showFall(PayActivity.this, "支付失败");
+                }
 
             }
 

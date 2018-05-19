@@ -1,5 +1,6 @@
 package com.cdkj.huatuweitong.bean;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -263,7 +264,7 @@ public class OrderBean {
 
         private String code;
         private String orderCode;
-        private int price;
+        private BigDecimal price;
         private ProductBean product;
         private String productCode;
         private String productSpecsCode;
@@ -286,11 +287,11 @@ public class OrderBean {
             this.orderCode = orderCode;
         }
 
-        public int getPrice() {
+        public BigDecimal getPrice() {
             return price;
         }
 
-        public void setPrice(int price) {
+        public void setPrice(BigDecimal price) {
             this.price = price;
         }
 

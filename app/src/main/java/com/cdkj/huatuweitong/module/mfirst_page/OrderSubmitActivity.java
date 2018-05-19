@@ -131,6 +131,13 @@ public class OrderSubmitActivity extends AbsBaseLoadActivity {
             }
             AddressListActivity.open(this, true);
         });
+
+        mBinding.linLayoutAddressSelect.setOnClickListener(v -> {
+            if (!SPUtilHelpr.isLogin(this, false)) {
+                return;
+            }
+            AddressListActivity.open(this, true);
+        });
         /*银行卡选择*/
 
         mBinding.linLayoutBankcard.setOnClickListener(v -> {
@@ -165,8 +172,10 @@ public class OrderSubmitActivity extends AbsBaseLoadActivity {
 
             @Override
             protected void onSuccess(String data, String SucMessage) {
-                PayActivity.open(OrderSubmitActivity.this, data, mBinding.tvNeedPay.getText().toString());
-                finish();
+                UITipDialog.showSuccess(OrderSubmitActivity.this,"下单成功",dialog -> {
+                    PayActivity.open(OrderSubmitActivity.this, data, mBinding.tvNeedPay.getText().toString());
+                    finish();
+                });
             }
 
             @Override
@@ -199,7 +208,9 @@ public class OrderSubmitActivity extends AbsBaseLoadActivity {
     @Subscribe
     public void addressSelect(AddressModel addressModel) {
         mSelectAddress = addressModel;
-        mBinding.tvReceiveName.setText(addressModel.getAddressee());
+        mBinding.linLayoutAddress.setVisibility(View.VISIBLE);
+        mBinding.linLayoutAddressSelect.setVisibility(View.GONE);
+        mBinding.tvReceiveName.setText("收货人：" + addressModel.getAddressee());
         mBinding.tvReceiveNumber.setText(addressModel.getMobile());
         mBinding.tvReceiveAddress.setText("收货地址:" + getDetailsAddress(addressModel));
     }

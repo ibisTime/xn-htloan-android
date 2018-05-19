@@ -26,9 +26,10 @@ import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.adapters.RecommendCarAdapter;
 import com.cdkj.huatuweitong.adapters.RecommendProductAdapter;
 import com.cdkj.huatuweitong.api.MyApiServer;
+import com.cdkj.huatuweitong.bean.FirstPageBanner;
 import com.cdkj.huatuweitong.bean.FirstPageCarRecommendBean;
 import com.cdkj.huatuweitong.bean.RecommendProductBean;
-import com.cdkj.huatuweitong.common.GlideImageLoader;
+import com.cdkj.huatuweitong.common.GlideFirstPageBannerImageLoader;
 import com.cdkj.huatuweitong.databinding.FragmentFirstpageBinding;
 import com.cdkj.huatuweitong.module.mfirst_page.CarLoanCalculatorActivity;
 import com.cdkj.huatuweitong.module.mfirst_page.ExhibitionCenterActivity;
@@ -52,7 +53,7 @@ public class FirstPageFragment extends BaseLazyFragment {
     List<FirstPageCarRecommendBean> carData = new ArrayList<>();
     private FragmentFirstpageBinding mBinding;
 
-    private List<String> mBanners;
+    private List<FirstPageBanner> mBanners;
     private RecommendCarAdapter recommendCarAdapter;
 
     private RefreshHelper mRefreshHelper;
@@ -66,10 +67,10 @@ public class FirstPageFragment extends BaseLazyFragment {
         mBanners = new ArrayList<>();
         initCarRecommendBeanData();
         initBanner();
-        setBannerData();
         initRecommendCarAdatper();
         initRefreshHelper();
         initOnclickList();
+        getBannerDataRequest();
         mRefreshHelper.onDefaluteMRefresh(true);
 
         return mBinding.getRoot();
@@ -126,6 +127,7 @@ public class FirstPageFragment extends BaseLazyFragment {
         Map<String, String> map = new HashMap<>();
         map.put("limit", limit + "");
         map.put("start", pageindex + "");
+        map.put("status", "3");
 
         Call<BaseResponseModel<ResponseInListModel<RecommendProductBean>>> call = RetrofitUtils.createApi(MyApiServer.class).getRecommentdProductList("808025", StringUtils.getJsonToString(map));
 
@@ -147,7 +149,42 @@ public class FirstPageFragment extends BaseLazyFragment {
             }
         });
 
+    }
 
+
+    /**
+     * 获取banner
+     */
+    public void getBannerDataRequest() {
+
+        Map<String, String> map = RetrofitUtils.getRequestMap();
+        map.put("location", "index_banner");
+        map.put("type", "2");
+        map.put("orderColumn", "order_no");
+        map.put("orderDir", "asc");
+
+        Call call = RetrofitUtils.createApi(MyApiServer.class).getFirstBanner("805806", StringUtils.getJsonToString(map));
+
+        addCall(call);
+
+        call.enqueue(new BaseResponseListCallBack<FirstPageBanner>(mActivity) {
+
+            @Override
+            protected void onSuccess(List<FirstPageBanner> data, String SucMessage) {
+                mBanners.clear();
+                mBanners.addAll(data);
+                setBannerData();
+            }
+
+            @Override
+            protected void onReqFailure(String errorCode, String errorMessage) {
+
+            }
+
+            @Override
+            protected void onFinish() {
+            }
+        });
     }
 
     /**
@@ -250,7 +287,7 @@ public class FirstPageFragment extends BaseLazyFragment {
 
         mBinding.firstBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
         mBinding.firstBanner.setIndicatorGravity(BannerConfig.CENTER);
-        mBinding.firstBanner.setImageLoader(new GlideImageLoader());
+        mBinding.firstBanner.setImageLoader(new GlideFirstPageBannerImageLoader());
 
     }
 
@@ -259,15 +296,6 @@ public class FirstPageFragment extends BaseLazyFragment {
      * 设置广告数据
      */
     private void setBannerData() {
-
-        mBanners.add("");
-        mBanners.add("");
-        mBanners.add("");
-        mBanners.add("");
-        mBanners.add("");
-        mBanners.add("");
-        mBanners.add("");
-
         mBinding.firstBanner.setImages(mBanners);
         mBinding.firstBanner.start();
         mBinding.firstBanner.startAutoPlay();
