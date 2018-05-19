@@ -113,7 +113,6 @@ public class OrderDetailsActivity extends AbsBaseLoadActivity {
             ImgUtils.loadQiniuImg(this, data.getProductOrderList().get(0).getProduct().getAdvPic(), mBinding.imgTitle);
         }
 
-
     }
 
     private String getOrderStateString(String status) {
