@@ -78,7 +78,6 @@
 
                 </LinearLayout>
 
-
                 <com.cdkj.baselibrary.views.RowInfoLayout
                     android:id="@+id/row_collection"
                     android:layout_width="match_parent"
