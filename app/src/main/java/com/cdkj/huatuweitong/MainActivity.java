@@ -7,6 +7,7 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cdkj.baselibrary.adapters.ViewPagerAdapter;
 import com.cdkj.baselibrary.appmanager.CdRouteHelper;
+import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.huatuweitong.databinding.ActivityMainBinding;
 import com.cdkj.huatuweitong.module.main_tab.FirstPageFragment;
@@ -82,9 +83,15 @@ public class MainActivity extends AbsBaseLoadActivity {
                     mBinding.pagerMain.setCurrentItem(0);
                     break;
                 case R.id.radio_main_tab_2:
+                    if (!SPUtilHelpr.isLogin(MainActivity.this, false)) {
+                        return;
+                    }
                     mBinding.pagerMain.setCurrentItem(1);
                     break;
                 case R.id.radio_main_tab_3:
+                    if (!SPUtilHelpr.isLogin(MainActivity.this, false)) {
+                        return;
+                    }
                     mBinding.pagerMain.setCurrentItem(2);
                     break;
                 default:

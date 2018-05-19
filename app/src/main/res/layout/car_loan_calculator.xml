@@ -31,7 +31,7 @@
                 android:layout_marginTop="14dp"
                 android:text="123456"
                 android:textColor="@color/white_car_loan"
-                android:textSize="38sp" />
+                android:textSize="30sp" />
 
             <View
                 android:layout_width="match_parent"
@@ -63,11 +63,11 @@
                         android:id="@+id/tv_dowan_payments"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginTop="10dp"
                         android:singleLine="true"
                         android:text="456789"
                         android:textColor="@color/white_car_loan"
-                        android:textSize="17sp" />
+                        android:textSize="13sp" />
 
                 </LinearLayout>
 
@@ -96,11 +96,11 @@
                         android:id="@+id/tv_monthly_supply"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginTop="10dp"
                         android:singleLine="true"
                         android:text="2300"
                         android:textColor="@color/white_car_loan"
-                        android:textSize="17sp" />
+                        android:textSize="13sp" />
 
                 </LinearLayout>
 
@@ -129,11 +129,11 @@
                         android:id="@+id/tv_many_money"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginTop="10dp"
                         android:singleLine="true"
                         android:text="3100"
                         android:textColor="@color/white_car_loan"
-                        android:textSize="17sp" />
+                        android:textSize="13sp" />
 
                 </LinearLayout>
 
@@ -164,6 +164,7 @@
                 android:text="奥迪" />
 
             <ImageView
+                android:id="@+id/iv_model"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="15dp"
@@ -200,6 +201,7 @@
                 android:textSize="15sp" />
 
             <ImageView
+                android:id="@+id/iv_brand"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="15dp"
@@ -240,6 +242,7 @@
                 android:textSize="15sp" />
 
             <ImageView
+                android:id="@+id/iv_one_pay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="15dp"
@@ -250,7 +253,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginLeft="15dp"
-            android:background="#999999" />
+            android:background="@color/gray_line" />
 
 
         <LinearLayout
@@ -267,6 +270,7 @@
                 android:text="@string/car_calculator_control_year" />
 
             <TextView
+
                 android:id="@+id/tv_control_year"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -278,6 +282,7 @@
                 android:textSize="15sp" />
 
             <ImageView
+                android:id="@+id/iv_control_year"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="15dp"

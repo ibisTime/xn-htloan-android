@@ -6,12 +6,15 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
+import com.cdkj.baselibrary.appmanager.MyCdConfig;
 import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.dialog.UITipDialog;
+import com.cdkj.baselibrary.model.IntroductionInfoModel;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
 import com.cdkj.baselibrary.utils.DateUtil;
@@ -23,6 +26,7 @@ import com.cdkj.huatuweitong.bean.CarDetailsBean;
 import com.cdkj.huatuweitong.bean.CarLoanCalculatorActivityDetailsBean;
 import com.cdkj.huatuweitong.bean.CarLoanCalculatorSendBean;
 import com.cdkj.huatuweitong.databinding.CarLoanCalculatorBinding;
+import com.cdkj.huatuweitong.module.user.MyCarLoanActivity;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -119,7 +123,7 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
     public void getInitDataDetails() {
 
         Map<String, String> map = new HashMap<>();
-        map.put("code",code);
+        map.put("code", code);
         showLoadingDialog();
         Call call = RetrofitUtils.createApi(MyApiServer.class).getCarLoanCalculatorActivityDetails("630437", StringUtils.getJsonToString(map));
         addCall(call);
@@ -128,7 +132,7 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
             protected void onSuccess(CarLoanCalculatorActivityDetailsBean data, String SucMessage) {
 
                 //获取数据设置到文本上
-                salePrice=new BigDecimal(data.getPrice());
+                salePrice = new BigDecimal(data.getPrice());
                 mBinding.tvMoney.setText(MoneyUtils.showPriceDouble(data.getPrice()));
                 mBinding.tvDowanPayments.setText(MoneyUtils.showPriceDouble(data.getSfAmount()));
 
@@ -137,10 +141,10 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
 
                 mBinding.tvModel.setText(data.getCarName());//车型
                 mBinding.tvBrand.setText(data.getSeriesName());//品牌
-                mBinding.tvOnePay.setText((data.getSfRate()*100)+"%");//首付
-                mBinding.tvControlYear.setText((int)data.getPeriods()+"");//首付
-                downPayments=data.getSfRate();
-                repayments= (int) data.getPeriods();
+                mBinding.tvOnePay.setText((data.getSfRate() * 100) + "%");//首付
+                mBinding.tvControlYear.setText((int) data.getPeriods() + "");//首付
+                downPayments = data.getSfRate();
+                repayments = (int) data.getPeriods();
                 //去计算并设置值
                 setViewData();
 
@@ -162,6 +166,10 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
     }
 
     private void sendRegist() {
+
+        if (!SPUtilHelpr.isLogin(this, false)) {
+            return;
+        }
 
         Map map = new HashMap<String, String>();
         map.put("brandCode", currentdata.getBrandCode());
@@ -191,6 +199,9 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
             protected void onSuccess(CarLoanCalculatorSendBean data, String SucMessage) {
                 UITipDialog.showInfo(CarLoanCalculatorActivity.this, "申请成功");
                 mBinding.tvPayCar.setVisibility(View.GONE);
+                setRightShow(View.GONE);
+                MyCarLoanActivity.open(CarLoanCalculatorActivity.this);
+                finish();
             }
 
             @Override
@@ -245,7 +256,7 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
 
     private void showPaySingleDialog() {
         //如果提交按钮不显示了  说明已经申请过了  就不能再进行选择了
-        if (mBinding.tvPayCar.getVisibility()!=View.VISIBLE){
+        if (mBinding.tvPayCar.getVisibility() != View.VISIBLE) {
             return;
         }
 
@@ -277,7 +288,7 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
     private void showRateSingleDialog() {
         //如果提交按钮不显示了  说明已经申请过了  就不能再进行选择了
 
-        if (mBinding.tvPayCar.getVisibility()!=View.VISIBLE){
+        if (mBinding.tvPayCar.getVisibility() != View.VISIBLE) {
             return;
         }
 
@@ -307,5 +318,48 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
         ad.show();
     }
 
+
+    public void getKeyUrl() {
+
+        Map<String, String> map = new HashMap<>();
+        map.put("ckey", "car_periods");
+        map.put("systemCode", MyCdConfig.SYSTEMCODE);
+        map.put("companyCode", MyCdConfig.COMPANYCODE);
+
+        Call call = RetrofitUtils.getBaseAPiService().getKeySystemInfo("805917", StringUtils.getJsonToString(map));
+
+        addCall(call);
+
+        showLoadingDialog();
+
+        call.enqueue(new BaseResponseModelCallBack<IntroductionInfoModel>(this) {
+            @Override
+            protected void onSuccess(IntroductionInfoModel data, String SucMessage) {
+                if (TextUtils.isEmpty(data.getCvalue())) {
+                    return;
+                }
+                // mBinding.tvAmount.setText(MoneyUtils.MONEYSING+data.getCvalue());
+            }
+
+            @Override
+            protected void onReqFailure(String errorCode, String errorMessage) {
+                UITipDialog.showFall(CarLoanCalculatorActivity.this, errorMessage);
+            }
+
+            @Override
+            protected void onFinish() {
+                disMissLoading();
+            }
+        });
+
+    }
+
+    private void setRightShow(int isShow) {
+        mBinding.ivOnePay.setVisibility(isShow);
+        mBinding.ivModel.setVisibility(isShow);
+        mBinding.ivControlYear.setVisibility(isShow);
+        mBinding.ivBrand.setVisibility(isShow);
+
+    }
 
 }

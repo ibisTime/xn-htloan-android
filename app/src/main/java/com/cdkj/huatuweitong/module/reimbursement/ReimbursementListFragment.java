@@ -16,7 +16,6 @@ import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
 import com.cdkj.baselibrary.utils.StringUtils;
-import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.adapters.ReimbursementListAdapter;
 import com.cdkj.huatuweitong.adapters.ReimbursementListMonthAdapter;
 import com.cdkj.huatuweitong.api.MyApiServer;
@@ -68,7 +67,6 @@ public class ReimbursementListFragment extends AbsRefreshListFragment {
     }
 
 
-
     @Override
     public RecyclerView.Adapter getListAdapter(List listData) {
         if (TextUtils.equals(type, "2")) {
@@ -107,19 +105,23 @@ public class ReimbursementListFragment extends AbsRefreshListFragment {
      */
     private ReimbursementListAdapter getReimbursementListAdapter(List listData) {
 
-            ReimbursementListAdapter adapter = new ReimbursementListAdapter(listData, this);
+        ReimbursementListAdapter adapter = new ReimbursementListAdapter(listData, this);
 
-            adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-                @Override
-                public void onItemClick(BaseQuickAdapter aadapter, View view, int position) {
-                    CarLoanDetailsActivity.open(getContext(), adapter.getItem(position).getCode(), type);
-                }
-            });
-            return adapter;
+        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter aadapter, View view, int position) {
+                CarLoanDetailsActivity.open(getContext(), adapter.getItem(position).getCode(), type);
+            }
+        });
+        return adapter;
     }
 
     @Override
     public void getListRequest(int pageindex, int limit, boolean isShowDialog) {
+        if (!SPUtilHelpr.isLoginNoStart()) {
+            return;
+        }
+
 
         if ("1".equals(type)) {
             //本月的应还款
@@ -129,27 +131,29 @@ public class ReimbursementListFragment extends AbsRefreshListFragment {
             initRepaymentData(pageindex, limit, isShowDialog);
         }
     }
+
     /**
      * 获取本月应还的数据
      */
     public void initMonthData(int pageindex, int limit, boolean isShowDialog) {
-        Map<String, String> map = new HashMap<>();
-        map.put("limit",limit+"");
-        map.put("start",pageindex+"");
-        map.put("userId",SPUtilHelpr.getUserId());
 
-        if (isShowDialog){
+
+        Map<String, String> map = new HashMap<>();
+        map.put("limit", limit + "");
+        map.put("start", pageindex + "");
+        map.put("userId", SPUtilHelpr.getUserId());
+
+        if (isShowDialog) {
             showLoadingDialog();
         }
 
 
-
-        Call call= RetrofitUtils.createApi(MyApiServer.class).getReimbursementRepaymentMonthData("630543",StringUtils.getJsonToString(map));
+        Call call = RetrofitUtils.createApi(MyApiServer.class).getReimbursementRepaymentMonthData("630543", StringUtils.getJsonToString(map));
         addCall(call);
         call.enqueue(new BaseResponseModelCallBack<ResponseInListModel<ReimbursementRepaymentMonthBean>>(mActivity) {
             @Override
             protected void onSuccess(ResponseInListModel data, String SucMessage) {
-                mRefreshHelper.setData(data.getList(), getString(R.string.empty_text), 0);
+                mRefreshHelper.setData(data.getList(), "近期暂无还款", 0);
             }
 
             @Override
@@ -168,6 +172,7 @@ public class ReimbursementListFragment extends AbsRefreshListFragment {
 
     /**
      * 获取全部贷款的数据
+     *
      * @param pageindex
      * @param limit
      * @param isShowDialog
@@ -188,7 +193,7 @@ public class ReimbursementListFragment extends AbsRefreshListFragment {
 
             @Override
             protected void onSuccess(ResponseInListModel<ReimbursementRepaymentBean> data, String SucMessage) {
-                mRefreshHelper.setData(data.getList(), getString(R.string.empty_text), 0);
+                mRefreshHelper.setData(data.getList(), "暂无借款记录", 0);
             }
 
             @Override

@@ -34,7 +34,7 @@ import retrofit2.Call;
  */
 public class MyCarLoanFragment extends AbsRefreshListFragment<MyCarLoanFragmentBean> {
     private MyCarLoanFragmentAdapter adapter;
-    String status;//状态  0已处理  1未处理
+    String status;//状态  0未处理  1已处理
 
     public static MyCarLoanFragment getInstance(String status) {
         MyCarLoanFragment fragment = new MyCarLoanFragment();

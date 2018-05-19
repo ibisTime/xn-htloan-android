@@ -58,8 +58,8 @@ public class MyCarLoanActivity extends AbsBaseLoadActivity {
         ArrayList fragments = new ArrayList<>();
 
         fragments.add(MyCarLoanFragment.getInstance(""));
-        fragments.add(MyCarLoanFragment.getInstance("0"));
         fragments.add(MyCarLoanFragment.getInstance("1"));
+        fragments.add(MyCarLoanFragment.getInstance("2"));
 
         mBinding.viewpager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), fragments));
         mBinding.viewpager.setOffscreenPageLimit(fragments.size());

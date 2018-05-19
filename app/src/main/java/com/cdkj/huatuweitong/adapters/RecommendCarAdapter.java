@@ -35,7 +35,7 @@ public class RecommendCarAdapter extends BaseQuickAdapter<FirstPageCarRecommendB
 
         helper.setText(R.id.tv_title,item.getName());
         ImageView imageView=helper.getView(R.id.iv_src);
-        ImgUtils.loadLogo(obj,item.getAdvPic(),imageView);
+        ImgUtils.loadImg(obj,item.getAdvPic(),imageView);
 
     }
 }

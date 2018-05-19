@@ -10,8 +10,8 @@ import android.view.View;
 import com.cdkj.baselibrary.activitys.BankCardListActivity;
 import com.cdkj.baselibrary.activitys.FindPwdActivity;
 import com.cdkj.baselibrary.activitys.ImageSelectActivity;
-import com.cdkj.baselibrary.activitys.PayPwdModifyActivity;
 import com.cdkj.baselibrary.activitys.address.AddressListActivity;
+import com.cdkj.baselibrary.activitys.login.LoginActivity;
 import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.dialog.UITipDialog;
@@ -96,6 +96,7 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
             showDoubleWarnListen(getString(R.string.sure_logout), view -> {
                 SPUtilHelpr.logOutClear();
                 EventBus.getDefault().post(new EventFinishAll());
+                LoginActivity.open(UserInfoUpdateActivity.this,true);
 //                setShowState();
 //                UITipDialog.showSuccess(mActivity, getString(R.string.logout_succ), dialogInterface -> {
 //                    LoginActivity.open(mActivity,false);

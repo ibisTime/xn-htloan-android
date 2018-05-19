@@ -206,7 +206,7 @@ public class FirstPageFragment extends BaseLazyFragment {
                 return false;
             }
         });
-        mBinding.recyclerViewRecommendProduct.setNestedScrollingEnabled(false);
+
         mBinding.recyclerViewRecommendProduct.addItemDecoration(new DividerItemDecoration(mActivity, LinearLayoutManager.VERTICAL));
 
 
@@ -215,6 +215,7 @@ public class FirstPageFragment extends BaseLazyFragment {
         recommendProductAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+
                 RecommendProductBean recommendProductBean = recommendProductAdapter.getItem(position);
                 if (recommendProductBean == null) return;
                 ProductDetailsActivity.open(mActivity, recommendProductBean.getCode());

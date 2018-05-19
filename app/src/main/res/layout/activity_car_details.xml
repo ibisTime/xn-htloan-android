@@ -60,7 +60,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="18dp"
+                    android:layout_marginTop="10dp"
                     android:text="奥迪A4L 2015款 自动标准型"
                     android:textColor="@color/break_text"
                     android:textSize="18sp" />
@@ -70,7 +70,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="18dp"
+                    android:layout_marginTop="10dp"
                     android:text="¥22.58万"
                     android:textColor="@color/break_text"
                     android:textSize="18sp" />
@@ -78,7 +78,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
+                    android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -99,23 +99,24 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="10dp"
-                    android:layout_marginTop="22dp"
+                    android:layout_marginTop="10dp"
                     android:background="@color/gray_line" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="2dp"
-                        android:layout_height="30dp"
+                        android:layout_height="13dp"
                         android:layout_marginLeft="15dp"
                         android:background="@color/blue"
-                        android:paddingBottom="10dp"
-                        android:paddingTop="10dp" />
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                       />
 
                     <TextView
                         android:layout_width="wrap_content"

@@ -19,7 +19,6 @@ import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.UserFragmentBean;
 import com.cdkj.huatuweitong.databinding.FragmentUserBinding;
-import com.cdkj.huatuweitong.module.order.OrderListActivity;
 import com.cdkj.huatuweitong.module.user.MyCarLoanActivity;
 import com.cdkj.huatuweitong.module.user.UserInfoUpdateActivity;
 
@@ -48,9 +47,8 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_user, null, false);
-        mBinding.imgUserLogo.setOnClickListener(this);
+        mBinding.linUserHead.setOnClickListener(this);
         mBinding.rflMyCarLoan.setOnClickListener(this);
-        mBinding.rflMyOrder.setOnClickListener(this);
 
         return mBinding.getRoot();
     }
@@ -68,6 +66,12 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
     }
 
     public void initData() {
+        if (!SPUtilHelpr.isLoginNoStart()){
+//            LoginActivity.open(mActivity,true);
+
+            return;
+        }
+
         Map<String, String> map = new HashMap();
         map.put("userId", SPUtilHelpr.getUserId());
         showLoadingDialog();
@@ -116,16 +120,12 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.img_user_logo:
-
+            case R.id.lin_user_head:
                 UserInfoUpdateActivity.open(getContext());
                 break;
 
             case R.id.rfl_my_car_loan:
                 MyCarLoanActivity.open(mActivity);
-                break;
-            case R.id.rfl_my_order:
-                OrderListActivity.open(mActivity);
                 break;
         }
     }

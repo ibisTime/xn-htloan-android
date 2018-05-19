@@ -2,6 +2,7 @@ package com.cdkj.huatuweitong.adapters;
 
 import android.graphics.Color;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 
 import com.cdkj.baselibrary.utils.MoneyUtils;
 import com.cdkj.huatuweitong.R;
@@ -26,14 +27,16 @@ public class MyCarLoanFragmentAdapter extends BaseQuickAdapter<MyCarLoanFragment
     @Override
     protected void convert(BaseViewHolder helper, MyCarLoanFragmentBean item) {
         helper.setText(R.id.tv_order_number, item.getCode());
-        if ("0".equals(item.getStatus())) {
-            helper.setText(R.id.tv_type, "已处理");
+        if ("1".equals(item.getStatus())) {
+            helper.setText(R.id.tv_type, "已通过");
             helper.setTextColor(R.id.tv_type, Color.rgb(153,153,153));
 
-
-        } else {
-            helper.setText(R.id.tv_type, "待处理");
+        } else if(TextUtils.equals("0",item.getStatus())){
+            helper.setText(R.id.tv_type, "未通过");
             helper.setTextColor(R.id.tv_type, Color.rgb(47,147,237));
+        }else if (TextUtils.equals("2",item.getStatus())){
+            helper.setText(R.id.tv_type, "已作废");
+            helper.setTextColor(R.id.tv_type, Color.rgb(153,153,153));
         }
 
         helper.setText(R.id.tv_name, item.getSeriesName());

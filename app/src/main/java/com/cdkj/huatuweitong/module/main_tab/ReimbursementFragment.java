@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cdkj.baselibrary.adapters.ViewPagerAdapter;
+import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
 import com.cdkj.baselibrary.base.BaseLazyFragment;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.databinding.FragmentReimbursementBinding;
@@ -58,6 +59,10 @@ public class ReimbursementFragment extends BaseLazyFragment {
      * 初始化ViewPager
      */
     private void initViewPager() {
+
+        if (!SPUtilHelpr.isLoginNoStart()){
+            return;
+        }
 
         //设置fragment数据
         ArrayList fragments = new ArrayList<>();

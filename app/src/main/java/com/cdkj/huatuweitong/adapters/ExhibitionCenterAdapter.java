@@ -39,6 +39,6 @@ public class ExhibitionCenterAdapter extends BaseQuickAdapter<ExhibitionCenterBe
         helper.setText(R.id.tv_price, "总价" + MoneyUtils.BigDecimalToString(item.getOriginalPrice()) + "元");
         helper.setText(R.id.tv_first_pay, "首付: " + MoneyUtils.BigDecimalToString(item.getSalePrice()) + "元");
         ImageView imgLogo = helper.getView(R.id.iv_logo);
-        ImgUtils.loadLogo(mContext,item.getAdvPic(),imgLogo);
+        ImgUtils.loadImg(mContext,item.getAdvPic(),imgLogo);
     }
 }
