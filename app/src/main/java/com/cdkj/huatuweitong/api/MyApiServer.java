@@ -13,6 +13,7 @@ import com.cdkj.huatuweitong.bean.FirstPageCarRecommendBean;
 import com.cdkj.huatuweitong.bean.IsSetPayPassWord;
 import com.cdkj.huatuweitong.bean.LoginBean;
 import com.cdkj.huatuweitong.bean.MyCarLoanFragmentBean;
+import com.cdkj.huatuweitong.bean.OrderBean;
 import com.cdkj.huatuweitong.bean.ReimbursementRepaymentBean;
 import com.cdkj.huatuweitong.bean.ReimbursementRepaymentMonthBean;
 import com.cdkj.huatuweitong.bean.RecommendProductBean;
@@ -53,6 +54,17 @@ public interface MyApiServer {
     @FormUrlEncoded
     @POST("api")
     Call<BaseResponseModel<IsSetPayPassWord>> isSetPayPassWord(@Field("code") String code, @Field("json") String json);
+
+    /**
+     * 获取用户订单
+     *
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<ResponseInListModel<OrderBean>>> getOrderList(@Field("code") String code, @Field("json") String json);
 
 
     /**

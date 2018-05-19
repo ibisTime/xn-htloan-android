@@ -39,6 +39,7 @@
         <activity android:name=".module.reimbursement.AdvanceDetailsActivity"></activity>
         <activity android:name=".module.user.MyCarLoanActivity"></activity>
         <activity android:name=".module.product.ProductDetailsActivity"></activity>
+        <activity android:name=".module.order.OrderListActivity"></activity>
     </application>
 
 </manifest>

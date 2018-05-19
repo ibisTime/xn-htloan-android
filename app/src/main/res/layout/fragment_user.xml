@@ -113,6 +113,15 @@
                     app:txt_left="我的车贷申请" />
 
                 <com.cdkj.baselibrary.views.RowInfoLayout
+                    android:id="@+id/rfl_my_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/line_height"
+                    app:img_left="@drawable/note"
+                    app:img_right="@drawable/more_right"
+                    app:txt_left="我的分期订单" />
+
+                <com.cdkj.baselibrary.views.RowInfoLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"

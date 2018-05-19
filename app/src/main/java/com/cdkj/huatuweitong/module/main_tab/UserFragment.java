@@ -19,6 +19,7 @@ import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.UserFragmentBean;
 import com.cdkj.huatuweitong.databinding.FragmentUserBinding;
+import com.cdkj.huatuweitong.module.order.OrderListActivity;
 import com.cdkj.huatuweitong.module.user.MyCarLoanActivity;
 import com.cdkj.huatuweitong.module.user.UserInfoUpdateActivity;
 
@@ -49,6 +50,7 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_user, null, false);
         mBinding.imgUserLogo.setOnClickListener(this);
         mBinding.rflMyCarLoan.setOnClickListener(this);
+        mBinding.rflMyOrder.setOnClickListener(this);
 
         return mBinding.getRoot();
     }
@@ -121,6 +123,9 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
 
             case R.id.rfl_my_car_loan:
                 MyCarLoanActivity.open(mActivity);
+                break;
+            case R.id.rfl_my_order:
+                OrderListActivity.open(mActivity);
                 break;
         }
     }
