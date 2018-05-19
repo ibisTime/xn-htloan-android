@@ -96,6 +96,7 @@
         </RelativeLayout>
 
         <ImageView
+            android:scaleType="centerCrop"
             android:id="@+id/iv_img"
             android:layout_width="113dp"
             android:layout_height="113dp"
