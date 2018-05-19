@@ -95,7 +95,6 @@ public class OrderDetailsActivity extends AbsBaseLoadActivity {
         });
 
     }
-
     /**
      * @param data
      */
