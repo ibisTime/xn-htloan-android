@@ -20,7 +20,6 @@ import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.UserFragmentBean;
 import com.cdkj.huatuweitong.databinding.FragmentUserBinding;
 import com.cdkj.huatuweitong.module.order.AllOrderTabActivity;
-import com.cdkj.huatuweitong.module.order.OrderListActivity;
 import com.cdkj.huatuweitong.module.user.MyCarLoanActivity;
 import com.cdkj.huatuweitong.module.user.UserInfoUpdateActivity;
 

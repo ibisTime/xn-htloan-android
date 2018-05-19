@@ -14,9 +14,10 @@ import com.cdkj.huatuweitong.bean.FirstPageCarRecommendBean;
 import com.cdkj.huatuweitong.bean.IsSetPayPassWord;
 import com.cdkj.huatuweitong.bean.LoginBean;
 import com.cdkj.huatuweitong.bean.MyCarLoanFragmentBean;
+import com.cdkj.huatuweitong.bean.OrderBean;
+import com.cdkj.huatuweitong.bean.RecommendProductBean;
 import com.cdkj.huatuweitong.bean.ReimbursementRepaymentBean;
 import com.cdkj.huatuweitong.bean.ReimbursementRepaymentMonthBean;
-import com.cdkj.huatuweitong.bean.RecommendProductBean;
 import com.cdkj.huatuweitong.bean.UserFragmentBean;
 
 import retrofit2.Call;
@@ -32,7 +33,14 @@ import retrofit2.http.POST;
  */
 
 public interface MyApiServer {
-
+    /**
+     * 获取首页广告
+     *
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseListModel<FirstPageBanner>> getFirstBanner(@Field("code") String code, @Field("json") String json);
     /**
      * 登录
      *
@@ -210,5 +218,14 @@ public interface MyApiServer {
     Call<BaseResponseModel<UserFragmentBean>> getUserDetails(@Field("code") String code, @Field("json") String json);
 
 
-
+    /**
+     * 获取用户订单详情
+     *
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<OrderBean>> getOrderDetails(@Field("code") String code, @Field("json") String json);
 }
