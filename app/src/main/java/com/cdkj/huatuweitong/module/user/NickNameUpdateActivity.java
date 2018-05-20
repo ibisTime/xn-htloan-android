@@ -9,7 +9,6 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.view.View;
 
-import com.cdkj.baselibrary.appmanager.CdRouteHelper;
 import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.dialog.UITipDialog;
@@ -33,6 +32,15 @@ import retrofit2.Call;
 public class NickNameUpdateActivity extends AbsBaseLoadActivity {
     ActivityNickNameUpdateBinding mBinding;
 
+    public static void open(Context context) {
+        if (context!=null){
+            Intent intent = new Intent(context, NickNameUpdateActivity.class);
+            context.startActivity(intent);
+        }
+
+    }
+
+
     @Override
     public View addMainView() {
         mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.activity_nick_name_update, null, false);
@@ -47,11 +55,7 @@ public class NickNameUpdateActivity extends AbsBaseLoadActivity {
 
         mBinding.edit.setFilters(new NameLengthFilter[]{new NameLengthFilter(16)});
 
-        if (getIntent()!=null){
-            mBinding.edit.setText(getIntent().getStringExtra(CdRouteHelper.DATASIGN));
-        }
-
-
+        mBinding.edit.setText(SPUtilHelpr.getUserName());
     }
 
     //确定按钮的点击回调监听
@@ -66,15 +70,6 @@ public class NickNameUpdateActivity extends AbsBaseLoadActivity {
 
     }
 
-    public static void open(Context context, String nickName) {
-        if (context!=null){
-            Intent intent = new Intent(context, NickNameUpdateActivity.class);
-            intent.putExtra(CdRouteHelper.DATASIGN, nickName);
-            context.startActivity(intent);
-
-        }
-
-    }
 
 
     /**
@@ -102,6 +97,7 @@ public class NickNameUpdateActivity extends AbsBaseLoadActivity {
                 EventBus.getDefault().post(nickNameUpdateModel);
 
                 UITipDialog.showSuccess(NickNameUpdateActivity.this, getString(R.string.update_nick_name_succ), dialogInterface -> {
+                    SPUtilHelpr.saveUserName(string);
                     finish();
                 });
             }

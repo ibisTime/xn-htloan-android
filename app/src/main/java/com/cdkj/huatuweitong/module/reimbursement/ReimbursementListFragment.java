@@ -63,7 +63,6 @@ public class ReimbursementListFragment extends AbsRefreshListFragment {
         }
         initRefreshHelper(10);
         mRefreshHelper.onDefaluteMRefresh(true);
-
     }
 
 
@@ -121,7 +120,6 @@ public class ReimbursementListFragment extends AbsRefreshListFragment {
         if (!SPUtilHelpr.isLoginNoStart()) {
             return;
         }
-
 
         if ("1".equals(type)) {
             //本月的应还款

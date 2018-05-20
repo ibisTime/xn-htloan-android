@@ -26,13 +26,13 @@
 
                     <com.youth.banner.Banner
                         android:id="@+id/first_banner"
-                        app:is_auto_play="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         app:indicator_drawable_selected="@null"
                         app:indicator_drawable_unselected="@null"
                         app:indicator_height="0dp"
                         app:indicator_width="0dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        app:is_auto_play="false" />
                     <!--设置轮播图的指示点-->
                     <!--app:indicator_drawable_selected="@drawable/banner_select"-->
                     <!--app:indicator_drawable_unselected="@drawable/banner_un_select"-->
@@ -112,11 +112,10 @@
                     <ImageView
                         android:layout_width="2dp"
                         android:layout_height="13dp"
-                        android:layout_marginLeft="15dp"
-                        android:background="@color/blue"
                         android:layout_marginBottom="8dp"
+                        android:layout_marginLeft="15dp"
                         android:layout_marginTop="8dp"
-                       />
+                        android:background="@color/blue" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -150,13 +149,13 @@
         </ScrollView>
 
         <TextView
-            android:layout_marginBottom="15dp"
             android:id="@+id/tv_pay_car"
             android:layout_width="match_parent"
             android:layout_height="44dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/btn_updata_psw_bg"
             android:clickable="true"
             android:gravity="center"

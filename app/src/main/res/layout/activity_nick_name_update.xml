@@ -12,6 +12,7 @@
             android:layout_height="60dp"
             android:background="@color/white"
             android:hint="请输入昵称"
+            android:maxLength="16"
             android:maxLines="1"
             android:paddingLeft="15dp"
             android:textColor="@color/text_black_cd"

@@ -17,7 +17,7 @@
             <!-- 圆角 -->
             <corners android:radius="5dp" />
             <!--填充颜色为白色-->
-            <solid android:color="@color/select_gray" />
+            <solid android:color="#939699" />
         </shape>
     </item>
 

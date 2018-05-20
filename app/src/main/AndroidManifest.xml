@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--com.cdkj.baselibrary.activitys.login.LoginActivity-->
+
+        <!-- com.cdkj.baselibrary.activitys.login.LoginActivity -->
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,19 +32,20 @@
         <activity android:name=".module.mfirst_page.CarDetailsActivity" />
         <activity android:name=".module.mfirst_page.OrderSubmitActivity" />
         <activity android:name=".module.mfirst_page.PayActivity" />
-
         <activity android:name="com.cdkj.baselibrary.activitys.login.RegisterActivity" />
         <activity android:name=".module.user.NickNameUpdateActivity" />
-        <activity android:name=".module.mfirst_page.ExhibitionCenterActivity"
-            android:windowSoftInputMode="stateHidden"
-            />
+        <activity
+            android:name=".module.mfirst_page.ExhibitionCenterActivity"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".module.user.MyCarLoanActivity" />
         <activity android:name=".module.reimbursement.RepaymentPlanActivity" />
-        <activity android:name=".module.reimbursement.AdvanceDetailsActivity"></activity>
-        <activity android:name=".module.product.ProductDetailsActivity"></activity>
-        <activity android:name=".module.order.OrderListActivity"></activity>
-        <activity android:name=".module.order.AllOrderTabActivity"></activity>
-        <activity android:name=".module.order.OrderDetailsActivity"></activity>
+        <activity android:name=".module.reimbursement.AdvanceDetailsActivity" />
+        <activity android:name=".module.product.ProductDetailsActivity" />
+        <!--<activity android:name=".module.order.OrderListActivity" />-->
+        <activity android:name=".module.order.AllOrderTabActivity" />
+        <activity android:name=".module.order.OrderDetailsActivity" />
+        <activity android:name=".module.user.MyCurrentActivity"></activity>
+        <activity android:name=".module.user.MyMessageActivity"></activity>
     </application>
 
 </manifest>

@@ -44,16 +44,15 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
     private CarDetailsBean currentdata;
     String[] ratSingData = new String[]{"1年", "2年", "3年"};
     String[] paySingData = new String[]{"30%", "50%", "70%"};
+    private int type;//0代表是从首页直接进入的  1  代表是 从申请车贷的时候进入的  2代表是从我的车贷申请进入的
 
     private int repayments = 1;//还款年限默认是一年
     private double downPayments = 0.3;//首付默认是30%
     private double rate = 0.1;//利率默认是0.1  利率和还款年限有关
-    private int type;//0代表是从首页直接进入的  1  代表是 从申请车贷的时候进入的  2代表是从我的车贷申请进入的
     private String code;//从我的车贷详情跳转过来的
     private BigDecimal salePrice;
 
     public static void open(Context context, int type) {
-//        startActivity();
         if (context != null) {
             Intent intent = new Intent(context, CarLoanCalculatorActivity.class);
             intent.putExtra("type", type);
@@ -63,7 +62,6 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
     }
 
     public static void open(Context context, CarDetailsBean data) {
-//        startActivity();
         if (context != null) {
             Intent intent = new Intent(context, CarLoanCalculatorActivity.class);
             //上页数据
@@ -74,10 +72,8 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
     }
 
     public static void open(Context context, String code) {
-//        startActivity();
         if (context != null) {
             Intent intent = new Intent(context, CarLoanCalculatorActivity.class);
-            //上页数据
             intent.putExtra("code", code);
             intent.putExtra("type", 2);
             context.startActivity(intent);
@@ -106,7 +102,6 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
         if (type == 0) {
             //从首页跳转过来的
 
-
         } else if (type == 1) {
             //去计算利息等等
             salePrice = currentdata.getSalePrice();
@@ -114,13 +109,31 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
             mBinding.tvModel.setText(currentdata.getName());//名字
             mBinding.tvBrand.setText(currentdata.getSeriesName());//品牌名字
 
+            mBinding.ivModel.setVisibility(View.GONE);
+            mBinding.ivBrand.setVisibility(View.GONE);
+
         } else if (type == 2) {
-            //去联网请求数据  通过参数code
+            //去联网请求数据  通过参数code  从我的车贷申请跳转过来
             setRightShow(View.GONE);
             getInitDataDetails();
         }
 
+    }
 
+    private void initOnclick() {
+        if (type == 0) {
+            mBinding.llOnePay.setOnClickListener(v -> showPaySingleDialog());
+            mBinding.llControlYear.setOnClickListener(v -> showRateSingleDialog());
+            mBinding.tvPayCar.setOnClickListener(v -> sendRegist());
+        } else if (type == 1) {
+            mBinding.llOnePay.setOnClickListener(v -> showPaySingleDialog());
+            mBinding.llControlYear.setOnClickListener(v -> showRateSingleDialog());
+            mBinding.tvPayCar.setOnClickListener(v -> sendRegist());
+
+        } else if (type == 2) {
+            //中间的按钮全部不能点击  也不能提交申请  因为已经申请过了
+            mBinding.tvPayCar.setVisibility(View.GONE);
+        }
     }
 
     public void getInitDataDetails() {
@@ -239,30 +252,13 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
 
     }
 
-    private void initOnclick() {
-        if (type == 0) {
-            mBinding.llOnePay.setOnClickListener(v -> showPaySingleDialog());
-            mBinding.llControlYear.setOnClickListener(v -> showRateSingleDialog());
-            mBinding.tvPayCar.setOnClickListener(v -> sendRegist());
-        } else if (type == 1) {
-            mBinding.llOnePay.setOnClickListener(v -> showPaySingleDialog());
-            mBinding.llControlYear.setOnClickListener(v -> showRateSingleDialog());
-            mBinding.tvPayCar.setOnClickListener(v -> sendRegist());
 
-        } else if (type == 2) {
-            //中间的按钮全部不能点击  也不能提交申请  因为已经申请过了
-            mBinding.tvPayCar.setVisibility(View.GONE);
-        }
-
-
-    }
 
     private void showPaySingleDialog() {
         //如果提交按钮不显示了  说明已经申请过了  就不能再进行选择了
         if (mBinding.tvPayCar.getVisibility() != View.VISIBLE) {
             return;
         }
-
 
         AlertDialog ad = new AlertDialog.Builder(CarLoanCalculatorActivity.this).setTitle("选择首付比")
                 .setSingleChoiceItems(paySingData, 0, new DialogInterface.OnClickListener() {
@@ -321,7 +317,9 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
         ad.show();
     }
 
-
+    /**
+     * 获取系统参数   利率和首付  暂没找到接口
+     */
     public void getKeyUrl() {
 
         Map<String, String> map = new HashMap<>();
@@ -360,8 +358,8 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
     private void setRightShow(int isShow) {
         mBinding.ivOnePay.setVisibility(isShow);
         mBinding.ivModel.setVisibility(isShow);
-        mBinding.ivControlYear.setVisibility(isShow);
         mBinding.ivBrand.setVisibility(isShow);
+        mBinding.ivControlYear.setVisibility(isShow);
 
     }
 

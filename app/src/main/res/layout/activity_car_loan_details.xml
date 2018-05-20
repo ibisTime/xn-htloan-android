@@ -31,7 +31,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="24dp"
-                        android:text="@string/remain_loans" />
+                        tools:text="@string/remain_loans" />
 
                     <TextView
                         android:id="@+id/tv_be_for_over"
@@ -39,7 +39,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="24dp"
-                        android:text="800.00"
+                        tools:text="800.00"
                         android:textColor="@color/shell_red"
                         android:textSize="32sp" />
                 </LinearLayout>
@@ -239,6 +239,8 @@
                 android:layout_weight="1" />
 
             <LinearLayout
+                android:id="@+id/ll_buttom"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:background="@color/white"

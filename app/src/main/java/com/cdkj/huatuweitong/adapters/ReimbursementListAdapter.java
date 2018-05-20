@@ -1,12 +1,13 @@
 package com.cdkj.huatuweitong.adapters;
 
-import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
+import com.cdkj.baselibrary.utils.DateUtil;
 import com.cdkj.baselibrary.utils.MoneyUtils;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.bean.ReimbursementRepaymentBean;
+import com.cdkj.huatuweitong.utlis.MyTextUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
@@ -34,25 +35,16 @@ public class ReimbursementListAdapter extends BaseQuickAdapter<ReimbursementRepa
 
             return;
         }
-        if (TextUtils.equals(item.getRefType(),"0")) {
-            helper.setText(R.id.tv_price,"车辆贷");
-        }else if (TextUtils.equals(item.getRefType(),"0")){
-            helper.setText(R.id.tv_price,"商品贷");
+        if (TextUtils.equals(item.getRefType(), "0")) {
+            helper.setText(R.id.tv_type_loan, "车辆贷");
+        } else if (TextUtils.equals(item.getRefType(), "1")) {
+            helper.setText(R.id.tv_type_loan, "商品贷");
         }
+
 
         helper.setText(R.id.tv_price, MoneyUtils.showPriceDouble(item.getLoanAmount()));
-        helper.setText(R.id.tv_time,item.getLoanEndDatetime());//loanEndDatetime
-        ;
-        if ("1".equals(item.getStatus())){
-            //已还完
-        helper.setText(R.id.tv_type,"已完成");
-            helper.setTextColor(R.id.tv_type, Color.rgb(153,153,153));
-        }else if("0".equals(item.getStatus())){
+        helper.setText(R.id.tv_time, DateUtil.formatStringData(item.getLoanEndDatetime(), "yyyy-MM-dd hh:mm:ss"));//loanEndDatetime
 
-        helper.setText(R.id.tv_type,"还款中");
-        helper.setTextColor(R.id.tv_type,Color.rgb(47,147,237));
-        }
-
-
+        MyTextUtils.setStatusType(helper.getView(R.id.tv_type), item.getStatus());
     }
 }

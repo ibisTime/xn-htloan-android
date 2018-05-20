@@ -1,7 +1,5 @@
 package com.cdkj.huatuweitong.bean;
 
-import java.math.BigDecimal;
-
 /**
  * @author 齐胜涛
  * @des ${TODO}
@@ -44,7 +42,7 @@ public class MyCarLoanFragmentBean {
     private String saleDesc;
     private String seriesCode;
     private String seriesName;
-    private BigDecimal sfAmount;
+    private double sfAmount;
     private double sfRate;
     private String status;
     private String userId;
@@ -146,11 +144,11 @@ public class MyCarLoanFragmentBean {
         this.seriesName = seriesName;
     }
 
-    public BigDecimal getSfAmount() {
+    public double getSfAmount() {
         return sfAmount;
     }
 
-    public void setSfAmount(BigDecimal sfAmount) {
+    public void setSfAmount(double sfAmount) {
         this.sfAmount = sfAmount;
     }
 

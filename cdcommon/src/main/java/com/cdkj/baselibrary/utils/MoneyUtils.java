@@ -63,6 +63,31 @@ public class MoneyUtils {
         return 0.00;
     }
 
+    /**
+     * sString 转变为  double  确保传入的string可以转换为double
+     * 否则出错就返回0.0
+     *
+     * @param money
+     * @return
+     */
+    public static Double stringToDouble(String money) {
+        try {
+            if (money != null) {
+                DecimalFormat df = new DecimalFormat("#######0.00");
+                df.setRoundingMode(RoundingMode.CEILING);
+                String showMoney = df.format(Double.parseDouble(money));
+                return new BigDecimal(showMoney).doubleValue();
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return 0.0;
+        }
+
+
+        return 0.00;
+    }
+
     public static String showPrice(BigDecimal big) {
 
         if (big != null) {
@@ -73,7 +98,7 @@ public class MoneyUtils {
 
     public static String showPriceDouble(double dou) {
 
-        return  showPrice(new BigDecimal(dou));
+        return showPrice(new BigDecimal(dou));
     }
 
     /**
@@ -90,7 +115,6 @@ public class MoneyUtils {
 
             return doubleFormatMoney((big.multiply(bigDecimal).doubleValue() / 1000));
         }
-
         return "0.00";
 
     }
@@ -135,14 +159,32 @@ public class MoneyUtils {
         return nf.format(num.divide(new BigDecimal(10000), 2, RoundingMode.HALF_UP).doubleValue()) + "万";
 
     }
+
     /**
      * bigDecimal  做乘法结果保留两位小数返回
+     *
      * @param bigDecimal
      * @return
      */
-    public static BigDecimal bigDecimalRide(BigDecimal bigDecimal,double dou) {
+    public static BigDecimal bigDecimalRide(BigDecimal bigDecimal, double dou) {
         BigDecimal multiply = bigDecimal.multiply(new BigDecimal(dou));
         BigDecimal decimal = multiply.setScale(2, BigDecimal.ROUND_DOWN);
         return decimal;
     }
+
+    public static String bigDecimalRide(double one, double two) {
+        BigDecimal multiply = new BigDecimal(one).multiply(new BigDecimal(two));
+        BigDecimal decimal = multiply.setScale(2, BigDecimal.ROUND_DOWN);
+        return decimal.stripTrailingZeros().toPlainString();
+    }
+
+    /**
+     * 用于向服务器传递参数将结果乘以1000变为厘
+     */
+    public static String doubleX1000(double money) {
+        BigDecimal multiply = new BigDecimal(money).multiply(new BigDecimal(1000));
+        BigDecimal decimal = multiply.setScale(2, BigDecimal.ROUND_DOWN);
+        return decimal.stripTrailingZeros().toPlainString();
+    }
+
 }

@@ -52,7 +52,9 @@
     <color name="btn_select_un">#028eff</color>
     <color name="btn_select">#0e978f</color>
     <color name="tablayout_select">#028eff</color>
+
     <color name="lineColor">#ebeaea</color>
+    <color name="line_color_broad">#f5f5f5</color>
 
 
     <color name="updateProgress_bg">#E7E7E7</color>

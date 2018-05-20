@@ -53,15 +53,14 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginRight="25dp"
-                        android:layout_marginTop="13dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
                             android:src="@drawable/good_hand" />
 
                         <TextView
@@ -77,7 +76,6 @@
                             android:id="@+id/tv_calculator"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_marginLeft="10dp"
                             android:gravity="center_vertical"
                             android:text="@string/car_calculator"
                             android:textColor="@color/text_black_cd"
@@ -89,25 +87,25 @@
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/recyclerView_recommend_car"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="18dp"
-                        android:layout_marginRight="18dp">
+                        android:layout_height="wrap_content">
 
                     </android.support.v7.widget.RecyclerView>
+
+                    <View
+                        style="@style/style_split_line_broad"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginRight="25dp"
-                        android:layout_marginTop="13dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/good_hand" />
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:src="@drawable/ic_heat" />
 
                         <TextView
                             android:layout_width="0dp"
@@ -124,6 +122,9 @@
                             android:src="@drawable/more_right" />
 
                     </LinearLayout>
+
+                    <View
+                        style="@style/style_split_line"/>
 
                     <RelativeLayout
                         android:id="@+id/lin_recycler"

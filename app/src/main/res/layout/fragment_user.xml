@@ -87,6 +87,7 @@
                     app:txt_left="积分账户" />
 
                 <com.cdkj.baselibrary.views.RowInfoLayout
+                    android:id="@+id/ril_credit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/line_height"
@@ -95,6 +96,7 @@
                     app:txt_left="信用报告" />
 
                 <com.cdkj.baselibrary.views.RowInfoLayout
+                    android:id="@+id/ril_message"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"

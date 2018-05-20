@@ -2,11 +2,14 @@ package com.cdkj.huatuweitong.adapters;
 
 import android.graphics.Color;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.widget.ProgressBar;
 
+import com.cdkj.baselibrary.utils.DateUtil;
 import com.cdkj.baselibrary.utils.MoneyUtils;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.bean.CarLoanDetailsActivityBean;
+import com.cdkj.huatuweitong.utlis.MyTextUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
@@ -31,34 +34,31 @@ public class RepaymentPlanActivityAdapter extends BaseQuickAdapter<CarLoanDetail
     protected void convert(BaseViewHolder helper, CarLoanDetailsActivityBean.RepayPlanListBean item) {
         ProgressBar pb = helper.getView(R.id.pb);
         helper.setText(R.id.tv_number, (int) item.getCurPeriods() + "/" + (int) item.getPeriods() + "期");
-        helper.setText(R.id.tv_time, item.getRepayDatetime());
-        helper.setText(R.id.tv_money, MoneyUtils.showPriceDouble(item.getPayedAmount() + item.getOverplusAmount()));
-        int progress = (int) (item.getPayedAmount() / (item.getPayedAmount() + item.getOverplusAmount()) * 100);//已还比例
+        helper.setText(R.id.tv_time, DateUtil.formatStringData(item.getRepayDatetime(), DateUtil.DEFAULT_DATE_FMT));
+        helper.setText(R.id.tv_money, MoneyUtils.showPriceDouble(item.getRepayCapital()));
+
+        //计算已还比例
+        int progress = (int) (item.getPayedAmount() / item.getRepayCapital() * 100);//已还比例
         pb.setProgress(progress);
 
-        if (item.getStatus().equals("0")) {
-            if (0 != (int) item.getOverplusAmount() && item.getPayedAmount() == 0) {
-                //剩余金额  不等于0  已还金额等于0  说明还是为还状态
+        MyTextUtils.setStatusType(helper.getView(R.id.tv_type), item.getStatus());
+
+        if (TextUtils.equals("0", item.getStatus())) {
+
+            if (item.getPayedAmount() == 0.0) {
                 helper.setText(R.id.tv_type, "未还");
-                helper.setTextColor(R.id.tv_type, Color.rgb(153, 153, 153));
             } else {
                 helper.setText(R.id.tv_type, "已还" + MoneyUtils.showPriceDouble(item.getPayedAmount()) + "   " + "剩余" + MoneyUtils.showPriceDouble(item.getOverplusAmount()));
-                helper.setTextColor(R.id.tv_type, Color.rgb(47, 147, 237));
+
             }
 
-        } else if (item.getStatus().equals("1")) {
-            //还款已完成
-            helper.setText(R.id.tv_type, "已还");
-            helper.setTextColor(R.id.tv_type, Color.rgb(153, 153, 153));
+        } else if (TextUtils.equals("1", item.getStatus())) {
+            //完成
+            pb.setProgress(100);
         } else if (item.getStatus().equals("5")) {
             //逾期
             helper.setText(R.id.tv_type, "逾期");
             helper.setTextColor(R.id.tv_type, Color.RED);
         }
-
-//                helper.tv_time
-//        helper.tv_number
-//        helper.tv_money
-//        helper.tv_type
     }
 }

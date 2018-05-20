@@ -10,6 +10,6 @@ public class UserCreditActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_credit);
+        setContentView(R.layout.activity_my_current);
     }
 }

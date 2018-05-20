@@ -100,6 +100,12 @@ public class FirstPageFragment extends BaseLazyFragment {
             }
 
             @Override
+            public void onRefresh(int pageindex, int limit) {
+                super.onRefresh(pageindex, limit);
+                initCarRecommendBeanData();
+            }
+
+            @Override
             public RecyclerView getRecyclerView() {
                 return mBinding.recyclerViewRecommendProduct;
             }
@@ -193,6 +199,7 @@ public class FirstPageFragment extends BaseLazyFragment {
     private void initCarRecommendBeanData() {
         Map<String, String> map = new HashMap<>();
         map.put("location", "1");
+        map.put("status", "1");
         Call call = RetrofitUtils.createApi(MyApiServer.class).getFirstPageCarRecommendCar("630416", StringUtils.getJsonToString(map));
 
         addCall(call);

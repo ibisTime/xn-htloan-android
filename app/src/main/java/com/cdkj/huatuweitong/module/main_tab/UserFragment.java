@@ -21,6 +21,8 @@ import com.cdkj.huatuweitong.bean.UserFragmentBean;
 import com.cdkj.huatuweitong.databinding.FragmentUserBinding;
 import com.cdkj.huatuweitong.module.order.AllOrderTabActivity;
 import com.cdkj.huatuweitong.module.user.MyCarLoanActivity;
+import com.cdkj.huatuweitong.module.user.MyCurrentActivity;
+import com.cdkj.huatuweitong.module.user.MyMessageActivity;
 import com.cdkj.huatuweitong.module.user.UserInfoUpdateActivity;
 
 import java.util.HashMap;
@@ -48,9 +50,11 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_user, null, false);
-        mBinding.imgUserLogo.setOnClickListener(this);
+        mBinding.linUserHead.setOnClickListener(this);
         mBinding.rflMyCarLoan.setOnClickListener(this);
         mBinding.rflMyOrder.setOnClickListener(this);
+        mBinding.rilCredit.setOnClickListener(this);
+        mBinding.rilMessage.setOnClickListener(this);
 
         return mBinding.getRoot();
     }
@@ -68,7 +72,7 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
     }
 
     public void initData() {
-        if (!SPUtilHelpr.isLoginNoStart()){
+        if (!SPUtilHelpr.isLoginNoStart()) {
 //            LoginActivity.open(mActivity,true);
 
             return;
@@ -87,6 +91,10 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
                 ImgUtils.loadQiniuLogo(mActivity, data.getPhoto(), mBinding.imgUserLogo);
                 mBinding.tvUserName.setText(data.getNickname());
                 mBinding.tvUserPhone.setText(data.getMobile());
+
+                SPUtilHelpr.saveUserPhoto(data.getPhoto());
+                SPUtilHelpr.saveUserName(data.getNickname());
+                SPUtilHelpr.saveUserPhoneNum(data.getMobile());
             }
 
             @Override
@@ -111,7 +119,6 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
 
     private void showPotoDialog() {
 
-
     }
 
     @Override
@@ -123,15 +130,22 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.img_user_logo:
-
                 UserInfoUpdateActivity.open(getContext());
                 break;
-
+            case R.id.lin_user_head:
+                UserInfoUpdateActivity.open(getContext());
+                break;
+            case R.id.ril_message:
+                MyMessageActivity.open(mActivity);
+                break;
             case R.id.rfl_my_car_loan:
                 MyCarLoanActivity.open(mActivity);
                 break;
             case R.id.rfl_my_order:
                 AllOrderTabActivity.open(mActivity);
+                break;
+            case R.id.ril_credit:
+                MyCurrentActivity.open(mActivity);
                 break;
         }
     }

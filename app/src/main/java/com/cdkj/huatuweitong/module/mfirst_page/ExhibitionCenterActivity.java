@@ -82,7 +82,7 @@ public class ExhibitionCenterActivity extends AbsRefreshListActivity<ResponseInL
 
     @Override
     public void getListRequest(int pageindex, int limit, boolean isShowDialog) {
-        initData("", pageindex, limit, isShowDialog);
+        initData(pageindex, limit, isShowDialog);
 
     }
 
@@ -99,7 +99,7 @@ public class ExhibitionCenterActivity extends AbsRefreshListActivity<ResponseInL
     }
 
 
-    private void initData(String name, int pageindex, int limit, boolean isShowDialog) {
+    private void initData(int pageindex, int limit, boolean isShowDialog) {
         if (isShowDialog) {
             showLoadingDialog();
         }

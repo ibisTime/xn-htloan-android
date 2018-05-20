@@ -3,6 +3,7 @@ package com.cdkj.huatuweitong.api;
 import com.cdkj.baselibrary.api.BaseResponseListModel;
 import com.cdkj.baselibrary.api.BaseResponseModel;
 import com.cdkj.baselibrary.api.ResponseInListModel;
+import com.cdkj.huatuweitong.bean.AdvanceDetailsActivityBean;
 import com.cdkj.huatuweitong.bean.CarDetailsBean;
 import com.cdkj.huatuweitong.bean.CarLoanCalculatorActivityDetailsBean;
 import com.cdkj.huatuweitong.bean.CarLoanCalculatorSendBean;
@@ -14,10 +15,13 @@ import com.cdkj.huatuweitong.bean.FirstPageCarRecommendBean;
 import com.cdkj.huatuweitong.bean.IsSetPayPassWord;
 import com.cdkj.huatuweitong.bean.LoginBean;
 import com.cdkj.huatuweitong.bean.MyCarLoanFragmentBean;
+import com.cdkj.huatuweitong.bean.MyMessageAFBean;
 import com.cdkj.huatuweitong.bean.OrderBean;
 import com.cdkj.huatuweitong.bean.RecommendProductBean;
 import com.cdkj.huatuweitong.bean.ReimbursementRepaymentBean;
 import com.cdkj.huatuweitong.bean.ReimbursementRepaymentMonthBean;
+import com.cdkj.huatuweitong.bean.SystemEarlyRepaymentBean;
+import com.cdkj.huatuweitong.bean.TextBean;
 import com.cdkj.huatuweitong.bean.UserFragmentBean;
 
 import retrofit2.Call;
@@ -228,4 +232,53 @@ public interface MyApiServer {
     @FormUrlEncoded
     @POST("api")
     Call<BaseResponseModel<OrderBean>> getOrderDetails(@Field("code") String code, @Field("json") String json);
+
+
+    /**
+     * 我的消息
+     *
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<ResponseInListModel<MyMessageAFBean>>> getMyMessage(@Field("code") String code, @Field("json") String json);
+
+    /**
+     * 获取提前还款的  系统参数  服务费     cvalue字段就是服务费
+     *
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<SystemEarlyRepaymentBean>> getSystemEarlyRepayment(@Field("code") String code, @Field("json") String json);
+
+
+    /**
+     * 获取提前还款的  系统参数  服务费     cvalue字段就是服务费
+     *
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<AdvanceDetailsActivityBean>> getAdvanceDetailsActivityBean(@Field("code") String code, @Field("json") String json);
+
+
+
+    /**
+     * 获取提前还款的  系统参数  服务费     cvalue字段就是服务费
+     *
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<TextBean>> requestEarlyRepaymentCurrent(@Field("code") String code, @Field("json") String json);
+
 }

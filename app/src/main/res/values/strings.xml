@@ -4,7 +4,7 @@
     <string name="firstpage">首页</string>
     <string name="recommend_car">推荐车型</string>
     <string name="car_calculator">车贷计算器</string>
-    <string name="recommend_product">推荐商品</string>
+    <string name="recommend_product">推荐分期</string>
     <string name="reimbursement">还款</string>
 
     <string name="car_loan_total_price">总价(元)</string>
@@ -54,7 +54,7 @@
     <string name="update_logo_succ">头像更换成功</string>
     <string name="loan_sms">贷款信息</string>
     <string name="loan_car">贷款车辆</string>
-    <string name="loan_total">贷款总额</string>
+    <string name="loan_total">欠款总额</string>
     <string name="loan_term">贷款期限</string>
     <string name="repayment_plan">还款计划</string>
     <string name="repayment_number">还款卡号</string>

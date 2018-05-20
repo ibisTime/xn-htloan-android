@@ -78,8 +78,8 @@
                 android:hint="@string/get_check_code"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:textColor="@color/gray_text"
-                android:textColorHint="@color/pink_text" />
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
 
         </LinearLayout>
 
@@ -150,6 +150,7 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginLeft="15dp"
+            android:textColor="@color/white"
             android:layout_marginRight="15dp"
             android:layout_marginTop="60dp"
             android:background="@drawable/btn_updata_psw_bg"
