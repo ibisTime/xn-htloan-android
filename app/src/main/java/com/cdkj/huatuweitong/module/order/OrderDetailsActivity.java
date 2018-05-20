@@ -20,6 +20,7 @@ import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.OrderBean;
 import com.cdkj.huatuweitong.databinding.ActivityOrderDetailsBinding;
+import com.cdkj.huatuweitong.other.OrderHelper;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -104,7 +105,7 @@ public class OrderDetailsActivity extends AbsBaseLoadActivity {
 
         mBinding.tvCode.setText(data.getCode());
         mBinding.tvPayDate.setText(DateUtil.formatStringData(data.getApplyDatetime(), DateUtil.DEFAULT_DATE_FMT));
-        mBinding.tvOrderState.setText(getOrderStateString(data.getStatus()));
+        mBinding.tvOrderState.setText(OrderHelper.ORDER_STATE.fromTypeName(data.getStatus()));
 
         if (data.getProductOrderList() != null && data.getProductOrderList().size() > 0 && data.getProductOrderList().get(0).getProduct() != null) {
             mBinding.tvName.setText(data.getProductOrderList().get(0).getProduct().getName());
@@ -113,19 +114,6 @@ public class OrderDetailsActivity extends AbsBaseLoadActivity {
             ImgUtils.loadQiniuImg(this, data.getProductOrderList().get(0).getProduct().getAdvPic(), mBinding.imgTitle);
         }
 
-    }
-
-    private String getOrderStateString(String status) {
-        switch (status) {
-            case "1":
-                return "待支付";
-            case "3":
-                return "待发货";
-            case "2":
-                return "还款中";
-
-        }
-        return "";
     }
 
 

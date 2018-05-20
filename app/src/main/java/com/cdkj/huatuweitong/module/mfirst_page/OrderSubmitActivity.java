@@ -173,7 +173,7 @@ public class OrderSubmitActivity extends AbsBaseLoadActivity {
             @Override
             protected void onSuccess(String data, String SucMessage) {
                 UITipDialog.showSuccess(OrderSubmitActivity.this,"下单成功",dialog -> {
-                    PayActivity.open(OrderSubmitActivity.this, data, mBinding.tvNeedPay.getText().toString());
+                    PayActivity.open(OrderSubmitActivity.this, data, mBinding.tvNeedPay.getText().toString(),false);
                     finish();
                 });
             }

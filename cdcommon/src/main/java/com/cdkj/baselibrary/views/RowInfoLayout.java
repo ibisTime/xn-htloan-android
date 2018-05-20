@@ -101,6 +101,11 @@ public class RowInfoLayout extends LinearLayout {
         tvRight.setText(txtRight);
         tvRight.setVisibility(VISIBLE);
     }
+    public void setTvLeft(String str) {
+        txtLeft = str;
+        tvLeft.setText(str);
+        tvLeft.setVisibility(VISIBLE);
+    }
 
 
     private void init(Context context) {

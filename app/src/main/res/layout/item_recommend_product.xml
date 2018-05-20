@@ -3,8 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp"
-    android:orientation="horizontal">
+    android:background="@color/white"
+    android:orientation="horizontal"
+    android:paddingBottom="10dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="10dp">
 
 
     <FrameLayout
@@ -52,7 +56,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="40dp"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -66,6 +70,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
+                    android:maxLines="2"
                     android:textColor="@color/orange"
                     android:textSize="16sp"
                     tools:text="39393939393939" />
@@ -74,7 +79,8 @@
                     android:id="@+id/tv_mouth_money"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="25dp"
+                    android:maxLines="2"
                     android:text="月供：3231321"
                     android:textColor="@color/text_gray_666666"
                     android:textSize="13sp" />

@@ -5,7 +5,9 @@
     android:layout_height="wrap_content"
     android:layout_marginRight="18dp"
     android:background="@color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingBottom="15dp"
+    android:paddingTop="15dp">
 
     <ImageView
         android:id="@+id/iv_src"

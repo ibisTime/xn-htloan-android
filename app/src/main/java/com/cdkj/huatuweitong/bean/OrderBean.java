@@ -30,7 +30,7 @@ public class OrderBean {
      * yunfei : 0
      */
 
-    private int amount;
+    private BigDecimal amount;
     private String applyDatetime;
     private String applyNote;
     private String applyUser;
@@ -48,11 +48,11 @@ public class OrderBean {
     private int yunfei;
     private List<ProductOrderListBean> productOrderList;
 
-    public int getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 

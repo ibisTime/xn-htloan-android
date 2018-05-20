@@ -175,32 +175,34 @@
                 android:layout_height="0dp"
                 android:layout_weight="1" />
 
-
             <TextView
+                android:visibility="gone"
                 android:id="@+id/tv_cancel_order"
                 android:layout_width="95dp"
                 android:layout_height="35dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="10dp"
+                android:background="@drawable/gray_line_bg"
                 android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:text="取消订单"
                 android:textColor="@color/txt_gray"
-                android:textSize="14sp"
-                android:visibility="gone" />
+                android:textSize="14sp" />
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/tv_order_state"
                 android:layout_width="95dp"
                 android:layout_height="35dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="10dp"
+                android:background="@drawable/blue_line_txt_type"
                 android:gravity="center"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
+                android:textColor="@color/blue"
                 android:textSize="14sp"
-                android:visibility="gone"
                 tools:text="取消订单" />
 
 

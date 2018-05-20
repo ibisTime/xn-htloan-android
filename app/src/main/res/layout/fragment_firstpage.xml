@@ -11,7 +11,6 @@
             style="@style/title_top_style"
             android:text="@string/firstpage" />
 
-
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
@@ -30,7 +29,8 @@
                 android:id="@+id/scrollView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/white">
+                android:background="@color/white"
+                android:scrollbars="none">
 
 
                 <LinearLayout
@@ -50,12 +50,14 @@
                         app:indicator_margin="6dp"
                         app:indicator_width="7dp" />
 
+                    <View style="@style/style_split_line" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginRight="25dp"
-                        android:layout_marginTop="13dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="1dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
@@ -83,8 +85,9 @@
                             android:textColor="@color/text_black_cd"
                             android:textSize="15sp" />
 
-
                     </LinearLayout>
+
+                    <View style="@style/style_split_line" />
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/recyclerView_recommend_car"
@@ -95,11 +98,13 @@
 
                     </android.support.v7.widget.RecyclerView>
 
+                    <View style="@style/style_split_line" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginRight="25dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
                         android:layout_marginTop="13dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
@@ -125,6 +130,8 @@
 
                     </LinearLayout>
 
+                    <View style="@style/style_split_line" />
+
                     <RelativeLayout
                         android:id="@+id/lin_recycler"
                         android:layout_width="match_parent"
@@ -134,9 +141,7 @@
                         <android.support.v7.widget.RecyclerView
                             android:id="@+id/recyclerView_recommend_product"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="3dp">
+                            android:layout_height="match_parent">
 
                         </android.support.v7.widget.RecyclerView>
                     </RelativeLayout>

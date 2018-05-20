@@ -4,7 +4,7 @@
     <string name="firstpage">首页</string>
     <string name="recommend_car">推荐车型</string>
     <string name="car_calculator">车贷计算器</string>
-    <string name="recommend_product">推荐商品</string>
+    <string name="recommend_product">推荐分期</string>
     <string name="reimbursement">还款</string>
 
     <string name="car_loan_total_price">总价(元)</string>
@@ -74,4 +74,5 @@
     <string name="no_product">该规格产品缺货</string>
     <string name="empty_apply_order">申请单为空</string>
     <string name="my_order">我的订单</string>
+    <string name="waite_pay">待支付</string>
 </resources>

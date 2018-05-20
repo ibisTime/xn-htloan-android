@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 
 import com.cdkj.baselibrary.base.AbsTablayoutActivity;
 import com.cdkj.huatuweitong.R;
+import com.cdkj.huatuweitong.other.OrderHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,11 +40,11 @@ public class AllOrderTabActivity extends AbsTablayoutActivity {
 
         List<Fragment> fragments = new ArrayList<>();
 
-        fragments.add(OrderListFragment.getInstance());
-        fragments.add(OrderListFragment.getInstance());
-        fragments.add(OrderListFragment.getInstance());
-        fragments.add(OrderListFragment.getInstance());
-        fragments.add(OrderListFragment.getInstance());
+        fragments.add(OrderListFragment.getInstance(""));
+        fragments.add(OrderListFragment.getInstance(OrderHelper.ORDER_STATE.TO_PAY.getState()));
+        fragments.add(OrderListFragment.getInstance(OrderHelper.ORDER_STATE.PAY_YES.getState()));
+        fragments.add(OrderListFragment.getInstance(OrderHelper.ORDER_STATE.SEND.getState()));
+        fragments.add(OrderListFragment.getInstance(OrderHelper.ORDER_STATE.RECEIVE.getState()));
 
         return fragments;
     }
@@ -54,8 +55,8 @@ public class AllOrderTabActivity extends AbsTablayoutActivity {
         titles.add("全部");
         titles.add("待支付");
         titles.add("待发货");
-        titles.add("还款中");
-        titles.add("已还款");
+        titles.add("已发货");
+        titles.add("已收货");
         return titles;
     }
 }

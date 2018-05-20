@@ -180,8 +180,6 @@ public class PayPwdModifyActivity extends AbsBaseLoadActivity implements SendCod
                 disMissLoading();
             }
         });
-
-
     }
 
 

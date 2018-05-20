@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cdkj.baselibrary.api.BaseResponseModel;
@@ -91,7 +93,7 @@ public class ProductDetailsActivity extends AbsBaseLoadActivity {
 
     private void initListener() {
         mBinding.buttomLayout.btnYes.setOnClickListener(v -> {
-            //显示
+
             if (productDialog == null) {
                 dialogBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.dialog_commodity_details_check, null, false);
                 dialogBinding.ivClose.setOnClickListener(v1 -> productDialog.dismiss());
@@ -183,7 +185,7 @@ public class ProductDetailsActivity extends AbsBaseLoadActivity {
      */
     public void setShowData(RecommendProductBean data) {
         if (data == null) return;
-        setBannerData(StringUtils.splitAsPicList(data.getPic()));
+        setBannerData(StringUtils.splitAsPicList(data.getAdvPic()));
         mBinding.tvProductName.setText(data.getName());
         mBinding.tvProductPrice.setText(MoneyUtils.getShowPriceSign(data.getPrice()));
 
@@ -215,6 +217,7 @@ public class ProductDetailsActivity extends AbsBaseLoadActivity {
 
         /*添加包装*/
         if (data.getProductSpecsList() != null) {
+
             int i = -1;
             for (RecommendProductBean.ProductSpecsListBean productSpecsListBean : data.getProductSpecsList()) {
                 if (productSpecsListBean == null) continue;
@@ -228,8 +231,14 @@ public class ProductDetailsActivity extends AbsBaseLoadActivity {
                 tv2.setOnClickListener(v -> {
                     specViewStateChange((Integer) v.getTag());
                 });
+
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT);
+
+                layoutParams.setMargins(0, 15, 30, 15);
+                tv2.setTextColor(ContextCompat.getColor(ProductDetailsActivity.this, R.color.text_black_cd));
                 specViewList.add(tv2);
-                dialogBinding.flexboxSpec.addView(tv2);
+                dialogBinding.flexboxSpec.addView(tv2, layoutParams);
             }
         }
     }
@@ -248,7 +257,7 @@ public class ProductDetailsActivity extends AbsBaseLoadActivity {
         for (TextView textView : specViewList) {
             if (position == i) {
                 textView.setBackgroundResource(R.drawable.product_spce_bg_blue);
-                textView.setTextColor(ContextCompat.getColor(ProductDetailsActivity.this,R.color.white));
+                textView.setTextColor(ContextCompat.getColor(ProductDetailsActivity.this, R.color.white));
                 specsListBean = recommendProductBean.getProductSpecsList().get(i);
                 int quantity = specsListBean.getQuantity();
                 if (quantity <= 0) {

@@ -84,8 +84,8 @@
 
             <ImageView
                 android:id="@+id/iv_yue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:src="@mipmap/ic_pay_check" />
 
         </LinearLayout>
@@ -118,8 +118,8 @@
 
             <ImageView
                 android:id="@+id/iv_wechat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:src="@mipmap/ic_pay_uncheck" />
 
         </LinearLayout>
@@ -152,8 +152,8 @@
 
             <ImageView
                 android:id="@+id/iv_ali"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:src="@mipmap/ic_pay_uncheck" />
 
         </LinearLayout>

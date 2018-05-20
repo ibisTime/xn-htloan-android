@@ -57,6 +57,7 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
 
     @Override
     protected void lazyLoad() {
+        if (mBinding == null) return;
         setUsetPotoImg();
 //        initData();
     }
@@ -68,7 +69,7 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
     }
 
     public void initData() {
-        if (!SPUtilHelpr.isLoginNoStart()){
+        if (!SPUtilHelpr.isLoginNoStart()) {
 //            LoginActivity.open(mActivity,true);
 
             return;
@@ -87,6 +88,10 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
                 ImgUtils.loadQiniuLogo(mActivity, data.getPhoto(), mBinding.imgUserLogo);
                 mBinding.tvUserName.setText(data.getNickname());
                 mBinding.tvUserPhone.setText(data.getMobile());
+
+                SPUtilHelpr.saveUserId(data.getUserId());
+                SPUtilHelpr.saveUserPhoneNum(data.getMobile());
+                SPUtilHelpr.saveisTradepwdFlag(data.isTradepwdFlag());
             }
 
             @Override
@@ -105,7 +110,6 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
     }
 
     private void setUsetPotoImg() {
-
         showPotoDialog();
     }
 

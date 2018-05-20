@@ -6,12 +6,12 @@ package com.cdkj.baselibrary.appmanager;
 
 public class MyCdConfig {
 
-    public final static String COMPANYCODE = "CD-CXB000020";
-    public final static String SYSTEMCODE = "CD-CXB000020";
+    public final static String COMPANYCODE = "CD-HTWT000020";
+    public final static String SYSTEMCODE = "CD-HTWT000020";
 
     public final static String USERTYPE = "C";//用户类型
 
-    public final static String QINIUURL = "http://p6aev1fk1.bkt.clouddn.com/";//七牛七牛
+    public final static String QINIUURL = "http://p8i9tvzga.bkt.clouddn.com/";//七牛七牛
 
     public final static String PROJECTNAME = "cdcommon";
 

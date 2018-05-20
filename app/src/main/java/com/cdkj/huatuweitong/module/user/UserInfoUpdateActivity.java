@@ -10,6 +10,7 @@ import android.view.View;
 import com.cdkj.baselibrary.activitys.BankCardListActivity;
 import com.cdkj.baselibrary.activitys.FindPwdActivity;
 import com.cdkj.baselibrary.activitys.ImageSelectActivity;
+import com.cdkj.baselibrary.activitys.PayPwdModifyActivity;
 import com.cdkj.baselibrary.activitys.address.AddressListActivity;
 import com.cdkj.baselibrary.activitys.login.LoginActivity;
 import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
@@ -56,6 +57,7 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
         return mBinding.getRoot();
     }
 
+
     @Override
     public void afterCreate(Bundle savedInstanceState) {
         mBaseBinding.titleView.setMidTitle(getString(R.string.UserInfoUpdateActivityTitle));
@@ -79,11 +81,12 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
         });
         mBinding.rowPayPsw.setOnClickListener(v -> {
             //修改支付密码
-//            PayPwdModifyActivity.open(this,);
+            PayPwdModifyActivity.open(this, SPUtilHelpr.isTradepwdFlag(), SPUtilHelpr.getUserPhoneNum());
+
         });
         mBinding.rowReceiveAddress.setOnClickListener(v -> {
             //地址
-            AddressListActivity.open(this,false);
+            AddressListActivity.open(this, false);
         });
 
         mBinding.rowReceiveBankCaard.setOnClickListener(v -> {
@@ -96,7 +99,7 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
             showDoubleWarnListen(getString(R.string.sure_logout), view -> {
                 SPUtilHelpr.logOutClear();
                 EventBus.getDefault().post(new EventFinishAll());
-                LoginActivity.open(UserInfoUpdateActivity.this,true);
+                LoginActivity.open(UserInfoUpdateActivity.this, true);
 //                setShowState();
 //                UITipDialog.showSuccess(mActivity, getString(R.string.logout_succ), dialogInterface -> {
 //                    LoginActivity.open(mActivity,false);
@@ -113,6 +116,16 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
 //        if (mUserInfo != null) {
 //            mUserInfo.setNickname(nickNameUpdateModel.getName());
 //        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (SPUtilHelpr.isTradepwdFlag()) {
+            mBinding.rowPayPsw.setTvLeft(getString(R.string.pay_psw));
+        } else {
+            mBinding.rowPayPsw.setTvLeft(getString(R.string.set_pay_pwd));
+        }
     }
 
     @Override
