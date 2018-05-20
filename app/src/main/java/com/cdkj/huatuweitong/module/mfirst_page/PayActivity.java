@@ -22,8 +22,11 @@ import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.IsSetPayPassWord;
+import com.cdkj.huatuweitong.bean.PaySucc;
 import com.cdkj.huatuweitong.databinding.ActivityPayBinding;
 import com.cdkj.huatuweitong.module.order.AllOrderTabActivity;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -40,19 +43,23 @@ public class PayActivity extends AbsBaseLoadActivity {
     private static final int WE_PAY = 1;//微信支付
 
     private static final String PAYMONEY = "1";//支付金额
+    private static final String ISLIST = "2";//是否来自支付列表
 
     private String mOrderCode;//生成的订单code
+
+    private boolean isFromPayList;
 
 
     /**
      * @param context
      * @param payMoney 支付金额
      */
-    public static void open(Context context, String orderCode, String payMoney) {
+    public static void open(Context context, String orderCode, String payMoney, boolean isFromList) {
         if (context != null) {
             Intent intent = new Intent(context, PayActivity.class);
             intent.putExtra(CdRouteHelper.DATASIGN, orderCode);
             intent.putExtra(PAYMONEY, payMoney);
+            intent.putExtra(ISLIST, isFromList);
             context.startActivity(intent);
         }
     }
@@ -69,6 +76,7 @@ public class PayActivity extends AbsBaseLoadActivity {
 
         if (getIntent() != null) {
             mOrderCode = getIntent().getStringExtra(CdRouteHelper.DATASIGN);
+            isFromPayList = getIntent().getBooleanExtra(ISLIST, false);
             mBinding.tvPayMoney.setText(getIntent().getStringExtra(PAYMONEY));
         }
 
@@ -143,7 +151,12 @@ public class PayActivity extends AbsBaseLoadActivity {
             protected void onSuccess(IsSuccessModes data, String SucMessage) {
                 if (data.isSuccess()) {
                     UITipDialog.showSuccess(PayActivity.this, "支付成功", dialog -> {
-                        AllOrderTabActivity.open(PayActivity.this);
+
+                        EventBus.getDefault().post(new PaySucc());//发送支付成功通知
+
+                        if (!isFromPayList) {
+                            AllOrderTabActivity.open(PayActivity.this);
+                        }
                         finish();
                     });
                 } else {

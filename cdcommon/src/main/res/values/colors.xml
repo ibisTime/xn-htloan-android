@@ -64,6 +64,7 @@
 <!--caijianView-->
     <color name="white_translucent">#AAFFFFFF</color>
     <color name="black_translucent">#B0000000</color>
+    <color name="translucent">#00000000</color>
 
     <color name="border">@color/white_translucent</color>
     <color name="guideline">@color/white_translucent</color>
@@ -74,7 +75,7 @@
     <!--app模块 相同 -->
 
     <color name="line_gray_cd">#dedede</color>
-    <color name="text_black_cd">#484848</color>
+    <color name="text_black_cd">#333333</color>
 
 
 </resources>

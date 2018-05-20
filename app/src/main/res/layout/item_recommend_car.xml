@@ -6,7 +6,9 @@
     android:layout_marginTop="10dp"
     android:layout_marginLeft="15dp"
     android:background="@color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingBottom="15dp"
+    android:paddingTop="15dp">
 
     <ImageView
         android:id="@+id/iv_src"

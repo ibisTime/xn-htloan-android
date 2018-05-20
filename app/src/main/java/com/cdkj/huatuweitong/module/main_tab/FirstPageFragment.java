@@ -34,6 +34,7 @@ import com.cdkj.huatuweitong.databinding.FragmentFirstpageBinding;
 import com.cdkj.huatuweitong.module.mfirst_page.CarLoanCalculatorActivity;
 import com.cdkj.huatuweitong.module.mfirst_page.ExhibitionCenterActivity;
 import com.cdkj.huatuweitong.module.product.ProductDetailsActivity;
+import com.cdkj.huatuweitong.other.OrderHelper;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.youth.banner.BannerConfig;
 
@@ -91,6 +92,9 @@ public class FirstPageFragment extends BaseLazyFragment {
         return fragment;
     }
 
+    /**
+     *
+     */
     private void initRefreshHelper() {
 
         mRefreshHelper = new RefreshHelper(mActivity, new BaseRefreshCallBack(mActivity) {
@@ -118,6 +122,12 @@ public class FirstPageFragment extends BaseLazyFragment {
             @Override
             public void getListDataRequest(int pageindex, int limit, boolean isShowDialog) {
                 getRecommentdProduct(pageindex, limit, isShowDialog);
+            }
+
+            @Override
+            public void onRefresh(int pageindex, int limit) {
+                super.onRefresh(pageindex, limit);
+                getBannerDataRequest();
             }
         });
 
@@ -164,7 +174,7 @@ public class FirstPageFragment extends BaseLazyFragment {
     public void getBannerDataRequest() {
 
         Map<String, String> map = RetrofitUtils.getRequestMap();
-        map.put("location", "index_banner");
+        map.put("location", "0");
         map.put("type", "2");
         map.put("orderColumn", "order_no");
         map.put("orderDir", "asc");
@@ -184,7 +194,7 @@ public class FirstPageFragment extends BaseLazyFragment {
 
             @Override
             protected void onReqFailure(String errorCode, String errorMessage) {
-
+                super.onReqFailure(errorCode, errorMessage);
             }
 
             @Override
@@ -292,7 +302,6 @@ public class FirstPageFragment extends BaseLazyFragment {
 
 
     private void initBanner() {
-
         mBinding.firstBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
         mBinding.firstBanner.setIndicatorGravity(BannerConfig.CENTER);
         mBinding.firstBanner.setImageLoader(new GlideFirstPageBannerImageLoader());

@@ -74,4 +74,5 @@
     <string name="no_product">该规格产品缺货</string>
     <string name="empty_apply_order">申请单为空</string>
     <string name="my_order">我的订单</string>
+    <string name="waite_pay">待支付</string>
 </resources>

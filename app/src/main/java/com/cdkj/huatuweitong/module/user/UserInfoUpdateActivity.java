@@ -10,6 +10,7 @@ import android.view.View;
 import com.cdkj.baselibrary.activitys.BankCardListActivity;
 import com.cdkj.baselibrary.activitys.FindPwdActivity;
 import com.cdkj.baselibrary.activitys.ImageSelectActivity;
+import com.cdkj.baselibrary.activitys.PayPwdModifyActivity;
 import com.cdkj.baselibrary.activitys.address.AddressListActivity;
 import com.cdkj.baselibrary.activitys.login.LoginActivity;
 import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
@@ -72,37 +73,50 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
         ImgUtils.loadQiniuLogo(this,SPUtilHelpr.getUserPhoto(), mBinding.imgLogo);
 
         mBinding.layoutLogo.setOnClickListener(v -> {
-            ImageSelectActivity.launch(this, PHOTOFLAG, false);    //头像
+            //头像
+            ImageSelectActivity.launch(this, PHOTOFLAG, false);
         });
         mBinding.rowNickName.setOnClickListener(v -> {
-
-            NickNameUpdateActivity.open(this); //昵称
+            //昵称
+            NickNameUpdateActivity.open(this, "");
         });
         mBinding.rowPhone.setOnClickListener(v -> {
-            UpDataPhoneActivity.open(UserInfoUpdateActivity.this); //修改手机号
+            //修改手机号
+            UpDataPhoneActivity.open(UserInfoUpdateActivity.this);
+
         });
         mBinding.rowPsw.setOnClickListener(v -> {
-            FindPwdActivity.open(UserInfoUpdateActivity.this, SPUtilHelpr.getUserPhoneNum(), 1); //修改密码
+            //修改密码
+            FindPwdActivity.open(UserInfoUpdateActivity.this, SPUtilHelpr.getUserPhoneNum(), 1);
         });
         mBinding.rowPayPsw.setOnClickListener(v -> {
-//            PayPwdModifyActivity.open(this,);//修改支付密码
+            //修改支付密码
+            PayPwdModifyActivity.open(this, SPUtilHelpr.isTradepwdFlag(), SPUtilHelpr.getUserPhoneNum());
+
         });
         mBinding.rowReceiveAddress.setOnClickListener(v -> {
-            AddressListActivity.open(this, false);//地址
+            //地址
+            AddressListActivity.open(this,false);
         });
 
         mBinding.rowReceiveBankCaard.setOnClickListener(v -> {
-            BankCardListActivity.open(this, false);//银行卡
+            BankCardListActivity.open(this, false);
         });
 
         mBinding.rowSignout.setOnClickListener(v -> {
             //退出
+
             showDoubleWarnListen(getString(R.string.sure_logout), view -> {
                 SPUtilHelpr.logOutClear();
                 EventBus.getDefault().post(new EventFinishAll());
-                LoginActivity.open(UserInfoUpdateActivity.this, true);
+                LoginActivity.open(UserInfoUpdateActivity.this,true);
+//                setShowState();
+//                UITipDialog.showSuccess(mActivity, getString(R.string.logout_succ), dialogInterface -> {
+//                    LoginActivity.open(mActivity,false);
+//                });
             });
         });
+
     }
 
 
@@ -114,6 +128,19 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
     public void nickUpdateSucc(NickNameUpdateModel nickNameUpdateModel) {
         if (nickNameUpdateModel == null) return;
         mBinding.rowNickName.setTvRight(nickNameUpdateModel.getName());
+//        if (mUserInfo != null) {
+//            mUserInfo.setNickname(nickNameUpdateModel.getName());
+//        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (SPUtilHelpr.isTradepwdFlag()) {
+            mBinding.rowPayPsw.setTvLeft(getString(R.string.pay_psw));
+        } else {
+            mBinding.rowPayPsw.setTvLeft(getString(R.string.set_pay_pwd));
+        }
     }
 
     @Override
