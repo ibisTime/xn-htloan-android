@@ -92,6 +92,9 @@ public class FirstPageFragment extends BaseLazyFragment {
         return fragment;
     }
 
+    /**
+     *
+     */
     private void initRefreshHelper() {
 
         mRefreshHelper = new RefreshHelper(mActivity, new BaseRefreshCallBack(mActivity) {
