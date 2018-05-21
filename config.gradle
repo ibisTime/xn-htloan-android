@@ -19,6 +19,6 @@ ext {
 
     arouterApi = 'com.alibaba:arouter-api:1.3.1'
     arouterCompiler = 'com.alibaba:arouter-compiler:1.1.4'
-    applicationId = 'com.cdkj.common'
+    applicationId = 'com.cdkj.htwt'
 
 }
