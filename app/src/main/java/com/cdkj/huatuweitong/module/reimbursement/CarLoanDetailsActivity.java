@@ -74,11 +74,14 @@ public class CarLoanDetailsActivity extends AbsBaseLoadActivity {
 
 
         mBinding.btnEarlyRepayment.setOnClickListener(v -> {
+//            mdata.
+
             String bankcardNumber;
             if (mdata.getLoanOrder() != null) {
                 bankcardNumber = mdata.getLoanOrder().getBankcardNumber();
             } else {
-                bankcardNumber = "";//这是个  银行卡号码 但是有的没有数据  直接调用会报错  所以判断了一下
+               // bankcardNumber = "";//这是个  银行卡号码 但是有的没有数据  直接调用会报错  所以判断了一下
+                bankcardNumber = mdata.getMallOrder().getBankcardNumber();
             }
             AdvanceDetailsActivity.open(CarLoanDetailsActivity.this, mdata.getRestAmount() + "", bankcardNumber, mdata.getCode());
 
@@ -137,9 +140,7 @@ public class CarLoanDetailsActivity extends AbsBaseLoadActivity {
             protected void onSuccess(CarLoanDetailsActivityBean data, String SucMessage) {
                 mdata = data;
                 mBinding.tvBeForOver.setText(MoneyUtils.getShowPriceSign(data.getRestAmount()));
-//                data
 
-//
                 if (TextUtils.equals(data.getRefType(),"1")) {
                     //商品贷
                     mBinding.tvType.setText("贷款商品");

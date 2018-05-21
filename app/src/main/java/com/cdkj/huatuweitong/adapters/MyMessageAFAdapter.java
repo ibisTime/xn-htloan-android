@@ -2,6 +2,7 @@ package com.cdkj.huatuweitong.adapters;
 
 import android.support.annotation.Nullable;
 
+import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.bean.MyMessageAFBean;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -16,8 +17,8 @@ import java.util.List;
  */
 
 public class MyMessageAFAdapter extends BaseQuickAdapter<MyMessageAFBean,BaseViewHolder> {
-    public MyMessageAFAdapter(int layoutResId, @Nullable List<MyMessageAFBean> data) {
-        super(layoutResId, data);
+    public MyMessageAFAdapter(@Nullable List<MyMessageAFBean> data) {
+        super(R.layout.item_my_message_a_f, data);
     }
 
     @Override

@@ -3,7 +3,6 @@ package com.cdkj.huatuweitong.module.order;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 
 import com.cdkj.baselibrary.base.AbsTablayoutActivity;

@@ -43,7 +43,7 @@ public class ReimbursementListAdapter extends BaseQuickAdapter<ReimbursementRepa
 
 
         helper.setText(R.id.tv_price, MoneyUtils.showPriceDouble(item.getLoanAmount()));
-        helper.setText(R.id.tv_time, DateUtil.formatStringData(item.getLoanEndDatetime(), "yyyy-MM-dd hh:mm:ss"));//loanEndDatetime
+        helper.setText(R.id.tv_time, DateUtil.formatStringData(item.getLoanEndDatetime(), DateUtil.DATE_YMD));//loanEndDatetime
 
         MyTextUtils.setStatusType(helper.getView(R.id.tv_type), item.getStatus());
     }

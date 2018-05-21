@@ -196,7 +196,7 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
         Log.i("pppppp", "afterCreate: " + format);
         map.put("createDatetime", format);
         map.put("periods", String.valueOf(repayments));
-        long price = (long) salePrice.doubleValue() * 1000;
+        long price = (long) salePrice.doubleValue();
         map.put("price", price);
         map.put("remark", "我是备注");
         map.put("saleDesc", "1");

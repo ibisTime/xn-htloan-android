@@ -46,7 +46,7 @@ public class MyMessageActivityFragment extends AbsRefreshListFragment {
 
     @Override
     public RecyclerView.Adapter getListAdapter(List listData) {
-        MyMessageAFAdapter adapter = new MyMessageAFAdapter(0, listData);
+        MyMessageAFAdapter adapter = new MyMessageAFAdapter(listData);
 
         adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override

@@ -59,7 +59,6 @@ dependencies {
     annotationProcessor rootProject.ext.arouterCompiler
     api rootProject.ext.arouterApi
 }
-
 ///格式化打完完成后APK名称中的时间
 def releaseTime() {
     return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC+8"))

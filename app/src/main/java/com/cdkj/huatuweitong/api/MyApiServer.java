@@ -3,6 +3,7 @@ package com.cdkj.huatuweitong.api;
 import com.cdkj.baselibrary.api.BaseResponseListModel;
 import com.cdkj.baselibrary.api.BaseResponseModel;
 import com.cdkj.baselibrary.api.ResponseInListModel;
+import com.cdkj.huatuweitong.bean.AccountListModel;
 import com.cdkj.huatuweitong.bean.AdvanceDetailsActivityBean;
 import com.cdkj.huatuweitong.bean.CarDetailsBean;
 import com.cdkj.huatuweitong.bean.CarLoanCalculatorActivityDetailsBean;
@@ -281,4 +282,15 @@ public interface MyApiServer {
     @POST("api")
     Call<BaseResponseModel<TextBean>> requestEarlyRepaymentCurrent(@Field("code") String code, @Field("json") String json);
 
+
+    /**
+     * 获取账户列表
+     *
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<AccountListModel>> getAccount(@Field("code") String code, @Field("json") String json);
 }

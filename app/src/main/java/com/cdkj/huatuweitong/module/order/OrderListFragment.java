@@ -117,9 +117,11 @@ public class OrderListFragment extends AbsRefreshListFragment {
         map.put("limit", limit + "");
         map.put("start", pageindex + "");
 
-        List<String> status = new ArrayList<>();
-        status.add(orderState);
-        map.put("statusList", status);
+        if (!TextUtils.isEmpty(orderState)){
+            List<String> status = new ArrayList<>();
+            status.add(orderState);
+            map.put("statusList", status);
+        }
 
         Call<BaseResponseModel<ResponseInListModel<OrderBean>>> call = RetrofitUtils.createApi(MyApiServer.class).getOrderList("808068", StringUtils.getJsonToString(map));
 
