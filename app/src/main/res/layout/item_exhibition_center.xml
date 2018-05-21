@@ -22,11 +22,11 @@
             android:src="@mipmap/ic_alipay" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="16dp"
             android:background="@color/blue"
-            android:padding="3dp"
-            android:textSize="13sp"
+            android:gravity="center"
+            android:textSize="10sp"
             android:text="热销"
             android:textColor="@color/white" />
     </FrameLayout>
@@ -67,7 +67,7 @@
                 android:layout_marginLeft="10dp"
                 android:text="20.39万"
                 android:textColor="@color/shell_red"
-                android:textSize="17sp" />
+                android:textSize="16sp" />
 
 
             <TextView
@@ -75,6 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:textSize="14sp"
                 android:text="首付: 8000元"
                 />
 

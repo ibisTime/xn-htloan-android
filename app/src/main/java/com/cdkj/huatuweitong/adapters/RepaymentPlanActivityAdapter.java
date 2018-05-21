@@ -34,7 +34,7 @@ public class RepaymentPlanActivityAdapter extends BaseQuickAdapter<CarLoanDetail
     protected void convert(BaseViewHolder helper, CarLoanDetailsActivityBean.RepayPlanListBean item) {
         ProgressBar pb = helper.getView(R.id.pb);
         helper.setText(R.id.tv_number, (int) item.getCurPeriods() + "/" + (int) item.getPeriods() + "期");
-        helper.setText(R.id.tv_time, DateUtil.formatStringData(item.getRepayDatetime(), DateUtil.DEFAULT_DATE_FMT));
+        helper.setText(R.id.tv_time, DateUtil.formatStringData(item.getRepayDatetime(), DateUtil.DATE_YMD));
         helper.setText(R.id.tv_money, MoneyUtils.showPriceDouble(item.getRepayCapital()));
 
         //计算已还比例

@@ -1,6 +1,7 @@
 package com.cdkj.huatuweitong.bean;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -64,6 +65,7 @@ public class CarLoanDetailsActivityBean implements Serializable{
     private String loanBank;
     private String loanEndDatetime;
     private LoanOrderBean loanOrder;
+    private MallOrderBean mallOrder;
     private String loanStartDatetime;
     private double lyDeposit;
     private double monthAmount;
@@ -73,7 +75,7 @@ public class CarLoanDetailsActivityBean implements Serializable{
     private String refCode;
     private String refType;
     private String remark;
-    private double restAmount;
+    private BigDecimal restAmount;
     private double restPeriods;
     private double restTotalCost;
     private double sfAmount;
@@ -86,6 +88,7 @@ public class CarLoanDetailsActivityBean implements Serializable{
     private UserBean user;
     private String userId;
     private List<RepayPlanListBean> repayPlanList;
+
 
     public double getBankRate() {
         return bankRate;
@@ -191,6 +194,14 @@ public class CarLoanDetailsActivityBean implements Serializable{
         this.loanOrder = loanOrder;
     }
 
+    public MallOrderBean getMallOrder() {
+        return mallOrder;
+    }
+
+    public void setMallOrder(MallOrderBean mallOrder) {
+        this.mallOrder = mallOrder;
+    }
+
     public String getLoanStartDatetime() {
         return loanStartDatetime;
     }
@@ -263,11 +274,11 @@ public class CarLoanDetailsActivityBean implements Serializable{
         this.remark = remark;
     }
 
-    public double getRestAmount() {
+    public BigDecimal getRestAmount() {
         return restAmount;
     }
 
-    public void setRestAmount(double restAmount) {
+    public void setRestAmount(BigDecimal restAmount) {
         this.restAmount = restAmount;
     }
 
@@ -367,6 +378,542 @@ public class CarLoanDetailsActivityBean implements Serializable{
         this.repayPlanList = repayPlanList;
     }
 
+    public static class MallOrderBean implements Serializable{
+
+
+        /**
+         * amount : 1000.0
+         * applyDatetime : May 20, 2018 11:57:00 PM
+         * applyUser : U201805181545538547345
+         * bankRate : 0.1
+         * bankcardCode : BC201805202047449389143
+         * bankcardNumber : 123456789012345
+         * code : DD201805202357001287068
+         * loanAmount : 700.0
+         * payAmount : 0.0
+         * payDatetime : May 20, 2018 11:57:30 PM
+         * periods : 3.0
+         * productOrderList : [{"bankRate":0.1,"code":"CD201805202357001289656","orderCode":"DD201805202357001287068","periods":3,"price":1000,"product":{"advPic":"http://pic39.nipic.com/20140311/8821914_214422866000_2.jpg","name":"1000"},"productCode":"CP201805062109137465648","productSpecsCode":"PS201805062109137596153","productSpecsName":"1000","quantity":1,"sfRate":0.3}]
+         * reAddress : 浙江省 杭州市 余杭区梦想小镇
+         * reMobile : 18984955240
+         * receiver : 雷黔
+         * remark : 订单已成功支付
+         * sfAmount : 300.0
+         * sfRate : 0.3
+         * status : 2
+         * updateDatetime : May 20, 2018 11:57:00 PM
+         * updater : U201805181545538547345
+         * user : {"bankcardFlag":false,"blacklistFlag":false,"createDatetime":"May 18, 2018 3:45:53 PM","identifyFlag":false,"kind":"C","loginName":"18984955240","loginPwdStrength":"1","mobile":"18984955240","nickname":"？？我去。。","photo":"ANDROID_1526825442334_3120_4160.jpg","status":"0","tradePwdStrength":"1","tradepwdFlag":false,"userId":"U201805181545538547345"}
+         * yunfei : 0.0
+         */
+
+        private double amount;
+        private String applyDatetime;
+        private String applyUser;
+        private double bankRate;
+        private String bankcardCode;
+        private String bankcardNumber;
+        private String code;
+        private double loanAmount;
+        private double payAmount;
+        private String payDatetime;
+        private double periods;
+        private String reAddress;
+        private String reMobile;
+        private String receiver;
+        private String remark;
+        private double sfAmount;
+        private double sfRate;
+        private String status;
+        private String updateDatetime;
+        private String updater;
+        private UserBean user;
+        private double yunfei;
+
+        private List<ProductOrderListBean> productOrderList;
+
+        public double getAmount() {
+            return amount;
+        }
+
+        public void setAmount(double amount) {
+            this.amount = amount;
+        }
+
+        public String getApplyDatetime() {
+            return applyDatetime;
+        }
+
+        public void setApplyDatetime(String applyDatetime) {
+            this.applyDatetime = applyDatetime;
+        }
+
+        public String getApplyUser() {
+            return applyUser;
+        }
+
+        public void setApplyUser(String applyUser) {
+            this.applyUser = applyUser;
+        }
+
+        public double getBankRate() {
+            return bankRate;
+        }
+
+        public void setBankRate(double bankRate) {
+            this.bankRate = bankRate;
+        }
+
+        public String getBankcardCode() {
+            return bankcardCode;
+        }
+
+        public void setBankcardCode(String bankcardCode) {
+            this.bankcardCode = bankcardCode;
+        }
+
+        public String getBankcardNumber() {
+            return bankcardNumber;
+        }
+
+        public void setBankcardNumber(String bankcardNumber) {
+            this.bankcardNumber = bankcardNumber;
+        }
+
+        public String getCode() {
+            return code;
+        }
+
+        public void setCode(String code) {
+            this.code = code;
+        }
+
+        public double getLoanAmount() {
+            return loanAmount;
+        }
+
+        public void setLoanAmount(double loanAmount) {
+            this.loanAmount = loanAmount;
+        }
+
+        public double getPayAmount() {
+            return payAmount;
+        }
+
+        public void setPayAmount(double payAmount) {
+            this.payAmount = payAmount;
+        }
+
+        public String getPayDatetime() {
+            return payDatetime;
+        }
+
+        public void setPayDatetime(String payDatetime) {
+            this.payDatetime = payDatetime;
+        }
+
+        public double getPeriods() {
+            return periods;
+        }
+
+        public void setPeriods(double periods) {
+            this.periods = periods;
+        }
+
+        public String getReAddress() {
+            return reAddress;
+        }
+
+        public void setReAddress(String reAddress) {
+            this.reAddress = reAddress;
+        }
+
+        public String getReMobile() {
+            return reMobile;
+        }
+
+        public void setReMobile(String reMobile) {
+            this.reMobile = reMobile;
+        }
+
+        public String getReceiver() {
+            return receiver;
+        }
+
+        public void setReceiver(String receiver) {
+            this.receiver = receiver;
+        }
+
+        public String getRemark() {
+            return remark;
+        }
+
+        public void setRemark(String remark) {
+            this.remark = remark;
+        }
+
+        public double getSfAmount() {
+            return sfAmount;
+        }
+
+        public void setSfAmount(double sfAmount) {
+            this.sfAmount = sfAmount;
+        }
+
+        public double getSfRate() {
+            return sfRate;
+        }
+
+        public void setSfRate(double sfRate) {
+            this.sfRate = sfRate;
+        }
+
+        public String getStatus() {
+            return status;
+        }
+
+        public void setStatus(String status) {
+            this.status = status;
+        }
+
+        public String getUpdateDatetime() {
+            return updateDatetime;
+        }
+
+        public void setUpdateDatetime(String updateDatetime) {
+            this.updateDatetime = updateDatetime;
+        }
+
+        public String getUpdater() {
+            return updater;
+        }
+
+        public void setUpdater(String updater) {
+            this.updater = updater;
+        }
+
+        public UserBean getUser() {
+            return user;
+        }
+
+        public void setUser(UserBean user) {
+            this.user = user;
+        }
+
+        public double getYunfei() {
+            return yunfei;
+        }
+
+        public void setYunfei(double yunfei) {
+            this.yunfei = yunfei;
+        }
+
+        public List<ProductOrderListBean> getProductOrderList() {
+            return productOrderList;
+        }
+
+        public void setProductOrderList(List<ProductOrderListBean> productOrderList) {
+            this.productOrderList = productOrderList;
+        }
+
+        public static class UserBean implements Serializable{
+            /**
+             * bankcardFlag : false
+             * blacklistFlag : false
+             * createDatetime : May 18, 2018 3:45:53 PM
+             * identifyFlag : false
+             * kind : C
+             * loginName : 18984955240
+             * loginPwdStrength : 1
+             * mobile : 18984955240
+             * nickname : ？？我去。。
+             * photo : ANDROID_1526825442334_3120_4160.jpg
+             * status : 0
+             * tradePwdStrength : 1
+             * tradepwdFlag : false
+             * userId : U201805181545538547345
+             */
+
+            private boolean bankcardFlag;
+            private boolean blacklistFlag;
+            private String createDatetime;
+            private boolean identifyFlag;
+            private String kind;
+            private String loginName;
+            private String loginPwdStrength;
+            private String mobile;
+            private String nickname;
+            private String photo;
+            private String status;
+            private String tradePwdStrength;
+            private boolean tradepwdFlag;
+            private String userId;
+
+            public boolean isBankcardFlag() {
+                return bankcardFlag;
+            }
+
+            public void setBankcardFlag(boolean bankcardFlag) {
+                this.bankcardFlag = bankcardFlag;
+            }
+
+            public boolean isBlacklistFlag() {
+                return blacklistFlag;
+            }
+
+            public void setBlacklistFlag(boolean blacklistFlag) {
+                this.blacklistFlag = blacklistFlag;
+            }
+
+            public String getCreateDatetime() {
+                return createDatetime;
+            }
+
+            public void setCreateDatetime(String createDatetime) {
+                this.createDatetime = createDatetime;
+            }
+
+            public boolean isIdentifyFlag() {
+                return identifyFlag;
+            }
+
+            public void setIdentifyFlag(boolean identifyFlag) {
+                this.identifyFlag = identifyFlag;
+            }
+
+            public String getKind() {
+                return kind;
+            }
+
+            public void setKind(String kind) {
+                this.kind = kind;
+            }
+
+            public String getLoginName() {
+                return loginName;
+            }
+
+            public void setLoginName(String loginName) {
+                this.loginName = loginName;
+            }
+
+            public String getLoginPwdStrength() {
+                return loginPwdStrength;
+            }
+
+            public void setLoginPwdStrength(String loginPwdStrength) {
+                this.loginPwdStrength = loginPwdStrength;
+            }
+
+            public String getMobile() {
+                return mobile;
+            }
+
+            public void setMobile(String mobile) {
+                this.mobile = mobile;
+            }
+
+            public String getNickname() {
+                return nickname;
+            }
+
+            public void setNickname(String nickname) {
+                this.nickname = nickname;
+            }
+
+            public String getPhoto() {
+                return photo;
+            }
+
+            public void setPhoto(String photo) {
+                this.photo = photo;
+            }
+
+            public String getStatus() {
+                return status;
+            }
+
+            public void setStatus(String status) {
+                this.status = status;
+            }
+
+            public String getTradePwdStrength() {
+                return tradePwdStrength;
+            }
+
+            public void setTradePwdStrength(String tradePwdStrength) {
+                this.tradePwdStrength = tradePwdStrength;
+            }
+
+            public boolean isTradepwdFlag() {
+                return tradepwdFlag;
+            }
+
+            public void setTradepwdFlag(boolean tradepwdFlag) {
+                this.tradepwdFlag = tradepwdFlag;
+            }
+
+            public String getUserId() {
+                return userId;
+            }
+
+            public void setUserId(String userId) {
+                this.userId = userId;
+            }
+        }
+
+        public static class ProductOrderListBean implements Serializable{
+            /**
+             * bankRate : 0.1
+             * code : CD201805202357001289656
+             * orderCode : DD201805202357001287068
+             * periods : 3.0
+             * price : 1000.0
+             * product : {"advPic":"http://pic39.nipic.com/20140311/8821914_214422866000_2.jpg","name":"1000"}
+             * productCode : CP201805062109137465648
+             * productSpecsCode : PS201805062109137596153
+             * productSpecsName : 1000
+             * quantity : 1.0
+             * sfRate : 0.3
+             */
+
+            private double bankRate;
+            private String code;
+            private String orderCode;
+            private double periods;
+            private double price;
+            private ProductBean product;
+            private String productCode;
+            private String productSpecsCode;
+            private String productSpecsName;
+            private double quantity;
+            private double sfRate;
+            private String productName;
+
+            public String getProductName() {
+                return productName;
+            }
+
+            public void setProductName(String productName) {
+                this.productName = productName;
+            }
+
+            public double getBankRate() {
+                return bankRate;
+            }
+
+            public void setBankRate(double bankRate) {
+                this.bankRate = bankRate;
+            }
+
+            public String getCode() {
+                return code;
+            }
+
+            public void setCode(String code) {
+                this.code = code;
+            }
+
+            public String getOrderCode() {
+                return orderCode;
+            }
+
+            public void setOrderCode(String orderCode) {
+                this.orderCode = orderCode;
+            }
+
+            public double getPeriods() {
+                return periods;
+            }
+
+            public void setPeriods(double periods) {
+                this.periods = periods;
+            }
+
+            public double getPrice() {
+                return price;
+            }
+
+            public void setPrice(double price) {
+                this.price = price;
+            }
+
+            public ProductBean getProduct() {
+                return product;
+            }
+
+            public void setProduct(ProductBean product) {
+                this.product = product;
+            }
+
+            public String getProductCode() {
+                return productCode;
+            }
+
+            public void setProductCode(String productCode) {
+                this.productCode = productCode;
+            }
+
+            public String getProductSpecsCode() {
+                return productSpecsCode;
+            }
+
+            public void setProductSpecsCode(String productSpecsCode) {
+                this.productSpecsCode = productSpecsCode;
+            }
+
+            public String getProductSpecsName() {
+                return productSpecsName;
+            }
+
+            public void setProductSpecsName(String productSpecsName) {
+                this.productSpecsName = productSpecsName;
+            }
+
+            public double getQuantity() {
+                return quantity;
+            }
+
+            public void setQuantity(double quantity) {
+                this.quantity = quantity;
+            }
+
+            public double getSfRate() {
+                return sfRate;
+            }
+
+            public void setSfRate(double sfRate) {
+                this.sfRate = sfRate;
+            }
+
+            public static class ProductBean implements Serializable{
+                /**
+                 * advPic : http://pic39.nipic.com/20140311/8821914_214422866000_2.jpg
+                 * name : 1000
+                 */
+
+                private String advPic;
+                private String name;
+
+                public String getAdvPic() {
+                    return advPic;
+                }
+
+                public void setAdvPic(String advPic) {
+                    this.advPic = advPic;
+                }
+
+                public String getName() {
+                    return name;
+                }
+
+                public void setName(String name) {
+                    this.name = name;
+                }
+            }
+        }
+    }
+
     public static class LoanOrderBean implements Serializable{
         /**
          * bankCode : ICBC
@@ -439,6 +986,16 @@ public class CarLoanDetailsActivityBean implements Serializable{
         private String updateDatetime;
         private String updater;
         private String userId;
+        private String carName;
+
+
+        public String getCarName() {
+            return carName;
+        }
+
+        public void setCarName(String carName) {
+            this.carName = carName;
+        }
 
         public String getBankCode() {
             return bankCode;

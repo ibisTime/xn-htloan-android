@@ -2,6 +2,7 @@ package com.cdkj.huatuweitong;
 
 import android.app.Application;
 import android.content.Context;
+import android.support.multidex.MultiDex;
 
 import com.cdkj.baselibrary.CdApplication;
 
@@ -23,4 +24,11 @@ public class BaseApplication extends Application {
     public static Context getInstance() {
         return instance;
     }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
+
 }

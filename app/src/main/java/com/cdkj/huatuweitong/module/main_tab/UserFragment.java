@@ -96,10 +96,9 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
                 SPUtilHelpr.saveUserId(data.getUserId());
                 SPUtilHelpr.saveUserPhoneNum(data.getMobile());
                 SPUtilHelpr.saveisTradepwdFlag(data.isTradepwdFlag());
-
                 SPUtilHelpr.saveUserPhoto(data.getPhoto());
                 SPUtilHelpr.saveUserName(data.getNickname());
-                SPUtilHelpr.saveUserPhoneNum(data.getMobile());
+
             }
 
             @Override

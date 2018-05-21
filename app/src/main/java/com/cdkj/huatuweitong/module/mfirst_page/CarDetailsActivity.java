@@ -21,7 +21,6 @@ import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.CarDetailsBean;
 import com.cdkj.huatuweitong.common.GlideImageLoader;
 import com.cdkj.huatuweitong.databinding.ActivityCarDetailsBinding;
-import com.cdkj.huatuweitong.utlis.MoneyUtils;
 import com.youth.banner.BannerConfig;
 
 import java.util.ArrayList;
@@ -38,6 +37,7 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
     private String code;
     private ArrayList<String> mBanners = new ArrayList<>();
     private CarDetailsBean currentData;
+
     public static void open(Context context) {
         if (context != null) {
             Intent intent = new Intent(context, CarDetailsActivity.class);
@@ -91,18 +91,27 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
         call.enqueue(new BaseResponseModelCallBack<CarDetailsBean>(CarDetailsActivity.this) {
 
 
-
             @Override
             protected void onSuccess(CarDetailsBean data, String SucMessage) {
                 currentData = data;
-                mBinding.web.loadUrl(data.getPic());
+                mBinding.web.loadData("<style>\n" +           //设置图片自适应
+                        "img{\n" +
+                        " max-width:100%;\n" +
+                        " height:auto;\n" +
+                        "}\n" +
+                        "</style>" + data.getDescription(), "text/html; charset=UTF-8", "utf-8");
                 mBinding.tvCarName.setText(data.getSeriesName());
-                mBinding.tvCarPrice.setText("¥" + MoneyUtils.BigDecimalToString(data.getSfAmount()) + "万");
-                mBinding.tvReferencePrice.setText("经销商参考价" + MoneyUtils.BigDecimalToString(data.getOriginalPrice()) + "万");
-                mBinding.tvDirectionPrice.setText("经厂商指导价" + MoneyUtils.BigDecimalToString(data.getSalePrice()) + "万");
+                String price = com.cdkj.baselibrary.utils.MoneyUtils.getShowPriceSign(data.getSfAmount());
+                String referencePrice = com.cdkj.baselibrary.utils.MoneyUtils.getShowPriceSign(data.getOriginalPrice());
+                String directionPrice = com.cdkj.baselibrary.utils.MoneyUtils.getShowPriceSign(data.getSalePrice());
+
+
+                mBinding.tvCarPrice.setText(price);
+                mBinding.tvReferencePrice.setText("经销商参考价" + referencePrice);
+                mBinding.tvDirectionPrice.setText("经厂商指导价" + directionPrice);
                 String advPic = data.getAdvPic();
 
-                String[] split = advPic.split("\\|");
+                String[] split = advPic.split("\\|\\|");
                 for (int i = 0; i < split.length; i++) {
                     mBanners.add(split[i]);
                 }
@@ -156,7 +165,7 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
         mBinding.firstBanner.setImages(mBanners);
         mBinding.firstBanner.start();
         //初始化轮播图上面的页码
-        mBinding.tvIndicator.setText("0/" + mBanners.size());
+        mBinding.tvIndicator.setText("1/" + mBanners.size());
         mBinding.firstBanner.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -178,7 +187,7 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
     private void initOnclick() {
         mBinding.tvPayCar.setOnClickListener(v -> {
             //跳转车贷计算器
-            CarLoanCalculatorActivity.open(CarDetailsActivity.this,currentData);
+            CarLoanCalculatorActivity.open(CarDetailsActivity.this, currentData);
         });
 
     }

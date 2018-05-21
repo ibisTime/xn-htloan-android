@@ -4,6 +4,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/bg_gray"
         android:orientation="vertical">
 
         <TextView
@@ -18,6 +19,9 @@
 
 
         </com.cdkj.baselibrary.views.LineViewPagerIndicator>
+
+        <View
+            style="@style/style_split_line_broad"/>
 
 
         <com.cdkj.baselibrary.views.EnabledViewpager

@@ -90,11 +90,11 @@
 
                     <ImageView
                         android:layout_width="2dp"
-                        android:layout_height="30dp"
+                        android:layout_height="13dp"
+                        android:layout_marginBottom="8dp"
                         android:layout_marginLeft="15dp"
-                        android:background="@color/blue"
-                        android:paddingBottom="10dp"
-                        android:paddingTop="10dp" />
+                        android:layout_marginTop="8dp"
+                        android:background="@color/blue" />
 
                     <TextView
                         android:layout_width="wrap_content"

@@ -104,7 +104,7 @@ public class OrderDetailsActivity extends AbsBaseLoadActivity {
         if (data == null) return;
 
         mBinding.tvCode.setText(data.getCode());
-        mBinding.tvPayDate.setText(DateUtil.formatStringData(data.getApplyDatetime(), DateUtil.DEFAULT_DATE_FMT));
+        mBinding.tvPayDate.setText(DateUtil.formatStringData(data.getApplyDatetime(), DateUtil.DATE_YMD));
         mBinding.tvOrderState.setText(OrderHelper.ORDER_STATE.fromTypeName(data.getStatus()));
 
         if (data.getProductOrderList() != null && data.getProductOrderList().size() > 0 && data.getProductOrderList().get(0).getProduct() != null) {

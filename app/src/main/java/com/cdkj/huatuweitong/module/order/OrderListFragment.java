@@ -119,7 +119,7 @@ public class OrderListFragment extends AbsRefreshListFragment {
 
         List<String> status = new ArrayList<>();
         status.add(orderState);
-        map.put("status", status);
+        map.put("statusList", status);
 
         Call<BaseResponseModel<ResponseInListModel<OrderBean>>> call = RetrofitUtils.createApi(MyApiServer.class).getOrderList("808068", StringUtils.getJsonToString(map));
 
@@ -256,7 +256,10 @@ public class OrderListFragment extends AbsRefreshListFragment {
 
     @Override
     protected void lazyLoad() {
+        if (mRefreshBinding == null)
+            return;
 
+        mRefreshHelper.onDefaluteMRefresh(true);
     }
 
     @Override

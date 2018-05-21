@@ -100,6 +100,8 @@ public class OrderSubmitActivity extends AbsBaseLoadActivity {
 
         mBinding.tvMonthlyNumber.setText(orderSubmitIntentBean.getSpecBean().getPeriods() + "");
 
+        mBinding.tvMonthlyRate.setText(orderSubmitIntentBean.getSpecBean().getBankRate() * 100 + "%");
+
         mBinding.tvMonthlyPay.setText(MoneyUtils.showPrice(orderSubmitIntentBean.getSpecBean().getMonthAmount()));
 
         mBinding.tvOnePayMoney.setText(MoneyUtils.showPrice(com.cdkj.huatuweitong.utlis.MoneyUtils.bigDecimalRide(orderSubmitIntentBean.getPrice(), orderSubmitIntentBean.getSpecBean().getSfRate())));

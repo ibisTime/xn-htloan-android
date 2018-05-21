@@ -10,22 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.cdkj.baselibrary.api.ResponseInListModel;
 import com.cdkj.baselibrary.base.AbsRefreshListFragment;
-import com.cdkj.baselibrary.dialog.UITipDialog;
-import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
-import com.cdkj.baselibrary.nets.RetrofitUtils;
-import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.adapters.MyMessageAFAdapter;
-import com.cdkj.huatuweitong.api.MyApiServer;
-import com.cdkj.huatuweitong.bean.MyMessageAFBean;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import retrofit2.Call;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -88,39 +77,41 @@ public class MyMessageActivityFragment extends AbsRefreshListFragment {
 
     }
    public void initDatas(int pageindex, int limit, boolean isShowDialog){
+
+
         if (isShowDialog){
 //            showLoadingDialog();
         }
 
-       Map<String,String> map = new HashMap<>();
-
-
-       Call call =RetrofitUtils.createApi(MyApiServer.class).getMyMessage("", StringUtils.getJsonToString(map));
-       addCall(call);
-       call.enqueue(new BaseResponseModelCallBack<ResponseInListModel<MyMessageAFBean>>(mActivity) {
-           @Override
-           protected void onSuccess(ResponseInListModel data, String SucMessage) {
-
-               data.getList().add(null);
-               data.getList().add(null);
-               data.getList().add(null);
-               data.getList().add(null);
-               data.getList().add(null);
-               data.getList().add(null);
-               mRefreshHelper.setData(data.getList(),"暂无消息",0);
-           }
-
-           @Override
-           protected void onReqFailure(String errorCode, String errorMessage) {
-               super.onReqFailure(errorCode, errorMessage);
-               UITipDialog.showFall(mActivity,errorMessage);
-           }
-
-           @Override
-           protected void onFinish() {
-               disMissLoading();
-
-           }
-       });
+//       Map<String,String> map = new HashMap<>();
+//
+//
+//       Call call =RetrofitUtils.createApi(MyApiServer.class).getMyMessage("", StringUtils.getJsonToString(map));
+//       addCall(call);
+//       call.enqueue(new BaseResponseModelCallBack<ResponseInListModel<MyMessageAFBean>>(mActivity) {
+//           @Override
+//           protected void onSuccess(ResponseInListModel data, String SucMessage) {
+//
+//               data.getList().add(null);
+//               data.getList().add(null);
+//               data.getList().add(null);
+//               data.getList().add(null);
+//               data.getList().add(null);
+//               data.getList().add(null);
+//               mRefreshHelper.setData(data.getList(),"暂无消息",0);
+//           }
+//
+//           @Override
+//           protected void onReqFailure(String errorCode, String errorMessage) {
+//               super.onReqFailure(errorCode, errorMessage);
+//               UITipDialog.showFall(mActivity,errorMessage);
+//           }
+//
+//           @Override
+//           protected void onFinish() {
+//               disMissLoading();
+//
+//           }
+//       });
    }
 }

@@ -109,6 +109,7 @@ public class ExhibitionCenterActivity extends AbsRefreshListActivity<ResponseInL
         map.put("location", "0");
         map.put("limit", limit + "");
         map.put("start", pageindex + "");
+        map.put("status", "1");//已上架
 
             //如果是检索的时候需要传一个  name  去检索  检索以后相当于重新获取数据  所以从第一页开始加载
             map.put("name", etSearch.getText().toString());

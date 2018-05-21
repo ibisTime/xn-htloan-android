@@ -120,7 +120,7 @@
                     android:layout_marginTop="@dimen/line_height"
                     app:img_left="@drawable/note"
                     app:img_right="@drawable/more_right"
-                    app:txt_left="我的分期订单" />
+                    app:txt_left="我的商品订单" />
 
                 <com.cdkj.baselibrary.views.RowInfoLayout
                     android:layout_width="match_parent"

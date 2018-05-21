@@ -78,7 +78,7 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
         });
         mBinding.rowNickName.setOnClickListener(v -> {
             //昵称
-            NickNameUpdateActivity.open(this, "");
+            NickNameUpdateActivity.open(this);
         });
         mBinding.rowPhone.setOnClickListener(v -> {
             //修改手机号

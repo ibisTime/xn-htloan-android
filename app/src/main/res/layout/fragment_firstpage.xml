@@ -59,8 +59,6 @@
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
                         android:layout_marginTop="1dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
@@ -89,6 +87,8 @@
 
 
                     </LinearLayout>
+                    <View
+                        style="@style/style_split_line"/>
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/recyclerView_recommend_car"
@@ -141,9 +141,7 @@
                         <android.support.v7.widget.RecyclerView
                             android:id="@+id/recyclerView_recommend_product"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginRight="3dp">
+                            android:layout_height="match_parent">
 
                         </android.support.v7.widget.RecyclerView>
                     </RelativeLayout>

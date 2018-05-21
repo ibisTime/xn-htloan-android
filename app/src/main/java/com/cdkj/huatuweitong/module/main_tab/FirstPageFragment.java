@@ -34,7 +34,6 @@ import com.cdkj.huatuweitong.databinding.FragmentFirstpageBinding;
 import com.cdkj.huatuweitong.module.mfirst_page.CarLoanCalculatorActivity;
 import com.cdkj.huatuweitong.module.mfirst_page.ExhibitionCenterActivity;
 import com.cdkj.huatuweitong.module.product.ProductDetailsActivity;
-import com.cdkj.huatuweitong.other.OrderHelper;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.youth.banner.BannerConfig;
 
@@ -107,6 +106,7 @@ public class FirstPageFragment extends BaseLazyFragment {
             public void onRefresh(int pageindex, int limit) {
                 super.onRefresh(pageindex, limit);
                 initCarRecommendBeanData();
+                getBannerDataRequest();
             }
 
             @Override
@@ -124,11 +124,6 @@ public class FirstPageFragment extends BaseLazyFragment {
                 getRecommentdProduct(pageindex, limit, isShowDialog);
             }
 
-            @Override
-            public void onRefresh(int pageindex, int limit) {
-                super.onRefresh(pageindex, limit);
-                getBannerDataRequest();
-            }
         });
 
         mRefreshHelper.init(10);
@@ -261,6 +256,8 @@ public class FirstPageFragment extends BaseLazyFragment {
             }
         });
 
+        mBinding.recyclerViewRecommendProduct.setNestedScrollingEnabled(false);
+
         mBinding.recyclerViewRecommendProduct.addItemDecoration(new DividerItemDecoration(mActivity, LinearLayoutManager.VERTICAL));
 
 
@@ -293,7 +290,9 @@ public class FirstPageFragment extends BaseLazyFragment {
         recommendCarAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+
                 ExhibitionCenterActivity.open(getContext(), carData.get(position).getBrandCode());
+
             }
         });
 

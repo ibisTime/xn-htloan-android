@@ -4,9 +4,9 @@ import android.support.annotation.Nullable;
 import android.widget.ImageView;
 
 import com.cdkj.baselibrary.utils.ImgUtils;
+import com.cdkj.baselibrary.utils.MoneyUtils;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.bean.ExhibitionCenterBean;
-import com.cdkj.huatuweitong.utlis.MoneyUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
@@ -36,9 +36,10 @@ public class ExhibitionCenterAdapter extends BaseQuickAdapter<ExhibitionCenterBe
 
         helper.setText(R.id.tv_name, item.getName());
         helper.setText(R.id.tv_type_name, item.getSeriesName());
-        helper.setText(R.id.tv_price, "总价" + MoneyUtils.BigDecimalToString(item.getOriginalPrice()) + "元");
-        helper.setText(R.id.tv_first_pay, "首付: " + MoneyUtils.BigDecimalToString(item.getSalePrice()) + "元");
+        helper.setText(R.id.tv_price, "总价" + MoneyUtils.showPriceDouble(item.getSalePrice()) + "元");
+
+        helper.setText(R.id.tv_first_pay, "首付: " + MoneyUtils.showPriceDouble(item.getSfAmount())  + "元");
         ImageView imgLogo = helper.getView(R.id.iv_logo);
-        ImgUtils.loadImg(mContext,item.getAdvPic(),imgLogo);
+        ImgUtils.loadQiniuImg(mContext,item.getPic(),imgLogo);
     }
 }

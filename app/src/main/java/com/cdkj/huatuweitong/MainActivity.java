@@ -84,12 +84,14 @@ public class MainActivity extends AbsBaseLoadActivity {
                     break;
                 case R.id.radio_main_tab_2:
                     if (!SPUtilHelpr.isLogin(MainActivity.this, false)) {
+
                         return;
                     }
                     mBinding.pagerMain.setCurrentItem(1);
                     break;
                 case R.id.radio_main_tab_3:
                     if (!SPUtilHelpr.isLogin(MainActivity.this, false)) {
+
                         return;
                     }
                     mBinding.pagerMain.setCurrentItem(2);

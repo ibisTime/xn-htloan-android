@@ -8,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
-import com.cdkj.baselibrary.dialog.CommonDialog;
 import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
@@ -57,8 +56,8 @@ public class RepaymentPlanActivity extends AbsBaseLoadActivity {
             currentData = (CarLoanDetailsActivityBean) getIntent().getSerializableExtra("data");
         }
 
-        mBinding.tvBeizhu.setText("(包含利息" + MoneyUtils.showPriceDouble(currentData.getRestAmount()) + "元)");
-        mBinding.tvBeLeftOver.setText(MoneyUtils.showPriceDouble(currentData.getRestAmount()));
+        mBinding.tvBeizhu.setText("(包含利息" + MoneyUtils.getShowPriceSign(currentData.getRestAmount()) + "元)");
+        mBinding.tvBeLeftOver.setText(MoneyUtils.getShowPriceSign(currentData.getRestAmount()));
 
         mBinding.recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         List<CarLoanDetailsActivityBean.RepayPlanListBean> repayPlanList = currentData.getRepayPlanList();
@@ -69,15 +68,15 @@ public class RepaymentPlanActivity extends AbsBaseLoadActivity {
             @Override
             public void onItemClick(BaseQuickAdapter aadapter, View view, int position) {
 
-                showDoubleWarnListen("提前还本期", new CommonDialog.OnPositiveListener() {
-                    @Override
-                    public void onPositive(View view) {
-                        CarLoanDetailsActivityBean.RepayPlanListBean item = adapter.getItem(position);
-                        requestNet(item.getCode());
-                    }
-
-
-                });
+//                showDoubleWarnListen("提前还本期", new CommonDialog.OnPositiveListener() {
+//                    @Override
+//                    public void onPositive(View view) {
+//                        CarLoanDetailsActivityBean.RepayPlanListBean item = adapter.getItem(position);
+//                        requestNet(item.getCode());
+//                    }
+//
+//
+//                });
             }
 
 

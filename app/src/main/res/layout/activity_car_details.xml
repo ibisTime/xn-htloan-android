@@ -126,6 +126,8 @@
 
                 <WebView
                     android:id="@+id/web"
+                    android:paddingLeft="@dimen/layout_left_interval"
+                    android:paddingRight="@dimen/layout_right_interval"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 

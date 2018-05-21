@@ -1,7 +1,5 @@
 package com.cdkj.huatuweitong.bean;
 
-import java.math.BigDecimal;
-
 /**
  * @author 齐胜涛
  * @des ${TODO}
@@ -39,9 +37,9 @@ public class ExhibitionCenterBean {
     private double location;
     private String name;
     private double orderNo;
-    private BigDecimal originalPrice;
+    private double originalPrice;
     private String pic;
-    private BigDecimal salePrice;
+    private double salePrice;
     private String seriesName;
     private double sfAmount;
     private String slogan;
@@ -113,11 +111,11 @@ public class ExhibitionCenterBean {
         this.orderNo = orderNo;
     }
 
-    public BigDecimal getOriginalPrice() {
+    public double getOriginalPrice() {
         return originalPrice;
     }
 
-    public void setOriginalPrice(BigDecimal originalPrice) {
+    public void setOriginalPrice(double originalPrice) {
         this.originalPrice = originalPrice;
     }
 
@@ -129,11 +127,11 @@ public class ExhibitionCenterBean {
         this.pic = pic;
     }
 
-    public BigDecimal getSalePrice() {
+    public double getSalePrice() {
         return salePrice;
     }
 
-    public void setSalePrice(BigDecimal salePrice) {
+    public void setSalePrice(double salePrice) {
         this.salePrice = salePrice;
     }
 
