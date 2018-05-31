@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme">
 
         <!-- com.cdkj.baselibrary.activitys.login.LoginActivity -->
-        <activity android:name="com.cdkj.huatuweitong.MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,11 +41,25 @@
         <activity android:name=".module.reimbursement.RepaymentPlanActivity" />
         <activity android:name=".module.reimbursement.AdvanceDetailsActivity" />
         <activity android:name=".module.product.ProductDetailsActivity" />
-        <!--<activity android:name=".module.order.OrderListActivity" />-->
+        <!-- <activity android:name=".module.order.OrderListActivity" /> -->
         <activity android:name=".module.order.AllOrderTabActivity" />
         <activity android:name=".module.order.OrderDetailsActivity" />
-        <activity android:name=".module.user.MyCurrentActivity"></activity>
-        <activity android:name=".module.user.MyMessageActivity"></activity>
+        <activity android:name=".module.user.MyCurrentActivity" />
+        <activity android:name=".module.user.MyMessageActivity" />
+        <activity
+            android:name=".module.user.AboutUsActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_about_us"
+            android:theme="@style/FullscreenTheme" />
+        <activity android:name=".module.mfirst_page.CarBrandActivity" />
+        <activity android:name=".module.mfirst_page.CarModeldActivity" />
+        <activity android:name=".module.user.ConnectionServerActivity" />
+        <activity android:name=".module.mfirst_page.CarSystemActivity" />
+        <activity android:name=".module.user.MyAccountActivity" />
+        <activity android:name=".module.user.AccountDetailsActivity" />
+        <activity android:name=".module.user.AccountIntegralActivity" />
+        <activity android:name=".module.recharge.RechargeActivity"></activity>
+        <activity android:name="com.cdkj.huatuweitong.module.user.AccountIntegraActivity"></activity>
     </application>
 
 </manifest>

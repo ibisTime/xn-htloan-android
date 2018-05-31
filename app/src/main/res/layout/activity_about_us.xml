@@ -1,0 +1,70 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <View style="@style/style_split_line" />
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="77dp"
+            android:layout_height="77dp"
+            android:layout_marginTop="36dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="华图威通"
+            android:textColor="@color/text_black_cd"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/txt_gray"
+            android:textSize="13sp"
+            android:text="v2.0.0" />
+
+        <TextView
+            android:id="@+id/shell_red_us"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="34dp"
+            android:textColor="@color/shell_red"
+            android:textSize="16sp"
+            android:text="更新至最新版本" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_website"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="9dp"
+            android:text="www.nick.htwt"
+            android:textColor="@color/text_gray_666666"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_copyright"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:text="@string/copyright"
+            android:textColor="@color/text_gray_666666"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+</layout>

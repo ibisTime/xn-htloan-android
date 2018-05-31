@@ -3,19 +3,25 @@ package com.cdkj.huatuweitong.api;
 import com.cdkj.baselibrary.api.BaseResponseListModel;
 import com.cdkj.baselibrary.api.BaseResponseModel;
 import com.cdkj.baselibrary.api.ResponseInListModel;
+import com.cdkj.huatuweitong.bean.AccountDetailsBean;
 import com.cdkj.huatuweitong.bean.AccountListModel;
 import com.cdkj.huatuweitong.bean.AdvanceDetailsActivityBean;
+import com.cdkj.huatuweitong.bean.CarBrandActivityBean;
 import com.cdkj.huatuweitong.bean.CarDetailsBean;
 import com.cdkj.huatuweitong.bean.CarLoanCalculatorActivityDetailsBean;
 import com.cdkj.huatuweitong.bean.CarLoanCalculatorSendBean;
 import com.cdkj.huatuweitong.bean.CarLoanDetailsActivityBean;
 import com.cdkj.huatuweitong.bean.CarLoanDetailsActivityMonthBean;
+import com.cdkj.huatuweitong.bean.CarModelActivityBean;
+import com.cdkj.huatuweitong.bean.CarSystemActivityBean;
 import com.cdkj.huatuweitong.bean.ExhibitionCenterBean;
 import com.cdkj.huatuweitong.bean.FirstPageBanner;
 import com.cdkj.huatuweitong.bean.FirstPageCarRecommendBean;
 import com.cdkj.huatuweitong.bean.IsSetPayPassWord;
 import com.cdkj.huatuweitong.bean.LoginBean;
+import com.cdkj.huatuweitong.bean.MyAccountBean;
 import com.cdkj.huatuweitong.bean.MyCarLoanFragmentBean;
+import com.cdkj.huatuweitong.bean.MyCurrentActivityBean;
 import com.cdkj.huatuweitong.bean.MyMessageAFBean;
 import com.cdkj.huatuweitong.bean.OrderBean;
 import com.cdkj.huatuweitong.bean.RecommendProductBean;
@@ -293,4 +299,77 @@ public interface MyApiServer {
     @FormUrlEncoded
     @POST("api")
     Call<BaseResponseModel<AccountListModel>> getAccount(@Field("code") String code, @Field("json") String json);
+
+    /**
+     * 车系(品牌)分页查询
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<ResponseInListModel<CarBrandActivityBean>>> getCarBrandDatas(@Field("code") String code, @Field("json") String json);
+
+    /**
+     * 车系分页查询
+     * @param code
+     * @param json
+     * @return
+     */
+      @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<ResponseInListModel<CarSystemActivityBean>>> getCarSystemlDatas(@Field("code") String code, @Field("json") String json);
+
+    /**
+     * 车型分页查询
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseListModel<CarModelActivityBean>> getCarModelDatas(@Field("code") String code, @Field("json") String json);
+
+  /**
+     * 我的账户人民币金额
+     * @param code 802503
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<MyAccountBean>> getAccountMoney(@Field("code") String code, @Field("json") String json);
+
+     /**
+     * 我的账户积分
+     * @param code 802503
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<MyCurrentActivityBean>> getAccountMoneyJF(@Field("code") String code, @Field("json") String json);
+
+  /**
+     * 我的账户详情  流水
+     * @param code 802503
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<AccountDetailsBean>> getAccountMoneyList(@Field("code") String code, @Field("json") String json);
+
+
+
+    /**
+     * 我的账户详情  流水
+     * @param code 802503
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<AccountDetailsBean>> getAccountList(@Field("code") String code, @Field("json") String json);
+
 }

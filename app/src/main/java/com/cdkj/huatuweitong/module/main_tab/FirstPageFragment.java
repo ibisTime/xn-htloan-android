@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,7 @@ import com.cdkj.huatuweitong.module.mfirst_page.ExhibitionCenterActivity;
 import com.cdkj.huatuweitong.module.product.ProductDetailsActivity;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.youth.banner.BannerConfig;
+import com.youth.banner.listener.OnBannerListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -236,7 +238,7 @@ public class FirstPageFragment extends BaseLazyFragment {
 
 
     private void initOnclickList() {
-
+        //跳转车贷计算器
         mBinding.tvCalculator.setOnClickListener(v -> {
             CarLoanCalculatorActivity.open(getContext(), 0);
         });
@@ -304,6 +306,19 @@ public class FirstPageFragment extends BaseLazyFragment {
         mBinding.firstBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
         mBinding.firstBanner.setIndicatorGravity(BannerConfig.CENTER);
         mBinding.firstBanner.setImageLoader(new GlideFirstPageBannerImageLoader());
+
+        mBinding.firstBanner.setOnBannerListener(new OnBannerListener() {
+            @Override
+            public void OnBannerClick(int position) {
+                FirstPageBanner firstPageBanner = mBanners.get(position);
+                if (firstPageBanner == null || TextUtils.isEmpty(firstPageBanner.getCode())) {
+                    return;
+                }
+               // ProductDetailsActivity.open(mActivity, firstPageBanner.getCode());
+            }
+        });
+
+
 
     }
 

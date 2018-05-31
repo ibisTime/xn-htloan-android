@@ -60,17 +60,21 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
     @Override
     public void afterCreate(Bundle savedInstanceState) {
         mBaseBinding.titleView.setMidTitle(getString(R.string.UserInfoUpdateActivityTitle));
+        initOnclick();
+
+    }
+
+    @Override
+    protected void onResumeFragments() {
+        super.onResumeFragments();
         mBinding.rowNickName.setTvRight(SPUtilHelpr.getUserName());
         mBinding.rowPhone.setTvRight(SPUtilHelpr.getUserPhoneNum());
-
-
-        initOnclick();
 
     }
 
     private void initOnclick() {
 
-        ImgUtils.loadQiniuLogo(this,SPUtilHelpr.getUserPhoto(), mBinding.imgLogo);
+        ImgUtils.loadQiniuLogo(this, SPUtilHelpr.getUserPhoto(), mBinding.imgLogo);
 
         mBinding.layoutLogo.setOnClickListener(v -> {
             //头像
@@ -87,7 +91,7 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
         });
         mBinding.rowPsw.setOnClickListener(v -> {
             //修改密码
-            FindPwdActivity.open(UserInfoUpdateActivity.this, SPUtilHelpr.getUserPhoneNum(), 1);
+            FindPwdActivity.open(UserInfoUpdateActivity.this, SPUtilHelpr.getUserPhoneNum());
         });
         mBinding.rowPayPsw.setOnClickListener(v -> {
             //修改支付密码
@@ -96,7 +100,7 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
         });
         mBinding.rowReceiveAddress.setOnClickListener(v -> {
             //地址
-            AddressListActivity.open(this,false);
+            AddressListActivity.open(this, false);
         });
 
         mBinding.rowReceiveBankCaard.setOnClickListener(v -> {
@@ -109,11 +113,7 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
             showDoubleWarnListen(getString(R.string.sure_logout), view -> {
                 SPUtilHelpr.logOutClear();
                 EventBus.getDefault().post(new EventFinishAll());
-                LoginActivity.open(UserInfoUpdateActivity.this,true);
-//                setShowState();
-//                UITipDialog.showSuccess(mActivity, getString(R.string.logout_succ), dialogInterface -> {
-//                    LoginActivity.open(mActivity,false);
-//                });
+                LoginActivity.open(UserInfoUpdateActivity.this, true);
             });
         });
 
@@ -122,15 +122,13 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
 
     /**
      * 接收上个下个界面修改的名字  eventBus
+     *
      * @param nickNameUpdateModel
      */
     @Subscribe
     public void nickUpdateSucc(NickNameUpdateModel nickNameUpdateModel) {
         if (nickNameUpdateModel == null) return;
         mBinding.rowNickName.setTvRight(nickNameUpdateModel.getName());
-//        if (mUserInfo != null) {
-//            mUserInfo.setNickname(nickNameUpdateModel.getName());
-//        }
     }
 
     @Override
@@ -164,7 +162,7 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
                 @Override
                 public void onFal(String info) {
                     Log.i("pppppp", "onSuccess: 七牛返回失败了:" + info);
-
+                    UITipDialog.showFall(UserInfoUpdateActivity.this, "头像修改失败");
                     disMissLoading();
                 }
             }, path);

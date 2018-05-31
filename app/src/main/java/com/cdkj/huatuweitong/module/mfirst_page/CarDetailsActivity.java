@@ -100,11 +100,13 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
                         " height:auto;\n" +
                         "}\n" +
                         "</style>" + data.getDescription(), "text/html; charset=UTF-8", "utf-8");
-                mBinding.tvCarName.setText(data.getSeriesName());
+
+                //这看效果图显示的好像是    品牌名字/名字/车系名字
+                mBinding.tvCarName.setText(data.getBrandName()+data.getName()+data.getSeriesName());
+
                 String price = com.cdkj.baselibrary.utils.MoneyUtils.getShowPriceSign(data.getSfAmount());
                 String referencePrice = com.cdkj.baselibrary.utils.MoneyUtils.getShowPriceSign(data.getOriginalPrice());
                 String directionPrice = com.cdkj.baselibrary.utils.MoneyUtils.getShowPriceSign(data.getSalePrice());
-
 
                 mBinding.tvCarPrice.setText(price);
                 mBinding.tvReferencePrice.setText("经销商参考价" + referencePrice);

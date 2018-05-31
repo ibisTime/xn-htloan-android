@@ -12,14 +12,16 @@ import android.view.ViewGroup;
 
 import com.cdkj.baselibrary.base.AbsRefreshListFragment;
 import com.cdkj.huatuweitong.adapters.MyMessageAFAdapter;
+import com.cdkj.huatuweitong.bean.MyMessageAFBean;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MyMessageActivityFragment extends AbsRefreshListFragment {
+public class MyMessageActivityFragment extends AbsRefreshListFragment<MyMessageAFBean> {
 
 
     private String type;
@@ -46,6 +48,10 @@ public class MyMessageActivityFragment extends AbsRefreshListFragment {
 
     @Override
     public RecyclerView.Adapter getListAdapter(List listData) {
+
+
+
+
         MyMessageAFAdapter adapter = new MyMessageAFAdapter(listData);
 
         adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
@@ -77,7 +83,13 @@ public class MyMessageActivityFragment extends AbsRefreshListFragment {
 
     }
    public void initDatas(int pageindex, int limit, boolean isShowDialog){
-
+       ArrayList<MyMessageAFBean> data =new ArrayList<>();
+       data.add(null);
+       data.add(null);
+       data.add(null);
+       data.add(null);
+       data.add(null);
+       mRefreshHelper.setData(data,"暂无消息",0);
 
         if (isShowDialog){
 //            showLoadingDialog();

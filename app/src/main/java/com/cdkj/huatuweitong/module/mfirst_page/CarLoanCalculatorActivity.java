@@ -22,11 +22,15 @@ import com.cdkj.baselibrary.utils.MoneyUtils;
 import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.api.MyApiServer;
+import com.cdkj.huatuweitong.bean.CarBrandActivityBean;
 import com.cdkj.huatuweitong.bean.CarDetailsBean;
 import com.cdkj.huatuweitong.bean.CarLoanCalculatorActivityDetailsBean;
 import com.cdkj.huatuweitong.bean.CarLoanCalculatorSendBean;
+import com.cdkj.huatuweitong.bean.CarModelActivityBean;
 import com.cdkj.huatuweitong.databinding.CarLoanCalculatorBinding;
 import com.cdkj.huatuweitong.module.user.MyCarLoanActivity;
+
+import org.greenrobot.eventbus.Subscribe;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -50,7 +54,13 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
     private double downPayments = 0.3;//首付默认是30%
     private double rate = 0.1;//利率默认是0.1  利率和还款年限有关
     private String code;//从我的车贷详情跳转过来的
-    private BigDecimal salePrice;
+    private BigDecimal salePrice = new BigDecimal(0);
+
+    private int checkRatItem = 0;
+    private int checkPayItem = 0;
+
+    private CarBrandActivityBean carBrandActivityBean;//车的品牌
+    private CarModelActivityBean carModelActivityBean;//车型
 
     public static void open(Context context, int type) {
         if (context != null) {
@@ -89,6 +99,8 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
     @Override
     public void afterCreate(Bundle savedInstanceState) {
         mBaseBinding.titleView.setMidTitle(getString(R.string.car_calculator_title));
+
+        Log.i("pppppp", "afterCreate:我的token " + SPUtilHelpr.getUserToken());
         if (getIntent() != null) {
             type = getIntent().getIntExtra("type", 0);
             if (type == 1) {
@@ -98,9 +110,16 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
             }
         }
         initOnclick();
+        //先给利率和首付一个默认值
+        rate = 0.1;//利率
+        repayments = 1;//还款年限
+        downPayments = 0.3;//首付
+        mBinding.tvOnePay.setText("30%");
+        mBinding.tvControlYear.setText("1年");
 
         if (type == 0) {
             //从首页跳转过来的
+
 
         } else if (type == 1) {
             //去计算利息等等
@@ -122,13 +141,31 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
 
     private void initOnclick() {
         if (type == 0) {
+            mBinding.llBrand.setOnClickListener(v -> CarBrandActivity.open(CarLoanCalculatorActivity.this));
+            mBinding.llModel.setOnClickListener(v -> {
+                if (carBrandActivityBean == null) {
+                    UITipDialog.showInfo(CarLoanCalculatorActivity.this, "请先选择品牌");
+                    return;
+                }
+//                CarModeldActivity.open(CarLoanCalculatorActivity.this,carBrandActivityBean);
+                CarSystemActivity.open(CarLoanCalculatorActivity.this, carBrandActivityBean);
+
+            });
             mBinding.llOnePay.setOnClickListener(v -> showPaySingleDialog());
             mBinding.llControlYear.setOnClickListener(v -> showRateSingleDialog());
-            mBinding.tvPayCar.setOnClickListener(v -> sendRegist());
+            mBinding.tvPayCar.setOnClickListener(v -> {
+                if (carModelActivityBean == null) {
+                    UITipDialog.showInfo(CarLoanCalculatorActivity.this, "请选择车型");
+                    return;
+                }
+                sendRegist0();
+            });
+
+
         } else if (type == 1) {
             mBinding.llOnePay.setOnClickListener(v -> showPaySingleDialog());
             mBinding.llControlYear.setOnClickListener(v -> showRateSingleDialog());
-            mBinding.tvPayCar.setOnClickListener(v -> sendRegist());
+            mBinding.tvPayCar.setOnClickListener(v -> sendRegist1());
 
         } else if (type == 2) {
             //中间的按钮全部不能点击  也不能提交申请  因为已经申请过了
@@ -181,13 +218,46 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
 
     }
 
-    private void sendRegist() {
+
+    private void sendRegist0() {
+
+        if (!SPUtilHelpr.isLogin(this, false)) {
+            return;
+        }
+        Map<String, Object> map = new HashMap();
+        map.put("brandCode", carModelActivityBean.getBrandCode());//品牌编号
+        map.put("brandName", carModelActivityBean.getBrandName());//品牌名
+        map.put("seriesCode", carModelActivityBean.getSeriesCode());//车系
+        map.put("seriesName", carModelActivityBean.getSeriesName());//车系
+        map.put("carCode", carModelActivityBean.getCode());//车型编号
+        map.put("carName", carModelActivityBean.getName());//车型名
+        String format = DateUtil.format(new Date());
+        Log.i("pppppp", "申请时间" + format);
+        map.put("createDatetime", format);
+        map.put("periods", String.valueOf(repayments));
+//        long price = (long) salePrice.doubleValue();
+
+        map.put("price", salePrice.longValue());
+        map.put("remark", "我是备注");
+        map.put("saleDesc", "1");
+
+        long shoufu = (long) Double.parseDouble(mBinding.tvDowanPayments.getText().toString()) * 1000;//将金额变成厘传递
+        map.put("sfAmount", shoufu + "");
+        map.put("sfRate", rate + "");
+        map.put("userId", SPUtilHelpr.getUserId());
+        map.put("userMobile", SPUtilHelpr.getUserPhoneNum());
+
+        subMitRequestOrder(map);
+    }
+
+
+    private void sendRegist1() {
 
         if (!SPUtilHelpr.isLogin(this, false)) {
             return;
         }
 
-        Map map = new HashMap<String, String>();
+        Map<String, Object> map = new HashMap();
         map.put("brandCode", currentdata.getBrandCode());
         map.put("brandName", currentdata.getBrandName());
         map.put("carCode", currentdata.getCode());
@@ -204,10 +274,14 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
         map.put("seriesName", currentdata.getSeriesName());
         long shoufu = (long) Double.parseDouble(mBinding.tvDowanPayments.getText().toString()) * 1000;//将金额变成厘传递
         map.put("sfAmount", shoufu + "");
-        map.put("sfRate", rate + "");
+        map.put("sfRate", downPayments + "");
         map.put("userId", SPUtilHelpr.getUserId());
         map.put("userMobile", SPUtilHelpr.getUserPhoneNum());
 
+        subMitRequestOrder(map);
+    }
+
+    private void subMitRequestOrder(Map map) {
         Call call = RetrofitUtils.createApi(MyApiServer.class).sendCarLoanCalculator("630430", StringUtils.getJsonToString(map));
         addCall(call);
         call.enqueue(new BaseResponseModelCallBack<CarLoanCalculatorSendBean>(CarLoanCalculatorActivity.this) {
@@ -249,9 +323,7 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
         mBinding.tvManyMoney.setText(MoneyUtils.showPrice(duohua));
         mBinding.tvMoney.setText(MoneyUtils.showPrice(cankaojia));
 
-
     }
-
 
 
     private void showPaySingleDialog() {
@@ -261,9 +333,10 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
         }
 
         AlertDialog ad = new AlertDialog.Builder(CarLoanCalculatorActivity.this).setTitle("选择首付比")
-                .setSingleChoiceItems(paySingData, 0, new DialogInterface.OnClickListener() {
+                .setSingleChoiceItems(paySingData, checkPayItem, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        checkPayItem = which;
                         switch (which) {
                             case 0:
                                 downPayments = 0.3;
@@ -292,13 +365,15 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
         }
 
         AlertDialog ad = new AlertDialog.Builder(CarLoanCalculatorActivity.this).setTitle("选择还款年限")
-                .setSingleChoiceItems(ratSingData, 0, new DialogInterface.OnClickListener() {
+                .setSingleChoiceItems(ratSingData, checkRatItem, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        checkRatItem = which;
                         switch (which) {
                             case 0:
                                 rate = 0.1;
                                 repayments = 1;
+
                                 break;
                             case 1:
                                 rate = 0.2;
@@ -361,6 +436,34 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
         mBinding.ivBrand.setVisibility(isShow);
         mBinding.ivControlYear.setVisibility(isShow);
 
+    }
+
+    /**
+     * 接受品牌数据
+     *
+     * @param bean
+     */
+    @Subscribe
+    public void breakCarBrandActivityBean(CarBrandActivityBean bean) {
+        this.carBrandActivityBean = bean;
+        mBinding.tvBrand.setText(bean.getName());//品牌
+
+        carModelActivityBean = null;
+        mBinding.tvModel.setText("");//车型
+
+    }
+
+    /**
+     * 接受车型数据
+     *
+     * @param bean
+     */
+    @Subscribe
+    public void breakCarModelActivityBean(CarModelActivityBean bean) {
+        this.carModelActivityBean = bean;
+        mBinding.tvModel.setText(bean.getName());//车型
+        salePrice = bean.getSalePrice();
+        setViewData();
     }
 
 }

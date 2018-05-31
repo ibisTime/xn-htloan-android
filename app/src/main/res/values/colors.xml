@@ -18,8 +18,12 @@
     <color name="gray_text">#999999</color>
     <color name="pink_text">#FE9AFF</color>
     <color name="shell_red">#FC7D41</color>
+    <color name="shell_red_us">#f15353</color>
     <color name="text_d6">#D6D6D6</color>
     <color name="text_f7">#f7f7f7</color>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="white_66">#AAffffff</color>
 
 
 </resources>

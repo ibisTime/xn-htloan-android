@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cdkj.baselibrary.api.BaseResponseModel;
 import com.cdkj.baselibrary.api.ResponseInListModel;
 import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
 import com.cdkj.baselibrary.base.AbsRefreshListFragment;
@@ -146,7 +147,8 @@ public class ReimbursementListFragment extends AbsRefreshListFragment {
         }
 
 
-        Call call = RetrofitUtils.createApi(MyApiServer.class).getReimbursementRepaymentMonthData("630543", StringUtils.getJsonToString(map));
+        Call<BaseResponseModel<ResponseInListModel<ReimbursementRepaymentMonthBean>>> call = RetrofitUtils.createApi(MyApiServer.class).getReimbursementRepaymentMonthData("630543", StringUtils.getJsonToString(map));
+
         addCall(call);
         call.enqueue(new BaseResponseModelCallBack<ResponseInListModel<ReimbursementRepaymentMonthBean>>(mActivity) {
             @Override

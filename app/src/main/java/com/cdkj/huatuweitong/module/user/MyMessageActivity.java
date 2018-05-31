@@ -14,6 +14,9 @@ import com.cdkj.huatuweitong.databinding.ActivityMyMessageBinding;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 我的消息
+ */
 public class MyMessageActivity extends AbsBaseLoadActivity {
     ActivityMyMessageBinding mBinding;
 

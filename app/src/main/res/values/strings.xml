@@ -51,6 +51,7 @@
     <string name="sure_logout">确定退出登录?</string>
     <string name="user_new_phone">新手机号</string>
     <string name="noupdata_phone">手机号码修改失败</string>
+    <string name="noupdata_phone_succer">手机号码修改成功</string>
     <string name="update_logo_succ">头像更换成功</string>
     <string name="loan_sms">贷款信息</string>
     <string name="loan_car">贷款车辆</string>
@@ -75,4 +76,9 @@
     <string name="empty_apply_order">申请单为空</string>
     <string name="my_order">我的订单</string>
     <string name="waite_pay">待支付</string>
+
+    <string name="title_activity_about_us">AboutUsActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="copyright">\@2017CON版权所有</string>
 </resources>

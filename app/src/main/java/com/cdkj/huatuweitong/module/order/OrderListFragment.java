@@ -118,7 +118,7 @@ public class OrderListFragment extends AbsRefreshListFragment {
         map.put("start", pageindex + "");
 
         if (!TextUtils.isEmpty(orderState)){
-            List<String> status = new ArrayList<>();
+            List<String> status = new ArrayList<>(1);
             status.add(orderState);
             map.put("statusList", status);
         }
@@ -135,6 +135,12 @@ public class OrderListFragment extends AbsRefreshListFragment {
             @Override
             protected void onSuccess(ResponseInListModel<OrderBean> data, String SucMessage) {
                 mRefreshHelper.setData(data.getList(), "暂无订单", 0);
+            }
+
+            @Override
+            protected void onReqFailure(String errorCode, String errorMessage) {
+               // super.onReqFailure(errorCode, errorMessage);
+
             }
 
             @Override

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
 
@@ -29,17 +30,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="14dp"
-                android:text="123456"
+                tools:text="123456"
                 android:textColor="@color/white_car_loan"
                 android:textSize="30sp" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="16dp"
-                android:background="@color/white_car_loan" />
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:layout_marginTop="16dp"-->
+                <!--android:background="@color/white_car_loan" />-->
 
             <LinearLayout
+                android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -65,7 +67,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:singleLine="true"
-                        android:text="456789"
+                        tools:text="456789"
                         android:textColor="@color/white_car_loan"
                         android:textSize="13sp" />
 
@@ -98,7 +100,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:singleLine="true"
-                        android:text="2300"
+                        tools:text="2300"
                         android:textColor="@color/white_car_loan"
                         android:textSize="13sp" />
 
@@ -131,7 +133,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:singleLine="true"
-                        android:text="3100"
+                        tools:text="3100"
                         android:textColor="@color/white_car_loan"
                         android:textSize="13sp" />
 
@@ -141,35 +143,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="74dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:text="@string/car_calculator_model" />
-
-            <TextView
-                android:id="@+id/tv_model"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_weight="1"
-                android:singleLine="true"
-                android:text="奥迪" />
-
-            <ImageView
-                android:id="@+id/iv_model"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
-                android:src="@mipmap/ic_more" />
-        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
@@ -178,6 +151,7 @@
             android:background="@color/gray_line" />
 
         <LinearLayout
+            android:id="@+id/ll_brand"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center"
@@ -197,7 +171,7 @@
                 android:layout_marginRight="15dp"
                 android:layout_weight="1"
                 android:singleLine="true"
-                android:text="2018款 30周年限定款"
+                tools:text="2018款 30周年限定款"
                 android:textSize="15sp" />
 
             <ImageView
@@ -207,6 +181,38 @@
                 android:layout_marginRight="15dp"
                 android:src="@mipmap/ic_more" />
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_model"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="74dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="@string/car_calculator_model" />
+
+            <TextView
+                android:id="@+id/tv_model"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:singleLine="true"
+                tools:text="奥迪" />
+
+            <ImageView
+                android:id="@+id/iv_model"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:src="@mipmap/ic_more" />
+        </LinearLayout>
+
 
         <View
             android:layout_width="match_parent"
@@ -238,7 +244,7 @@
                 android:layout_marginRight="15dp"
                 android:layout_weight="1"
                 android:singleLine="true"
-                android:text="30%"
+                tools:text="30%"
                 android:textSize="15sp" />
 
             <ImageView
@@ -278,7 +284,7 @@
                 android:layout_marginRight="15dp"
                 android:layout_weight="1"
                 android:singleLine="true"
-                android:text="1"
+                tools:text="1"
                 android:textSize="15sp" />
 
             <ImageView

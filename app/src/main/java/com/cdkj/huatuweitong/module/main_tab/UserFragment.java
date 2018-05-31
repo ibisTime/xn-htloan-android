@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cdkj.baselibrary.appmanager.CdRouteHelper;
 import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
 import com.cdkj.baselibrary.base.BaseLazyFragment;
 import com.cdkj.baselibrary.dialog.UITipDialog;
@@ -22,6 +23,9 @@ import com.cdkj.huatuweitong.bean.AccountListModel;
 import com.cdkj.huatuweitong.bean.UserFragmentBean;
 import com.cdkj.huatuweitong.databinding.FragmentUserBinding;
 import com.cdkj.huatuweitong.module.order.AllOrderTabActivity;
+import com.cdkj.huatuweitong.module.user.AccountIntegraActivity;
+import com.cdkj.huatuweitong.module.user.ConnectionServerActivity;
+import com.cdkj.huatuweitong.module.user.MyAccountActivity;
 import com.cdkj.huatuweitong.module.user.MyCarLoanActivity;
 import com.cdkj.huatuweitong.module.user.MyCurrentActivity;
 import com.cdkj.huatuweitong.module.user.MyMessageActivity;
@@ -57,6 +61,10 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
         mBinding.rflMyOrder.setOnClickListener(this);
         mBinding.rilCredit.setOnClickListener(this);
         mBinding.rilMessage.setOnClickListener(this);
+        mBinding.rifCallPhone.setOnClickListener(this);
+        mBinding.rifAboutUs.setOnClickListener(this);
+        mBinding.llCoin.setOnClickListener(this);
+        mBinding.llTicket.setOnClickListener(this);
 
         return mBinding.getRoot();
     }
@@ -75,7 +83,7 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
     }
 
     public void initData() {
-        if (!SPUtilHelpr.isLoginNoStart()){
+        if (!SPUtilHelpr.isLoginNoStart()) {
 //            LoginActivity.open(mActivity,true);
 
             return;
@@ -137,24 +145,44 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.img_user_logo:
-
-                UserInfoUpdateActivity.open(getContext());
+            case R.id.ll_coin:
+                //账户余额
+                MyAccountActivity.open(mActivity);
+                break;
+            case R.id.ll_ticket:
+                //账户积分
+                AccountIntegraActivity.open(mActivity);
                 break;
             case R.id.lin_user_head:
+                //修改头像手机号等
                 UserInfoUpdateActivity.open(getContext());
                 break;
             case R.id.ril_message:
+                //我的消息
                 MyMessageActivity.open(mActivity);
                 break;
             case R.id.rfl_my_car_loan:
+                //我的车贷申请
                 MyCarLoanActivity.open(mActivity);
                 break;
             case R.id.rfl_my_order:
+                //我的商品订单
                 AllOrderTabActivity.open(mActivity);
                 break;
             case R.id.ril_credit:
+                //信用报告
                 MyCurrentActivity.open(mActivity);
+//                CdRouteHelper.openWebViewActivityForkey("关于我们", "about_us");//630047
+                break;
+            case R.id.rif_call_phone:
+                //联系客服
+                ConnectionServerActivity.open(mActivity);
+
+                break;
+            case R.id.rif_about_us:
+                //关于我们
+//                AboutUsActivity.open(mActivity);
+                CdRouteHelper.openWebViewActivityForkey("关于我们", "about_us");//630047
                 break;
         }
     }
@@ -184,17 +212,17 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
             @Override
             protected void onSuccess(AccountListModel data, String SucMessage) {
 
-                if (data == null )
+                if (data == null)
                     return;
 
-                for (AccountListModel.AccountListInsideModel model : data.getAccountList()){
-                    if (model.getCurrency().equals("JF")){
+                for (AccountListModel.AccountListInsideModel model : data.getAccountList()) {
+                    if (model.getCurrency().equals("JF")) {
                         mBinding.tvTicket.setText(MoneyUtils.showPrice(model.getAmount()));
                         mBinding.tvTicket.setTag(model.getAccountNumber());
-                    }else if (model.getCurrency().equals("CNY")){
+                    } else if (model.getCurrency().equals("CNY")) {
                         mBinding.tvAmount.setText(MoneyUtils.showPrice(model.getAmount()));
                         mBinding.tvAmount.setTag(model.getAccountNumber());
-                    }else {
+                    } else {
 
                     }
 

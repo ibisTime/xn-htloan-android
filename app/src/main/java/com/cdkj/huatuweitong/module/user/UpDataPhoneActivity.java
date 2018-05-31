@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 
 import com.cdkj.baselibrary.appmanager.MyCdConfig;
@@ -13,12 +14,12 @@ import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.interfaces.SendCodeInterface;
 import com.cdkj.baselibrary.interfaces.SendPhoneCoodePresenter;
+import com.cdkj.baselibrary.model.IsSuccessModes;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
 import com.cdkj.baselibrary.utils.AppUtils;
 import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.R;
-import com.cdkj.huatuweitong.bean.UpDataPhoneBean;
 import com.cdkj.huatuweitong.databinding.ActivityUpDataPhoneBinding;
 
 import java.util.HashMap;
@@ -76,26 +77,28 @@ public class UpDataPhoneActivity extends AbsBaseLoadActivity implements SendCode
      */
     private void reqeustUpPhoneNumber() {
         HashMap<String, String> hashMap = new LinkedHashMap<String, String>();
-
+        showLoadingDialog();
         hashMap.put("newMobile", mBinding.etPhone.getText().toString());
         hashMap.put("smsCaptcha", mBinding.etCheckCode.getText().toString());
         hashMap.put("userId", SPUtilHelpr.getUserId());
 
         Call call = RetrofitUtils.getBaseAPiService().successRequest("805061", StringUtils.getJsonToString(hashMap));
         addCall(call);
-        call.enqueue(new BaseResponseModelCallBack<UpDataPhoneBean>(UpDataPhoneActivity.this) {
+        call.enqueue(new BaseResponseModelCallBack<IsSuccessModes>(UpDataPhoneActivity.this) {
             @Override
-            protected void onSuccess(UpDataPhoneBean data, String SucMessage) {
-                if (data.getSuccess()) {
+            protected void onSuccess(IsSuccessModes data, String SucMessage) {
+                if (data.isSuccess()) {
                     SPUtilHelpr.saveUserPhoneNum(mBinding.etPhone.getText().toString());
-                }else{
-                    UITipDialog.showFall(UpDataPhoneActivity.this,getString(R.string.noupdata_phone));
+                    UITipDialog.showSuccess(UpDataPhoneActivity.this, getString(R.string.noupdata_phone_succer),dialog -> finish() );
+                } else {
+                    UITipDialog.showFall(UpDataPhoneActivity.this, getString(R.string.noupdata_phone));
                 }
             }
 
             @Override
             protected void onReqFailure(String errorCode, String errorMessage) {
-                super.onReqFailure(errorCode, errorMessage);
+                // super.onReqFailure(errorCode, errorMessage);
+                Log.i("pppppp", "onReqFailure: "+errorMessage);
                 UITipDialog.showFall(UpDataPhoneActivity.this, errorMessage);
             }
 
@@ -116,6 +119,7 @@ public class UpDataPhoneActivity extends AbsBaseLoadActivity implements SendCode
 
     @Override
     public void CodeFailed(String code, String msg) {
+
         UITipDialog.showFall(UpDataPhoneActivity.this, msg);
     }
 
