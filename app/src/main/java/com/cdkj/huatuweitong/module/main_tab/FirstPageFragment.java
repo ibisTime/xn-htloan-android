@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 
 import com.cdkj.baselibrary.api.BaseResponseModel;
 import com.cdkj.baselibrary.api.ResponseInListModel;
+import com.cdkj.baselibrary.appmanager.CdRouteHelper;
 import com.cdkj.baselibrary.base.BaseLazyFragment;
 import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.interfaces.BaseRefreshCallBack;
@@ -34,6 +35,7 @@ import com.cdkj.huatuweitong.common.GlideFirstPageBannerImageLoader;
 import com.cdkj.huatuweitong.databinding.FragmentFirstpageBinding;
 import com.cdkj.huatuweitong.module.mfirst_page.CarLoanCalculatorActivity;
 import com.cdkj.huatuweitong.module.mfirst_page.ExhibitionCenterActivity;
+import com.cdkj.huatuweitong.module.mfirst_page.RecommendProductListActivity;
 import com.cdkj.huatuweitong.module.product.ProductDetailsActivity;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.youth.banner.BannerConfig;
@@ -242,6 +244,10 @@ public class FirstPageFragment extends BaseLazyFragment {
         mBinding.tvCalculator.setOnClickListener(v -> {
             CarLoanCalculatorActivity.open(getContext(), 0);
         });
+
+        mBinding.llRecommendProduct.setOnClickListener(v -> {
+            RecommendProductListActivity.open(mActivity);
+        });
     }
 
     /**
@@ -311,10 +317,14 @@ public class FirstPageFragment extends BaseLazyFragment {
             @Override
             public void OnBannerClick(int position) {
                 FirstPageBanner firstPageBanner = mBanners.get(position);
-                if (firstPageBanner == null || TextUtils.isEmpty(firstPageBanner.getCode())) {
+                if (firstPageBanner == null || TextUtils.isEmpty(firstPageBanner.getUrl())) {
                     return;
                 }
-               // ProductDetailsActivity.open(mActivity, firstPageBanner.getCode());
+                if (firstPageBanner.getUrl()!=null){
+                    if (firstPageBanner.getUrl().indexOf("http") != -1){
+                        CdRouteHelper.openWebViewActivityForUrl(firstPageBanner.getName(), firstPageBanner.getUrl());
+                    }
+                }
             }
         });
 

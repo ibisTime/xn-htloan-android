@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cdkj.baselibrary.adapters.ViewPagerAdapter;
-import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
 import com.cdkj.baselibrary.base.BaseLazyFragment;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.databinding.FragmentReimbursementBinding;
@@ -37,32 +36,14 @@ public class ReimbursementFragment extends BaseLazyFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_reimbursement, null, false);
-        initViewPager();
-        initViewPagerIndicator();
+
+        initViews();
+
         return mBinding.getRoot();
     }
 
-    /**
-     * 初始化适配器
-     */
-    private void initViewPagerIndicator() {
-        mBinding.viewindicator.setmLinWidth(25);
-        mBinding.viewindicator.setVisibleTabCount(2);
-        mBinding.viewindicator.setTabItemTitles(Arrays.asList("近期还款", "借款记录"));
-        mBinding.viewindicator.setViewPager(mBinding.viewpager, 0);
-    }
-
-
-    /**
-     * 初始化ViewPager
-     */
-    private void initViewPager() {
-
-        if (!SPUtilHelpr.isLoginNoStart()){
-            return;
-        }
+    private void initViews() {
 
         //设置fragment数据
         ArrayList fragments = new ArrayList<>();
@@ -72,7 +53,14 @@ public class ReimbursementFragment extends BaseLazyFragment {
 
         mBinding.viewpager.setAdapter(new ViewPagerAdapter(getChildFragmentManager(), fragments));
         mBinding.viewpager.setOffscreenPageLimit(fragments.size());
+
         mBinding.viewpager.setPagingEnabled(true);
+
+        mBinding.viewindicator.setmLinWidth(28);
+        mBinding.viewindicator.setVisibleTabCount(fragments.size());
+        mBinding.viewindicator.setTabItemTitles(Arrays.asList("近期还款", "借款记录"));
+        mBinding.viewindicator.setViewPager(mBinding.viewpager, 0);
+
     }
 
 

@@ -69,7 +69,7 @@ android {
         api 'com.github.bumptech.glide:compiler:4.6.1'
         annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
         // 七牛
-        api 'com.qiniu:qiniu-android-sdk:7.3.0'
+        compile 'com.qiniu:qiniu-android-sdk:7.3.+'
 
         //微信支付
 //        api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'

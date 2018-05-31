@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.cdkj.baselibrary.R;
 import com.cdkj.baselibrary.api.BaseApiServer;
+import com.cdkj.baselibrary.appmanager.CdRouteHelper;
 import com.cdkj.baselibrary.appmanager.MyCdConfig;
 import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
@@ -21,6 +22,8 @@ import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
 import com.cdkj.baselibrary.utils.AppUtils;
 import com.cdkj.baselibrary.utils.StringUtils;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.HashMap;
 
@@ -141,11 +144,12 @@ public class RegisterActivity extends AbsBaseLoadActivity implements SendCodeInt
         call.enqueue(new BaseResponseModelCallBack<UserLoginModel>(this) {
             @Override
             protected void onSuccess(UserLoginModel data, String SucMessage) {
-                    showToast(getString(R.string.register_succ));
-                    SPUtilHelpr.saveUserId(data.getUserId());
+                showToast(getString(R.string.register_succ));
+                SPUtilHelpr.saveUserId(data.getUserId());
 //                    SPUtilHelpr.saveUserToken(data.getToken());
-                    SPUtilHelpr.saveUserPhoneNum(mBinding.edtPhone.getText().toString());
-                    finish();
+                CdRouteHelper.openMain();
+                EventBus.getDefault().post("doCloseLogin");
+                finish();
             }
 
             @Override

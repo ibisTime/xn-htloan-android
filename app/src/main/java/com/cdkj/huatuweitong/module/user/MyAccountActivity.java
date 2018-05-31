@@ -18,7 +18,6 @@ import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.MyAccountBean;
-import com.cdkj.huatuweitong.bean.MyAccountMoneyDataBean;
 import com.cdkj.huatuweitong.databinding.ActivityMyAccountBinding;
 import com.cdkj.huatuweitong.module.recharge.PutForwardActivity;
 import com.cdkj.huatuweitong.module.recharge.RechargeActivity;
@@ -39,6 +38,14 @@ public class MyAccountActivity extends AbsBaseLoadActivity {
         if (context != null) {
             context.startActivity(new Intent(context, MyAccountActivity.class));
         }
+
+    }
+
+    @Override
+    public View addMainView() {
+        mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.activity_my_account, null, false);
+
+        return mBinding.getRoot();
     }
 
     @Override
@@ -62,6 +69,8 @@ public class MyAccountActivity extends AbsBaseLoadActivity {
             PutForwardActivity.open(this);
         });
         initDatas();
+        initListener();
+    }
 
         initDatasMoney();
 
@@ -73,39 +82,17 @@ public class MyAccountActivity extends AbsBaseLoadActivity {
         mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.activity_my_account, null, false);
 
         return mBinding.getRoot();
-    }
-
-    /**
-     * 获取统计信息  就是三个列表的值
-     */
-    private void initDatasMoney() {
-        showLoadingDialog();
-        Map<String, String> map = new HashMap<>();
-        map.put("userId", SPUtilHelpr.getUserId());
-        Call<BaseResponseModel<MyAccountMoneyDataBean>> myAccountMoney = RetrofitUtils.createApi(MyApiServer.class).getMyAccountMoney("802900", StringUtils.getJsonToString(map));
-        addCall(myAccountMoney);
-        myAccountMoney.enqueue(new BaseResponseModelCallBack<MyAccountMoneyDataBean>(MyAccountActivity.this) {
-            @Override
-            protected void onSuccess(MyAccountMoneyDataBean data, String SucMessage) {
-                mBinding.tvRechargeMoney.setText("¥" + MoneyUtils.showPrice(data.getTotalCharge()));//outAmount
-                mBinding.tvSpendMoney.setText("¥" + MoneyUtils.showPrice(data.getTotalConsume()));//inAmount
-                mBinding.tvAddMoney.setText("¥" + MoneyUtils.showPrice(data.getTotalWithdraw()));
-            }
-
-            @Override
-            protected void onFinish() {
-                disMissLoading();
-
-            }
+    private void initListener() {
+        mBinding.btnAdd.setOnClickListener(view -> {
+//            WithdrawActivity.open(this, accountNumber, balance);
         });
-
     }
 
-
     /**
-     * 获取数据 accountNumber数据
+     * 获取数据
      */
     private void initDatas() {
+//        802503
         showLoadingDialog();
         Map<String, String> map = new HashMap<>();
         map.put("userId", SPUtilHelpr.getUserId());
