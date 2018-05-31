@@ -58,8 +58,9 @@
         <activity android:name=".module.user.MyAccountActivity" />
         <activity android:name=".module.user.AccountDetailsActivity" />
         <activity android:name=".module.user.AccountIntegralActivity" />
-        <activity android:name=".module.recharge.RechargeActivity"></activity>
-        <activity android:name="com.cdkj.huatuweitong.module.user.AccountIntegraActivity"></activity>
+        <activity android:name=".module.recharge.RechargeActivity" />
+        <activity android:name=".module.user.AccountIntegraActivity" />
+        <activity android:name=".module.recharge.PutForwardActivity"></activity>
     </application>
 
 </manifest>

@@ -172,7 +172,6 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
             case R.id.ril_credit:
                 //信用报告
                 MyCurrentActivity.open(mActivity);
-//                CdRouteHelper.openWebViewActivityForkey("关于我们", "about_us");//630047
                 break;
             case R.id.rif_call_phone:
                 //联系客服

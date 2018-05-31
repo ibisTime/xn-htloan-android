@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.cdkj.baselibrary.api.BaseResponseModel;
@@ -17,7 +18,10 @@ import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.MyAccountBean;
+import com.cdkj.huatuweitong.bean.MyAccountMoneyDataBean;
 import com.cdkj.huatuweitong.databinding.ActivityMyAccountBinding;
+import com.cdkj.huatuweitong.module.recharge.PutForwardActivity;
+import com.cdkj.huatuweitong.module.recharge.RechargeActivity;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,11 +33,38 @@ import retrofit2.Call;
  */
 public class MyAccountActivity extends AbsBaseLoadActivity {
     ActivityMyAccountBinding mBinding;
+    String accountNumber;
 
     public static void open(Context context) {
         if (context != null) {
             context.startActivity(new Intent(context, MyAccountActivity.class));
         }
+    }
+
+    @Override
+    public void afterCreate(Bundle savedInstanceState) {
+        mBaseBinding.titleView.setMidTitle("我的账户");
+        mBaseBinding.titleView.setRightTitle("明细");
+        mBaseBinding.titleView.setRightFraClickListener(v -> {
+            //跳转详情界面
+            if (TextUtils.isEmpty(accountNumber)) {
+                UITipDialog.showInfo(MyAccountActivity.this, "暂无流水数据");
+                return;
+            }
+            AccountDetailsActivity.open(this, accountNumber);
+        });
+
+//
+        mBinding.btnRecharge.setOnClickListener(v -> {
+            RechargeActivity.open(this);
+        });
+        mBinding.btnAdd.setOnClickListener(v -> {
+            PutForwardActivity.open(this);
+        });
+        initDatas();
+
+        initDatasMoney();
+
 
     }
 
@@ -44,23 +75,37 @@ public class MyAccountActivity extends AbsBaseLoadActivity {
         return mBinding.getRoot();
     }
 
-    @Override
-    public void afterCreate(Bundle savedInstanceState) {
-        mBaseBinding.titleView.setMidTitle("我的账户");
-        mBaseBinding.titleView.setRightTitle("明细");
-        mBaseBinding.titleView.setRightFraClickListener(v -> {
-            //跳转详情界面
-            AccountDetailsActivity.open(this);
+    /**
+     * 获取统计信息  就是三个列表的值
+     */
+    private void initDatasMoney() {
+        showLoadingDialog();
+        Map<String, String> map = new HashMap<>();
+        map.put("userId", SPUtilHelpr.getUserId());
+        Call<BaseResponseModel<MyAccountMoneyDataBean>> myAccountMoney = RetrofitUtils.createApi(MyApiServer.class).getMyAccountMoney("802900", StringUtils.getJsonToString(map));
+        addCall(myAccountMoney);
+        myAccountMoney.enqueue(new BaseResponseModelCallBack<MyAccountMoneyDataBean>(MyAccountActivity.this) {
+            @Override
+            protected void onSuccess(MyAccountMoneyDataBean data, String SucMessage) {
+                mBinding.tvRechargeMoney.setText("¥" + MoneyUtils.showPrice(data.getTotalCharge()));//outAmount
+                mBinding.tvSpendMoney.setText("¥" + MoneyUtils.showPrice(data.getTotalConsume()));//inAmount
+                mBinding.tvAddMoney.setText("¥" + MoneyUtils.showPrice(data.getTotalWithdraw()));
+            }
+
+            @Override
+            protected void onFinish() {
+                disMissLoading();
+
+            }
         });
-        initDatas();
 
     }
 
+
     /**
-     * 获取数据
+     * 获取数据 accountNumber数据
      */
     private void initDatas() {
-//        802503
         showLoadingDialog();
         Map<String, String> map = new HashMap<>();
         map.put("userId", SPUtilHelpr.getUserId());
@@ -76,8 +121,8 @@ public class MyAccountActivity extends AbsBaseLoadActivity {
                     return;
                 }
                 MyAccountBean.AccountListBean accountListBean = data.getAccountList().get(0);
-                mBinding.tvRechargeMoney.setText("¥" + MoneyUtils.showPrice(accountListBean.getOutAmount()));//outAmount
-                mBinding.tvSpendMoney.setText("¥" + MoneyUtils.showPrice(accountListBean.getInAmount()));//inAmount
+                accountNumber = accountListBean.getAccountNumber();
+                mBinding.tvMoney.setText(MoneyUtils.showPrice(accountListBean.getAmount()));
             }
 
             @Override

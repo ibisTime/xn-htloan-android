@@ -40,7 +40,7 @@ public class MyAccountBean {
 
         private String accountNumber;
         private double addAmount;
-        private double amount;
+        private BigDecimal amount;
         private String createDatetime;
         private String currency;
         private double frozenAmount;
@@ -68,11 +68,11 @@ public class MyAccountBean {
             this.addAmount = addAmount;
         }
 
-        public double getAmount() {
+        public BigDecimal getAmount() {
             return amount;
         }
 
-        public void setAmount(double amount) {
+        public void setAmount(BigDecimal amount) {
             this.amount = amount;
         }
 

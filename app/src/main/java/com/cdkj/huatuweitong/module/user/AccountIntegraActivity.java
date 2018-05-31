@@ -33,13 +33,13 @@ public class AccountIntegraActivity extends AbsRefreshListActivity<AccountDetail
 
     private TextView tvCurrentIntegral;
     private String accountNumber;//再通过这个获取流水
+    private View headView;
 
     public static void open(Context context) {
         if (context != null) {
             Intent intent = new Intent(context, AccountIntegraActivity.class);
             context.startActivity(intent);
         }
-
     }
 
     @Override
@@ -47,16 +47,17 @@ public class AccountIntegraActivity extends AbsRefreshListActivity<AccountDetail
         mBaseBinding.titleView.setMidTitle("账户积分");
         initRefreshHelper(10);
 
-
         initDatas();
     }
 
     @Override
     public RecyclerView.Adapter getListAdapter(List<AccountDetailsBean.ListBean> listData) {
         MyCurrentActivityApter adapter = new MyCurrentActivityApter(listData);
-        View view = View.inflate(AccountIntegraActivity.this, R.layout.head_my_current, null);
-        tvCurrentIntegral = view.findViewById(R.id.tv_current_integral);
-        adapter.addHeaderView(view);
+        headView = View.inflate(AccountIntegraActivity.this, R.layout.head_my_current, null);
+        tvCurrentIntegral = headView.findViewById(R.id.tv_current_integral);
+        TextView tvTitle = headView.findViewById(R.id.tv_title);
+        tvTitle.setText("当前账户积分");
+        adapter.addHeaderView(headView);
         adapter.setHeaderAndEmpty(true);
         return adapter;
     }
@@ -68,11 +69,8 @@ public class AccountIntegraActivity extends AbsRefreshListActivity<AccountDetail
 
 
     private void initDatas(int pageindex, int limit, boolean isShowDialog) {
-
         initDataList(pageindex, limit, isShowDialog);
 
-
-//        tvCurrentIntegral.setText("0");
     }
 
     /**
@@ -96,10 +94,11 @@ public class AccountIntegraActivity extends AbsRefreshListActivity<AccountDetail
                 }
                 MyAccountBean.AccountListBean accountListBean = data.getAccountList().get(0);
 //                amount
-                tvCurrentIntegral.setText((int) accountListBean.getAmount() + "");
+                tvCurrentIntegral.setText(accountListBean.getAmount().intValue() + "");
 
                 //再获取到accountNumber  再通过这个获取流水
                 accountNumber = accountListBean.getAccountNumber();
+
                 mRefreshHelper.onDefaluteMRefresh(true);
 
             }
@@ -119,13 +118,13 @@ public class AccountIntegraActivity extends AbsRefreshListActivity<AccountDetail
         Map<String, String> map = new HashMap<>();
         map.put("start", pageindex + "");
         map.put("limit", limit + "");
+        map.put("accountNumber", accountNumber);
 
-        Call<BaseResponseModel<AccountDetailsBean>> accountMoneyList = RetrofitUtils.createApi(MyApiServer.class).getAccountMoneyList("802520", "");
+        Call<BaseResponseModel<AccountDetailsBean>> accountMoneyList = RetrofitUtils.createApi(MyApiServer.class).getAccountMoneyList("802520", StringUtils.getJsonToString(map));
         accountMoneyList.enqueue(new BaseResponseModelCallBack<AccountDetailsBean>(AccountIntegraActivity.this) {
             @Override
             protected void onSuccess(AccountDetailsBean data, String SucMessage) {
-                //mRefreshHelper.setData(data., "暂无贷款数据", 0);
-
+                mRefreshHelper.setData(data.getList(), "暂无积分流水", 0);
             }
 
             @Override

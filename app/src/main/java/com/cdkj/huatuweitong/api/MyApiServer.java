@@ -20,6 +20,7 @@ import com.cdkj.huatuweitong.bean.FirstPageCarRecommendBean;
 import com.cdkj.huatuweitong.bean.IsSetPayPassWord;
 import com.cdkj.huatuweitong.bean.LoginBean;
 import com.cdkj.huatuweitong.bean.MyAccountBean;
+import com.cdkj.huatuweitong.bean.MyAccountMoneyDataBean;
 import com.cdkj.huatuweitong.bean.MyCarLoanFragmentBean;
 import com.cdkj.huatuweitong.bean.MyCurrentActivityBean;
 import com.cdkj.huatuweitong.bean.MyMessageAFBean;
@@ -371,5 +372,17 @@ public interface MyApiServer {
     @FormUrlEncoded
     @POST("api")
     Call<BaseResponseModel<AccountDetailsBean>> getAccountList(@Field("code") String code, @Field("json") String json);
+
+
+    /**
+     * 我的账户统计金额
+     * @param code 802503
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<MyAccountMoneyDataBean>> getMyAccountMoney(@Field("code") String code, @Field("json") String json);
+
 
 }

@@ -31,6 +31,7 @@ public class MyCurrentActivity extends AbsRefreshListActivity<AccountDetailsBean
     private TextView tvCurrentIntegral;
     private String accountNumber;
     private View headView;
+    private TextView tvTitle;
 
     public static void open(Context context) {
         if (context != null) {
@@ -40,8 +41,20 @@ public class MyCurrentActivity extends AbsRefreshListActivity<AccountDetailsBean
     }
 
     @Override
+    public void afterCreate(Bundle savedInstanceState) {
+        mBaseBinding.titleView.setMidTitle("信用报告");
+
+        initRefreshHelper(10);//先调用这句 初始化头部信息  否则会包空指针
+        initDatas();//再第一次请求完成后  设置头部信息
+    }
+
+    @Override
     public RecyclerView.Adapter getListAdapter(List<AccountDetailsBean.ListBean> listData) {
         MyCurrentActivityApter adapter = new MyCurrentActivityApter(listData);
+        headView = View.inflate(MyCurrentActivity.this, R.layout.head_my_current, null);
+        tvCurrentIntegral = headView.findViewById(R.id.tv_current_integral);
+        tvTitle = headView.findViewById(R.id.tv_title);
+        tvTitle.setText("当前信用分");
         adapter.addHeaderView(headView);
         adapter.setHeaderAndEmpty(true);
         return adapter;
@@ -52,14 +65,7 @@ public class MyCurrentActivity extends AbsRefreshListActivity<AccountDetailsBean
         initDataList(pageindex, limit, isShowDialog);
     }
 
-    @Override
-    public void afterCreate(Bundle savedInstanceState) {
-        mBaseBinding.titleView.setMidTitle("信用报告");
-        headView = View.inflate(MyCurrentActivity.this, R.layout.head_my_current, null);
-        tvCurrentIntegral = headView.findViewById(R.id.tv_current_integral);
 
-        initDatas();
-    }
 
 
     /**
@@ -80,7 +86,7 @@ public class MyCurrentActivity extends AbsRefreshListActivity<AccountDetailsBean
                     return;
                 }
                 MyAccountBean.AccountListBean accountListBean = data.getAccountList().get(0);
-                tvCurrentIntegral.setText((int) accountListBean.getAmount()+"");
+                tvCurrentIntegral.setText(accountListBean.getAmount().intValue()+"");
                 accountNumber = accountListBean.getAccountNumber();
                 initRefreshHelper(10);
                 mRefreshHelper.onDefaluteMRefresh(true);

@@ -8,31 +8,26 @@ import android.view.View;
 
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.huatuweitong.R;
-import com.cdkj.huatuweitong.databinding.ActivityRechargeBinding;
+import com.cdkj.huatuweitong.databinding.ActivityPutForwardBinding;
 
-/**
- * 充值界面
- */
-public class RechargeActivity extends AbsBaseLoadActivity {
-    private ActivityRechargeBinding mBinding;
+public class PutForwardActivity extends AbsBaseLoadActivity {
+    private ActivityPutForwardBinding mBinding;
 
     public static void open(Context context) {
         if (context != null) {
-            Intent intent = new Intent(context, RechargeActivity.class);
+            Intent intent = new Intent(context, PutForwardActivity.class);
             context.startActivity(intent);
         }
-
     }
 
     @Override
     public View addMainView() {
-        mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.activity_recharge, null, false);
+        mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.activity_put_forward, null, false);
         return mBinding.getRoot();
     }
 
     @Override
     public void afterCreate(Bundle savedInstanceState) {
-        mBaseBinding.titleView.setMidTitle("充值");
-
+        mBaseBinding.titleView.setMidTitle("提现");
     }
 }
