@@ -52,8 +52,15 @@ public class MyAccountActivity extends AbsBaseLoadActivity {
             //跳转详情界面
             AccountDetailsActivity.open(this);
         });
-        initDatas();
 
+        initDatas();
+        initListener();
+    }
+
+    private void initListener() {
+        mBinding.btnAdd.setOnClickListener(view -> {
+//            WithdrawActivity.open(this, accountNumber, balance);
+        });
     }
 
     /**

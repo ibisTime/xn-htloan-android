@@ -30,6 +30,7 @@ import com.cdkj.huatuweitong.bean.ReimbursementRepaymentMonthBean;
 import com.cdkj.huatuweitong.bean.SystemEarlyRepaymentBean;
 import com.cdkj.huatuweitong.bean.TextBean;
 import com.cdkj.huatuweitong.bean.UserFragmentBean;
+import com.cdkj.huatuweitong.bean.WithdrawTipModel;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -371,5 +372,16 @@ public interface MyApiServer {
     @FormUrlEncoded
     @POST("api")
     Call<BaseResponseModel<AccountDetailsBean>> getAccountList(@Field("code") String code, @Field("json") String json);
+
+    /**
+     * 获取提现提示
+     *
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<WithdrawTipModel>> getWithdrawTip(@Field("code") String code, @Field("json") String json);
 
 }

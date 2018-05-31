@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -17,6 +18,8 @@ import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.interfaces.LoginInterface;
 import com.cdkj.baselibrary.interfaces.LoginPresenter;
 import com.cdkj.baselibrary.model.UserLoginModel;
+
+import org.greenrobot.eventbus.Subscribe;
 
 import static com.cdkj.baselibrary.appmanager.CdRouteHelper.DATASIGN;
 
@@ -163,5 +166,11 @@ public class LoginActivity extends AbsBaseLoadActivity implements LoginInterface
         }
     }
 
+    @Subscribe
+    public void doClose(String str){
+        if (TextUtils.equals(str,"doCloseLogin")){
+            finish();
+        }
+    }
 
 }

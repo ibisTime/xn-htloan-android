@@ -63,6 +63,12 @@ public class MoneyUtils {
         return 0.00;
     }
 
+    public static String doubleFormatSXF(double d){
+        DecimalFormat df = new DecimalFormat("#######0.000");
+        String showMoney = df.format(d);
+        return showMoney.substring(0,showMoney.length()-1);
+    }
+
     /**
      * sString 转变为  double  确保传入的string可以转换为double
      * 否则出错就返回0.0
