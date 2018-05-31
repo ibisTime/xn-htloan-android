@@ -24,6 +24,7 @@
     <color name="dialog_tips_line">#EAEAEA</color>
     <color name="dialog_tips_negative_btn_txt">#0076ff</color>
     <color name="dialog_tips_negative_btn_txt_red">#fe3824</color>
+
     <color name="dialog_tips_positive_btn_txt">#0076ff</color>
 
     <!---->
@@ -76,6 +77,7 @@
 
     <color name="line_gray_cd">#dedede</color>
     <color name="text_black_cd">#333333</color>
+
 
 
 </resources>

@@ -187,4 +187,53 @@ public class MoneyUtils {
         return decimal.stripTrailingZeros().toPlainString();
     }
 
+
+    /**
+     * 将金额 乘以 1000返回String
+     * @param money
+     * @return
+     */
+    public static String priceX1000(BigDecimal money) {
+        BigDecimal multiply = money.multiply(new BigDecimal(1000));
+        BigDecimal decimal = multiply.setScale(2, BigDecimal.ROUND_DOWN);
+        return decimal.stripTrailingZeros().toPlainString();
+    }
+
+    /**
+     * 将金额 乘以 1000返回BigDecimal
+     * 用于计算
+     * @param money
+     * @return
+     */
+    public static BigDecimal moneyX1000(BigDecimal money) {
+        BigDecimal multiply = money.multiply(new BigDecimal(1000));
+        BigDecimal decimal = multiply.setScale(2, BigDecimal.ROUND_DOWN);
+        return decimal;
+    }
+
+    /**
+     * 将金额 除以 1000返回BigDecimal
+     * 用于计算
+     * @param money
+     * @return
+     */
+    public static BigDecimal moneyC1000(BigDecimal money) {
+        BigDecimal multiply = money.divide(new BigDecimal(1000));
+        BigDecimal decimal = multiply.setScale(2, BigDecimal.ROUND_DOWN);
+        return decimal;
+    }
+
+    /**
+     * 将元乘以1000返回String
+     * 用于向服务器放金额时使用
+     * @param money
+     * @return
+     */
+    public static String sendPrice1000(BigDecimal money) {
+        BigDecimal multiply = money.multiply(new BigDecimal(1000));
+        BigDecimal decimal = multiply.setScale(2, BigDecimal.ROUND_DOWN);
+        return decimal.stripTrailingZeros().toPlainString();
+    }
+
+
 }

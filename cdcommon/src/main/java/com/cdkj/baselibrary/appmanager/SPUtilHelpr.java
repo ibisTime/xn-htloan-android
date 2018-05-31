@@ -91,6 +91,25 @@ public class SPUtilHelpr {
         SPUtils.put(CdApplication.getContext(), USERID, s);
     }
 
+
+    /**
+     * 设置用户手机号码
+     *
+     * @param s
+     */
+    public static void saveUserPsw(String s) {
+        SPUtils.put(CdApplication.getContext(), "user_psw", s);
+    }
+
+    /**
+     * 获取用户手机号
+     */
+    public static String getUserPsw() {
+        return SPUtils.getString(CdApplication.getContext(), "user_psw", "");
+    }
+
+
+
     /**
      * 设置用户手机号码
      *

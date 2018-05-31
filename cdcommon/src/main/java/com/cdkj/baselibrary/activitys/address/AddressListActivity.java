@@ -77,12 +77,15 @@ public class AddressListActivity extends AbsBaseLoadActivity {
         }
         initRefreshHelper();
         mBinding.tvAdd.setOnClickListener(view -> AddAddressActivity.open(this, null, false));
+
+        mBinding.refreshLayout.setEnableLoadmore(false);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         mRefreshHelper.onDefaluteMRefresh(false);
+
     }
 
 
@@ -120,9 +123,7 @@ public class AddressListActivity extends AbsBaseLoadActivity {
                             AddressModel addr = (AddressModel) addressListAdapter.getItem(position);
                             if (addr == null || addr.isDefaultAddress()) return;
                             setDefaultAddress(addr.getCode());
-
                         }
-
                     }
                 });
 

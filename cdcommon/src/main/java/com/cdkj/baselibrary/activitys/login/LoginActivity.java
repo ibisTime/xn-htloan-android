@@ -74,6 +74,11 @@ public class LoginActivity extends AbsBaseLoadActivity implements LoginInterface
         //回显选中的  服务条款
         mBinding.cbCheckServer.setChecked(SPUtilHelpr.getCheckServer());
 
+        mBinding.tvTermsServer.setOnClickListener(v -> {
+            CdRouteHelper.openWebViewActivityForkey("服务条款", "reg_protocol");
+        })
+        ;
+
         //登录
         mBinding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +88,8 @@ public class LoginActivity extends AbsBaseLoadActivity implements LoginInterface
                     mPresenter.login(mBinding.editUsername.getText().toString(), mBinding.editUserpass.getText().toString(), LoginActivity.this);
                 } else {
                     UITipDialog.showFall(LoginActivity.this, getString(R.string.check_sercer));
+
+
                 }
 
             }
@@ -91,7 +98,7 @@ public class LoginActivity extends AbsBaseLoadActivity implements LoginInterface
         mBinding.tvFindPwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FindPwdActivity.open(LoginActivity.this, "", 0);
+                FindPwdActivity.open(LoginActivity.this, "");
             }
         });
 
@@ -103,8 +110,9 @@ public class LoginActivity extends AbsBaseLoadActivity implements LoginInterface
         SPUtilHelpr.saveUserId(user.getUserId());
         SPUtilHelpr.saveUserToken(user.getToken());
         SPUtilHelpr.saveUserPhoneNum(mBinding.editUsername.getText().toString());
+        SPUtilHelpr.saveUserPsw(mBinding.editUserpass.getText().toString());
         SPUtilHelpr.saveCheckServer(true);
-        if(canOpenMain){
+        if (canOpenMain) {
             CdRouteHelper.openMain();
         }
         finish();

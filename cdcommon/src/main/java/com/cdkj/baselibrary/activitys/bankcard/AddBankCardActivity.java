@@ -10,7 +10,6 @@ import android.text.TextUtils;
 import android.view.View;
 
 import com.cdkj.baselibrary.R;
-import com.cdkj.baselibrary.activitys.UpdateBankCardActivity;
 import com.cdkj.baselibrary.appmanager.MyCdConfig;
 import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
@@ -201,7 +200,10 @@ public class AddBankCardActivity extends AbsBaseLoadActivity {
                     i++;
                 }
                 if (mBankNames.length != 0 && mBankNames.length == mBankCodes.length) {
+
                     chooseBankCard();
+                }else{
+                    UITipDialog.showInfo(AddBankCardActivity.this,"暂无支持银行");
                 }
             }
 
@@ -209,6 +211,7 @@ public class AddBankCardActivity extends AbsBaseLoadActivity {
             protected void onReqFailure(String errorCode, String errorMessage) {
                 UITipDialog.showFall(AddBankCardActivity.this, errorMessage);
             }
+
 
             @Override
             protected void onFinish() {

@@ -68,7 +68,7 @@ public class PayPwdModifyActivity extends AbsBaseLoadActivity implements SendCod
         if (getIntent() != null) {
             mIsSetPwd = getIntent().getBooleanExtra(ISSETPWD, false);
             mBinding.edtPhone.setText(getIntent().getStringExtra(MOBILE));
-            mBinding.edtPhone.setSelection(mBinding.edtPhone.getText().length());
+//            mBinding.edtPhone.setSelection(mBinding.edtPhone.getText().length());
         }
 
         if (mIsSetPwd) {

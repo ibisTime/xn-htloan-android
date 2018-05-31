@@ -15,7 +15,7 @@ import com.cdkj.baselibrary.appmanager.CdRouteHelper;
 import com.cdkj.baselibrary.appmanager.MyCdConfig;
 import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
-import com.cdkj.baselibrary.databinding.ActivityModifyPasswordBinding;
+import com.cdkj.baselibrary.databinding.ActivityModifyPasswordTwoBinding;
 import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.interfaces.SendCodeInterface;
 import com.cdkj.baselibrary.interfaces.SendPhoneCoodePresenter;
@@ -41,20 +41,16 @@ import static com.cdkj.baselibrary.appmanager.CdRouteHelper.DATASIGN;
 @Route(path = CdRouteHelper.FINDPWD)
 public class FindPwdActivity extends AbsBaseLoadActivity implements SendCodeInterface {
 
-    private ActivityModifyPasswordBinding mBinding;
-
+    private ActivityModifyPasswordTwoBinding mBinding;
     private String mPhoneNumber;
-    int TYPE;
-
     private SendPhoneCoodePresenter mSendCOdePresenter;
-
 
     /**
      * 打开当前页面
      *
      * @param context
      */
-    public static void open(Context context, String mPhoneNumber, int type) {
+    public static void open(Context context, String mPhoneNumber) {
         if (context == null) {
             return;
         }
@@ -66,7 +62,7 @@ public class FindPwdActivity extends AbsBaseLoadActivity implements SendCodeInte
 
     @Override
     public View addMainView() {
-        mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.activity_modify_password, null, false);
+        mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.activity_modify_password_two, null, false);
         return mBinding.getRoot();
     }
 
@@ -78,12 +74,11 @@ public class FindPwdActivity extends AbsBaseLoadActivity implements SendCodeInte
         mSendCOdePresenter = new SendPhoneCoodePresenter(this);
         if (getIntent() != null) {
             mPhoneNumber = getIntent().getStringExtra(DATASIGN);
-            TYPE = getIntent().getIntExtra("TYPE", 0);
         }
 
         if (!TextUtils.isEmpty(mPhoneNumber)) {
             mBinding.edtPhone.setText(mPhoneNumber);
-            mBinding.edtPhone.setSelection(mBinding.edtPhone.getText().toString().length());
+            // mBinding.edtPhone.setSelection(mBinding.edtPhone.getText().toString().length());
         }
 
         initListener();
@@ -135,13 +130,18 @@ public class FindPwdActivity extends AbsBaseLoadActivity implements SendCodeInte
                     UITipDialog.showFall(FindPwdActivity.this, getString(R.string.check_pwd_info_2));
                     return;
                 }
-                if (TYPE == 1) {
-                //修改密码
-                findPwdReqeust();
-
-                } else if (TYPE == 2) {
-                //修改支付密码
+                if (mBinding.edtPassword.getText().toString().equals(SPUtilHelpr.getUserPsw())) {
+                    UITipDialog.showFall(FindPwdActivity.this, "新密码与旧密码相同");
+                    return;
                 }
+
+                findPwdReqeust();
+//                if (TYPE == 1) {
+//                //修改密码
+//
+//                } else if (TYPE == 2) {
+//                //修改支付密码
+//                }
             }
         });
     }
@@ -154,13 +154,13 @@ public class FindPwdActivity extends AbsBaseLoadActivity implements SendCodeInte
 
         HashMap<String, String> hashMap = new LinkedHashMap<String, String>();
 
+        showLoadingDialog();
         hashMap.put("mobile", mBinding.edtPhone.getText().toString());
         hashMap.put("newLoginPwd", mBinding.edtPassword.getText().toString());
         hashMap.put("smsCaptcha", mBinding.edtCode.getText().toString());
         hashMap.put("kind", MyCdConfig.USERTYPE);
 
         Call call = RetrofitUtils.getBaseAPiService().successRequest("805063", StringUtils.getJsonToString(hashMap));
-
         addCall(call);
 
         call.enqueue(new BaseResponseModelCallBack<IsSuccessModes>(FindPwdActivity.this) {
@@ -170,7 +170,6 @@ public class FindPwdActivity extends AbsBaseLoadActivity implements SendCodeInte
                     UITipDialog.showSuccess(FindPwdActivity.this, getString(R.string.change_pwd_succ), new DialogInterface.OnDismissListener() {
                         @Override
                         public void onDismiss(DialogInterface dialog) {
-
 //                            清掉用户信息
                             SPUtilHelpr.logOutClear();
                             //发送事件  关闭所有的activity

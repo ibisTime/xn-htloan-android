@@ -109,6 +109,7 @@ public class ImageSelectActivity extends Activity implements View.OnClickListene
         tv_cancle.setOnClickListener(this);
         empty_view.setOnClickListener(this);
 
+
     }
 
     @Override

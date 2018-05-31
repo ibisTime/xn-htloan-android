@@ -11,9 +11,7 @@ import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cdkj.baselibrary.R;
-import com.cdkj.baselibrary.activitys.bankcard.AddBankCardActivity;
 import com.cdkj.baselibrary.appmanager.CdRouteHelper;
-import com.cdkj.baselibrary.appmanager.MyCdConfig;
 import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.databinding.ActivityBindBankCardBinding;
@@ -143,9 +141,9 @@ public class UpdateBankCardActivity extends AbsBaseLoadActivity {
     private void deleteBank() {
         if (mBankModel == null) return;
         Map<String, String> object = new HashMap<>();
-        object.put("code", mBankModel.getCode());
+        object.put("code", mBankModel.getBankCode());
         object.put("token", SPUtilHelpr.getUserToken());
-        object.put("systemCode", MyCdConfig.SYSTEMCODE);
+//        object.put("systemCode", MyCdConfig.SYSTEMCODE);
         Call call = RetrofitUtils.getBaseAPiService().successRequest("802011", StringUtils.getJsonToString(object));
 
 
@@ -180,17 +178,20 @@ public class UpdateBankCardActivity extends AbsBaseLoadActivity {
     private void updateBank() {
         if (mBankModel == null) return;
         Map<String, String> object = new HashMap<>();
-        object.put("realName", mBinding.editName.getText().toString().trim());
-        object.put("bankcardNumber", mBinding.edtCardId.getText().toString().trim());
-        object.put("bankName", mBinding.txtBankName.getText().toString().trim());
-        object.put("subbranch", mBinding.editBankNameChild.getText().toString().trim());
         object.put("bankCode", mSelectCardId);
-        object.put("code", mBankModel.getCode());
-        object.put("status", "1");
-        object.put("updater",  SPUtilHelpr.getUserId());
+        object.put("bankName", mBinding.txtBankName.getText().toString().trim());
+        object.put("bankcardNumber", mBinding.edtCardId.getText().toString().trim());
+        object.put("bindMobile", mBinding.editPhone.getText().toString().trim());
+        object.put("code", mBankModel.getBankCode());
+        object.put("subbranch", mBinding.editBankNameChild.getText().toString().trim());
         object.put("token", SPUtilHelpr.getUserToken());
-        object.put("userId", SPUtilHelpr.getUserId());
-        object.put("systemCode", MyCdConfig.SYSTEMCODE);
+        object.put("updater",  SPUtilHelpr.getUserId());
+
+
+//        object.put("realName", mBinding.editName.getText().toString().trim());
+//        object.put("status", "1");
+//        object.put("userId", SPUtilHelpr.getUserId());
+//        object.put("systemCode", MyCdConfig.SYSTEMCODE);
 
         Call call = RetrofitUtils.getBaseAPiService().successRequest("802012", StringUtils.getJsonToString(object));
 
