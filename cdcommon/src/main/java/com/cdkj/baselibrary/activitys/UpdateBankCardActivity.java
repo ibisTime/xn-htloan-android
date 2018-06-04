@@ -141,7 +141,7 @@ public class UpdateBankCardActivity extends AbsBaseLoadActivity {
     private void deleteBank() {
         if (mBankModel == null) return;
         Map<String, String> object = new HashMap<>();
-        object.put("code", mBankModel.getBankCode());
+        object.put("code", mBankModel.getCode());
         object.put("token", SPUtilHelpr.getUserToken());
 //        object.put("systemCode", MyCdConfig.SYSTEMCODE);
         Call call = RetrofitUtils.getBaseAPiService().successRequest("802011", StringUtils.getJsonToString(object));
@@ -182,7 +182,7 @@ public class UpdateBankCardActivity extends AbsBaseLoadActivity {
         object.put("bankName", mBinding.txtBankName.getText().toString().trim());
         object.put("bankcardNumber", mBinding.edtCardId.getText().toString().trim());
         object.put("bindMobile", mBinding.editPhone.getText().toString().trim());
-        object.put("code", mBankModel.getBankCode());
+        object.put("code", mBankModel.getCode());
         object.put("subbranch", mBinding.editBankNameChild.getText().toString().trim());
         object.put("token", SPUtilHelpr.getUserToken());
         object.put("updater",  SPUtilHelpr.getUserId());

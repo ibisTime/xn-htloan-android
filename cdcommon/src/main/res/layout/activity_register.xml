@@ -130,7 +130,7 @@
                     android:layout_gravity="center_vertical"
                     android:background="@null"
                     android:gravity="center_vertical"
-                    android:hint="请输入昵称"
+                    android:hint="请输入密码"
                     android:inputType="textPassword"
                     android:maxLength="10"
                     android:textColor="@color/fontColor_gray"

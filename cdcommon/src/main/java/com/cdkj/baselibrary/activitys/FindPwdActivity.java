@@ -78,6 +78,7 @@ public class FindPwdActivity extends AbsBaseLoadActivity implements SendCodeInte
 
         if (!TextUtils.isEmpty(mPhoneNumber)) {
             mBinding.edtPhone.setText(mPhoneNumber);
+            mBinding.edtPhone.setFocusable(false);
             // mBinding.edtPhone.setSelection(mBinding.edtPhone.getText().toString().length());
         }
 

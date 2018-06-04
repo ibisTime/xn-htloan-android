@@ -5,7 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/cdcommon/cdcommon.iml" filepath="$PROJECT_DIR$/cdcommon/cdcommon.iml" />
       <module fileurl="file://$PROJECT_DIR$/chengdai_code.iml" filepath="$PROJECT_DIR$/chengdai_code.iml" />
-      <module fileurl="file://$PROJECT_DIR$/xn-htloan-android.iml" filepath="$PROJECT_DIR$/xn-htloan-android.iml" />
+      <module fileurl="file://E:\work_code\chengdai_code\xn-htloan-android.iml" filepath="E:\work_code\chengdai_code\xn-htloan-android.iml" />
     </modules>
   </component>
 </project>

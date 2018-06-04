@@ -29,6 +29,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -232,6 +233,14 @@ public class AddressListActivity extends AbsBaseLoadActivity {
                     if (mRefreshHelper.getmAdapter() != null)
                         mRefreshHelper.getmAdapter().remove(position);
                     mRefreshHelper.getmAdapter().notifyDataSetChanged();
+
+                    if (TextUtils.equals(addressModel.getIsDefault(), "1")) {
+                        //说明删除的事默认地址  判断有没有其他地址了   如果有的话讲第一个地址设置为默认地址
+                        ArrayList<AddressModel> addressDdatas = (ArrayList<AddressModel>) mRefreshHelper.getmAdapter().getData();
+                        if (addressDdatas != null && addressDdatas.size() > 0) {
+                            setDefaultAddressRequest(addressDdatas.get(0).getCode());
+                        }
+                    }
                 } else {
                     UITipDialog.showFall(AddressListActivity.this, getString(R.string.delete_fall));
                 }
@@ -252,7 +261,7 @@ public class AddressListActivity extends AbsBaseLoadActivity {
     }
 
     /**
-     * 删除
+     * 设为默地址
      */
     private void setDefaultAddress(final String po) {
         showDoubleWarnListen(getString(R.string.sure_setdefault_address), new CommonDialog.OnPositiveListener() {
