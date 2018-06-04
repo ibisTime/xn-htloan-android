@@ -45,7 +45,7 @@ public class CarLoanDetailsActivityMonthBean {
     private double overplusAmount;
     private double payedAmount;
     private double payedFee;
-    private double periods;
+    private int periods;
     private double remindCount;
     private RepayBizBean repayBiz;
     private String repayBizCode;
@@ -132,11 +132,11 @@ public class CarLoanDetailsActivityMonthBean {
         this.payedFee = payedFee;
     }
 
-    public double getPeriods() {
+    public int getPeriods() {
         return periods;
     }
 
-    public void setPeriods(double periods) {
+    public void setPeriods(int periods) {
         this.periods = periods;
     }
 
@@ -305,6 +305,7 @@ public class CarLoanDetailsActivityMonthBean {
         private String remark;
         private double restAmount;
         private double restPeriods;
+        private CarLoanDetailsActivityBean.LoanOrderBean budgetOrder;
         private double restTotalCost;
         private double sfAmount;
         private double sfRate;
@@ -314,6 +315,14 @@ public class CarLoanDetailsActivityMonthBean {
         private String updateDatetime;
         private String updater;
         private String userId;
+
+        public CarLoanDetailsActivityBean.LoanOrderBean getBudgetOrder() {
+            return budgetOrder;
+        }
+
+        public void setBudgetOrder(CarLoanDetailsActivityBean.LoanOrderBean budgetOrder) {
+            this.budgetOrder = budgetOrder;
+        }
 
         public double getBankRate() {
             return bankRate;

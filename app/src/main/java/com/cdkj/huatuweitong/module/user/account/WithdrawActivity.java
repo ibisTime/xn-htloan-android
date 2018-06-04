@@ -70,7 +70,7 @@ public class WithdrawActivity extends AbsBaseLoadActivity {
         initEditText();
         initListener();
 
-        getTip();
+//        getTip();
     }
 
     private void init() {

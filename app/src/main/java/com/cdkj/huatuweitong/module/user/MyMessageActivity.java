@@ -40,10 +40,10 @@ public class MyMessageActivity extends AbsBaseLoadActivity {
         mBinding.viewindicator.setmLinWidth(25);
         mBinding.viewindicator.setVisibleTabCount(4);
         List<String> titls=new ArrayList<>();
-        titls.add("提醒");
-        titls.add("催款");
-        titls.add("通知");
-        titls.add("公告");
+//        titls.add("提醒");
+//        titls.add("催款");
+//        titls.add("通知");
+//        titls.add("公告");
         mBinding.viewindicator.setTabItemTitles(titls);
         mBinding.viewindicator.setViewPager(mBinding.viewpager, 0);
 
@@ -52,10 +52,9 @@ public class MyMessageActivity extends AbsBaseLoadActivity {
         ArrayList fragments = new ArrayList<>();
 
         fragments.add(MyMessageActivityFragment.getInstance("1"));
-        fragments.add(MyMessageActivityFragment.getInstance("1"));
-        fragments.add(MyMessageActivityFragment.getInstance("1"));
-        fragments.add(MyMessageActivityFragment.getInstance("1"));
-        fragments.add(MyMessageActivityFragment.getInstance("1"));
+//        fragments.add(MyMessageActivityFragment.getInstance("1"));
+//        fragments.add(MyMessageActivityFragment.getInstance("1"));
+//        fragments.add(MyMessageActivityFragment.getInstance("1"));
 
 
         mBinding.viewpager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), fragments));

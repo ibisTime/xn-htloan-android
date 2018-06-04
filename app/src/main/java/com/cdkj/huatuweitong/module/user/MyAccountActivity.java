@@ -18,9 +18,9 @@ import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.MyAccountBean;
+import com.cdkj.huatuweitong.bean.MyAccountMoneyDataBean;
 import com.cdkj.huatuweitong.databinding.ActivityMyAccountBinding;
-import com.cdkj.huatuweitong.module.recharge.PutForwardActivity;
-import com.cdkj.huatuweitong.module.recharge.RechargeActivity;
+import com.cdkj.huatuweitong.module.user.account.WithdrawActivity;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,12 +41,6 @@ public class MyAccountActivity extends AbsBaseLoadActivity {
 
     }
 
-    @Override
-    public View addMainView() {
-        mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.activity_my_account, null, false);
-
-        return mBinding.getRoot();
-    }
 
     @Override
     public void afterCreate(Bundle savedInstanceState) {
@@ -60,31 +54,22 @@ public class MyAccountActivity extends AbsBaseLoadActivity {
             }
             AccountDetailsActivity.open(this, accountNumber);
         });
-
-//
-        mBinding.btnRecharge.setOnClickListener(v -> {
-            RechargeActivity.open(this);
-        });
-        mBinding.btnAdd.setOnClickListener(v -> {
-            PutForwardActivity.open(this);
-        });
+        mBinding.btnRecharge.setVisibility(View.GONE);
         initDatas();
+        initDatasMoney();
         initListener();
     }
 
-        initDatasMoney();
-
-
-    }
 
     @Override
     public View addMainView() {
         mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.activity_my_account, null, false);
-
         return mBinding.getRoot();
+    }
+
     private void initListener() {
         mBinding.btnAdd.setOnClickListener(view -> {
-//            WithdrawActivity.open(this, accountNumber, balance);
+            WithdrawActivity.open(this, accountNumber, mBinding.tvMoney.getText().toString().trim());
         });
     }
 
@@ -119,4 +104,30 @@ public class MyAccountActivity extends AbsBaseLoadActivity {
         });
 
     }
+
+    /**
+     * 获取统计信息  就是三个列表的值
+     */
+    private void initDatasMoney() {
+        showLoadingDialog();
+        Map<String, String> map = new HashMap<>();
+        map.put("userId", SPUtilHelpr.getUserId());
+        Call<BaseResponseModel<MyAccountMoneyDataBean>> myAccountMoney = RetrofitUtils.createApi(MyApiServer.class).getMyAccountMoney("802900", StringUtils.getJsonToString(map));
+        addCall(myAccountMoney);
+        myAccountMoney.enqueue(new BaseResponseModelCallBack<MyAccountMoneyDataBean>(MyAccountActivity.this) {
+            @Override
+            protected void onSuccess(MyAccountMoneyDataBean data, String SucMessage) {
+                mBinding.tvRechargeMoney.setText("¥" + MoneyUtils.showPrice(data.getTotalCharge()));//outAmount
+                mBinding.tvSpendMoney.setText("¥" + MoneyUtils.showPrice(data.getTotalConsume()));//inAmount
+                mBinding.tvAddMoney.setText("¥" + MoneyUtils.showPrice(data.getTotalWithdraw()));
+            }
+
+            @Override
+            protected void onFinish() {
+                disMissLoading();
+
+            }
+        });
+    }
+
 }

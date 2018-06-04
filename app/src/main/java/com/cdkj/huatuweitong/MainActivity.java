@@ -1,5 +1,7 @@
 package com.cdkj.huatuweitong;
 
+import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +15,7 @@ import com.cdkj.huatuweitong.databinding.ActivityMainBinding;
 import com.cdkj.huatuweitong.module.main_tab.FirstPageFragment;
 import com.cdkj.huatuweitong.module.main_tab.ReimbursementFragment;
 import com.cdkj.huatuweitong.module.main_tab.UserFragment;
+import com.cdkj.huatuweitong.module.mfirst_page.CarBrandActivity;
 
 import java.util.ArrayList;
 
@@ -32,6 +35,13 @@ public class MainActivity extends AbsBaseLoadActivity {
 //
 //    }
 
+    public static void open(Context context) {
+        if (context != null) {
+            Intent intent = new Intent(context, MainActivity.class);
+            context.startActivity(intent);
+        }
+
+    }
 
     @Override
     public View addMainView() {

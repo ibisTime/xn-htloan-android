@@ -9,6 +9,7 @@
         android:layout_height="match_parent">
 
         <com.cdkj.baselibrary.views.LineViewPagerIndicator
+            android:visibility="gone"
             android:id="@+id/viewindicator"
             android:layout_width="match_parent"
             android:layout_height="45dp"

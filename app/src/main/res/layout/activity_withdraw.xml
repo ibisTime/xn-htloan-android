@@ -189,6 +189,7 @@
 
                     <TextView
                         android:id="@+id/txt_tip4"
+                        android:visibility="gone"
                         android:text="* 本次提现手续费:0"
                         android:textSize="12sp"
                         android:layout_marginTop="5dp"
@@ -249,6 +250,7 @@
                     android:layout_height="45dp" />
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:layout_marginTop="15dp"
                     android:orientation="vertical"
                     android:layout_width="match_parent"

@@ -19,7 +19,9 @@ import com.cdkj.huatuweitong.bean.FirstPageBanner;
 import com.cdkj.huatuweitong.bean.FirstPageCarRecommendBean;
 import com.cdkj.huatuweitong.bean.IsSetPayPassWord;
 import com.cdkj.huatuweitong.bean.LoginBean;
+import com.cdkj.huatuweitong.bean.MsgListModel;
 import com.cdkj.huatuweitong.bean.MyAccountBean;
+import com.cdkj.huatuweitong.bean.MyAccountMoneyDataBean;
 import com.cdkj.huatuweitong.bean.MyCarLoanFragmentBean;
 import com.cdkj.huatuweitong.bean.MyCurrentActivityBean;
 import com.cdkj.huatuweitong.bean.MyMessageAFBean;
@@ -30,6 +32,7 @@ import com.cdkj.huatuweitong.bean.ReimbursementRepaymentMonthBean;
 import com.cdkj.huatuweitong.bean.SystemEarlyRepaymentBean;
 import com.cdkj.huatuweitong.bean.TextBean;
 import com.cdkj.huatuweitong.bean.UserFragmentBean;
+import com.cdkj.huatuweitong.bean.WithdrawTipModel;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -52,6 +55,7 @@ public interface MyApiServer {
     @FormUrlEncoded
     @POST("api")
     Call<BaseResponseListModel<FirstPageBanner>> getFirstBanner(@Field("code") String code, @Field("json") String json);
+
     /**
      * 登录
      *
@@ -169,6 +173,7 @@ public interface MyApiServer {
 
     /**
      * 我的车贷申请  点击里面的条目进行的详情查询
+     *
      * @param code
      * @param json
      * @return
@@ -179,6 +184,7 @@ public interface MyApiServer {
 
     /**
      * 所有贷款
+     *
      * @param code
      * @param json
      * @return
@@ -189,6 +195,7 @@ public interface MyApiServer {
 
     /**
      * 近期还款列表
+     *
      * @param code
      * @param json
      * @return
@@ -200,6 +207,7 @@ public interface MyApiServer {
 
     /**
      * 单款详情   从还款列表点击跳转到这里
+     *
      * @param code
      * @param json
      * @return
@@ -210,6 +218,7 @@ public interface MyApiServer {
 
     /**
      * 本月应还贷款 从还款列表点击跳转到这里
+     *
      * @param code
      * @param json
      * @return
@@ -220,6 +229,7 @@ public interface MyApiServer {
 
     /**
      * 本月应还贷款 从还款列表点击跳转到这里
+     *
      * @param code
      * @param json
      * @return
@@ -276,7 +286,6 @@ public interface MyApiServer {
     Call<BaseResponseModel<AdvanceDetailsActivityBean>> getAdvanceDetailsActivityBean(@Field("code") String code, @Field("json") String json);
 
 
-
     /**
      * 获取提前还款的  系统参数  服务费     cvalue字段就是服务费
      *
@@ -302,6 +311,7 @@ public interface MyApiServer {
 
     /**
      * 车系(品牌)分页查询
+     *
      * @param code
      * @param json
      * @return
@@ -312,16 +322,18 @@ public interface MyApiServer {
 
     /**
      * 车系分页查询
+     *
      * @param code
      * @param json
      * @return
      */
-      @FormUrlEncoded
+    @FormUrlEncoded
     @POST("api")
     Call<BaseResponseModel<ResponseInListModel<CarSystemActivityBean>>> getCarSystemlDatas(@Field("code") String code, @Field("json") String json);
 
     /**
      * 车型分页查询
+     *
      * @param code
      * @param json
      * @return
@@ -330,8 +342,9 @@ public interface MyApiServer {
     @POST("api")
     Call<BaseResponseListModel<CarModelActivityBean>> getCarModelDatas(@Field("code") String code, @Field("json") String json);
 
-  /**
+    /**
      * 我的账户人民币金额
+     *
      * @param code 802503
      * @param json
      * @return
@@ -340,8 +353,9 @@ public interface MyApiServer {
     @POST("api")
     Call<BaseResponseModel<MyAccountBean>> getAccountMoney(@Field("code") String code, @Field("json") String json);
 
-     /**
+    /**
      * 我的账户积分
+     *
      * @param code 802503
      * @param json
      * @return
@@ -350,8 +364,9 @@ public interface MyApiServer {
     @POST("api")
     Call<BaseResponseModel<MyCurrentActivityBean>> getAccountMoneyJF(@Field("code") String code, @Field("json") String json);
 
-  /**
+    /**
      * 我的账户详情  流水
+     *
      * @param code 802503
      * @param json
      * @return
@@ -361,9 +376,9 @@ public interface MyApiServer {
     Call<BaseResponseModel<AccountDetailsBean>> getAccountMoneyList(@Field("code") String code, @Field("json") String json);
 
 
-
     /**
      * 我的账户详情  流水
+     *
      * @param code 802503
      * @param json
      * @return
@@ -386,6 +401,7 @@ public interface MyApiServer {
 
     /**
      * 我的账户统计金额
+     *
      * @param code 802503
      * @param json
      * @return
@@ -394,5 +410,13 @@ public interface MyApiServer {
     @POST("api")
     Call<BaseResponseModel<MyAccountMoneyDataBean>> getMyAccountMoney(@Field("code") String code, @Field("json") String json);
 
+    /**
+     * 获取消息列表
+     *
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<MsgListModel>> getMsgList(@Field("code") String code, @Field("json") String json);
 
 }

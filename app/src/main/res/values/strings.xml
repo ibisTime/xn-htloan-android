@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">华图威通</string>
+    <string name="app_name">微车生活</string>
     <string name="mind">我的</string>
     <string name="firstpage">首页</string>
     <string name="recommend_car">推荐车型</string>
@@ -56,7 +56,7 @@
     <string name="loan_sms">贷款信息</string>
     <string name="loan_car">贷款车辆</string>
     <string name="loan_total">欠款总额</string>
-    <string name="loan_term">贷款期限</string>
+    <string name="loan_term">贷款期数</string>
     <string name="repayment_plan">还款计划</string>
     <string name="repayment_number">还款卡号</string>
     <string name="loan_type">贷款状态</string>

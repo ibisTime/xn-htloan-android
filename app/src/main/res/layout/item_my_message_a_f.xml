@@ -13,6 +13,7 @@
         android:gravity="center">
 
         <TextView
+            android:id="@+id/tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/tv_time_round_bg"

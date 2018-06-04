@@ -27,7 +27,7 @@ public class CarLoanDetailsActivityBean implements Serializable{
      * loanAmount : 1.4E8
      * loanBank : 中国建设银行
      * loanEndDatetime : Apr 29, 2020 12:00:00 AM
-     * loanOrder : {"bankCode":"ICBC","bankName":"中国工商银行","bankRate":0.1,"bankcardNumber":"6217002710000684874","carCode":"C201804231832234243414","carPrice":2.0E8,"code":"LO201805061345029723893","firstRepayAmount":5833330,"firstRepayDatetime":"Apr 20, 2019 12:00:00 AM","fkDatetime":"Apr 30, 2018 12:00:00 AM","fxDeposit":2.0E7,"gpsFee":3000000,"idKind":"1","idNo":"330281198908023311","loanAmount":1.4E8,"loanBank":"中国建设银行","loanEndDatetime":"Apr 29, 2020 12:00:00 AM","loanStartDatetime":"Apr 30, 2018 12:00:00 AM","lyDeposit":3.0E7,"mobile":"15268501481","monthAmount":5833330,"monthDatetime":20,"otherFee":4654,"periods":24,"realName":"郑海清","remark":"审核通过","repayBizCode":"RB201805142015418326578","sfAmount":6.0E7,"sfRate":0.3,"status":"3","subbranch":"海创园支行","updateDatetime":"May 14, 2018 8:15:41 PM","updater":"admin","userId":"U201805061611515474805"}
+     * budgetOrder : {"bankCode":"ICBC","bankName":"中国工商银行","bankRate":0.1,"bankcardNumber":"6217002710000684874","carCode":"C201804231832234243414","carPrice":2.0E8,"code":"LO201805061345029723893","firstRepayAmount":5833330,"firstRepayDatetime":"Apr 20, 2019 12:00:00 AM","fkDatetime":"Apr 30, 2018 12:00:00 AM","fxDeposit":2.0E7,"gpsFee":3000000,"idKind":"1","idNo":"330281198908023311","loanAmount":1.4E8,"loanBank":"中国建设银行","loanEndDatetime":"Apr 29, 2020 12:00:00 AM","loanStartDatetime":"Apr 30, 2018 12:00:00 AM","lyDeposit":3.0E7,"mobile":"15268501481","monthAmount":5833330,"monthDatetime":20,"otherFee":4654,"periods":24,"realName":"郑海清","remark":"审核通过","repayBizCode":"RB201805142015418326578","sfAmount":6.0E7,"sfRate":0.3,"status":"3","subbranch":"海创园支行","updateDatetime":"May 14, 2018 8:15:41 PM","updater":"admin","userId":"U201805061611515474805"}
      * loanStartDatetime : Apr 30, 2018 12:00:00 AM
      * lyDeposit : 3.0E7
      * monthAmount : 5833330.0
@@ -64,7 +64,7 @@ public class CarLoanDetailsActivityBean implements Serializable{
     private double loanAmount;
     private String loanBank;
     private String loanEndDatetime;
-    private LoanOrderBean loanOrder;
+    private LoanOrderBean budgetOrder;
     private MallOrderBean mallOrder;
     private String loanStartDatetime;
     private double lyDeposit;
@@ -186,12 +186,12 @@ public class CarLoanDetailsActivityBean implements Serializable{
         this.loanEndDatetime = loanEndDatetime;
     }
 
-    public LoanOrderBean getLoanOrder() {
-        return loanOrder;
+    public LoanOrderBean getBudgetOrder() {
+        return budgetOrder;
     }
 
-    public void setLoanOrder(LoanOrderBean loanOrder) {
-        this.loanOrder = loanOrder;
+    public void setBudgetOrder(LoanOrderBean budgetOrder) {
+        this.budgetOrder = budgetOrder;
     }
 
     public MallOrderBean getMallOrder() {
@@ -915,135 +915,239 @@ public class CarLoanDetailsActivityBean implements Serializable{
     }
 
     public static class LoanOrderBean implements Serializable{
+
+
         /**
-         * bankCode : ICBC
-         * bankName : 中国工商银行
-         * bankRate : 0.1
-         * bankcardNumber : 6217002710000684874
-         * carCode : C201804231832234243414
-         * carPrice : 2.0E8
-         * code : LO201805061345029723893
-         * firstRepayAmount : 5833330.0
-         * firstRepayDatetime : Apr 20, 2019 12:00:00 AM
-         * fkDatetime : Apr 30, 2018 12:00:00 AM
-         * fxDeposit : 2.0E7
-         * gpsFee : 3000000.0
-         * idKind : 1
-         * idNo : 330281198908023311
-         * loanAmount : 1.4E8
-         * loanBank : 中国建设银行
-         * loanEndDatetime : Apr 29, 2020 12:00:00 AM
-         * loanStartDatetime : Apr 30, 2018 12:00:00 AM
-         * lyDeposit : 3.0E7
-         * mobile : 15268501481
-         * monthAmount : 5833330.0
-         * monthDatetime : 20.0
-         * otherFee : 4654.0
-         * periods : 24.0
-         * realName : 郑海清
-         * remark : 审核通过
-         * repayBizCode : RB201805142015418326578
-         * sfAmount : 6.0E7
-         * sfRate : 0.3
-         * status : 3
-         * subbranch : 海创园支行
-         * updateDatetime : May 14, 2018 8:15:41 PM
-         * updater : admin
-         * userId : U201805061611515474805
+         * code : BO201806010742311246375
+         * repayBizCode : RB201806010822188504250
+         * loanProductCode : LP201806010719319062250
+         * loanProductName : 贷款产品001
+         * loanBank : BA201806010718324895638
+         * gpsFee : 12000.0
+         * authFee : 10000.0
+         * fee : 11000.0
+         * monthRate : 0.1
+         * creditCode : C201806010735282463553
+         * bizType : 0
+         * loanPeriod : 24
+         * invoiceCompany : 开票单位
+         * carBrand : 品牌
+         * originalPrice : 1.0E8
+         * invoicePrice : 1.8E7
+         * carColor : 吧
+         * monthDeposit : 1.0E7
+         * firstAmount : 1.0E7
+         * firstRate : 10.0
+         * loanAmount : 1.8E7
+         * settleAddress : 落户地点
+         * applyUserId : U201806010822188457818
+         * applyUserName : 申请人信息
+         * gender : 1
+         * marryState : 2
+         * nation : 汉
+         * education : 1
+         * idNo : 510521199404167983
+         * familyNumber : 5
+         * mobile : 15761663457
+         * nowAddress : 申请人信息现居住地址
+         * postCode1 : 15120
+         * residenceAddress : 申请人信息户口所在地
+         * postCode2 : 45312
+         * familyMainAsset : 申请人信息家庭主要财产
+         * mainAssetInclude : 主要财产包括
+         * mainIncome : 1
+         * workCompanyName : 申请人信息工作单位名称
+         * workCompanyAddress : 申请人信息工作单位地址
+         * selfCompanyArea : 5000
+         * employeeQuantity : 500
+         * enterpriseMonthOutput : 150000
+         * position : 申请人信息职位
+         * postTitle : 申请人信息职称
+         * monthIncome : 18000
+         * mateName : 配偶信息
+         * mateMobile : 15761663457
+         * mateIdNo : 510521199404167983
+         * mateEducation : 1
+         * mateCompanyName : 配偶信息工作单位名称
+         * mateCompanyAddress : 配偶信息工作单位地址
+         * mateCompanyContactNo : 15761663457
+         * guaName : 担保人信息
+         * guaMobile : 15761633457
+         * guaIdNo : 510521199404167983
+         * guaPhone : 500153
+         * guaCompanyName : 担保人信息工作单位名称
+         * guaCompanyAddress : 担保人信息工作单位地址
+         * guaHouseAssetAddress : 担保人房产地址
+         * emergencyName1 : 联系人1
+         * emergencyRelation1 : 联系人1申请人关系
+         * emergencyMobile1 : 15761663457
+         * emergencyName2 : 联系人2
+         * emergencyRelation2 : 联系人2申请人关系
+         * emergencyMobile2 : 15761663457
+         * jourDatetimeStart : Jun 1, 2018 12:00:00 AM
+         * jourDatetimeEnd : Jun 2, 2018 12:00:00 AM
+         * jourIncome : 100000.0
+         * jourExpend : 5000.0
+         * jourBalance : 1000000.0
+         * jourMonthIncome : 150000.0
+         * jourMonthExpend : 10000.0
+         * jourRemark : 1201
+         * houseContract : FuARN6YAubJ0umx1NPueecjwM0C4
+         * housePicture : FuARN6YAubJ0umx1NPueecjwM0C4
+         * isAdvanceFund : 1
+         * interviewVideo : FkMaE_jJLB_1fAsrZ3cK_nqOMy3j
+         * interviewContract : FjqbYdCYiK6Dkp0UqO8VPZrT6Ob7
+         * advanceFundDatetime : Jun 1, 2018 12:00:00 AM
+         * advanceFundAmount : 1.8E7
+         * carSettleDatetime : Jun 2, 2018 12:00:00 AM
+         * carNumber : 浙A123132
+         * carInvoice : FuARN6YAubJ0umx1NPueecjwM0C4
+         * carHgz : FuARN6YAubJ0umx1NPueecjwM0C4
+         * carJqx : FuARN6YAubJ0umx1NPueecjwM0C4
+         * carSyx : FuARN6YAubJ0umx1NPueecjwM0C4
+         * carRegcerti : FuARN6YAubJ0umx1NPueecjwM0C4
+         * carPd : FooyIpMic9O-rGcyaAqWy1vY4mLI
+         * carKey : FooyIpMic9O-rGcyaAqWy1vY4mLI
+         * carBigSmj : FooyIpMic9O-rGcyaAqWy1vY4mLI
+         * bankCommitDatetime : Jun 1, 2018 12:00:00 AM
+         * repayBankcardNumber : 612121313131313
+         * repayBillDate : 15.0
+         * repayBankDate : 15.0
+         * repayFirstMonthAmount : 1.0E8
+         * repayFirstMonthDatetime : Jun 2, 2018 12:00:00 AM
+         * repayMonthAmount : 1.0E7
+         * receiptBankCode : CMBC
+         * receiptBankcardNumber : 61234567891324568
+         * receiptPdf : FuARN6YAubJ0umx1NPueecjwM0C4
+         * receiptRemark :
+         * pledgeDatetime : Jun 1, 2018 12:00:00 AM
+         * greenBigSmj : FooyIpMic9O-rGcyaAqWy1vY4mLI
+         * pledgeBankCommitDatetime : Jun 1, 2018 12:00:00 AM
+         * saleUserId : U201806010724286998427
+         * companyCode : DP201800000000000000001
+         * applyDatetime : Jun 1, 2018 7:42:31 AM
+         * curNodeCode : 002_23
+         * remark :
+         * budgetOrderGpsList : [{"code":"GPSAZ201806010812307864013","gpsDevNo":"89787","gpsType":"0","azLocation":"上","azDatetime":"2018-06-01 00:00:00.0","azUser":"搜索","remark":"","budgetOrder":"BO201806010742311246375"}]
+         * companyName : 乌鲁木齐华途威通汽车销售有限公司
+         * saleUserName : 胡莎莎
+         * loanBankName : 招商银行
          */
 
-        private String bankCode;
-        private String bankName;
-        private double bankRate;
-        private String bankcardNumber;
-        private String carCode;
-        private double carPrice;
         private String code;
-        private double firstRepayAmount;
-        private String firstRepayDatetime;
-        private String fkDatetime;
-        private double fxDeposit;
-        private double gpsFee;
-        private String idKind;
-        private String idNo;
-        private double loanAmount;
-        private String loanBank;
-        private String loanEndDatetime;
-        private String loanStartDatetime;
-        private double lyDeposit;
-        private String mobile;
-        private double monthAmount;
-        private double monthDatetime;
-        private double otherFee;
-        private double periods;
-        private String realName;
-        private String remark;
         private String repayBizCode;
-        private double sfAmount;
-        private double sfRate;
-        private String status;
-        private String subbranch;
-        private String updateDatetime;
-        private String updater;
-        private String userId;
-        private String carName;
-
-
-        public String getCarName() {
-            return carName;
-        }
-
-        public void setCarName(String carName) {
-            this.carName = carName;
-        }
-
-        public String getBankCode() {
-            return bankCode;
-        }
-
-        public void setBankCode(String bankCode) {
-            this.bankCode = bankCode;
-        }
-
-        public String getBankName() {
-            return bankName;
-        }
-
-        public void setBankName(String bankName) {
-            this.bankName = bankName;
-        }
-
-        public double getBankRate() {
-            return bankRate;
-        }
-
-        public void setBankRate(double bankRate) {
-            this.bankRate = bankRate;
-        }
-
-        public String getBankcardNumber() {
-            return bankcardNumber;
-        }
-
-        public void setBankcardNumber(String bankcardNumber) {
-            this.bankcardNumber = bankcardNumber;
-        }
-
-        public String getCarCode() {
-            return carCode;
-        }
-
-        public void setCarCode(String carCode) {
-            this.carCode = carCode;
-        }
-
-        public double getCarPrice() {
-            return carPrice;
-        }
-
-        public void setCarPrice(double carPrice) {
-            this.carPrice = carPrice;
-        }
+        private String loanProductCode;
+        private String loanProductName;
+        private String loanBank;
+        private double gpsFee;
+        private double authFee;
+        private double fee;
+        private double monthRate;
+        private String creditCode;
+        private String bizType;
+        private String loanPeriod;
+        private String invoiceCompany;
+        private String carBrand;
+        private double originalPrice;
+        private double invoicePrice;
+        private String carColor;
+        private double monthDeposit;
+        private double firstAmount;
+        private double firstRate;
+        private double loanAmount;
+        private String settleAddress;
+        private String applyUserId;
+        private String applyUserName;
+        private String gender;
+        private String marryState;
+        private String nation;
+        private String education;
+        private String idNo;
+        private String familyNumber;
+        private String mobile;
+        private String nowAddress;
+        private String postCode1;
+        private String residenceAddress;
+        private String postCode2;
+        private String familyMainAsset;
+        private String mainAssetInclude;
+        private String mainIncome;
+        private String workCompanyName;
+        private String workCompanyAddress;
+        private String selfCompanyArea;
+        private String employeeQuantity;
+        private String enterpriseMonthOutput;
+        private String position;
+        private String postTitle;
+        private String monthIncome;
+        private String mateName;
+        private String mateMobile;
+        private String mateIdNo;
+        private String mateEducation;
+        private String mateCompanyName;
+        private String mateCompanyAddress;
+        private String mateCompanyContactNo;
+        private String guaName;
+        private String guaMobile;
+        private String guaIdNo;
+        private String guaPhone;
+        private String guaCompanyName;
+        private String guaCompanyAddress;
+        private String guaHouseAssetAddress;
+        private String emergencyName1;
+        private String emergencyRelation1;
+        private String emergencyMobile1;
+        private String emergencyName2;
+        private String emergencyRelation2;
+        private String emergencyMobile2;
+        private String jourDatetimeStart;
+        private String jourDatetimeEnd;
+        private double jourIncome;
+        private double jourExpend;
+        private double jourBalance;
+        private double jourMonthIncome;
+        private double jourMonthExpend;
+        private String jourRemark;
+        private String houseContract;
+        private String housePicture;
+        private String isAdvanceFund;
+        private String interviewVideo;
+        private String interviewContract;
+        private String advanceFundDatetime;
+        private double advanceFundAmount;
+        private String carSettleDatetime;
+        private String carNumber;
+        private String carInvoice;
+        private String carHgz;
+        private String carJqx;
+        private String carSyx;
+        private String carRegcerti;
+        private String carPd;
+        private String carKey;
+        private String carBigSmj;
+        private String bankCommitDatetime;
+        private String repayBankcardNumber;
+        private double repayBillDate;
+        private double repayBankDate;
+        private double repayFirstMonthAmount;
+        private String repayFirstMonthDatetime;
+        private double repayMonthAmount;
+        private String receiptBankCode;
+        private String receiptBankcardNumber;
+        private String receiptPdf;
+        private String receiptRemark;
+        private String pledgeDatetime;
+        private String greenBigSmj;
+        private String pledgeBankCommitDatetime;
+        private String saleUserId;
+        private String companyCode;
+        private String applyDatetime;
+        private String curNodeCode;
+        private String remark;
+        private String companyName;
+        private String saleUserName;
+        private String loanBankName;
+        private List<BudgetOrderGpsListBean> budgetOrderGpsList;
 
         public String getCode() {
             return code;
@@ -1051,158 +1155,6 @@ public class CarLoanDetailsActivityBean implements Serializable{
 
         public void setCode(String code) {
             this.code = code;
-        }
-
-        public double getFirstRepayAmount() {
-            return firstRepayAmount;
-        }
-
-        public void setFirstRepayAmount(double firstRepayAmount) {
-            this.firstRepayAmount = firstRepayAmount;
-        }
-
-        public String getFirstRepayDatetime() {
-            return firstRepayDatetime;
-        }
-
-        public void setFirstRepayDatetime(String firstRepayDatetime) {
-            this.firstRepayDatetime = firstRepayDatetime;
-        }
-
-        public String getFkDatetime() {
-            return fkDatetime;
-        }
-
-        public void setFkDatetime(String fkDatetime) {
-            this.fkDatetime = fkDatetime;
-        }
-
-        public double getFxDeposit() {
-            return fxDeposit;
-        }
-
-        public void setFxDeposit(double fxDeposit) {
-            this.fxDeposit = fxDeposit;
-        }
-
-        public double getGpsFee() {
-            return gpsFee;
-        }
-
-        public void setGpsFee(double gpsFee) {
-            this.gpsFee = gpsFee;
-        }
-
-        public String getIdKind() {
-            return idKind;
-        }
-
-        public void setIdKind(String idKind) {
-            this.idKind = idKind;
-        }
-
-        public String getIdNo() {
-            return idNo;
-        }
-
-        public void setIdNo(String idNo) {
-            this.idNo = idNo;
-        }
-
-        public double getLoanAmount() {
-            return loanAmount;
-        }
-
-        public void setLoanAmount(double loanAmount) {
-            this.loanAmount = loanAmount;
-        }
-
-        public String getLoanBank() {
-            return loanBank;
-        }
-
-        public void setLoanBank(String loanBank) {
-            this.loanBank = loanBank;
-        }
-
-        public String getLoanEndDatetime() {
-            return loanEndDatetime;
-        }
-
-        public void setLoanEndDatetime(String loanEndDatetime) {
-            this.loanEndDatetime = loanEndDatetime;
-        }
-
-        public String getLoanStartDatetime() {
-            return loanStartDatetime;
-        }
-
-        public void setLoanStartDatetime(String loanStartDatetime) {
-            this.loanStartDatetime = loanStartDatetime;
-        }
-
-        public double getLyDeposit() {
-            return lyDeposit;
-        }
-
-        public void setLyDeposit(double lyDeposit) {
-            this.lyDeposit = lyDeposit;
-        }
-
-        public String getMobile() {
-            return mobile;
-        }
-
-        public void setMobile(String mobile) {
-            this.mobile = mobile;
-        }
-
-        public double getMonthAmount() {
-            return monthAmount;
-        }
-
-        public void setMonthAmount(double monthAmount) {
-            this.monthAmount = monthAmount;
-        }
-
-        public double getMonthDatetime() {
-            return monthDatetime;
-        }
-
-        public void setMonthDatetime(double monthDatetime) {
-            this.monthDatetime = monthDatetime;
-        }
-
-        public double getOtherFee() {
-            return otherFee;
-        }
-
-        public void setOtherFee(double otherFee) {
-            this.otherFee = otherFee;
-        }
-
-        public double getPeriods() {
-            return periods;
-        }
-
-        public void setPeriods(double periods) {
-            this.periods = periods;
-        }
-
-        public String getRealName() {
-            return realName;
-        }
-
-        public void setRealName(String realName) {
-            this.realName = realName;
-        }
-
-        public String getRemark() {
-            return remark;
-        }
-
-        public void setRemark(String remark) {
-            this.remark = remark;
         }
 
         public String getRepayBizCode() {
@@ -1213,60 +1165,986 @@ public class CarLoanDetailsActivityBean implements Serializable{
             this.repayBizCode = repayBizCode;
         }
 
-        public double getSfAmount() {
-            return sfAmount;
+        public String getLoanProductCode() {
+            return loanProductCode;
         }
 
-        public void setSfAmount(double sfAmount) {
-            this.sfAmount = sfAmount;
+        public void setLoanProductCode(String loanProductCode) {
+            this.loanProductCode = loanProductCode;
         }
 
-        public double getSfRate() {
-            return sfRate;
+        public String getLoanProductName() {
+            return loanProductName;
         }
 
-        public void setSfRate(double sfRate) {
-            this.sfRate = sfRate;
+        public void setLoanProductName(String loanProductName) {
+            this.loanProductName = loanProductName;
         }
 
-        public String getStatus() {
-            return status;
+        public String getLoanBank() {
+            return loanBank;
         }
 
-        public void setStatus(String status) {
-            this.status = status;
+        public void setLoanBank(String loanBank) {
+            this.loanBank = loanBank;
         }
 
-        public String getSubbranch() {
-            return subbranch;
+        public double getGpsFee() {
+            return gpsFee;
         }
 
-        public void setSubbranch(String subbranch) {
-            this.subbranch = subbranch;
+        public void setGpsFee(double gpsFee) {
+            this.gpsFee = gpsFee;
         }
 
-        public String getUpdateDatetime() {
-            return updateDatetime;
+        public double getAuthFee() {
+            return authFee;
         }
 
-        public void setUpdateDatetime(String updateDatetime) {
-            this.updateDatetime = updateDatetime;
+        public void setAuthFee(double authFee) {
+            this.authFee = authFee;
         }
 
-        public String getUpdater() {
-            return updater;
+        public double getFee() {
+            return fee;
         }
 
-        public void setUpdater(String updater) {
-            this.updater = updater;
+        public void setFee(double fee) {
+            this.fee = fee;
         }
 
-        public String getUserId() {
-            return userId;
+        public double getMonthRate() {
+            return monthRate;
         }
 
-        public void setUserId(String userId) {
-            this.userId = userId;
+        public void setMonthRate(double monthRate) {
+            this.monthRate = monthRate;
+        }
+
+        public String getCreditCode() {
+            return creditCode;
+        }
+
+        public void setCreditCode(String creditCode) {
+            this.creditCode = creditCode;
+        }
+
+        public String getBizType() {
+            return bizType;
+        }
+
+        public void setBizType(String bizType) {
+            this.bizType = bizType;
+        }
+
+        public String getLoanPeriod() {
+            return loanPeriod;
+        }
+
+        public void setLoanPeriod(String loanPeriod) {
+            this.loanPeriod = loanPeriod;
+        }
+
+        public String getInvoiceCompany() {
+            return invoiceCompany;
+        }
+
+        public void setInvoiceCompany(String invoiceCompany) {
+            this.invoiceCompany = invoiceCompany;
+        }
+
+        public String getCarBrand() {
+            return carBrand;
+        }
+
+        public void setCarBrand(String carBrand) {
+            this.carBrand = carBrand;
+        }
+
+        public double getOriginalPrice() {
+            return originalPrice;
+        }
+
+        public void setOriginalPrice(double originalPrice) {
+            this.originalPrice = originalPrice;
+        }
+
+        public double getInvoicePrice() {
+            return invoicePrice;
+        }
+
+        public void setInvoicePrice(double invoicePrice) {
+            this.invoicePrice = invoicePrice;
+        }
+
+        public String getCarColor() {
+            return carColor;
+        }
+
+        public void setCarColor(String carColor) {
+            this.carColor = carColor;
+        }
+
+        public double getMonthDeposit() {
+            return monthDeposit;
+        }
+
+        public void setMonthDeposit(double monthDeposit) {
+            this.monthDeposit = monthDeposit;
+        }
+
+        public double getFirstAmount() {
+            return firstAmount;
+        }
+
+        public void setFirstAmount(double firstAmount) {
+            this.firstAmount = firstAmount;
+        }
+
+        public double getFirstRate() {
+            return firstRate;
+        }
+
+        public void setFirstRate(double firstRate) {
+            this.firstRate = firstRate;
+        }
+
+        public double getLoanAmount() {
+            return loanAmount;
+        }
+
+        public void setLoanAmount(double loanAmount) {
+            this.loanAmount = loanAmount;
+        }
+
+        public String getSettleAddress() {
+            return settleAddress;
+        }
+
+        public void setSettleAddress(String settleAddress) {
+            this.settleAddress = settleAddress;
+        }
+
+        public String getApplyUserId() {
+            return applyUserId;
+        }
+
+        public void setApplyUserId(String applyUserId) {
+            this.applyUserId = applyUserId;
+        }
+
+        public String getApplyUserName() {
+            return applyUserName;
+        }
+
+        public void setApplyUserName(String applyUserName) {
+            this.applyUserName = applyUserName;
+        }
+
+        public String getGender() {
+            return gender;
+        }
+
+        public void setGender(String gender) {
+            this.gender = gender;
+        }
+
+        public String getMarryState() {
+            return marryState;
+        }
+
+        public void setMarryState(String marryState) {
+            this.marryState = marryState;
+        }
+
+        public String getNation() {
+            return nation;
+        }
+
+        public void setNation(String nation) {
+            this.nation = nation;
+        }
+
+        public String getEducation() {
+            return education;
+        }
+
+        public void setEducation(String education) {
+            this.education = education;
+        }
+
+        public String getIdNo() {
+            return idNo;
+        }
+
+        public void setIdNo(String idNo) {
+            this.idNo = idNo;
+        }
+
+        public String getFamilyNumber() {
+            return familyNumber;
+        }
+
+        public void setFamilyNumber(String familyNumber) {
+            this.familyNumber = familyNumber;
+        }
+
+        public String getMobile() {
+            return mobile;
+        }
+
+        public void setMobile(String mobile) {
+            this.mobile = mobile;
+        }
+
+        public String getNowAddress() {
+            return nowAddress;
+        }
+
+        public void setNowAddress(String nowAddress) {
+            this.nowAddress = nowAddress;
+        }
+
+        public String getPostCode1() {
+            return postCode1;
+        }
+
+        public void setPostCode1(String postCode1) {
+            this.postCode1 = postCode1;
+        }
+
+        public String getResidenceAddress() {
+            return residenceAddress;
+        }
+
+        public void setResidenceAddress(String residenceAddress) {
+            this.residenceAddress = residenceAddress;
+        }
+
+        public String getPostCode2() {
+            return postCode2;
+        }
+
+        public void setPostCode2(String postCode2) {
+            this.postCode2 = postCode2;
+        }
+
+        public String getFamilyMainAsset() {
+            return familyMainAsset;
+        }
+
+        public void setFamilyMainAsset(String familyMainAsset) {
+            this.familyMainAsset = familyMainAsset;
+        }
+
+        public String getMainAssetInclude() {
+            return mainAssetInclude;
+        }
+
+        public void setMainAssetInclude(String mainAssetInclude) {
+            this.mainAssetInclude = mainAssetInclude;
+        }
+
+        public String getMainIncome() {
+            return mainIncome;
+        }
+
+        public void setMainIncome(String mainIncome) {
+            this.mainIncome = mainIncome;
+        }
+
+        public String getWorkCompanyName() {
+            return workCompanyName;
+        }
+
+        public void setWorkCompanyName(String workCompanyName) {
+            this.workCompanyName = workCompanyName;
+        }
+
+        public String getWorkCompanyAddress() {
+            return workCompanyAddress;
+        }
+
+        public void setWorkCompanyAddress(String workCompanyAddress) {
+            this.workCompanyAddress = workCompanyAddress;
+        }
+
+        public String getSelfCompanyArea() {
+            return selfCompanyArea;
+        }
+
+        public void setSelfCompanyArea(String selfCompanyArea) {
+            this.selfCompanyArea = selfCompanyArea;
+        }
+
+        public String getEmployeeQuantity() {
+            return employeeQuantity;
+        }
+
+        public void setEmployeeQuantity(String employeeQuantity) {
+            this.employeeQuantity = employeeQuantity;
+        }
+
+        public String getEnterpriseMonthOutput() {
+            return enterpriseMonthOutput;
+        }
+
+        public void setEnterpriseMonthOutput(String enterpriseMonthOutput) {
+            this.enterpriseMonthOutput = enterpriseMonthOutput;
+        }
+
+        public String getPosition() {
+            return position;
+        }
+
+        public void setPosition(String position) {
+            this.position = position;
+        }
+
+        public String getPostTitle() {
+            return postTitle;
+        }
+
+        public void setPostTitle(String postTitle) {
+            this.postTitle = postTitle;
+        }
+
+        public String getMonthIncome() {
+            return monthIncome;
+        }
+
+        public void setMonthIncome(String monthIncome) {
+            this.monthIncome = monthIncome;
+        }
+
+        public String getMateName() {
+            return mateName;
+        }
+
+        public void setMateName(String mateName) {
+            this.mateName = mateName;
+        }
+
+        public String getMateMobile() {
+            return mateMobile;
+        }
+
+        public void setMateMobile(String mateMobile) {
+            this.mateMobile = mateMobile;
+        }
+
+        public String getMateIdNo() {
+            return mateIdNo;
+        }
+
+        public void setMateIdNo(String mateIdNo) {
+            this.mateIdNo = mateIdNo;
+        }
+
+        public String getMateEducation() {
+            return mateEducation;
+        }
+
+        public void setMateEducation(String mateEducation) {
+            this.mateEducation = mateEducation;
+        }
+
+        public String getMateCompanyName() {
+            return mateCompanyName;
+        }
+
+        public void setMateCompanyName(String mateCompanyName) {
+            this.mateCompanyName = mateCompanyName;
+        }
+
+        public String getMateCompanyAddress() {
+            return mateCompanyAddress;
+        }
+
+        public void setMateCompanyAddress(String mateCompanyAddress) {
+            this.mateCompanyAddress = mateCompanyAddress;
+        }
+
+        public String getMateCompanyContactNo() {
+            return mateCompanyContactNo;
+        }
+
+        public void setMateCompanyContactNo(String mateCompanyContactNo) {
+            this.mateCompanyContactNo = mateCompanyContactNo;
+        }
+
+        public String getGuaName() {
+            return guaName;
+        }
+
+        public void setGuaName(String guaName) {
+            this.guaName = guaName;
+        }
+
+        public String getGuaMobile() {
+            return guaMobile;
+        }
+
+        public void setGuaMobile(String guaMobile) {
+            this.guaMobile = guaMobile;
+        }
+
+        public String getGuaIdNo() {
+            return guaIdNo;
+        }
+
+        public void setGuaIdNo(String guaIdNo) {
+            this.guaIdNo = guaIdNo;
+        }
+
+        public String getGuaPhone() {
+            return guaPhone;
+        }
+
+        public void setGuaPhone(String guaPhone) {
+            this.guaPhone = guaPhone;
+        }
+
+        public String getGuaCompanyName() {
+            return guaCompanyName;
+        }
+
+        public void setGuaCompanyName(String guaCompanyName) {
+            this.guaCompanyName = guaCompanyName;
+        }
+
+        public String getGuaCompanyAddress() {
+            return guaCompanyAddress;
+        }
+
+        public void setGuaCompanyAddress(String guaCompanyAddress) {
+            this.guaCompanyAddress = guaCompanyAddress;
+        }
+
+        public String getGuaHouseAssetAddress() {
+            return guaHouseAssetAddress;
+        }
+
+        public void setGuaHouseAssetAddress(String guaHouseAssetAddress) {
+            this.guaHouseAssetAddress = guaHouseAssetAddress;
+        }
+
+        public String getEmergencyName1() {
+            return emergencyName1;
+        }
+
+        public void setEmergencyName1(String emergencyName1) {
+            this.emergencyName1 = emergencyName1;
+        }
+
+        public String getEmergencyRelation1() {
+            return emergencyRelation1;
+        }
+
+        public void setEmergencyRelation1(String emergencyRelation1) {
+            this.emergencyRelation1 = emergencyRelation1;
+        }
+
+        public String getEmergencyMobile1() {
+            return emergencyMobile1;
+        }
+
+        public void setEmergencyMobile1(String emergencyMobile1) {
+            this.emergencyMobile1 = emergencyMobile1;
+        }
+
+        public String getEmergencyName2() {
+            return emergencyName2;
+        }
+
+        public void setEmergencyName2(String emergencyName2) {
+            this.emergencyName2 = emergencyName2;
+        }
+
+        public String getEmergencyRelation2() {
+            return emergencyRelation2;
+        }
+
+        public void setEmergencyRelation2(String emergencyRelation2) {
+            this.emergencyRelation2 = emergencyRelation2;
+        }
+
+        public String getEmergencyMobile2() {
+            return emergencyMobile2;
+        }
+
+        public void setEmergencyMobile2(String emergencyMobile2) {
+            this.emergencyMobile2 = emergencyMobile2;
+        }
+
+        public String getJourDatetimeStart() {
+            return jourDatetimeStart;
+        }
+
+        public void setJourDatetimeStart(String jourDatetimeStart) {
+            this.jourDatetimeStart = jourDatetimeStart;
+        }
+
+        public String getJourDatetimeEnd() {
+            return jourDatetimeEnd;
+        }
+
+        public void setJourDatetimeEnd(String jourDatetimeEnd) {
+            this.jourDatetimeEnd = jourDatetimeEnd;
+        }
+
+        public double getJourIncome() {
+            return jourIncome;
+        }
+
+        public void setJourIncome(double jourIncome) {
+            this.jourIncome = jourIncome;
+        }
+
+        public double getJourExpend() {
+            return jourExpend;
+        }
+
+        public void setJourExpend(double jourExpend) {
+            this.jourExpend = jourExpend;
+        }
+
+        public double getJourBalance() {
+            return jourBalance;
+        }
+
+        public void setJourBalance(double jourBalance) {
+            this.jourBalance = jourBalance;
+        }
+
+        public double getJourMonthIncome() {
+            return jourMonthIncome;
+        }
+
+        public void setJourMonthIncome(double jourMonthIncome) {
+            this.jourMonthIncome = jourMonthIncome;
+        }
+
+        public double getJourMonthExpend() {
+            return jourMonthExpend;
+        }
+
+        public void setJourMonthExpend(double jourMonthExpend) {
+            this.jourMonthExpend = jourMonthExpend;
+        }
+
+        public String getJourRemark() {
+            return jourRemark;
+        }
+
+        public void setJourRemark(String jourRemark) {
+            this.jourRemark = jourRemark;
+        }
+
+        public String getHouseContract() {
+            return houseContract;
+        }
+
+        public void setHouseContract(String houseContract) {
+            this.houseContract = houseContract;
+        }
+
+        public String getHousePicture() {
+            return housePicture;
+        }
+
+        public void setHousePicture(String housePicture) {
+            this.housePicture = housePicture;
+        }
+
+        public String getIsAdvanceFund() {
+            return isAdvanceFund;
+        }
+
+        public void setIsAdvanceFund(String isAdvanceFund) {
+            this.isAdvanceFund = isAdvanceFund;
+        }
+
+        public String getInterviewVideo() {
+            return interviewVideo;
+        }
+
+        public void setInterviewVideo(String interviewVideo) {
+            this.interviewVideo = interviewVideo;
+        }
+
+        public String getInterviewContract() {
+            return interviewContract;
+        }
+
+        public void setInterviewContract(String interviewContract) {
+            this.interviewContract = interviewContract;
+        }
+
+        public String getAdvanceFundDatetime() {
+            return advanceFundDatetime;
+        }
+
+        public void setAdvanceFundDatetime(String advanceFundDatetime) {
+            this.advanceFundDatetime = advanceFundDatetime;
+        }
+
+        public double getAdvanceFundAmount() {
+            return advanceFundAmount;
+        }
+
+        public void setAdvanceFundAmount(double advanceFundAmount) {
+            this.advanceFundAmount = advanceFundAmount;
+        }
+
+        public String getCarSettleDatetime() {
+            return carSettleDatetime;
+        }
+
+        public void setCarSettleDatetime(String carSettleDatetime) {
+            this.carSettleDatetime = carSettleDatetime;
+        }
+
+        public String getCarNumber() {
+            return carNumber;
+        }
+
+        public void setCarNumber(String carNumber) {
+            this.carNumber = carNumber;
+        }
+
+        public String getCarInvoice() {
+            return carInvoice;
+        }
+
+        public void setCarInvoice(String carInvoice) {
+            this.carInvoice = carInvoice;
+        }
+
+        public String getCarHgz() {
+            return carHgz;
+        }
+
+        public void setCarHgz(String carHgz) {
+            this.carHgz = carHgz;
+        }
+
+        public String getCarJqx() {
+            return carJqx;
+        }
+
+        public void setCarJqx(String carJqx) {
+            this.carJqx = carJqx;
+        }
+
+        public String getCarSyx() {
+            return carSyx;
+        }
+
+        public void setCarSyx(String carSyx) {
+            this.carSyx = carSyx;
+        }
+
+        public String getCarRegcerti() {
+            return carRegcerti;
+        }
+
+        public void setCarRegcerti(String carRegcerti) {
+            this.carRegcerti = carRegcerti;
+        }
+
+        public String getCarPd() {
+            return carPd;
+        }
+
+        public void setCarPd(String carPd) {
+            this.carPd = carPd;
+        }
+
+        public String getCarKey() {
+            return carKey;
+        }
+
+        public void setCarKey(String carKey) {
+            this.carKey = carKey;
+        }
+
+        public String getCarBigSmj() {
+            return carBigSmj;
+        }
+
+        public void setCarBigSmj(String carBigSmj) {
+            this.carBigSmj = carBigSmj;
+        }
+
+        public String getBankCommitDatetime() {
+            return bankCommitDatetime;
+        }
+
+        public void setBankCommitDatetime(String bankCommitDatetime) {
+            this.bankCommitDatetime = bankCommitDatetime;
+        }
+
+        public String getRepayBankcardNumber() {
+            return repayBankcardNumber;
+        }
+
+        public void setRepayBankcardNumber(String repayBankcardNumber) {
+            this.repayBankcardNumber = repayBankcardNumber;
+        }
+
+        public double getRepayBillDate() {
+            return repayBillDate;
+        }
+
+        public void setRepayBillDate(double repayBillDate) {
+            this.repayBillDate = repayBillDate;
+        }
+
+        public double getRepayBankDate() {
+            return repayBankDate;
+        }
+
+        public void setRepayBankDate(double repayBankDate) {
+            this.repayBankDate = repayBankDate;
+        }
+
+        public double getRepayFirstMonthAmount() {
+            return repayFirstMonthAmount;
+        }
+
+        public void setRepayFirstMonthAmount(double repayFirstMonthAmount) {
+            this.repayFirstMonthAmount = repayFirstMonthAmount;
+        }
+
+        public String getRepayFirstMonthDatetime() {
+            return repayFirstMonthDatetime;
+        }
+
+        public void setRepayFirstMonthDatetime(String repayFirstMonthDatetime) {
+            this.repayFirstMonthDatetime = repayFirstMonthDatetime;
+        }
+
+        public double getRepayMonthAmount() {
+            return repayMonthAmount;
+        }
+
+        public void setRepayMonthAmount(double repayMonthAmount) {
+            this.repayMonthAmount = repayMonthAmount;
+        }
+
+        public String getReceiptBankCode() {
+            return receiptBankCode;
+        }
+
+        public void setReceiptBankCode(String receiptBankCode) {
+            this.receiptBankCode = receiptBankCode;
+        }
+
+        public String getReceiptBankcardNumber() {
+            return receiptBankcardNumber;
+        }
+
+        public void setReceiptBankcardNumber(String receiptBankcardNumber) {
+            this.receiptBankcardNumber = receiptBankcardNumber;
+        }
+
+        public String getReceiptPdf() {
+            return receiptPdf;
+        }
+
+        public void setReceiptPdf(String receiptPdf) {
+            this.receiptPdf = receiptPdf;
+        }
+
+        public String getReceiptRemark() {
+            return receiptRemark;
+        }
+
+        public void setReceiptRemark(String receiptRemark) {
+            this.receiptRemark = receiptRemark;
+        }
+
+        public String getPledgeDatetime() {
+            return pledgeDatetime;
+        }
+
+        public void setPledgeDatetime(String pledgeDatetime) {
+            this.pledgeDatetime = pledgeDatetime;
+        }
+
+        public String getGreenBigSmj() {
+            return greenBigSmj;
+        }
+
+        public void setGreenBigSmj(String greenBigSmj) {
+            this.greenBigSmj = greenBigSmj;
+        }
+
+        public String getPledgeBankCommitDatetime() {
+            return pledgeBankCommitDatetime;
+        }
+
+        public void setPledgeBankCommitDatetime(String pledgeBankCommitDatetime) {
+            this.pledgeBankCommitDatetime = pledgeBankCommitDatetime;
+        }
+
+        public String getSaleUserId() {
+            return saleUserId;
+        }
+
+        public void setSaleUserId(String saleUserId) {
+            this.saleUserId = saleUserId;
+        }
+
+        public String getCompanyCode() {
+            return companyCode;
+        }
+
+        public void setCompanyCode(String companyCode) {
+            this.companyCode = companyCode;
+        }
+
+        public String getApplyDatetime() {
+            return applyDatetime;
+        }
+
+        public void setApplyDatetime(String applyDatetime) {
+            this.applyDatetime = applyDatetime;
+        }
+
+        public String getCurNodeCode() {
+            return curNodeCode;
+        }
+
+        public void setCurNodeCode(String curNodeCode) {
+            this.curNodeCode = curNodeCode;
+        }
+
+        public String getRemark() {
+            return remark;
+        }
+
+        public void setRemark(String remark) {
+            this.remark = remark;
+        }
+
+        public String getCompanyName() {
+            return companyName;
+        }
+
+        public void setCompanyName(String companyName) {
+            this.companyName = companyName;
+        }
+
+        public String getSaleUserName() {
+            return saleUserName;
+        }
+
+        public void setSaleUserName(String saleUserName) {
+            this.saleUserName = saleUserName;
+        }
+
+        public String getLoanBankName() {
+            return loanBankName;
+        }
+
+        public void setLoanBankName(String loanBankName) {
+            this.loanBankName = loanBankName;
+        }
+
+        public List<BudgetOrderGpsListBean> getBudgetOrderGpsList() {
+            return budgetOrderGpsList;
+        }
+
+        public void setBudgetOrderGpsList(List<BudgetOrderGpsListBean> budgetOrderGpsList) {
+            this.budgetOrderGpsList = budgetOrderGpsList;
+        }
+
+        public static class BudgetOrderGpsListBean implements Serializable {
+            /**
+             * code : GPSAZ201806010812307864013
+             * gpsDevNo : 89787
+             * gpsType : 0
+             * azLocation : 上
+             * azDatetime : 2018-06-01 00:00:00.0
+             * azUser : 搜索
+             * remark :
+             * budgetOrder : BO201806010742311246375
+             */
+
+            private String code;
+            private String gpsDevNo;
+            private String gpsType;
+            private String azLocation;
+            private String azDatetime;
+            private String azUser;
+            private String remark;
+            private String budgetOrder;
+
+            public String getCode() {
+                return code;
+            }
+
+            public void setCode(String code) {
+                this.code = code;
+            }
+
+            public String getGpsDevNo() {
+                return gpsDevNo;
+            }
+
+            public void setGpsDevNo(String gpsDevNo) {
+                this.gpsDevNo = gpsDevNo;
+            }
+
+            public String getGpsType() {
+                return gpsType;
+            }
+
+            public void setGpsType(String gpsType) {
+                this.gpsType = gpsType;
+            }
+
+            public String getAzLocation() {
+                return azLocation;
+            }
+
+            public void setAzLocation(String azLocation) {
+                this.azLocation = azLocation;
+            }
+
+            public String getAzDatetime() {
+                return azDatetime;
+            }
+
+            public void setAzDatetime(String azDatetime) {
+                this.azDatetime = azDatetime;
+            }
+
+            public String getAzUser() {
+                return azUser;
+            }
+
+            public void setAzUser(String azUser) {
+                this.azUser = azUser;
+            }
+
+            public String getRemark() {
+                return remark;
+            }
+
+            public void setRemark(String remark) {
+                this.remark = remark;
+            }
+
+            public String getBudgetOrder() {
+                return budgetOrder;
+            }
+
+            public void setBudgetOrder(String budgetOrder) {
+                this.budgetOrder = budgetOrder;
+            }
         }
     }
 

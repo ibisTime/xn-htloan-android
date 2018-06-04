@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -86,9 +87,10 @@ public class MyCurrentActivity extends AbsRefreshListActivity<AccountDetailsBean
                     return;
                 }
                 MyAccountBean.AccountListBean accountListBean = data.getAccountList().get(0);
-                tvCurrentIntegral.setText(accountListBean.getAmount().intValue()+"");
-                accountNumber = accountListBean.getAccountNumber();
                 initRefreshHelper(10);
+                tvCurrentIntegral.setText(accountListBean.getAmount().intValue()+"");
+                Log.i("pppppp", "onSuccess: "+accountListBean.getAmount().intValue());
+                accountNumber = accountListBean.getAccountNumber();
                 mRefreshHelper.onDefaluteMRefresh(true);
             }
             @Override

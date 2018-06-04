@@ -2,6 +2,7 @@ package com.cdkj.huatuweitong;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import com.cdkj.baselibrary.base.BaseActivity;
 import com.cdkj.baselibrary.utils.LogUtil;
@@ -17,7 +18,7 @@ import io.reactivex.functions.Consumer;
  * Created by cdkj on 2017/6/8.
  */
 
-public class WelcomeAcitivity extends BaseActivity {
+public class WelcomeActivity extends BaseActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,17 +34,18 @@ public class WelcomeAcitivity extends BaseActivity {
             }
         } catch (Exception e) {
         }
-//        setContentView(R.layout.activity_welcom);
-//        ImageView img = (ImageView) findViewById(R.id.img_start);
-//        img.setImageResource(R.drawable.welcome);
-        mSubscription.add(Observable.timer(1, TimeUnit.SECONDS)
+        setContentView(R.layout.activity_welcom);
+        ImageView img = (ImageView) findViewById(R.id.img_start);
+        img.setBackgroundResource(R.drawable.loading);
+        mSubscription.add(Observable.timer(2, TimeUnit.SECONDS)
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<Long>() {
 
                     @Override
                     public void accept(Long aLong) throws Exception {
-//                        MainActivity.open(WelcomeAcitivity.this);
+                        MainActivity.open(WelcomeActivity.this);
+                        finish();
                     }
                 }, new Consumer<Throwable>() {
                     @Override
