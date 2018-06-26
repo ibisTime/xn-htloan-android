@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.cdkj.baselibrary.api.BaseResponseModel;
 import com.cdkj.baselibrary.api.ResponseInListModel;
 import com.cdkj.baselibrary.appmanager.CdRouteHelper;
-import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsRefreshListFragment;
 import com.cdkj.baselibrary.dialog.CommonDialog;
 import com.cdkj.baselibrary.dialog.UITipDialog;
@@ -113,7 +113,7 @@ public class OrderListFragment extends AbsRefreshListFragment {
 
         Map<String, Object> map = new HashMap<>();
 
-        map.put("applyUser", SPUtilHelpr.getUserId());
+        map.put("applyUser", SPUtilHelper.getUserId());
         map.put("limit", limit + "");
         map.put("start", pageindex + "");
 
@@ -179,7 +179,7 @@ public class OrderListFragment extends AbsRefreshListFragment {
         Map<String, String> map = new HashMap<>();
 
         map.put("code", orderCode);
-        map.put("userId", SPUtilHelpr.getUserId());
+        map.put("userId", SPUtilHelper.getUserId());
 
         showLoadingDialog();
 
@@ -220,7 +220,7 @@ public class OrderListFragment extends AbsRefreshListFragment {
         Map<String, String> map = new HashMap<>();
 
         map.put("code", orderCode);
-        map.put("userId", SPUtilHelpr.getUserId());
+        map.put("userId", SPUtilHelper.getUserId());
 
         showLoadingDialog();
 

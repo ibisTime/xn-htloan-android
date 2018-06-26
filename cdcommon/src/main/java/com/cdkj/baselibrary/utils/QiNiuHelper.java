@@ -155,8 +155,8 @@ public class QiNiuHelper {
      */
     public Call<BaseResponseModel<QiniuGetTokenModel>> getQiniuToeknRequest() {
         Map<String, String> object = new HashMap<>();
-        object.put("companyCode", MyCdConfig.COMPANYCODE);
-        object.put("systemCode", MyCdConfig.SYSTEMCODE);
+        object.put("companyCode", MyCdConfig.COMPANY_CODE);
+        object.put("systemCode", MyCdConfig.SYSTEM_CODE);
         return RetrofitUtils.getBaseAPiService().getQiniuTOken("630091", StringUtils.getJsonToString(object));
     }
 

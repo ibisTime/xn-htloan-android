@@ -45,7 +45,7 @@ public class LoginPresenter {
         hashMap.put("kind", MyCdConfig.USERTYPE);
         hashMap.put("loginPwd", password);
 
-//        hashMap.put("systemCode", MyCdConfig.SYSTEMCODE);
+//        hashMap.put("systemCode", MyCdConfig.SYSTEM_CODE);
 
         call = RetrofitUtils.getBaseAPiService().userLogin("805050", StringUtils.getJsonToString(hashMap));
 

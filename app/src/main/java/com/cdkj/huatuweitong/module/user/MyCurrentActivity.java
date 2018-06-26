@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.cdkj.baselibrary.api.BaseResponseModel;
-import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsRefreshListActivity;
 import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
@@ -75,7 +75,7 @@ public class MyCurrentActivity extends AbsRefreshListActivity<AccountDetailsBean
     private void initDatas() {
         showLoadingDialog();
         Map<String, String> map = new HashMap<>();
-        map.put("userId", SPUtilHelpr.getUserId());
+        map.put("userId", SPUtilHelper.getUserId());
         map.put("currency", "XYF");
         Call<BaseResponseModel<MyAccountBean>> accountMoney = RetrofitUtils.createApi(MyApiServer.class).getAccountMoney("802503", StringUtils.getJsonToString(map));
         accountMoney.enqueue(new BaseResponseModelCallBack<MyAccountBean>(MyCurrentActivity.this) {

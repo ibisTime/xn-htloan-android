@@ -8,7 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 
 import com.cdkj.baselibrary.api.BaseResponseModel;
-import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
@@ -80,7 +80,7 @@ public class MyAccountActivity extends AbsBaseLoadActivity {
 //        802503
         showLoadingDialog();
         Map<String, String> map = new HashMap<>();
-        map.put("userId", SPUtilHelpr.getUserId());
+        map.put("userId", SPUtilHelper.getUserId());
         map.put("currency", "CNY");
 
         Call<BaseResponseModel<MyAccountBean>> accountMoney = RetrofitUtils.createApi(MyApiServer.class).getAccountMoney("802503", StringUtils.getJsonToString(map));
@@ -111,7 +111,7 @@ public class MyAccountActivity extends AbsBaseLoadActivity {
     private void initDatasMoney() {
         showLoadingDialog();
         Map<String, String> map = new HashMap<>();
-        map.put("userId", SPUtilHelpr.getUserId());
+        map.put("userId", SPUtilHelper.getUserId());
         Call<BaseResponseModel<MyAccountMoneyDataBean>> myAccountMoney = RetrofitUtils.createApi(MyApiServer.class).getMyAccountMoney("802900", StringUtils.getJsonToString(map));
         addCall(myAccountMoney);
         myAccountMoney.enqueue(new BaseResponseModelCallBack<MyAccountMoneyDataBean>(MyAccountActivity.this) {

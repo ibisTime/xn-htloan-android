@@ -9,7 +9,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.cdkj.baselibrary.appmanager.MyCdConfig;
-import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.interfaces.SendCodeInterface;
@@ -80,7 +80,7 @@ public class UpDataPhoneActivity extends AbsBaseLoadActivity implements SendCode
         showLoadingDialog();
         hashMap.put("newMobile", mBinding.etPhone.getText().toString());
         hashMap.put("smsCaptcha", mBinding.etCheckCode.getText().toString());
-        hashMap.put("userId", SPUtilHelpr.getUserId());
+        hashMap.put("userId", SPUtilHelper.getUserId());
 
         Call call = RetrofitUtils.getBaseAPiService().successRequest("805061", StringUtils.getJsonToString(hashMap));
         addCall(call);
@@ -88,7 +88,7 @@ public class UpDataPhoneActivity extends AbsBaseLoadActivity implements SendCode
             @Override
             protected void onSuccess(IsSuccessModes data, String SucMessage) {
                 if (data.isSuccess()) {
-                    SPUtilHelpr.saveUserPhoneNum(mBinding.etPhone.getText().toString());
+                    SPUtilHelper.saveUserPhoneNum(mBinding.etPhone.getText().toString());
                     UITipDialog.showSuccess(UpDataPhoneActivity.this, getString(R.string.noupdata_phone_succer),dialog -> finish() );
                 } else {
                     UITipDialog.showFall(UpDataPhoneActivity.this, getString(R.string.noupdata_phone));

@@ -12,7 +12,7 @@ import android.text.TextWatcher;
 import android.view.View;
 
 import com.cdkj.baselibrary.appmanager.MyCdConfig;
-import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
@@ -174,7 +174,7 @@ public class WithdrawActivity extends AbsBaseLoadActivity {
         // 开户行
         object.put("payCardInfo", mBinding.edtBankName.getText().toString());
         object.put("applyNote", "Android用户端取现");
-        object.put("applyUser", SPUtilHelpr.getUserId());
+        object.put("applyUser", SPUtilHelper.getUserId());
 
         Call call = RetrofitUtils.getBaseAPiService().stringRequest("802751", StringUtils.getJsonToString(object));
 
@@ -208,9 +208,9 @@ public class WithdrawActivity extends AbsBaseLoadActivity {
     public void getTip() {
         Map<String, String> object = new HashMap<>();
         object.put("type", "3");
-        object.put("token", SPUtilHelpr.getUserToken());
-        object.put("systemCode", MyCdConfig.SYSTEMCODE);
-        object.put("companyCode", MyCdConfig.COMPANYCODE);
+        object.put("token", SPUtilHelper.getUserToken());
+        object.put("systemCode", MyCdConfig.SYSTEM_CODE);
+        object.put("companyCode", MyCdConfig.COMPANY_CODE);
 
         Call call = RetrofitUtils.createApi(MyApiServer.class).getWithdrawTip("802029", StringUtils.getJsonToString(object));
 

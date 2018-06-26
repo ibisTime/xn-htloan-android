@@ -12,7 +12,7 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cdkj.baselibrary.R;
 import com.cdkj.baselibrary.appmanager.CdRouteHelper;
-import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.databinding.ActivityBindBankCardBinding;
 import com.cdkj.baselibrary.dialog.CommonDialog;
@@ -142,8 +142,8 @@ public class UpdateBankCardActivity extends AbsBaseLoadActivity {
         if (mBankModel == null) return;
         Map<String, String> object = new HashMap<>();
         object.put("code", mBankModel.getCode());
-        object.put("token", SPUtilHelpr.getUserToken());
-//        object.put("systemCode", MyCdConfig.SYSTEMCODE);
+        object.put("token", SPUtilHelper.getUserToken());
+//        object.put("systemCode", MyCdConfig.SYSTEM_CODE);
         Call call = RetrofitUtils.getBaseAPiService().successRequest("802011", StringUtils.getJsonToString(object));
 
 
@@ -156,7 +156,7 @@ public class UpdateBankCardActivity extends AbsBaseLoadActivity {
             @Override
             protected void onSuccess(IsSuccessModes data, String SucMessage) {
                 if (data.isSuccess()) {
-                    SPUtilHelpr.saveUserIsBindCard(false);
+                    SPUtilHelper.saveUserIsBindCard(false);
                     showToast(getString(R.string.delete_succ));
                     finish();
                 }
@@ -184,14 +184,14 @@ public class UpdateBankCardActivity extends AbsBaseLoadActivity {
         object.put("bindMobile", mBinding.editPhone.getText().toString().trim());
         object.put("code", mBankModel.getCode());
         object.put("subbranch", mBinding.editBankNameChild.getText().toString().trim());
-        object.put("token", SPUtilHelpr.getUserToken());
-        object.put("updater",  SPUtilHelpr.getUserId());
+        object.put("token", SPUtilHelper.getUserToken());
+        object.put("updater",  SPUtilHelper.getUserId());
 
 
 //        object.put("realName", mBinding.editName.getText().toString().trim());
 //        object.put("status", "1");
 //        object.put("userId", SPUtilHelpr.getUserId());
-//        object.put("systemCode", MyCdConfig.SYSTEMCODE);
+//        object.put("systemCode", MyCdConfig.SYSTEM_CODE);
 
         Call call = RetrofitUtils.getBaseAPiService().successRequest("802012", StringUtils.getJsonToString(object));
 
@@ -205,7 +205,7 @@ public class UpdateBankCardActivity extends AbsBaseLoadActivity {
             protected void onSuccess(IsSuccessModes data, String SucMessage) {
                 if (data.isSuccess()) {
                     showToast(getString(R.string.change_succ));
-                    SPUtilHelpr.saveUserIsBindCard(true);
+                    SPUtilHelper.saveUserIsBindCard(true);
                     finish();
                 }
             }
@@ -256,7 +256,7 @@ public class UpdateBankCardActivity extends AbsBaseLoadActivity {
      */
     private void getBankBrand() {
         Map object = new HashMap();
-        object.put("token", SPUtilHelpr.getUserToken());
+        object.put("token", SPUtilHelper.getUserToken());
         object.put("payType", "WAP");
         Call call = RetrofitUtils.getBaseAPiService().getBackModel("802116", StringUtils.getJsonToString(object));
 

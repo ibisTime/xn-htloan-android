@@ -36,7 +36,7 @@ android {
         }
     }
     dataBinding {
-        enabled true;
+        enabled true
     }
 
     compileOptions {
@@ -59,6 +59,9 @@ dependencies {
     implementation 'com.android.support:support-v4:26.1.0'
     annotationProcessor rootProject.ext.arouterCompiler
     api rootProject.ext.arouterApi
+
+    // 腾讯云 实时音视频
+    compile 'com.tencent.ilivesdk:ilivesdk:1.8.5'
 }
 ///格式化打完完成后APK名称中的时间
 def releaseTime() {

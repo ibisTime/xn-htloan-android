@@ -13,7 +13,7 @@ import com.cdkj.baselibrary.R;
 import com.cdkj.baselibrary.activitys.login.LoginActivity;
 import com.cdkj.baselibrary.appmanager.CdRouteHelper;
 import com.cdkj.baselibrary.appmanager.MyCdConfig;
-import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.databinding.ActivityModifyPasswordTwoBinding;
 import com.cdkj.baselibrary.dialog.UITipDialog;
@@ -131,7 +131,7 @@ public class FindPwdActivity extends AbsBaseLoadActivity implements SendCodeInte
                     UITipDialog.showFall(FindPwdActivity.this, getString(R.string.check_pwd_info_2));
                     return;
                 }
-                if (mBinding.edtPassword.getText().toString().equals(SPUtilHelpr.getUserPsw())) {
+                if (mBinding.edtPassword.getText().toString().equals(SPUtilHelper.getUserPsw())) {
                     UITipDialog.showFall(FindPwdActivity.this, "新密码与旧密码相同");
                     return;
                 }
@@ -172,7 +172,7 @@ public class FindPwdActivity extends AbsBaseLoadActivity implements SendCodeInte
                         @Override
                         public void onDismiss(DialogInterface dialog) {
 //                            清掉用户信息
-                            SPUtilHelpr.logOutClear();
+                            SPUtilHelper.logOutClear();
                             //发送事件  关闭所有的activity
                             EventBus.getDefault().post(new EventFinishAll());
                             LoginActivity.open(FindPwdActivity.this, true);

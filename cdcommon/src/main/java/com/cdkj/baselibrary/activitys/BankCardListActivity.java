@@ -9,7 +9,7 @@ import com.cdkj.baselibrary.activitys.bankcard.AddBankCardActivity;
 import com.cdkj.baselibrary.adapters.BankCardListAdapter;
 import com.cdkj.baselibrary.api.BaseResponseModel;
 import com.cdkj.baselibrary.appmanager.MyCdConfig;
-import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsRefreshListActivity;
 import com.cdkj.baselibrary.model.BankCardModel;
 import com.cdkj.baselibrary.model.MyBankCardListMode;
@@ -68,9 +68,9 @@ public class BankCardListActivity extends AbsRefreshListActivity {
     public void getListRequest(int pageindex, int limit, boolean isShowDialog) {
         Map<String, String> object = new HashMap<>();
 
-        object.put("systemCode", MyCdConfig.SYSTEMCODE);
-        object.put("token", SPUtilHelpr.getUserToken());
-        object.put("userId", SPUtilHelpr.getUserId());
+        object.put("systemCode", MyCdConfig.SYSTEM_CODE);
+        object.put("token", SPUtilHelper.getUserToken());
+        object.put("userId", SPUtilHelper.getUserId());
         object.put("start", pageindex + "");
         object.put("limit", limit + "");
 

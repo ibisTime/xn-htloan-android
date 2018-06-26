@@ -23,7 +23,7 @@ public class LoginInterceptor implements IInterceptor {
     @Override
     public void process(final Postcard postcard, final InterceptorCallback callback) {
 
-        if (!SPUtilHelpr.isLoginNoStart()) {         //未登录 进行拦截 并跳转导登录界面
+        if (!SPUtilHelper.isLoginNoStart()) {         //未登录 进行拦截 并跳转导登录界面
             callback.onInterrupt(null);
             CdRouteHelper.openLogin(false); //
         } else {

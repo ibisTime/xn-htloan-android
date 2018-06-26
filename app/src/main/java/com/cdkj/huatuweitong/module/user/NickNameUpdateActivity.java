@@ -9,7 +9,7 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.view.View;
 
-import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.model.IsSuccessModes;
@@ -55,7 +55,7 @@ public class NickNameUpdateActivity extends AbsBaseLoadActivity {
 
         mBinding.edit.setFilters(new NameLengthFilter[]{new NameLengthFilter(16)});
 
-        mBinding.edit.setText(SPUtilHelpr.getUserName());
+        mBinding.edit.setText(SPUtilHelper.getUserName());
     }
 
     //确定按钮的点击回调监听
@@ -81,7 +81,7 @@ public class NickNameUpdateActivity extends AbsBaseLoadActivity {
 
         Map<String, String> map = new HashMap<String, String>();
         map.put("nickname", string);
-        map.put("userId", SPUtilHelpr.getUserId());
+        map.put("userId", SPUtilHelper.getUserId());
         Call call = RetrofitUtils.getBaseAPiService().successRequest("805081", StringUtils.getJsonToString(map));
 
         addCall(call);
@@ -97,7 +97,7 @@ public class NickNameUpdateActivity extends AbsBaseLoadActivity {
                 EventBus.getDefault().post(nickNameUpdateModel);
 
                 UITipDialog.showSuccess(NickNameUpdateActivity.this, getString(R.string.update_nick_name_succ), dialogInterface -> {
-                    SPUtilHelpr.saveUserName(string);
+                    SPUtilHelper.saveUserName(string);
                     finish();
                 });
             }

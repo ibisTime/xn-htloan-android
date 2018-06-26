@@ -53,7 +53,7 @@ public class ReimbursementRepaymentMonthBean {
     private UserBean user;
     private RepayBiz repayBiz;
     private String userId;
-    private double monthRepayAmount;
+    private double repayAmount;
 
 
     public static class RepayBiz {
@@ -87,12 +87,12 @@ public class ReimbursementRepaymentMonthBean {
 
 
 
-    public double getMonthRepayAmount() {
-        return monthRepayAmount;
+    public double getRepayAmount() {
+        return repayAmount;
     }
 
-    public void setMonthRepayAmount(double monthRepayAmount) {
-        this.monthRepayAmount = monthRepayAmount;
+    public void setRepayAmount(double repayAmount) {
+        this.repayAmount = repayAmount;
     }
 
 

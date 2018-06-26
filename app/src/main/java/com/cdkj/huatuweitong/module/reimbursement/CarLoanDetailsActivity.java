@@ -18,6 +18,7 @@ import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.CarLoanDetailsActivityBean;
 import com.cdkj.huatuweitong.bean.CarLoanDetailsActivityMonthBean;
 import com.cdkj.huatuweitong.databinding.ActivityCarLoanDetailsBinding;
+import com.cdkj.huatuweitong.utlis.MyTextUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,7 +34,6 @@ public class CarLoanDetailsActivity extends AbsBaseLoadActivity {
 
     public static void open(Context context, String code, String type) {
         if (context != null) {
-//            630541
             Intent intent = new Intent(context, CarLoanDetailsActivity.class);
             intent.putExtra("code", code);
             intent.putExtra("type", type);
@@ -73,15 +73,9 @@ public class CarLoanDetailsActivity extends AbsBaseLoadActivity {
 
 
         mBinding.btnEarlyRepayment.setOnClickListener(v -> {
-//            mdata.
 
             String bankcardNumber;
-            if (mdata.getBudgetOrder() != null) {
-                bankcardNumber = mdata.getBudgetOrder().getRepayBankcardNumber();
-            } else {
-               // bankcardNumber = "";//这是个  银行卡号码 但是有的没有数据  直接调用会报错  所以判断了一下
-                bankcardNumber = mdata.getMallOrder().getBankcardNumber();
-            }
+            bankcardNumber = mdata.getBudgetOrder().getRepayBankcardNumber();
             AdvanceDetailsActivity.open(CarLoanDetailsActivity.this, mdata.getRestAmount() + "", bankcardNumber, mdata.getCode());
 
         });
@@ -103,13 +97,9 @@ public class CarLoanDetailsActivity extends AbsBaseLoadActivity {
                 mBinding.tvLoanTotal.setText(MoneyUtils.showPriceDouble(data.getPayedAmount() + data.getOverplusAmount()));//贷款总额
                 mBinding.tvLoanTerm.setText(data.getPeriods()+"");//贷款期限
                 mBinding.tvRepaymentPlan.setText(data.getBankcardNumber());//还款卡号
-//
-                if (TextUtils.equals(data.getStatus(), "0")) {
-                    mBinding.tvLoanType.setText("还款中");//还款状态
-                } else {
-                    mBinding.tvLoanType.setText("其他");
 
-                }
+                MyTextUtils.setStatusType004(mBinding.tvLoanType, data.getCurNodeCode());
+
             }
 
             @Override
@@ -143,11 +133,11 @@ public class CarLoanDetailsActivity extends AbsBaseLoadActivity {
                 if (TextUtils.equals(data.getRefType(),"1")) {
                     //商品贷
                     mBinding.tvType.setText("贷款商品");
-                    mBinding.tvRepaymentPlan.setText(data.getMallOrder().getBankcardNumber());//还款卡号
+                    mBinding.tvRepaymentPlan.setText(data.getBudgetOrder().getRepayBankcardNumber());//还款卡号
 
-                    if (data.getMallOrder().getProductOrderList() == null || data.getMallOrder().getProductOrderList().size() == 0)
+                    if (data.getBudgetOrder().getProductOrderList() == null || data.getBudgetOrder().getProductOrderList().size() == 0)
                         return;
-                    mBinding.tvLoanCar.setText(data.getMallOrder().getProductOrderList().get(0).getProductName());
+                    mBinding.tvLoanCar.setText(data.getBudgetOrder().getProductOrderList().get(0).getProductName());
 
                 }else if (TextUtils.equals(data.getRefType(),"0")){
                     //车辆贷
@@ -168,21 +158,11 @@ public class CarLoanDetailsActivity extends AbsBaseLoadActivity {
 
                 //0=还款中 1=正常已还款 2=正常结清 3=提前还款 4=确认提前结清 5=确认不还 6=确认处理结果
                 //还款状态
-                if (TextUtils.equals(data.getStatus(), "0")) {
+                if (TextUtils.equals(data.getCurNodeCode(), "003_01")) {
                     mBinding.tvLoanType.setText("还款中");
                     mBinding.llButtom.setVisibility(View.VISIBLE);
-                } else if (TextUtils.equals(data.getStatus(), "1")) {
-                    mBinding.tvLoanType.setText("正常已还款");
-                } else if (TextUtils.equals(data.getStatus(), "2")) {
-                    mBinding.tvLoanType.setText("正常结清");
-                } else if (TextUtils.equals(data.getStatus(), "3")) {
-                    mBinding.tvLoanType.setText("提前还款");
-                } else if (TextUtils.equals(data.getStatus(), "4")) {
-                    mBinding.tvLoanType.setText("确认提前结清");
-                } else if (TextUtils.equals(data.getStatus(), "5")) {
-                    mBinding.tvLoanType.setText("确认不还");
-                } else if (TextUtils.equals(data.getStatus(), "6")) {
-                    mBinding.tvLoanType.setText("确认处理结果");
+                } else {
+                    MyTextUtils.setStatusType003(mBinding.tvLoanType, data.getCurNodeCode());
                 }
             }
 

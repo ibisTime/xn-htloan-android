@@ -13,8 +13,6 @@ import com.cdkj.baselibrary.utils.AppUtils;
 import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.baselibrary.utils.ToastUtil;
 
-import org.greenrobot.eventbus.EventBus;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,8 +39,8 @@ public class UpdateManager {
     public void checkNewApp(final Context context) {
 
         Map<String, String> map = new HashMap<>();
-        map.put("companyCode", MyCdConfig.COMPANYCODE);
-        map.put("systemCode", MyCdConfig.SYSTEMCODE);
+        map.put("companyCode", MyCdConfig.COMPANY_CODE);
+        map.put("systemCode", MyCdConfig.SYSTEM_CODE);
         map.put("type", "android-c");
 
         call = RetrofitUtils.getBaseAPiService().getTypeSystemInfo("805918", StringUtils.getJsonToString(map));

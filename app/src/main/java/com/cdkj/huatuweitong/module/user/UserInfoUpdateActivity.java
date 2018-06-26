@@ -13,7 +13,7 @@ import com.cdkj.baselibrary.activitys.ImageSelectActivity;
 import com.cdkj.baselibrary.activitys.PayPwdModifyActivity;
 import com.cdkj.baselibrary.activitys.address.AddressListActivity;
 import com.cdkj.baselibrary.activitys.login.LoginActivity;
-import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.model.IsSuccessModes;
@@ -67,14 +67,14 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
     @Override
     protected void onResumeFragments() {
         super.onResumeFragments();
-        mBinding.rowNickName.setTvRight(SPUtilHelpr.getUserName());
-        mBinding.rowPhone.setTvRight(SPUtilHelpr.getUserPhoneNum());
+        mBinding.rowNickName.setTvRight(SPUtilHelper.getUserName());
+        mBinding.rowPhone.setTvRight(SPUtilHelper.getUserPhoneNum());
 
     }
 
     private void initOnclick() {
 
-        ImgUtils.loadQiniuLogo(this, SPUtilHelpr.getUserPhoto(), mBinding.imgLogo);
+        ImgUtils.loadQiniuLogo(this, SPUtilHelper.getUserPhoto(), mBinding.imgLogo);
 
         mBinding.layoutLogo.setOnClickListener(v -> {
             //头像
@@ -91,11 +91,11 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
         });
         mBinding.rowPsw.setOnClickListener(v -> {
             //修改密码
-            FindPwdActivity.open(UserInfoUpdateActivity.this, SPUtilHelpr.getUserPhoneNum());
+            FindPwdActivity.open(UserInfoUpdateActivity.this, SPUtilHelper.getUserPhoneNum());
         });
         mBinding.rowPayPsw.setOnClickListener(v -> {
             //修改支付密码
-            PayPwdModifyActivity.open(this, SPUtilHelpr.isTradepwdFlag(), SPUtilHelpr.getUserPhoneNum());
+            PayPwdModifyActivity.open(this, SPUtilHelper.isTradepwdFlag(), SPUtilHelper.getUserPhoneNum());
 
         });
         mBinding.rowReceiveAddress.setOnClickListener(v -> {
@@ -111,7 +111,7 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
             //退出
 
             showDoubleWarnListen(getString(R.string.sure_logout), view -> {
-                SPUtilHelpr.logOutClear();
+                SPUtilHelper.logOutClear();
                 EventBus.getDefault().post(new EventFinishAll());
                 LoginActivity.open(UserInfoUpdateActivity.this, true);
             });
@@ -134,7 +134,7 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (SPUtilHelpr.isTradepwdFlag()) {
+        if (SPUtilHelper.isTradepwdFlag()) {
             mBinding.rowPayPsw.setTvLeft(getString(R.string.pay_psw));
         } else {
             mBinding.rowPayPsw.setTvLeft(getString(R.string.set_pay_pwd));
@@ -173,9 +173,9 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
 
     private void updateUserPhoto(final String key) {
         Map<String, String> map = new HashMap<String, String>();
-        map.put("userId", SPUtilHelpr.getUserId());
+        map.put("userId", SPUtilHelper.getUserId());
         map.put("photo", key);
-        map.put("token", SPUtilHelpr.getUserToken());
+        map.put("token", SPUtilHelper.getUserToken());
         Call call = RetrofitUtils.getBaseAPiService().successRequest("805080", StringUtils.getJsonToString(map));
         addCall(call);
         call.enqueue(new BaseResponseModelCallBack<IsSuccessModes>(UserInfoUpdateActivity.this) {

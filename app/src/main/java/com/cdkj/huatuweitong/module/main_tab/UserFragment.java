@@ -1,22 +1,30 @@
 package com.cdkj.huatuweitong.module.main_tab;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.text.InputType;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.cdkj.baselibrary.appmanager.CdRouteHelper;
-import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.BaseLazyFragment;
+import com.cdkj.baselibrary.dialog.InputDialog;
 import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
 import com.cdkj.baselibrary.utils.ImgUtils;
 import com.cdkj.baselibrary.utils.MoneyUtils;
 import com.cdkj.baselibrary.utils.StringUtils;
+import com.cdkj.baselibrary.utils.ToastUtil;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.AccountListModel;
@@ -30,8 +38,13 @@ import com.cdkj.huatuweitong.module.user.MyCarLoanActivity;
 import com.cdkj.huatuweitong.module.user.MyCurrentActivity;
 import com.cdkj.huatuweitong.module.user.MyMessageActivity;
 import com.cdkj.huatuweitong.module.user.UserInfoUpdateActivity;
+import com.cdkj.huatuweitong.module.user.interview.RoomActivity;
+import com.cdkj.huatuweitong.tencent.TencentLoginHelper;
+import com.cdkj.huatuweitong.tencent.logininterface.TencentLoginInterface;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import retrofit2.Call;
@@ -40,9 +53,12 @@ import retrofit2.Call;
  * Created by cdkj on 2018/5/1.
  */
 
-public class UserFragment extends BaseLazyFragment implements View.OnClickListener {
+public class UserFragment extends BaseLazyFragment implements View.OnClickListener,TencentLoginInterface {
 
     private FragmentUserBinding mBinding;
+
+    private int roomId;
+    private TencentLoginHelper mHelper;
 
     public static UserFragment getInstance() {
         UserFragment fragment = new UserFragment();
@@ -66,6 +82,10 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
         mBinding.llCoin.setOnClickListener(this);
         mBinding.llTicket.setOnClickListener(this);
 
+        mBinding.rilInterview.setOnClickListener(view -> {
+            showRoomDialog();
+        });
+
         return mBinding.getRoot();
     }
 
@@ -83,14 +103,14 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
     }
 
     public void initData() {
-        if (!SPUtilHelpr.isLoginNoStart()) {
+        if (!SPUtilHelper.isLoginNoStart()) {
 //            LoginActivity.open(mActivity,true);
 
             return;
         }
 
         Map<String, String> map = new HashMap();
-        map.put("userId", SPUtilHelpr.getUserId());
+        map.put("userId", SPUtilHelper.getUserId());
         showLoadingDialog();
         Call call = RetrofitUtils.createApi(MyApiServer.class).getUserDetails("805121", StringUtils.getJsonToString(map));
         addCall(call);
@@ -103,11 +123,11 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
                 mBinding.tvUserName.setText(data.getNickname());
                 mBinding.tvUserPhone.setText(data.getMobile());
 
-                SPUtilHelpr.saveUserId(data.getUserId());
-                SPUtilHelpr.saveUserPhoneNum(data.getMobile());
-                SPUtilHelpr.saveisTradepwdFlag(data.isTradepwdFlag());
-                SPUtilHelpr.saveUserPhoto(data.getPhoto());
-                SPUtilHelpr.saveUserName(data.getNickname());
+                SPUtilHelper.saveUserId(data.getUserId());
+                SPUtilHelper.saveUserPhoneNum(data.getMobile());
+                SPUtilHelper.saveisTradepwdFlag(data.isTradepwdFlag());
+                SPUtilHelper.saveUserPhoto(data.getPhoto());
+                SPUtilHelper.saveUserName(data.getNickname());
 
                 getUserAccount();
             }
@@ -191,14 +211,14 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
      */
     public void getUserAccount() {
 
-        if (!SPUtilHelpr.isLoginNoStart()) {  //没有登录不用请求
+        if (!SPUtilHelper.isLoginNoStart()) {  //没有登录不用请求
             return;
         }
 
         Map<String, String> map = RetrofitUtils.getRequestMap();
 
         map.put("currency", "");
-        map.put("userId", SPUtilHelpr.getUserId());
+        map.put("userId", SPUtilHelper.getUserId());
 
         Call call = RetrofitUtils.createApi(MyApiServer.class).getAccount("802503", StringUtils.getJsonToString(map));
 
@@ -234,5 +254,83 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
                 disMissLoading();
             }
         });
+    }
+
+    /**
+     * 设置显示用户面签房间号
+     */
+    private void showRoomDialog() {
+
+        InputDialog inputDialog = new InputDialog(mActivity).builder().setTitle("面签")
+                .setPositiveBtn("确定", new InputDialog.OnPositiveListener() {
+                    @Override
+                    public void onPositive(View view, String inputMsg) {
+                        if (TextUtils.isEmpty(inputMsg)) {
+                            ToastUtil.show(mActivity, "请输入面签房间号");
+                            return;
+                        }
+
+                        try{
+                            roomId = Integer.parseInt(inputMsg);
+                        }catch (Exception e){
+                            ToastUtil.show(mActivity, "请输入正确的面签房间号");
+                        }
+
+
+                        mHelper = new TencentLoginHelper(mActivity, UserFragment.this);
+                        mHelper.login();
+                    }
+                })
+                .setNegativeBtn("取消", null)
+                .setContentMsg("");
+        inputDialog.getContentView().setHint("请输入面签房间号");
+        inputDialog.getContentView().setInputType(InputType.TYPE_CLASS_PHONE);
+
+        inputDialog.show();
+
+    }
+
+    @Override
+    public void updateLoginState(boolean state) {
+
+    }
+
+    @Override
+    public void onLoginSDKSuccess() {
+        if (checkPermission()){
+            RoomActivity.open(mActivity, roomId);
+        }
+    }
+
+    @Override
+    public void onLoginSDKFailed(String module, int errCode, String errMsg) {
+        ToastUtil.show(mActivity, "登录失败" + ":::" + errCode + "=" + errMsg);
+    }
+
+    protected boolean checkPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            List<String> permissions = new ArrayList<>();
+            if (PackageManager.PERMISSION_GRANTED != ActivityCompat.checkSelfPermission(mActivity, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            }
+            if (PackageManager.PERMISSION_GRANTED != ActivityCompat.checkSelfPermission(mActivity, Manifest.permission.CAMERA)) {
+                permissions.add(Manifest.permission.CAMERA);
+            }
+            if (PackageManager.PERMISSION_GRANTED != ActivityCompat.checkSelfPermission(mActivity, Manifest.permission.RECORD_AUDIO)) {
+                permissions.add(Manifest.permission.RECORD_AUDIO);
+            }
+            if (PackageManager.PERMISSION_GRANTED != ActivityCompat.checkSelfPermission(mActivity, Manifest.permission.READ_PHONE_STATE)) {
+                permissions.add(Manifest.permission.READ_PHONE_STATE);
+            }
+            if (PackageManager.PERMISSION_GRANTED != ActivityCompat.checkSelfPermission(mActivity, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+            }
+            if (permissions.size() != 0) {
+                ActivityCompat.requestPermissions(mActivity, (String[]) permissions.toArray(new String[0]), 100);
+                return false;
+            }
+        }
+
+        return true;
     }
 }

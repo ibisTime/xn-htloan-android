@@ -139,8 +139,6 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
         WebSettings webSettings = mBinding.web.getSettings();
         //设置WebView属性，能够执行Javascript脚本
         webSettings.setJavaScriptEnabled(true);
-        //设置可以访问文件
-        webSettings.setAllowFileAccess(true);
         //设置支持缩放
         webSettings.setBuiltInZoomControls(false);
         //加载需要显示的网页

@@ -42,7 +42,7 @@ public class MyCarLoanFragmentAdapter extends BaseQuickAdapter<MyCarLoanFragment
 //            helper.setTextColor(R.id.tv_type, Color.rgb(153, 153, 153));
 //        }
 
-//        MyTextUtils.setStatusType(helper.getView(R.id.tv_type),item.getStatus());
+//        MyTextUtils.setStatusType004(helper.getView(R.id.tv_type),item.getStatus());
 
         helper.setText(R.id.tv_name, item.getSeriesName());
 

@@ -15,104 +15,86 @@ public class CarLoanDetailsActivityBean implements Serializable{
 
 
     /**
-     * bankRate : 0.1
-     * bizPrice : 2.0E8
-     * blackHandleNote : 暂无
-     * code : RB201805141639121408953
-     * curOverdueCount : 0.0
-     * cutLyDeposit : 0.0
-     * firstRepayAmount : 5833330.0
-     * firstRepayDatetime : Apr 20, 2019 12:00:00 AM
-     * fxDeposit : 2.0E7
-     * loanAmount : 1.4E8
-     * loanBank : 中国建设银行
-     * loanEndDatetime : Apr 29, 2020 12:00:00 AM
-     * budgetOrder : {"bankCode":"ICBC","bankName":"中国工商银行","bankRate":0.1,"bankcardNumber":"6217002710000684874","carCode":"C201804231832234243414","carPrice":2.0E8,"code":"LO201805061345029723893","firstRepayAmount":5833330,"firstRepayDatetime":"Apr 20, 2019 12:00:00 AM","fkDatetime":"Apr 30, 2018 12:00:00 AM","fxDeposit":2.0E7,"gpsFee":3000000,"idKind":"1","idNo":"330281198908023311","loanAmount":1.4E8,"loanBank":"中国建设银行","loanEndDatetime":"Apr 29, 2020 12:00:00 AM","loanStartDatetime":"Apr 30, 2018 12:00:00 AM","lyDeposit":3.0E7,"mobile":"15268501481","monthAmount":5833330,"monthDatetime":20,"otherFee":4654,"periods":24,"realName":"郑海清","remark":"审核通过","repayBizCode":"RB201805142015418326578","sfAmount":6.0E7,"sfRate":0.3,"status":"3","subbranch":"海创园支行","updateDatetime":"May 14, 2018 8:15:41 PM","updater":"admin","userId":"U201805061611515474805"}
-     * loanStartDatetime : Apr 30, 2018 12:00:00 AM
-     * lyDeposit : 3.0E7
-     * monthAmount : 5833330.0
-     * monthDatetime : 20.0
-     * overdueAmount : 0.0
-     * periods : 24.0
-     * refCode : LO201805061345029723893
+     * code : RB201806112035545889876
+     * userId : U201806112035545709666
+     * realName : 物理课
+     * idNo : 330327198811112364
+     * bankcardCode : CD201806112035545848868
      * refType : 0
-     * remark : 审核通过
-     * repayPlanList : [{"code":"RP201805141639121479814","curPeriods":1,"overdueAmount":0,"overdueDeposit":0,"overplusAmount":0,"payedAmount":0,"payedFee":0,"periods":24,"remindCount":0,"repayBizCode":"RB201805141639121408953","repayCapital":5833330,"repayDatetime":"Apr 20, 2019 12:00:00 AM","repayInterest":0,"shouldDeposit":0,"status":"0","totalFee":0,"userId":"U201805061611515474805"},{"code":"RP201805141639121491844","curPeriods":10,"overdueAmount":0,"overdueDeposit":0,"overplusAmount":0,"payedAmount":0,"payedFee":0,"periods":24,"remindCount":0,"repayBizCode":"RB201805141639121408953","repayCapital":5833330,"repayDatetime":"Jan 20, 2020 12:00:00 AM","repayInterest":0,"shouldDeposit":0,"status":"0","totalFee":0,"userId":"U201805061611515474805"},{"code":"RP201805141639121492292","curPeriods":9,"overdueAmount":0,"overdueDeposit":0,"overplusAmount":0,"payedAmount":0,"payedFee":0,"periods":24,"remindCount":0,"repayBizCode":"RB201805141639121408953","repayCapital":5833330,"repayDatetime":"Dec 20, 2019 12:00:00 AM","repayInterest":0,"shouldDeposit":0,"status":"0","totalFee":0,"userId":"U201805061611515474805"},{"code":"RP201805141639121492311","curPeriods":7,"overdueAmount":0,"overdueDeposit":0,"overplusAmount":0,"payedAmount":0,"payedFee":0,"periods":24,"remindCount":0,"repayBizCode":"RB201805141639121408953","repayCapital":5833330,"repayDatetime":"Oct 20, 2019 12:00:00 AM","repayInterest":0,"shouldDeposit":0,"status":"0","totalFee":0,"userId":"U201805061611515474805"},{"code":"RP201805141639121493801","curPeriods":12,"overdueAmount":0,"overdueDeposit":0,"overplusAmount":0,"payedAmount":0,"payedFee":0,"periods":24,"remindCount":0,"repayBizCode":"RB201805141639121408953","repayCapital":5833330,"repayDatetime":"Mar 20, 2020 12:00:00 AM","repayInterest":0,"shouldDeposit":0,"status":"0","totalFee":0,"userId":"U201805061611515474805"},{"code":"RP201805141639121494206","curPeriods":5,"overdueAmount":0,"overdueDeposit":0,"overplusAmount":0,"payedAmount":0,"payedFee":0,"periods":24,"remindCount":0,"repayBizCode":"RB201805141639121408953","repayCapital":5833330,"repayDatetime":"Aug 20, 2019 12:00:00 AM","repayInterest":0,"shouldDeposit":0,"status":"0","totalFee":0,"userId":"U201805061611515474805"},{"code":"RP201805141639121496009","curPeriods":3,"overdueAmount":0,"overdueDeposit":0,"overplusAmount":0,"payedAmount":0,"payedFee":0,"periods":24,"remindCount":0,"repayBizCode":"RB201805141639121408953","repayCapital":5833330,"repayDatetime":"Jun 20, 2019 12:00:00 AM","repayInterest":0,"shouldDeposit":0,"status":"0","totalFee":0,"userId":"U201805061611515474805"},{"code":"RP201805141639121496697","curPeriods":2,"overdueAmount":0,"overdueDeposit":0,"overplusAmount":0,"payedAmount":0,"payedFee":0,"periods":24,"remindCount":0,"repayBizCode":"RB201805141639121408953","repayCapital":5833330,"repayDatetime":"May 20, 2019 12:00:00 AM","repayInterest":0,"shouldDeposit":0,"status":"0","totalFee":0,"userId":"U201805061611515474805"},{"code":"RP201805141639121497502","curPeriods":8,"overdueAmount":0,"overdueDeposit":0,"overplusAmount":0,"payedAmount":0,"payedFee":0,"periods":24,"remindCount":0,"repayBizCode":"RB201805141639121408953","repayCapital":5833330,"repayDatetime":"Nov 20, 2019 12:00:00 AM","repayInterest":0,"shouldDeposit":0,"status":"0","totalFee":0,"userId":"U201805061611515474805"},{"code":"RP201805141639121497801","curPeriods":6,"overdueAmount":0,"overdueDeposit":0,"overplusAmount":0,"payedAmount":0,"payedFee":0,"periods":24,"remindCount":0,"repayBizCode":"RB201805141639121408953","repayCapital":5833330,"repayDatetime":"Sep 20, 2019 12:00:00 AM","repayInterest":0,"shouldDeposit":0,"status":"0","totalFee":0,"userId":"U201805061611515474805"},{"code":"RP201805141639121498858","curPeriods":4,"overdueAmount":0,"overdueDeposit":0,"overplusAmount":0,"payedAmount":0,"payedFee":0,"periods":24,"remindCount":0,"repayBizCode":"RB201805141639121408953","repayCapital":5833330,"repayDatetime":"Jul 20, 2019 12:00:00 AM","repayInterest":0,"shouldDeposit":0,"status":"0","totalFee":0,"userId":"U201805061611515474805"},{"code":"RP201805141639121499002","curPeriods":11,"overdueAmount":0,"overdueDeposit":0,"overplusAmount":0,"payedAmount":0,"payedFee":0,"periods":24,"remindCount":0,"repayBizCode":"RB201805141639121408953","repayCapital":5833330,"repayDatetime":"Feb 20, 2020 12:00:00 AM","repayInterest":0,"shouldDeposit":0,"status":"0","totalFee":0,"userId":"U201805061611515474805"},{"code":"RP201805141639121501307","curPeriods":18,"overdueAmount":0,"overdueDeposit":0,"overplusAmount":0,"payedAmount":0,"payedFee":0,"periods":24,"remindCount":0,"repayBizCode":"RB201805141639121408953","repayCapital":5833330,"repayDatetime":"Sep 20, 2020 12:00:00 AM","repayInterest":0,"shouldDeposit":0,"status":"0","totalFee":0,"userId":"U201805061611515474805"},{"code":"RP201805141639121501335","curPeriods":14,"overdueAmount":0,"overdueDeposit":0,"overplusAmount":0,"payedAmount":0,"payedFee":0,"periods":24,"remindCount":0,"repayBizCode":"RB201805141639121408953","repayCapital":5833330,"repayDatetime":"May 20, 2020 12:00:00 AM","repayInterest":0,"shouldDeposit":0,"status":"0","totalFee":0,"userId":"U201805061611515474805"},{"code":"RP201805141639121502068","curPeriods":20,"overdueAmount":0,"overdueDeposit":0,"overplusAmount":0,"payedAmount":0,"payedFee":0,"periods":24,"remindCount":0,"repayBizCode":"RB201805141639121408953","repayCapital":5833330,"repayDatetime":"Nov 20, 2020 12:00:00 AM","repayInterest":0,"shouldDeposit":0,"status":"0","totalFee":0,"userId":"U201805061611515474805"},{"code":"RP201805141639121502579","curPeriods":19,"overdueAmount":0,"overdueDeposit":0,"overplusAmount":0,"payedAmount":0,"payedFee":0,"periods":24,"remindCount":0,"repayBizCode":"RB201805141639121408953","repayCapital":5833330,"repayDatetime":"Oct 20, 2020 12:00:00 AM","repayInterest":0,"shouldDeposit":0,"status":"0","totalFee":0,"userId":"U201805061611515474805"},{"code":"RP201805141639121503877","curPeriods":21,"overdueAmount":0,"overdueDeposit":0,"overplusAmount":0,"payedAmount":0,"payedFee":0,"periods":24,"remindCount":0,"repayBizCode":"RB201805141639121408953","repayCapital":5833330,"repayDatetime":"Dec 20, 2020 12:00:00 AM","repayInterest":0,"shouldDeposit":0,"status":"0","totalFee":0,"userId":"U201805061611515474805"},{"code":"RP201805141639121504105","curPeriods":24,"overdueAmount":0,"overdueDeposit":0,"overplusAmount":0,"payedAmount":0,"payedFee":0,"periods":24,"remindCount":0,"repayBizCode":"RB201805141639121408953","repayCapital":5833330,"repayDatetime":"Mar 20, 2021 12:00:00 AM","repayInterest":0,"shouldDeposit":0,"status":"0","totalFee":0,"userId":"U201805061611515474805"},{"code":"RP201805141639121506388","curPeriods":13,"overdueAmount":0,"overdueDeposit":0,"overplusAmount":0,"payedAmount":0,"payedFee":0,"periods":24,"remindCount":0,"repayBizCode":"RB201805141639121408953","repayCapital":5833330,"repayDatetime":"Apr 20, 2020 12:00:00 AM","repayInterest":0,"shouldDeposit":0,"status":"0","totalFee":0,"userId":"U201805061611515474805"},{"code":"RP201805141639121506471","curPeriods":22,"overdueAmount":0,"overdueDeposit":0,"overplusAmount":0,"payedAmount":0,"payedFee":0,"periods":24,"remindCount":0,"repayBizCode":"RB201805141639121408953","repayCapital":5833330,"repayDatetime":"Jan 20, 2021 12:00:00 AM","repayInterest":0,"shouldDeposit":0,"status":"0","totalFee":0,"userId":"U201805061611515474805"},{"code":"RP201805141639121506598","curPeriods":16,"overdueAmount":0,"overdueDeposit":0,"overplusAmount":0,"payedAmount":0,"payedFee":0,"periods":24,"remindCount":0,"repayBizCode":"RB201805141639121408953","repayCapital":5833330,"repayDatetime":"Jul 20, 2020 12:00:00 AM","repayInterest":0,"shouldDeposit":0,"status":"0","totalFee":0,"userId":"U201805061611515474805"},{"code":"RP201805141639121507520","curPeriods":23,"overdueAmount":0,"overdueDeposit":0,"overplusAmount":0,"payedAmount":0,"payedFee":0,"periods":24,"remindCount":0,"repayBizCode":"RB201805141639121408953","repayCapital":5833330,"repayDatetime":"Feb 20, 2021 12:00:00 AM","repayInterest":0,"shouldDeposit":0,"status":"0","totalFee":0,"userId":"U201805061611515474805"},{"code":"RP201805141639121507657","curPeriods":15,"overdueAmount":0,"overdueDeposit":0,"overplusAmount":0,"payedAmount":0,"payedFee":0,"periods":24,"remindCount":0,"repayBizCode":"RB201805141639121408953","repayCapital":5833330,"repayDatetime":"Jun 20, 2020 12:00:00 AM","repayInterest":0,"shouldDeposit":0,"status":"0","totalFee":0,"userId":"U201805061611515474805"},{"code":"RP201805141639121509780","curPeriods":17,"overdueAmount":0,"overdueDeposit":0,"overplusAmount":0,"payedAmount":0,"payedFee":0,"periods":24,"remindCount":0,"repayBizCode":"RB201805141639121408953","repayCapital":5833330,"repayDatetime":"Aug 20, 2020 12:00:00 AM","repayInterest":0,"shouldDeposit":0,"status":"0","totalFee":0,"userId":"U201805061611515474805"}]
-     * restAmount : 1.3416659E8
-     * restPeriods : 24.0
+     * refCode : BO201806111754354273575
+     * bizPrice : 2.0E8
+     * sfRate : 50.0
+     * sfAmount : 1.0E8
+     * loanBank : BA201806060405534759680
+     * loanAmount : 1.0E8
+     * periods : 36.0
+     * restPeriods : 36.0
+     * bankRate : 0.0
+     * fxDeposit : 0.0
+     * firstRepayDatetime : Jun 11, 2018 12:00:00 AM
+     * firstRepayAmount : 3000000.0
+     * monthDatetime : 10.0
+     * monthAmount : 3000000.0
+     * lyDeposit : 2000000.0
+     * cutLyDeposit : 0.0
+     * curNodeCode : 003_01
+     * restAmount : 1.0E8
      * restTotalCost : 0.0
-     * sfAmount : 6.0E7
-     * sfRate : 0.3
-     * status : 0
      * totalInDeposit : 0.0
+     * overdueAmount : 0.0
      * totalOverdueCount : 0.0
-     * updateDatetime : May 14, 2018 4:39:12 PM
-     * updater : admin
-     * user : {"bankcardFlag":false,"blacklistFlag":false,"createDatetime":"May 6, 2018 4:11:51 PM","idKind":"1","idNo":"330281198908023311","identifyFlag":false,"kind":"C","loginName":"15268501481","loginPwdStrength":"1","mobile":"15268501481","nickname":"大黄","photo":"U12345678","realName":"郑海清","remark":"注销","status":"0","tradePwdStrength":"1","tradepwdFlag":false,"userId":"U201805061611515474805"}
-     * userId : U201805061611515474805
+     * curOverdueCount : 0.0
+     * blackHandleNote : 暂无
+     * updater : U201806060410050085759
+     * updateDatetime : Jun 11, 2018 8:35:54 PM
+     * remark : 提交说明
+     * user : {"userId":"U201806112035545709666","kind":"C","loginName":"17663497856","mobile":"17663497856","loginPwdStrength":"1","idNo":"330327198811112364","realName":"物理课","status":"0","createDatetime":"Jun 11, 2018 8:35:54 PM","blacklistFlag":false,"identifyFlag":false,"bankcardFlag":false,"tradepwdFlag":false}
+     * budgetOrder : {"code":"BO201806111754354273575","repayBizCode":"RB201806112035545889876","loanProductCode":"LP201806060407243426367","loanProductName":"二手车贷款产品","loanBank":"BA201806060405534759680","gpsFee":1000000,"authFee":1000000,"bankFee":990099,"companyFee":1000000,"creditCode":"C201806111753357999722","bizType":"0","loanPeriod":"36","invoiceCompany":"2345","carBrand":"还在","carSeries":"IE","carModel":"粉色","carPic":"FsYZVYxJrBFITZgjTinTJauQCaAc","carHgzPic":"FsYZVYxJrBFITZgjTinTJauQCaAc","carHgzNo":"激发额","carFrameNo":"收费额","carEngineNo":"诶我剪短发","originalPrice":2.2E8,"invoicePrice":2.0E8,"carColor":"就分手","monthDeposit":2000000,"firstAmount":1.0E8,"firstRate":50,"loanAmount":1.0E8,"settleAddress":"乌鲁木齐","applyUserId":"U201806112035545709666","applyUserName":"物理课","gender":"1","marryState":"1","nation":"汉","education":"1","idNo":"330327198811112364","familyNumber":"5","mobile":"17663497856","nowAddress":"现居住地址","postCode1":"1234567","residenceAddress":"户口所在地","postCode2":"8765432","familyMainAsset":"45678","mainAssetInclude":"123","mainIncome":"2","workCompanyName":"工作单位名称","workCompanyAddress":"工作单位地址工作单位地址","workCompanyProperty":"3","workBelongIndustry":"5","workProfession":"2","workDatetime":"Jun 11, 2018 12:00:00 AM","selfCompanyArea":"55","employeeQuantity":"","enterpriseMonthOutput":"0","position":"2","postTitle":"职称","monthIncome":"13323000","mateName":"","mateMobile":"","mateIdNo":"","mateEducation":"","mateCompanyName":"","mateCompanyAddress":"","mateCompanyContactNo":"","mateZfbJourIncome":0,"mateZfbJourExpend":0,"mateZfbJourBalance":0,"mateZfbJourMonthIncome":0,"mateZfbJourMonthExpend":0,"mateZfbJourPic":"","mateZfbJourRemark":"","mateWxJourIncome":0,"mateWxJourExpend":0,"mateWxJourBalance":0,"mateWxJourMonthIncome":0,"mateWxJourMonthExpend":0,"mateWxJourPic":"","mateWxJourRemark":"","mateJourIncome":0,"mateJourExpend":0,"mateJourBalance":0,"mateJourMonthIncome":0,"mateJourMonthExpend":0,"mateJourPic":"","mateJourRemark":"","mateAssetPdf":"","guaName":"看手机","guaMobile":"18866665239","guaIdNo":"333333199911112342","guaPhone":"","guaCompanyName":"","guaCompanyAddress":"","guaHouseAssetAddress":"","guaZfbJourIncome":0,"guaZfbJourExpend":0,"guaZfbJourBalance":0,"guaZfbJourMonthIncome":0,"guaZfbJourMonthExpend":0,"guaZfbJourPic":"","guaZfbJourRemark":"","guaWxJourIncome":0,"guaWxJourExpend":0,"guaWxJourBalance":0,"guaWxJourMonthIncome":0,"guaWxJourMonthExpend":0,"guaWxJourPic":"","guaWxJourRemark":"","guaJourIncome":0,"guaJourExpend":0,"guaJourBalance":0,"guaJourMonthIncome":0,"guaJourMonthExpend":0,"guaJourPic":"","guaJourRemark":"","guaAssetPdf":"","emergencyName1":"联系人1姓名","emergencyRelation1":"2","emergencyMobile1":"18877654433","emergencyName2":"","emergencyRelation2":"","emergencyMobile2":"","zfbJourIncome":0,"zfbJourExpend":0,"zfbJourBalance":0,"zfbJourMonthIncome":0,"zfbJourMonthExpend":0,"zfbJourPic":"","zfbJourRemark":"","wxJourIncome":0,"wxJourExpend":0,"wxJourBalance":0,"wxJourMonthIncome":0,"wxJourMonthExpend":0,"wxJourPic":"","wxJourRemark":"","jourIncome":0,"jourExpend":0,"jourBalance":0,"jourMonthIncome":0,"jourMonthExpend":0,"jourPic":"","jourRemark":"","assetPdf":"","houseContract":"FsYZVYxJrBFITZgjTinTJauQCaAc","housePicture":"FgFwvHtst8JmIsHAgKVzurIOT6zK","isAdvanceFund":"1","interviewVideo":"FsYZVYxJrBFITZgjTinTJauQCaAc","interviewContract":"FgFwvHtst8JmIsHAgKVzurIOT6zK","advanceFundDatetime":"Jun 11, 2018 12:00:00 AM","advanceFundAmount":3.2324E7,"carSettleDatetime":"Jun 11, 2018 12:00:00 AM","carNumber":"1234567","carInvoice":"ANDROID_1528716886598_1080_2160.jpg","carHgz":"ANDROID_1528716898731_2976_3968.jpg","carJqx":"ANDROID_1528716910399_1080_2160.jpg","carSyx":"ANDROID_1528716917788_72_72.jpg","carRegcerti":"Fonkw2g20kfdnM6litogztaLYQQF","carPd":"FsYZVYxJrBFITZgjTinTJauQCaAc","carKey":"Fs6kQcEiNS4USu5Mp6euL7_mKwtL","carBigSmj":"FsP0X1vEq0XXua4E0jEpxv-X6tX2","bankCommitDatetime":"Jun 11, 2018 12:00:00 AM","repayBankcardNumber":"333333333333332","repayBillDate":10,"repayBankDate":10,"repayFirstMonthAmount":3000000,"repayFirstMonthDatetime":"Jun 11, 2018 12:00:00 AM","repayMonthAmount":3000000,"receiptBankCode":"CB201806060405380712648","receiptBankcardNumber":"612313241234123","receiptPdf":"FgFwvHtst8JmIsHAgKVzurIOT6zK","receiptRemark":"俄456","pledgeDatetime":"Jun 11, 2018 12:00:00 AM","greenBigSmj":"ANDROID_1528717300431_1080_2160.jpg","pledgeBankCommitDatetime":"Jun 11, 2018 12:00:00 AM","saleUserId":"U201806061630482887547","companyCode":"DP201806102129414839296","applyDatetime":"Jun 11, 2018 5:54:35 PM","backAdvanceStatus":"0","curNodeCode":"002_23","remark":"提交说明","budgetOrderGpsList":[{"code":"G201806090258296488056","gpsDevNo":"11239","gpsType":"0","azLocation":"车头","azDatetime":"2018-06-12 00:00:00.0","azUser":"吴联请、房东舒服","remark":"android_download","budgetOrder":"BO201806111754354273575"}],"companyName":"浙江杭州子公司","saleUserName":"悟空","loanBankName":"招商银行"}
+     * repayPlanList : [{"code":"RP2018061120355459296881","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":1,"repayDatetime":"Jun 11, 2018 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP2018061120355459247932","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":2,"repayDatetime":"Jul 10, 2018 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP2018061120355459244003","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":3,"repayDatetime":"Aug 10, 2018 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP2018061120355459221934","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":4,"repayDatetime":"Sep 10, 2018 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP2018061120355459264025","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":5,"repayDatetime":"Oct 10, 2018 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP2018061120355459293886","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":6,"repayDatetime":"Nov 10, 2018 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP2018061120355459245307","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":7,"repayDatetime":"Dec 10, 2018 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP2018061120355459256278","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":8,"repayDatetime":"Jan 10, 2019 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP2018061120355459289269","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":9,"repayDatetime":"Feb 10, 2019 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554592543410","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":10,"repayDatetime":"Mar 10, 2019 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554592426411","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":11,"repayDatetime":"Apr 10, 2019 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554592179112","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":12,"repayDatetime":"May 10, 2019 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554592897613","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":13,"repayDatetime":"Jun 10, 2019 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554592531214","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":14,"repayDatetime":"Jul 10, 2019 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554592823015","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":15,"repayDatetime":"Aug 10, 2019 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554592668316","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":16,"repayDatetime":"Sep 10, 2019 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554603589617","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":17,"repayDatetime":"Oct 10, 2019 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554603391118","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":18,"repayDatetime":"Nov 10, 2019 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554603640419","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":19,"repayDatetime":"Dec 10, 2019 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554603116920","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":20,"repayDatetime":"Jan 10, 2020 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554603306221","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":21,"repayDatetime":"Feb 10, 2020 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554603166222","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":22,"repayDatetime":"Mar 10, 2020 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554603509023","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":23,"repayDatetime":"Apr 10, 2020 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554603728824","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":24,"repayDatetime":"May 10, 2020 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554603308525","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":25,"repayDatetime":"Jun 10, 2020 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554603829626","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":26,"repayDatetime":"Jul 10, 2020 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554604894527","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":27,"repayDatetime":"Aug 10, 2020 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554604865028","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":28,"repayDatetime":"Sep 10, 2020 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554604420429","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":29,"repayDatetime":"Oct 10, 2020 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554604364230","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":30,"repayDatetime":"Nov 10, 2020 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554604348131","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":31,"repayDatetime":"Dec 10, 2020 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554604706732","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":32,"repayDatetime":"Jan 10, 2021 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554604889233","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":33,"repayDatetime":"Feb 10, 2021 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554604730534","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":34,"repayDatetime":"Mar 10, 2021 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554604637535","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":35,"repayDatetime":"Apr 10, 2021 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554604594236","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":36,"repayDatetime":"May 10, 2021 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0}]
+     * actualRefunds : 2000000.0
+     * loanBalance : 1.08E8
+     * loanBankName : 招商银行
      */
 
-    private double bankRate;
-    private double bizPrice;
-    private String blackHandleNote;
     private String code;
-    private double curOverdueCount;
-    private double cutLyDeposit;
-    private double firstRepayAmount;
-    private String firstRepayDatetime;
-    private double fxDeposit;
-    private double loanAmount;
-    private String loanBank;
-    private String loanEndDatetime;
-    private LoanOrderBean budgetOrder;
-    private MallOrderBean mallOrder;
-    private String loanStartDatetime;
-    private double lyDeposit;
-    private double monthAmount;
-    private double monthDatetime;
-    private double overdueAmount;
-    private double periods;
-    private String refCode;
-    private String refType;
-    private String remark;
-    private BigDecimal restAmount;
-    private double restPeriods;
-    private double restTotalCost;
-    private double sfAmount;
-    private double sfRate;
-    private String status;
-    private double totalInDeposit;
-    private double totalOverdueCount;
-    private String updateDatetime;
-    private String updater;
-    private UserBean user;
     private String userId;
+    private String realName;
+    private String idNo;
+    private String bankcardCode;
+    private String refType;
+    private String refCode;
+    private double bizPrice;
+    private double sfRate;
+    private double sfAmount;
+    private String loanBank;
+    private double loanAmount;
+    private double periods;
+    private double restPeriods;
+    private double bankRate;
+    private double fxDeposit;
+    private String firstRepayDatetime;
+    private double firstRepayAmount;
+    private double monthDatetime;
+    private double monthAmount;
+    private double lyDeposit;
+    private double cutLyDeposit;
+    private String curNodeCode;
+    private BigDecimal restAmount;
+    private double restTotalCost;
+    private double totalInDeposit;
+    private double overdueAmount;
+    private double totalOverdueCount;
+    private double curOverdueCount;
+    private String blackHandleNote;
+    private String updater;
+    private String updateDatetime;
+    private String remark;
+    private UserBean user;
+    private BudgetOrderBean budgetOrder;
+    private double actualRefunds;
+    private double loanBalance;
+    private String loanBankName;
     private List<RepayPlanListBean> repayPlanList;
-
-
-    public double getBankRate() {
-        return bankRate;
-    }
-
-    public void setBankRate(double bankRate) {
-        this.bankRate = bankRate;
-    }
-
-    public double getBizPrice() {
-        return bizPrice;
-    }
-
-    public void setBizPrice(double bizPrice) {
-        this.bizPrice = bizPrice;
-    }
-
-    public String getBlackHandleNote() {
-        return blackHandleNote;
-    }
-
-    public void setBlackHandleNote(String blackHandleNote) {
-        this.blackHandleNote = blackHandleNote;
-    }
 
     public String getCode() {
         return code;
@@ -120,246 +102,6 @@ public class CarLoanDetailsActivityBean implements Serializable{
 
     public void setCode(String code) {
         this.code = code;
-    }
-
-    public double getCurOverdueCount() {
-        return curOverdueCount;
-    }
-
-    public void setCurOverdueCount(double curOverdueCount) {
-        this.curOverdueCount = curOverdueCount;
-    }
-
-    public double getCutLyDeposit() {
-        return cutLyDeposit;
-    }
-
-    public void setCutLyDeposit(double cutLyDeposit) {
-        this.cutLyDeposit = cutLyDeposit;
-    }
-
-    public double getFirstRepayAmount() {
-        return firstRepayAmount;
-    }
-
-    public void setFirstRepayAmount(double firstRepayAmount) {
-        this.firstRepayAmount = firstRepayAmount;
-    }
-
-    public String getFirstRepayDatetime() {
-        return firstRepayDatetime;
-    }
-
-    public void setFirstRepayDatetime(String firstRepayDatetime) {
-        this.firstRepayDatetime = firstRepayDatetime;
-    }
-
-    public double getFxDeposit() {
-        return fxDeposit;
-    }
-
-    public void setFxDeposit(double fxDeposit) {
-        this.fxDeposit = fxDeposit;
-    }
-
-    public double getLoanAmount() {
-        return loanAmount;
-    }
-
-    public void setLoanAmount(double loanAmount) {
-        this.loanAmount = loanAmount;
-    }
-
-    public String getLoanBank() {
-        return loanBank;
-    }
-
-    public void setLoanBank(String loanBank) {
-        this.loanBank = loanBank;
-    }
-
-    public String getLoanEndDatetime() {
-        return loanEndDatetime;
-    }
-
-    public void setLoanEndDatetime(String loanEndDatetime) {
-        this.loanEndDatetime = loanEndDatetime;
-    }
-
-    public LoanOrderBean getBudgetOrder() {
-        return budgetOrder;
-    }
-
-    public void setBudgetOrder(LoanOrderBean budgetOrder) {
-        this.budgetOrder = budgetOrder;
-    }
-
-    public MallOrderBean getMallOrder() {
-        return mallOrder;
-    }
-
-    public void setMallOrder(MallOrderBean mallOrder) {
-        this.mallOrder = mallOrder;
-    }
-
-    public String getLoanStartDatetime() {
-        return loanStartDatetime;
-    }
-
-    public void setLoanStartDatetime(String loanStartDatetime) {
-        this.loanStartDatetime = loanStartDatetime;
-    }
-
-    public double getLyDeposit() {
-        return lyDeposit;
-    }
-
-    public void setLyDeposit(double lyDeposit) {
-        this.lyDeposit = lyDeposit;
-    }
-
-    public double getMonthAmount() {
-        return monthAmount;
-    }
-
-    public void setMonthAmount(double monthAmount) {
-        this.monthAmount = monthAmount;
-    }
-
-    public double getMonthDatetime() {
-        return monthDatetime;
-    }
-
-    public void setMonthDatetime(double monthDatetime) {
-        this.monthDatetime = monthDatetime;
-    }
-
-    public double getOverdueAmount() {
-        return overdueAmount;
-    }
-
-    public void setOverdueAmount(double overdueAmount) {
-        this.overdueAmount = overdueAmount;
-    }
-
-    public double getPeriods() {
-        return periods;
-    }
-
-    public void setPeriods(double periods) {
-        this.periods = periods;
-    }
-
-    public String getRefCode() {
-        return refCode;
-    }
-
-    public void setRefCode(String refCode) {
-        this.refCode = refCode;
-    }
-
-    public String getRefType() {
-        return refType;
-    }
-
-    public void setRefType(String refType) {
-        this.refType = refType;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public BigDecimal getRestAmount() {
-        return restAmount;
-    }
-
-    public void setRestAmount(BigDecimal restAmount) {
-        this.restAmount = restAmount;
-    }
-
-    public double getRestPeriods() {
-        return restPeriods;
-    }
-
-    public void setRestPeriods(double restPeriods) {
-        this.restPeriods = restPeriods;
-    }
-
-    public double getRestTotalCost() {
-        return restTotalCost;
-    }
-
-    public void setRestTotalCost(double restTotalCost) {
-        this.restTotalCost = restTotalCost;
-    }
-
-    public double getSfAmount() {
-        return sfAmount;
-    }
-
-    public void setSfAmount(double sfAmount) {
-        this.sfAmount = sfAmount;
-    }
-
-    public double getSfRate() {
-        return sfRate;
-    }
-
-    public void setSfRate(double sfRate) {
-        this.sfRate = sfRate;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public double getTotalInDeposit() {
-        return totalInDeposit;
-    }
-
-    public void setTotalInDeposit(double totalInDeposit) {
-        this.totalInDeposit = totalInDeposit;
-    }
-
-    public double getTotalOverdueCount() {
-        return totalOverdueCount;
-    }
-
-    public void setTotalOverdueCount(double totalOverdueCount) {
-        this.totalOverdueCount = totalOverdueCount;
-    }
-
-    public String getUpdateDatetime() {
-        return updateDatetime;
-    }
-
-    public void setUpdateDatetime(String updateDatetime) {
-        this.updateDatetime = updateDatetime;
-    }
-
-    public String getUpdater() {
-        return updater;
-    }
-
-    public void setUpdater(String updater) {
-        this.updater = updater;
-    }
-
-    public UserBean getUser() {
-        return user;
-    }
-
-    public void setUser(UserBean user) {
-        this.user = user;
     }
 
     public String getUserId() {
@@ -370,6 +112,294 @@ public class CarLoanDetailsActivityBean implements Serializable{
         this.userId = userId;
     }
 
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
+
+    public String getIdNo() {
+        return idNo;
+    }
+
+    public void setIdNo(String idNo) {
+        this.idNo = idNo;
+    }
+
+    public String getBankcardCode() {
+        return bankcardCode;
+    }
+
+    public void setBankcardCode(String bankcardCode) {
+        this.bankcardCode = bankcardCode;
+    }
+
+    public String getRefType() {
+        return refType;
+    }
+
+    public void setRefType(String refType) {
+        this.refType = refType;
+    }
+
+    public String getRefCode() {
+        return refCode;
+    }
+
+    public void setRefCode(String refCode) {
+        this.refCode = refCode;
+    }
+
+    public double getBizPrice() {
+        return bizPrice;
+    }
+
+    public void setBizPrice(double bizPrice) {
+        this.bizPrice = bizPrice;
+    }
+
+    public double getSfRate() {
+        return sfRate;
+    }
+
+    public void setSfRate(double sfRate) {
+        this.sfRate = sfRate;
+    }
+
+    public double getSfAmount() {
+        return sfAmount;
+    }
+
+    public void setSfAmount(double sfAmount) {
+        this.sfAmount = sfAmount;
+    }
+
+    public String getLoanBank() {
+        return loanBank;
+    }
+
+    public void setLoanBank(String loanBank) {
+        this.loanBank = loanBank;
+    }
+
+    public double getLoanAmount() {
+        return loanAmount;
+    }
+
+    public void setLoanAmount(double loanAmount) {
+        this.loanAmount = loanAmount;
+    }
+
+    public double getPeriods() {
+        return periods;
+    }
+
+    public void setPeriods(double periods) {
+        this.periods = periods;
+    }
+
+    public double getRestPeriods() {
+        return restPeriods;
+    }
+
+    public void setRestPeriods(double restPeriods) {
+        this.restPeriods = restPeriods;
+    }
+
+    public double getBankRate() {
+        return bankRate;
+    }
+
+    public void setBankRate(double bankRate) {
+        this.bankRate = bankRate;
+    }
+
+    public double getFxDeposit() {
+        return fxDeposit;
+    }
+
+    public void setFxDeposit(double fxDeposit) {
+        this.fxDeposit = fxDeposit;
+    }
+
+    public String getFirstRepayDatetime() {
+        return firstRepayDatetime;
+    }
+
+    public void setFirstRepayDatetime(String firstRepayDatetime) {
+        this.firstRepayDatetime = firstRepayDatetime;
+    }
+
+    public double getFirstRepayAmount() {
+        return firstRepayAmount;
+    }
+
+    public void setFirstRepayAmount(double firstRepayAmount) {
+        this.firstRepayAmount = firstRepayAmount;
+    }
+
+    public double getMonthDatetime() {
+        return monthDatetime;
+    }
+
+    public void setMonthDatetime(double monthDatetime) {
+        this.monthDatetime = monthDatetime;
+    }
+
+    public double getMonthAmount() {
+        return monthAmount;
+    }
+
+    public void setMonthAmount(double monthAmount) {
+        this.monthAmount = monthAmount;
+    }
+
+    public double getLyDeposit() {
+        return lyDeposit;
+    }
+
+    public void setLyDeposit(double lyDeposit) {
+        this.lyDeposit = lyDeposit;
+    }
+
+    public double getCutLyDeposit() {
+        return cutLyDeposit;
+    }
+
+    public void setCutLyDeposit(double cutLyDeposit) {
+        this.cutLyDeposit = cutLyDeposit;
+    }
+
+    public String getCurNodeCode() {
+        return curNodeCode;
+    }
+
+    public void setCurNodeCode(String curNodeCode) {
+        this.curNodeCode = curNodeCode;
+    }
+
+    public BigDecimal getRestAmount() {
+        return restAmount;
+    }
+
+    public void setRestAmount(BigDecimal restAmount) {
+        this.restAmount = restAmount;
+    }
+
+    public double getRestTotalCost() {
+        return restTotalCost;
+    }
+
+    public void setRestTotalCost(double restTotalCost) {
+        this.restTotalCost = restTotalCost;
+    }
+
+    public double getTotalInDeposit() {
+        return totalInDeposit;
+    }
+
+    public void setTotalInDeposit(double totalInDeposit) {
+        this.totalInDeposit = totalInDeposit;
+    }
+
+    public double getOverdueAmount() {
+        return overdueAmount;
+    }
+
+    public void setOverdueAmount(double overdueAmount) {
+        this.overdueAmount = overdueAmount;
+    }
+
+    public double getTotalOverdueCount() {
+        return totalOverdueCount;
+    }
+
+    public void setTotalOverdueCount(double totalOverdueCount) {
+        this.totalOverdueCount = totalOverdueCount;
+    }
+
+    public double getCurOverdueCount() {
+        return curOverdueCount;
+    }
+
+    public void setCurOverdueCount(double curOverdueCount) {
+        this.curOverdueCount = curOverdueCount;
+    }
+
+    public String getBlackHandleNote() {
+        return blackHandleNote;
+    }
+
+    public void setBlackHandleNote(String blackHandleNote) {
+        this.blackHandleNote = blackHandleNote;
+    }
+
+    public String getUpdater() {
+        return updater;
+    }
+
+    public void setUpdater(String updater) {
+        this.updater = updater;
+    }
+
+    public String getUpdateDatetime() {
+        return updateDatetime;
+    }
+
+    public void setUpdateDatetime(String updateDatetime) {
+        this.updateDatetime = updateDatetime;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public UserBean getUser() {
+        return user;
+    }
+
+    public void setUser(UserBean user) {
+        this.user = user;
+    }
+
+    public BudgetOrderBean getBudgetOrder() {
+        return budgetOrder;
+    }
+
+    public void setBudgetOrder(BudgetOrderBean budgetOrder) {
+        this.budgetOrder = budgetOrder;
+    }
+
+    public double getActualRefunds() {
+        return actualRefunds;
+    }
+
+    public void setActualRefunds(double actualRefunds) {
+        this.actualRefunds = actualRefunds;
+    }
+
+    public double getLoanBalance() {
+        return loanBalance;
+    }
+
+    public void setLoanBalance(double loanBalance) {
+        this.loanBalance = loanBalance;
+    }
+
+    public String getLoanBankName() {
+        return loanBankName;
+    }
+
+    public void setLoanBankName(String loanBankName) {
+        this.loanBankName = loanBankName;
+    }
+
     public List<RepayPlanListBean> getRepayPlanList() {
         return repayPlanList;
     }
@@ -378,194 +408,91 @@ public class CarLoanDetailsActivityBean implements Serializable{
         this.repayPlanList = repayPlanList;
     }
 
-    public static class MallOrderBean implements Serializable{
-
-
+    public static class UserBean implements Serializable {
         /**
-         * amount : 1000.0
-         * applyDatetime : May 20, 2018 11:57:00 PM
-         * applyUser : U201805181545538547345
-         * bankRate : 0.1
-         * bankcardCode : BC201805202047449389143
-         * bankcardNumber : 123456789012345
-         * code : DD201805202357001287068
-         * loanAmount : 700.0
-         * payAmount : 0.0
-         * payDatetime : May 20, 2018 11:57:30 PM
-         * periods : 3.0
-         * productOrderList : [{"bankRate":0.1,"code":"CD201805202357001289656","orderCode":"DD201805202357001287068","periods":3,"price":1000,"product":{"advPic":"http://pic39.nipic.com/20140311/8821914_214422866000_2.jpg","name":"1000"},"productCode":"CP201805062109137465648","productSpecsCode":"PS201805062109137596153","productSpecsName":"1000","quantity":1,"sfRate":0.3}]
-         * reAddress : 浙江省 杭州市 余杭区梦想小镇
-         * reMobile : 18984955240
-         * receiver : 雷黔
-         * remark : 订单已成功支付
-         * sfAmount : 300.0
-         * sfRate : 0.3
-         * status : 2
-         * updateDatetime : May 20, 2018 11:57:00 PM
-         * updater : U201805181545538547345
-         * user : {"bankcardFlag":false,"blacklistFlag":false,"createDatetime":"May 18, 2018 3:45:53 PM","identifyFlag":false,"kind":"C","loginName":"18984955240","loginPwdStrength":"1","mobile":"18984955240","nickname":"？？我去。。","photo":"ANDROID_1526825442334_3120_4160.jpg","status":"0","tradePwdStrength":"1","tradepwdFlag":false,"userId":"U201805181545538547345"}
-         * yunfei : 0.0
+         * userId : U201806112035545709666
+         * kind : C
+         * loginName : 17663497856
+         * mobile : 17663497856
+         * loginPwdStrength : 1
+         * idNo : 330327198811112364
+         * realName : 物理课
+         * status : 0
+         * createDatetime : Jun 11, 2018 8:35:54 PM
+         * blacklistFlag : false
+         * identifyFlag : false
+         * bankcardFlag : false
+         * tradepwdFlag : false
          */
 
-        private double amount;
-        private String applyDatetime;
-        private String applyUser;
-        private double bankRate;
-        private String bankcardCode;
-        private String bankcardNumber;
-        private String code;
-        private double loanAmount;
-        private double payAmount;
-        private String payDatetime;
-        private double periods;
-        private String reAddress;
-        private String reMobile;
-        private String receiver;
-        private String remark;
-        private double sfAmount;
-        private double sfRate;
+        private String userId;
+        private String kind;
+        private String loginName;
+        private String mobile;
+        private String loginPwdStrength;
+        private String idNo;
+        private String realName;
         private String status;
-        private String updateDatetime;
-        private String updater;
-        private UserBean user;
-        private double yunfei;
+        private String createDatetime;
+        private boolean blacklistFlag;
+        private boolean identifyFlag;
+        private boolean bankcardFlag;
+        private boolean tradepwdFlag;
 
-        private List<ProductOrderListBean> productOrderList;
-
-        public double getAmount() {
-            return amount;
+        public String getUserId() {
+            return userId;
         }
 
-        public void setAmount(double amount) {
-            this.amount = amount;
+        public void setUserId(String userId) {
+            this.userId = userId;
         }
 
-        public String getApplyDatetime() {
-            return applyDatetime;
+        public String getKind() {
+            return kind;
         }
 
-        public void setApplyDatetime(String applyDatetime) {
-            this.applyDatetime = applyDatetime;
+        public void setKind(String kind) {
+            this.kind = kind;
         }
 
-        public String getApplyUser() {
-            return applyUser;
+        public String getLoginName() {
+            return loginName;
         }
 
-        public void setApplyUser(String applyUser) {
-            this.applyUser = applyUser;
+        public void setLoginName(String loginName) {
+            this.loginName = loginName;
         }
 
-        public double getBankRate() {
-            return bankRate;
+        public String getMobile() {
+            return mobile;
         }
 
-        public void setBankRate(double bankRate) {
-            this.bankRate = bankRate;
+        public void setMobile(String mobile) {
+            this.mobile = mobile;
         }
 
-        public String getBankcardCode() {
-            return bankcardCode;
+        public String getLoginPwdStrength() {
+            return loginPwdStrength;
         }
 
-        public void setBankcardCode(String bankcardCode) {
-            this.bankcardCode = bankcardCode;
+        public void setLoginPwdStrength(String loginPwdStrength) {
+            this.loginPwdStrength = loginPwdStrength;
         }
 
-        public String getBankcardNumber() {
-            return bankcardNumber;
+        public String getIdNo() {
+            return idNo;
         }
 
-        public void setBankcardNumber(String bankcardNumber) {
-            this.bankcardNumber = bankcardNumber;
+        public void setIdNo(String idNo) {
+            this.idNo = idNo;
         }
 
-        public String getCode() {
-            return code;
+        public String getRealName() {
+            return realName;
         }
 
-        public void setCode(String code) {
-            this.code = code;
-        }
-
-        public double getLoanAmount() {
-            return loanAmount;
-        }
-
-        public void setLoanAmount(double loanAmount) {
-            this.loanAmount = loanAmount;
-        }
-
-        public double getPayAmount() {
-            return payAmount;
-        }
-
-        public void setPayAmount(double payAmount) {
-            this.payAmount = payAmount;
-        }
-
-        public String getPayDatetime() {
-            return payDatetime;
-        }
-
-        public void setPayDatetime(String payDatetime) {
-            this.payDatetime = payDatetime;
-        }
-
-        public double getPeriods() {
-            return periods;
-        }
-
-        public void setPeriods(double periods) {
-            this.periods = periods;
-        }
-
-        public String getReAddress() {
-            return reAddress;
-        }
-
-        public void setReAddress(String reAddress) {
-            this.reAddress = reAddress;
-        }
-
-        public String getReMobile() {
-            return reMobile;
-        }
-
-        public void setReMobile(String reMobile) {
-            this.reMobile = reMobile;
-        }
-
-        public String getReceiver() {
-            return receiver;
-        }
-
-        public void setReceiver(String receiver) {
-            this.receiver = receiver;
-        }
-
-        public String getRemark() {
-            return remark;
-        }
-
-        public void setRemark(String remark) {
-            this.remark = remark;
-        }
-
-        public double getSfAmount() {
-            return sfAmount;
-        }
-
-        public void setSfAmount(double sfAmount) {
-            this.sfAmount = sfAmount;
-        }
-
-        public double getSfRate() {
-            return sfRate;
-        }
-
-        public void setSfRate(double sfRate) {
-            this.sfRate = sfRate;
+        public void setRealName(String realName) {
+            this.realName = realName;
         }
 
         public String getStatus() {
@@ -576,461 +503,232 @@ public class CarLoanDetailsActivityBean implements Serializable{
             this.status = status;
         }
 
-        public String getUpdateDatetime() {
-            return updateDatetime;
+        public String getCreateDatetime() {
+            return createDatetime;
         }
 
-        public void setUpdateDatetime(String updateDatetime) {
-            this.updateDatetime = updateDatetime;
+        public void setCreateDatetime(String createDatetime) {
+            this.createDatetime = createDatetime;
         }
 
-        public String getUpdater() {
-            return updater;
+        public boolean isBlacklistFlag() {
+            return blacklistFlag;
         }
 
-        public void setUpdater(String updater) {
-            this.updater = updater;
+        public void setBlacklistFlag(boolean blacklistFlag) {
+            this.blacklistFlag = blacklistFlag;
         }
 
-        public UserBean getUser() {
-            return user;
+        public boolean isIdentifyFlag() {
+            return identifyFlag;
         }
 
-        public void setUser(UserBean user) {
-            this.user = user;
+        public void setIdentifyFlag(boolean identifyFlag) {
+            this.identifyFlag = identifyFlag;
         }
 
-        public double getYunfei() {
-            return yunfei;
+        public boolean isBankcardFlag() {
+            return bankcardFlag;
         }
 
-        public void setYunfei(double yunfei) {
-            this.yunfei = yunfei;
+        public void setBankcardFlag(boolean bankcardFlag) {
+            this.bankcardFlag = bankcardFlag;
         }
 
-        public List<ProductOrderListBean> getProductOrderList() {
-            return productOrderList;
+        public boolean isTradepwdFlag() {
+            return tradepwdFlag;
         }
 
-        public void setProductOrderList(List<ProductOrderListBean> productOrderList) {
-            this.productOrderList = productOrderList;
-        }
-
-        public static class UserBean implements Serializable{
-            /**
-             * bankcardFlag : false
-             * blacklistFlag : false
-             * createDatetime : May 18, 2018 3:45:53 PM
-             * identifyFlag : false
-             * kind : C
-             * loginName : 18984955240
-             * loginPwdStrength : 1
-             * mobile : 18984955240
-             * nickname : ？？我去。。
-             * photo : ANDROID_1526825442334_3120_4160.jpg
-             * status : 0
-             * tradePwdStrength : 1
-             * tradepwdFlag : false
-             * userId : U201805181545538547345
-             */
-
-            private boolean bankcardFlag;
-            private boolean blacklistFlag;
-            private String createDatetime;
-            private boolean identifyFlag;
-            private String kind;
-            private String loginName;
-            private String loginPwdStrength;
-            private String mobile;
-            private String nickname;
-            private String photo;
-            private String status;
-            private String tradePwdStrength;
-            private boolean tradepwdFlag;
-            private String userId;
-
-            public boolean isBankcardFlag() {
-                return bankcardFlag;
-            }
-
-            public void setBankcardFlag(boolean bankcardFlag) {
-                this.bankcardFlag = bankcardFlag;
-            }
-
-            public boolean isBlacklistFlag() {
-                return blacklistFlag;
-            }
-
-            public void setBlacklistFlag(boolean blacklistFlag) {
-                this.blacklistFlag = blacklistFlag;
-            }
-
-            public String getCreateDatetime() {
-                return createDatetime;
-            }
-
-            public void setCreateDatetime(String createDatetime) {
-                this.createDatetime = createDatetime;
-            }
-
-            public boolean isIdentifyFlag() {
-                return identifyFlag;
-            }
-
-            public void setIdentifyFlag(boolean identifyFlag) {
-                this.identifyFlag = identifyFlag;
-            }
-
-            public String getKind() {
-                return kind;
-            }
-
-            public void setKind(String kind) {
-                this.kind = kind;
-            }
-
-            public String getLoginName() {
-                return loginName;
-            }
-
-            public void setLoginName(String loginName) {
-                this.loginName = loginName;
-            }
-
-            public String getLoginPwdStrength() {
-                return loginPwdStrength;
-            }
-
-            public void setLoginPwdStrength(String loginPwdStrength) {
-                this.loginPwdStrength = loginPwdStrength;
-            }
-
-            public String getMobile() {
-                return mobile;
-            }
-
-            public void setMobile(String mobile) {
-                this.mobile = mobile;
-            }
-
-            public String getNickname() {
-                return nickname;
-            }
-
-            public void setNickname(String nickname) {
-                this.nickname = nickname;
-            }
-
-            public String getPhoto() {
-                return photo;
-            }
-
-            public void setPhoto(String photo) {
-                this.photo = photo;
-            }
-
-            public String getStatus() {
-                return status;
-            }
-
-            public void setStatus(String status) {
-                this.status = status;
-            }
-
-            public String getTradePwdStrength() {
-                return tradePwdStrength;
-            }
-
-            public void setTradePwdStrength(String tradePwdStrength) {
-                this.tradePwdStrength = tradePwdStrength;
-            }
-
-            public boolean isTradepwdFlag() {
-                return tradepwdFlag;
-            }
-
-            public void setTradepwdFlag(boolean tradepwdFlag) {
-                this.tradepwdFlag = tradepwdFlag;
-            }
-
-            public String getUserId() {
-                return userId;
-            }
-
-            public void setUserId(String userId) {
-                this.userId = userId;
-            }
-        }
-
-        public static class ProductOrderListBean implements Serializable{
-            /**
-             * bankRate : 0.1
-             * code : CD201805202357001289656
-             * orderCode : DD201805202357001287068
-             * periods : 3.0
-             * price : 1000.0
-             * product : {"advPic":"http://pic39.nipic.com/20140311/8821914_214422866000_2.jpg","name":"1000"}
-             * productCode : CP201805062109137465648
-             * productSpecsCode : PS201805062109137596153
-             * productSpecsName : 1000
-             * quantity : 1.0
-             * sfRate : 0.3
-             */
-
-            private double bankRate;
-            private String code;
-            private String orderCode;
-            private double periods;
-            private double price;
-            private ProductBean product;
-            private String productCode;
-            private String productSpecsCode;
-            private String productSpecsName;
-            private double quantity;
-            private double sfRate;
-            private String productName;
-
-            public String getProductName() {
-                return productName;
-            }
-
-            public void setProductName(String productName) {
-                this.productName = productName;
-            }
-
-            public double getBankRate() {
-                return bankRate;
-            }
-
-            public void setBankRate(double bankRate) {
-                this.bankRate = bankRate;
-            }
-
-            public String getCode() {
-                return code;
-            }
-
-            public void setCode(String code) {
-                this.code = code;
-            }
-
-            public String getOrderCode() {
-                return orderCode;
-            }
-
-            public void setOrderCode(String orderCode) {
-                this.orderCode = orderCode;
-            }
-
-            public double getPeriods() {
-                return periods;
-            }
-
-            public void setPeriods(double periods) {
-                this.periods = periods;
-            }
-
-            public double getPrice() {
-                return price;
-            }
-
-            public void setPrice(double price) {
-                this.price = price;
-            }
-
-            public ProductBean getProduct() {
-                return product;
-            }
-
-            public void setProduct(ProductBean product) {
-                this.product = product;
-            }
-
-            public String getProductCode() {
-                return productCode;
-            }
-
-            public void setProductCode(String productCode) {
-                this.productCode = productCode;
-            }
-
-            public String getProductSpecsCode() {
-                return productSpecsCode;
-            }
-
-            public void setProductSpecsCode(String productSpecsCode) {
-                this.productSpecsCode = productSpecsCode;
-            }
-
-            public String getProductSpecsName() {
-                return productSpecsName;
-            }
-
-            public void setProductSpecsName(String productSpecsName) {
-                this.productSpecsName = productSpecsName;
-            }
-
-            public double getQuantity() {
-                return quantity;
-            }
-
-            public void setQuantity(double quantity) {
-                this.quantity = quantity;
-            }
-
-            public double getSfRate() {
-                return sfRate;
-            }
-
-            public void setSfRate(double sfRate) {
-                this.sfRate = sfRate;
-            }
-
-            public static class ProductBean implements Serializable{
-                /**
-                 * advPic : http://pic39.nipic.com/20140311/8821914_214422866000_2.jpg
-                 * name : 1000
-                 */
-
-                private String advPic;
-                private String name;
-
-                public String getAdvPic() {
-                    return advPic;
-                }
-
-                public void setAdvPic(String advPic) {
-                    this.advPic = advPic;
-                }
-
-                public String getName() {
-                    return name;
-                }
-
-                public void setName(String name) {
-                    this.name = name;
-                }
-            }
+        public void setTradepwdFlag(boolean tradepwdFlag) {
+            this.tradepwdFlag = tradepwdFlag;
         }
     }
 
-    public static class LoanOrderBean implements Serializable{
-
-
+    public static class BudgetOrderBean implements Serializable{
         /**
-         * code : BO201806010742311246375
-         * repayBizCode : RB201806010822188504250
-         * loanProductCode : LP201806010719319062250
-         * loanProductName : 贷款产品001
-         * loanBank : BA201806010718324895638
-         * gpsFee : 12000.0
-         * authFee : 10000.0
-         * fee : 11000.0
-         * monthRate : 0.1
-         * creditCode : C201806010735282463553
+         * code : BO201806111754354273575
+         * repayBizCode : RB201806112035545889876
+         * loanProductCode : LP201806060407243426367
+         * loanProductName : 二手车贷款产品
+         * loanBank : BA201806060405534759680
+         * gpsFee : 1000000.0
+         * authFee : 1000000.0
+         * bankFee : 990099.0
+         * companyFee : 1000000.0
+         * creditCode : C201806111753357999722
          * bizType : 0
-         * loanPeriod : 24
-         * invoiceCompany : 开票单位
-         * carBrand : 品牌
-         * originalPrice : 1.0E8
-         * invoicePrice : 1.8E7
-         * carColor : 吧
-         * monthDeposit : 1.0E7
-         * firstAmount : 1.0E7
-         * firstRate : 10.0
-         * loanAmount : 1.8E7
-         * settleAddress : 落户地点
-         * applyUserId : U201806010822188457818
-         * applyUserName : 申请人信息
+         * loanPeriod : 36
+         * invoiceCompany : 2345
+         * carBrand : 还在
+         * carSeries : IE
+         * carModel : 粉色
+         * carPic : FsYZVYxJrBFITZgjTinTJauQCaAc
+         * carHgzPic : FsYZVYxJrBFITZgjTinTJauQCaAc
+         * carHgzNo : 激发额
+         * carFrameNo : 收费额
+         * carEngineNo : 诶我剪短发
+         * originalPrice : 2.2E8
+         * invoicePrice : 2.0E8
+         * carColor : 就分手
+         * monthDeposit : 2000000.0
+         * firstAmount : 1.0E8
+         * firstRate : 50.0
+         * loanAmount : 1.0E8
+         * settleAddress : 乌鲁木齐
+         * applyUserId : U201806112035545709666
+         * applyUserName : 物理课
          * gender : 1
-         * marryState : 2
+         * marryState : 1
          * nation : 汉
          * education : 1
-         * idNo : 510521199404167983
+         * idNo : 330327198811112364
          * familyNumber : 5
-         * mobile : 15761663457
-         * nowAddress : 申请人信息现居住地址
-         * postCode1 : 15120
-         * residenceAddress : 申请人信息户口所在地
-         * postCode2 : 45312
-         * familyMainAsset : 申请人信息家庭主要财产
-         * mainAssetInclude : 主要财产包括
-         * mainIncome : 1
-         * workCompanyName : 申请人信息工作单位名称
-         * workCompanyAddress : 申请人信息工作单位地址
-         * selfCompanyArea : 5000
-         * employeeQuantity : 500
-         * enterpriseMonthOutput : 150000
-         * position : 申请人信息职位
-         * postTitle : 申请人信息职称
-         * monthIncome : 18000
-         * mateName : 配偶信息
-         * mateMobile : 15761663457
-         * mateIdNo : 510521199404167983
-         * mateEducation : 1
-         * mateCompanyName : 配偶信息工作单位名称
-         * mateCompanyAddress : 配偶信息工作单位地址
-         * mateCompanyContactNo : 15761663457
-         * guaName : 担保人信息
-         * guaMobile : 15761633457
-         * guaIdNo : 510521199404167983
-         * guaPhone : 500153
-         * guaCompanyName : 担保人信息工作单位名称
-         * guaCompanyAddress : 担保人信息工作单位地址
-         * guaHouseAssetAddress : 担保人房产地址
-         * emergencyName1 : 联系人1
-         * emergencyRelation1 : 联系人1申请人关系
-         * emergencyMobile1 : 15761663457
-         * emergencyName2 : 联系人2
-         * emergencyRelation2 : 联系人2申请人关系
-         * emergencyMobile2 : 15761663457
-         * jourDatetimeStart : Jun 1, 2018 12:00:00 AM
-         * jourDatetimeEnd : Jun 2, 2018 12:00:00 AM
-         * jourIncome : 100000.0
-         * jourExpend : 5000.0
-         * jourBalance : 1000000.0
-         * jourMonthIncome : 150000.0
-         * jourMonthExpend : 10000.0
-         * jourRemark : 1201
-         * houseContract : FuARN6YAubJ0umx1NPueecjwM0C4
-         * housePicture : FuARN6YAubJ0umx1NPueecjwM0C4
+         * mobile : 17663497856
+         * nowAddress : 现居住地址
+         * postCode1 : 1234567
+         * residenceAddress : 户口所在地
+         * postCode2 : 8765432
+         * familyMainAsset : 45678
+         * mainAssetInclude : 123
+         * mainIncome : 2
+         * workCompanyName : 工作单位名称
+         * workCompanyAddress : 工作单位地址工作单位地址
+         * workCompanyProperty : 3
+         * workBelongIndustry : 5
+         * workProfession : 2
+         * workDatetime : Jun 11, 2018 12:00:00 AM
+         * selfCompanyArea : 55
+         * employeeQuantity :
+         * enterpriseMonthOutput : 0
+         * position : 2
+         * postTitle : 职称
+         * monthIncome : 13323000
+         * mateName :
+         * mateMobile :
+         * mateIdNo :
+         * mateEducation :
+         * mateCompanyName :
+         * mateCompanyAddress :
+         * mateCompanyContactNo :
+         * mateZfbJourIncome : 0.0
+         * mateZfbJourExpend : 0.0
+         * mateZfbJourBalance : 0.0
+         * mateZfbJourMonthIncome : 0.0
+         * mateZfbJourMonthExpend : 0.0
+         * mateZfbJourPic :
+         * mateZfbJourRemark :
+         * mateWxJourIncome : 0.0
+         * mateWxJourExpend : 0.0
+         * mateWxJourBalance : 0.0
+         * mateWxJourMonthIncome : 0.0
+         * mateWxJourMonthExpend : 0.0
+         * mateWxJourPic :
+         * mateWxJourRemark :
+         * mateJourIncome : 0.0
+         * mateJourExpend : 0.0
+         * mateJourBalance : 0.0
+         * mateJourMonthIncome : 0.0
+         * mateJourMonthExpend : 0.0
+         * mateJourPic :
+         * mateJourRemark :
+         * mateAssetPdf :
+         * guaName : 看手机
+         * guaMobile : 18866665239
+         * guaIdNo : 333333199911112342
+         * guaPhone :
+         * guaCompanyName :
+         * guaCompanyAddress :
+         * guaHouseAssetAddress :
+         * guaZfbJourIncome : 0.0
+         * guaZfbJourExpend : 0.0
+         * guaZfbJourBalance : 0.0
+         * guaZfbJourMonthIncome : 0.0
+         * guaZfbJourMonthExpend : 0.0
+         * guaZfbJourPic :
+         * guaZfbJourRemark :
+         * guaWxJourIncome : 0.0
+         * guaWxJourExpend : 0.0
+         * guaWxJourBalance : 0.0
+         * guaWxJourMonthIncome : 0.0
+         * guaWxJourMonthExpend : 0.0
+         * guaWxJourPic :
+         * guaWxJourRemark :
+         * guaJourIncome : 0.0
+         * guaJourExpend : 0.0
+         * guaJourBalance : 0.0
+         * guaJourMonthIncome : 0.0
+         * guaJourMonthExpend : 0.0
+         * guaJourPic :
+         * guaJourRemark :
+         * guaAssetPdf :
+         * emergencyName1 : 联系人1姓名
+         * emergencyRelation1 : 2
+         * emergencyMobile1 : 18877654433
+         * emergencyName2 :
+         * emergencyRelation2 :
+         * emergencyMobile2 :
+         * zfbJourIncome : 0.0
+         * zfbJourExpend : 0.0
+         * zfbJourBalance : 0.0
+         * zfbJourMonthIncome : 0.0
+         * zfbJourMonthExpend : 0.0
+         * zfbJourPic :
+         * zfbJourRemark :
+         * wxJourIncome : 0.0
+         * wxJourExpend : 0.0
+         * wxJourBalance : 0.0
+         * wxJourMonthIncome : 0.0
+         * wxJourMonthExpend : 0.0
+         * wxJourPic :
+         * wxJourRemark :
+         * jourIncome : 0.0
+         * jourExpend : 0.0
+         * jourBalance : 0.0
+         * jourMonthIncome : 0.0
+         * jourMonthExpend : 0.0
+         * jourPic :
+         * jourRemark :
+         * assetPdf :
+         * houseContract : FsYZVYxJrBFITZgjTinTJauQCaAc
+         * housePicture : FgFwvHtst8JmIsHAgKVzurIOT6zK
          * isAdvanceFund : 1
-         * interviewVideo : FkMaE_jJLB_1fAsrZ3cK_nqOMy3j
-         * interviewContract : FjqbYdCYiK6Dkp0UqO8VPZrT6Ob7
-         * advanceFundDatetime : Jun 1, 2018 12:00:00 AM
-         * advanceFundAmount : 1.8E7
-         * carSettleDatetime : Jun 2, 2018 12:00:00 AM
-         * carNumber : 浙A123132
-         * carInvoice : FuARN6YAubJ0umx1NPueecjwM0C4
-         * carHgz : FuARN6YAubJ0umx1NPueecjwM0C4
-         * carJqx : FuARN6YAubJ0umx1NPueecjwM0C4
-         * carSyx : FuARN6YAubJ0umx1NPueecjwM0C4
-         * carRegcerti : FuARN6YAubJ0umx1NPueecjwM0C4
-         * carPd : FooyIpMic9O-rGcyaAqWy1vY4mLI
-         * carKey : FooyIpMic9O-rGcyaAqWy1vY4mLI
-         * carBigSmj : FooyIpMic9O-rGcyaAqWy1vY4mLI
-         * bankCommitDatetime : Jun 1, 2018 12:00:00 AM
-         * repayBankcardNumber : 612121313131313
-         * repayBillDate : 15.0
-         * repayBankDate : 15.0
-         * repayFirstMonthAmount : 1.0E8
-         * repayFirstMonthDatetime : Jun 2, 2018 12:00:00 AM
-         * repayMonthAmount : 1.0E7
-         * receiptBankCode : CMBC
-         * receiptBankcardNumber : 61234567891324568
-         * receiptPdf : FuARN6YAubJ0umx1NPueecjwM0C4
-         * receiptRemark :
-         * pledgeDatetime : Jun 1, 2018 12:00:00 AM
-         * greenBigSmj : FooyIpMic9O-rGcyaAqWy1vY4mLI
-         * pledgeBankCommitDatetime : Jun 1, 2018 12:00:00 AM
-         * saleUserId : U201806010724286998427
-         * companyCode : DP201800000000000000001
-         * applyDatetime : Jun 1, 2018 7:42:31 AM
+         * interviewVideo : FsYZVYxJrBFITZgjTinTJauQCaAc
+         * interviewContract : FgFwvHtst8JmIsHAgKVzurIOT6zK
+         * advanceFundDatetime : Jun 11, 2018 12:00:00 AM
+         * advanceFundAmount : 3.2324E7
+         * carSettleDatetime : Jun 11, 2018 12:00:00 AM
+         * carNumber : 1234567
+         * carInvoice : ANDROID_1528716886598_1080_2160.jpg
+         * carHgz : ANDROID_1528716898731_2976_3968.jpg
+         * carJqx : ANDROID_1528716910399_1080_2160.jpg
+         * carSyx : ANDROID_1528716917788_72_72.jpg
+         * carRegcerti : Fonkw2g20kfdnM6litogztaLYQQF
+         * carPd : FsYZVYxJrBFITZgjTinTJauQCaAc
+         * carKey : Fs6kQcEiNS4USu5Mp6euL7_mKwtL
+         * carBigSmj : FsP0X1vEq0XXua4E0jEpxv-X6tX2
+         * bankCommitDatetime : Jun 11, 2018 12:00:00 AM
+         * repayBankcardNumber : 333333333333332
+         * repayBillDate : 10.0
+         * repayBankDate : 10.0
+         * repayFirstMonthAmount : 3000000.0
+         * repayFirstMonthDatetime : Jun 11, 2018 12:00:00 AM
+         * repayMonthAmount : 3000000.0
+         * receiptBankCode : CB201806060405380712648
+         * receiptBankcardNumber : 612313241234123
+         * receiptPdf : FgFwvHtst8JmIsHAgKVzurIOT6zK
+         * receiptRemark : 俄456
+         * pledgeDatetime : Jun 11, 2018 12:00:00 AM
+         * greenBigSmj : ANDROID_1528717300431_1080_2160.jpg
+         * pledgeBankCommitDatetime : Jun 11, 2018 12:00:00 AM
+         * saleUserId : U201806061630482887547
+         * companyCode : DP201806102129414839296
+         * applyDatetime : Jun 11, 2018 5:54:35 PM
+         * backAdvanceStatus : 0
          * curNodeCode : 002_23
-         * remark :
-         * budgetOrderGpsList : [{"code":"GPSAZ201806010812307864013","gpsDevNo":"89787","gpsType":"0","azLocation":"上","azDatetime":"2018-06-01 00:00:00.0","azUser":"搜索","remark":"","budgetOrder":"BO201806010742311246375"}]
-         * companyName : 乌鲁木齐华途威通汽车销售有限公司
-         * saleUserName : 胡莎莎
+         * remark : 提交说明
+         * budgetOrderGpsList : [{"code":"G201806090258296488056","gpsDevNo":"11239","gpsType":"0","azLocation":"车头","azDatetime":"2018-06-12 00:00:00.0","azUser":"吴联请、房东舒服","remark":"android_download","budgetOrder":"BO201806111754354273575"}]
+         * companyName : 浙江杭州子公司
+         * saleUserName : 悟空
          * loanBankName : 招商银行
          */
 
@@ -1041,13 +739,20 @@ public class CarLoanDetailsActivityBean implements Serializable{
         private String loanBank;
         private double gpsFee;
         private double authFee;
-        private double fee;
-        private double monthRate;
+        private double bankFee;
+        private double companyFee;
         private String creditCode;
         private String bizType;
         private String loanPeriod;
         private String invoiceCompany;
         private String carBrand;
+        private String carSeries;
+        private String carModel;
+        private String carPic;
+        private String carHgzPic;
+        private String carHgzNo;
+        private String carFrameNo;
+        private String carEngineNo;
         private double originalPrice;
         private double invoicePrice;
         private String carColor;
@@ -1074,6 +779,10 @@ public class CarLoanDetailsActivityBean implements Serializable{
         private String mainIncome;
         private String workCompanyName;
         private String workCompanyAddress;
+        private String workCompanyProperty;
+        private String workBelongIndustry;
+        private String workProfession;
+        private String workDatetime;
         private String selfCompanyArea;
         private String employeeQuantity;
         private String enterpriseMonthOutput;
@@ -1087,6 +796,28 @@ public class CarLoanDetailsActivityBean implements Serializable{
         private String mateCompanyName;
         private String mateCompanyAddress;
         private String mateCompanyContactNo;
+        private double mateZfbJourIncome;
+        private double mateZfbJourExpend;
+        private double mateZfbJourBalance;
+        private double mateZfbJourMonthIncome;
+        private double mateZfbJourMonthExpend;
+        private String mateZfbJourPic;
+        private String mateZfbJourRemark;
+        private double mateWxJourIncome;
+        private double mateWxJourExpend;
+        private double mateWxJourBalance;
+        private double mateWxJourMonthIncome;
+        private double mateWxJourMonthExpend;
+        private String mateWxJourPic;
+        private String mateWxJourRemark;
+        private double mateJourIncome;
+        private double mateJourExpend;
+        private double mateJourBalance;
+        private double mateJourMonthIncome;
+        private double mateJourMonthExpend;
+        private String mateJourPic;
+        private String mateJourRemark;
+        private String mateAssetPdf;
         private String guaName;
         private String guaMobile;
         private String guaIdNo;
@@ -1094,20 +825,56 @@ public class CarLoanDetailsActivityBean implements Serializable{
         private String guaCompanyName;
         private String guaCompanyAddress;
         private String guaHouseAssetAddress;
+        private double guaZfbJourIncome;
+        private double guaZfbJourExpend;
+        private double guaZfbJourBalance;
+        private double guaZfbJourMonthIncome;
+        private double guaZfbJourMonthExpend;
+        private String guaZfbJourPic;
+        private String guaZfbJourRemark;
+        private double guaWxJourIncome;
+        private double guaWxJourExpend;
+        private double guaWxJourBalance;
+        private double guaWxJourMonthIncome;
+        private double guaWxJourMonthExpend;
+        private String guaWxJourPic;
+        private String guaWxJourRemark;
+        private double guaJourIncome;
+        private double guaJourExpend;
+        private double guaJourBalance;
+        private double guaJourMonthIncome;
+        private double guaJourMonthExpend;
+        private String guaJourPic;
+        private String guaJourRemark;
+        private String guaAssetPdf;
         private String emergencyName1;
         private String emergencyRelation1;
         private String emergencyMobile1;
         private String emergencyName2;
         private String emergencyRelation2;
         private String emergencyMobile2;
-        private String jourDatetimeStart;
-        private String jourDatetimeEnd;
+        private double zfbJourIncome;
+        private double zfbJourExpend;
+        private double zfbJourBalance;
+        private double zfbJourMonthIncome;
+        private double zfbJourMonthExpend;
+        private String zfbJourPic;
+        private String zfbJourRemark;
+        private double wxJourIncome;
+        private double wxJourExpend;
+        private double wxJourBalance;
+        private double wxJourMonthIncome;
+        private double wxJourMonthExpend;
+        private String wxJourPic;
+        private String wxJourRemark;
         private double jourIncome;
         private double jourExpend;
         private double jourBalance;
         private double jourMonthIncome;
         private double jourMonthExpend;
+        private String jourPic;
         private String jourRemark;
+        private String assetPdf;
         private String houseContract;
         private String housePicture;
         private String isAdvanceFund;
@@ -1142,12 +909,22 @@ public class CarLoanDetailsActivityBean implements Serializable{
         private String saleUserId;
         private String companyCode;
         private String applyDatetime;
+        private String backAdvanceStatus;
         private String curNodeCode;
         private String remark;
         private String companyName;
         private String saleUserName;
         private String loanBankName;
         private List<BudgetOrderGpsListBean> budgetOrderGpsList;
+        private List<ProductOrderListBean> productOrderList;
+
+        public List<ProductOrderListBean> getProductOrderList() {
+            return productOrderList;
+        }
+
+        public void setProductOrderList(List<ProductOrderListBean> productOrderList) {
+            this.productOrderList = productOrderList;
+        }
 
         public String getCode() {
             return code;
@@ -1205,20 +982,20 @@ public class CarLoanDetailsActivityBean implements Serializable{
             this.authFee = authFee;
         }
 
-        public double getFee() {
-            return fee;
+        public double getBankFee() {
+            return bankFee;
         }
 
-        public void setFee(double fee) {
-            this.fee = fee;
+        public void setBankFee(double bankFee) {
+            this.bankFee = bankFee;
         }
 
-        public double getMonthRate() {
-            return monthRate;
+        public double getCompanyFee() {
+            return companyFee;
         }
 
-        public void setMonthRate(double monthRate) {
-            this.monthRate = monthRate;
+        public void setCompanyFee(double companyFee) {
+            this.companyFee = companyFee;
         }
 
         public String getCreditCode() {
@@ -1259,6 +1036,62 @@ public class CarLoanDetailsActivityBean implements Serializable{
 
         public void setCarBrand(String carBrand) {
             this.carBrand = carBrand;
+        }
+
+        public String getCarSeries() {
+            return carSeries;
+        }
+
+        public void setCarSeries(String carSeries) {
+            this.carSeries = carSeries;
+        }
+
+        public String getCarModel() {
+            return carModel;
+        }
+
+        public void setCarModel(String carModel) {
+            this.carModel = carModel;
+        }
+
+        public String getCarPic() {
+            return carPic;
+        }
+
+        public void setCarPic(String carPic) {
+            this.carPic = carPic;
+        }
+
+        public String getCarHgzPic() {
+            return carHgzPic;
+        }
+
+        public void setCarHgzPic(String carHgzPic) {
+            this.carHgzPic = carHgzPic;
+        }
+
+        public String getCarHgzNo() {
+            return carHgzNo;
+        }
+
+        public void setCarHgzNo(String carHgzNo) {
+            this.carHgzNo = carHgzNo;
+        }
+
+        public String getCarFrameNo() {
+            return carFrameNo;
+        }
+
+        public void setCarFrameNo(String carFrameNo) {
+            this.carFrameNo = carFrameNo;
+        }
+
+        public String getCarEngineNo() {
+            return carEngineNo;
+        }
+
+        public void setCarEngineNo(String carEngineNo) {
+            this.carEngineNo = carEngineNo;
         }
 
         public double getOriginalPrice() {
@@ -1469,6 +1302,38 @@ public class CarLoanDetailsActivityBean implements Serializable{
             this.workCompanyAddress = workCompanyAddress;
         }
 
+        public String getWorkCompanyProperty() {
+            return workCompanyProperty;
+        }
+
+        public void setWorkCompanyProperty(String workCompanyProperty) {
+            this.workCompanyProperty = workCompanyProperty;
+        }
+
+        public String getWorkBelongIndustry() {
+            return workBelongIndustry;
+        }
+
+        public void setWorkBelongIndustry(String workBelongIndustry) {
+            this.workBelongIndustry = workBelongIndustry;
+        }
+
+        public String getWorkProfession() {
+            return workProfession;
+        }
+
+        public void setWorkProfession(String workProfession) {
+            this.workProfession = workProfession;
+        }
+
+        public String getWorkDatetime() {
+            return workDatetime;
+        }
+
+        public void setWorkDatetime(String workDatetime) {
+            this.workDatetime = workDatetime;
+        }
+
         public String getSelfCompanyArea() {
             return selfCompanyArea;
         }
@@ -1573,6 +1438,182 @@ public class CarLoanDetailsActivityBean implements Serializable{
             this.mateCompanyContactNo = mateCompanyContactNo;
         }
 
+        public double getMateZfbJourIncome() {
+            return mateZfbJourIncome;
+        }
+
+        public void setMateZfbJourIncome(double mateZfbJourIncome) {
+            this.mateZfbJourIncome = mateZfbJourIncome;
+        }
+
+        public double getMateZfbJourExpend() {
+            return mateZfbJourExpend;
+        }
+
+        public void setMateZfbJourExpend(double mateZfbJourExpend) {
+            this.mateZfbJourExpend = mateZfbJourExpend;
+        }
+
+        public double getMateZfbJourBalance() {
+            return mateZfbJourBalance;
+        }
+
+        public void setMateZfbJourBalance(double mateZfbJourBalance) {
+            this.mateZfbJourBalance = mateZfbJourBalance;
+        }
+
+        public double getMateZfbJourMonthIncome() {
+            return mateZfbJourMonthIncome;
+        }
+
+        public void setMateZfbJourMonthIncome(double mateZfbJourMonthIncome) {
+            this.mateZfbJourMonthIncome = mateZfbJourMonthIncome;
+        }
+
+        public double getMateZfbJourMonthExpend() {
+            return mateZfbJourMonthExpend;
+        }
+
+        public void setMateZfbJourMonthExpend(double mateZfbJourMonthExpend) {
+            this.mateZfbJourMonthExpend = mateZfbJourMonthExpend;
+        }
+
+        public String getMateZfbJourPic() {
+            return mateZfbJourPic;
+        }
+
+        public void setMateZfbJourPic(String mateZfbJourPic) {
+            this.mateZfbJourPic = mateZfbJourPic;
+        }
+
+        public String getMateZfbJourRemark() {
+            return mateZfbJourRemark;
+        }
+
+        public void setMateZfbJourRemark(String mateZfbJourRemark) {
+            this.mateZfbJourRemark = mateZfbJourRemark;
+        }
+
+        public double getMateWxJourIncome() {
+            return mateWxJourIncome;
+        }
+
+        public void setMateWxJourIncome(double mateWxJourIncome) {
+            this.mateWxJourIncome = mateWxJourIncome;
+        }
+
+        public double getMateWxJourExpend() {
+            return mateWxJourExpend;
+        }
+
+        public void setMateWxJourExpend(double mateWxJourExpend) {
+            this.mateWxJourExpend = mateWxJourExpend;
+        }
+
+        public double getMateWxJourBalance() {
+            return mateWxJourBalance;
+        }
+
+        public void setMateWxJourBalance(double mateWxJourBalance) {
+            this.mateWxJourBalance = mateWxJourBalance;
+        }
+
+        public double getMateWxJourMonthIncome() {
+            return mateWxJourMonthIncome;
+        }
+
+        public void setMateWxJourMonthIncome(double mateWxJourMonthIncome) {
+            this.mateWxJourMonthIncome = mateWxJourMonthIncome;
+        }
+
+        public double getMateWxJourMonthExpend() {
+            return mateWxJourMonthExpend;
+        }
+
+        public void setMateWxJourMonthExpend(double mateWxJourMonthExpend) {
+            this.mateWxJourMonthExpend = mateWxJourMonthExpend;
+        }
+
+        public String getMateWxJourPic() {
+            return mateWxJourPic;
+        }
+
+        public void setMateWxJourPic(String mateWxJourPic) {
+            this.mateWxJourPic = mateWxJourPic;
+        }
+
+        public String getMateWxJourRemark() {
+            return mateWxJourRemark;
+        }
+
+        public void setMateWxJourRemark(String mateWxJourRemark) {
+            this.mateWxJourRemark = mateWxJourRemark;
+        }
+
+        public double getMateJourIncome() {
+            return mateJourIncome;
+        }
+
+        public void setMateJourIncome(double mateJourIncome) {
+            this.mateJourIncome = mateJourIncome;
+        }
+
+        public double getMateJourExpend() {
+            return mateJourExpend;
+        }
+
+        public void setMateJourExpend(double mateJourExpend) {
+            this.mateJourExpend = mateJourExpend;
+        }
+
+        public double getMateJourBalance() {
+            return mateJourBalance;
+        }
+
+        public void setMateJourBalance(double mateJourBalance) {
+            this.mateJourBalance = mateJourBalance;
+        }
+
+        public double getMateJourMonthIncome() {
+            return mateJourMonthIncome;
+        }
+
+        public void setMateJourMonthIncome(double mateJourMonthIncome) {
+            this.mateJourMonthIncome = mateJourMonthIncome;
+        }
+
+        public double getMateJourMonthExpend() {
+            return mateJourMonthExpend;
+        }
+
+        public void setMateJourMonthExpend(double mateJourMonthExpend) {
+            this.mateJourMonthExpend = mateJourMonthExpend;
+        }
+
+        public String getMateJourPic() {
+            return mateJourPic;
+        }
+
+        public void setMateJourPic(String mateJourPic) {
+            this.mateJourPic = mateJourPic;
+        }
+
+        public String getMateJourRemark() {
+            return mateJourRemark;
+        }
+
+        public void setMateJourRemark(String mateJourRemark) {
+            this.mateJourRemark = mateJourRemark;
+        }
+
+        public String getMateAssetPdf() {
+            return mateAssetPdf;
+        }
+
+        public void setMateAssetPdf(String mateAssetPdf) {
+            this.mateAssetPdf = mateAssetPdf;
+        }
+
         public String getGuaName() {
             return guaName;
         }
@@ -1629,6 +1670,182 @@ public class CarLoanDetailsActivityBean implements Serializable{
             this.guaHouseAssetAddress = guaHouseAssetAddress;
         }
 
+        public double getGuaZfbJourIncome() {
+            return guaZfbJourIncome;
+        }
+
+        public void setGuaZfbJourIncome(double guaZfbJourIncome) {
+            this.guaZfbJourIncome = guaZfbJourIncome;
+        }
+
+        public double getGuaZfbJourExpend() {
+            return guaZfbJourExpend;
+        }
+
+        public void setGuaZfbJourExpend(double guaZfbJourExpend) {
+            this.guaZfbJourExpend = guaZfbJourExpend;
+        }
+
+        public double getGuaZfbJourBalance() {
+            return guaZfbJourBalance;
+        }
+
+        public void setGuaZfbJourBalance(double guaZfbJourBalance) {
+            this.guaZfbJourBalance = guaZfbJourBalance;
+        }
+
+        public double getGuaZfbJourMonthIncome() {
+            return guaZfbJourMonthIncome;
+        }
+
+        public void setGuaZfbJourMonthIncome(double guaZfbJourMonthIncome) {
+            this.guaZfbJourMonthIncome = guaZfbJourMonthIncome;
+        }
+
+        public double getGuaZfbJourMonthExpend() {
+            return guaZfbJourMonthExpend;
+        }
+
+        public void setGuaZfbJourMonthExpend(double guaZfbJourMonthExpend) {
+            this.guaZfbJourMonthExpend = guaZfbJourMonthExpend;
+        }
+
+        public String getGuaZfbJourPic() {
+            return guaZfbJourPic;
+        }
+
+        public void setGuaZfbJourPic(String guaZfbJourPic) {
+            this.guaZfbJourPic = guaZfbJourPic;
+        }
+
+        public String getGuaZfbJourRemark() {
+            return guaZfbJourRemark;
+        }
+
+        public void setGuaZfbJourRemark(String guaZfbJourRemark) {
+            this.guaZfbJourRemark = guaZfbJourRemark;
+        }
+
+        public double getGuaWxJourIncome() {
+            return guaWxJourIncome;
+        }
+
+        public void setGuaWxJourIncome(double guaWxJourIncome) {
+            this.guaWxJourIncome = guaWxJourIncome;
+        }
+
+        public double getGuaWxJourExpend() {
+            return guaWxJourExpend;
+        }
+
+        public void setGuaWxJourExpend(double guaWxJourExpend) {
+            this.guaWxJourExpend = guaWxJourExpend;
+        }
+
+        public double getGuaWxJourBalance() {
+            return guaWxJourBalance;
+        }
+
+        public void setGuaWxJourBalance(double guaWxJourBalance) {
+            this.guaWxJourBalance = guaWxJourBalance;
+        }
+
+        public double getGuaWxJourMonthIncome() {
+            return guaWxJourMonthIncome;
+        }
+
+        public void setGuaWxJourMonthIncome(double guaWxJourMonthIncome) {
+            this.guaWxJourMonthIncome = guaWxJourMonthIncome;
+        }
+
+        public double getGuaWxJourMonthExpend() {
+            return guaWxJourMonthExpend;
+        }
+
+        public void setGuaWxJourMonthExpend(double guaWxJourMonthExpend) {
+            this.guaWxJourMonthExpend = guaWxJourMonthExpend;
+        }
+
+        public String getGuaWxJourPic() {
+            return guaWxJourPic;
+        }
+
+        public void setGuaWxJourPic(String guaWxJourPic) {
+            this.guaWxJourPic = guaWxJourPic;
+        }
+
+        public String getGuaWxJourRemark() {
+            return guaWxJourRemark;
+        }
+
+        public void setGuaWxJourRemark(String guaWxJourRemark) {
+            this.guaWxJourRemark = guaWxJourRemark;
+        }
+
+        public double getGuaJourIncome() {
+            return guaJourIncome;
+        }
+
+        public void setGuaJourIncome(double guaJourIncome) {
+            this.guaJourIncome = guaJourIncome;
+        }
+
+        public double getGuaJourExpend() {
+            return guaJourExpend;
+        }
+
+        public void setGuaJourExpend(double guaJourExpend) {
+            this.guaJourExpend = guaJourExpend;
+        }
+
+        public double getGuaJourBalance() {
+            return guaJourBalance;
+        }
+
+        public void setGuaJourBalance(double guaJourBalance) {
+            this.guaJourBalance = guaJourBalance;
+        }
+
+        public double getGuaJourMonthIncome() {
+            return guaJourMonthIncome;
+        }
+
+        public void setGuaJourMonthIncome(double guaJourMonthIncome) {
+            this.guaJourMonthIncome = guaJourMonthIncome;
+        }
+
+        public double getGuaJourMonthExpend() {
+            return guaJourMonthExpend;
+        }
+
+        public void setGuaJourMonthExpend(double guaJourMonthExpend) {
+            this.guaJourMonthExpend = guaJourMonthExpend;
+        }
+
+        public String getGuaJourPic() {
+            return guaJourPic;
+        }
+
+        public void setGuaJourPic(String guaJourPic) {
+            this.guaJourPic = guaJourPic;
+        }
+
+        public String getGuaJourRemark() {
+            return guaJourRemark;
+        }
+
+        public void setGuaJourRemark(String guaJourRemark) {
+            this.guaJourRemark = guaJourRemark;
+        }
+
+        public String getGuaAssetPdf() {
+            return guaAssetPdf;
+        }
+
+        public void setGuaAssetPdf(String guaAssetPdf) {
+            this.guaAssetPdf = guaAssetPdf;
+        }
+
         public String getEmergencyName1() {
             return emergencyName1;
         }
@@ -1677,20 +1894,116 @@ public class CarLoanDetailsActivityBean implements Serializable{
             this.emergencyMobile2 = emergencyMobile2;
         }
 
-        public String getJourDatetimeStart() {
-            return jourDatetimeStart;
+        public double getZfbJourIncome() {
+            return zfbJourIncome;
         }
 
-        public void setJourDatetimeStart(String jourDatetimeStart) {
-            this.jourDatetimeStart = jourDatetimeStart;
+        public void setZfbJourIncome(double zfbJourIncome) {
+            this.zfbJourIncome = zfbJourIncome;
         }
 
-        public String getJourDatetimeEnd() {
-            return jourDatetimeEnd;
+        public double getZfbJourExpend() {
+            return zfbJourExpend;
         }
 
-        public void setJourDatetimeEnd(String jourDatetimeEnd) {
-            this.jourDatetimeEnd = jourDatetimeEnd;
+        public void setZfbJourExpend(double zfbJourExpend) {
+            this.zfbJourExpend = zfbJourExpend;
+        }
+
+        public double getZfbJourBalance() {
+            return zfbJourBalance;
+        }
+
+        public void setZfbJourBalance(double zfbJourBalance) {
+            this.zfbJourBalance = zfbJourBalance;
+        }
+
+        public double getZfbJourMonthIncome() {
+            return zfbJourMonthIncome;
+        }
+
+        public void setZfbJourMonthIncome(double zfbJourMonthIncome) {
+            this.zfbJourMonthIncome = zfbJourMonthIncome;
+        }
+
+        public double getZfbJourMonthExpend() {
+            return zfbJourMonthExpend;
+        }
+
+        public void setZfbJourMonthExpend(double zfbJourMonthExpend) {
+            this.zfbJourMonthExpend = zfbJourMonthExpend;
+        }
+
+        public String getZfbJourPic() {
+            return zfbJourPic;
+        }
+
+        public void setZfbJourPic(String zfbJourPic) {
+            this.zfbJourPic = zfbJourPic;
+        }
+
+        public String getZfbJourRemark() {
+            return zfbJourRemark;
+        }
+
+        public void setZfbJourRemark(String zfbJourRemark) {
+            this.zfbJourRemark = zfbJourRemark;
+        }
+
+        public double getWxJourIncome() {
+            return wxJourIncome;
+        }
+
+        public void setWxJourIncome(double wxJourIncome) {
+            this.wxJourIncome = wxJourIncome;
+        }
+
+        public double getWxJourExpend() {
+            return wxJourExpend;
+        }
+
+        public void setWxJourExpend(double wxJourExpend) {
+            this.wxJourExpend = wxJourExpend;
+        }
+
+        public double getWxJourBalance() {
+            return wxJourBalance;
+        }
+
+        public void setWxJourBalance(double wxJourBalance) {
+            this.wxJourBalance = wxJourBalance;
+        }
+
+        public double getWxJourMonthIncome() {
+            return wxJourMonthIncome;
+        }
+
+        public void setWxJourMonthIncome(double wxJourMonthIncome) {
+            this.wxJourMonthIncome = wxJourMonthIncome;
+        }
+
+        public double getWxJourMonthExpend() {
+            return wxJourMonthExpend;
+        }
+
+        public void setWxJourMonthExpend(double wxJourMonthExpend) {
+            this.wxJourMonthExpend = wxJourMonthExpend;
+        }
+
+        public String getWxJourPic() {
+            return wxJourPic;
+        }
+
+        public void setWxJourPic(String wxJourPic) {
+            this.wxJourPic = wxJourPic;
+        }
+
+        public String getWxJourRemark() {
+            return wxJourRemark;
+        }
+
+        public void setWxJourRemark(String wxJourRemark) {
+            this.wxJourRemark = wxJourRemark;
         }
 
         public double getJourIncome() {
@@ -1733,12 +2046,28 @@ public class CarLoanDetailsActivityBean implements Serializable{
             this.jourMonthExpend = jourMonthExpend;
         }
 
+        public String getJourPic() {
+            return jourPic;
+        }
+
+        public void setJourPic(String jourPic) {
+            this.jourPic = jourPic;
+        }
+
         public String getJourRemark() {
             return jourRemark;
         }
 
         public void setJourRemark(String jourRemark) {
             this.jourRemark = jourRemark;
+        }
+
+        public String getAssetPdf() {
+            return assetPdf;
+        }
+
+        public void setAssetPdf(String assetPdf) {
+            this.assetPdf = assetPdf;
         }
 
         public String getHouseContract() {
@@ -2013,6 +2342,14 @@ public class CarLoanDetailsActivityBean implements Serializable{
             this.applyDatetime = applyDatetime;
         }
 
+        public String getBackAdvanceStatus() {
+            return backAdvanceStatus;
+        }
+
+        public void setBackAdvanceStatus(String backAdvanceStatus) {
+            this.backAdvanceStatus = backAdvanceStatus;
+        }
+
         public String getCurNodeCode() {
             return curNodeCode;
         }
@@ -2061,16 +2398,16 @@ public class CarLoanDetailsActivityBean implements Serializable{
             this.budgetOrderGpsList = budgetOrderGpsList;
         }
 
-        public static class BudgetOrderGpsListBean implements Serializable {
+        public static class BudgetOrderGpsListBean implements Serializable{
             /**
-             * code : GPSAZ201806010812307864013
-             * gpsDevNo : 89787
+             * code : G201806090258296488056
+             * gpsDevNo : 11239
              * gpsType : 0
-             * azLocation : 上
-             * azDatetime : 2018-06-01 00:00:00.0
-             * azUser : 搜索
-             * remark :
-             * budgetOrder : BO201806010742311246375
+             * azLocation : 车头
+             * azDatetime : 2018-06-12 00:00:00.0
+             * azUser : 吴联请、房东舒服
+             * remark : android_download
+             * budgetOrder : BO201806111754354273575
              */
 
             private String code;
@@ -2146,232 +2483,197 @@ public class CarLoanDetailsActivityBean implements Serializable{
                 this.budgetOrder = budgetOrder;
             }
         }
-    }
 
-    public static class UserBean implements Serializable {
-        /**
-         * bankcardFlag : false
-         * blacklistFlag : false
-         * createDatetime : May 6, 2018 4:11:51 PM
-         * idKind : 1
-         * idNo : 330281198908023311
-         * identifyFlag : false
-         * kind : C
-         * loginName : 15268501481
-         * loginPwdStrength : 1
-         * mobile : 15268501481
-         * nickname : 大黄
-         * photo : U12345678
-         * realName : 郑海清
-         * remark : 注销
-         * status : 0
-         * tradePwdStrength : 1
-         * tradepwdFlag : false
-         * userId : U201805061611515474805
-         */
+        public static class ProductOrderListBean implements Serializable{
+            /**
+             * bankRate : 0.1
+             * code : CD201805202357001289656
+             * orderCode : DD201805202357001287068
+             * periods : 3.0
+             * price : 1000.0
+             * product : {"advPic":"http://pic39.nipic.com/20140311/8821914_214422866000_2.jpg","name":"1000"}
+             * productCode : CP201805062109137465648
+             * productSpecsCode : PS201805062109137596153
+             * productSpecsName : 1000
+             * quantity : 1.0
+             * sfRate : 0.3
+             */
 
-        private boolean bankcardFlag;
-        private boolean blacklistFlag;
-        private String createDatetime;
-        private String idKind;
-        private String idNo;
-        private boolean identifyFlag;
-        private String kind;
-        private String loginName;
-        private String loginPwdStrength;
-        private String mobile;
-        private String nickname;
-        private String photo;
-        private String realName;
-        private String remark;
-        private String status;
-        private String tradePwdStrength;
-        private boolean tradepwdFlag;
-        private String userId;
+            private double bankRate;
+            private String code;
+            private String orderCode;
+            private double periods;
+            private double price;
+            private ProductBean product;
+            private String productCode;
+            private String productSpecsCode;
+            private String productSpecsName;
+            private double quantity;
+            private double sfRate;
+            private String productName;
 
-        public boolean isBankcardFlag() {
-            return bankcardFlag;
-        }
+            public String getProductName() {
+                return productName;
+            }
 
-        public void setBankcardFlag(boolean bankcardFlag) {
-            this.bankcardFlag = bankcardFlag;
-        }
+            public void setProductName(String productName) {
+                this.productName = productName;
+            }
 
-        public boolean isBlacklistFlag() {
-            return blacklistFlag;
-        }
+            public double getBankRate() {
+                return bankRate;
+            }
 
-        public void setBlacklistFlag(boolean blacklistFlag) {
-            this.blacklistFlag = blacklistFlag;
-        }
+            public void setBankRate(double bankRate) {
+                this.bankRate = bankRate;
+            }
 
-        public String getCreateDatetime() {
-            return createDatetime;
-        }
+            public String getCode() {
+                return code;
+            }
 
-        public void setCreateDatetime(String createDatetime) {
-            this.createDatetime = createDatetime;
-        }
+            public void setCode(String code) {
+                this.code = code;
+            }
 
-        public String getIdKind() {
-            return idKind;
-        }
+            public String getOrderCode() {
+                return orderCode;
+            }
 
-        public void setIdKind(String idKind) {
-            this.idKind = idKind;
-        }
+            public void setOrderCode(String orderCode) {
+                this.orderCode = orderCode;
+            }
 
-        public String getIdNo() {
-            return idNo;
-        }
+            public double getPeriods() {
+                return periods;
+            }
 
-        public void setIdNo(String idNo) {
-            this.idNo = idNo;
-        }
+            public void setPeriods(double periods) {
+                this.periods = periods;
+            }
 
-        public boolean isIdentifyFlag() {
-            return identifyFlag;
-        }
+            public double getPrice() {
+                return price;
+            }
 
-        public void setIdentifyFlag(boolean identifyFlag) {
-            this.identifyFlag = identifyFlag;
-        }
+            public void setPrice(double price) {
+                this.price = price;
+            }
 
-        public String getKind() {
-            return kind;
-        }
+            public ProductBean getProduct() {
+                return product;
+            }
 
-        public void setKind(String kind) {
-            this.kind = kind;
-        }
+            public void setProduct(ProductBean product) {
+                this.product = product;
+            }
 
-        public String getLoginName() {
-            return loginName;
-        }
+            public String getProductCode() {
+                return productCode;
+            }
 
-        public void setLoginName(String loginName) {
-            this.loginName = loginName;
-        }
+            public void setProductCode(String productCode) {
+                this.productCode = productCode;
+            }
 
-        public String getLoginPwdStrength() {
-            return loginPwdStrength;
-        }
+            public String getProductSpecsCode() {
+                return productSpecsCode;
+            }
 
-        public void setLoginPwdStrength(String loginPwdStrength) {
-            this.loginPwdStrength = loginPwdStrength;
-        }
+            public void setProductSpecsCode(String productSpecsCode) {
+                this.productSpecsCode = productSpecsCode;
+            }
 
-        public String getMobile() {
-            return mobile;
-        }
+            public String getProductSpecsName() {
+                return productSpecsName;
+            }
 
-        public void setMobile(String mobile) {
-            this.mobile = mobile;
-        }
+            public void setProductSpecsName(String productSpecsName) {
+                this.productSpecsName = productSpecsName;
+            }
 
-        public String getNickname() {
-            return nickname;
-        }
+            public double getQuantity() {
+                return quantity;
+            }
 
-        public void setNickname(String nickname) {
-            this.nickname = nickname;
-        }
+            public void setQuantity(double quantity) {
+                this.quantity = quantity;
+            }
 
-        public String getPhoto() {
-            return photo;
-        }
+            public double getSfRate() {
+                return sfRate;
+            }
 
-        public void setPhoto(String photo) {
-            this.photo = photo;
-        }
+            public void setSfRate(double sfRate) {
+                this.sfRate = sfRate;
+            }
 
-        public String getRealName() {
-            return realName;
-        }
+            public static class ProductBean implements Serializable{
+                /**
+                 * advPic : http://pic39.nipic.com/20140311/8821914_214422866000_2.jpg
+                 * name : 1000
+                 */
 
-        public void setRealName(String realName) {
-            this.realName = realName;
-        }
+                private String advPic;
+                private String name;
 
-        public String getRemark() {
-            return remark;
-        }
+                public String getAdvPic() {
+                    return advPic;
+                }
 
-        public void setRemark(String remark) {
-            this.remark = remark;
-        }
+                public void setAdvPic(String advPic) {
+                    this.advPic = advPic;
+                }
 
-        public String getStatus() {
-            return status;
-        }
+                public String getName() {
+                    return name;
+                }
 
-        public void setStatus(String status) {
-            this.status = status;
-        }
-
-        public String getTradePwdStrength() {
-            return tradePwdStrength;
-        }
-
-        public void setTradePwdStrength(String tradePwdStrength) {
-            this.tradePwdStrength = tradePwdStrength;
-        }
-
-        public boolean isTradepwdFlag() {
-            return tradepwdFlag;
-        }
-
-        public void setTradepwdFlag(boolean tradepwdFlag) {
-            this.tradepwdFlag = tradepwdFlag;
-        }
-
-        public String getUserId() {
-            return userId;
-        }
-
-        public void setUserId(String userId) {
-            this.userId = userId;
+                public void setName(String name) {
+                    this.name = name;
+                }
+            }
         }
     }
 
-    public static class RepayPlanListBean implements Serializable {
+    public static class RepayPlanListBean implements Serializable{
         /**
-         * code : RP201805141639121479814
+         * code : RP2018061120355459296881
+         * repayBizCode : RB201806112035545889876
+         * userId : U201806112035545709666
+         * periods : 36.0
          * curPeriods : 1.0
-         * overdueAmount : 0.0
-         * overdueDeposit : 0.0
-         * overplusAmount : 0.0
-         * payedAmount : 0.0
-         * payedFee : 0.0
-         * periods : 24.0
-         * remindCount : 0.0
-         * repayBizCode : RB201805141639121408953
-         * repayCapital : 5833330.0
-         * repayDatetime : Apr 20, 2019 12:00:00 AM
+         * repayDatetime : Jun 11, 2018 12:00:00 AM
+         * repayCapital : 3000000.0
          * repayInterest : 0.0
-         * shouldDeposit : 0.0
-         * status : 0
+         * payedAmount : 0.0
+         * overplusAmount : 3000000.0
+         * overdueAmount : 0.0
+         * curNodeCode : 004_01
          * totalFee : 0.0
-         * userId : U201805061611515474805
+         * payedFee : 0.0
+         * overdueDeposit : 0.0
+         * shouldDeposit : 0.0
+         * remindCount : 0.0
          */
 
         private String code;
-        private double curPeriods;
-        private double overdueAmount;
-        private double overdueDeposit;
-        private double overplusAmount;
-        private double payedAmount;
-        private double payedFee;
-        private double periods;
-        private double remindCount;
         private String repayBizCode;
-        private double repayCapital;
-        private String repayDatetime;
-        private double repayInterest;
-        private double shouldDeposit;
-        private String status;
-        private double totalFee;
         private String userId;
+        private double periods;
+        private double curPeriods;
+        private String repayDatetime;
+        private double repayCapital;
+        private double repayInterest;
+        private double payedAmount;
+        private double overplusAmount;
+        private double overdueAmount;
+        private String curNodeCode;
+        private double totalFee;
+        private double payedFee;
+        private double overdueDeposit;
+        private double shouldDeposit;
+        private double remindCount;
 
         public String getCode() {
             return code;
@@ -2379,70 +2681,6 @@ public class CarLoanDetailsActivityBean implements Serializable{
 
         public void setCode(String code) {
             this.code = code;
-        }
-
-        public double getCurPeriods() {
-            return curPeriods;
-        }
-
-        public void setCurPeriods(double curPeriods) {
-            this.curPeriods = curPeriods;
-        }
-
-        public double getOverdueAmount() {
-            return overdueAmount;
-        }
-
-        public void setOverdueAmount(double overdueAmount) {
-            this.overdueAmount = overdueAmount;
-        }
-
-        public double getOverdueDeposit() {
-            return overdueDeposit;
-        }
-
-        public void setOverdueDeposit(double overdueDeposit) {
-            this.overdueDeposit = overdueDeposit;
-        }
-
-        public double getOverplusAmount() {
-            return overplusAmount;
-        }
-
-        public void setOverplusAmount(double overplusAmount) {
-            this.overplusAmount = overplusAmount;
-        }
-
-        public double getPayedAmount() {
-            return payedAmount;
-        }
-
-        public void setPayedAmount(double payedAmount) {
-            this.payedAmount = payedAmount;
-        }
-
-        public double getPayedFee() {
-            return payedFee;
-        }
-
-        public void setPayedFee(double payedFee) {
-            this.payedFee = payedFee;
-        }
-
-        public double getPeriods() {
-            return periods;
-        }
-
-        public void setPeriods(double periods) {
-            this.periods = periods;
-        }
-
-        public double getRemindCount() {
-            return remindCount;
-        }
-
-        public void setRemindCount(double remindCount) {
-            this.remindCount = remindCount;
         }
 
         public String getRepayBizCode() {
@@ -2453,12 +2691,28 @@ public class CarLoanDetailsActivityBean implements Serializable{
             this.repayBizCode = repayBizCode;
         }
 
-        public double getRepayCapital() {
-            return repayCapital;
+        public String getUserId() {
+            return userId;
         }
 
-        public void setRepayCapital(double repayCapital) {
-            this.repayCapital = repayCapital;
+        public void setUserId(String userId) {
+            this.userId = userId;
+        }
+
+        public double getPeriods() {
+            return periods;
+        }
+
+        public void setPeriods(double periods) {
+            this.periods = periods;
+        }
+
+        public double getCurPeriods() {
+            return curPeriods;
+        }
+
+        public void setCurPeriods(double curPeriods) {
+            this.curPeriods = curPeriods;
         }
 
         public String getRepayDatetime() {
@@ -2469,6 +2723,14 @@ public class CarLoanDetailsActivityBean implements Serializable{
             this.repayDatetime = repayDatetime;
         }
 
+        public double getRepayCapital() {
+            return repayCapital;
+        }
+
+        public void setRepayCapital(double repayCapital) {
+            this.repayCapital = repayCapital;
+        }
+
         public double getRepayInterest() {
             return repayInterest;
         }
@@ -2477,20 +2739,36 @@ public class CarLoanDetailsActivityBean implements Serializable{
             this.repayInterest = repayInterest;
         }
 
-        public double getShouldDeposit() {
-            return shouldDeposit;
+        public double getPayedAmount() {
+            return payedAmount;
         }
 
-        public void setShouldDeposit(double shouldDeposit) {
-            this.shouldDeposit = shouldDeposit;
+        public void setPayedAmount(double payedAmount) {
+            this.payedAmount = payedAmount;
         }
 
-        public String getStatus() {
-            return status;
+        public double getOverplusAmount() {
+            return overplusAmount;
         }
 
-        public void setStatus(String status) {
-            this.status = status;
+        public void setOverplusAmount(double overplusAmount) {
+            this.overplusAmount = overplusAmount;
+        }
+
+        public double getOverdueAmount() {
+            return overdueAmount;
+        }
+
+        public void setOverdueAmount(double overdueAmount) {
+            this.overdueAmount = overdueAmount;
+        }
+
+        public String getCurNodeCode() {
+            return curNodeCode;
+        }
+
+        public void setCurNodeCode(String curNodeCode) {
+            this.curNodeCode = curNodeCode;
         }
 
         public double getTotalFee() {
@@ -2501,12 +2779,36 @@ public class CarLoanDetailsActivityBean implements Serializable{
             this.totalFee = totalFee;
         }
 
-        public String getUserId() {
-            return userId;
+        public double getPayedFee() {
+            return payedFee;
         }
 
-        public void setUserId(String userId) {
-            this.userId = userId;
+        public void setPayedFee(double payedFee) {
+            this.payedFee = payedFee;
+        }
+
+        public double getOverdueDeposit() {
+            return overdueDeposit;
+        }
+
+        public void setOverdueDeposit(double overdueDeposit) {
+            this.overdueDeposit = overdueDeposit;
+        }
+
+        public double getShouldDeposit() {
+            return shouldDeposit;
+        }
+
+        public void setShouldDeposit(double shouldDeposit) {
+            this.shouldDeposit = shouldDeposit;
+        }
+
+        public double getRemindCount() {
+            return remindCount;
+        }
+
+        public void setRemindCount(double remindCount) {
+            this.remindCount = remindCount;
         }
     }
 }

@@ -3,7 +3,7 @@ package com.cdkj.baselibrary.nets;
 
 import com.cdkj.baselibrary.api.BaseApiServer;
 import com.cdkj.baselibrary.appmanager.MyCdConfig;
-import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,7 +35,7 @@ public class RetrofitUtils {
     private static Retrofit getInstance() {
         if (retrofitInstance == null) {
             retrofitInstance = new Retrofit.Builder()
-                    .baseUrl(getBaseURL(DEBUG))
+                    .baseUrl(getBaseURL(RELEASE))
                     .client(OkHttpUtils.getInstance())
                     .addConverterFactory(FastJsonConVerter.create())
 //                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -82,9 +82,9 @@ public class RetrofitUtils {
      */
     public static Map getRequestMap() {
         Map map = new HashMap();
-        map.put("systemCode", MyCdConfig.SYSTEMCODE);
-        map.put("companyCode", MyCdConfig.COMPANYCODE);
-        map.put("token", SPUtilHelpr.getUserToken());
+        map.put("systemCode", MyCdConfig.SYSTEM_CODE);
+        map.put("companyCode", MyCdConfig.COMPANY_CODE);
+        map.put("token", SPUtilHelper.getUserToken());
         return map;
     }
 

@@ -53,7 +53,7 @@ public class CarLoanDetailsActivityMonthBean {
     private String repayDatetime;
     private double repayInterest;
     private double shouldDeposit;
-    private String status;
+    private String curNodeCode;
     private double totalFee;
     private UserBean user;
     private String userId;
@@ -196,12 +196,12 @@ public class CarLoanDetailsActivityMonthBean {
         this.shouldDeposit = shouldDeposit;
     }
 
-    public String getStatus() {
-        return status;
+    public String getCurNodeCode() {
+        return curNodeCode;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setCurNodeCode(String status) {
+        this.curNodeCode = status;
     }
 
     public double getTotalFee() {
@@ -305,7 +305,7 @@ public class CarLoanDetailsActivityMonthBean {
         private String remark;
         private double restAmount;
         private double restPeriods;
-        private CarLoanDetailsActivityBean.LoanOrderBean budgetOrder;
+        private CarLoanDetailsActivityBean.BudgetOrderBean budgetOrder;
         private double restTotalCost;
         private double sfAmount;
         private double sfRate;
@@ -316,11 +316,11 @@ public class CarLoanDetailsActivityMonthBean {
         private String updater;
         private String userId;
 
-        public CarLoanDetailsActivityBean.LoanOrderBean getBudgetOrder() {
+        public CarLoanDetailsActivityBean.BudgetOrderBean getBudgetOrder() {
             return budgetOrder;
         }
 
-        public void setBudgetOrder(CarLoanDetailsActivityBean.LoanOrderBean budgetOrder) {
+        public void setBudgetOrder(CarLoanDetailsActivityBean.BudgetOrderBean budgetOrder) {
             this.budgetOrder = budgetOrder;
         }
 

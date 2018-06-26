@@ -11,7 +11,7 @@ import android.view.View;
 
 import com.cdkj.baselibrary.R;
 import com.cdkj.baselibrary.appmanager.MyCdConfig;
-import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.databinding.ActivityBindBankCardBinding;
 import com.cdkj.baselibrary.dialog.UITipDialog;
@@ -77,8 +77,8 @@ public class AddBankCardActivity extends AbsBaseLoadActivity {
 
 
         //TODO 根据需求决定是否使用
-//        if (!TextUtils.isEmpty(SPUtilHelpr.getUserName())) {
-//            mBinding.editName.setText(SPUtilHelpr.getUserName());
+//        if (!TextUtils.isEmpty(SPUtilHelper.getUserName())) {
+//            mBinding.editName.setText(SPUtilHelper.getUserName());
 //            mBinding.editName.setEnabled(false);
 //        } else {
 //            mBinding.editName.setEnabled(true);
@@ -137,10 +137,10 @@ public class AddBankCardActivity extends AbsBaseLoadActivity {
         object.put("bankCode", mSelectCardId);
         object.put("currency", "CNY");
         object.put("type", "C");
-        object.put("token", SPUtilHelpr.getUserToken());
-        object.put("userId", SPUtilHelpr.getUserId());
-        object.put("updater", SPUtilHelpr.getUserId());
-        object.put("systemCode", MyCdConfig.SYSTEMCODE);
+        object.put("token", SPUtilHelper.getUserToken());
+        object.put("userId", SPUtilHelper.getUserId());
+        object.put("updater", SPUtilHelper.getUserId());
+        object.put("systemCode", MyCdConfig.SYSTEM_CODE);
         object.put("bindMobile", mBinding.editPhone.getText().toString().trim());
 
         Call call = RetrofitUtils.getBaseAPiService().bindBankCard("802010", StringUtils.getJsonToString(object));
@@ -153,7 +153,7 @@ public class AddBankCardActivity extends AbsBaseLoadActivity {
             @Override
             protected void onSuccess(Object data, String SucMessage) {
                 showToast("银行卡添加成功");
-                SPUtilHelpr.saveUserIsBindCard(true);
+                SPUtilHelper.saveUserIsBindCard(true);
                 finish();
             }
 
@@ -177,7 +177,7 @@ public class AddBankCardActivity extends AbsBaseLoadActivity {
      */
     private void getBankBrand() {
         Map object = new HashMap();
-        object.put("token", SPUtilHelpr.getUserToken());
+        object.put("token", SPUtilHelper.getUserToken());
         object.put("payType", "WAP");
         Call call = RetrofitUtils.getBaseAPiService().getBackModel("802116", StringUtils.getJsonToString(object));
 

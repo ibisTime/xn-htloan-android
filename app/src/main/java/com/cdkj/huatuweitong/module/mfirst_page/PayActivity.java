@@ -11,7 +11,7 @@ import android.view.View;
 import com.cdkj.baselibrary.activitys.PayPwdModifyActivity;
 import com.cdkj.baselibrary.api.BaseResponseModel;
 import com.cdkj.baselibrary.appmanager.CdRouteHelper;
-import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.dialog.InputDialog;
 import com.cdkj.baselibrary.dialog.UITipDialog;
@@ -179,7 +179,7 @@ public class PayActivity extends AbsBaseLoadActivity {
 
         Map<String, String> map = new HashMap<>();
 
-        map.put("userId", SPUtilHelpr.getUserId());
+        map.put("userId", SPUtilHelper.getUserId());
 
         Call<BaseResponseModel<IsSetPayPassWord>> call = RetrofitUtils.createApi(MyApiServer.class).isSetPayPassWord("805121", StringUtils.getJsonToString(map));
 
@@ -195,7 +195,7 @@ public class PayActivity extends AbsBaseLoadActivity {
                     showPwdDialog();
                 } else {
                     showDoubleWarnListen("您还未设置支付密码,请先设置支付密码", view -> {
-                        PayPwdModifyActivity.open(PayActivity.this, false, SPUtilHelpr.getUserPhoneNum());
+                        PayPwdModifyActivity.open(PayActivity.this, false, SPUtilHelper.getUserPhoneNum());
                     });
                 }
             }

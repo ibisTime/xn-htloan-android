@@ -9,13 +9,12 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cdkj.baselibrary.adapters.ViewPagerAdapter;
 import com.cdkj.baselibrary.appmanager.CdRouteHelper;
-import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.huatuweitong.databinding.ActivityMainBinding;
 import com.cdkj.huatuweitong.module.main_tab.FirstPageFragment;
 import com.cdkj.huatuweitong.module.main_tab.ReimbursementFragment;
 import com.cdkj.huatuweitong.module.main_tab.UserFragment;
-import com.cdkj.huatuweitong.module.mfirst_page.CarBrandActivity;
 
 import java.util.ArrayList;
 
@@ -72,7 +71,7 @@ public class MainActivity extends AbsBaseLoadActivity {
                     mBinding.pagerMain.setCurrentItem(0);
                     break;
                 case R.id.radio_main_tab_2:
-                    if (!SPUtilHelpr.isLogin(MainActivity.this, false)) {
+                    if (!SPUtilHelper.isLogin(MainActivity.this, false)) {
                         //没有登陆点击其他的  还然他选中第一个  不然界面会错乱
                         mBinding.layoutTab.radioMainTab1.setChecked(true);
                         return;
@@ -80,7 +79,7 @@ public class MainActivity extends AbsBaseLoadActivity {
                     mBinding.pagerMain.setCurrentItem(1);
                     break;
                 case R.id.radio_main_tab_3:
-                    if (!SPUtilHelpr.isLogin(MainActivity.this, false)) {
+                    if (!SPUtilHelper.isLogin(MainActivity.this, false)) {
                         mBinding.layoutTab.radioMainTab1.setChecked(true);
                         return;
                     }

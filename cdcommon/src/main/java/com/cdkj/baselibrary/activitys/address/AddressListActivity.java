@@ -12,7 +12,7 @@ import com.cdkj.baselibrary.R;
 import com.cdkj.baselibrary.adapters.AddressListAdapter;
 import com.cdkj.baselibrary.api.BaseApiServer;
 import com.cdkj.baselibrary.appmanager.MyCdConfig;
-import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.databinding.ActivityAddressListBinding;
 import com.cdkj.baselibrary.dialog.CommonDialog;
@@ -162,8 +162,8 @@ public class AddressListActivity extends AbsBaseLoadActivity {
 
         Map<String, String> map = new HashMap<>();
 
-        map.put("userId", SPUtilHelpr.getUserId());
-        map.put("token", SPUtilHelpr.getUserToken());
+        map.put("userId", SPUtilHelper.getUserId());
+        map.put("token", SPUtilHelper.getUserToken());
         Call call = RetrofitUtils.createApi(BaseApiServer.class).getAddress("805165", StringUtils.getJsonToString(map));
 
         addCall(call);
@@ -217,8 +217,8 @@ public class AddressListActivity extends AbsBaseLoadActivity {
         Map<String, String> object = new HashMap<>();
 
         object.put("code", addressModel.getCode());
-        object.put("token", SPUtilHelpr.getUserToken());
-        object.put("systemCode", MyCdConfig.SYSTEMCODE);
+        object.put("token", SPUtilHelper.getUserToken());
+        object.put("systemCode", MyCdConfig.SYSTEM_CODE);
         Call call = RetrofitUtils.getBaseAPiService().successRequest("805161", StringUtils.getJsonToString(object));
 
         addCall(call);
@@ -283,9 +283,9 @@ public class AddressListActivity extends AbsBaseLoadActivity {
         Map<String, String> map = new HashMap<>();
 
         map.put("code", code);
-        map.put("token", SPUtilHelpr.getUserToken());
-        map.put("userId", SPUtilHelpr.getUserId());
-        map.put("systemCode", MyCdConfig.SYSTEMCODE);
+        map.put("token", SPUtilHelper.getUserToken());
+        map.put("userId", SPUtilHelper.getUserId());
+        map.put("systemCode", MyCdConfig.SYSTEM_CODE);
         Call call = RetrofitUtils.createApi(BaseApiServer.class).setDefultAddress("805163", StringUtils.getJsonToString(map));
 
         addCall(call);

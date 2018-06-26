@@ -11,7 +11,7 @@ import com.cdkj.baselibrary.utils.SPUtils;
  * SPUtils 工具辅助类
  */
 
-public class SPUtilHelpr {
+public class SPUtilHelper {
 
     private static final String USERTOKEN = "user_toke";
     private static final String USERID = "user_id";
@@ -193,7 +193,7 @@ public class SPUtilHelpr {
      */
     public static boolean isLogin(Context context, boolean canopenmain) {
         if (TextUtils.isEmpty(getUserId())) {
-            SPUtilHelpr.logOutClear();
+            SPUtilHelper.logOutClear();
             // 路由跳转登录页面
             CdRouteHelper.openLogin(canopenmain);
             return false;

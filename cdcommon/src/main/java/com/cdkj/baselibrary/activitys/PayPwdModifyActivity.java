@@ -11,7 +11,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cdkj.baselibrary.R;
 import com.cdkj.baselibrary.appmanager.CdRouteHelper;
 import com.cdkj.baselibrary.appmanager.MyCdConfig;
-import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.databinding.ActivityModifyPayPasswordBinding;
 import com.cdkj.baselibrary.dialog.UITipDialog;
@@ -133,8 +133,8 @@ public class PayPwdModifyActivity extends AbsBaseLoadActivity implements SendCod
 
         Map<String, String> object = new HashMap<>();
 
-        object.put("userId", SPUtilHelpr.getUserId());
-        object.put("token", SPUtilHelpr.getUserToken());
+        object.put("userId", SPUtilHelper.getUserId());
+        object.put("token", SPUtilHelper.getUserToken());
         if (mIsSetPwd) {
             object.put("newTradePwd", mBinding.edtRepassword.getText().toString().trim());
         } else {
@@ -166,7 +166,7 @@ public class PayPwdModifyActivity extends AbsBaseLoadActivity implements SendCod
                     showToast(getString(R.string.set_succ));
 
                 }
-                SPUtilHelpr.saveisTradepwdFlag(true);
+                SPUtilHelper.saveisTradepwdFlag(true);
                 finish();
             }
 

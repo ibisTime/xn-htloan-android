@@ -41,9 +41,9 @@ public class RepaymentPlanActivityAdapter extends BaseQuickAdapter<CarLoanDetail
         int progress = (int) (item.getPayedAmount() / item.getRepayCapital() * 100);//已还比例
         pb.setProgress(progress);
 
-        MyTextUtils.setStatusType(helper.getView(R.id.tv_type), item.getStatus());
+        MyTextUtils.setStatusType004(helper.getView(R.id.tv_type), item.getCurNodeCode());
 
-        if (TextUtils.equals("0", item.getStatus())) {
+        if (TextUtils.equals("004_01", item.getCurNodeCode())) {
 
             if (item.getPayedAmount() == 0.0) {
                 helper.setText(R.id.tv_type, "未还");
@@ -52,10 +52,10 @@ public class RepaymentPlanActivityAdapter extends BaseQuickAdapter<CarLoanDetail
 
             }
 
-        } else if (TextUtils.equals("1", item.getStatus())) {
+        } else if (TextUtils.equals("004_02", item.getCurNodeCode())) {
             //完成
             pb.setProgress(100);
-        } else if (item.getStatus().equals("5")) {
+        } else if (item.getCurNodeCode().equals("004_06")) {
             //逾期
             helper.setText(R.id.tv_type, "逾期");
             helper.setTextColor(R.id.tv_type, Color.RED);

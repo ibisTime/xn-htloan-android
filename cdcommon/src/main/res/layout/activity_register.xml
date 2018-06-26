@@ -177,6 +177,41 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <CheckBox
+                android:id="@+id/cb_check_server"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:button="@null"
+                android:drawablePadding="5dp"
+                android:drawableLeft="@drawable/ra_terms_check"
+                android:text="我已阅读并同意"
+                android:textColor="@color/txt_gray" />
+
+
+            <TextView
+                android:id="@+id/tv_terms_server"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/terms_server"
+                android:textColor="@color/btn_blue" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+
 
         <Button
             android:id="@+id/btn_confirm"

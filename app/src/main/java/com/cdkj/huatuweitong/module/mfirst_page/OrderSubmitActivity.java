@@ -7,20 +7,17 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 
-import com.bumptech.glide.repackaged.com.google.common.base.Strings;
 import com.cdkj.baselibrary.activitys.BankCardListActivity;
 import com.cdkj.baselibrary.activitys.address.AddressListActivity;
 import com.cdkj.baselibrary.api.BaseResponseModel;
 import com.cdkj.baselibrary.appmanager.CdRouteHelper;
-import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.model.AddressModel;
 import com.cdkj.baselibrary.model.BankCardModel;
-import com.cdkj.baselibrary.model.CodeModel;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
-import com.cdkj.baselibrary.utils.BigDecimalUtils;
 import com.cdkj.baselibrary.utils.ImgUtils;
 import com.cdkj.baselibrary.utils.MoneyUtils;
 import com.cdkj.baselibrary.utils.StringUtils;
@@ -128,14 +125,14 @@ public class OrderSubmitActivity extends AbsBaseLoadActivity {
         });
         /*地址选择*/
         mBinding.linLayoutAddress.setOnClickListener(v -> {
-            if (!SPUtilHelpr.isLogin(this, false)) {
+            if (!SPUtilHelper.isLogin(this, false)) {
                 return;
             }
             AddressListActivity.open(this, true);
         });
 
         mBinding.linLayoutAddressSelect.setOnClickListener(v -> {
-            if (!SPUtilHelpr.isLogin(this, false)) {
+            if (!SPUtilHelper.isLogin(this, false)) {
                 return;
             }
             AddressListActivity.open(this, true);
@@ -155,7 +152,7 @@ public class OrderSubmitActivity extends AbsBaseLoadActivity {
 
         Map<String, String> map = new HashMap<>();
 
-        map.put("applyUser", SPUtilHelpr.getUserId());
+        map.put("applyUser", SPUtilHelper.getUserId());
 
         map.put("productSpecsCode", orderSubmitIntentBean.getSpecBean().getCode());
         map.put("quantity", "1");

@@ -11,7 +11,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cdkj.baselibrary.R;
 import com.cdkj.baselibrary.activitys.FindPwdActivity;
 import com.cdkj.baselibrary.appmanager.CdRouteHelper;
-import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.databinding.ActivityLoginBinding;
 import com.cdkj.baselibrary.dialog.UITipDialog;
@@ -74,47 +74,23 @@ public class LoginActivity extends AbsBaseLoadActivity implements LoginInterface
             canOpenMain = getIntent().getBooleanExtra(DATASIGN, true);
         }
 
-        //回显选中的  服务条款
-        mBinding.cbCheckServer.setChecked(SPUtilHelpr.getCheckServer());
 
-        mBinding.tvTermsServer.setOnClickListener(v -> {
-            CdRouteHelper.openWebViewActivityForkey("服务条款", "reg_protocol");
-        })
-        ;
+
 
         //登录
-        mBinding.btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mBinding.cbCheckServer.isChecked()) {
+        mBinding.btnLogin.setOnClickListener(view -> mPresenter.login(mBinding.editUsername.getText().toString(), mBinding.editUserpass.getText().toString(), LoginActivity.this));
 
-                    mPresenter.login(mBinding.editUsername.getText().toString(), mBinding.editUserpass.getText().toString(), LoginActivity.this);
-                } else {
-                    UITipDialog.showFall(LoginActivity.this, getString(R.string.check_sercer));
-
-
-                }
-
-            }
-        });
-
-        mBinding.tvFindPwd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FindPwdActivity.open(LoginActivity.this, "");
-            }
-        });
+        mBinding.tvFindPwd.setOnClickListener(view -> FindPwdActivity.open(LoginActivity.this, ""));
 
     }
 
     @Override
     public void LoginSuccess(UserLoginModel user, String msg) {
 
-        SPUtilHelpr.saveUserId(user.getUserId());
-        SPUtilHelpr.saveUserToken(user.getToken());
-        SPUtilHelpr.saveUserPhoneNum(mBinding.editUsername.getText().toString());
-        SPUtilHelpr.saveUserPsw(mBinding.editUserpass.getText().toString());
-        SPUtilHelpr.saveCheckServer(true);
+        SPUtilHelper.saveUserId(user.getUserId());
+        SPUtilHelper.saveUserToken(user.getToken());
+        SPUtilHelper.saveUserPhoneNum(mBinding.editUsername.getText().toString());
+        SPUtilHelper.saveUserPsw(mBinding.editUserpass.getText().toString());
         if (canOpenMain) {
             CdRouteHelper.openMain();
         }

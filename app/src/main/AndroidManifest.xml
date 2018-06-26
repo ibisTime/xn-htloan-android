@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cdkj.huatuweitong">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:name=".BaseApplication"
         android:allowBackup="true"
@@ -66,6 +70,7 @@
         <activity android:name=".module.recharge.PutForwardActivity"></activity>
         <activity android:name=".module.user.account.WithdrawActivity" />
         <activity android:name=".module.mfirst_page.RecommendProductListActivity" />
+        <activity android:name=".module.user.interview.RoomActivity" />
 
     </application>
 

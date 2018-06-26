@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 
-import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
@@ -123,7 +123,7 @@ public class AdvanceDetailsActivity extends AbsBaseLoadActivity {
         showLoadingDialog();
         Map<String, String> map = new HashMap<>();
         map.put("code", code);
-        map.put("updater", SPUtilHelpr.getUserId());
+        map.put("updater", SPUtilHelper.getUserId());
         Call call = RetrofitUtils.createApi(MyApiServer.class).getAdvanceDetailsActivityBean("630512", StringUtils.getJsonToString(map));
         //去请求网络发起提前还款请求
         call.enqueue(new BaseResponseModelCallBack<AdvanceDetailsActivityBean>(AdvanceDetailsActivity.this) {

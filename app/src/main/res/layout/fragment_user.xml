@@ -169,6 +169,15 @@
                     app:txt_left="信用报告" />
 
                 <com.cdkj.baselibrary.views.RowInfoLayout
+                    android:id="@+id/ril_interview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:img_left="@drawable/message"
+                    app:img_right="@drawable/more_right"
+                    app:txt_left="开始面签" />
+
+                <com.cdkj.baselibrary.views.RowInfoLayout
                     android:id="@+id/ril_message"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

@@ -11,7 +11,7 @@ import android.view.View;
 import com.cdkj.baselibrary.R;
 import com.cdkj.baselibrary.api.BaseApiServer;
 import com.cdkj.baselibrary.appmanager.MyCdConfig;
-import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.databinding.ActivityAddAddressBinding;
 import com.cdkj.baselibrary.dialog.UITipDialog;
@@ -228,15 +228,15 @@ public class AddAddressActivity extends AbsBaseLoadActivity {
         } else {
             object.put("isDefault", "0");
         }
-        object.put("userId", SPUtilHelpr.getUserId());
+        object.put("userId", SPUtilHelper.getUserId());
         object.put("addressee", mBinding.edtName.getText().toString().trim());
         object.put("mobile", mBinding.edtPhone.getText().toString().trim());
         object.put("province", mProvince);
         object.put("city", mCity);
         object.put("area", mDistrict);
         object.put("detail", mBinding.edtDetailed.getText().toString().trim());
-        object.put("token", SPUtilHelpr.getUserToken());
-        object.put("systemCode", MyCdConfig.SYSTEMCODE);
+        object.put("token", SPUtilHelper.getUserToken());
+        object.put("systemCode", MyCdConfig.SYSTEM_CODE);
 
         Call call = RetrofitUtils.createApi(BaseApiServer.class).AddAddress("805160", StringUtils.getJsonToString(object));
 
@@ -276,15 +276,15 @@ public class AddAddressActivity extends AbsBaseLoadActivity {
             object.put("isDefault", "0");
         }
         object.put("code", mAddressData.getCode());
-        object.put("userId", SPUtilHelpr.getUserId());
+        object.put("userId", SPUtilHelper.getUserId());
         object.put("addressee", mBinding.edtName.getText().toString().trim());
         object.put("mobile", mBinding.edtPhone.getText().toString().trim());
         object.put("province", mProvince);
         object.put("city", mCity);
         object.put("area", mDistrict);
         object.put("detail", mBinding.edtDetailed.getText().toString().trim());
-        object.put("token", SPUtilHelpr.getUserToken());
-        object.put("systemCode", MyCdConfig.SYSTEMCODE);
+        object.put("token", SPUtilHelper.getUserToken());
+        object.put("systemCode", MyCdConfig.SYSTEM_CODE);
         Call call = RetrofitUtils.getBaseAPiService().successRequest("805162", StringUtils.getJsonToString(object));
 
         addCall(call);

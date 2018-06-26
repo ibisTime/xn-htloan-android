@@ -7,11 +7,10 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.cdkj.baselibrary.api.ResponseInListModel;
-import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsRefreshListFragment;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
@@ -21,7 +20,6 @@ import com.cdkj.huatuweitong.adapters.MyCarLoanFragmentAdapter;
 import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.MyCarLoanFragmentBean;
 import com.cdkj.huatuweitong.module.mfirst_page.CarLoanCalculatorActivity;
-import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import java.util.HashMap;
 import java.util.List;
@@ -68,11 +66,8 @@ public class MyCarLoanFragment extends AbsRefreshListFragment<MyCarLoanFragmentB
         if (adapter==null)
         adapter = new MyCarLoanFragmentAdapter(listData);
 
-        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter madapter, View view, int position) {
-                CarLoanCalculatorActivity.open(mActivity, adapter.getItem(position).getCode());
-            }
+        adapter.setOnItemClickListener((mAdapter, view, position) -> {
+            CarLoanCalculatorActivity.open(mActivity, adapter.getItem(position).getCode());
         });
         return adapter;
     }
@@ -82,14 +77,12 @@ public class MyCarLoanFragment extends AbsRefreshListFragment<MyCarLoanFragmentB
         initDatas(limit, pageindex, isShowDialog);
     }
 
-
-
     private void initDatas(int limit, int start, boolean isShowDialo) {
         Map<String, String> map = new HashMap<>();
         map.put("limit", limit + "");
         map.put("start", start + "");
         map.put("status", status);
-        map.put("userId", SPUtilHelpr.getUserId());
+        map.put("userId", SPUtilHelper.getUserId());
 
         Call call = RetrofitUtils.createApi(MyApiServer.class).getMyCarLoanFrgmentData("630435", StringUtils.getJsonToString(map));
 //        addCall(call);

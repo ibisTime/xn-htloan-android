@@ -1,7 +1,5 @@
 package com.cdkj.baselibrary.activitys;
 
-import android.content.Context;
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,7 +9,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.cdkj.baselibrary.R;
 import com.cdkj.baselibrary.appmanager.CdRouteHelper;
 import com.cdkj.baselibrary.appmanager.MyCdConfig;
-import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.databinding.ActivityModifyPhoneBinding;
 import com.cdkj.baselibrary.dialog.UITipDialog;
@@ -96,10 +94,10 @@ public class UpdatePhoneActivity extends AbsBaseLoadActivity implements SendCode
     private void updatePhone() {
 
         Map<String, String> map = new HashMap<>();
-        map.put("userId", SPUtilHelpr.getUserId());
+        map.put("userId", SPUtilHelper.getUserId());
         map.put("newMobile", mBinding.edtPhoneNew.getText().toString());
         map.put("smsCaptcha", mBinding.edtCodeNew.getText().toString());
-        map.put("token", SPUtilHelpr.getUserToken());
+        map.put("token", SPUtilHelper.getUserToken());
 
         Call call = RetrofitUtils.getBaseAPiService().successRequest("805061", StringUtils.getJsonToString(map));
 
@@ -117,7 +115,7 @@ public class UpdatePhoneActivity extends AbsBaseLoadActivity implements SendCode
                     eventBusModel.setPhoneNumber(mBinding.edtPhoneNew.getText().toString());
                     EventBus.getDefault().post(eventBusModel);
 
-                    SPUtilHelpr.saveUserPhoneNum(mBinding.edtPhoneNew.getText().toString());
+                    SPUtilHelper.saveUserPhoneNum(mBinding.edtPhoneNew.getText().toString());
                     finish();
                 }
             }

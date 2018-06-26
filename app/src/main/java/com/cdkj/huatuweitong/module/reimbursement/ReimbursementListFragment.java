@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.cdkj.baselibrary.api.BaseResponseModel;
 import com.cdkj.baselibrary.api.ResponseInListModel;
-import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsRefreshListFragment;
 import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
@@ -118,7 +118,7 @@ public class ReimbursementListFragment extends AbsRefreshListFragment {
 
     @Override
     public void getListRequest(int pageindex, int limit, boolean isShowDialog) {
-        if (!SPUtilHelpr.isLoginNoStart()) {
+        if (!SPUtilHelper.isLoginNoStart()) {
             return;
         }
 
@@ -140,7 +140,7 @@ public class ReimbursementListFragment extends AbsRefreshListFragment {
         Map<String, String> map = new HashMap<>();
         map.put("limit", limit + "");
         map.put("start", pageindex + "");
-        map.put("userId", SPUtilHelpr.getUserId());
+        map.put("userId", SPUtilHelper.getUserId());
 
         if (isShowDialog) {
             showLoadingDialog();
@@ -183,7 +183,7 @@ public class ReimbursementListFragment extends AbsRefreshListFragment {
 
         map.put("limit", limit + "");
         map.put("start", pageindex + "");
-        map.put("userId", SPUtilHelpr.getUserId());
+        map.put("userId", SPUtilHelper.getUserId());
         if (isShowDialog) {
             showLoadingDialog();
         }

@@ -7,11 +7,10 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 
 import com.cdkj.baselibrary.appmanager.MyCdConfig;
-import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.model.IntroductionInfoModel;
@@ -100,7 +99,6 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
     public void afterCreate(Bundle savedInstanceState) {
         mBaseBinding.titleView.setMidTitle(getString(R.string.car_calculator_title));
 
-        Log.i("pppppp", "afterCreate:我的token " + SPUtilHelpr.getUserToken());
         if (getIntent() != null) {
             type = getIntent().getIntExtra("type", 0);
             if (type == 1) {
@@ -221,7 +219,7 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
 
     private void sendRegist0() {
 
-        if (!SPUtilHelpr.isLogin(this, false)) {
+        if (!SPUtilHelper.isLogin(this, false)) {
             return;
         }
         Map<String, Object> map = new HashMap();
@@ -232,20 +230,19 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
         map.put("carCode", carModelActivityBean.getCode());//车型编号
         map.put("carName", carModelActivityBean.getName());//车型名
         String format = DateUtil.format(new Date());
-        Log.i("pppppp", "申请时间" + format);
         map.put("createDatetime", format);
-        map.put("periods", String.valueOf(repayments));
+        map.put("periods", String.valueOf(repayments * 12));
 //        long price = (long) salePrice.doubleValue();
 
         map.put("price", salePrice.longValue());
-        map.put("remark", "我是备注");
+        map.put("remark", "");
         map.put("saleDesc", "1");
 
         long shoufu = (long) Double.parseDouble(mBinding.tvDowanPayments.getText().toString()) * 1000;//将金额变成厘传递
         map.put("sfAmount", shoufu + "");
         map.put("sfRate", rate + "");
-        map.put("userId", SPUtilHelpr.getUserId());
-        map.put("userMobile", SPUtilHelpr.getUserPhoneNum());
+        map.put("userId", SPUtilHelper.getUserId());
+        map.put("userMobile", SPUtilHelper.getUserPhoneNum());
 
         subMitRequestOrder(map);
     }
@@ -253,7 +250,7 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
 
     private void sendRegist1() {
 
-        if (!SPUtilHelpr.isLogin(this, false)) {
+        if (!SPUtilHelper.isLogin(this, false)) {
             return;
         }
 
@@ -263,22 +260,33 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
         map.put("carCode", currentdata.getCode());
         map.put("carName", currentdata.getName());
         String format = DateUtil.format(new Date());
-        Log.i("pppppp", "afterCreate: " + format);
         map.put("createDatetime", format);
-        map.put("periods", String.valueOf(repayments));
+        map.put("periods", String.valueOf(repayments * 12));
         long price = (long) salePrice.doubleValue();
         map.put("price", price);
-        map.put("remark", "我是备注");
-        map.put("saleDesc", "1");
+        map.put("remark", "");
+        map.put("saleDesc", createSaleDesc());
         map.put("seriesCode", currentdata.getCode());
         map.put("seriesName", currentdata.getSeriesName());
         long shoufu = (long) Double.parseDouble(mBinding.tvDowanPayments.getText().toString()) * 1000;//将金额变成厘传递
         map.put("sfAmount", shoufu + "");
         map.put("sfRate", downPayments + "");
-        map.put("userId", SPUtilHelpr.getUserId());
-        map.put("userMobile", SPUtilHelpr.getUserPhoneNum());
+        map.put("userId", SPUtilHelper.getUserId());
+        map.put("userMobile", SPUtilHelper.getUserPhoneNum());
 
         subMitRequestOrder(map);
+    }
+
+    /**
+     *
+     * @return
+     */
+    private String createSaleDesc(){
+        String saleDesc = "首付" + mBinding.tvDowanPayments.getText().toString() + "元,"
+                + "月供" + mBinding.tvMonthlySupply.getText().toString() + "元,"
+                + "多花" + mBinding.tvManyMoney.getText().toString() + "元";
+
+        return saleDesc;
     }
 
     private void subMitRequestOrder(Map map) {
@@ -399,8 +407,8 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
 
         Map<String, String> map = new HashMap<>();
         map.put("ckey", "car_periods");
-        map.put("systemCode", MyCdConfig.SYSTEMCODE);
-        map.put("companyCode", MyCdConfig.COMPANYCODE);
+        map.put("systemCode", MyCdConfig.SYSTEM_CODE);
+        map.put("companyCode", MyCdConfig.COMPANY_CODE);
 
         Call call = RetrofitUtils.getBaseAPiService().getKeySystemInfo("805917", StringUtils.getJsonToString(map));
 

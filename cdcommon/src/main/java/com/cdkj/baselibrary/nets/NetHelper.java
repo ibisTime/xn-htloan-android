@@ -5,7 +5,7 @@ import android.content.Context;
 import com.cdkj.baselibrary.CdApplication;
 import com.cdkj.baselibrary.R;
 import com.cdkj.baselibrary.appmanager.CdRouteHelper;
-import com.cdkj.baselibrary.appmanager.SPUtilHelpr;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.utils.LogUtil;
 import com.cdkj.baselibrary.utils.ToastUtil;
 
@@ -117,7 +117,7 @@ public class NetHelper {
      * @param errorMessage
      */
     public static void onLoginFailure(Context context, String errorMessage) {
-        SPUtilHelpr.logOutClear();
+        SPUtilHelper.logOutClear();
         if (context != null) {
             ToastUtil.show(context, errorMessage);
         }
