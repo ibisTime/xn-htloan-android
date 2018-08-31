@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
-                    android:text="奥迪A4L 2015款 自动标准型"
+                    tools:text="奥迪A4L 2015款 自动标准型"
                     android:textColor="@color/break_text"
                     android:textSize="18sp" />
 
@@ -71,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
-                    android:text="¥22.58万"
+                    tools:text="¥22.58万"
                     android:textColor="@color/break_text"
                     android:textSize="18sp" />
 
@@ -86,14 +86,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
-                        android:text="经销商参考价¥23.90万" />
+                        tools:text="经销商参考价¥23.90万" />
 
                     <TextView
                         android:id="@+id/tv_direction_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
-                        android:text="经厂商指导价20.89万" />
+                        tools:text="经厂商指导价20.89万" />
                 </LinearLayout>
 
                 <View

@@ -1,12 +1,12 @@
 <component name="libraryTable">
   <library name="com.scwang.smartrefresh:SmartRefreshLayout-1.0.3">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/SmartRefreshLayout-1.0.3.aar/f1bee0ddd173049b3747ff45ace32b4d/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/SmartRefreshLayout-1.0.3.aar/f1bee0ddd173049b3747ff45ace32b4d/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/SmartRefreshLayout-1.0.3.aar/59565069072cbe4aa3df6651b73a484f/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/SmartRefreshLayout-1.0.3.aar/59565069072cbe4aa3df6651b73a484f/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.scwang.smartrefresh/SmartRefreshLayout/1.0.3/64ae329ba1cfb419b30f5ea7239719856e1ace78/SmartRefreshLayout-1.0.3-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.scwang.smartrefresh/SmartRefreshLayout/1.0.3/e6881571910a1d049523d5a5b50b61087d53d882/SmartRefreshLayout-1.0.3-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

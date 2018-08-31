@@ -38,6 +38,12 @@ android {
     dataBinding {
         enabled true
     }
+    dexOptions {
+        dexInProcess true
+        preDexLibraries true
+        javaMaxHeapSize "6g"//越大越好
+        incremental true
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

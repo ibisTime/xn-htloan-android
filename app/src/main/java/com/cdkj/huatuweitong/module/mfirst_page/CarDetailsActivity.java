@@ -15,6 +15,7 @@ import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
+import com.cdkj.baselibrary.utils.DisplayHelper;
 import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.api.MyApiServer;
@@ -94,6 +95,9 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
             @Override
             protected void onSuccess(CarDetailsBean data, String SucMessage) {
                 currentData = data;
+                mBinding.web.getSettings().setDefaultFontSize(DisplayHelper.dpToPx(14));
+
+
                 mBinding.web.loadData("<style>\n" +           //设置图片自适应
                         "img{\n" +
                         " max-width:100%;\n" +
@@ -102,7 +106,7 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
                         "</style>" + data.getDescription(), "text/html; charset=UTF-8", "utf-8");
 
                 //这看效果图显示的好像是    品牌名字/名字/车系名字
-                mBinding.tvCarName.setText(data.getBrandName()+data.getName()+data.getSeriesName());
+                mBinding.tvCarName.setText(data.getBrandName() + data.getName() + data.getSeriesName());
 
                 String price = com.cdkj.baselibrary.utils.MoneyUtils.getShowPriceSign(data.getSfAmount());
                 String referencePrice = com.cdkj.baselibrary.utils.MoneyUtils.getShowPriceSign(data.getOriginalPrice());

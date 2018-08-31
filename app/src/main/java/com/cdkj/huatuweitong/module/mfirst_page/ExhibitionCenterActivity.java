@@ -34,15 +34,15 @@ import retrofit2.Call;
  * 展销中心
  */
 public class ExhibitionCenterActivity extends AbsRefreshListActivity<ResponseInListModel<ExhibitionCenterBean>> {
-    private String brandCode;
+    private String seriesCode;
     private ExhibitionCenterAdapter adapter;
     private EditText etSearch;
 
-    public static void open(Context context, String brandCode) {
+    public static void open(Context context, String seriesCode) {
         if (context != null) {
             Intent intent = new Intent(context, ExhibitionCenterActivity.class);
             //品牌号
-            intent.putExtra("brandCode", brandCode);
+            intent.putExtra("seriesCode", seriesCode);
             context.startActivity(intent);
         }
 
@@ -91,7 +91,7 @@ public class ExhibitionCenterActivity extends AbsRefreshListActivity<ResponseInL
         mBaseBinding.titleView.setMidTitle(getString(R.string.ExhibitionCenter));
 
         if (getIntent() != null) {
-            brandCode = getIntent().getStringExtra("brandCode");
+            seriesCode = getIntent().getStringExtra("brandCode");
         }
         initRefreshHelper(10);
         mRefreshHelper.onDefaluteMRefresh(true);
@@ -105,14 +105,15 @@ public class ExhibitionCenterActivity extends AbsRefreshListActivity<ResponseInL
         }
 
         Map<String, String> map = new HashMap<>();
-        map.put("brandCode", brandCode);
+//        map.put("brandCode", brandCode);
         map.put("location", "0");
         map.put("limit", limit + "");
         map.put("start", pageindex + "");
         map.put("status", "1");//已上架
+        map.put("seriesCode", seriesCode);//已上架
 
-            //如果是检索的时候需要传一个  name  去检索  检索以后相当于重新获取数据  所以从第一页开始加载
-            map.put("name", etSearch.getText().toString());
+        //如果是检索的时候需要传一个  name  去检索  检索以后相当于重新获取数据  所以从第一页开始加载
+        map.put("name", etSearch.getText().toString());
 
         Call call = RetrofitUtils.createApi(MyApiServer.class).getExhibitionCenter("630425", StringUtils.getJsonToString(map));
 

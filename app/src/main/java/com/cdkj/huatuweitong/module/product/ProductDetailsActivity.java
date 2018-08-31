@@ -227,6 +227,7 @@ public class ProductDetailsActivity extends AbsBaseLoadActivity {
                 tv2.setPadding(15, 2, 15, 2);
                 tv2.setTag(i);
                 tv2.setOnClickListener(v -> {
+                    ImgUtils.loadQiniuImg(this, StringUtils.getAsPicListIndexOne(productSpecsListBean.getPic()), dialogBinding.ivImg);
                     specViewStateChange((Integer) v.getTag());
                 });
 
@@ -254,6 +255,8 @@ public class ProductDetailsActivity extends AbsBaseLoadActivity {
         int i = 0;
         for (TextView textView : specViewList) {
             if (position == i) {
+
+
                 textView.setBackgroundResource(R.drawable.product_spce_bg_blue);
                 textView.setTextColor(ContextCompat.getColor(ProductDetailsActivity.this, R.color.white));
                 specsListBean = recommendProductBean.getProductSpecsList().get(i);

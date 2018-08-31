@@ -25,6 +25,7 @@ import com.cdkj.huatuweitong.bean.MyAccountMoneyDataBean;
 import com.cdkj.huatuweitong.bean.MyCarLoanFragmentBean;
 import com.cdkj.huatuweitong.bean.MyCurrentActivityBean;
 import com.cdkj.huatuweitong.bean.MyMessageAFBean;
+import com.cdkj.huatuweitong.bean.NodeModel;
 import com.cdkj.huatuweitong.bean.OrderBean;
 import com.cdkj.huatuweitong.bean.RecommendProductBean;
 import com.cdkj.huatuweitong.bean.ReimbursementRepaymentBean;
@@ -430,5 +431,17 @@ public interface MyApiServer {
     @FormUrlEncoded
     @POST("api")
     Call<BaseResponseModel<MsgListModel>> getMsgList(@Field("code") String code, @Field("json") String json);
+
+
+    /**
+     * 获取节列表
+     *
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseListModel<NodeModel>> getNodeDataList(@Field("code") String code, @Field("json") String json);
 
 }

@@ -82,7 +82,7 @@ public class AdvanceDetailsActivity extends AbsBaseLoadActivity {
     private void initParameter() {
         showLoadingDialog();
         Map<String, String> map = new HashMap<>();
-        map.put("key", "repayment_fee");
+        map.put("key", "tq_service");
         Call call = RetrofitUtils.createApi(MyApiServer.class).getSystemEarlyRepayment("630047", StringUtils.getJsonToString(map));
         addCall(call);
         showLoadingDialog();
@@ -90,11 +90,12 @@ public class AdvanceDetailsActivity extends AbsBaseLoadActivity {
             @Override
             protected void onSuccess(SystemEarlyRepaymentBean data, String SucMessage) {
 
-                String showPriceDouble = MoneyUtils.showPriceDouble(Double.parseDouble(data.getCvalue()));
+                //提前还款服务费不用除以1000
+//                String showPriceDouble = MoneyUtils.showPriceDouble(Double.parseDouble(data.getCvalue()));
                 String serverPriceDouble = MoneyUtils.showPriceDouble(Double.parseDouble(restAmount));
                 toolMoney = Double.parseDouble(data.getCvalue()) + Double.parseDouble(restAmount);
                 toolMoneyPriceDouble = MoneyUtils.showPriceDouble(toolMoney);
-                mBinding.tvServerMoney.setText(showPriceDouble);
+                mBinding.tvServerMoney.setText(data.getCvalue());
                 mBinding.tvLoadMoney.setText(serverPriceDouble);
                 mBinding.tvToolMoney.setText(toolMoneyPriceDouble);
 

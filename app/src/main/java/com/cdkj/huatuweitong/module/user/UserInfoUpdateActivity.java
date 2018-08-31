@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.cdkj.baselibrary.activitys.BankCardListActivity;
@@ -155,13 +154,13 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
             new QiNiuHelper(this).uploadSinglePic(new QiNiuHelper.QiNiuCallBack() {
                 @Override
                 public void onSuccess(String key) {
-                    Log.i("pppppp", "onSuccess: 七牛返回地址:" + key);
+//                    Log.i("pppppp", "onSuccess: 七牛返回地址:" + key);
                     updateUserPhoto(key);
                 }
 
                 @Override
                 public void onFal(String info) {
-                    Log.i("pppppp", "onSuccess: 七牛返回失败了:" + info);
+//                    Log.i("pppppp", "onSuccess: 七牛返回失败了:" + info);
                     UITipDialog.showFall(UserInfoUpdateActivity.this, "头像修改失败");
                     disMissLoading();
                 }

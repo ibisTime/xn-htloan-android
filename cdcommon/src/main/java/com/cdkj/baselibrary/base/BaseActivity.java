@@ -51,7 +51,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
-    protected void addCall(Call call) {
+    public void addCall(Call call) {
         mCallList.add(call);
     }
 

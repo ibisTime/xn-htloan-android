@@ -33,7 +33,7 @@ public class RecommendProductAdapter extends BaseQuickAdapter<RecommendProductBe
     protected void convert(BaseViewHolder helper, RecommendProductBean item) {
         if (item == null) return;
 
-        ImgUtils.loadQiniuImg(obj, StringUtils.getAsPicListIndexOne(item.getAdvPic()), helper.getView(R.id.img_product));
+        ImgUtils.loadQiniuImg(obj, StringUtils.getAsPicListIndexOne(item.getPic()), helper.getView(R.id.img_product));
 
         helper.setGone(R.id.tv_state, !TextUtils.isEmpty(item.getSaleStatus()));
         helper.setText(R.id.tv_state, item.getSaleStatus());

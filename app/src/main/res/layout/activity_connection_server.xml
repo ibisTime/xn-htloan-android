@@ -25,10 +25,11 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/tv_telephone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:text="400-3888-666"
+                tools:text="400-3888-666"
                 android:textColor="@color/blue"
                 android:textSize="24sp" />
 

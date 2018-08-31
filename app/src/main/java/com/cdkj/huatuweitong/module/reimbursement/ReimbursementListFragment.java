@@ -64,7 +64,35 @@ public class ReimbursementListFragment extends AbsRefreshListFragment {
         }
         initRefreshHelper(10);
         mRefreshHelper.onDefaluteMRefresh(true);
+
+
     }
+
+//    /**
+//     * 获取节点列表
+//     * @param listData
+//     */
+//    private void getNodeDataList(List listData) {
+//        Map<String, String> map = new HashMap<>();
+//        Call callNode = RetrofitUtils.createApi(MyApiServer.class).getNodeDataList("630147", "{}");
+//
+//        showLoadingDialog();
+//        callNode.enqueue(new BaseResponseListCallBack<NodeModel>(mActivity) {
+//
+//            @Override
+//            protected void onSuccess(List<NodeModel> data, String SucMessage) {
+//                if (data == null || data.size() == 0)
+//                    return;
+//
+//                nodeModellist = data;
+//            }
+//
+//            @Override
+//            protected void onFinish() {
+//                disMissLoading();
+//            }
+//        });
+//    }
 
 
     @Override
@@ -105,14 +133,12 @@ public class ReimbursementListFragment extends AbsRefreshListFragment {
      */
     private ReimbursementListAdapter getReimbursementListAdapter(List listData) {
 
-        ReimbursementListAdapter adapter = new ReimbursementListAdapter(listData, this);
+        ReimbursementListAdapter adapter = new ReimbursementListAdapter(listData);
 
-        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter aadapter, View view, int position) {
-                CarLoanDetailsActivity.open(getContext(), adapter.getItem(position).getCode(), type);
-            }
+        adapter.setOnItemClickListener((aadapter, view, position) -> {
+            CarLoanDetailsActivity.open(getContext(), adapter.getItem(position).getCode(), type);
         });
+
         return adapter;
     }
 

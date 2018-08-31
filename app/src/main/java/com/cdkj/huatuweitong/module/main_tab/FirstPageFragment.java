@@ -143,7 +143,7 @@ public class FirstPageFragment extends BaseLazyFragment {
         map.put("limit", limit + "");
         map.put("start", pageindex + "");
         map.put("status", "3");
-        map.put("location", "0");
+        map.put("location", "1");
 
         Call<BaseResponseModel<ResponseInListModel<RecommendProductBean>>> call = RetrofitUtils.createApi(MyApiServer.class).getRecommentdProductList("808025", StringUtils.getJsonToString(map));
 
@@ -208,7 +208,7 @@ public class FirstPageFragment extends BaseLazyFragment {
      */
     private void initCarRecommendBeanData() {
         Map<String, String> map = new HashMap<>();
-        map.put("location", "0");
+        map.put("location", "1");
         map.put("status", "1");
         Call call = RetrofitUtils.createApi(MyApiServer.class).getFirstPageCarRecommendCar("630416", StringUtils.getJsonToString(map));
 
@@ -269,7 +269,6 @@ public class FirstPageFragment extends BaseLazyFragment {
 
         mBinding.recyclerViewRecommendProduct.addItemDecoration(new DividerItemDecoration(mActivity, LinearLayoutManager.VERTICAL));
 
-
         mBinding.recyclerViewRecommendProduct.setAdapter(recommendProductAdapter);
 
         recommendProductAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
@@ -296,16 +295,9 @@ public class FirstPageFragment extends BaseLazyFragment {
 
         mBinding.recyclerViewRecommendCar.setAdapter(recommendCarAdapter);
 
-        recommendCarAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-
-                ExhibitionCenterActivity.open(getContext(), carData.get(position).getBrandCode());
-
-            }
+        recommendCarAdapter.setOnItemClickListener((adapter, view, position) -> {
+            ExhibitionCenterActivity.open(getContext(), carData.get(position).getCode());
         });
-
-
     }
 
 
@@ -321,16 +313,13 @@ public class FirstPageFragment extends BaseLazyFragment {
                 if (firstPageBanner == null || TextUtils.isEmpty(firstPageBanner.getUrl())) {
                     return;
                 }
-                if (firstPageBanner.getUrl()!=null){
-                    if (firstPageBanner.getUrl().indexOf("http") != -1){
+                if (firstPageBanner.getUrl() != null) {
+                    if (firstPageBanner.getUrl().indexOf("http") != -1) {
                         CdRouteHelper.openWebViewActivityForUrl(firstPageBanner.getName(), firstPageBanner.getUrl());
                     }
                 }
             }
         });
-
-
-
     }
 
 

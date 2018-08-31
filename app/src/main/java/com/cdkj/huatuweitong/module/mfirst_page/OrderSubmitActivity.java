@@ -9,13 +9,17 @@ import android.view.View;
 
 import com.cdkj.baselibrary.activitys.BankCardListActivity;
 import com.cdkj.baselibrary.activitys.address.AddressListActivity;
+import com.cdkj.baselibrary.api.BaseApiServer;
 import com.cdkj.baselibrary.api.BaseResponseModel;
 import com.cdkj.baselibrary.appmanager.CdRouteHelper;
+import com.cdkj.baselibrary.appmanager.MyCdConfig;
 import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.model.AddressModel;
 import com.cdkj.baselibrary.model.BankCardModel;
+import com.cdkj.baselibrary.model.MyBankCardListMode;
+import com.cdkj.baselibrary.nets.BaseResponseListCallBack;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
 import com.cdkj.baselibrary.utils.ImgUtils;
@@ -28,6 +32,7 @@ import com.cdkj.huatuweitong.databinding.ActivityOrderSubmitBinding;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import retrofit2.Call;
@@ -77,6 +82,79 @@ public class OrderSubmitActivity extends AbsBaseLoadActivity {
         setShowData(orderSubmitIntentBean);
 
         initOclick();
+
+
+        getDefaultAddress();
+        getDefaultBankCard();
+    }
+
+    /**
+     * 获取默认银行卡
+     */
+    private void getDefaultBankCard() {
+
+        Map<String, String> object = new HashMap<>();
+
+        object.put("systemCode", MyCdConfig.SYSTEM_CODE);
+        object.put("token", SPUtilHelper.getUserToken());
+        object.put("userId", SPUtilHelper.getUserId());
+        object.put("start", "1");
+        object.put("limit", "1");
+
+        Call<BaseResponseModel<MyBankCardListMode>> call = RetrofitUtils.getBaseAPiService().getCardListData("802015", StringUtils.getJsonToString(object));
+
+        addCall(call);
+        showLoadingDialog();
+        call.enqueue(new BaseResponseModelCallBack<MyBankCardListMode>(this) {
+            @Override
+            protected void onSuccess(MyBankCardListMode data, String SucMessage) {
+                if (data == null || data.getList() == null || data.getList().size() == 0) {
+                    return;
+                }
+                setBankCard(data.getList().get(0));
+            }
+
+            @Override
+            protected void onFinish() {
+                disMissLoading();
+            }
+        });
+
+
+    }
+
+    /**
+     * 获取默认地址
+     */
+    private void getDefaultAddress() {
+
+        Map<String, String> map = new HashMap<>();
+
+        map.put("userId", SPUtilHelper.getUserId());
+        map.put("token", SPUtilHelper.getUserToken());
+        map.put("isDefault", "1");
+        Call call = RetrofitUtils.createApi(BaseApiServer.class).getAddress("805165", StringUtils.getJsonToString(map));
+
+        addCall(call);
+
+        showLoadingDialog();
+
+        call.enqueue(new BaseResponseListCallBack<AddressModel>(this) {
+
+            @Override
+            protected void onSuccess(List<AddressModel> data, String SucMessage) {
+                if (data == null || data.size() == 0) {
+
+                    return;
+                }
+                setAddress(data.get(0));
+            }
+
+            @Override
+            protected void onFinish() {
+                disMissLoading();
+            }
+        });
     }
 
     /**
@@ -171,8 +249,8 @@ public class OrderSubmitActivity extends AbsBaseLoadActivity {
 
             @Override
             protected void onSuccess(String data, String SucMessage) {
-                UITipDialog.showSuccess(OrderSubmitActivity.this,"下单成功",dialog -> {
-                    PayActivity.open(OrderSubmitActivity.this, data, mBinding.tvNeedPay.getText().toString(),false);
+                UITipDialog.showSuccess(OrderSubmitActivity.this, "下单成功", dialog -> {
+                    PayActivity.open(OrderSubmitActivity.this, data, mBinding.tvNeedPay.getText().toString(), false);
                     finish();
                 });
             }
@@ -206,6 +284,10 @@ public class OrderSubmitActivity extends AbsBaseLoadActivity {
      */
     @Subscribe
     public void addressSelect(AddressModel addressModel) {
+        setAddress(addressModel);
+    }
+
+    private void setAddress(AddressModel addressModel) {
         mSelectAddress = addressModel;
         mBinding.linLayoutAddress.setVisibility(View.VISIBLE);
         mBinding.linLayoutAddressSelect.setVisibility(View.GONE);
@@ -221,6 +303,10 @@ public class OrderSubmitActivity extends AbsBaseLoadActivity {
      */
     @Subscribe
     public void addressSelect(BankCardModel bankCardModel) {
+        setBankCard(bankCardModel);
+    }
+
+    private void setBankCard(BankCardModel bankCardModel) {
         mBankCardModel = bankCardModel;
         mBinding.tvBankUser.setText("持卡人:" + bankCardModel.getRealName());
         mBinding.tvBankNumber.setText("卡号:" + bankCardModel.getBankcardNumber());

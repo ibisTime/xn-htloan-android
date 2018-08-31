@@ -526,6 +526,7 @@ public class CameraHelper {
             mSubscription.clear();
         }
         this.mContext = null;
+
     }
 
     /**
@@ -550,6 +551,7 @@ public class CameraHelper {
 //
 //            uCrop.withAspectRatio(16, 9)
 //                    .start(this);
+
 
         }
     }

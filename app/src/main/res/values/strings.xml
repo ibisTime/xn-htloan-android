@@ -16,7 +16,7 @@
     <string name="car_calculator_model">型号</string>
     <string name="car_calculator_brand">品牌</string>
     <string name="car_calculator_one_pay">首付</string>
-    <string name="car_calculator_control_year">还款年限</string>
+    <string name="car_calculator_control_year">还款期数</string>
     <string name="nick_name">昵称</string>
     <string name="phone">修改手机号</string>
     <string name="psw">修改登录密码</string>
