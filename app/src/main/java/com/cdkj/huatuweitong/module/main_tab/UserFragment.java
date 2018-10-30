@@ -39,6 +39,7 @@ import com.cdkj.huatuweitong.module.user.MyCurrentActivity;
 import com.cdkj.huatuweitong.module.user.MyMessageActivity;
 import com.cdkj.huatuweitong.module.user.UserInfoUpdateActivity;
 import com.cdkj.huatuweitong.module.user.interview.RoomActivity;
+import com.cdkj.huatuweitong.module.user.zx.ZXListActivity;
 import com.cdkj.huatuweitong.tencent.TencentLoginHelper;
 import com.cdkj.huatuweitong.tencent.logininterface.TencentLoginInterface;
 
@@ -53,7 +54,7 @@ import retrofit2.Call;
  * Created by cdkj on 2018/5/1.
  */
 
-public class UserFragment extends BaseLazyFragment implements View.OnClickListener,TencentLoginInterface {
+public class UserFragment extends BaseLazyFragment implements View.OnClickListener, TencentLoginInterface {
 
     private FragmentUserBinding mBinding;
 
@@ -81,6 +82,7 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
         mBinding.rifAboutUs.setOnClickListener(this);
         mBinding.llCoin.setOnClickListener(this);
         mBinding.llTicket.setOnClickListener(this);
+        mBinding.rilZx.setOnClickListener(this);
 
         mBinding.rilInterview.setOnClickListener(view -> {
             showRoomDialog();
@@ -128,6 +130,8 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
                 SPUtilHelper.saveisTradepwdFlag(data.isTradepwdFlag());
                 SPUtilHelper.saveUserPhoto(data.getPhoto());
                 SPUtilHelper.saveUserName(data.getNickname());
+                SPUtilHelper.saveIdCarde(data.getIdNo() == null ? "" : data.getIdNo());
+                SPUtilHelper.saveRealName(data.getRealName() == null ? "" : data.getRealName());
 
                 getUserAccount();
             }
@@ -189,6 +193,10 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
                 //我的商品订单
                 AllOrderTabActivity.open(mActivity);
                 break;
+            case R.id.ril_zx:
+                //征信认证
+                ZXListActivity.open(mActivity);
+                break;
             case R.id.ril_credit:
                 //信用报告
                 MyCurrentActivity.open(mActivity);
@@ -196,7 +204,6 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
             case R.id.rif_call_phone:
                 //联系客服
                 ConnectionServerActivity.open(mActivity);
-
                 break;
             case R.id.rif_about_us:
                 //关于我们
@@ -244,9 +251,7 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
                     } else {
 
                     }
-
                 }
-
             }
 
             @Override
@@ -270,9 +275,9 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
                             return;
                         }
 
-                        try{
+                        try {
                             roomId = Integer.parseInt(inputMsg);
-                        }catch (Exception e){
+                        } catch (Exception e) {
                             ToastUtil.show(mActivity, "请输入正确的面签房间号");
                         }
 
@@ -297,7 +302,7 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
 
     @Override
     public void onLoginSDKSuccess() {
-        if (checkPermission()){
+        if (checkPermission()) {
             RoomActivity.open(mActivity, roomId);
         }
     }

@@ -174,7 +174,7 @@ public class FirstPageFragment extends BaseLazyFragment {
     public void getBannerDataRequest() {
 
         Map<String, String> map = RetrofitUtils.getRequestMap();
-        map.put("location", "0");
+        map.put("location", "index_banner");
         map.put("type", "2");
         map.put("orderColumn", "order_no");
         map.put("orderDir", "asc");
@@ -208,7 +208,7 @@ public class FirstPageFragment extends BaseLazyFragment {
      */
     private void initCarRecommendBeanData() {
         Map<String, String> map = new HashMap<>();
-        map.put("location", "1");
+        map.put("location", "0");//0是首页推荐  1是普通
         map.put("status", "1");
         Call call = RetrofitUtils.createApi(MyApiServer.class).getFirstPageCarRecommendCar("630416", StringUtils.getJsonToString(map));
 

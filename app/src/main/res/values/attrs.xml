@@ -22,4 +22,20 @@
         <attr name="metaButtonBarStyle" format="reference" />
         <attr name="metaButtonBarButtonStyle" format="reference" />
     </declare-styleable>
+
+    <declare-styleable name="MyEditLayout">
+        <attr name="txt_input_title" format="string"></attr>
+        <attr name="txt_input_title_right" format="string"></attr>
+        <attr name="txt_input_hint" format="string"></attr>
+        <attr name="inputType" format="string">
+
+            <enum name="phone" value="0" /> <!-- 电话 -->
+            <enum name="id" value="1" /> <!-- 身份证类型 -->
+            <enum name="text" value="2" /> <!-- 文本 -->
+            <enum name="money" value="3" /> <!-- 金钱类型 -->
+            <enum name="psw" value="4" /> <!-- 密码类型 -->
+
+        </attr>
+    </declare-styleable>
+
 </resources>

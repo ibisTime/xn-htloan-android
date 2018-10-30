@@ -14,8 +14,7 @@
         android:roundIcon="@mipmap/logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".WelcomeActivity" >
+        <activity android:name=".WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,9 +22,7 @@
             </intent-filter>
         </activity>
         <!-- com.cdkj.baselibrary.activitys.login.LoginActivity -->
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".module.mfirst_page.CarLoanCalculatorActivity"
             android:label="@string/title_activity_car_calculator"
@@ -67,11 +64,52 @@
         <activity android:name=".module.user.AccountIntegralActivity" />
         <activity android:name=".module.recharge.RechargeActivity" />
         <activity android:name=".module.user.AccountIntegraActivity" />
-        <activity android:name=".module.recharge.PutForwardActivity"></activity>
+        <activity android:name=".module.recharge.PutForwardActivity" />
         <activity android:name=".module.user.account.WithdrawActivity" />
         <activity android:name=".module.mfirst_page.RecommendProductListActivity" />
         <activity android:name=".module.user.interview.RoomActivity" />
-
+        <activity
+            android:name=".module.user.zx.ZXListActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".module.user.zx.IDCardAuthenticationActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".module.user.zx.ZXBank4RZActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".module.user.zx.ZXYBActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".module.user.zx.ZXSAActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".module.user.zx.ZXSAListActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".module.user.zx.ZXSADetialsActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".module.user.zx.ZXSXActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".module.user.zx.ZXGJJActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".module.user.zx.ZXTBActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".module.user.zx.ZXJDActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".module.user.zx.ZXGSDActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".module.user.zx.ZXYYSActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".module.user.zx.ZXDSActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"></activity>
     </application>
 
 </manifest>

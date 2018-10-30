@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.cdkj.huatuweitong.module.user.zx.Bank4RZActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.cdkj.huatuweitong.view.MyEditLayout
+                android:id="@+id/myEL_mobileNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:inputType="id"
+                app:txt_input_hint="请输入手机号"
+                app:txt_input_title="手机号">
+
+            </com.cdkj.huatuweitong.view.MyEditLayout>
+
+            <!--<com.cdkj.huatuweitong.view.MyEditLayout-->
+            <!--android:id="@+id/myEL_password"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:inputType="id"-->
+            <!--app:txt_input_hint="请输入密码"-->
+            <!--app:txt_input_title="密码">-->
+
+            <!--</com.cdkj.huatuweitong.view.MyEditLayout>-->
+
+            <!--<com.cdkj.huatuweitong.view.MyEditLayout-->
+            <!--android:id="@+id/myEL_realName"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:txt_input_hint="请输入真实姓名"-->
+            <!--app:txt_input_title="真实姓名">-->
+
+            <!--</com.cdkj.huatuweitong.view.MyEditLayout>-->
+
+            <!--<com.cdkj.huatuweitong.view.MyEditLayout-->
+            <!--android:id="@+id/myEL_otherInfo"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:txt_input_hint="其他信息(选填)"-->
+            <!--app:txt_input_title="其他信息">-->
+
+            <!--</com.cdkj.huatuweitong.view.MyEditLayout>-->
+
+            <Button
+                android:id="@+id/btn_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_updata_psw_bg"
+                android:text="查询"
+                android:textColor="@color/white" />
+
+            <LinearLayout
+                android:id="@+id/ll_gsd"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.cdkj.baselibrary.views.RowInfoLayout
+                    android:id="@+id/ril_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:txt_left="运营商">
+
+                </com.cdkj.baselibrary.views.RowInfoLayout>
+
+                <com.cdkj.baselibrary.views.RowInfoLayout
+                    android:id="@+id/ril_gsd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:txt_left="归属地">
+
+                </com.cdkj.baselibrary.views.RowInfoLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

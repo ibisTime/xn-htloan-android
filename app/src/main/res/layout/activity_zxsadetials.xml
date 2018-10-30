@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.cdkj.huatuweitong.module.user.zx.ZXSADetialsActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_beigao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_left="被告"></com.cdkj.baselibrary.views.RowInfoLayout>
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_yuangao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_left="原告"></com.cdkj.baselibrary.views.RowInfoLayout>
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_beishangshuren"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_left="被上诉人"></com.cdkj.baselibrary.views.RowInfoLayout>
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_court"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_left="法院名称"></com.cdkj.baselibrary.views.RowInfoLayout>
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_court_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_left="法院等级"></com.cdkj.baselibrary.views.RowInfoLayout>
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_danshiren"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_left="当事人"></com.cdkj.baselibrary.views.RowInfoLayout>
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_identity_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_left="当事人身份证"></com.cdkj.baselibrary.views.RowInfoLayout>
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_jcase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_left="案由"></com.cdkj.baselibrary.views.RowInfoLayout>
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_jnum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_left="案号"></com.cdkj.baselibrary.views.RowInfoLayout>
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_jprocess"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_left="审理程序"></com.cdkj.baselibrary.views.RowInfoLayout>
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_jsummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_left="案件摘要"></com.cdkj.baselibrary.views.RowInfoLayout>
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_jtype"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_left="案件类别"></com.cdkj.baselibrary.views.RowInfoLayout>
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_judge_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_left="结审时间"></com.cdkj.baselibrary.views.RowInfoLayout>
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_matchfit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_left="匹配度"></com.cdkj.baselibrary.views.RowInfoLayout>
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_result_str"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_left="判决结果"></com.cdkj.baselibrary.views.RowInfoLayout>
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_shangshuren"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_left="上诉人"></com.cdkj.baselibrary.views.RowInfoLayout>
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_left="案件标题"></com.cdkj.baselibrary.views.RowInfoLayout>
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_weitobianhuren"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_left="委托辩护人"></com.cdkj.baselibrary.views.RowInfoLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>

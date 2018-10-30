@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.cdkj.huatuweitong.module.user.zx.ZXListActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_idCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/line_height"
+                app:img_left="@drawable/credit_report"
+                app:img_right="@drawable/more_right"
+                app:txt_left="身份证实名认证" />
+
+            <View style="@style/style_split_line" />
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_bank4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/line_height"
+                app:img_left="@drawable/credit_report"
+                app:img_right="@drawable/more_right"
+                app:txt_left="银行卡四要素" />
+
+            <View style="@style/style_split_line" />
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_sb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/line_height"
+                app:img_left="@drawable/credit_report"
+                app:img_right="@drawable/more_right"
+                app:txt_left="社保" />
+
+            <View style="@style/style_split_line" />
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_sa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/line_height"
+                app:img_left="@drawable/credit_report"
+                app:img_right="@drawable/more_right"
+                app:txt_left="涉案查询" />
+
+            <View style="@style/style_split_line" />
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_sx"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/line_height"
+                app:img_left="@drawable/credit_report"
+                app:img_right="@drawable/more_right"
+                app:txt_left="失信被执行人" />
+
+            <View style="@style/style_split_line" />
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_gjj"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/line_height"
+                app:img_left="@drawable/credit_report"
+                app:img_right="@drawable/more_right"
+                app:txt_left="公积金" />
+
+            <View style="@style/style_split_line" />
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_tb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/line_height"
+                app:img_left="@drawable/credit_report"
+                app:img_right="@drawable/more_right"
+                app:txt_left="淘宝" />
+
+            <View style="@style/style_split_line" />
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_jd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/line_height"
+                app:img_left="@drawable/credit_report"
+                app:img_right="@drawable/more_right"
+                app:txt_left="京东" />
+
+            <View style="@style/style_split_line" />
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_gsd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/line_height"
+                app:img_left="@drawable/credit_report"
+                app:img_right="@drawable/more_right"
+                app:txt_left="归属地" />
+
+            <View style="@style/style_split_line" />
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_yys"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/line_height"
+                app:img_left="@drawable/credit_report"
+                app:img_right="@drawable/more_right"
+                app:txt_left="运营商" />
+
+            <View style="@style/style_split_line" />
+
+            <com.cdkj.baselibrary.views.RowInfoLayout
+                android:id="@+id/ril_ds"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/line_height"
+                app:img_left="@drawable/credit_report"
+                app:img_right="@drawable/more_right"
+                app:txt_left="电商" />
+
+            <View style="@style/style_split_line" />
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

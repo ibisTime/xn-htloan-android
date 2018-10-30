@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cdkj.baselibrary.R;
@@ -84,6 +83,20 @@ public class InputDialog {
         return this;
     }
 
+
+    /**
+     * 设置内容
+     * @param msg
+     * @return
+     */
+    public InputDialog setContentHintMsg(String msg) {
+        mIsShowContentInput = true;
+        mContentInput.setHint(msg);
+//        if (!TextUtils.isEmpty(msg)) {
+//            mContentInput.setSelection(msg.length());
+//        }
+        return this;
+    }
     /**
      * 设置内容
      * @param msg

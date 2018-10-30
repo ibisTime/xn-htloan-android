@@ -30,11 +30,14 @@ import com.cdkj.huatuweitong.bean.OrderBean;
 import com.cdkj.huatuweitong.bean.RecommendProductBean;
 import com.cdkj.huatuweitong.bean.ReimbursementRepaymentBean;
 import com.cdkj.huatuweitong.bean.ReimbursementRepaymentMonthBean;
+import com.cdkj.huatuweitong.bean.SBAreaListBean;
 import com.cdkj.huatuweitong.bean.SystemEarlyRepaymentBean;
 import com.cdkj.huatuweitong.bean.TencentSignModel;
 import com.cdkj.huatuweitong.bean.TextBean;
 import com.cdkj.huatuweitong.bean.UserFragmentBean;
 import com.cdkj.huatuweitong.bean.WithdrawTipModel;
+import com.cdkj.huatuweitong.bean.ZXSuccessIDBean;
+import com.cdkj.huatuweitong.bean.ZXTypeBean;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -52,6 +55,7 @@ public interface MyApiServer {
 
     /**
      * 获取腾讯用户签名
+     *
      * @param code
      * @param json
      * @return
@@ -443,5 +447,92 @@ public interface MyApiServer {
     @FormUrlEncoded
     @POST("api")
     Call<BaseResponseListModel<NodeModel>> getNodeDataList(@Field("code") String code, @Field("json") String json);
+
+    /**
+     * 省份证验证
+     *
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<ZXSuccessIDBean>> getZXID(@Field("code") String code, @Field("json") String json);
+
+    /**
+     * 银行卡四要素认证
+     *
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<String>> getZXBank4(@Field("code") String code, @Field("json") String json);
+
+    /**
+     * 大数据认证
+     *
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<ZXSuccessIDBean>> getZXRZ(@Field("code") String code, @Field("json") String json);
+/**
+     * 大数据认证
+     *
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<String>> getZXRZ2(@Field("code") String code, @Field("json") String json);
+
+    /**
+     * 大数据认证 电商的详情查
+     *
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<String>> getZXDSDetails(@Field("code") String code, @Field("json") String json);
+
+    /**
+     * 获取社保地区查询
+     *
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseListModel<SBAreaListBean>> getZXSBArea(@Field("code") String code, @Field("json") String json);
+
+    /**
+     * 获取涉案详情
+     *
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<String>> getZXSADetails(@Field("code") String code, @Field("json") String json);
+
+    /**
+     * 征信状态查询
+     *
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<ZXTypeBean>> getZXType(@Field("code") String code, @Field("json") String json);
 
 }

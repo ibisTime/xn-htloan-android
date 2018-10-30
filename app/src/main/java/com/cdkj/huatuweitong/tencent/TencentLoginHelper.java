@@ -45,7 +45,7 @@ public class TencentLoginHelper implements ILiveLoginManager.TILVBStatusListener
         if (!SPUtilHelper.isLoginNoStart()) {  //没有登录
             return;
         }
-
+//        loginTencent(MyCdConfig.User_Sig);
         Map map = new HashMap<>();
 
         map.put("userId", SPUtilHelper.getUserId());

@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.cdkj.huatuweitong.module.user.zx.Bank4RZActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--<com.cdkj.huatuweitong.view.MyEditLayout-->
+            <!--android:id="@+id/myEL_area"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:txt_input_hint="请输入地区"-->
+            <!--app:txt_input_title="地区">-->
+
+            <!--</com.cdkj.huatuweitong.view.MyEditLayout>-->
+
+            <com.cdkj.huatuweitong.view.MyEditLayout
+                android:id="@+id/myEL_bankcard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_input_hint="请输入账号"
+                app:txt_input_title="*银行卡号">
+
+            </com.cdkj.huatuweitong.view.MyEditLayout>
+
+
+            <com.cdkj.huatuweitong.view.MyEditLayout
+                android:id="@+id/myEL_identityCardNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:inputType="id"
+                app:txt_input_hint="请输入身份证号"
+                app:txt_input_title="*身份证号">
+
+            </com.cdkj.huatuweitong.view.MyEditLayout>
+
+            <com.cdkj.huatuweitong.view.MyEditLayout
+                android:id="@+id/myEL_identityName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_input_hint="请输入姓名"
+                app:txt_input_title="*姓名">
+
+            </com.cdkj.huatuweitong.view.MyEditLayout>
+
+            <com.cdkj.huatuweitong.view.MyEditLayout
+                android:id="@+id/myEL_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:inputType="id"
+                app:txt_input_hint="请输入手机号"
+                app:txt_input_title="*手机号">
+
+            </com.cdkj.huatuweitong.view.MyEditLayout>
+
+            <com.cdkj.huatuweitong.view.MyEditLayout
+                android:id="@+id/myEL_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:inputType="psw"
+                app:txt_input_hint="请输入服务密码"
+                app:txt_input_title="*手机服务密码">
+
+            </com.cdkj.huatuweitong.view.MyEditLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/splitLine_color"
+                android:paddingBottom="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="5dp"
+                android:text="第一联系人" />
+
+            <com.cdkj.huatuweitong.view.MyEditLayout
+                android:id="@+id/myEL_contactIdentityNo1st"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_input_hint="请输入身份证号"
+                app:txt_input_title="身份证号">
+
+            </com.cdkj.huatuweitong.view.MyEditLayout>
+
+            <com.cdkj.huatuweitong.view.MyEditLayout
+                android:id="@+id/myEL_contactMobile1st"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_input_hint="请输入手机号"
+                app:txt_input_title="手机号">
+
+            </com.cdkj.huatuweitong.view.MyEditLayout>
+
+            <com.cdkj.huatuweitong.view.MyEditLayout
+                android:id="@+id/myEL_contactName1st"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_input_hint="请输入姓名"
+                app:txt_input_title="姓名">
+
+            </com.cdkj.huatuweitong.view.MyEditLayout>
+
+            <com.cdkj.huatuweitong.view.MyEditLayout
+                android:id="@+id/myEL_contactRelationship1st"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_input_hint="请输入与第一联系人关系"
+                app:txt_input_title="与第一联系人关系">
+
+            </com.cdkj.huatuweitong.view.MyEditLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/splitLine_color"
+                android:paddingBottom="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="5dp"
+                android:text="第二联系人" />
+
+            <com.cdkj.huatuweitong.view.MyEditLayout
+                android:id="@+id/myEL_contactIdentityNo2st"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_input_hint="请输入身份证号"
+                app:txt_input_title="身份证号">
+
+            </com.cdkj.huatuweitong.view.MyEditLayout>
+
+            <com.cdkj.huatuweitong.view.MyEditLayout
+                android:id="@+id/myEL_contactMobile2st"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_input_hint="请输入手机号"
+                app:txt_input_title="手机号">
+
+            </com.cdkj.huatuweitong.view.MyEditLayout>
+
+            <com.cdkj.huatuweitong.view.MyEditLayout
+                android:id="@+id/myEL_contactName2st"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_input_hint="请输入姓名"
+                app:txt_input_title="姓名">
+
+            </com.cdkj.huatuweitong.view.MyEditLayout>
+
+            <com.cdkj.huatuweitong.view.MyEditLayout
+                android:id="@+id/myEL_contactRelationship2st"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_input_hint="请输入与第二联系人关系"
+                app:txt_input_title="与第二联系人关系">
+
+            </com.cdkj.huatuweitong.view.MyEditLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/splitLine_color"
+                android:paddingBottom="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="5dp"
+                android:text="第三联系人" />
+
+            <com.cdkj.huatuweitong.view.MyEditLayout
+                android:id="@+id/myEL_contactIdentityNo3st"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_input_hint="请输入身份证号"
+                app:txt_input_title="身份证号">
+
+            </com.cdkj.huatuweitong.view.MyEditLayout>
+
+            <com.cdkj.huatuweitong.view.MyEditLayout
+                android:id="@+id/myEL_contactMobile3st"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_input_hint="请输入手机号"
+                app:txt_input_title="手机号">
+
+            </com.cdkj.huatuweitong.view.MyEditLayout>
+
+            <com.cdkj.huatuweitong.view.MyEditLayout
+                android:id="@+id/myEL_contactName3st"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_input_hint="请输入姓名"
+                app:txt_input_title="姓名">
+
+            </com.cdkj.huatuweitong.view.MyEditLayout>
+
+            <com.cdkj.huatuweitong.view.MyEditLayout
+                android:id="@+id/myEL_contactRelationship3st"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_input_hint="请输入与第三联系人关系"
+                app:txt_input_title="与第三联系人关系">
+
+            </com.cdkj.huatuweitong.view.MyEditLayout>
+
+            <com.cdkj.huatuweitong.view.MyEditLayout
+                android:id="@+id/myEL_otherInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_input_hint="其他"
+                app:txt_input_title="其他">
+
+            </com.cdkj.huatuweitong.view.MyEditLayout>
+
+
+            <Button
+                android:id="@+id/btn_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_updata_psw_bg"
+                android:text="认证"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

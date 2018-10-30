@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <com.cdkj.baselibrary.views.RowInfoLayout
+            android:id="@+id/ril_age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:txt_left="年龄">
+
+        </com.cdkj.baselibrary.views.RowInfoLayout>
+
+        <com.cdkj.baselibrary.views.RowInfoLayout
+            android:id="@+id/ril_caseNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:txt_left="案号">
+
+        </com.cdkj.baselibrary.views.RowInfoLayout>
+
+        <com.cdkj.baselibrary.views.RowInfoLayout
+            android:id="@+id/ril_corpLegalPerson"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:txt_left="法人姓名">
+
+        </com.cdkj.baselibrary.views.RowInfoLayout>
+
+        <com.cdkj.baselibrary.views.RowInfoLayout
+            android:id="@+id/ril_executed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:txt_left="已履行">
+
+        </com.cdkj.baselibrary.views.RowInfoLayout>
+
+        <com.cdkj.baselibrary.views.RowInfoLayout
+            android:id="@+id/ril_executiveArm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:txt_left="做出执行依据单位">
+
+        </com.cdkj.baselibrary.views.RowInfoLayout>
+
+        <com.cdkj.baselibrary.views.RowInfoLayout
+            android:id="@+id/ril_executiveBaiscNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:txt_left="执行依据文号">
+
+        </com.cdkj.baselibrary.views.RowInfoLayout>
+
+        <com.cdkj.baselibrary.views.RowInfoLayout
+            android:id="@+id/ril_executiveCase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:txt_left="被执行人的履 行情况">
+
+        </com.cdkj.baselibrary.views.RowInfoLayout>
+
+        <com.cdkj.baselibrary.views.RowInfoLayout
+            android:id="@+id/ril_executiveCourt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:txt_left="执行法院">
+
+        </com.cdkj.baselibrary.views.RowInfoLayout>
+
+        <com.cdkj.baselibrary.views.RowInfoLayout
+            android:id="@+id/ril_filingTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:txt_left="立案时间">
+
+        </com.cdkj.baselibrary.views.RowInfoLayout>
+
+        <com.cdkj.baselibrary.views.RowInfoLayout
+            android:id="@+id/ril_identityNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:txt_left="身份证号码/组 织机构代码	">
+
+        </com.cdkj.baselibrary.views.RowInfoLayout>
+
+        <com.cdkj.baselibrary.views.RowInfoLayout
+            android:id="@+id/ril_legalObligation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:txt_left="生效法律文书 确定的义务">
+
+        </com.cdkj.baselibrary.views.RowInfoLayout>
+
+        <com.cdkj.baselibrary.views.RowInfoLayout
+            android:id="@+id/ril_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:txt_left="被执行人姓名/ 名称">
+
+        </com.cdkj.baselibrary.views.RowInfoLayout>
+
+        <com.cdkj.baselibrary.views.RowInfoLayout
+            android:id="@+id/ril_no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:txt_left="序号">
+
+        </com.cdkj.baselibrary.views.RowInfoLayout>
+
+        <com.cdkj.baselibrary.views.RowInfoLayout
+            android:id="@+id/ril_province"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:txt_left="省份">
+
+        </com.cdkj.baselibrary.views.RowInfoLayout>
+
+        <com.cdkj.baselibrary.views.RowInfoLayout
+            android:id="@+id/ril_releaseTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:txt_left="发布时间">
+
+        </com.cdkj.baselibrary.views.RowInfoLayout>
+
+        <com.cdkj.baselibrary.views.RowInfoLayout
+            android:id="@+id/ril_sex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:txt_left="性别(个人)">
+
+        </com.cdkj.baselibrary.views.RowInfoLayout>
+
+        <com.cdkj.baselibrary.views.RowInfoLayout
+            android:id="@+id/ril_specificSituation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:txt_left="具体情形">
+
+        </com.cdkj.baselibrary.views.RowInfoLayout>
+
+        <com.cdkj.baselibrary.views.RowInfoLayout
+            android:id="@+id/ril_unExecuted"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:txt_left="未履行">
+
+        </com.cdkj.baselibrary.views.RowInfoLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/line_gray_cd" />
+
+    </LinearLayout>
+</layout>

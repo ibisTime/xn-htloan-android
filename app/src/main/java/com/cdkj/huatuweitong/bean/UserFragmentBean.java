@@ -39,6 +39,16 @@ public class UserFragmentBean {
     private String status;
     private boolean tradepwdFlag;
     private String userId;
+    private String idNo;
+    private String realName;
+
+    public String getIdNo() {
+        return idNo;
+    }
+
+    public void setIdNo(String idNo) {
+        this.idNo = idNo;
+    }
 
     public boolean isBankcardFlag() {
         return bankcardFlag;
@@ -142,5 +152,13 @@ public class UserFragmentBean {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public void setRealName(String realName) {
+        this.realName = realName;
     }
 }

@@ -160,6 +160,14 @@
                     app:txt_left="积分账户" />
 
                 <com.cdkj.baselibrary.views.RowInfoLayout
+                    android:id="@+id/ril_zx"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/line_height"
+                    app:img_left="@drawable/credit_report"
+                    app:img_right="@drawable/more_right"
+                    app:txt_left="征信查询" />
+                <com.cdkj.baselibrary.views.RowInfoLayout
                     android:id="@+id/ril_credit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

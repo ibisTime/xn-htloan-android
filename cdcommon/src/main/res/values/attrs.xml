@@ -30,4 +30,18 @@
         <attr name="txt_info_hint" format="string"></attr>
     </declare-styleable>
 
+    <!--<declare-styleable name="MyEditLayout">-->
+        <!--<attr name="txt_input_title" format="string"></attr>-->
+        <!--<attr name="txt_input_title_right" format="string"></attr>-->
+        <!--<attr name="txt_input_hint" format="string"></attr>-->
+        <!--<attr name="inputType" format="string">-->
+
+            <!--<enum name="phone" value="0"/> &lt;!&ndash; 电话 &ndash;&gt;-->
+            <!--<enum name="id" value="1"/> &lt;!&ndash; 身份证类型 &ndash;&gt;-->
+            <!--<enum name="text" value="2"/> &lt;!&ndash; 文本 &ndash;&gt;-->
+            <!--<enum name="money" value="3"/> &lt;!&ndash; 金钱类型 &ndash;&gt;-->
+
+        <!--</attr>-->
+    <!--</declare-styleable>-->
+
 </resources>

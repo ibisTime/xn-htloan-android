@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <com.cdkj.huatuweitong.view.MyEditLayout
+                android:id="@+id/myEL_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_input_hint="请输入身份证号"
+                app:txt_input_title="身份证号">
+
+            </com.cdkj.huatuweitong.view.MyEditLayout>
+
+            <com.cdkj.huatuweitong.view.MyEditLayout
+                android:id="@+id/myEL_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_input_hint="请输入姓名"
+                app:txt_input_title="姓名">
+
+            </com.cdkj.huatuweitong.view.MyEditLayout>
+
+            <Button
+                android:id="@+id/btn_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_updata_psw_bg"
+                android:text="认证"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>

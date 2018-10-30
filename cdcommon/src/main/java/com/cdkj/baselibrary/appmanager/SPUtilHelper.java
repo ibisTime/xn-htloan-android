@@ -36,6 +36,7 @@ public class SPUtilHelper {
     public static String getUserToken() {
         return SPUtils.getString(CdApplication.getContext(), USERTOKEN, "");
     }
+
     /**
      * 储存用户登录勾选的我同意条款做回显
      *
@@ -44,10 +45,9 @@ public class SPUtilHelper {
     public static void saveCheckServer(Boolean s) {
         SPUtils.put(CdApplication.getContext(), USERIDISCHECKSERVER, s);
     }
+
     /**
      * 返回储存用户登录勾选的我同意条款做回显
-     *
-     *
      */
     public static boolean getCheckServer() {
         Boolean aBoolean = SPUtils.getBoolean(CdApplication.getContext(), USERIDISCHECKSERVER, false);
@@ -107,7 +107,6 @@ public class SPUtilHelper {
     public static String getUserPsw() {
         return SPUtils.getString(CdApplication.getContext(), "user_psw", "");
     }
-
 
 
     /**
@@ -262,4 +261,18 @@ public class SPUtilHelper {
         saveUserIsBindCard(false);
     }
 
+    public static void saveIdCarde(String id) {
+        SPUtils.put(CdApplication.getContext(), "idCarde", id);
+    }
+
+    public static String getIdCarde() {
+        return SPUtils.getString(CdApplication.getContext(), "idCarde", "");
+    }
+    public static void saveRealName(String realName) {
+        SPUtils.put(CdApplication.getContext(), "realName", realName);
+    }
+
+    public static String getRealName() {
+        return SPUtils.getString(CdApplication.getContext(), "realName", "");
+    }
 }

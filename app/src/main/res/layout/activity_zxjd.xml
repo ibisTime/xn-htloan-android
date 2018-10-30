@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.cdkj.huatuweitong.module.user.zx.Bank4RZActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <!--<com.cdkj.huatuweitong.view.MyEditLayout-->
+            <!--android:id="@+id/myEL_username"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:txt_input_hint="请输入账号"-->
+            <!--app:txt_input_title="账号">-->
+
+            <!--</com.cdkj.huatuweitong.view.MyEditLayout>-->
+
+            <!--<com.cdkj.huatuweitong.view.MyEditLayout-->
+            <!--android:id="@+id/myEL_password"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:inputType="psw"-->
+            <!--app:txt_input_hint="请输入密码"-->
+            <!--app:txt_input_title="密码">-->
+
+            <!--</com.cdkj.huatuweitong.view.MyEditLayout>-->
+
+            <!--<com.cdkj.huatuweitong.view.MyEditLayout-->
+            <!--android:id="@+id/myEL_loginType"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:txt_input_hint="登录类型(选填)"-->
+            <!--app:txt_input_title="登录类型">-->
+
+            <!--</com.cdkj.huatuweitong.view.MyEditLayout>-->
+
+
+            <!--<Button-->
+            <!--android:id="@+id/btn_confirm"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:layout_marginLeft="15dp"-->
+            <!--android:layout_marginRight="15dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:background="@drawable/btn_updata_psw_bg"-->
+            <!--android:text="认证"-->
+            <!--android:textColor="@color/white" />-->
+
+            <LinearLayout
+                android:id="@+id/ll_qr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:text="请用京东扫描下方二维码并确认登录" />
+
+                <ImageView
+                    android:id="@+id/iv_qr"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

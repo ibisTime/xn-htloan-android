@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.cdkj.huatuweitong.module.user.zx.Bank4RZActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.cdkj.baselibrary.views.RowMoreInfoLayout
+                android:id="@+id/rML_area"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_info_hint="请选择地区"
+                app:txt_title="地区">
+
+            </com.cdkj.baselibrary.views.RowMoreInfoLayout>
+
+            <!--<com.cdkj.huatuweitong.view.MyEditLayout-->
+            <!--android:id="@+id/myEL_area"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:txt_input_hint="请输入地区"-->
+            <!--app:txt_input_title="地区">-->
+
+            <!--</com.cdkj.huatuweitong.view.MyEditLayout>-->
+
+            <com.cdkj.huatuweitong.view.MyEditLayout
+                android:id="@+id/myEL_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:inputType="id"
+                app:txt_input_hint="请输入账号"
+                app:txt_input_title="账号">
+
+            </com.cdkj.huatuweitong.view.MyEditLayout>
+
+            <com.cdkj.huatuweitong.view.MyEditLayout
+                android:id="@+id/myEL_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:inputType="psw"
+                app:txt_input_hint="请输入密码"
+                app:txt_input_title="密码">
+
+            </com.cdkj.huatuweitong.view.MyEditLayout>
+
+            <com.cdkj.huatuweitong.view.MyEditLayout
+                android:id="@+id/myEL_realName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_input_hint="请输入真实姓名"
+                app:txt_input_title="真实姓名">
+
+            </com.cdkj.huatuweitong.view.MyEditLayout>
+
+            <com.cdkj.huatuweitong.view.MyEditLayout
+                android:id="@+id/myEL_otherInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:txt_input_hint="其他信息(选填)"
+                app:txt_input_title="其他信息">
+
+            </com.cdkj.huatuweitong.view.MyEditLayout>
+
+            <Button
+                android:id="@+id/btn_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_updata_psw_bg"
+                android:text="认证"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+    </ScrollView>
+</layout>
