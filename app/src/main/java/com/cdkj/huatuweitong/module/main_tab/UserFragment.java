@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cdkj.baselibrary.api.BaseResponseModel;
 import com.cdkj.baselibrary.appmanager.CdRouteHelper;
 import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.BaseLazyFragment;
@@ -280,10 +281,8 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
                         } catch (Exception e) {
                             ToastUtil.show(mActivity, "请输入正确的面签房间号");
                         }
+                        checkRoomId(roomId + "");
 
-
-                        mHelper = new TencentLoginHelper(mActivity, UserFragment.this);
-                        mHelper.login();
                     }
                 })
                 .setNegativeBtn("取消", null)
@@ -335,7 +334,38 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
                 return false;
             }
         }
-
         return true;
+    }
+
+
+    /**
+     * 检查房间人数,超过三人  就不让再进入房间了
+     *
+     * @param roomid
+     */
+    public void checkRoomId(String roomid) {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("roomId", roomid);
+        Call<BaseResponseModel<Integer>> roomId = RetrofitUtils.createApi(MyApiServer.class).checkRoomId("632953", StringUtils.getJsonToString(map));
+        showLoadingDialog();
+        roomId.enqueue(new BaseResponseModelCallBack<Integer>(mActivity) {
+            @Override
+            protected void onSuccess(Integer data, String SucMessage) {
+                //房间人数大于三人就不让进入了
+                if (data == 0) {
+                    UITipDialog.showInfo(mActivity, "房间未创建请检查房间号");
+                } else if (data >= 3) {
+                    UITipDialog.showInfo(mActivity, "房间人数已满");
+                } else {
+                    mHelper = new TencentLoginHelper(mActivity, UserFragment.this);
+                    mHelper.login();
+                }
+            }
+
+            @Override
+            protected void onFinish() {
+                disMissLoading();
+            }
+        });
     }
 }

@@ -78,7 +78,7 @@ public class ZXYYSActivity extends AbsBaseLoadActivity {
      */
     private void getToken() {
         Map<String, String> map = new HashMap<>();
-        map.put("bankcard", mBinding.myELBankcard.getText());
+//        map.put("bankcard", mBinding.myELBankcard.getText());
         map.put("identityCardNo", mBinding.myELIdentityCardNo.getText());
         map.put("identityName", mBinding.myELIdentityName.getText());
         map.put("password", mBinding.myELPassword.getText());
@@ -144,20 +144,6 @@ public class ZXYYSActivity extends AbsBaseLoadActivity {
                     }
                 });
                 inputDialog.show();
-
-//                ZXSuccessBean zxSuccessBean = JSON.,parseObject(data, new TypeReference<ZXSuccessBean>() {
-//                });
-//                if (zxSuccessBean == null) {
-//                    UITipDialog.showInfo(ZXYYSActivity.this, "认证失败请重试");
-//                    return;
-//                }
-//                if (TextUtils.equals(zxSuccessBean.getCode(), "0010")) {
-//                    UITipDialog.showSuccess(ZXYYSActivity.this, "成功");
-//
-//                    getMSM(zxSuccessBean.getToken());
-//                } else {
-//                    UITipDialog.showInfo(ZXYYSActivity.this, zxSuccessBean.getMsg());
-//                }
             }
 
             @Override
@@ -253,7 +239,7 @@ public class ZXYYSActivity extends AbsBaseLoadActivity {
                 } else {
                     if (along >= 9)
                         messageDialog.dismiss();
-                    UITipDialog.showInfo(ZXYYSActivity.this, "请重试");
+                    UITipDialog.showInfo(ZXYYSActivity.this, "正在重试");
                 }
             }
 
@@ -272,9 +258,7 @@ public class ZXYYSActivity extends AbsBaseLoadActivity {
     }
 
     private boolean check() {
-        if (TextUtils.isEmpty(mBinding.myELBankcard.check())) {
-            return false;
-        }
+
         if (TextUtils.isEmpty(mBinding.myELIdentityCardNo.check())) {
             return false;
         }

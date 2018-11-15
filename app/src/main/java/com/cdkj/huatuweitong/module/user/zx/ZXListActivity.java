@@ -16,6 +16,7 @@ import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
 import com.cdkj.baselibrary.utils.StringUtils;
+import com.cdkj.baselibrary.views.RowInfoLayout;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.ZXSuccessIDBean;
@@ -47,8 +48,6 @@ public class ZXListActivity extends AbsBaseLoadActivity {
     public void afterCreate(Bundle savedInstanceState) {
         mBaseBinding.titleView.setMidTitle("征信认证");
         initOnClick();
-
-
     }
 
     private void initData() {
@@ -85,42 +84,24 @@ public class ZXListActivity extends AbsBaseLoadActivity {
      * @param data
      */
     private void setData(ZXTypeBean data) {
-        ZXSuccessIDBean identity = stringToBean(data.getIdentity());
         //身份证实名认证
-        if (identity.getStatus()==0) {
-            mBinding.rilIdCard.setTvRight("未认证");
-        } else {
-            mBinding.rilIdCard.setTvRight(identity.getStatus() == 2 ? "已认证" : "认证中");
-        }
+        ZXSuccessIDBean identity = stringToBean(data.getIdentity());
+        checkType(mBinding.rilIdCard, identity.getStatus());
+
         //银行卡四要素认证
         ZXSuccessIDBean bank4 = stringToBean(data.getBankcard4check());
-        if (bank4.getStatus()==0) {
-            mBinding.rilBank4.setTvRight("未认证");
-        } else {
-            mBinding.rilBank4.setTvRight(bank4.getStatus() == 2 ? "已认证" : "认证中");
-        }
+        checkType(mBinding.rilBank4, bank4.getStatus());
 
         //运营商
         ZXSuccessIDBean mobileReportTask = stringToBean(data.getMobileReportTask());
-        if (mobileReportTask.getStatus()==0) {
-            mBinding.rilYys.setTvRight("未认证");
-        } else {
-            mBinding.rilYys.setTvRight(mobileReportTask.getStatus() == 2 ? "已认证" : "认证中");
-        }
+        checkType(mBinding.rilYys, mobileReportTask.getStatus());
         //电商
         ZXSuccessIDBean taobaoReport = stringToBean(data.getTaobao_report());
-        if (taobaoReport.getStatus()==0) {
-            mBinding.rilDs.setTvRight("未认证");
-        } else {
-            mBinding.rilDs.setTvRight(taobaoReport.getStatus() == 2 ? "已认证" : "认证中");
-        }
+        checkType(mBinding.rilDs, taobaoReport.getStatus());
+
         //京东
         ZXSuccessIDBean jd = stringToBean(data.getJd());
-        if (jd.getStatus()==0) {
-            mBinding.rilJd.setTvRight("未认证");
-        } else {
-            mBinding.rilJd.setTvRight(jd.getStatus() == 2 ? "已认证" : "认证中");
-        }
+        checkType(mBinding.rilJd, jd.getStatus());
 
 
 //        //社保
@@ -140,19 +121,34 @@ public class ZXListActivity extends AbsBaseLoadActivity {
 //        }
     }
 
+    private void checkType(RowInfoLayout view, int type) {
+        if (type == 0) {
+            view.setTvRight("未认证");
+        } else if (type == 1) {
+            view.setTvRight("认证中");
+        } else if (type == 2) {
+            view.setTvRight("已认证");
+        } else if (type == 3) {
+            view.setTvRight("认证失败");
+        } else if (type == 4) {
+            view.setTvRight("重新认证");
+        }
+    }
+
     private void initOnClick() {
         //身份证实名认证
         mBinding.rilIdCard.setOnClickListener(v -> {
 
-            if (TextUtils.equals(mBinding.rilIdCard.getRightTxt(), "已认证")) {
+            if (TextUtils.equals(mBinding.rilIdCard.getRightTxt(), "已认证") || TextUtils.equals(mBinding.rilIdCard.getRightTxt(), "认证中")) {
                 UITipDialog.showSuccess(this, "无需重复验证");
                 return;
             }
+
             IDCardAuthenticationActivity.open(this);
         });
         //银行卡四要素认证
         mBinding.rilBank4.setOnClickListener(v -> {
-            if (TextUtils.equals(mBinding.rilBank4.getRightTxt(), "已认证")) {
+            if (TextUtils.equals(mBinding.rilBank4.getRightTxt(), "已认证") || TextUtils.equals(mBinding.rilBank4.getRightTxt(), "认证中")) {
                 UITipDialog.showSuccess(this, "无需重复验证");
                 return;
             }
@@ -161,7 +157,7 @@ public class ZXListActivity extends AbsBaseLoadActivity {
 
         //京东
         mBinding.rilJd.setOnClickListener(v -> {
-            if (TextUtils.equals(mBinding.rilJd.getRightTxt(), "已认证")) {
+            if (TextUtils.equals(mBinding.rilJd.getRightTxt(), "已认证") || TextUtils.equals(mBinding.rilJd.getRightTxt(), "认证中")) {
                 UITipDialog.showSuccess(this, "无需重复验证");
                 return;
             }
@@ -174,7 +170,7 @@ public class ZXListActivity extends AbsBaseLoadActivity {
 
         //运营商
         mBinding.rilYys.setOnClickListener(v -> {
-            if (TextUtils.equals(mBinding.rilYys.getRightTxt(), "已认证")) {
+            if (TextUtils.equals(mBinding.rilYys.getRightTxt(), "已认证") || TextUtils.equals(mBinding.rilYys.getRightTxt(), "认证中")) {
                 UITipDialog.showSuccess(this, "无需重复验证");
                 return;
             }
@@ -182,7 +178,7 @@ public class ZXListActivity extends AbsBaseLoadActivity {
         });
         //电商
         mBinding.rilDs.setOnClickListener(v -> {
-            if (TextUtils.equals(mBinding.rilDs.getRightTxt(), "已认证")) {
+            if (TextUtils.equals(mBinding.rilDs.getRightTxt(), "已认证") || TextUtils.equals(mBinding.rilDs.getRightTxt(), "认证中")) {
                 UITipDialog.showSuccess(this, "无需重复验证");
                 return;
             }

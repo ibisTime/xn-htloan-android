@@ -24,6 +24,7 @@
             <!--</com.cdkj.huatuweitong.view.MyEditLayout>-->
 
             <com.cdkj.huatuweitong.view.MyEditLayout
+                android:visibility="gone"
                 android:id="@+id/myEL_bankcard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

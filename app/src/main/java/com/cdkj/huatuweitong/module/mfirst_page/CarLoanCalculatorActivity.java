@@ -146,7 +146,7 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
      * 获取利率
      */
     private void getSysteamRat() {
-        DataHelper.getSystemKey(this, "car_periods", list -> {
+        DataHelper.getSystemType(this, "car_periods", list -> {
             if (list != null && list.size() > 0) {
 
                 rate = Double.parseDouble(list.get(0).getCvalue()) / 100;
