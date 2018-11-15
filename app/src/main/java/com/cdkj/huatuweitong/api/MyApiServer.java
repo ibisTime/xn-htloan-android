@@ -45,7 +45,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
 /**
- * @author 齐胜涛
+ * @author 齐胜涛  接口文件接口
  * @des ${TODO}
  * @updateDts 2018/5/11
  * Created by lenovo on 2018/5/11.
