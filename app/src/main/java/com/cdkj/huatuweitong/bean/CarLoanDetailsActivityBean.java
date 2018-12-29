@@ -14,48 +14,6 @@ import java.util.List;
 public class CarLoanDetailsActivityBean implements Serializable{
 
 
-    /**
-     * code : RB201806112035545889876
-     * userId : U201806112035545709666
-     * realName : 物理课
-     * idNo : 330327198811112364
-     * bankcardCode : CD201806112035545848868
-     * refType : 0
-     * refCode : BO201806111754354273575
-     * bizPrice : 2.0E8
-     * sfRate : 50.0
-     * sfAmount : 1.0E8
-     * loanBank : BA201806060405534759680
-     * loanAmount : 1.0E8
-     * periods : 36.0
-     * restPeriods : 36.0
-     * bankRate : 0.0
-     * fxDeposit : 0.0
-     * firstRepayDatetime : Jun 11, 2018 12:00:00 AM
-     * firstRepayAmount : 3000000.0
-     * monthDatetime : 10.0
-     * monthAmount : 3000000.0
-     * lyDeposit : 2000000.0
-     * cutLyDeposit : 0.0
-     * curNodeCode : 003_01
-     * restAmount : 1.0E8
-     * restTotalCost : 0.0
-     * totalInDeposit : 0.0
-     * overdueAmount : 0.0
-     * totalOverdueCount : 0.0
-     * curOverdueCount : 0.0
-     * blackHandleNote : 暂无
-     * updater : U201806060410050085759
-     * updateDatetime : Jun 11, 2018 8:35:54 PM
-     * remark : 提交说明
-     * user : {"userId":"U201806112035545709666","kind":"C","loginName":"17663497856","mobile":"17663497856","loginPwdStrength":"1","idNo":"330327198811112364","realName":"物理课","status":"0","createDatetime":"Jun 11, 2018 8:35:54 PM","blacklistFlag":false,"identifyFlag":false,"bankcardFlag":false,"tradepwdFlag":false}
-     * budgetOrder : {"code":"BO201806111754354273575","repayBizCode":"RB201806112035545889876","loanProductCode":"LP201806060407243426367","loanProductName":"二手车贷款产品","loanBank":"BA201806060405534759680","gpsFee":1000000,"authFee":1000000,"bankFee":990099,"companyFee":1000000,"creditCode":"C201806111753357999722","bizType":"0","loanPeriod":"36","invoiceCompany":"2345","carBrand":"还在","carSeries":"IE","carModel":"粉色","carPic":"FsYZVYxJrBFITZgjTinTJauQCaAc","carHgzPic":"FsYZVYxJrBFITZgjTinTJauQCaAc","carHgzNo":"激发额","carFrameNo":"收费额","carEngineNo":"诶我剪短发","originalPrice":2.2E8,"invoicePrice":2.0E8,"carColor":"就分手","monthDeposit":2000000,"firstAmount":1.0E8,"firstRate":50,"loanAmount":1.0E8,"settleAddress":"乌鲁木齐","applyUserId":"U201806112035545709666","applyUserName":"物理课","gender":"1","marryState":"1","nation":"汉","education":"1","idNo":"330327198811112364","familyNumber":"5","mobile":"17663497856","nowAddress":"现居住地址","postCode1":"1234567","residenceAddress":"户口所在地","postCode2":"8765432","familyMainAsset":"45678","mainAssetInclude":"123","mainIncome":"2","workCompanyName":"工作单位名称","workCompanyAddress":"工作单位地址工作单位地址","workCompanyProperty":"3","workBelongIndustry":"5","workProfession":"2","workDatetime":"Jun 11, 2018 12:00:00 AM","selfCompanyArea":"55","employeeQuantity":"","enterpriseMonthOutput":"0","position":"2","postTitle":"职称","monthIncome":"13323000","mateName":"","mateMobile":"","mateIdNo":"","mateEducation":"","mateCompanyName":"","mateCompanyAddress":"","mateCompanyContactNo":"","mateZfbJourIncome":0,"mateZfbJourExpend":0,"mateZfbJourBalance":0,"mateZfbJourMonthIncome":0,"mateZfbJourMonthExpend":0,"mateZfbJourPic":"","mateZfbJourRemark":"","mateWxJourIncome":0,"mateWxJourExpend":0,"mateWxJourBalance":0,"mateWxJourMonthIncome":0,"mateWxJourMonthExpend":0,"mateWxJourPic":"","mateWxJourRemark":"","mateJourIncome":0,"mateJourExpend":0,"mateJourBalance":0,"mateJourMonthIncome":0,"mateJourMonthExpend":0,"mateJourPic":"","mateJourRemark":"","mateAssetPdf":"","guaName":"看手机","guaMobile":"18866665239","guaIdNo":"333333199911112342","guaPhone":"","guaCompanyName":"","guaCompanyAddress":"","guaHouseAssetAddress":"","guaZfbJourIncome":0,"guaZfbJourExpend":0,"guaZfbJourBalance":0,"guaZfbJourMonthIncome":0,"guaZfbJourMonthExpend":0,"guaZfbJourPic":"","guaZfbJourRemark":"","guaWxJourIncome":0,"guaWxJourExpend":0,"guaWxJourBalance":0,"guaWxJourMonthIncome":0,"guaWxJourMonthExpend":0,"guaWxJourPic":"","guaWxJourRemark":"","guaJourIncome":0,"guaJourExpend":0,"guaJourBalance":0,"guaJourMonthIncome":0,"guaJourMonthExpend":0,"guaJourPic":"","guaJourRemark":"","guaAssetPdf":"","emergencyName1":"联系人1姓名","emergencyRelation1":"2","emergencyMobile1":"18877654433","emergencyName2":"","emergencyRelation2":"","emergencyMobile2":"","zfbJourIncome":0,"zfbJourExpend":0,"zfbJourBalance":0,"zfbJourMonthIncome":0,"zfbJourMonthExpend":0,"zfbJourPic":"","zfbJourRemark":"","wxJourIncome":0,"wxJourExpend":0,"wxJourBalance":0,"wxJourMonthIncome":0,"wxJourMonthExpend":0,"wxJourPic":"","wxJourRemark":"","jourIncome":0,"jourExpend":0,"jourBalance":0,"jourMonthIncome":0,"jourMonthExpend":0,"jourPic":"","jourRemark":"","assetPdf":"","houseContract":"FsYZVYxJrBFITZgjTinTJauQCaAc","housePicture":"FgFwvHtst8JmIsHAgKVzurIOT6zK","isAdvanceFund":"1","interviewVideo":"FsYZVYxJrBFITZgjTinTJauQCaAc","interviewContract":"FgFwvHtst8JmIsHAgKVzurIOT6zK","advanceFundDatetime":"Jun 11, 2018 12:00:00 AM","advanceFundAmount":3.2324E7,"carSettleDatetime":"Jun 11, 2018 12:00:00 AM","carNumber":"1234567","carInvoice":"ANDROID_1528716886598_1080_2160.jpg","carHgz":"ANDROID_1528716898731_2976_3968.jpg","carJqx":"ANDROID_1528716910399_1080_2160.jpg","carSyx":"ANDROID_1528716917788_72_72.jpg","carRegcerti":"Fonkw2g20kfdnM6litogztaLYQQF","carPd":"FsYZVYxJrBFITZgjTinTJauQCaAc","carKey":"Fs6kQcEiNS4USu5Mp6euL7_mKwtL","carBigSmj":"FsP0X1vEq0XXua4E0jEpxv-X6tX2","bankCommitDatetime":"Jun 11, 2018 12:00:00 AM","repayBankcardNumber":"333333333333332","repayBillDate":10,"repayBankDate":10,"repayFirstMonthAmount":3000000,"repayFirstMonthDatetime":"Jun 11, 2018 12:00:00 AM","repayMonthAmount":3000000,"receiptBankCode":"CB201806060405380712648","receiptBankcardNumber":"612313241234123","receiptPdf":"FgFwvHtst8JmIsHAgKVzurIOT6zK","receiptRemark":"俄456","pledgeDatetime":"Jun 11, 2018 12:00:00 AM","greenBigSmj":"ANDROID_1528717300431_1080_2160.jpg","pledgeBankCommitDatetime":"Jun 11, 2018 12:00:00 AM","saleUserId":"U201806061630482887547","companyCode":"DP201806102129414839296","applyDatetime":"Jun 11, 2018 5:54:35 PM","backAdvanceStatus":"0","curNodeCode":"002_23","remark":"提交说明","budgetOrderGpsList":[{"code":"G201806090258296488056","gpsDevNo":"11239","gpsType":"0","azLocation":"车头","azDatetime":"2018-06-12 00:00:00.0","azUser":"吴联请、房东舒服","remark":"android_download","budgetOrder":"BO201806111754354273575"}],"companyName":"浙江杭州子公司","saleUserName":"悟空","loanBankName":"招商银行"}
-     * repayPlanList : [{"code":"RP2018061120355459296881","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":1,"repayDatetime":"Jun 11, 2018 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP2018061120355459247932","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":2,"repayDatetime":"Jul 10, 2018 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP2018061120355459244003","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":3,"repayDatetime":"Aug 10, 2018 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP2018061120355459221934","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":4,"repayDatetime":"Sep 10, 2018 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP2018061120355459264025","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":5,"repayDatetime":"Oct 10, 2018 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP2018061120355459293886","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":6,"repayDatetime":"Nov 10, 2018 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP2018061120355459245307","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":7,"repayDatetime":"Dec 10, 2018 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP2018061120355459256278","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":8,"repayDatetime":"Jan 10, 2019 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP2018061120355459289269","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":9,"repayDatetime":"Feb 10, 2019 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554592543410","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":10,"repayDatetime":"Mar 10, 2019 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554592426411","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":11,"repayDatetime":"Apr 10, 2019 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554592179112","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":12,"repayDatetime":"May 10, 2019 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554592897613","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":13,"repayDatetime":"Jun 10, 2019 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554592531214","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":14,"repayDatetime":"Jul 10, 2019 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554592823015","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":15,"repayDatetime":"Aug 10, 2019 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554592668316","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":16,"repayDatetime":"Sep 10, 2019 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554603589617","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":17,"repayDatetime":"Oct 10, 2019 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554603391118","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":18,"repayDatetime":"Nov 10, 2019 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554603640419","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":19,"repayDatetime":"Dec 10, 2019 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554603116920","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":20,"repayDatetime":"Jan 10, 2020 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554603306221","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":21,"repayDatetime":"Feb 10, 2020 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554603166222","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":22,"repayDatetime":"Mar 10, 2020 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554603509023","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":23,"repayDatetime":"Apr 10, 2020 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554603728824","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":24,"repayDatetime":"May 10, 2020 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554603308525","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":25,"repayDatetime":"Jun 10, 2020 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554603829626","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":26,"repayDatetime":"Jul 10, 2020 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554604894527","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":27,"repayDatetime":"Aug 10, 2020 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554604865028","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":28,"repayDatetime":"Sep 10, 2020 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554604420429","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":29,"repayDatetime":"Oct 10, 2020 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554604364230","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":30,"repayDatetime":"Nov 10, 2020 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554604348131","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":31,"repayDatetime":"Dec 10, 2020 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554604706732","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":32,"repayDatetime":"Jan 10, 2021 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554604889233","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":33,"repayDatetime":"Feb 10, 2021 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554604730534","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":34,"repayDatetime":"Mar 10, 2021 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554604637535","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":35,"repayDatetime":"Apr 10, 2021 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0},{"code":"RP20180611203554604594236","repayBizCode":"RB201806112035545889876","userId":"U201806112035545709666","periods":36,"curPeriods":36,"repayDatetime":"May 10, 2021 12:00:00 AM","repayCapital":3000000,"repayInterest":0,"payedAmount":0,"overplusAmount":3000000,"overdueAmount":0,"curNodeCode":"004_01","totalFee":0,"payedFee":0,"overdueDeposit":0,"shouldDeposit":0,"remindCount":0}]
-     * actualRefunds : 2000000.0
-     * loanBalance : 1.08E8
-     * loanBankName : 招商银行
-     */
-
     private String code;
     private String userId;
     private String realName;
@@ -91,10 +49,20 @@ public class CarLoanDetailsActivityBean implements Serializable{
     private String remark;
     private UserBean user;
     private BudgetOrderBean budgetOrder;
+    private MallOrder mallOrder;
     private double actualRefunds;
     private double loanBalance;
     private String loanBankName;
     private List<RepayPlanListBean> repayPlanList;
+
+
+    public MallOrder getMallOrder() {
+        return mallOrder;
+    }
+
+    public void setMallOrder(MallOrder mallOrder) {
+        this.mallOrder = mallOrder;
+    }
 
     public String getCode() {
         return code;
@@ -2809,6 +2777,532 @@ public class CarLoanDetailsActivityBean implements Serializable{
 
         public void setRemindCount(double remindCount) {
             this.remindCount = remindCount;
+        }
+    }
+
+    public static class MallOrder implements Serializable{
+
+
+        /**
+         * code : DD201812251646414468695
+         * bankcardCode : CD201812251646366376408
+         * receiver : 齐胜涛
+         * reMobile : 13282838237
+         * reAddress : 山西省 长治市 长治县想着好孩纸
+         * applyUser : U201808091644004605371
+         * applyDatetime : Dec 25, 2018 4:46:41 PM
+         * amount : 100000.0
+         * yunfei : 0.0
+         * sfRate : 0.3
+         * sfAmount : 30000.0
+         * loanAmount : 70000.0
+         * periods : 2.0
+         * bankRate : 0.2
+         * status : 2
+         * payDatetime : Dec 25, 2018 4:47:11 PM
+         * payAmount : 0.0
+         * updater : U201808091644004605371
+         * updateDatetime : Dec 25, 2018 4:46:41 PM
+         * remark : 订单已成功支付
+         * productOrderList : [{"code":"CD201812251646414465562","orderCode":"DD201812251646414468695","productCode":"CP201812251200074045464","productSpecsCode":"PS201812251357012207970","productSpecsName":"金色","quantity":1,"price":100000,"sfRate":0.3,"periods":2,"bankRate":0.2,"product":{"name":"iPhone","advPic":"FuRT_Oyxt3ATIhlyygVIJKreeVLn"}}]
+         * user : {"userId":"U201808091644004605371","kind":"C","produceType":"0","loginName":"13282838237","mobile":"13282838237","photo":"ANDROID_1542594772599_4000_3000.jpg","loginPwdStrength":"1","tradePwdStrength":"1","status":"0","createDatetime":"Aug 9, 2018 4:44:00 PM","blacklistFlag":false,"identifyFlag":false,"bankcardFlag":false,"tradepwdFlag":false}
+         * bankcardNumber : 4106211996051010189
+         */
+
+        private String code;
+        private String bankcardCode;
+        private String receiver;
+        private String reMobile;
+        private String reAddress;
+        private String applyUser;
+        private String applyDatetime;
+        private double amount;
+        private double yunfei;
+        private double sfRate;
+        private double sfAmount;
+        private double loanAmount;
+        private double periods;
+        private double bankRate;
+        private String status;
+        private String payDatetime;
+        private double payAmount;
+        private String updater;
+        private String updateDatetime;
+        private String remark;
+        private UserBean user;
+        private String bankcardNumber;
+        private List<ProductOrderListBean> productOrderList;
+
+        public String getCode() {
+            return code;
+        }
+
+        public void setCode(String code) {
+            this.code = code;
+        }
+
+        public String getBankcardCode() {
+            return bankcardCode;
+        }
+
+        public void setBankcardCode(String bankcardCode) {
+            this.bankcardCode = bankcardCode;
+        }
+
+        public String getReceiver() {
+            return receiver;
+        }
+
+        public void setReceiver(String receiver) {
+            this.receiver = receiver;
+        }
+
+        public String getReMobile() {
+            return reMobile;
+        }
+
+        public void setReMobile(String reMobile) {
+            this.reMobile = reMobile;
+        }
+
+        public String getReAddress() {
+            return reAddress;
+        }
+
+        public void setReAddress(String reAddress) {
+            this.reAddress = reAddress;
+        }
+
+        public String getApplyUser() {
+            return applyUser;
+        }
+
+        public void setApplyUser(String applyUser) {
+            this.applyUser = applyUser;
+        }
+
+        public String getApplyDatetime() {
+            return applyDatetime;
+        }
+
+        public void setApplyDatetime(String applyDatetime) {
+            this.applyDatetime = applyDatetime;
+        }
+
+        public double getAmount() {
+            return amount;
+        }
+
+        public void setAmount(double amount) {
+            this.amount = amount;
+        }
+
+        public double getYunfei() {
+            return yunfei;
+        }
+
+        public void setYunfei(double yunfei) {
+            this.yunfei = yunfei;
+        }
+
+        public double getSfRate() {
+            return sfRate;
+        }
+
+        public void setSfRate(double sfRate) {
+            this.sfRate = sfRate;
+        }
+
+        public double getSfAmount() {
+            return sfAmount;
+        }
+
+        public void setSfAmount(double sfAmount) {
+            this.sfAmount = sfAmount;
+        }
+
+        public double getLoanAmount() {
+            return loanAmount;
+        }
+
+        public void setLoanAmount(double loanAmount) {
+            this.loanAmount = loanAmount;
+        }
+
+        public double getPeriods() {
+            return periods;
+        }
+
+        public void setPeriods(double periods) {
+            this.periods = periods;
+        }
+
+        public double getBankRate() {
+            return bankRate;
+        }
+
+        public void setBankRate(double bankRate) {
+            this.bankRate = bankRate;
+        }
+
+        public String getStatus() {
+            return status;
+        }
+
+        public void setStatus(String status) {
+            this.status = status;
+        }
+
+        public String getPayDatetime() {
+            return payDatetime;
+        }
+
+        public void setPayDatetime(String payDatetime) {
+            this.payDatetime = payDatetime;
+        }
+
+        public double getPayAmount() {
+            return payAmount;
+        }
+
+        public void setPayAmount(double payAmount) {
+            this.payAmount = payAmount;
+        }
+
+        public String getUpdater() {
+            return updater;
+        }
+
+        public void setUpdater(String updater) {
+            this.updater = updater;
+        }
+
+        public String getUpdateDatetime() {
+            return updateDatetime;
+        }
+
+        public void setUpdateDatetime(String updateDatetime) {
+            this.updateDatetime = updateDatetime;
+        }
+
+        public String getRemark() {
+            return remark;
+        }
+
+        public void setRemark(String remark) {
+            this.remark = remark;
+        }
+
+        public UserBean getUser() {
+            return user;
+        }
+
+        public void setUser(UserBean user) {
+            this.user = user;
+        }
+
+        public String getBankcardNumber() {
+            return bankcardNumber;
+        }
+
+        public void setBankcardNumber(String bankcardNumber) {
+            this.bankcardNumber = bankcardNumber;
+        }
+
+        public List<ProductOrderListBean> getProductOrderList() {
+            return productOrderList;
+        }
+
+        public void setProductOrderList(List<ProductOrderListBean> productOrderList) {
+            this.productOrderList = productOrderList;
+        }
+
+        public static class UserBean implements Serializable{
+            /**
+             * userId : U201808091644004605371
+             * kind : C
+             * produceType : 0
+             * loginName : 13282838237
+             * mobile : 13282838237
+             * photo : ANDROID_1542594772599_4000_3000.jpg
+             * loginPwdStrength : 1
+             * tradePwdStrength : 1
+             * status : 0
+             * createDatetime : Aug 9, 2018 4:44:00 PM
+             * blacklistFlag : false
+             * identifyFlag : false
+             * bankcardFlag : false
+             * tradepwdFlag : false
+             */
+
+            private String userId;
+            private String kind;
+            private String produceType;
+            private String loginName;
+            private String mobile;
+            private String photo;
+            private String loginPwdStrength;
+            private String tradePwdStrength;
+            private String status;
+            private String createDatetime;
+            private boolean blacklistFlag;
+            private boolean identifyFlag;
+            private boolean bankcardFlag;
+            private boolean tradepwdFlag;
+
+            public String getUserId() {
+                return userId;
+            }
+
+            public void setUserId(String userId) {
+                this.userId = userId;
+            }
+
+            public String getKind() {
+                return kind;
+            }
+
+            public void setKind(String kind) {
+                this.kind = kind;
+            }
+
+            public String getProduceType() {
+                return produceType;
+            }
+
+            public void setProduceType(String produceType) {
+                this.produceType = produceType;
+            }
+
+            public String getLoginName() {
+                return loginName;
+            }
+
+            public void setLoginName(String loginName) {
+                this.loginName = loginName;
+            }
+
+            public String getMobile() {
+                return mobile;
+            }
+
+            public void setMobile(String mobile) {
+                this.mobile = mobile;
+            }
+
+            public String getPhoto() {
+                return photo;
+            }
+
+            public void setPhoto(String photo) {
+                this.photo = photo;
+            }
+
+            public String getLoginPwdStrength() {
+                return loginPwdStrength;
+            }
+
+            public void setLoginPwdStrength(String loginPwdStrength) {
+                this.loginPwdStrength = loginPwdStrength;
+            }
+
+            public String getTradePwdStrength() {
+                return tradePwdStrength;
+            }
+
+            public void setTradePwdStrength(String tradePwdStrength) {
+                this.tradePwdStrength = tradePwdStrength;
+            }
+
+            public String getStatus() {
+                return status;
+            }
+
+            public void setStatus(String status) {
+                this.status = status;
+            }
+
+            public String getCreateDatetime() {
+                return createDatetime;
+            }
+
+            public void setCreateDatetime(String createDatetime) {
+                this.createDatetime = createDatetime;
+            }
+
+            public boolean isBlacklistFlag() {
+                return blacklistFlag;
+            }
+
+            public void setBlacklistFlag(boolean blacklistFlag) {
+                this.blacklistFlag = blacklistFlag;
+            }
+
+            public boolean isIdentifyFlag() {
+                return identifyFlag;
+            }
+
+            public void setIdentifyFlag(boolean identifyFlag) {
+                this.identifyFlag = identifyFlag;
+            }
+
+            public boolean isBankcardFlag() {
+                return bankcardFlag;
+            }
+
+            public void setBankcardFlag(boolean bankcardFlag) {
+                this.bankcardFlag = bankcardFlag;
+            }
+
+            public boolean isTradepwdFlag() {
+                return tradepwdFlag;
+            }
+
+            public void setTradepwdFlag(boolean tradepwdFlag) {
+                this.tradepwdFlag = tradepwdFlag;
+            }
+        }
+
+        public static class ProductOrderListBean implements Serializable {
+            /**
+             * code : CD201812251646414465562
+             * orderCode : DD201812251646414468695
+             * productCode : CP201812251200074045464
+             * productSpecsCode : PS201812251357012207970
+             * productSpecsName : 金色
+             * quantity : 1.0
+             * price : 100000.0
+             * sfRate : 0.3
+             * periods : 2.0
+             * bankRate : 0.2
+             * product : {"name":"iPhone","advPic":"FuRT_Oyxt3ATIhlyygVIJKreeVLn"}
+             */
+
+            private String code;
+            private String orderCode;
+            private String productCode;
+            private String productSpecsCode;
+            private String productSpecsName;
+            private double quantity;
+            private double price;
+            private double sfRate;
+            private double periods;
+            private double bankRate;
+            private ProductBean product;
+
+            public String getCode() {
+                return code;
+            }
+
+            public void setCode(String code) {
+                this.code = code;
+            }
+
+            public String getOrderCode() {
+                return orderCode;
+            }
+
+            public void setOrderCode(String orderCode) {
+                this.orderCode = orderCode;
+            }
+
+            public String getProductCode() {
+                return productCode;
+            }
+
+            public void setProductCode(String productCode) {
+                this.productCode = productCode;
+            }
+
+            public String getProductSpecsCode() {
+                return productSpecsCode;
+            }
+
+            public void setProductSpecsCode(String productSpecsCode) {
+                this.productSpecsCode = productSpecsCode;
+            }
+
+            public String getProductSpecsName() {
+                return productSpecsName;
+            }
+
+            public void setProductSpecsName(String productSpecsName) {
+                this.productSpecsName = productSpecsName;
+            }
+
+            public double getQuantity() {
+                return quantity;
+            }
+
+            public void setQuantity(double quantity) {
+                this.quantity = quantity;
+            }
+
+            public double getPrice() {
+                return price;
+            }
+
+            public void setPrice(double price) {
+                this.price = price;
+            }
+
+            public double getSfRate() {
+                return sfRate;
+            }
+
+            public void setSfRate(double sfRate) {
+                this.sfRate = sfRate;
+            }
+
+            public double getPeriods() {
+                return periods;
+            }
+
+            public void setPeriods(double periods) {
+                this.periods = periods;
+            }
+
+            public double getBankRate() {
+                return bankRate;
+            }
+
+            public void setBankRate(double bankRate) {
+                this.bankRate = bankRate;
+            }
+
+            public ProductBean getProduct() {
+                return product;
+            }
+
+            public void setProduct(ProductBean product) {
+                this.product = product;
+            }
+
+            public static class ProductBean implements Serializable {
+                /**
+                 * name : iPhone
+                 * advPic : FuRT_Oyxt3ATIhlyygVIJKreeVLn
+                 */
+
+                private String name;
+                private String advPic;
+
+                public String getName() {
+                    return name;
+                }
+
+                public void setName(String name) {
+                    this.name = name;
+                }
+
+                public String getAdvPic() {
+                    return advPic;
+                }
+
+                public void setAdvPic(String advPic) {
+                    this.advPic = advPic;
+                }
+            }
         }
     }
 }

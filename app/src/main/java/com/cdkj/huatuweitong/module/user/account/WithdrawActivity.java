@@ -11,10 +11,12 @@ import android.text.Spanned;
 import android.text.TextWatcher;
 import android.view.View;
 
+import com.cdkj.baselibrary.activitys.BankCardListActivity;
 import com.cdkj.baselibrary.appmanager.MyCdConfig;
 import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.dialog.UITipDialog;
+import com.cdkj.baselibrary.model.BankCardModel;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
 import com.cdkj.baselibrary.utils.MoneyUtils;
@@ -24,6 +26,8 @@ import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.WithdrawTipModel;
 import com.cdkj.huatuweitong.databinding.ActivityWithdrawBinding;
+
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -52,8 +56,8 @@ public class WithdrawActivity extends AbsBaseLoadActivity {
             return;
         }
         Intent intent = new Intent(context, WithdrawActivity.class);
-        intent.putExtra("balance",balance);
-        intent.putExtra("accountNumber",accountNumber);
+        intent.putExtra("balance", balance);
+        intent.putExtra("accountNumber", accountNumber);
         context.startActivity(intent);
     }
 
@@ -87,9 +91,17 @@ public class WithdrawActivity extends AbsBaseLoadActivity {
 
     private void initListener() {
 
+        mBinding.tvSelect.setOnClickListener(v -> {
+
+            BankCardListActivity.open(this, true);
+
+        });
+        mBinding.edtName.setFocusable(false);
+        mBinding.edtBankName.setFocusable(false);
+        mBinding.edtCardId.setFocusable(false);
 
         mBinding.tvConfirm.setOnClickListener(view -> {
-            if (check()){
+            if (check()) {
                 withdraw();
             }
         });
@@ -97,15 +109,18 @@ public class WithdrawActivity extends AbsBaseLoadActivity {
 
     private boolean check() {
         if (mBinding.edtName.getText().toString().equals("")) {
-            ToastUtil.show(this, "请填写您的姓名");
+//            ToastUtil.show(this, "请填写您的姓名");
+            ToastUtil.show(this, "选择银行卡");
             return false;
         }
         if (mBinding.edtBankName.getText().toString().equals("")) {
-            ToastUtil.show(this, "请填写银行名称");
+//            ToastUtil.show(this, "请填写银行名称");
+            ToastUtil.show(this, "选择银行卡");
             return false;
         }
         if (mBinding.edtCardId.getText().toString().length() < 16 || mBinding.edtCardId.getText().toString().length() > 19) {
-            ToastUtil.show(this, "请填写正确的银行卡号");
+//            ToastUtil.show(this, "请填写正确的银行卡号");
+            ToastUtil.show(this, "选择正确的银行卡并核对卡号");
             return false;
         }
 
@@ -154,9 +169,9 @@ public class WithdrawActivity extends AbsBaseLoadActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(!editable.toString().trim().equals("")){
-                    mBinding.txtTip4.setText("* 本次提现手续费:"+ MoneyUtils.doubleFormatSXF(Double.parseDouble(editable.toString()) * CUSERQXFL));
-                }else {
+                if (!editable.toString().trim().equals("")) {
+                    mBinding.txtTip4.setText("* 本次提现手续费:" + MoneyUtils.doubleFormatSXF(Double.parseDouble(editable.toString()) * CUSERQXFL));
+                } else {
                     mBinding.txtTip4.setText("* 本次提现手续费:0");
                 }
             }
@@ -220,9 +235,9 @@ public class WithdrawActivity extends AbsBaseLoadActivity {
             @Override
             protected void onSuccess(WithdrawTipModel data, String SucMessage) {
 
-                mBinding.txtTip.setText("1.每月最大取现次数为"+data.getCUSERMONTIMES()+"次");
+                mBinding.txtTip.setText("1.每月最大取现次数为" + data.getCUSERMONTIMES() + "次");
                 mBinding.txtTip2.setText("2.提现金额是" + data.getCUSERQXBS() + "的倍数，单笔最高" + data.getQXDBZDJE());
-                mBinding.txtTip3.setText("3.取现手续费:" + (data.getCUSERQXFL()*100)+"%");
+                mBinding.txtTip3.setText("3.取现手续费:" + (data.getCUSERQXFL() * 100) + "%");
 
                 CUSERQXFL = data.getCUSERQXFL();
 
@@ -233,6 +248,19 @@ public class WithdrawActivity extends AbsBaseLoadActivity {
                 disMissLoading();
             }
         });
-
     }
+
+    @Subscribe
+    public void addressSelect(BankCardModel bankCardModel) {
+        setBankCard(bankCardModel);
+    }
+
+    private void setBankCard(BankCardModel bankCardModel) {
+        mBinding.llBankMsg.setVisibility(View.VISIBLE);
+        mBinding.edtName.setText(bankCardModel.getRealName());
+        mBinding.edtBankName.setText(bankCardModel.getBankName());
+        mBinding.edtCardId.setText(bankCardModel.getBankcardNumber());
+    }
+
+
 }

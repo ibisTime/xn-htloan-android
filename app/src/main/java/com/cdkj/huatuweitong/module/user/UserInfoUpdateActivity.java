@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.cdkj.baselibrary.activitys.BankCardListActivity;
@@ -72,7 +73,7 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
     }
 
     private void initOnclick() {
-
+        Log.e("pppppp", "initOnclick: "+SPUtilHelper.getUserPhoto());
         ImgUtils.loadQiniuLogo(this, SPUtilHelper.getUserPhoto(), mBinding.imgLogo);
 
         mBinding.layoutLogo.setOnClickListener(v -> {

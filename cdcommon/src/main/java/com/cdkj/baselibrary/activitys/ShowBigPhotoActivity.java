@@ -4,21 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.cdkj.baselibrary.R;
-import com.cdkj.baselibrary.appmanager.MyCdConfig;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
-import com.cdkj.baselibrary.databinding.ActivityPhotoViewpagerBinding;
 import com.cdkj.baselibrary.databinding.ActivityShowBigphotoBinding;
 import com.cdkj.baselibrary.utils.ImgUtils;
-import com.github.chrisbanes.photoview.PhotoView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 显示大图
@@ -54,9 +45,7 @@ public class ShowBigPhotoActivity extends AbsBaseLoadActivity {
         if (getIntent() != null) {
             url = getIntent().getStringExtra("url");
         }
-
         ImgUtils.loadImg(this, url, mbinding.photoview);
-
     }
 
 

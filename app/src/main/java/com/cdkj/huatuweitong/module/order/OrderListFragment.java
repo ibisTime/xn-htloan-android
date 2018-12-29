@@ -92,7 +92,7 @@ public class OrderListFragment extends AbsRefreshListFragment {
                 case R.id.tv_order_state:
 
                     if (TextUtils.equals(orderBean.getStatus(), OrderHelper.ORDER_STATE.TO_PAY.getState())) {
-                        PayActivity.open(mActivity, orderBean.getCode(), MoneyUtils.showPrice(orderBean.getAmount()), true);
+                        PayActivity.open(mActivity, orderBean.getCode(), MoneyUtils.showPrice(orderBean.getSfAmount()), true);
                         return;
                     }
                     if (TextUtils.equals(orderBean.getStatus(), OrderHelper.ORDER_STATE.SEND.getState())) {
@@ -220,7 +220,7 @@ public class OrderListFragment extends AbsRefreshListFragment {
         Map<String, String> map = new HashMap<>();
 
         map.put("code", orderCode);
-        map.put("userId", SPUtilHelper.getUserId());
+        map.put("updater", SPUtilHelper.getUserId());
 
         showLoadingDialog();
 

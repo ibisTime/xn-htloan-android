@@ -25,6 +25,7 @@ import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.model.IntroductionInfoModel;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
+import com.cdkj.baselibrary.utils.LogUtil;
 import com.cdkj.baselibrary.utils.StringUtils;
 
 import java.util.HashMap;
@@ -115,7 +116,7 @@ public class WebViewActivity extends AbsBaseLoadActivity {
         }
 
         mBaseBinding.titleView.setMidTitle(getIntent().getStringExtra(WEBVIEWTITLE));
-
+        LogUtil.E("标题为"+getIntent().getStringExtra(WEBVIEWTITLE));
         if (TextUtils.isEmpty(getIntent().getStringExtra(WEBVIEWURL))) {
             getKeyUrl(getIntent().getStringExtra(WEBVIEWCODE));
         } else {

@@ -4,9 +4,9 @@ import android.support.annotation.Nullable;
 import android.widget.ImageView;
 
 import com.cdkj.baselibrary.utils.ImgUtils;
+import com.cdkj.baselibrary.utils.MoneyUtils;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.bean.FirstPageCarRecommendBean;
-import com.cdkj.huatuweitong.utlis.MoneyUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
@@ -31,7 +31,7 @@ public class RecommendCarAdapter extends BaseQuickAdapter<FirstPageCarRecommendB
     @Override
     protected void convert(BaseViewHolder helper, FirstPageCarRecommendBean item) {
         if (item == null) return;
-        helper.setText(R.id.tv_down_payments, "首付"+ MoneyUtils.BigDecimalToString(item.getPrice()));
+        helper.setText(R.id.tv_down_payments, "指导价:"+ MoneyUtils.formatNum(com.cdkj.baselibrary.utils.MoneyUtils.getPriceValue(item.getPrice()))+"元");
 
         helper.setText(R.id.tv_title,item.getName());
         ImageView imageView=helper.getView(R.id.iv_src);

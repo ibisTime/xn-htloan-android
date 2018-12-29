@@ -68,33 +68,6 @@ public class ReimbursementListFragment extends AbsRefreshListFragment {
 
     }
 
-//    /**
-//     * 获取节点列表
-//     * @param listData
-//     */
-//    private void getNodeDataList(List listData) {
-//        Map<String, String> map = new HashMap<>();
-//        Call callNode = RetrofitUtils.createApi(MyApiServer.class).getNodeDataList("630147", "{}");
-//
-//        showLoadingDialog();
-//        callNode.enqueue(new BaseResponseListCallBack<NodeModel>(mActivity) {
-//
-//            @Override
-//            protected void onSuccess(List<NodeModel> data, String SucMessage) {
-//                if (data == null || data.size() == 0)
-//                    return;
-//
-//                nodeModellist = data;
-//            }
-//
-//            @Override
-//            protected void onFinish() {
-//                disMissLoading();
-//            }
-//        });
-//    }
-
-
     @Override
     public RecyclerView.Adapter getListAdapter(List listData) {
         if (TextUtils.equals(type, "2")) {
@@ -167,6 +140,9 @@ public class ReimbursementListFragment extends AbsRefreshListFragment {
         map.put("limit", limit + "");
         map.put("start", pageindex + "");
         map.put("userId", SPUtilHelper.getUserId());
+        //0 商品  1车贷
+//        map.put("refType","");
+
 
         if (isShowDialog) {
             showLoadingDialog();

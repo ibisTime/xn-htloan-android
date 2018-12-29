@@ -129,11 +129,10 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
                 SPUtilHelper.saveUserId(data.getUserId());
                 SPUtilHelper.saveUserPhoneNum(data.getMobile());
                 SPUtilHelper.saveisTradepwdFlag(data.isTradepwdFlag());
-                SPUtilHelper.saveUserPhoto(data.getPhoto());
+                SPUtilHelper.saveUserPhoto(TextUtils.isEmpty(data.getPhoto()) ? "" : data.getPhoto());
                 SPUtilHelper.saveUserName(data.getNickname());
                 SPUtilHelper.saveIdCarde(data.getIdNo() == null ? "" : data.getIdNo());
                 SPUtilHelper.saveRealName(data.getRealName() == null ? "" : data.getRealName());
-
                 getUserAccount();
             }
 
@@ -346,6 +345,7 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
     public void checkRoomId(String roomid) {
         HashMap<String, String> map = new HashMap<>();
         map.put("roomId", roomid);
+        map.put("userId", SPUtilHelper.getUserId());
         Call<BaseResponseModel<Integer>> roomId = RetrofitUtils.createApi(MyApiServer.class).checkRoomId("632953", StringUtils.getJsonToString(map));
         showLoadingDialog();
         roomId.enqueue(new BaseResponseModelCallBack<Integer>(mActivity) {

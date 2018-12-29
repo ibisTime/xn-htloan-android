@@ -79,10 +79,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
                     android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="15dp"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginBottom="10dp">
 
                     <TextView
                         android:layout_width="0dp"
@@ -96,10 +96,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
                     android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="15dp"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginBottom="10dp">
 
                     <TextView
                         android:id="@+id/tv_type"
@@ -120,10 +120,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
                     android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="15dp"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginBottom="10dp">
 
                     <TextView
                         android:layout_width="0dp"
@@ -144,10 +144,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
                     android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="15dp"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginBottom="10dp">
 
                     <TextView
                         android:layout_width="0dp"
@@ -167,10 +167,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
                     android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="15dp"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginBottom="10dp">
 
                     <TextView
                         android:layout_width="0dp"
@@ -190,10 +190,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
                     android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="15dp"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginBottom="10dp">
 
                     <TextView
                         android:layout_width="0dp"
@@ -216,8 +216,8 @@
                 android:id="@+id/ll_repayment_plan"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:background="@color/white"
                 android:gravity="center_vertical"
                 android:paddingLeft="15dp"
@@ -242,6 +242,7 @@
                 android:layout_height="150dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
                 android:src="@mipmap/ic_launcher"
                 android:visibility="gone" />
 

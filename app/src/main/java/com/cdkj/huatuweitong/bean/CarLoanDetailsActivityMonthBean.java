@@ -57,9 +57,27 @@ public class CarLoanDetailsActivityMonthBean {
     private double totalFee;
     private UserBean user;
     private String userId;
+    private String refType;
+    private String prepayPhoto;
     private String bankcardNumber;
     private List<CostListBean> costList;
     private List<RemindLogListBean> remindLogList;
+
+    public String getPrepayPhoto() {
+        return prepayPhoto;
+    }
+
+    public void setPrepayPhoto(String prepayPhoto) {
+        this.prepayPhoto = prepayPhoto;
+    }
+
+    public String getRefType() {
+        return refType;
+    }
+
+    public void setRefType(String refType) {
+        this.refType = refType;
+    }
 
     public String getBankcardNumber() {
         return bankcardNumber;
@@ -68,6 +86,7 @@ public class CarLoanDetailsActivityMonthBean {
     public void setBankcardNumber(String bankcardNumber) {
         this.bankcardNumber = bankcardNumber;
     }
+
     public String getCode() {
         return code;
     }
@@ -315,6 +334,14 @@ public class CarLoanDetailsActivityMonthBean {
         private String updateDatetime;
         private String updater;
         private String userId;
+        private MallOrder mallOrder;
+        public MallOrder getMallOrder() {
+            return mallOrder;
+        }
+
+        public void setMallOrder(MallOrder mallOrder) {
+            this.mallOrder = mallOrder;
+        }
 
         public CarLoanDetailsActivityBean.BudgetOrderBean getBudgetOrder() {
             return budgetOrder;
@@ -586,6 +613,532 @@ public class CarLoanDetailsActivityMonthBean {
 
         public void setUserId(String userId) {
             this.userId = userId;
+        }
+
+
+        public static class MallOrder {
+
+            /**
+             * code : DD201901250007337241595
+             * bankcardCode : CD201901250007304481336
+             * receiver : 齐胜涛
+             * reMobile : 13282838237
+             * reAddress : 河南省 鹤壁市 其他详细地址
+             * applyUser : U201808091644004605371
+             * applyDatetime : Jan 25, 2019 12:07:33 AM
+             * amount : 5000000
+             * yunfei : 0
+             * sfRate : 0.5
+             * sfAmount : 2500000
+             * loanAmount : 2500000
+             * periods : 2
+             * bankRate : 0.01
+             * status : 2
+             * payDatetime : Jan 25, 2019 12:07:54 AM
+             * payAmount : 0
+             * updater : U201808091644004605371
+             * updateDatetime : Jan 25, 2019 12:07:33 AM
+             * remark : 订单已成功支付
+             * productOrderList : [{"code":"CD201901250007337249213","orderCode":"DD201901250007337241595","productCode":"CP201812241121110439470","productSpecsCode":"PS201812241121547909275","productSpecsName":"规格一","quantity":1,"price":5000000,"sfRate":0.5,"periods":2,"bankRate":0.01,"product":{"name":"戴尔","advPic":"FiuC13BpRu8u_U_0D4WXaFxZGq5M"}}]
+             * user : {"userId":"U201808091644004605371","kind":"C","produceType":"0","loginName":"13282838237","mobile":"13282838237","photo":"ANDROID_1542594772599_4000_3000.jpg","loginPwdStrength":"1","tradePwdStrength":"1","status":"0","createDatetime":"Aug 9, 2018 4:44:00 PM","blacklistFlag":false,"identifyFlag":false,"bankcardFlag":false,"tradepwdFlag":false}
+             * bankcardNumber : 4646464943613643464961
+             */
+
+            private String code;
+            private String bankcardCode;
+            private String receiver;
+            private String reMobile;
+            private String reAddress;
+            private String applyUser;
+            private String applyDatetime;
+            private int amount;
+            private int yunfei;
+            private double sfRate;
+            private int sfAmount;
+            private int loanAmount;
+            private int periods;
+            private double bankRate;
+            private String status;
+            private String payDatetime;
+            private int payAmount;
+            private String updater;
+            private String updateDatetime;
+            private String remark;
+            private UserBean user;
+            private String bankcardNumber;
+            private List<ProductOrderListBean> productOrderList;
+
+            public String getCode() {
+                return code;
+            }
+
+            public void setCode(String code) {
+                this.code = code;
+            }
+
+            public String getBankcardCode() {
+                return bankcardCode;
+            }
+
+            public void setBankcardCode(String bankcardCode) {
+                this.bankcardCode = bankcardCode;
+            }
+
+            public String getReceiver() {
+                return receiver;
+            }
+
+            public void setReceiver(String receiver) {
+                this.receiver = receiver;
+            }
+
+            public String getReMobile() {
+                return reMobile;
+            }
+
+            public void setReMobile(String reMobile) {
+                this.reMobile = reMobile;
+            }
+
+            public String getReAddress() {
+                return reAddress;
+            }
+
+            public void setReAddress(String reAddress) {
+                this.reAddress = reAddress;
+            }
+
+            public String getApplyUser() {
+                return applyUser;
+            }
+
+            public void setApplyUser(String applyUser) {
+                this.applyUser = applyUser;
+            }
+
+            public String getApplyDatetime() {
+                return applyDatetime;
+            }
+
+            public void setApplyDatetime(String applyDatetime) {
+                this.applyDatetime = applyDatetime;
+            }
+
+            public int getAmount() {
+                return amount;
+            }
+
+            public void setAmount(int amount) {
+                this.amount = amount;
+            }
+
+            public int getYunfei() {
+                return yunfei;
+            }
+
+            public void setYunfei(int yunfei) {
+                this.yunfei = yunfei;
+            }
+
+            public double getSfRate() {
+                return sfRate;
+            }
+
+            public void setSfRate(double sfRate) {
+                this.sfRate = sfRate;
+            }
+
+            public int getSfAmount() {
+                return sfAmount;
+            }
+
+            public void setSfAmount(int sfAmount) {
+                this.sfAmount = sfAmount;
+            }
+
+            public int getLoanAmount() {
+                return loanAmount;
+            }
+
+            public void setLoanAmount(int loanAmount) {
+                this.loanAmount = loanAmount;
+            }
+
+            public int getPeriods() {
+                return periods;
+            }
+
+            public void setPeriods(int periods) {
+                this.periods = periods;
+            }
+
+            public double getBankRate() {
+                return bankRate;
+            }
+
+            public void setBankRate(double bankRate) {
+                this.bankRate = bankRate;
+            }
+
+            public String getStatus() {
+                return status;
+            }
+
+            public void setStatus(String status) {
+                this.status = status;
+            }
+
+            public String getPayDatetime() {
+                return payDatetime;
+            }
+
+            public void setPayDatetime(String payDatetime) {
+                this.payDatetime = payDatetime;
+            }
+
+            public int getPayAmount() {
+                return payAmount;
+            }
+
+            public void setPayAmount(int payAmount) {
+                this.payAmount = payAmount;
+            }
+
+            public String getUpdater() {
+                return updater;
+            }
+
+            public void setUpdater(String updater) {
+                this.updater = updater;
+            }
+
+            public String getUpdateDatetime() {
+                return updateDatetime;
+            }
+
+            public void setUpdateDatetime(String updateDatetime) {
+                this.updateDatetime = updateDatetime;
+            }
+
+            public String getRemark() {
+                return remark;
+            }
+
+            public void setRemark(String remark) {
+                this.remark = remark;
+            }
+
+            public UserBean getUser() {
+                return user;
+            }
+
+            public void setUser(UserBean user) {
+                this.user = user;
+            }
+
+            public String getBankcardNumber() {
+                return bankcardNumber;
+            }
+
+            public void setBankcardNumber(String bankcardNumber) {
+                this.bankcardNumber = bankcardNumber;
+            }
+
+            public List<ProductOrderListBean> getProductOrderList() {
+                return productOrderList;
+            }
+
+            public void setProductOrderList(List<ProductOrderListBean> productOrderList) {
+                this.productOrderList = productOrderList;
+            }
+
+            public static class UserBean {
+                /**
+                 * userId : U201808091644004605371
+                 * kind : C
+                 * produceType : 0
+                 * loginName : 13282838237
+                 * mobile : 13282838237
+                 * photo : ANDROID_1542594772599_4000_3000.jpg
+                 * loginPwdStrength : 1
+                 * tradePwdStrength : 1
+                 * status : 0
+                 * createDatetime : Aug 9, 2018 4:44:00 PM
+                 * blacklistFlag : false
+                 * identifyFlag : false
+                 * bankcardFlag : false
+                 * tradepwdFlag : false
+                 */
+
+                private String userId;
+                private String kind;
+                private String produceType;
+                private String loginName;
+                private String mobile;
+                private String photo;
+                private String loginPwdStrength;
+                private String tradePwdStrength;
+                private String status;
+                private String createDatetime;
+                private boolean blacklistFlag;
+                private boolean identifyFlag;
+                private boolean bankcardFlag;
+                private boolean tradepwdFlag;
+
+                public String getUserId() {
+                    return userId;
+                }
+
+                public void setUserId(String userId) {
+                    this.userId = userId;
+                }
+
+                public String getKind() {
+                    return kind;
+                }
+
+                public void setKind(String kind) {
+                    this.kind = kind;
+                }
+
+                public String getProduceType() {
+                    return produceType;
+                }
+
+                public void setProduceType(String produceType) {
+                    this.produceType = produceType;
+                }
+
+                public String getLoginName() {
+                    return loginName;
+                }
+
+                public void setLoginName(String loginName) {
+                    this.loginName = loginName;
+                }
+
+                public String getMobile() {
+                    return mobile;
+                }
+
+                public void setMobile(String mobile) {
+                    this.mobile = mobile;
+                }
+
+                public String getPhoto() {
+                    return photo;
+                }
+
+                public void setPhoto(String photo) {
+                    this.photo = photo;
+                }
+
+                public String getLoginPwdStrength() {
+                    return loginPwdStrength;
+                }
+
+                public void setLoginPwdStrength(String loginPwdStrength) {
+                    this.loginPwdStrength = loginPwdStrength;
+                }
+
+                public String getTradePwdStrength() {
+                    return tradePwdStrength;
+                }
+
+                public void setTradePwdStrength(String tradePwdStrength) {
+                    this.tradePwdStrength = tradePwdStrength;
+                }
+
+                public String getStatus() {
+                    return status;
+                }
+
+                public void setStatus(String status) {
+                    this.status = status;
+                }
+
+                public String getCreateDatetime() {
+                    return createDatetime;
+                }
+
+                public void setCreateDatetime(String createDatetime) {
+                    this.createDatetime = createDatetime;
+                }
+
+                public boolean isBlacklistFlag() {
+                    return blacklistFlag;
+                }
+
+                public void setBlacklistFlag(boolean blacklistFlag) {
+                    this.blacklistFlag = blacklistFlag;
+                }
+
+                public boolean isIdentifyFlag() {
+                    return identifyFlag;
+                }
+
+                public void setIdentifyFlag(boolean identifyFlag) {
+                    this.identifyFlag = identifyFlag;
+                }
+
+                public boolean isBankcardFlag() {
+                    return bankcardFlag;
+                }
+
+                public void setBankcardFlag(boolean bankcardFlag) {
+                    this.bankcardFlag = bankcardFlag;
+                }
+
+                public boolean isTradepwdFlag() {
+                    return tradepwdFlag;
+                }
+
+                public void setTradepwdFlag(boolean tradepwdFlag) {
+                    this.tradepwdFlag = tradepwdFlag;
+                }
+            }
+
+            public static class ProductOrderListBean {
+                /**
+                 * code : CD201901250007337249213
+                 * orderCode : DD201901250007337241595
+                 * productCode : CP201812241121110439470
+                 * productSpecsCode : PS201812241121547909275
+                 * productSpecsName : 规格一
+                 * quantity : 1
+                 * price : 5000000
+                 * sfRate : 0.5
+                 * periods : 2
+                 * bankRate : 0.01
+                 * product : {"name":"戴尔","advPic":"FiuC13BpRu8u_U_0D4WXaFxZGq5M"}
+                 */
+
+                private String code;
+                private String orderCode;
+                private String productCode;
+                private String productSpecsCode;
+                private String productSpecsName;
+                private int quantity;
+                private int price;
+                private double sfRate;
+                private int periods;
+                private double bankRate;
+                private ProductBean product;
+
+                public String getCode() {
+                    return code;
+                }
+
+                public void setCode(String code) {
+                    this.code = code;
+                }
+
+                public String getOrderCode() {
+                    return orderCode;
+                }
+
+                public void setOrderCode(String orderCode) {
+                    this.orderCode = orderCode;
+                }
+
+                public String getProductCode() {
+                    return productCode;
+                }
+
+                public void setProductCode(String productCode) {
+                    this.productCode = productCode;
+                }
+
+                public String getProductSpecsCode() {
+                    return productSpecsCode;
+                }
+
+                public void setProductSpecsCode(String productSpecsCode) {
+                    this.productSpecsCode = productSpecsCode;
+                }
+
+                public String getProductSpecsName() {
+                    return productSpecsName;
+                }
+
+                public void setProductSpecsName(String productSpecsName) {
+                    this.productSpecsName = productSpecsName;
+                }
+
+                public int getQuantity() {
+                    return quantity;
+                }
+
+                public void setQuantity(int quantity) {
+                    this.quantity = quantity;
+                }
+
+                public int getPrice() {
+                    return price;
+                }
+
+                public void setPrice(int price) {
+                    this.price = price;
+                }
+
+                public double getSfRate() {
+                    return sfRate;
+                }
+
+                public void setSfRate(double sfRate) {
+                    this.sfRate = sfRate;
+                }
+
+                public int getPeriods() {
+                    return periods;
+                }
+
+                public void setPeriods(int periods) {
+                    this.periods = periods;
+                }
+
+                public double getBankRate() {
+                    return bankRate;
+                }
+
+                public void setBankRate(double bankRate) {
+                    this.bankRate = bankRate;
+                }
+
+                public ProductBean getProduct() {
+                    return product;
+                }
+
+                public void setProduct(ProductBean product) {
+                    this.product = product;
+                }
+
+                public static class ProductBean {
+                    /**
+                     * name : 戴尔
+                     * advPic : FiuC13BpRu8u_U_0D4WXaFxZGq5M
+                     */
+
+                    private String name;
+                    private String advPic;
+
+                    public String getName() {
+                        return name;
+                    }
+
+                    public void setName(String name) {
+                        this.name = name;
+                    }
+
+                    public String getAdvPic() {
+                        return advPic;
+                    }
+
+                    public void setAdvPic(String advPic) {
+                        this.advPic = advPic;
+                    }
+                }
+            }
         }
     }
 
@@ -906,4 +1459,7 @@ public class CarLoanDetailsActivityMonthBean {
             this.way = way;
         }
     }
+
+
+
 }

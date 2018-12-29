@@ -143,7 +143,7 @@ public class FirstPageFragment extends BaseLazyFragment {
         map.put("limit", limit + "");
         map.put("start", pageindex + "");
         map.put("status", "3");
-        map.put("location", "1");
+        map.put("location", "0");
 
         Call<BaseResponseModel<ResponseInListModel<RecommendProductBean>>> call = RetrofitUtils.createApi(MyApiServer.class).getRecommentdProductList("808025", StringUtils.getJsonToString(map));
 
@@ -253,6 +253,7 @@ public class FirstPageFragment extends BaseLazyFragment {
 
     /**
      * 初始化推荐产品
+     * 下面的
      */
     private RecommendProductAdapter getRecommendProductAdatper(List data) {
 
@@ -285,7 +286,7 @@ public class FirstPageFragment extends BaseLazyFragment {
     }
 
     /**
-     * 初始化推荐车型
+     * 初始化推荐车型  上面的
      */
     private void initRecommendCarAdatper() {
 

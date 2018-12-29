@@ -92,14 +92,14 @@ public class PayActivity extends AbsBaseLoadActivity {
         });
 
         mBinding.llWechat.setOnClickListener(v -> {
-            payType = ALI_PAY;
+            payType = WE_PAY;
             mBinding.ivYue.setImageResource(R.mipmap.ic_pay_uncheck);
             mBinding.ivWechat.setImageResource(R.mipmap.ic_pay_check);
             mBinding.ivAli.setImageResource(R.mipmap.ic_pay_uncheck);
         });
 
         mBinding.llAli.setOnClickListener(v -> {
-            payType = WE_PAY;
+            payType = ALI_PAY;
             mBinding.ivYue.setImageResource(R.mipmap.ic_pay_uncheck);
             mBinding.ivWechat.setImageResource(R.mipmap.ic_pay_uncheck);
             mBinding.ivAli.setImageResource(R.mipmap.ic_pay_check);
@@ -214,7 +214,9 @@ public class PayActivity extends AbsBaseLoadActivity {
      */
     private void showPwdDialog() {
 
-        InputDialog inputDialog = new InputDialog(this).builder().setTitle("支付密码")
+        InputDialog inputDialog = new InputDialog(this).builder()
+//                .setPassword()
+                .setTitle("支付密码")
                 .setPositiveBtn("确定", new InputDialog.OnPositiveListener() {
                     @Override
                     public void onPositive(View view, String inputMsg) {
@@ -228,7 +230,7 @@ public class PayActivity extends AbsBaseLoadActivity {
                 .setNegativeBtn("取消", null)
                 .setContentMsg("");
         inputDialog.getContentView().setHint("请输入支付密码");
-        inputDialog.getContentView().setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        inputDialog.getContentView().setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_PASSWORD);
 
         inputDialog.show();
 

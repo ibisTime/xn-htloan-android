@@ -1,8 +1,6 @@
 package com.cdkj.huatuweitong.adapters;
 
-import android.graphics.Color;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
 import android.widget.ProgressBar;
 
 import com.cdkj.baselibrary.utils.DateUtil;
@@ -36,29 +34,11 @@ public class RepaymentPlanActivityAdapter extends BaseQuickAdapter<CarLoanDetail
         helper.setText(R.id.tv_number, (int) item.getCurPeriods() + "/" + (int) item.getPeriods() + "期");
         helper.setText(R.id.tv_time, DateUtil.formatStringData(item.getRepayDatetime(), DateUtil.DATE_YMD));
         helper.setText(R.id.tv_money, MoneyUtils.showPriceDouble(item.getRepayCapital()));
+        MyTextUtils.setStatusTypeAll(helper.getView(R.id.tv_type), item.getCurNodeCode());
 
         //计算已还比例
         int progress = (int) (item.getPayedAmount() / item.getRepayCapital() * 100);//已还比例
         pb.setProgress(progress);
 
-        MyTextUtils.setStatusType004(helper.getView(R.id.tv_type), item.getCurNodeCode());
-
-        if (TextUtils.equals("004_01", item.getCurNodeCode())) {
-
-            if (item.getPayedAmount() == 0.0) {
-                helper.setText(R.id.tv_type, "未还");
-            } else {
-                helper.setText(R.id.tv_type, "已还" + MoneyUtils.showPriceDouble(item.getPayedAmount()) + "   " + "剩余" + MoneyUtils.showPriceDouble(item.getOverplusAmount()));
-
-            }
-
-        } else if (TextUtils.equals("004_02", item.getCurNodeCode())) {
-            //完成
-            pb.setProgress(100);
-        } else if (item.getCurNodeCode().equals("004_06")) {
-            //逾期
-            helper.setText(R.id.tv_type, "逾期");
-            helper.setTextColor(R.id.tv_type, Color.RED);
-        }
     }
 }

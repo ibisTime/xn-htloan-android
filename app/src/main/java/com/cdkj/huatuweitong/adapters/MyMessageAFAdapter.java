@@ -38,11 +38,12 @@ public class MyMessageAFAdapter extends BaseQuickAdapter<MsgListModel.ListBean, 
         TextView tv_time = helper.getView(R.id.tv_time);
         TextView tv_title = helper.getView(R.id.tv_title);
         TextView tv_content = helper.getView(R.id.tv_content);
-        tv_time.setText(item.getPushedDatetime());
-        String time = DateUtil.formatStringData(item.getPushedDatetime(), DateUtil.DATE_YMD);
+        tv_time.setText(item.getUpdateDatetime());
+        String time = DateUtil.formatStringData(item.getUpdateDatetime(), DateUtil.DATE_YMD);
         tv_time.setText(time);
-        tv_title.setText(item.getSmsTitle());
-        tv_content.setText(item.getSmsContent());
+        tv_title.setText(item.getTitle());
+
+        tv_content.setText(item.getContent());
 
         LinearLayout ll_money = helper.getView(R.id.ll_money);//查看更多
         ll_money.setVisibility(View.GONE);

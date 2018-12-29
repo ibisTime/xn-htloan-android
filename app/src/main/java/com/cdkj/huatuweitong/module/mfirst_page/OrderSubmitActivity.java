@@ -75,15 +75,9 @@ public class OrderSubmitActivity extends AbsBaseLoadActivity {
         if (getIntent() != null) {
             orderSubmitIntentBean = getIntent().getParcelableExtra(CdRouteHelper.DATASIGN);
         }
-
-
         mBinding.tvReceiveAddress.setText("请选择收货地址");
-
         setShowData(orderSubmitIntentBean);
-
         initOclick();
-
-
         getDefaultAddress();
         getDefaultBankCard();
     }

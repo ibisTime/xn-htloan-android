@@ -5,10 +5,9 @@ import android.text.TextUtils;
 
 import com.cdkj.baselibrary.utils.DateUtil;
 import com.cdkj.baselibrary.utils.MoneyUtils;
-import com.cdkj.huatuweitong.MainActivity;
 import com.cdkj.huatuweitong.R;
-import com.cdkj.huatuweitong.bean.NodeModel;
 import com.cdkj.huatuweitong.bean.ReimbursementRepaymentBean;
+import com.cdkj.huatuweitong.utlis.MyTextUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
@@ -41,14 +40,14 @@ public class ReimbursementListAdapter extends BaseQuickAdapter<ReimbursementRepa
         helper.setText(R.id.tv_price, MoneyUtils.showPriceDouble(item.getLoanAmount()));
         helper.setText(R.id.tv_time, DateUtil.formatStringData(item.getLoanEndDatetime(), DateUtil.DATE_YMD));//loanEndDatetime
 
-        if (MainActivity.nodeModellist != null)
-            for (NodeModel mode : MainActivity.nodeModellist) {
-                if (TextUtils.equals(mode.getCode(), item.getCurNodeCode())) {
-                    helper.setText(R.id.tv_type, mode.getName() == null ? "" : mode.getName());
-                    break;
-                }
-            }
+//        if (MainActivity.nodeModellist != null)
+//            for (NodeModel mode : MainActivity.nodeModellist) {
+//                if (TextUtils.equals(mode.getCode(), item.getCurNodeCode())) {
+//                    helper.setText(R.id.tv_type, mode.getName() == null ? "" : mode.getName());
+//                    break;
+//                }
+//            }
 
-        // MyTextUtils.setStatusType004(helper.getView(R.id.tv_type), item.getStatus());
+         MyTextUtils.setStatusTypeAll(helper.getView(R.id.tv_type), item.getCurNodeCode());
     }
 }

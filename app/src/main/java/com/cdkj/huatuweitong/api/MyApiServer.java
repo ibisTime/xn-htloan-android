@@ -545,4 +545,14 @@ public interface MyApiServer {
     @POST("api")
     Call<BaseResponseModel<Integer>> checkRoomId(@Field("code") String code, @Field("json") String json);
 
+  /**
+     * 检查房间id
+     *
+     * @param code
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<ZXSuccessIDBean>> upDataHKimg(@Field("code") String code, @Field("json") String json);
+
 }

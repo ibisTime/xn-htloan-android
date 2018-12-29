@@ -1,15 +1,13 @@
 package com.cdkj.huatuweitong.bean;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by cdkj on 2017/7/20.
  */
 
-public class MsgListModel implements Parcelable {
+public class MsgListModel implements Serializable {
 
 
     /**
@@ -31,113 +29,59 @@ public class MsgListModel implements Parcelable {
         this.list = listX;
     }
 
-    public static class ListBean implements Parcelable {
+    public static class ListBean implements Serializable {
         /**
-         * id : 32
-         * fromSystemCode : CD-CYC000009
-         * channelType : 4
-         * pushType : 41
-         * toSystemCode : CD-CYC000009
-         * toKind : 2
-         * smsType : 2
-         * smsTitle : 试吃员消息1
-         * smsContent : 试吃员消息1
+         * code : XX201812182205565342898
+         * type : 1
+         * title : 123
+         * content : 456<p>fs</p>
          * status : 1
-         * createDatetime : Jul 20, 2017 8:17:06 PM
-         * topushDatetime : Jul 20, 2017 8:17:06 PM
-         * pushedDatetime : Jul 20, 2017 8:17:12 PM
-         * updater : admin
-         * updateDatetime : Jul 20, 2017 8:17:12 PM
+         * createDatetime : Dec 18, 2018 10:05:56 PM
+         * updater : U201806141609052491026
+         * updateDatetime : Feb 7, 2019 12:13:15 PM
          * remark :
          */
 
-        private int id;
-        private String fromSystemCode;
-        private String channelType;
-        private String pushType;
-        private String toSystemCode;
-        private String toKind;
-        private String smsType;
-        private String smsTitle;
-        private String smsContent;
+        private String code;
+        private String type;
+        private String title;
+        private String content;
         private String status;
         private String createDatetime;
-        private String topushDatetime;
-        private String pushedDatetime;
         private String updater;
         private String updateDatetime;
         private String remark;
 
-        public int getId() {
-            return id;
+        public String getCode() {
+            return code;
         }
 
-        public void setId(int id) {
-            this.id = id;
+        public void setCode(String code) {
+            this.code = code;
         }
 
-        public String getFromSystemCode() {
-            return fromSystemCode;
+        public String getType() {
+            return type;
         }
 
-        public void setFromSystemCode(String fromSystemCode) {
-            this.fromSystemCode = fromSystemCode;
+        public void setType(String type) {
+            this.type = type;
         }
 
-        public String getChannelType() {
-            return channelType;
+        public String getTitle() {
+            return title;
         }
 
-        public void setChannelType(String channelType) {
-            this.channelType = channelType;
+        public void setTitle(String title) {
+            this.title = title;
         }
 
-        public String getPushType() {
-            return pushType;
+        public String getContent() {
+            return content;
         }
 
-        public void setPushType(String pushType) {
-            this.pushType = pushType;
-        }
-
-        public String getToSystemCode() {
-            return toSystemCode;
-        }
-
-        public void setToSystemCode(String toSystemCode) {
-            this.toSystemCode = toSystemCode;
-        }
-
-        public String getToKind() {
-            return toKind;
-        }
-
-        public void setToKind(String toKind) {
-            this.toKind = toKind;
-        }
-
-        public String getSmsType() {
-            return smsType;
-        }
-
-        public void setSmsType(String smsType) {
-            this.smsType = smsType;
-        }
-
-        public String getSmsTitle() {
-            return smsTitle;
-        }
-
-        public void setSmsTitle(String smsTitle) {
-            this.smsTitle = smsTitle;
-        }
-
-        public String getSmsContent() {
-            return smsContent;
-        }
-
-        public void setSmsContent(String smsContent) {
-            this.smsContent = smsContent;
+        public void setContent(String content) {
+            this.content = content;
         }
 
         public String getStatus() {
@@ -154,22 +98,6 @@ public class MsgListModel implements Parcelable {
 
         public void setCreateDatetime(String createDatetime) {
             this.createDatetime = createDatetime;
-        }
-
-        public String getTopushDatetime() {
-            return topushDatetime;
-        }
-
-        public void setTopushDatetime(String topushDatetime) {
-            this.topushDatetime = topushDatetime;
-        }
-
-        public String getPushedDatetime() {
-            return pushedDatetime;
-        }
-
-        public void setPushedDatetime(String pushedDatetime) {
-            this.pushedDatetime = pushedDatetime;
         }
 
         public String getUpdater() {
@@ -196,92 +124,257 @@ public class MsgListModel implements Parcelable {
             this.remark = remark;
         }
 
-        @Override
-        public int describeContents() {
-            return 0;
-        }
 
-        @Override
-        public void writeToParcel(Parcel dest, int flags) {
-            dest.writeInt(this.id);
-            dest.writeString(this.fromSystemCode);
-            dest.writeString(this.channelType);
-            dest.writeString(this.pushType);
-            dest.writeString(this.toSystemCode);
-            dest.writeString(this.toKind);
-            dest.writeString(this.smsType);
-            dest.writeString(this.smsTitle);
-            dest.writeString(this.smsContent);
-            dest.writeString(this.status);
-            dest.writeString(this.createDatetime);
-            dest.writeString(this.topushDatetime);
-            dest.writeString(this.pushedDatetime);
-            dest.writeString(this.updater);
-            dest.writeString(this.updateDatetime);
-            dest.writeString(this.remark);
-        }
-
-        public ListBean() {
-        }
-
-        protected ListBean(Parcel in) {
-            this.id = in.readInt();
-            this.fromSystemCode = in.readString();
-            this.channelType = in.readString();
-            this.pushType = in.readString();
-            this.toSystemCode = in.readString();
-            this.toKind = in.readString();
-            this.smsType = in.readString();
-            this.smsTitle = in.readString();
-            this.smsContent = in.readString();
-            this.status = in.readString();
-            this.createDatetime = in.readString();
-            this.topushDatetime = in.readString();
-            this.pushedDatetime = in.readString();
-            this.updater = in.readString();
-            this.updateDatetime = in.readString();
-            this.remark = in.readString();
-        }
-
-        public static final Creator<ListBean> CREATOR = new Creator<ListBean>() {
-            @Override
-            public ListBean createFromParcel(Parcel source) {
-                return new ListBean(source);
-            }
-
-            @Override
-            public ListBean[] newArray(int size) {
-                return new ListBean[size];
-            }
-        };
+//        /**
+//         * id : 32
+//         * fromSystemCode : CD-CYC000009
+//         * channelType : 4
+//         * pushType : 41
+//         * toSystemCode : CD-CYC000009
+//         * toKind : 2
+//         * smsType : 2
+//         * smsTitle : 试吃员消息1
+//         * smsContent : 试吃员消息1
+//         * status : 1
+//         * createDatetime : Jul 20, 2017 8:17:06 PM
+//         * topushDatetime : Jul 20, 2017 8:17:06 PM
+//         * pushedDatetime : Jul 20, 2017 8:17:12 PM
+//         * updater : admin
+//         * updateDatetime : Jul 20, 2017 8:17:12 PM
+//         * remark :
+//         */
+//
+//        private int id;
+//        private String fromSystemCode;
+//        private String channelType;
+//        private String pushType;
+//        private String toSystemCode;
+//        private String toKind;
+//        private String smsType;
+//        private String smsTitle;
+//        private String smsContent;
+//        private String status;
+//        private String createDatetime;
+//        private String topushDatetime;
+//        private String pushedDatetime;
+//        private String updater;
+//        private String updateDatetime;
+//        private String remark;
+//
+//        public int getId() {
+//            return id;
+//        }
+//
+//        public void setId(int id) {
+//            this.id = id;
+//        }
+//
+//        public String getFromSystemCode() {
+//            return fromSystemCode;
+//        }
+//
+//        public void setFromSystemCode(String fromSystemCode) {
+//            this.fromSystemCode = fromSystemCode;
+//        }
+//
+//        public String getChannelType() {
+//            return channelType;
+//        }
+//
+//        public void setChannelType(String channelType) {
+//            this.channelType = channelType;
+//        }
+//
+//        public String getPushType() {
+//            return pushType;
+//        }
+//
+//        public void setPushType(String pushType) {
+//            this.pushType = pushType;
+//        }
+//
+//        public String getToSystemCode() {
+//            return toSystemCode;
+//        }
+//
+//        public void setToSystemCode(String toSystemCode) {
+//            this.toSystemCode = toSystemCode;
+//        }
+//
+//        public String getToKind() {
+//            return toKind;
+//        }
+//
+//        public void setToKind(String toKind) {
+//            this.toKind = toKind;
+//        }
+//
+//        public String getSmsType() {
+//            return smsType;
+//        }
+//
+//        public void setSmsType(String smsType) {
+//            this.smsType = smsType;
+//        }
+//
+//        public String getSmsTitle() {
+//            return smsTitle;
+//        }
+//
+//        public void setSmsTitle(String smsTitle) {
+//            this.smsTitle = smsTitle;
+//        }
+//
+//        public String getSmsContent() {
+//            return smsContent;
+//        }
+//
+//        public void setSmsContent(String smsContent) {
+//            this.smsContent = smsContent;
+//        }
+//
+//        public String getStatus() {
+//            return status;
+//        }
+//
+//        public void setStatus(String status) {
+//            this.status = status;
+//        }
+//
+//        public String getCreateDatetime() {
+//            return createDatetime;
+//        }
+//
+//        public void setCreateDatetime(String createDatetime) {
+//            this.createDatetime = createDatetime;
+//        }
+//
+//        public String getTopushDatetime() {
+//            return topushDatetime;
+//        }
+//
+//        public void setTopushDatetime(String topushDatetime) {
+//            this.topushDatetime = topushDatetime;
+//        }
+//
+//        public String getPushedDatetime() {
+//            return pushedDatetime;
+//        }
+//
+//        public void setPushedDatetime(String pushedDatetime) {
+//            this.pushedDatetime = pushedDatetime;
+//        }
+//
+//        public String getUpdater() {
+//            return updater;
+//        }
+//
+//        public void setUpdater(String updater) {
+//            this.updater = updater;
+//        }
+//
+//        public String getUpdateDatetime() {
+//            return updateDatetime;
+//        }
+//
+//        public void setUpdateDatetime(String updateDatetime) {
+//            this.updateDatetime = updateDatetime;
+//        }
+//
+//        public String getRemark() {
+//            return remark;
+//        }
+//
+//        public void setRemark(String remark) {
+//            this.remark = remark;
+//        }
+//
+//        @Override
+//        public int describeContents() {
+//            return 0;
+//        }
+//
+//        @Override
+//        public void writeToParcel(Parcel dest, int flags) {
+//            dest.writeInt(this.id);
+//            dest.writeString(this.fromSystemCode);
+//            dest.writeString(this.channelType);
+//            dest.writeString(this.pushType);
+//            dest.writeString(this.toSystemCode);
+//            dest.writeString(this.toKind);
+//            dest.writeString(this.smsType);
+//            dest.writeString(this.smsTitle);
+//            dest.writeString(this.smsContent);
+//            dest.writeString(this.status);
+//            dest.writeString(this.createDatetime);
+//            dest.writeString(this.topushDatetime);
+//            dest.writeString(this.pushedDatetime);
+//            dest.writeString(this.updater);
+//            dest.writeString(this.updateDatetime);
+//            dest.writeString(this.remark);
+//        }
+//
+//        public ListBean() {
+//        }
+//
+//        protected ListBean(Parcel in) {
+//            this.id = in.readInt();
+//            this.fromSystemCode = in.readString();
+//            this.channelType = in.readString();
+//            this.pushType = in.readString();
+//            this.toSystemCode = in.readString();
+//            this.toKind = in.readString();
+//            this.smsType = in.readString();
+//            this.smsTitle = in.readString();
+//            this.smsContent = in.readString();
+//            this.status = in.readString();
+//            this.createDatetime = in.readString();
+//            this.topushDatetime = in.readString();
+//            this.pushedDatetime = in.readString();
+//            this.updater = in.readString();
+//            this.updateDatetime = in.readString();
+//            this.remark = in.readString();
+//        }
+//
+//        public static final Creator<ListBean> CREATOR = new Creator<ListBean>() {
+//            @Override
+//            public ListBean createFromParcel(Parcel source) {
+//                return new ListBean(source);
+//            }
+//
+//            @Override
+//            public ListBean[] newArray(int size) {
+//                return new ListBean[size];
+//            }
+//        };
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
+//    @Override
+//    public int describeContents() {
+//        return 0;
+//    }
+//
+//    @Override
+//    public void writeToParcel(Parcel dest, int flags) {
+//        dest.writeTypedList(this.list);
+//    }
+//
+//    public MsgListModel() {
+//    }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeTypedList(this.list);
-    }
+//    protected MsgListModel(Parcel in) {
+//        this.list = in.createTypedArrayList(ListBean.CREATOR);
+//    }
 
-    public MsgListModel() {
-    }
-
-    protected MsgListModel(Parcel in) {
-        this.list = in.createTypedArrayList(ListBean.CREATOR);
-    }
-
-    public static final Creator<MsgListModel> CREATOR = new Creator<MsgListModel>() {
-        @Override
-        public MsgListModel createFromParcel(Parcel source) {
-            return new MsgListModel(source);
-        }
-
-        @Override
-        public MsgListModel[] newArray(int size) {
-            return new MsgListModel[size];
-        }
-    };
+//    public static final Creator<MsgListModel> CREATOR = new Creator<MsgListModel>() {
+//        @Override
+//        public MsgListModel createFromParcel(Parcel source) {
+//            return new MsgListModel(source);
+//        }
+//
+//        @Override
+//        public MsgListModel[] newArray(int size) {
+//            return new MsgListModel[size];
+//        }
+//    };
 }

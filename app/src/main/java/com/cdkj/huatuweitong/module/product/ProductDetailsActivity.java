@@ -186,6 +186,8 @@ public class ProductDetailsActivity extends AbsBaseLoadActivity {
         setBannerData(StringUtils.splitAsPicList(data.getAdvPic()));
         mBinding.tvProductName.setText(data.getName());
         mBinding.tvProductPrice.setText(MoneyUtils.getShowPriceSign(data.getPrice()));
+        mBinding.tvOriginalPrice.setText(MoneyUtils.getShowPriceSign(data.getOriginalPrice()));
+
 
         mBinding.web.loadData(data.getDescription(), "text/html;charset=UTF-8", "UTF-8");
 
@@ -214,8 +216,7 @@ public class ProductDetailsActivity extends AbsBaseLoadActivity {
         }
 
         /*添加包装*/
-        if (data.getProductSpecsList() != null) {
-
+        if (data.getProductSpecsList() != null && data.getProductSpecsList().size() != 0) {
             int i = -1;
             for (RecommendProductBean.ProductSpecsListBean productSpecsListBean : data.getProductSpecsList()) {
                 if (productSpecsListBean == null) continue;
@@ -239,6 +240,12 @@ public class ProductDetailsActivity extends AbsBaseLoadActivity {
                 specViewList.add(tv2);
                 dialogBinding.flexboxSpec.addView(tv2, layoutParams);
             }
+            if (i >= 0) {
+                //如果有规格数据  就默认选择第一个规格
+                specViewStateChange(0);//默认选择第一个规格
+                ImgUtils.loadQiniuImg(this, StringUtils.getAsPicListIndexOne(data.getProductSpecsList().get(0).getPic()), dialogBinding.ivImg);
+            }
+
         }
     }
 
@@ -255,8 +262,6 @@ public class ProductDetailsActivity extends AbsBaseLoadActivity {
         int i = 0;
         for (TextView textView : specViewList) {
             if (position == i) {
-
-
                 textView.setBackgroundResource(R.drawable.product_spce_bg_blue);
                 textView.setTextColor(ContextCompat.getColor(ProductDetailsActivity.this, R.color.white));
                 specsListBean = recommendProductBean.getProductSpecsList().get(i);
@@ -264,8 +269,11 @@ public class ProductDetailsActivity extends AbsBaseLoadActivity {
                 if (quantity <= 0) {
                     dialogBinding.tvXianhuo.setText("缺货");
                 } else {
-                    dialogBinding.tvXianhuo.setText("现货");
+//                    dialogBinding.tvXianhuo.setText("现货");
+                    dialogBinding.tvXianhuo.setText("库存:" + specsListBean.getQuantity());
                 }
+                dialogBinding.tvPrice.setText(MoneyUtils.getShowPriceSign(specsListBean.getPrice()));
+
                 dialogBinding.buttomLayout.tvMouthMoney.setText(MoneyUtils.showPrice(specsListBean.getMonthAmount()) + "X" + specsListBean.getPeriods() + "期");
             } else {
                 textView.setTextColor(ContextCompat.getColor(ProductDetailsActivity.this, R.color.text_black_cd));

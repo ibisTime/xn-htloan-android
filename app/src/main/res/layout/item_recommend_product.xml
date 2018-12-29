@@ -5,10 +5,10 @@
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:orientation="horizontal"
-    android:paddingBottom="10dp"
     android:paddingLeft="15dp"
+    android:paddingTop="10dp"
     android:paddingRight="15dp"
-    android:paddingTop="10dp">
+    android:paddingBottom="10dp">
 
 
     <FrameLayout
@@ -52,11 +52,24 @@
             android:textSize="15sp"
             tools:text="热销热销热销热销热销热销" />
 
+        <TextView
+            android:id="@+id/tv_slogan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:singleLine="true"
+            tools:textColor="@color/gray_text"
+            android:textSize="14sp"
+            tools:text="广告语" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -72,7 +85,7 @@
                     android:maxLines="2"
                     android:textColor="@color/orange"
                     android:textSize="16sp"
-                    tools:text="39393939393939" />
+                    tools:text="393939393" />
 
                 <TextView
                     android:id="@+id/tv_mouth_money"

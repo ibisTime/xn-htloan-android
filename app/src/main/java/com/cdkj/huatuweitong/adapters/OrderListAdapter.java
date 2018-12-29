@@ -1,7 +1,6 @@
 package com.cdkj.huatuweitong.adapters;
 
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
 
 import com.cdkj.baselibrary.utils.ImgUtils;
 import com.cdkj.baselibrary.utils.MoneyUtils;

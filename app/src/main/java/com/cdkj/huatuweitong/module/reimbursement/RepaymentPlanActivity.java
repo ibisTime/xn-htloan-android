@@ -19,7 +19,6 @@ import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.CarLoanDetailsActivityBean;
 import com.cdkj.huatuweitong.bean.TextBean;
 import com.cdkj.huatuweitong.databinding.ActivityRepaymentPlanBinding;
-import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import java.util.HashMap;
 import java.util.List;
@@ -63,24 +62,20 @@ public class RepaymentPlanActivity extends AbsBaseLoadActivity {
         List<CarLoanDetailsActivityBean.RepayPlanListBean> repayPlanList = currentData.getRepayPlanList();
         RepaymentPlanActivityAdapter adapter = new RepaymentPlanActivityAdapter(repayPlanList);
         mBinding.recycler.setAdapter(adapter);
-        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(BaseQuickAdapter aadapter, View view, int position) {
-
+        //下面是提前还款代码
+//        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(BaseQuickAdapter aadapter, View view, int position) {
 //                showDoubleWarnListen("提前还本期", new CommonDialog.OnPositiveListener() {
 //                    @Override
 //                    public void onPositive(View view) {
 //                        CarLoanDetailsActivityBean.RepayPlanListBean item = adapter.getItem(position);
 //                        requestNet(item.getCode());
 //                    }
-//
-//
 //                });
-            }
+//            }
 
-
-        });
+//        });
     }
 
     /**

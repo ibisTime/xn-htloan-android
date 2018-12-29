@@ -31,6 +31,7 @@ public class OrderBean {
      */
 
     private BigDecimal amount;
+    private BigDecimal sfAmount;
     private String applyDatetime;
     private String applyNote;
     private String applyUser;
@@ -47,6 +48,14 @@ public class OrderBean {
     private UserBean user;
     private int yunfei;
     private List<ProductOrderListBean> productOrderList;
+
+    public BigDecimal getSfAmount() {
+        return sfAmount;
+    }
+
+    public void setSfAmount(BigDecimal sfAmount) {
+        this.sfAmount = sfAmount;
+    }
 
     public BigDecimal getAmount() {
         return amount;

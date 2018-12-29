@@ -121,7 +121,6 @@ public class PayPwdModifyActivity extends AbsBaseLoadActivity implements SendCod
                     UITipDialog.showFall(PayPwdModifyActivity.this, getString(R.string.check_pay_pwd));
                     return;
                 }
-
                 setPwd();
 
             }
@@ -140,7 +139,6 @@ public class PayPwdModifyActivity extends AbsBaseLoadActivity implements SendCod
         } else {
             object.put("tradePwd", mBinding.edtRepassword.getText().toString().trim());
         }
-
         object.put("smsCaptcha", mBinding.edtCode.getText().toString().toString());
 
         String code = "";

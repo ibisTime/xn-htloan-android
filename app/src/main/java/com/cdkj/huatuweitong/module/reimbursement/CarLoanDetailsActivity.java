@@ -8,6 +8,10 @@ import android.text.TextUtils;
 import android.view.View;
 
 import com.cdkj.baselibrary.activitys.ImageSelectActivity;
+import com.cdkj.baselibrary.activitys.ShowBigPhotoActivity;
+import com.cdkj.baselibrary.api.BaseResponseModel;
+import com.cdkj.baselibrary.appmanager.MyCdConfig;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
@@ -22,6 +26,7 @@ import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.CarLoanDetailsActivityBean;
 import com.cdkj.huatuweitong.bean.CarLoanDetailsActivityMonthBean;
+import com.cdkj.huatuweitong.bean.ZXSuccessIDBean;
 import com.cdkj.huatuweitong.databinding.ActivityCarLoanDetailsBinding;
 import com.cdkj.huatuweitong.utlis.MyTextUtils;
 
@@ -37,6 +42,7 @@ public class CarLoanDetailsActivity extends AbsBaseLoadActivity {
     private String type;//1代表是 本月应还的   2代表是所有的贷款
     private CarLoanDetailsActivityBean mdata;
     private final int requestSuccess = 200;
+    private String prepayPhotoUrl;
 
     public static void open(Context context, String code, String type) {
         if (context != null) {
@@ -71,7 +77,17 @@ public class CarLoanDetailsActivity extends AbsBaseLoadActivity {
             mBinding.llTime.setVerticalGravity(View.VISIBLE);
             mBinding.llButtom.setVisibility(View.GONE);
             mBinding.llRepaymentPlan.setVisibility(View.GONE);
-
+            //只有商品才需要上传还款截图
+            mBaseBinding.titleView.setRightTitle("还款照片");
+            mBaseBinding.titleView.setRightFraClickListener(v -> {
+                ImageSelectActivity.launch(CarLoanDetailsActivity.this, requestSuccess, false);
+            });
+            mBinding.ivImg.setOnClickListener(v -> {
+                if (!TextUtils.isEmpty(prepayPhotoUrl)) {
+                    ShowBigPhotoActivity.open(this, MyCdConfig.QINIUURL + prepayPhotoUrl);
+                }
+            });
+//            ShowBigPhotoActivity
         }
         mBinding.llRepaymentPlan.setOnClickListener(v -> {
             if (mdata != null) RepaymentPlanActivity.open(CarLoanDetailsActivity.this, mdata);
@@ -79,7 +95,6 @@ public class CarLoanDetailsActivity extends AbsBaseLoadActivity {
 
 
         mBinding.btnEarlyRepayment.setOnClickListener(v -> {
-
             String bankcardNumber;
             bankcardNumber = mdata.getBudgetOrder().getRepayBankcardNumber();
             AdvanceDetailsActivity.open(CarLoanDetailsActivity.this, mdata.getRestAmount() + "", bankcardNumber, mdata.getCode());
@@ -97,18 +112,55 @@ public class CarLoanDetailsActivity extends AbsBaseLoadActivity {
         call.enqueue(new BaseResponseModelCallBack<CarLoanDetailsActivityMonthBean>(this) {
             @Override
             protected void onSuccess(CarLoanDetailsActivityMonthBean data, String SucMessage) {
+
                 //这个不需要跳转  所以数据不用传递
                 mBinding.tvBeForOver.setText(MoneyUtils.showPriceDouble(data.getRepayCapital()));//这个先设置为本期本金
-                mBinding.tvLoanCar.setText(data.getRepayBiz().getBudgetOrder().getCarBrand());
-                mBinding.tvLoanTotal.setText(MoneyUtils.showPriceDouble(data.getPayedAmount() + data.getOverplusAmount()));//贷款总额
-                mBinding.tvLoanTerm.setText(data.getPeriods() + "");//贷款期限
-                mBinding.tvRepaymentPlan.setText(data.getBankcardNumber());//还款卡号
-                mBaseBinding.titleView.setRightTitle("还款照片");
-                mBaseBinding.titleView.setRightFraClickListener(v -> {
-                    ImageSelectActivity.launch(CarLoanDetailsActivity.this, requestSuccess, false);
-                });
-                MyTextUtils.setStatusType004(mBinding.tvLoanType, data.getCurNodeCode());
+                //判断有没有返回预算单的信息 有的话就是从  oss走的还款数据  已预算单的为准  没有的话就是 从app上下单走的数据
+                CarLoanDetailsActivityBean.BudgetOrderBean budgetOrder = data.getRepayBiz().getBudgetOrder();
+                if (budgetOrder != null) {
+                    if (TextUtils.equals(data.getRefType(), "1")) {
+                        //商品贷
+                        mBinding.tvType.setText("贷款商品");
+                        mBinding.tvLoanCar.setText(data.getRepayBiz().getBudgetOrder().getProductOrderList().get(0).getProductName());
+                        if (!TextUtils.isEmpty(data.getPrepayPhoto())) {
+                            mBinding.ivImg.setVisibility(View.VISIBLE);
+                            prepayPhotoUrl = data.getPrepayPhoto();
+                            ImgUtils.loadQiniuImg(CarLoanDetailsActivity.this, data.getPrepayPhoto(), mBinding.ivImg);
+                        }
 
+                    } else if (TextUtils.equals(data.getRefType(), "0")) {
+                        //车辆贷
+                        mBinding.tvLoanCar.setText(data.getRepayBiz().getBudgetOrder().getCarBrand());
+                        mBinding.tvType.setText("贷款车辆");
+                    }
+//                    mBinding.tvLoanCar.setText(budgetOrder.getCarBrand());
+                    mBinding.tvLoanTotal.setText(MoneyUtils.showPriceDouble(data.getPayedAmount() + data.getOverplusAmount()));//贷款总额
+                    mBinding.tvLoanTerm.setText(data.getPeriods() + "");//贷款期限
+                    mBinding.tvRepaymentPlan.setText(data.getBankcardNumber());//还款卡号
+                } else {
+                    CarLoanDetailsActivityMonthBean.RepayBizBean.MallOrder mallOrder = data.getRepayBiz().getMallOrder();
+                    if (mallOrder == null) {
+                        return;
+                    }
+                    if (TextUtils.equals(data.getRefType(), "1")) {
+                        //商品贷
+                        mBinding.tvType.setText("贷款商品");
+                        if (!TextUtils.isEmpty(data.getPrepayPhoto())) {
+                            mBinding.ivImg.setVisibility(View.VISIBLE);
+                            prepayPhotoUrl = data.getPrepayPhoto();
+                            ImgUtils.loadQiniuImg(CarLoanDetailsActivity.this, data.getPrepayPhoto(), mBinding.ivImg);
+                        }
+                    } else if (TextUtils.equals(data.getRefType(), "0")) {
+                        //车辆贷
+                        mBinding.tvType.setText("贷款车辆");
+                    }
+                    mBinding.tvLoanCar.setText(mallOrder.getProductOrderList().get(0).getProduct().getName());
+                    mBinding.tvLoanTotal.setText(MoneyUtils.showPriceDouble(data.getPayedAmount() + data.getOverplusAmount()));//贷款总额
+                    mBinding.tvLoanTerm.setText(data.getPeriods() + "");//贷款期限
+                    mBinding.tvRepaymentPlan.setText(mallOrder.getBankcardNumber());//还款卡号
+                }
+
+                MyTextUtils.setStatusTypeAll(mBinding.tvLoanType, data.getCurNodeCode());
             }
 
             @Override
@@ -120,7 +172,6 @@ public class CarLoanDetailsActivity extends AbsBaseLoadActivity {
             @Override
             protected void onFinish() {
                 disMissLoading();
-
             }
         });
 
@@ -139,39 +190,11 @@ public class CarLoanDetailsActivity extends AbsBaseLoadActivity {
                 mdata = data;
                 mBinding.tvBeForOver.setText(MoneyUtils.getShowPriceSign(data.getRestAmount()));
 
-                if (TextUtils.equals(data.getRefType(), "1")) {
-                    //商品贷
-                    mBinding.tvType.setText("贷款商品");
-                    mBinding.tvRepaymentPlan.setText(data.getBudgetOrder().getRepayBankcardNumber());//还款卡号
-
-                    if (data.getBudgetOrder().getProductOrderList() == null || data.getBudgetOrder().getProductOrderList().size() == 0)
-                        return;
-                    mBinding.tvLoanCar.setText(data.getBudgetOrder().getProductOrderList().get(0).getProductName());
-
-                } else if (TextUtils.equals(data.getRefType(), "0")) {
-                    //车辆贷
-                    mBinding.tvLoanCar.setText(data.getBudgetOrder().getCarBrand());
-                    mBinding.tvType.setText("贷款车辆");
-                    mBinding.tvRepaymentPlan.setText(data.getBudgetOrder().getRepayBankcardNumber());//还款卡号
-                }
-
-
                 if (data.getBudgetOrder() != null) {
-                    mBinding.tvLoanCar.setText(data.getBudgetOrder().getCarBrand());
-                }
-                mBinding.tvLoanTotal.setText(MoneyUtils.showPriceDouble(data.getLoanAmount()));//贷款总额
-                mBinding.tvLoanTerm.setText(data.getRepayPlanList().size() + "");//贷款期限
-//                if (data.getBudgetOrder() != null) {
-//                    mBinding.tvRepaymentPlan.setText(data.getBudgetOrder().getBankcardNumber());//还款卡号
-//                }
-
-                //0=还款中 1=正常已还款 2=正常结清 3=提前还款 4=确认提前结清 5=确认不还 6=确认处理结果
-                //还款状态
-                if (TextUtils.equals(data.getCurNodeCode(), "003_01")) {
-                    mBinding.tvLoanType.setText("还款中");
-//                    mBinding.llButtom.setVisibility(View.VISIBLE);
+                    //有预算单信息  有限取预算单的信息
+                    setBudgetOrderView(data);
                 } else {
-                    MyTextUtils.setStatusType003(mBinding.tvLoanType, data.getCurNodeCode());
+                    setAppView(data);
                 }
             }
 
@@ -189,6 +212,63 @@ public class CarLoanDetailsActivity extends AbsBaseLoadActivity {
         });
     }
 
+    /**
+     * 从oss端一步步审核通过的数据  取预算单的数据  getBudgetOrder
+     *
+     * @param data
+     */
+    private void setBudgetOrderView(CarLoanDetailsActivityBean data) {
+        if (TextUtils.equals(data.getRefType(), "1")) {
+            //商品贷
+            mBinding.tvType.setText("贷款商品");
+            mBinding.tvRepaymentPlan.setText(data.getBudgetOrder().getRepayBankcardNumber());//还款卡号
+
+            if (data.getBudgetOrder().getProductOrderList() == null || data.getBudgetOrder().getProductOrderList().size() == 0)
+                return;
+            mBinding.tvLoanCar.setText(data.getBudgetOrder().getProductOrderList().get(0).getProductName());
+
+        } else if (TextUtils.equals(data.getRefType(), "0")) {
+            //车辆贷
+            mBinding.tvLoanCar.setText(data.getBudgetOrder().getCarBrand());
+            mBinding.tvType.setText("贷款车辆");
+            mBinding.tvRepaymentPlan.setText(data.getBudgetOrder().getRepayBankcardNumber());//还款卡号
+        }
+        if (data.getBudgetOrder() != null) {
+            mBinding.tvLoanCar.setText(data.getBudgetOrder().getCarBrand());
+        }
+        mBinding.tvLoanTotal.setText(MoneyUtils.showPriceDouble(data.getLoanAmount()));//贷款总额
+        mBinding.tvLoanTerm.setText(data.getRepayPlanList().size() + "");//贷款期限
+
+        MyTextUtils.setStatusTypeAll(mBinding.tvLoanType, data.getCurNodeCode());
+
+    }
+
+    /**
+     * 从app端下单申请的商品
+     *
+     * @param data
+     */
+    private void setAppView(CarLoanDetailsActivityBean data) {
+        if (TextUtils.equals(data.getRefType(), "1")) {
+            //商品贷
+            mBinding.tvType.setText("贷款商品");
+            mBinding.tvRepaymentPlan.setText(data.getMallOrder() == null ? "" : data.getMallOrder().getBankcardNumber());//还款卡号
+            if (data.getMallOrder().getProductOrderList() == null || data.getMallOrder().getProductOrderList().size() == 0)
+                return;
+            mBinding.tvLoanCar.setText(data.getMallOrder().getProductOrderList().get(0).getProduct().getName());
+
+        } else if (TextUtils.equals(data.getRefType(), "0")) {
+            //车辆贷
+            mBinding.tvLoanCar.setText(data.getMallOrder().getProductOrderList().get(0).getProduct().getName());
+            mBinding.tvType.setText("贷款车辆");
+            mBinding.tvRepaymentPlan.setText(data.getMallOrder() == null ? "" : data.getMallOrder().getBankcardNumber());//还款卡号
+        }
+
+        mBinding.tvLoanTotal.setText(MoneyUtils.showPriceDouble(data.getLoanAmount()));//贷款总额
+        mBinding.tvLoanTerm.setText(data.getRepayPlanList().size() + "");//贷款期限
+        MyTextUtils.setStatusTypeAll(mBinding.tvLoanType, data.getCurNodeCode());
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -198,7 +278,6 @@ public class CarLoanDetailsActivity extends AbsBaseLoadActivity {
         }
         if (requestCode == requestSuccess) {
             String path = data.getStringExtra(CameraHelper.staticPath);
-
             LogUtil.E("拍照获取路径" + path);
             showLoadingDialog();
             new QiNiuHelper(this).uploadSinglePic(new QiNiuHelper.QiNiuCallBack() {
@@ -207,16 +286,38 @@ public class CarLoanDetailsActivity extends AbsBaseLoadActivity {
                     //加载图片,调取接口
                     disMissLoading();
                     mBinding.ivImg.setVisibility(View.VISIBLE);
-                    ImgUtils.loadQiniuImg(CarLoanDetailsActivity.this,key,mBinding.ivImg);
+                    prepayPhotoUrl = key;
+                    ImgUtils.loadQiniuImg(CarLoanDetailsActivity.this, key, mBinding.ivImg);
+                    upDataHKimg(key);
                 }
 
                 @Override
                 public void onFal(String info) {
-                    UITipDialog.showFall(CarLoanDetailsActivity.this, "头像修改失败");
+                    UITipDialog.showFall(CarLoanDetailsActivity.this, "照片上传失败");
                     disMissLoading();
                 }
             }, path);
         }
     }
 
+
+    private void upDataHKimg(String img) {
+        Map map = new HashMap();
+        map.put("code", code);
+        map.put("operator", SPUtilHelper.getUserId());
+        map.put("prepayPhoto", img);
+        Call<BaseResponseModel<ZXSuccessIDBean>> baseResponseModelCall = RetrofitUtils.createApi(MyApiServer.class).upDataHKimg("630544", StringUtils.getJsonToString(map));
+        showLoadingDialog();
+        baseResponseModelCall.enqueue(new BaseResponseModelCallBack<ZXSuccessIDBean>(this) {
+            @Override
+            protected void onSuccess(ZXSuccessIDBean data, String SucMessage) {
+                UITipDialog.showSuccess(CarLoanDetailsActivity.this, "上传成功");
+            }
+
+            @Override
+            protected void onFinish() {
+                disMissLoading();
+            }
+        });
+    }
 }

@@ -220,7 +220,7 @@ public class RecommendProductBean {
         private String pic;
         private String productCode;
         private int originalPrice;
-        private int price;
+        private BigDecimal price;
         private double sfRate;
         private int periods;
         private double bankRate;
@@ -278,11 +278,11 @@ public class RecommendProductBean {
             this.originalPrice = originalPrice;
         }
 
-        public int getPrice() {
+        public BigDecimal getPrice() {
             return price;
         }
 
-        public void setPrice(int price) {
+        public void setPrice(BigDecimal price) {
             this.price = price;
         }
 
@@ -354,7 +354,7 @@ public class RecommendProductBean {
             dest.writeString(this.pic);
             dest.writeString(this.productCode);
             dest.writeInt(this.originalPrice);
-            dest.writeInt(this.price);
+            dest.writeSerializable(this.price);
             dest.writeDouble(this.sfRate);
             dest.writeInt(this.periods);
             dest.writeDouble(this.bankRate);
@@ -374,7 +374,7 @@ public class RecommendProductBean {
             this.pic = in.readString();
             this.productCode = in.readString();
             this.originalPrice = in.readInt();
-            this.price = in.readInt();
+            this.price = (BigDecimal)in.readSerializable();
             this.sfRate = in.readDouble();
             this.periods = in.readInt();
             this.bankRate = in.readDouble();

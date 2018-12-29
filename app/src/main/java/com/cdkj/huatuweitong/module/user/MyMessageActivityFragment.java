@@ -83,7 +83,7 @@ public class MyMessageActivityFragment extends AbsRefreshListFragment<MsgListMod
         map.put("fromSystemCode", MyCdConfig.SYSTEM_CODE);
         map.put("toSystemCode", MyCdConfig.SYSTEM_CODE);
 
-        Call call = RetrofitUtils.createApi(MyApiServer.class).getMsgList("804040", StringUtils.getJsonToString(map));
+        Call call = RetrofitUtils.createApi(MyApiServer.class).getMsgList("805305", StringUtils.getJsonToString(map));
 
         addCall(call);
 

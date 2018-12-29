@@ -31,6 +31,7 @@ public class CdRouteHelper {
 
     //获取数据标志
     public static final String DATASIGN = "dataSign";
+    public static final String TITLE = "title";
 
 
     /**
@@ -121,8 +122,8 @@ public class CdRouteHelper {
      * @param url
      */
     public static void openWebViewActivityForUrl(String title, String url) {
-        ARouter.getInstance().build(APPLOGIN)
-                .withString(WEBVIEWACTIVITY, title)
+        ARouter.getInstance().build(WEBVIEWACTIVITY)
+                .withString(WEBVIEWTITLE, title)
                 .withString(WEBVIEWURL, url)
                 .withBoolean(WEBVIEWISZOOM, true)
                 .greenChannel()

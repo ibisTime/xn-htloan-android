@@ -39,7 +39,7 @@ public class ReimbursementListMonthAdapter extends BaseQuickAdapter<Reimbursemen
         helper.setText(R.id.tv_price, MoneyUtils.showPriceDouble(item.getOverplusAmount()));
         helper.setText(R.id.tv_time, DateUtil.formatStringData(item.getRepayDatetime(), DateUtil.DATE_YMD));//loanEndDatetime
 
-        MyTextUtils.setStatusType004(helper.getView(R.id.tv_type),item.getStatus());
+        MyTextUtils.setStatusTypeAll(helper.getView(R.id.tv_type),item.getCurNodeCode());
 
     }
 }

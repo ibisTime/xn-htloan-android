@@ -2,8 +2,10 @@ package com.cdkj.huatuweitong;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -13,6 +15,8 @@ import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.nets.BaseResponseListCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
+import com.cdkj.baselibrary.utils.DisplayHelper;
+import com.cdkj.baselibrary.utils.LogUtil;
 import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.NodeModel;
 import com.cdkj.huatuweitong.databinding.ActivityMainBinding;
@@ -115,7 +119,20 @@ public class MainActivity extends AbsBaseLoadActivity {
 
         mBinding.pagerMain.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), fragments));
         mBinding.pagerMain.setOffscreenPageLimit(fragments.size());
+
+//        DisplayUtils
+        int i = DisplayHelper.dp2px(this, 185);
+        LogUtil.E("打印打印___185dp:"+i);
+
+        Resources resources = this.getResources();
+        DisplayMetrics dm = resources.getDisplayMetrics();
+        int width = dm.widthPixels;
+        int height = dm.heightPixels;
+        LogUtil.E("打印打印___屏幕宽度:"+width);
+        LogUtil.E("打印打印___屏幕高度:"+height);
+
     }
+
 
 
     /**

@@ -2,9 +2,6 @@ package com.cdkj.huatuweitong.other;
 
 import android.text.TextUtils;
 
-import com.cdkj.huatuweitong.BaseApplication;
-import com.cdkj.huatuweitong.R;
-
 /**
  * Created by cdkj on 2018/5/19.
  */
@@ -75,7 +72,7 @@ public class OrderHelper {
      * @return
      */
     public static boolean canShowOrderStateDoBtn(String state) {
-        return TextUtils.equals(state, OrderHelper.ORDER_STATE.TO_PAY.getState());
+        return TextUtils.equals(state, ORDER_STATE.SEND.getState())|| TextUtils.equals(state, ORDER_STATE.TO_PAY.getState());
     }
 
     /**

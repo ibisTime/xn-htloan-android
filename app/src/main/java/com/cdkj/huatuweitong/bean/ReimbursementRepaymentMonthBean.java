@@ -53,8 +53,16 @@ public class ReimbursementRepaymentMonthBean {
     private UserBean user;
     private RepayBiz repayBiz;
     private String userId;
+    private String curNodeCode;
     private double repayAmount;
 
+    public String getCurNodeCode() {
+        return curNodeCode;
+    }
+
+    public void setCurNodeCode(String curNodeCode) {
+        this.curNodeCode = curNodeCode;
+    }
 
     public static class RepayBiz {
         private String refType="0";
