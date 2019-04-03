@@ -31,11 +31,13 @@ import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.AccountListModel;
 import com.cdkj.huatuweitong.bean.UserFragmentBean;
 import com.cdkj.huatuweitong.databinding.FragmentUserBinding;
+import com.cdkj.huatuweitong.module.mfirst_page.CarLoanCalculator2Activity;
 import com.cdkj.huatuweitong.module.order.AllOrderTabActivity;
 import com.cdkj.huatuweitong.module.user.AccountIntegraActivity;
 import com.cdkj.huatuweitong.module.user.ConnectionServerActivity;
 import com.cdkj.huatuweitong.module.user.MyAccountActivity;
 import com.cdkj.huatuweitong.module.user.MyCarLoanActivity;
+import com.cdkj.huatuweitong.module.user.MyCollectionListActivity;
 import com.cdkj.huatuweitong.module.user.MyCurrentActivity;
 import com.cdkj.huatuweitong.module.user.MyMessageActivity;
 import com.cdkj.huatuweitong.module.user.UserInfoUpdateActivity;
@@ -84,6 +86,10 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
         mBinding.llCoin.setOnClickListener(this);
         mBinding.llTicket.setOnClickListener(this);
         mBinding.rilZx.setOnClickListener(this);
+        mBinding.rilCollection.setOnClickListener(this);
+        mBinding.rilCalculator.setOnClickListener(this);
+        mBinding.rilFoot.setOnClickListener(this);
+
 
         mBinding.rilInterview.setOnClickListener(view -> {
             showRoomDialog();
@@ -120,8 +126,6 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
         call.enqueue(new BaseResponseModelCallBack<UserFragmentBean>(mActivity) {
             @Override
             protected void onSuccess(UserFragmentBean data, String SucMessage) {
-
-//                mBinding.imgUserLogo
                 ImgUtils.loadQiniuLogo(mActivity, data.getPhoto(), mBinding.imgUserLogo);
                 mBinding.tvUserName.setText(data.getNickname());
                 mBinding.tvUserPhone.setText(data.getMobile());
@@ -147,8 +151,6 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
                 disMissLoading();
             }
         });
-
-
     }
 
     private void setUsetPotoImg() {
@@ -181,9 +183,21 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
                 //修改头像手机号等
                 UserInfoUpdateActivity.open(getContext());
                 break;
+            case R.id.ril_calculator:
+                //车贷计算器2
+                CarLoanCalculator2Activity.open(mActivity);
+                break;
             case R.id.ril_message:
                 //我的消息
                 MyMessageActivity.open(mActivity);
+                break;
+            case R.id.ril_collection:
+                //我的收藏
+                MyCollectionListActivity.open(mActivity, "3");
+                break;
+            case R.id.ril_foot:
+                //我的足迹
+                MyCollectionListActivity.open(mActivity, "1");
                 break;
             case R.id.rfl_my_car_loan:
                 //我的车贷申请
@@ -230,8 +244,6 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
         Call call = RetrofitUtils.createApi(MyApiServer.class).getAccount("802503", StringUtils.getJsonToString(map));
 
         addCall(call);
-
-//        if (isShowDialog) showLoadingDialog();
 
         call.enqueue(new BaseResponseModelCallBack<AccountListModel>(mActivity) {
 

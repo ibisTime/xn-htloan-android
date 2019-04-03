@@ -14,13 +14,13 @@ import java.util.List;
  * @updateDts 2018/5/22
  */
 
-public class CarModelAdapter extends BaseQuickAdapter<CarModelActivityBean, BaseViewHolder> {
-    public CarModelAdapter(@Nullable List<CarModelActivityBean> data) {
+public class CarModelAdapter extends BaseQuickAdapter<CarModelActivityBean.CarsBean, BaseViewHolder> {
+    public CarModelAdapter(@Nullable List<CarModelActivityBean.CarsBean> data) {
         super(R.layout.item_car_brand, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, CarModelActivityBean item) {
+    protected void convert(BaseViewHolder helper, CarModelActivityBean.CarsBean item) {
         helper.setText(R.id.tv_name, item.getName());
     }
 }

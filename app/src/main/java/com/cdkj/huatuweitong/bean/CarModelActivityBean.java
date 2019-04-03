@@ -2,6 +2,7 @@ package com.cdkj.huatuweitong.bean;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * @author qi
@@ -12,51 +13,53 @@ public class CarModelActivityBean implements Serializable {
 
 
     /**
-     * advPic : FlBHyr4XaoDxth5HjHp8pr8U0h9i
-     * brandCode : B201805291256242543473
-     * brandName : 宝马
-     * code : C201805291259074677612
-     * description : <p>图文描述<br></p>
-     * location : 0.0
-     * name : 320Li
-     * orderNo : 1.0
-     * originalPrice : 100000.0
-     * pic : Fvdzpu-c35vr0johox2l4IkWoFoh
-     * salePrice : 2000000.0
-     * seriesCode : S201805291257455552481
-     * seriesName : 宝马3系
-     * sfAmount : 100000.0
-     * slogan : <p>图文描述<br></p>
+     * code : S201903071411292394034
+     * brandCode : B201806190344172014125
+     * name : S系列
+     * slogan : 彰显大气
+     * advPic : aaaa
+     * picNumber : 2
+     * price : 1400000
+     * highest : 4000000
+     * lowest : 1000000
+     * level : 1
+     * isReferee : 1
+     * location : 1
+     * orderNo : 1
      * status : 1
-     * updateDatetime : May 29, 2018 12:59:14 PM
-     * updater : admin
+     * updater : U201806131315524345485
+     * updateDatetime : Mar 7, 2019 2:15:23 PM
+     * remark : 豪华车
+     * cars : [{"code":"C201903191540014947886","isReferee":"1","name":"S400","seriesCode":"S201903071411292394034","seriesName":"S系列","brandCode":"B201806190344172014125","brandName":"奔驰","bankCode":"BA201806011006085041799","level":"0","version":"1","structure":"2","displacement":4.6,"fromPlace":"德国","procedure":"无手续","originalPrice":0,"salePrice":1000000,"sfAmount":300000,"fwAmount":600,"jsqByhf":"1000","jsqSybx":"2000","slogan":"广告标语","advPic":"1111","picNumber":2,"pic":"111","description":"11111","outsideColor":"黑","insideColor":"灰","status":"1","updater":"U201806131315524345485","updateDatetime":"Mar 19, 2019 3:40:01 PM","updaterName":"洪仁飞","caonfigList":[{"code":"CCC201903221146384778562","carCode":"C201903191540014947886","configCode":"CC201903221054496692906","config":{"code":"CC201903221054496692906","name":"无人驾驶","pic":"nobody","updater":"U201806131315524345485","updateDatetime":"Mar 22, 2019 10:54:49 AM","remark":"无"}},{"code":"CCC201903221146384887704","carCode":"C201903191540014947886","configCode":"CC201903221111133179887","config":{"code":"CC201903221111133179887","name":"全景天窗","pic":"nobody","updater":"U201806131315524345485","updateDatetime":"Mar 22, 2019 11:11:13 AM","remark":"无"}},{"code":"CCC201903221146384981518","carCode":"C201903191540014947886","configCode":"CC201903221145164897415","config":{"code":"CC201903221145164897415","name":"胎压检测","pic":"nobody","updater":"U201806131315524345485","updateDatetime":"Mar 22, 2019 11:45:16 AM","remark":"无"}},{"code":"CCC201903221146385083945","carCode":"C201903191540014947886","configCode":"CC201903221145518657226","config":{"code":"CC201903221145518657226","name":"定速巡航","pic":"nobody","updater":"U201806131315524345485","updateDatetime":"Mar 22, 2019 11:45:51 AM","remark":"无"}},{"code":"CCC201903221146385192807","carCode":"C201903191540014947886","configCode":"CC201903221146270184052","config":{"code":"CC201903221146270184052","name":"无钥匙进入","pic":"nobody","updater":"U201806131315524345485","updateDatetime":"Mar 22, 2019 11:46:27 AM","remark":"无"}}],"collectNumber":1},{"code":"C201903191536172188197","isReferee":"1","name":"S650L","seriesCode":"S201903071411292394034","seriesName":"S系列","brandCode":"B201806190344172014125","brandName":"奔驰","bankCode":"BA201806011006085041799","level":"0","version":"2","structure":"2","displacement":5,"fromPlace":"德国","procedure":"无手续","originalPrice":0,"salePrice":4000000,"sfAmount":1200000,"fwAmount":600,"jsqByhf":"1000","jsqSybx":"2000","slogan":"广告标语","advPic":"1111","picNumber":3,"pic":"111,1123,245","description":"11111","outsideColor":"黑","insideColor":"灰","status":"1","updater":"U201806131315524345485","updateDatetime":"Mar 19, 2019 3:36:17 PM","updaterName":"洪仁飞","caonfigList":[{"code":"CCC201903221146384778562","carCode":"C201903191540014947886","configCode":"CC201903221054496692906","config":{"code":"CC201903221054496692906","name":"无人驾驶","pic":"nobody","updater":"U201806131315524345485","updateDatetime":"Mar 22, 2019 10:54:49 AM","remark":"无"}},{"code":"CCC201903221146384887704","carCode":"C201903191540014947886","configCode":"CC201903221111133179887","config":{"code":"CC201903221111133179887","name":"全景天窗","pic":"nobody","updater":"U201806131315524345485","updateDatetime":"Mar 22, 2019 11:11:13 AM","remark":"无"}},{"code":"CCC201903221146384981518","carCode":"C201903191540014947886","configCode":"CC201903221145164897415","config":{"code":"CC201903221145164897415","name":"胎压检测","pic":"nobody","updater":"U201806131315524345485","updateDatetime":"Mar 22, 2019 11:45:16 AM","remark":"无"}},{"code":"CCC201903221146385083945","carCode":"C201903191540014947886","configCode":"CC201903221145518657226","config":{"code":"CC201903221145518657226","name":"定速巡航","pic":"nobody","updater":"U201806131315524345485","updateDatetime":"Mar 22, 2019 11:45:51 AM","remark":"无"}},{"code":"CCC201903221146385192807","carCode":"C201903191540014947886","configCode":"CC201903221146270184052","config":{"code":"CC201903221146270184052","name":"无钥匙进入","pic":"nobody","updater":"U201806131315524345485","updateDatetime":"Mar 22, 2019 11:46:27 AM","remark":"无"}}],"collectNumber":1}]
+     * carNumber : 2
      */
 
-    private String advPic;
-    private String brandCode;
-    private String brandName;
     private String code;
-    private String description;
-    private double location;
+    private String brandCode;
     private String name;
-    private double orderNo;
-    private double originalPrice;
-    private String pic;
-    private BigDecimal salePrice;
-    private String seriesCode;
-    private String seriesName;
-    private double sfAmount;
     private String slogan;
+    private String advPic;
+    private int picNumber;
+    private BigDecimal price;
+    private BigDecimal highest;
+    private BigDecimal lowest;
+    private String level;
+    private String isReferee;
+    private int location;
+    private int orderNo;
     private String status;
-    private String updateDatetime;
     private String updater;
+    private String updateDatetime;
+    private String remark;
+    private int carNumber;
+    private List<CarsBean> cars;
 
-    public String getAdvPic() {
-        return advPic;
+    public String getCode() {
+        return code;
     }
 
-    public void setAdvPic(String advPic) {
-        this.advPic = advPic;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getBrandCode() {
@@ -67,100 +70,12 @@ public class CarModelActivityBean implements Serializable {
         this.brandCode = brandCode;
     }
 
-    public String getBrandName() {
-        return brandName;
-    }
-
-    public void setBrandName(String brandName) {
-        this.brandName = brandName;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public double getLocation() {
-        return location;
-    }
-
-    public void setLocation(double location) {
-        this.location = location;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public double getOrderNo() {
-        return orderNo;
-    }
-
-    public void setOrderNo(double orderNo) {
-        this.orderNo = orderNo;
-    }
-
-    public double getOriginalPrice() {
-        return originalPrice;
-    }
-
-    public void setOriginalPrice(double originalPrice) {
-        this.originalPrice = originalPrice;
-    }
-
-    public String getPic() {
-        return pic;
-    }
-
-    public void setPic(String pic) {
-        this.pic = pic;
-    }
-
-    public BigDecimal getSalePrice() {
-        return salePrice;
-    }
-
-    public void setSalePrice(BigDecimal salePrice) {
-        this.salePrice = salePrice;
-    }
-
-    public String getSeriesCode() {
-        return seriesCode;
-    }
-
-    public void setSeriesCode(String seriesCode) {
-        this.seriesCode = seriesCode;
-    }
-
-    public String getSeriesName() {
-        return seriesName;
-    }
-
-    public void setSeriesName(String seriesName) {
-        this.seriesName = seriesName;
-    }
-
-    public double getSfAmount() {
-        return sfAmount;
-    }
-
-    public void setSfAmount(double sfAmount) {
-        this.sfAmount = sfAmount;
     }
 
     public String getSlogan() {
@@ -171,12 +86,92 @@ public class CarModelActivityBean implements Serializable {
         this.slogan = slogan;
     }
 
+    public String getAdvPic() {
+        return advPic;
+    }
+
+    public void setAdvPic(String advPic) {
+        this.advPic = advPic;
+    }
+
+    public int getPicNumber() {
+        return picNumber;
+    }
+
+    public void setPicNumber(int picNumber) {
+        this.picNumber = picNumber;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public BigDecimal getHighest() {
+        return highest;
+    }
+
+    public void setHighest(BigDecimal highest) {
+        this.highest = highest;
+    }
+
+    public BigDecimal getLowest() {
+        return lowest;
+    }
+
+    public void setLowest(BigDecimal lowest) {
+        this.lowest = lowest;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    public String getIsReferee() {
+        return isReferee;
+    }
+
+    public void setIsReferee(String isReferee) {
+        this.isReferee = isReferee;
+    }
+
+    public int getLocation() {
+        return location;
+    }
+
+    public void setLocation(int location) {
+        this.location = location;
+    }
+
+    public int getOrderNo() {
+        return orderNo;
+    }
+
+    public void setOrderNo(int orderNo) {
+        this.orderNo = orderNo;
+    }
+
     public String getStatus() {
         return status;
     }
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getUpdater() {
+        return updater;
+    }
+
+    public void setUpdater(String updater) {
+        this.updater = updater;
     }
 
     public String getUpdateDatetime() {
@@ -187,11 +182,475 @@ public class CarModelActivityBean implements Serializable {
         this.updateDatetime = updateDatetime;
     }
 
-    public String getUpdater() {
-        return updater;
+    public String getRemark() {
+        return remark;
     }
 
-    public void setUpdater(String updater) {
-        this.updater = updater;
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public int getCarNumber() {
+        return carNumber;
+    }
+
+    public void setCarNumber(int carNumber) {
+        this.carNumber = carNumber;
+    }
+
+    public List<CarsBean> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<CarsBean> cars) {
+        this.cars = cars;
+    }
+
+    public static class CarsBean implements Serializable{
+        /**
+         * code : C201903191540014947886
+         * isReferee : 1
+         * name : S400
+         * seriesCode : S201903071411292394034
+         * seriesName : S系列
+         * brandCode : B201806190344172014125
+         * brandName : 奔驰
+         * bankCode : BA201806011006085041799
+         * level : 0
+         * version : 1
+         * structure : 2
+         * displacement : 4.6
+         * fromPlace : 德国
+         * procedure : 无手续
+         * originalPrice : 0
+         * salePrice : 1000000
+         * sfAmount : 300000
+         * fwAmount : 600
+         * jsqByhf : 1000
+         * jsqSybx : 2000
+         * slogan : 广告标语
+         * advPic : 1111
+         * picNumber : 2
+         * pic : 111
+         * description : 11111
+         * outsideColor : 黑
+         * insideColor : 灰
+         * status : 1
+         * updater : U201806131315524345485
+         * updateDatetime : Mar 19, 2019 3:40:01 PM
+         * updaterName : 洪仁飞
+         * caonfigList : [{"code":"CCC201903221146384778562","carCode":"C201903191540014947886","configCode":"CC201903221054496692906","config":{"code":"CC201903221054496692906","name":"无人驾驶","pic":"nobody","updater":"U201806131315524345485","updateDatetime":"Mar 22, 2019 10:54:49 AM","remark":"无"}},{"code":"CCC201903221146384887704","carCode":"C201903191540014947886","configCode":"CC201903221111133179887","config":{"code":"CC201903221111133179887","name":"全景天窗","pic":"nobody","updater":"U201806131315524345485","updateDatetime":"Mar 22, 2019 11:11:13 AM","remark":"无"}},{"code":"CCC201903221146384981518","carCode":"C201903191540014947886","configCode":"CC201903221145164897415","config":{"code":"CC201903221145164897415","name":"胎压检测","pic":"nobody","updater":"U201806131315524345485","updateDatetime":"Mar 22, 2019 11:45:16 AM","remark":"无"}},{"code":"CCC201903221146385083945","carCode":"C201903191540014947886","configCode":"CC201903221145518657226","config":{"code":"CC201903221145518657226","name":"定速巡航","pic":"nobody","updater":"U201806131315524345485","updateDatetime":"Mar 22, 2019 11:45:51 AM","remark":"无"}},{"code":"CCC201903221146385192807","carCode":"C201903191540014947886","configCode":"CC201903221146270184052","config":{"code":"CC201903221146270184052","name":"无钥匙进入","pic":"nobody","updater":"U201806131315524345485","updateDatetime":"Mar 22, 2019 11:46:27 AM","remark":"无"}}]
+         * collectNumber : 1
+         */
+
+        private String code;
+        private String isReferee;
+        private String name;
+        private String seriesCode;
+        private String seriesName;
+        private String brandCode;
+        private String brandName;
+        private String bankCode;
+        private String level;
+        private String version;
+        private String structure;
+        private double displacement;
+        private String fromPlace;
+        private String procedure;
+        private BigDecimal originalPrice;
+        private BigDecimal salePrice;
+        private BigDecimal sfAmount;
+        private BigDecimal fwAmount;
+        private String jsqByhf;
+        private String jsqSybx;
+        private String slogan;
+        private String advPic;
+        private int picNumber;
+        private String pic;
+        private String description;
+        private String outsideColor;
+        private String insideColor;
+        private String status;
+        private String updater;
+        private String updateDatetime;
+        private String updaterName;
+        private int collectNumber;
+        private List<CaonfigListBean> caonfigList;
+
+        public String getCode() {
+            return code;
+        }
+
+        public void setCode(String code) {
+            this.code = code;
+        }
+
+        public String getIsReferee() {
+            return isReferee;
+        }
+
+        public void setIsReferee(String isReferee) {
+            this.isReferee = isReferee;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getSeriesCode() {
+            return seriesCode;
+        }
+
+        public void setSeriesCode(String seriesCode) {
+            this.seriesCode = seriesCode;
+        }
+
+        public String getSeriesName() {
+            return seriesName;
+        }
+
+        public void setSeriesName(String seriesName) {
+            this.seriesName = seriesName;
+        }
+
+        public String getBrandCode() {
+            return brandCode;
+        }
+
+        public void setBrandCode(String brandCode) {
+            this.brandCode = brandCode;
+        }
+
+        public String getBrandName() {
+            return brandName;
+        }
+
+        public void setBrandName(String brandName) {
+            this.brandName = brandName;
+        }
+
+        public String getBankCode() {
+            return bankCode;
+        }
+
+        public void setBankCode(String bankCode) {
+            this.bankCode = bankCode;
+        }
+
+        public String getLevel() {
+            return level;
+        }
+
+        public void setLevel(String level) {
+            this.level = level;
+        }
+
+        public String getVersion() {
+            return version;
+        }
+
+        public void setVersion(String version) {
+            this.version = version;
+        }
+
+        public String getStructure() {
+            return structure;
+        }
+
+        public void setStructure(String structure) {
+            this.structure = structure;
+        }
+
+        public double getDisplacement() {
+            return displacement;
+        }
+
+        public void setDisplacement(double displacement) {
+            this.displacement = displacement;
+        }
+
+        public String getFromPlace() {
+            return fromPlace;
+        }
+
+        public void setFromPlace(String fromPlace) {
+            this.fromPlace = fromPlace;
+        }
+
+        public String getProcedure() {
+            return procedure;
+        }
+
+        public void setProcedure(String procedure) {
+            this.procedure = procedure;
+        }
+
+        public BigDecimal getOriginalPrice() {
+            return originalPrice;
+        }
+
+        public void setOriginalPrice(BigDecimal originalPrice) {
+            this.originalPrice = originalPrice;
+        }
+
+        public BigDecimal getSalePrice() {
+            return salePrice;
+        }
+
+        public void setSalePrice(BigDecimal salePrice) {
+            this.salePrice = salePrice;
+        }
+
+        public BigDecimal getSfAmount() {
+            return sfAmount;
+        }
+
+        public void setSfAmount(BigDecimal sfAmount) {
+            this.sfAmount = sfAmount;
+        }
+
+        public BigDecimal getFwAmount() {
+            return fwAmount;
+        }
+
+        public void setFwAmount(BigDecimal fwAmount) {
+            this.fwAmount = fwAmount;
+        }
+
+        public String getJsqByhf() {
+            return jsqByhf;
+        }
+
+        public void setJsqByhf(String jsqByhf) {
+            this.jsqByhf = jsqByhf;
+        }
+
+        public String getJsqSybx() {
+            return jsqSybx;
+        }
+
+        public void setJsqSybx(String jsqSybx) {
+            this.jsqSybx = jsqSybx;
+        }
+
+        public String getSlogan() {
+            return slogan;
+        }
+
+        public void setSlogan(String slogan) {
+            this.slogan = slogan;
+        }
+
+        public String getAdvPic() {
+            return advPic;
+        }
+
+        public void setAdvPic(String advPic) {
+            this.advPic = advPic;
+        }
+
+        public int getPicNumber() {
+            return picNumber;
+        }
+
+        public void setPicNumber(int picNumber) {
+            this.picNumber = picNumber;
+        }
+
+        public String getPic() {
+            return pic;
+        }
+
+        public void setPic(String pic) {
+            this.pic = pic;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+
+        public String getOutsideColor() {
+            return outsideColor;
+        }
+
+        public void setOutsideColor(String outsideColor) {
+            this.outsideColor = outsideColor;
+        }
+
+        public String getInsideColor() {
+            return insideColor;
+        }
+
+        public void setInsideColor(String insideColor) {
+            this.insideColor = insideColor;
+        }
+
+        public String getStatus() {
+            return status;
+        }
+
+        public void setStatus(String status) {
+            this.status = status;
+        }
+
+        public String getUpdater() {
+            return updater;
+        }
+
+        public void setUpdater(String updater) {
+            this.updater = updater;
+        }
+
+        public String getUpdateDatetime() {
+            return updateDatetime;
+        }
+
+        public void setUpdateDatetime(String updateDatetime) {
+            this.updateDatetime = updateDatetime;
+        }
+
+        public String getUpdaterName() {
+            return updaterName;
+        }
+
+        public void setUpdaterName(String updaterName) {
+            this.updaterName = updaterName;
+        }
+
+        public int getCollectNumber() {
+            return collectNumber;
+        }
+
+        public void setCollectNumber(int collectNumber) {
+            this.collectNumber = collectNumber;
+        }
+
+        public List<CaonfigListBean> getCaonfigList() {
+            return caonfigList;
+        }
+
+        public void setCaonfigList(List<CaonfigListBean> caonfigList) {
+            this.caonfigList = caonfigList;
+        }
+
+        public static class CaonfigListBean implements Serializable{
+            /**
+             * code : CCC201903221146384778562
+             * carCode : C201903191540014947886
+             * configCode : CC201903221054496692906
+             * config : {"code":"CC201903221054496692906","name":"无人驾驶","pic":"nobody","updater":"U201806131315524345485","updateDatetime":"Mar 22, 2019 10:54:49 AM","remark":"无"}
+             */
+
+            private String code;
+            private String carCode;
+            private String configCode;
+            private ConfigBean config;
+
+            public String getCode() {
+                return code;
+            }
+
+            public void setCode(String code) {
+                this.code = code;
+            }
+
+            public String getCarCode() {
+                return carCode;
+            }
+
+            public void setCarCode(String carCode) {
+                this.carCode = carCode;
+            }
+
+            public String getConfigCode() {
+                return configCode;
+            }
+
+            public void setConfigCode(String configCode) {
+                this.configCode = configCode;
+            }
+
+            public ConfigBean getConfig() {
+                return config;
+            }
+
+            public void setConfig(ConfigBean config) {
+                this.config = config;
+            }
+
+            public static class ConfigBean implements Serializable{
+                /**
+                 * code : CC201903221054496692906
+                 * name : 无人驾驶
+                 * pic : nobody
+                 * updater : U201806131315524345485
+                 * updateDatetime : Mar 22, 2019 10:54:49 AM
+                 * remark : 无
+                 */
+
+                private String code;
+                private String name;
+                private String pic;
+                private String updater;
+                private String updateDatetime;
+                private String remark;
+
+                public String getCode() {
+                    return code;
+                }
+
+                public void setCode(String code) {
+                    this.code = code;
+                }
+
+                public String getName() {
+                    return name;
+                }
+
+                public void setName(String name) {
+                    this.name = name;
+                }
+
+                public String getPic() {
+                    return pic;
+                }
+
+                public void setPic(String pic) {
+                    this.pic = pic;
+                }
+
+                public String getUpdater() {
+                    return updater;
+                }
+
+                public void setUpdater(String updater) {
+                    this.updater = updater;
+                }
+
+                public String getUpdateDatetime() {
+                    return updateDatetime;
+                }
+
+                public void setUpdateDatetime(String updateDatetime) {
+                    this.updateDatetime = updateDatetime;
+                }
+
+                public String getRemark() {
+                    return remark;
+                }
+
+                public void setRemark(String remark) {
+                    this.remark = remark;
+                }
+            }
+        }
     }
 }

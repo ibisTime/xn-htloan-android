@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/title_top_style"
+            android:text="微车生活" />
+
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/gray_bg"
+            app:srlAccentColor="@android:color/tertiary_text_dark"
+            app:srlEnablePreviewInEditMode="true"
+            app:srlPrimaryColor="@color/gray_bg">
+            <!--srlAccentColor srlPrimaryColor 将会改变 Header 和 Footer 的主题颜色-->
+            <!--srlEnablePreviewInEditMode 可以开启和关闭预览功能-->
+            <com.scwang.smartrefresh.layout.header.ClassicsHeader
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:scrollbars="none">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+                    <com.youth.banner.Banner
+                        android:id="@+id/home_banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="185dp"
+                        app:delay_time="4000"
+                        app:indicator_drawable_selected="@drawable/banner_select"
+                        app:indicator_drawable_unselected="@drawable/banner_un_select"
+                        app:indicator_height="7dp"
+                        app:indicator_margin="6dp"
+                        app:indicator_width="7dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="15dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_price_30_50"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="30-50万"
+                            android:textColor="@color/text_black_cd"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="#D8D8D8" />
+
+                        <TextView
+                            android:id="@+id/tv_price_50_70"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="50-70万"
+                            android:textColor="@color/text_black_cd"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="#D8D8D8" />
+
+                        <TextView
+                            android:id="@+id/tv_price_70"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="70万以上"
+                            android:textColor="@color/text_black_cd"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="#D8D8D8" />
+
+                        <TextView
+                            android:id="@+id/tv_price_other"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="更多"
+                            android:textColor="@color/text_black_cd"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_brand"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginBottom="10dp">
+
+                    </android.support.v7.widget.RecyclerView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <RadioButton
+                                android:id="@+id/rb_bc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:button="@null"
+                                android:drawableLeft="@mipmap/icon_collection"
+                                android:drawablePadding="5dp"
+                                android:gravity="center"
+                                android:text="奔驰"
+                                android:textColor="@color/text_black_cd"
+                                android:textSize="14sp" />
+
+                        </FrameLayout>
+
+
+                        <TextView
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="#D8D8D8" />
+
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <RadioButton
+                                android:id="@+id/rb_bsj"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:button="@null"
+                                android:drawableLeft="@mipmap/icon_collection"
+                                android:drawablePadding="5dp"
+                                android:gravity="center"
+                                android:text="保时捷"
+                                android:textColor="@color/text_black_cd"
+                                android:textSize="14sp" />
+
+                        </FrameLayout>
+
+                        <TextView
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="#D8D8D8" />
+
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <RadioButton
+                                android:id="@+id/rb_ft"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:button="@null"
+                                android:drawableLeft="@mipmap/icon_collection"
+                                android:drawablePadding="5dp"
+                                android:gravity="center"
+                                android:text="丰田"
+                                android:textColor="@color/text_black_cd"
+                                android:textSize="14sp" />
+
+                        </FrameLayout>
+
+
+                        <TextView
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="#D8D8D8" />
+
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <RadioButton
+                                android:id="@+id/rb_ad"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:button="@null"
+                                android:drawableLeft="@mipmap/icon_collection"
+                                android:drawablePadding="5dp"
+                                android:gravity="center"
+                                android:text="奥迪"
+                                android:textColor="@color/text_black_cd"
+                                android:textSize="14sp" />
+
+                        </FrameLayout>
+
+
+                    </LinearLayout>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_car_system"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp">
+
+                    </android.support.v7.widget.RecyclerView>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:src="@mipmap/ic_launcher" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="雷克萨斯LX5" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:src="@mipmap/ic_launcher" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="奔驰S级" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:src="@mipmap/ic_launcher" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="霸道3000" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        style="@style/style_split_line"
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/line_color_broad" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="精选车源"
+                            android:textColor="@color/text_black_cd"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                    <!--<RelativeLayout-->
+                        <!--android:id="@+id/lin_recycler1"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:descendantFocusability="blocksDescendants">-->
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/rv_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+
+                    <!--</RelativeLayout>-->
+
+                    <View style="@style/style_split_line_broad" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_recommend_product"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="微车资讯"
+                            android:textColor="@color/text_black_cd"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_all"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:padding="5dp"
+                            android:text="全部"
+                            android:textColor="@color/text_999"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                    <!--<RelativeLayout-->
+                        <!--android:id="@+id/lin_recycler"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:descendantFocusability="blocksDescendants">-->
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/rv_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:nestedScrollingEnabled="false">
+
+                        </android.support.v7.widget.RecyclerView>
+                    <!--</RelativeLayout>-->
+
+
+                </LinearLayout>
+
+            </ScrollView>
+
+            <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    </LinearLayout>
+</layout>

@@ -147,8 +147,8 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
      */
     private void getSysteamRat() {
         DataHelper.getSystemType(this, "car_periods", list -> {
-            if (list != null && list.size() > 0) {
 
+            if (list != null && list.size() > 0) {
                 rate = Double.parseDouble(list.get(0).getCvalue()) / 100;
                 repayments = Integer.parseInt(list.get(0).getCkey());
                 ratSingList = list;
@@ -250,9 +250,9 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
         }
         Map<String, Object> map = new HashMap();
         map.put("brandCode", carModelActivityBean.getBrandCode());//品牌编号
-        map.put("brandName", carModelActivityBean.getBrandName());//品牌名
-        map.put("seriesCode", carModelActivityBean.getSeriesCode());//车系
-        map.put("seriesName", carModelActivityBean.getSeriesName());//车系
+//        map.put("brandName", carModelActivityBean.getBrandName());//品牌名
+//        map.put("seriesCode", carModelActivityBean.getSeriesCode());//车系
+//        map.put("seriesName", carModelActivityBean.getSeriesName());//车系
         map.put("carCode", carModelActivityBean.getCode());//车型编号
         map.put("carName", carModelActivityBean.getName());//车型名
         String format = DateUtil.format(new Date());
@@ -487,7 +487,7 @@ public class CarLoanCalculatorActivity extends AbsBaseLoadActivity {
     public void breakCarModelActivityBean(CarModelActivityBean bean) {
         this.carModelActivityBean = bean;
         mBinding.tvModel.setText(bean.getName());//车型
-        salePrice = bean.getSalePrice();
+        salePrice = bean.getPrice();
         setViewData();
     }
 

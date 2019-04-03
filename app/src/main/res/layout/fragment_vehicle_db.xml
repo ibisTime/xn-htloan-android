@@ -1,0 +1,67 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.cdkj.huatuweitong.module.vehicle_db.VehicleDBFragment">
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tab_title"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/title_bg"
+                android:paddingBottom="5dp"
+                app:tabGravity="center"
+                app:tabIndicatorColor="@color/white"
+                app:tabIndicatorHeight="2.4dp"
+                app:tabMode="fixed"
+                app:tabSelectedTextColor="@color/white"
+                app:tabTextColor="#ffffff">
+
+                <!--app:tabGravity="center"-->
+                <!--app:tabIndicatorColor="@color/title_bg"-->
+                <!--app:tabIndicatorHeight="2dp"-->
+                <!--app:tabMode="fixed"-->
+                <!--app:tabSelectedTextColor="@color/white"-->
+                <!--app:tabTextColor="#ffffff"-->
+
+                <!--<android.support.design.widget.TabItem-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="按条件" />-->
+
+                <!--<android.support.design.widget.TabItem-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="按品牌" />-->
+
+            </android.support.design.widget.TabLayout>
+
+            <ImageView
+                android:id="@+id/iv_serch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginRight="15dp"
+                android:padding="5dp"
+                android:src="@mipmap/ic_search" />
+        </FrameLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v4.view.ViewPager>
+
+    </LinearLayout>
+</layout>

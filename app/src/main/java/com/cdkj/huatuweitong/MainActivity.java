@@ -2,10 +2,8 @@ package com.cdkj.huatuweitong;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -15,14 +13,12 @@ import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.nets.BaseResponseListCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
-import com.cdkj.baselibrary.utils.DisplayHelper;
-import com.cdkj.baselibrary.utils.LogUtil;
 import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.NodeModel;
 import com.cdkj.huatuweitong.databinding.ActivityMainBinding;
-import com.cdkj.huatuweitong.module.main_tab.FirstPageFragment;
-import com.cdkj.huatuweitong.module.main_tab.ReimbursementFragment;
+import com.cdkj.huatuweitong.module.main_tab.HomeFragment;
 import com.cdkj.huatuweitong.module.main_tab.UserFragment;
+import com.cdkj.huatuweitong.module.vehicle_db.VehicleDBFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,18 +29,9 @@ import retrofit2.Call;
 public class MainActivity extends AbsBaseLoadActivity {
 
 
-    private ActivityMainBinding mBinding;
+    public ActivityMainBinding mBinding;
     private boolean checkFerst;//是否选中 首页界面(用于修改密码后跳转mainactivity )
     public static List<NodeModel> nodeModellist;
-
-//    public static void open(Context context,boolean isCheckFerst){
-//        if (context!=null){
-//        Intent intent = new Intent(context,MainActivity.class);
-//            intent.putExtra("checkFerst",isCheckFerst);
-//        context.startActivity(intent);
-//        }
-//
-//    }
 
     public static void open(Context context) {
         if (context != null) {
@@ -67,8 +54,6 @@ public class MainActivity extends AbsBaseLoadActivity {
 
     @Override
     public void afterCreate(Bundle savedInstanceState) {
-
-
         initListener();
         initViewPager();
         getNodeDataList();
@@ -100,7 +85,6 @@ public class MainActivity extends AbsBaseLoadActivity {
                     break;
                 default:
             }
-
         });
     }
 
@@ -113,23 +97,14 @@ public class MainActivity extends AbsBaseLoadActivity {
         //设置fragment数据
         ArrayList fragments = new ArrayList<>();
 
-        fragments.add(FirstPageFragment.getInstance());//首页
-        fragments.add(ReimbursementFragment.getInstance());//还款
+//        fragments.add(FirstPageFragment.getInstance());//首页
+        fragments.add(HomeFragment.getInstance());//首页
+//        fragments.add(ReimbursementFragment.getInstance());//还款
+        fragments.add(VehicleDBFragment.getInstance());//还款
         fragments.add(UserFragment.getInstance());//我的
 
         mBinding.pagerMain.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), fragments));
         mBinding.pagerMain.setOffscreenPageLimit(fragments.size());
-
-//        DisplayUtils
-        int i = DisplayHelper.dp2px(this, 185);
-        LogUtil.E("打印打印___185dp:"+i);
-
-        Resources resources = this.getResources();
-        DisplayMetrics dm = resources.getDisplayMetrics();
-        int width = dm.widthPixels;
-        int height = dm.heightPixels;
-        LogUtil.E("打印打印___屏幕宽度:"+width);
-        LogUtil.E("打印打印___屏幕高度:"+height);
 
     }
 
@@ -139,9 +114,7 @@ public class MainActivity extends AbsBaseLoadActivity {
      * 获取节点列表
      */
     private void getNodeDataList() {
-//        Map<String, String> map = new HashMap<>();
         Call callNode = RetrofitUtils.createApi(MyApiServer.class).getNodeDataList("630147", "{}");
-
         showLoadingDialog();
         callNode.enqueue(new BaseResponseListCallBack<NodeModel>(this) {
 

@@ -15,6 +15,7 @@
     <color name="transparent">#00000000</color>
     <color name="text_hint_color">#a1a1a1</color>
     <color name="text_color">#484848</color>
+    <color name="text_ccc">#cccccc</color>
 
     <!--dialog-->
     <color name="dialog_tips_content_txt">#444444</color>

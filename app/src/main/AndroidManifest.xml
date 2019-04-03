@@ -109,7 +109,17 @@
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
         <activity
             android:name=".module.user.zx.ZXDSActivity"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden"></activity>
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity android:name=".module.home_fragment.InformationActivity" />
+        <activity android:name=".module.vehicle_db.BrandActivity" />
+        <activity android:name=".module.vehicle_db.SerchActivity" />
+        <activity android:name=".module.vehicle_db.CarSystemListActivity" />
+        <activity android:name=".module.vehicle_db.CarListActivity" />
+        <activity android:name=".module.vehicle_db.CarDetailsActivity" />
+        <activity android:name=".common.WebViewActivity2" />
+        <activity android:name=".common.WebViewArticleActivity" />
+        <activity android:name=".module.user.MyCollectionListActivity"></activity>
+        <activity android:name=".module.mfirst_page.CarLoanCalculator2Activity"></activity>
     </application>
 
 </manifest>

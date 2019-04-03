@@ -69,6 +69,7 @@ public class CarSystemActivity extends AbsRefreshListActivity<CarSystemActivityB
             public void onItemClick(BaseQuickAdapter adapters, View view, int position) {
                 EventBus.getDefault().post(listData.get(position));
                 CarModeldActivity.open(CarSystemActivity.this, adapter.getItem(position));
+                finish();
             }
         });
         return adapter;

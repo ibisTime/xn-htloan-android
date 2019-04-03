@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.cdkj.huatuweitong.module.vehicle_db.CarListActivity">
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            app:srlAccentColor="@android:color/tertiary_text_dark"
+            app:srlEnablePreviewInEditMode="true"
+            app:srlPrimaryColor="@color/gray_bg">
+            <!--srlAccentColor srlPrimaryColor 将会改变 Header 和 Footer 的主题颜色-->
+            <!--srlEnablePreviewInEditMode 可以开启和关闭预览功能-->
+            <com.scwang.smartrefresh.layout.header.ClassicsHeader
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <android.support.v4.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="220dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginBottom="15dp">
+
+                        <ImageView
+                            android:id="@+id/iv_top_img"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#aaa"
+                            android:src="@mipmap/ic_launcher" />
+
+
+                        <TextView
+                            android:id="@+id/tv_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginBottom="15dp"
+                            android:text="20.4-500万"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/tv_price"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="中大型车"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginBottom="15dp"
+                            android:background="#80000000"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="5dp">
+
+                            <ImageView
+                                android:layout_width="13dp"
+                                android:layout_height="10dp"
+                                android:src="@drawable/default_pic" />
+
+                            <TextView
+                                android:id="@+id/tv_number"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:text="999"
+                                android:textColor="@color/white"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+                    <!--descendantFocusability  父控件会阻塞子控件获取焦点，即父控件会覆盖子类控件而直接获得焦点（只有父控件获得焦点）。-->
+                    <!--不加 会导致-->
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:descendantFocusability="blocksDescendants">
+                        <!--//nestedScrollingEnabled属性是  嵌套滚动已启用  f否则会导致滑动不流畅-->
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/rv_car_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:nestedScrollingEnabled="false">
+
+                        </android.support.v7.widget.RecyclerView>
+                    </RelativeLayout>
+                </LinearLayout>
+
+            </android.support.v4.widget.NestedScrollView>
+
+            <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    </LinearLayout>
+</layout>

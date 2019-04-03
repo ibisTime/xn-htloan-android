@@ -38,7 +38,6 @@ public class MyMessageAFAdapter extends BaseQuickAdapter<MsgListModel.ListBean, 
         TextView tv_time = helper.getView(R.id.tv_time);
         TextView tv_title = helper.getView(R.id.tv_title);
         TextView tv_content = helper.getView(R.id.tv_content);
-        tv_time.setText(item.getUpdateDatetime());
         String time = DateUtil.formatStringData(item.getUpdateDatetime(), DateUtil.DATE_YMD);
         tv_time.setText(time);
         tv_title.setText(item.getTitle());

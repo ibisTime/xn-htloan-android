@@ -85,18 +85,13 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
         Map<String, String> map = new HashMap<>();
         map.put("code", code);
         Call call = RetrofitUtils.createApi(MyApiServer.class).getCarDetails("630427", StringUtils.getJsonToString(map));
-
         addCall(call);
         showLoadingDialog();
-
         call.enqueue(new BaseResponseModelCallBack<CarDetailsBean>(CarDetailsActivity.this) {
-
-
             @Override
             protected void onSuccess(CarDetailsBean data, String SucMessage) {
                 currentData = data;
                 mBinding.web.getSettings().setDefaultFontSize(DisplayHelper.dpToPx(14));
-
 
                 mBinding.web.loadData("<style>\n" +           //设置图片自适应
                         "img{\n" +

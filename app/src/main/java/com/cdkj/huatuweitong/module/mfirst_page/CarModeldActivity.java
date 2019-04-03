@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
+import com.cdkj.baselibrary.api.BaseResponseListModel;
 import com.cdkj.baselibrary.base.AbsRefreshListActivity;
 import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.nets.BaseResponseListCallBack;
@@ -26,7 +27,7 @@ import java.util.Map;
 
 import retrofit2.Call;
 
-public class CarModeldActivity extends AbsRefreshListActivity<CarModelActivityBean> {
+public class CarModeldActivity extends AbsRefreshListActivity<CarModelActivityBean.CarsBean> {
 
     private CarSystemActivityBean currentBean;
 
@@ -40,7 +41,7 @@ public class CarModeldActivity extends AbsRefreshListActivity<CarModelActivityBe
     }
 
     @Override
-    public RecyclerView.Adapter getListAdapter(List<CarModelActivityBean> listData) {
+    public RecyclerView.Adapter getListAdapter(List<CarModelActivityBean.CarsBean> listData) {
         CarModelAdapter adapter = new CarModelAdapter(listData);
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
@@ -84,19 +85,22 @@ public class CarModeldActivity extends AbsRefreshListActivity<CarModelActivityBe
         map.put("seriesCode", currentBean.getCode());//品牌编号
         map.put("seriesName", currentBean.getName());//品牌编号
 
-        Call call = RetrofitUtils.createApi(MyApiServer.class).getCarModelDatas("630426", StringUtils.getJsonToString(map));
-        addCall(call);
-        call.enqueue(new BaseResponseListCallBack(CarModeldActivity.this) {
+        Call<BaseResponseListModel<CarModelActivityBean>> carModelDatas = RetrofitUtils.createApi(MyApiServer.class).getCarModelDatas("630426", StringUtils.getJsonToString(map));
+        addCall(carModelDatas);
+        showLoadingDialog();
+        carModelDatas.enqueue(new BaseResponseListCallBack<CarModelActivityBean>(CarModeldActivity.this) {
             @Override
-            protected void onSuccess(List data, String SucMessage) {
-                mRefreshHelper.setData(data, "车型数据为空", 0);
+            protected void onSuccess(List<CarModelActivityBean> data, String SucMessage) {
+                if (data != null && data.size() > 0) {
+
+                    mRefreshHelper.setData(data.get(0).getCars(), "车型数据为空", 0);
+                }
             }
 
             @Override
             protected void onReqFailure(String errorCode, String errorMessage) {
-//                super.onReqFailure(errorCode, errorMessage);
                 UITipDialog.showFall(CarModeldActivity.this, errorMessage);
-                Log.e("pppppp", "onSuccess: "+errorMessage );
+                Log.e("pppppp", "onSuccess: " + errorMessage);
             }
 
             @Override
