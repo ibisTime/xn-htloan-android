@@ -20,10 +20,11 @@ import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.baselibrary.utils.ToastUtil;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.api.MyApiServer;
-import com.cdkj.huatuweitong.bean.BrandBean;
+import com.cdkj.huatuweitong.bean.CarSystemListBean;
 import com.cdkj.huatuweitong.databinding.ActivitySerchBinding;
 import com.scwang.smartrefresh.layout.util.DensityUtil;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -34,11 +35,11 @@ import retrofit2.Call;
 public class SerchActivity extends AbsBaseLoadActivity {
     private ActivitySerchBinding mBinding;
     ArrayList<TextView> fblItemData = new ArrayList<>();
-    private String currentStr;
+
     private ArrayList<String> labelData = new ArrayList<>();//标签数据
-    private BaseResponseListCallBack<BrandBean> callback;
-    private List<BrandBean> dataList;
-    private BrandBean currentBean;
+    //    private BaseResponseListCallBack<BrandBean> callback;
+    private List<CarSystemListBean> dataList;
+    private CarSystemListBean currentBean;
 
     public static void open(Context context) {
         Intent intent = new Intent();
@@ -74,19 +75,22 @@ public class SerchActivity extends AbsBaseLoadActivity {
     }
 
     /**
-     * 获取推荐车型数据
+     * 获取推荐车细数据
      */
     private void getCarSystem() {
+
         showLoadingDialog();
-        Map<String, String> map = new HashMap<>();
-        map.put("status", "1");//0待上架，1已上架，2已下架
-        map.put("isReferee", "1");//1 热门 0普通
-        Call<BaseResponseListModel<BrandBean>> brandData = RetrofitUtils.createApi(MyApiServer.class).getBrandData("630406", StringUtils.getJsonToString(map));
-        callback = new BaseResponseListCallBack<BrandBean>(this) {
+        Map<String, Serializable> map = new HashMap<>();
+        map.put("status", "1");
+        map.put("location", "0");//热门推荐
+
+        Call<BaseResponseListModel<CarSystemListBean>> carSystemlListDatas = RetrofitUtils.createApi(MyApiServer.class).getCarHotSystemlListDatas("630416", StringUtils.getJsonToString(map));
+        addCall(carSystemlListDatas);
+        carSystemlListDatas.enqueue(new BaseResponseListCallBack<CarSystemListBean>(this) {
             @Override
-            protected void onSuccess(List<BrandBean> data, String SucMessage) {
+            protected void onSuccess(List<CarSystemListBean> data, String SucMessage) {
                 dataList = data;
-                for (BrandBean datum : data) {
+                for (CarSystemListBean datum : data) {
                     labelData.add(datum.getName());
                 }
                 initAddFlexboxLayou();
@@ -96,18 +100,33 @@ public class SerchActivity extends AbsBaseLoadActivity {
             protected void onFinish() {
                 disMissLoading();
             }
-        };
-        brandData.enqueue(callback);
+        });
+
+
+//        showLoadingDialog();
+////        Map<String, String> map = new HashMap<>();
+//        map.put("status", "1");//0待上架，1已上架，2已下架
+//        map.put("location", "0");//0 热门 1普通
+//        Call<BaseResponseListModel<BrandBean>> brandData = RetrofitUtils.createApi(MyApiServer.class).getBrandData("630406", StringUtils.getJsonToString(map));
+//        callback = new BaseResponseListCallBack<BrandBean>(this) {
+//            @Override
+//            protected void onSuccess(List<BrandBean> data, String SucMessage) {
+//                dataList = data;
+//                for (BrandBean datum : data) {
+//                    labelData.add(datum.getName());
+//                }
+//                initAddFlexboxLayou();
+//            }
+//
+//            @Override
+//            protected void onFinish() {
+//                disMissLoading();
+//            }
+//        };
+//        brandData.enqueue(callback);
     }
 
     private void initAddFlexboxLayou() {
-
-
-//        labelData.add("橄榄运动3.0柴油");
-//        labelData.add("宝马x20");
-//        labelData.add("奔驰GLE400");
-//        labelData.add("s无敌最牛逼跑车啊啊啊打");
-//        labelData.add("奇瑞QQ大众款");
 
         for (int i = 0; i < labelData.size(); i++) {
             TextView tv2 = new TextView(this);
@@ -128,9 +147,7 @@ public class SerchActivity extends AbsBaseLoadActivity {
             int currentPostin = i;
             tv2.setOnClickListener(v -> {
                 currentBean = dataList.get(currentPostin);
-                currentStr = labelData.get(currentPostin);
-//                ToastUtil.show(SerchActivity.this, currentStr);
-                CarSystemListActivity.open(SerchActivity.this, currentBean.getCode());
+                CarListActivity.open(this, currentBean.getCode());
             });
 
         }

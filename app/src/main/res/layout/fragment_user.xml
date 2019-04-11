@@ -86,6 +86,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:gravity="center"
@@ -184,7 +185,7 @@
                     android:id="@+id/ril_interview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:img_left="@drawable/message"
+                    app:img_left="@drawable/icon_mianqian"
                     app:img_right="@drawable/more_right"
                     app:txt_left="开始面签" />
 

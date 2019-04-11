@@ -13,7 +13,7 @@ import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.adapters.InformationAdapter;
 import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.InformationBean;
-import com.cdkj.huatuweitong.common.WebViewActivity2;
+import com.cdkj.huatuweitong.common.WebViewArticleActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,7 +50,8 @@ public class InformationActivity extends AbsRefreshListActivity {
         InformationAdapter informationAdapter = new InformationAdapter(listData);
         informationAdapter.setOnItemClickListener((adapter, view, position) -> {
             InformationBean.ListBean item = (InformationBean.ListBean) adapter.getItem(position);
-            WebViewActivity2.openContent(this, item.getTitle(), item.getContext());
+            WebViewArticleActivity.openContent(this, item.getTitle(),item.getAuthor(),item.getUpdateDatetime(), item.getContext());
+
         });
         return informationAdapter;
     }

@@ -29,10 +29,17 @@ public class CarSystemListActivity extends AbsRefreshListActivity {
     private HashMap<String, Serializable> selectMap;
     private String brandCode;
     private String queryName;
+    private boolean isMore;
 
     public static void open(Context context, String brandCode) {
         Intent intent = new Intent(context, CarSystemListActivity.class);
         intent.putExtra("brandCode", brandCode);
+        context.startActivity(intent);
+    }
+
+    public static void open(Context context, boolean isMore) {
+        Intent intent = new Intent(context, CarSystemListActivity.class);
+        intent.putExtra("isMore", isMore);
         context.startActivity(intent);
     }
 
@@ -54,6 +61,7 @@ public class CarSystemListActivity extends AbsRefreshListActivity {
             selectMap = (HashMap<String, Serializable>) getIntent().getSerializableExtra("data");
             brandCode = getIntent().getStringExtra("brandCode");
             queryName = getIntent().getStringExtra("queryName");
+            isMore = getIntent().getBooleanExtra("isMore", false);
         }
         mBaseBinding.titleView.setMidTitle("车系列表");
         initRefreshHelper(10);
@@ -65,7 +73,11 @@ public class CarSystemListActivity extends AbsRefreshListActivity {
     public RecyclerView.Adapter getListAdapter(List listData) {
         CarSystemListAdapter carSystemListAdapter = new CarSystemListAdapter(listData);
         carSystemListAdapter.setOnItemClickListener((adapter, view, position) -> {
-            CarListActivity.open(this, (CarSystemListBean) adapter.getItem(position));
+            CarSystemListBean item = (CarSystemListBean) adapter.getItem(position);
+
+//            CarListActivity.open(this, item.getCode());
+            CarListActivity.open(this, item);
+
         });
         return carSystemListAdapter;
     }
@@ -79,21 +91,24 @@ public class CarSystemListActivity extends AbsRefreshListActivity {
         if (isShowDialog) {
             showLoadingDialog();
         }
-        String code;
+        String code = "630426";
         Map<String, Serializable> map = new HashMap<>();
         if (!TextUtils.isEmpty(brandCode)) {
             map.put("brandCode", brandCode);//品牌编号
-        } else if (!TextUtils.isEmpty(queryName)) {
-            map.put("queryName", queryName);
-        } else {
+            code = "630416";
+        } else if (selectMap != null) {
             map.putAll(selectMap);
+        } else if (isMore) {
+            map.put("isMore", "1");
+        } else {
+            map.put("queryName", queryName);
         }
         map.put("start", pageindex + "");
         map.put("limit", limit + "");
-        map.put("location", "0");
+//        map.put("location", "0");
         map.put("status", "1");
 
-        Call<BaseResponseListModel<CarSystemListBean>> carSystemlListDatas = RetrofitUtils.createApi(MyApiServer.class).getCarSystemlListDatas("630426", StringUtils.getJsonToString(map));
+        Call<BaseResponseListModel<CarSystemListBean>> carSystemlListDatas = RetrofitUtils.createApi(MyApiServer.class).getCarSystemlListDatas(code, StringUtils.getJsonToString(map));
         addCall(carSystemlListDatas);
         carSystemlListDatas.enqueue(new BaseResponseListCallBack<CarSystemListBean>(CarSystemListActivity.this) {
             @Override

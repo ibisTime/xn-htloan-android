@@ -20,6 +20,7 @@ public class LevelAdapter extends BaseQuickAdapter<TvSelectBean, BaseViewHolder>
     @Override
     protected void convert(BaseViewHolder helper, TvSelectBean item) {
         helper.setText(R.id.tv_brand_name, item.getName());
+        helper.setImageResource(R.id.iv_brand_img, item.getPic());
 
         if (item.isSelect()) {
             helper.setTextColor(R.id.tv_brand_name, mContext.getResources().getColor(R.color.title_bg));

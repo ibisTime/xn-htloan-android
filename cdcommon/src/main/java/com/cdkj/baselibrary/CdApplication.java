@@ -5,12 +5,10 @@ import android.app.Application;
 import android.content.Context;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.cdkj.baselibrary.nets.RetrofitUtils;
 import com.cdkj.baselibrary.utils.LogUtil;
 
 import org.greenrobot.eventbus.EventBus;
 
-//TODO 无用模块去除
 public class CdApplication extends Application {
     /**
      */

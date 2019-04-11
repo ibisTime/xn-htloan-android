@@ -25,7 +25,7 @@ import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.DeleteCollectionBean;
 import com.cdkj.huatuweitong.bean.MyCollectionBean;
 import com.cdkj.huatuweitong.databinding.ActivityMyCollectionListBinding;
-import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.cdkj.huatuweitong.module.vehicle_db.CarDetailsActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -134,11 +134,9 @@ public class MyCollectionListActivity extends AbsBaseLoadActivity {
             public RecyclerView.Adapter getAdapter(List<MyCollectionBean.ListBean> listData) {
 
                 adapter = new MyCollectionAdapter(listData);
-                adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-
-                    }
+                adapter.setOnItemClickListener((adapter, view, position) -> {
+                    MyCollectionBean.ListBean bean = (MyCollectionBean.ListBean) adapter.getItem(position);
+                    CarDetailsActivity.open(MyCollectionListActivity.this, bean.getToCode());
                 });
 
                 adapter.setOnItemChildClickListener((adapter1, view, position) -> {

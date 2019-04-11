@@ -8,8 +8,22 @@ public class TvSelectBean {
     public TvSelectBean() {
     }
 
+
+
+
+    private String name;
+    private String value;
+    private String startValue;
+    private int pic;
+    private boolean isSelect;
+
     public TvSelectBean(String name) {
         this.name = name;
+    }
+    public TvSelectBean(String name, String value,int pic) {
+        this.name = name;
+        this.value = value;
+        this.pic = pic;
     }
     public TvSelectBean(String name, String value) {
         this.name = name;
@@ -20,21 +34,6 @@ public class TvSelectBean {
         this.value = value;
         this.startValue = startvalue;
     }
-    public TvSelectBean(String name,String startvalue, String value,String pic) {
-        this.name = name;
-        this.value = value;
-        this.startValue = startvalue;
-        this.pic = pic;
-    }
-
-
-
-    private String name;
-    private String value;
-    private String startValue;
-    private String pic;
-
-    private boolean isSelect;
 
 
     public String getName() {
@@ -53,11 +52,11 @@ public class TvSelectBean {
         this.value = value;
     }
 
-    public String getPic() {
+    public int getPic() {
         return pic;
     }
 
-    public void setPic(String pic) {
+    public void setPic(int pic) {
         this.pic = pic;
     }
 

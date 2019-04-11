@@ -9,6 +9,7 @@ import com.cdkj.huatuweitong.bean.CarSystemListBean;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -24,9 +25,37 @@ public class CarSystemListAdapter extends BaseQuickAdapter<CarSystemListBean, Ba
 
     @Override
     protected void convert(BaseViewHolder helper, CarSystemListBean item) {
-        ImgUtils.loadQiniuImg(mContext, item.getAdvPic(), helper.getView(R.id.img_product));
+
+        String[] split = item.getAdvPic().split("\\|\\|");
+        List<String> strings = Arrays.asList(split);
+        if (strings.size() > 0) {
+            ImgUtils.loadQiniuImg(mContext, strings.get(0), helper.getView(R.id.img_product));
+        }
+//        ImgUtils.loadQiniuImg(mContext, item.getAdvPic(), helper.getView(R.id.img_product));
         helper.setText(R.id.tv_product_title, item.getName());
-        helper.setText(R.id.tv_type, item.getSlogan());
+        String type = "";
+        switch (item.getLevel()) {
+            case "0":
+                type = "SUV";
+                break;
+            case "1":
+                type = "轿车";
+                break;
+            case "2":
+                type = "MPV";
+                break;
+            case "3":
+                type = "跑车";
+                break;
+            case "4":
+                type = "皮卡";
+                break;
+            case "5":
+                type = "房车";
+                break;
+        }
+//        item.getOutsideColor
+        helper.setText(R.id.tv_type, type);
         helper.setText(R.id.tv_price, MoneyUtils.formatNum(item.getLowest()) + "元-" + MoneyUtils.formatNum(item.getHighest()) + "元");
     }
 }

@@ -14,17 +14,17 @@ import java.util.List;
 /**
  * @updateDts 2019/3/13
  */
-public class HomeSelectedAdaapter extends BaseQuickAdapter<CarSystemListBean, BaseViewHolder> {
-    public HomeSelectedAdaapter(@Nullable List<CarSystemListBean> data) {
+public class HomeSelectedAdaapter extends BaseQuickAdapter<CarSystemListBean.CarsBean, BaseViewHolder> {
+    public HomeSelectedAdaapter(@Nullable List<CarSystemListBean.CarsBean> data) {
         super(R.layout.item_selected, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, CarSystemListBean item) {
-        ImgUtils.loadQiniuImg(mContext, item.getAdvPic(), helper.getView(R.id.iv_img));
-        helper.setText(R.id.tv_title, item.getName());
-        helper.setText(R.id.tv_price, MoneyUtils.formatNum(item.getPrice()));
-        helper.setText(R.id.tv_follow,"99人关注");//人关注
+    protected void convert(BaseViewHolder helper, CarSystemListBean.CarsBean item) {
+        ImgUtils.loadQiniuImg(mContext, item.getPic(), helper.getView(R.id.iv_img));
+        helper.setText(R.id.tv_title, item.getName() + " " + item.getSlogan());
+        helper.setText(R.id.tv_price, MoneyUtils.formatNum(item.getSalePrice()));
+        helper.setText(R.id.tv_follow, item.getCollectNumber() + "人关注");//人关注
 
     }
 }

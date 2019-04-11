@@ -48,7 +48,16 @@ public class CarSystemListBean implements Serializable {
     private String updateDatetime;
     private String remark;
     private int carNumber;
+    private int picNumber;
     private List<CarsBean> cars;
+
+    public int getPicNumber() {
+        return picNumber;
+    }
+
+    public void setPicNumber(int picNumber) {
+        this.picNumber = picNumber;
+    }
 
     public String getCode() {
         return code;
@@ -194,7 +203,7 @@ public class CarSystemListBean implements Serializable {
         this.cars = cars;
     }
 
-    public static class CarsBean implements Serializable{
+    public static class CarsBean implements Serializable {
         /**
          * code : C201903191536172188197
          * name : S650L
@@ -252,6 +261,33 @@ public class CarSystemListBean implements Serializable {
         private String status;
         private String updater;
         private String updateDatetime;
+        private String outsideColor;
+        private String insideColor;
+        private int collectNumber;
+
+        public String getOutsideColor() {
+            return outsideColor;
+        }
+
+        public void setOutsideColor(String outsideColor) {
+            this.outsideColor = outsideColor;
+        }
+
+        public String getInsideColor() {
+            return insideColor;
+        }
+
+        public void setInsideColor(String insideColor) {
+            this.insideColor = insideColor;
+        }
+
+        public int getCollectNumber() {
+            return collectNumber;
+        }
+
+        public void setCollectNumber(int collectNumber) {
+            this.collectNumber = collectNumber;
+        }
 
         public String getCode() {
             return code;

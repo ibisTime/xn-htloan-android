@@ -21,6 +21,7 @@ import com.cdkj.baselibrary.appmanager.MyCdConfig;
 import com.cdkj.baselibrary.model.IntroductionInfoModel;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
+import com.cdkj.baselibrary.utils.DateUtil;
 import com.cdkj.baselibrary.utils.LogUtil;
 import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.R;
@@ -65,7 +66,7 @@ public class WebViewArticleActivity extends AbsActivity {
      *
      * @param activity 上下文
      */
-    public static void openContent(Context activity, String title, String content) {
+    public static void openContent(Context activity, String title, String author,String date,String content) {
         if (activity == null) {
             return;
         }
@@ -73,6 +74,8 @@ public class WebViewArticleActivity extends AbsActivity {
         Intent intent = new Intent(activity, WebViewArticleActivity.class);
         intent.putExtra("content", content);
         intent.putExtra("title", title);
+        intent.putExtra("author", author);
+        intent.putExtra("date", date);
         activity.startActivity(intent);
 
     }
@@ -178,6 +181,10 @@ public class WebViewArticleActivity extends AbsActivity {
                 getKeyUrl(getIntent().getStringExtra("code"));
             } else {
                 mBinding.tvArticleTitle.setText(getIntent().getStringExtra("title"));
+                mBinding.tvAuthor.setText(getIntent().getStringExtra("author"));
+                String date = DateUtil.formatStringData(getIntent().getStringExtra("date"), DateUtil.DATE_YMD);
+                mBinding.tvDate.setText(date);
+
                 showContent(getIntent().getStringExtra("content"));
             }
         } else {

@@ -103,6 +103,7 @@ public class InformationBean {
         private String updateDatetime;
         private String remark;
 
+
         public String getCode() {
             return code;
         }

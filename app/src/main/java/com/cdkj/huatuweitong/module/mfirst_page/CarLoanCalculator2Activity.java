@@ -15,6 +15,7 @@ import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.model.SystemKeyDataBean;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
+import com.cdkj.baselibrary.utils.MoneyUtils;
 import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.baselibrary.utils.ToastUtil;
 import com.cdkj.huatuweitong.R;
@@ -22,10 +23,10 @@ import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.CarLoanCalculatorBean;
 import com.cdkj.huatuweitong.bean.CarModelActivityBean;
 import com.cdkj.huatuweitong.databinding.CarLoanCalculator2Binding;
-import com.cdkj.huatuweitong.utlis.DataHelper;
 
 import org.greenrobot.eventbus.Subscribe;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -84,7 +85,7 @@ public class CarLoanCalculator2Activity extends AbsBaseLoadActivity {
             carModelActivityBean = (CarModelActivityBean.CarsBean) getIntent().getSerializableExtra("data");
             if (carModelActivityBean != null) {
                 mBinding.tvBrand.setText(carModelActivityBean.getBrandName() + carModelActivityBean.getSeriesName() + carModelActivityBean.getName());//车型
-                mBinding.tvAllModel.setText(carModelActivityBean.getSalePrice() + "");
+                mBinding.tvAllModel.setText(MoneyUtils.showPrice(carModelActivityBean.getSalePrice()));
                 setViewData();
             }
         }
@@ -137,16 +138,31 @@ public class CarLoanCalculator2Activity extends AbsBaseLoadActivity {
      * 获取利率
      */
     private void getSysteamRat() {
-        DataHelper.getSystemType(this, "car_periods", list -> {
 
-            if (list != null && list.size() > 0) {
-                ratSingList = list;
-                ratSingData = new String[list.size()];
-                for (int i = 0; i < list.size(); i++) {
-                    ratSingData[i] = list.get(i).getCkey() + "期";
-                }
-            }
-        });
+        ratSingList = new ArrayList<>();
+        SystemKeyDataBean.ListBean bean1 = new SystemKeyDataBean.ListBean(12 + "", "1年");
+        SystemKeyDataBean.ListBean bean2 = new SystemKeyDataBean.ListBean(18 + "", "1.5年");
+        SystemKeyDataBean.ListBean bean3 = new SystemKeyDataBean.ListBean(24 + "", "2年");
+        SystemKeyDataBean.ListBean bean4 = new SystemKeyDataBean.ListBean(36 + "", "3年");
+        ratSingList.add(bean1);
+        ratSingList.add(bean2);
+        ratSingList.add(bean3);
+        ratSingList.add(bean4);
+        ratSingData = new String[ratSingList.size()];
+        for (int i = 0; i < ratSingList.size(); i++) {
+            ratSingData[i] = ratSingList.get(i).getCvalue();
+        }
+
+//        DataHelper.getSystemType(this, "car_periods", list -> {
+//
+//            if (list != null && list.size() > 0) {
+//                ratSingList = list;
+//                ratSingData = new String[list.size()];
+//                for (int i = 0; i < list.size(); i++) {
+//                    ratSingData[i] = list.get(i).getCkey() + "期";
+//                }
+//            }
+//        });
     }
 
     private void showRateSingleDialog() {
@@ -194,18 +210,19 @@ public class CarLoanCalculator2Activity extends AbsBaseLoadActivity {
             protected void onSuccess(CarLoanCalculatorBean data, String SucMessage) {
 
                 if (TextUtils.equals("1", isTotal)) {
-                    mBinding.tvMoney.setText(data.getTotalAmount() + "");
-                    mBinding.tvBiyaoMoney.setText(data.getByhf() + "");
-                    mBinding.tvBiyaoMoney2.setText(data.getByhf() + "");
+                    mBinding.tvMoney.setText(MoneyUtils.showPrice(data.getTotalAmount()));
+                    mBinding.tvBiyaoMoney.setText(MoneyUtils.showPrice(data.getByhf()) + "");
+                    mBinding.tvShangyeMoney.setText(MoneyUtils.showPrice(data.getSybx()) + "");
                 } else {
-                    mBinding.tvMoney.setText(data.getYjsfAmount() + "");
-                    mBinding.tvAllModel.setText(data.getSaleAmount() + "");
-                    mBinding.tvOnePayLilv.setText(data.getYjsfAmount() + "");
-                    mBinding.tvMonthlySupply.setText(data.getMonthReply() + "");
-                    mBinding.tvManyMoney.setText(data.getExtraAmount() + "");
-                    mBinding.tvToatlMoney.setText(data.getTotalAmount() + "");
-                    mBinding.tvBiyaoMoney.setText(data.getByhf() + "");
-                    mBinding.tvBiyaoMoney2.setText(data.getByhf() + "");
+                    mBinding.tvMoney.setText(MoneyUtils.showPrice(data.getYjsfAmount()) + "");
+                    mBinding.tvAllModel.setText(MoneyUtils.showPrice(data.getSaleAmount()) + "");
+                    double v = MoneyUtils.chu4(data.getSfAmount(), data.getSaleAmount());
+                    mBinding.tvOnePayLilv.setText(v * 100 + "% (" + MoneyUtils.showPrice(data.getSfAmount()) + "元)");
+                    mBinding.tvMonthlySupply.setText(MoneyUtils.showPrice(data.getMonthReply()) + "");
+                    mBinding.tvManyMoney.setText(MoneyUtils.showPrice(data.getExtraAmount()) + "");
+                    mBinding.tvToatlMoney.setText(MoneyUtils.showPrice(data.getTotalAmount()) + "");
+                    mBinding.tvBiyaoMoney.setText(MoneyUtils.showPrice(data.getByhf()) + "");
+                    mBinding.tvShangyeMoney.setText(MoneyUtils.showPrice(data.getSybx()) + "");
                 }
             }
 
@@ -224,8 +241,8 @@ public class CarLoanCalculator2Activity extends AbsBaseLoadActivity {
     @Subscribe
     public void breakCarModelActivityBean(CarModelActivityBean.CarsBean bean) {
         this.carModelActivityBean = bean;
-        mBinding.tvBrand.setText(bean.getBrandName() + bean.getSeriesName() + bean.getName());//车型
-        mBinding.tvAllModel.setText(bean.getSalePrice() + "");
+        mBinding.tvBrand.setText(bean.getBrandName() + bean.getName());//车型
+        mBinding.tvAllModel.setText(MoneyUtils.showPrice(bean.getSalePrice()));
         setViewData();
     }
 }

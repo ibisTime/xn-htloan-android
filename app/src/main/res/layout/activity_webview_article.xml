@@ -63,17 +63,20 @@
                     android:text="作者:" />
 
                 <TextView
+                    android:id="@+id/tv_author"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="微车生活"
                     android:textColor="#31f5b4" />
+
                 <TextView
-                    android:gravity="right"
-                    android:textColor="@color/txt_gray"
-                    android:text="2019-10-10"
+                    android:id="@+id/tv_date"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="2019-10-10"
+                    android:textColor="@color/txt_gray" />
             </LinearLayout>
 
             <WebView

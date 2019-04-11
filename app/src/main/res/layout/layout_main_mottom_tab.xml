@@ -22,9 +22,9 @@
         <RadioButton
             android:id="@+id/radio_main_tab_2"
             style="@style/main_tab_radio"
-            android:drawableTop="@drawable/main_buttom_tab_2"
-            android:text="@string/reimbursement" />
-
+            android:drawableTop="@drawable/main_buttom_tab_2_car_type"
+            android:text="车型库" />
+        <!--android:text="@string/reimbursement"-->
 
         <RadioButton
             android:id="@+id/radio_main_tab_3"

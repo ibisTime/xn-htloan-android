@@ -21,9 +21,11 @@ public class InformationAdapter extends BaseQuickAdapter<InformationBean.ListBea
 
     @Override
     protected void convert(BaseViewHolder helper, InformationBean.ListBean item) {
-        ImgUtils.loadQiniuImg(mContext, item.getAdvPic(), helper.getView(R.id.img_product));
+        ImgUtils.loadQiniuImg(mContext, item.getPic(), helper.getView(R.id.img_product));
         helper.setText(R.id.tv_title, item.getTitle());
-        helper.setText(R.id.tv_mouth_money, "xxx次浏览");
+        helper.setText(R.id.tv_mouth_money, item.getReadCount() + "次浏览");
+        helper.setText(R.id.tv_author, item.getAuthor());
+        helper.setText(R.id.tv_tag, item.getTag());
     }
 }
 

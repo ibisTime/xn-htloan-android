@@ -17,14 +17,12 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/title_bg">
+                android:layout_height="wrap_content">
 
                 <com.youth.banner.Banner
                     android:id="@+id/home_banner"
                     android:layout_width="match_parent"
                     android:layout_height="185dp"
-                    android:visibility="gone"
                     app:delay_time="4000"
                     app:indicator_drawable_selected="@drawable/banner_select"
                     app:indicator_drawable_unselected="@drawable/banner_un_select"
@@ -32,16 +30,17 @@
                     app:indicator_margin="6dp"
                     app:indicator_width="7dp" />
 
-                <ImageView
-                    android:id="@+id/iv_img"
-                    android:layout_width="match_parent"
-                    android:layout_height="185dp"
-                    android:scaleType="fitXY" />
+                <!--<ImageView-->
+                <!--android:id="@+id/iv_img"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="185dp"-->
+                <!--android:scaleType="fitXY" />-->
+
 
                 <ImageView
                     android:id="@+id/iv_back"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="15dp"
                     android:padding="5dp"
@@ -65,7 +64,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="15dp"
-                android:text="奔驰SUV600  加长跑车"
+                tools:text="奔驰SUV600  加长跑车"
                 android:textColor="@color/text_black_cd"
                 android:textSize="16sp" />
 
@@ -76,7 +75,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="15dp"
-                android:text="中大型SUV"
+                tools:text="中大型SUV"
                 android:textColor="@color/text_999"
                 android:textSize="12sp" />
 
@@ -100,7 +99,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:text="50万"
+                    tools:text="50万"
                     android:textColor="@color/title_bg"
                     android:textSize="16sp" />
 
@@ -144,7 +143,7 @@
                 android:background="@color/gray"
                 android:lineSpacingMultiplier="1.2"
                 android:padding="5dp"
-                android:text="智能卡,一键启动一般格式是:#AARRGGBB。AA就是透明度值(这里我透明度"
+                tools:text="智能卡,一键启动一般格式是:#AARRGGBB。AA就是透明度值(这里我透明度"
                 android:textColor="@color/text_999"
                 android:textSize="12sp" />
 
@@ -200,7 +199,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="3"
-                    android:text="杭州"
+                    tools:text="杭州"
                     android:textColor="@color/text_black_cd"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -233,7 +232,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="3"
-                    android:text="手续齐全"
+                    tools:text="手续齐全"
                     android:textColor="@color/text_black_cd"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -266,7 +265,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="3"
-                    android:text="2019-8-15"
+                    tools:text="2019-8-15"
                     android:textColor="@color/text_black_cd"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -305,8 +304,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp">
-            </android.support.v7.widget.RecyclerView>
+                android:layout_marginRight="10dp"></android.support.v7.widget.RecyclerView>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_car_setting_all"
@@ -314,8 +312,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp">
-            </android.support.v7.widget.RecyclerView>
+                android:layout_marginRight="10dp"></android.support.v7.widget.RecyclerView>
 
             <LinearLayout
                 android:layout_width="match_parent"

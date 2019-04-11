@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cdkj.baselibrary.R;
@@ -65,13 +64,11 @@ public class CommonDialog {
 
         setCancelable(false);
         setCanceledOnTouchOutside(false);
-
         return this;
     }
 
     public CommonDialog setType(int type) {
         mDialog.getWindow().setType(type);
-
         return this;
     }
 

@@ -154,7 +154,7 @@ public class RegisterActivity extends AbsBaseLoadActivity implements SendCodeInt
         hashMap.put("mobile", mBinding.edtPhone.getText().toString());
         hashMap.put("loginPwd", mBinding.edtRepassword.getText().toString());
         hashMap.put("kind", MyCdConfig.USERTYPE);
-        hashMap.put("nickname", mBinding.edtNick.getText().toString());
+//        hashMap.put("nickname", mBinding.edtNick.getText().toString());
         hashMap.put("smsCaptcha", mBinding.edtCode.getText().toString());
 
         Call call = RetrofitUtils.createApi(BaseApiServer.class).userRegister("805041", StringUtils.getJsonToString(hashMap));

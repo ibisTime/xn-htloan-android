@@ -8,6 +8,7 @@ import com.cdkj.huatuweitong.bean.CarSystemListBean;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -22,7 +23,11 @@ public class HomeFragmentCarSystemAdapter extends BaseQuickAdapter<CarSystemList
     protected void convert(BaseViewHolder helper, CarSystemListBean item) {
         helper.setText(R.id.tv_brand_name, item.getName());
 
-        ImgUtils.loadQiniuImg(mContext, item.getAdvPic(), helper.getView(R.id.iv_brand_img));
+        String[] split = item.getAdvPic().split("\\|\\|");
+        List<String> strings = Arrays.asList(split);
+        if (strings.size() > 0) {
+            ImgUtils.loadQiniuImg(mContext, strings.get(0), helper.getView(R.id.iv_brand_img));
+        }
 
     }
 }

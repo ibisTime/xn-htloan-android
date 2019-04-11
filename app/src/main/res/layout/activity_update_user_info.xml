@@ -8,7 +8,6 @@
         android:orientation="vertical">
 
         <LinearLayout
-          android:paddingBottom="5dp"
             android:id="@+id/layout_logo"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -16,7 +15,8 @@
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="15dp"
-            android:paddingRight="15dp">
+            android:paddingRight="15dp"
+            android:paddingBottom="5dp">
 
             <TextView
                 android:id="@+id/tv_left"
@@ -85,30 +85,35 @@
             android:id="@+id/row_pay_psw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             app:img_right="@mipmap/ic_more"
             app:txt_left="@string/pay_psw" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:background="@color/gray_line" />
+            android:background="@color/gray_line"
+            android:visibility="gone" />
 
         <com.cdkj.baselibrary.views.RowInfoLayout
             android:id="@+id/row_receive_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             app:img_right="@mipmap/ic_more"
             app:txt_left="@string/receive_address" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/gray_line" />
+            android:background="@color/gray_line"
+            android:visibility="gone" />
 
         <com.cdkj.baselibrary.views.RowInfoLayout
             android:id="@+id/row_receive_bank_caard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             app:img_right="@mipmap/ic_more"
             app:txt_left="银行卡管理" />
 

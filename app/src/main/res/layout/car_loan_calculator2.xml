@@ -82,7 +82,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
-                        android:text="0"
+                        android:text="00.00"
                         android:textColor="@color/white_car_loan"
                         android:textSize="30sp" />
                     <!--android:layout_marginTop="14dp"-->
@@ -226,7 +226,7 @@
                         android:layout_width="74dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
-                        android:text="@string/car_calculator_brand"
+                        android:text="车型"
                         android:textColor="@color/text_black_cd" />
 
                     <TextView
@@ -237,9 +237,9 @@
                         android:layout_marginRight="15dp"
                         android:layout_weight="1"
                         android:singleLine="true"
+                        android:text="请选择车型"
                         android:textColor="@color/text_black_cd"
-                        android:textSize="15sp"
-                        tools:text="2018款 30周年限定款" />
+                        android:textSize="15sp" />
 
                     <ImageView
                         android:id="@+id/iv_brand"
@@ -278,8 +278,8 @@
                         android:layout_marginRight="15dp"
                         android:layout_weight="1"
                         android:singleLine="true"
-                        android:textColor="@color/text_black_cd"
-                        tools:text="0" />
+                        android:text="00.00"
+                        android:textColor="@color/text_black_cd" />
 
                     <ImageView
                         android:id="@+id/iv_model"
@@ -314,7 +314,7 @@
                         android:layout_width="74dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
-                        android:text="@string/car_calculator_control_year"
+                        android:text="贷款年限"
                         android:textColor="@color/text_black_cd" />
 
                     <TextView
@@ -380,12 +380,7 @@
                         android:textSize="15sp"
                         tools:text="20000(元)" />
 
-                    <ImageView
-                        android:id="@+id/iv_one_pay"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="15dp"
-                        android:src="@mipmap/ic_more" />
+
                 </LinearLayout>
 
 
@@ -413,7 +408,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="15dp"
-                        android:text="0"
+                        android:text="00.00"
                         android:textColor="@color/text_black_cd" />
 
                     <TextView
@@ -426,14 +421,7 @@
                         android:text="必要花费(元)"
                         android:textColor="@color/text_999" />
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="20dp"
-                        android:src="@drawable/more_right" />
+
                 </RelativeLayout>
 
                 <View
@@ -447,33 +435,23 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/tv_biyao_money2"
+                        android:id="@+id/tv_shangye_money"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="15dp"
-                        android:text="0"
+                        android:text="00.00"
                         android:textColor="@color/text_black_cd" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/tv_biyao_money2"
+                        android:layout_below="@+id/tv_shangye_money"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="15dp"
-                        android:text="必要花费(元)"
+                        android:text="商业保险(元)"
                         android:textColor="@color/text_999" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="20dp"
-                        android:src="@drawable/more_right" />
-
                 </RelativeLayout>
 
             </LinearLayout>

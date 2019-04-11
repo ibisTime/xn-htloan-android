@@ -63,10 +63,10 @@ public class MoneyUtils {
         return 0.00;
     }
 
-    public static String doubleFormatSXF(double d){
+    public static String doubleFormatSXF(double d) {
         DecimalFormat df = new DecimalFormat("#######0.000");
         String showMoney = df.format(d);
-        return showMoney.substring(0,showMoney.length()-1);
+        return showMoney.substring(0, showMoney.length() - 1);
     }
 
     /**
@@ -92,6 +92,14 @@ public class MoneyUtils {
 
 
         return 0.00;
+    }
+
+    public static String showPrice(String big) {
+
+        if (big != null) {
+            return doubleFormatMoney(Double.parseDouble(big) / 1000);
+        }
+        return "0.00";
     }
 
     public static String showPrice(BigDecimal big) {
@@ -155,14 +163,19 @@ public class MoneyUtils {
     public static String formatNum(BigDecimal num) {
 
         if (num == null || num.compareTo(BigDecimal.ZERO) == 0) return "0";
+        String s = MoneyUtils.showPrice(num);
+        num = new BigDecimal(s);
         NumberFormat nf = new DecimalFormat("#.##");
         if (num.doubleValue() < 10000) {
             return nf.format(num.doubleValue());
         }
         if (num.doubleValue() >= 100000000) {
-            return nf.format(num.divide(new BigDecimal(100000000), 2, RoundingMode.HALF_UP).doubleValue()) + "亿";
+            String format = nf.format(num.divide(new BigDecimal(100000000), 2, RoundingMode.HALF_UP).doubleValue());
+            return format + "亿";
         }
-        return nf.format(num.divide(new BigDecimal(10000), 2, RoundingMode.HALF_UP).doubleValue()) + "万";
+        String format = nf.format(num.divide(new BigDecimal(10000), 2, RoundingMode.HALF_UP).doubleValue());
+
+        return format + "万";
 
     }
 
@@ -196,6 +209,7 @@ public class MoneyUtils {
 
     /**
      * 将金额 乘以 1000返回String
+     *
      * @param money
      * @return
      */
@@ -208,6 +222,7 @@ public class MoneyUtils {
     /**
      * 将金额 乘以 1000返回BigDecimal
      * 用于计算
+     *
      * @param money
      * @return
      */
@@ -220,6 +235,7 @@ public class MoneyUtils {
     /**
      * 将金额 除以 1000返回BigDecimal
      * 用于计算
+     *
      * @param money
      * @return
      */
@@ -232,6 +248,7 @@ public class MoneyUtils {
     /**
      * 将元乘以1000返回String
      * 用于向服务器放金额时使用
+     *
      * @param money
      * @return
      */
@@ -239,6 +256,28 @@ public class MoneyUtils {
         BigDecimal multiply = money.multiply(new BigDecimal(1000));
         BigDecimal decimal = multiply.setScale(2, BigDecimal.ROUND_DOWN);
         return decimal.stripTrailingZeros().toPlainString();
+    }
+
+    public static double chu2(double v1, double v2) {
+        DecimalFormat format = new DecimalFormat("0.00");
+        double v = v1 / v2;
+        String format1 = format.format(v);
+        return Double.parseDouble(format1);
+    }
+
+    public static double chu2(BigDecimal v1, BigDecimal v2) {
+        return chuScale(v1, v2, 2);
+    }
+    public static double chu4(BigDecimal v1, BigDecimal v2) {
+        return chuScale(v1, v2, 4);
+    }
+
+    public static double chuScale(BigDecimal v1, BigDecimal v2, int scale) {
+        if (scale < 0) {
+            throw new IllegalArgumentException(
+                    "The scale must be a positive integer or zero");
+        }
+        return v1.divide(v2, scale, BigDecimal.ROUND_HALF_UP).doubleValue();
     }
 
 

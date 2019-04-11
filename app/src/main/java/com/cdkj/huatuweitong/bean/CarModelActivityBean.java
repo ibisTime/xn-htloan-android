@@ -54,6 +54,7 @@ public class CarModelActivityBean implements Serializable {
     private int carNumber;
     private List<CarsBean> cars;
 
+
     public String getCode() {
         return code;
     }
@@ -206,7 +207,7 @@ public class CarModelActivityBean implements Serializable {
         this.cars = cars;
     }
 
-    public static class CarsBean implements Serializable{
+    public static class CarsBean implements Serializable {
         /**
          * code : C201903191540014947886
          * isReferee : 1
@@ -274,8 +275,17 @@ public class CarModelActivityBean implements Serializable {
         private String updater;
         private String updateDatetime;
         private String updaterName;
+        private String isCollect;
         private int collectNumber;
         private List<CaonfigListBean> caonfigList;
+
+        public String getIsCollect() {
+            return isCollect;
+        }
+
+        public void setIsCollect(String isCollect) {
+            this.isCollect = isCollect;
+        }
 
         public String getCode() {
             return code;
@@ -541,7 +551,7 @@ public class CarModelActivityBean implements Serializable {
             this.caonfigList = caonfigList;
         }
 
-        public static class CaonfigListBean implements Serializable{
+        public static class CaonfigListBean implements Serializable {
             /**
              * code : CCC201903221146384778562
              * carCode : C201903191540014947886
@@ -586,7 +596,7 @@ public class CarModelActivityBean implements Serializable {
                 this.config = config;
             }
 
-            public static class ConfigBean implements Serializable{
+            public static class ConfigBean implements Serializable {
                 /**
                  * code : CC201903221054496692906
                  * name : 无人驾驶

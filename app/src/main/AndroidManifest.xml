@@ -118,8 +118,9 @@
         <activity android:name=".module.vehicle_db.CarDetailsActivity" />
         <activity android:name=".common.WebViewActivity2" />
         <activity android:name=".common.WebViewArticleActivity" />
-        <activity android:name=".module.user.MyCollectionListActivity"></activity>
-        <activity android:name=".module.mfirst_page.CarLoanCalculator2Activity"></activity>
+        <activity android:name=".module.user.MyCollectionListActivity" />
+        <activity android:name=".module.mfirst_page.CarLoanCalculator2Activity" />
+        <activity android:name=".module.other.ImgGraidActivity"></activity>
     </application>
 
 </manifest>

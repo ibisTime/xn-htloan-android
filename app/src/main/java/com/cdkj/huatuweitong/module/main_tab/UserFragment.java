@@ -127,7 +127,14 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
             @Override
             protected void onSuccess(UserFragmentBean data, String SucMessage) {
                 ImgUtils.loadQiniuLogo(mActivity, data.getPhoto(), mBinding.imgUserLogo);
-                mBinding.tvUserName.setText(data.getNickname());
+                if (!TextUtils.isEmpty(data.getMobile()) && TextUtils.isEmpty(data.getNickname())) {
+                    String defaultNick = "尾号为" + data.getMobile().substring(data.getMobile().length() - 4, data.getMobile().length());
+                    mBinding.tvUserName.setText(defaultNick);
+                } else {
+
+                    mBinding.tvUserName.setText(data.getNickname());
+                }
+
                 mBinding.tvUserPhone.setText(data.getMobile());
 
                 SPUtilHelper.saveUserId(data.getUserId());

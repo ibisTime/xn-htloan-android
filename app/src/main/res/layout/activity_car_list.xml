@@ -26,6 +26,7 @@
             <android.support.v4.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:fillViewport="true"
                 android:scrollbars="none">
 
                 <LinearLayout
@@ -45,40 +46,59 @@
                             android:id="@+id/iv_top_img"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="#aaa"
-                            android:src="@mipmap/ic_launcher" />
+                            android:visibility="gone" />
 
+                        <com.youth.banner.Banner
+                            android:id="@+id/banner"
+                            android:layout_width="match_parent"
+                            android:layout_height="185dp"
+                            app:delay_time="4000"
+                            app:indicator_drawable_selected="@drawable/banner_select"
+                            app:indicator_drawable_unselected="@drawable/banner_un_select"
+                            app:indicator_height="7dp"
+                            app:indicator_margin="6dp"
+                            app:indicator_width="7dp" />
 
-                        <TextView
-                            android:id="@+id/tv_price"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginBottom="15dp"
-                            android:text="20.4-500万"
-                            android:textColor="@color/white"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/tv_title"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_above="@+id/tv_price"
-                            android:layout_marginLeft="15dp"
-                            android:layout_marginBottom="5dp"
-                            android:text="中大型车"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
 
                         <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:background="#50000000"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:id="@+id/tv_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="中大型车"
+                                android:textColor="@color/white"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginBottom="5dp"
+                                android:text="20.4-500万"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/ll_pic_number"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_alignParentBottom="true"
                             android:layout_marginRight="15dp"
                             android:layout_marginBottom="15dp"
-                            android:background="#80000000"
                             android:gravity="center"
                             android:orientation="horizontal"
                             android:padding="5dp">
@@ -93,7 +113,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"
-                                android:text="999"
+                                android:text="0"
                                 android:textColor="@color/white"
                                 android:textSize="12sp" />
 
@@ -115,6 +135,7 @@
 
                         </android.support.v7.widget.RecyclerView>
                     </RelativeLayout>
+
                 </LinearLayout>
 
             </android.support.v4.widget.NestedScrollView>

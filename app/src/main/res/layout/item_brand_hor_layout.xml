@@ -33,7 +33,7 @@
 
         <ImageView
             android:id="@+id/iv_brand_img"
-            android:layout_width="80dp"
+            android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginLeft="15dp"
             tools:src="@mipmap/ic_launcher" />

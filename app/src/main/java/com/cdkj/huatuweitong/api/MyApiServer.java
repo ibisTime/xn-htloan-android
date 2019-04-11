@@ -10,6 +10,7 @@ import com.cdkj.huatuweitong.bean.BrandBean;
 import com.cdkj.huatuweitong.bean.CarBrandActivityBean;
 import com.cdkj.huatuweitong.bean.CarDetailsBean2;
 import com.cdkj.huatuweitong.bean.CarDetailsSettingBean;
+import com.cdkj.huatuweitong.bean.CarHotSystemListBean;
 import com.cdkj.huatuweitong.bean.CarLoanCalculatorActivityDetailsBean;
 import com.cdkj.huatuweitong.bean.CarLoanCalculatorBean;
 import com.cdkj.huatuweitong.bean.CarLoanCalculatorSendBean;
@@ -17,9 +18,12 @@ import com.cdkj.huatuweitong.bean.CarLoanDetailsActivityBean;
 import com.cdkj.huatuweitong.bean.CarLoanDetailsActivityMonthBean;
 import com.cdkj.huatuweitong.bean.CarModelActivityBean;
 import com.cdkj.huatuweitong.bean.CarSystemActivityBean;
+import com.cdkj.huatuweitong.bean.CarSystemBean;
 import com.cdkj.huatuweitong.bean.CarSystemListBean;
+import com.cdkj.huatuweitong.bean.CarSystemListPagingBean;
 import com.cdkj.huatuweitong.bean.CollectionBean;
 import com.cdkj.huatuweitong.bean.CommonSuccerBean;
+import com.cdkj.huatuweitong.bean.DataDictionaryBean;
 import com.cdkj.huatuweitong.bean.DeleteCollectionBean;
 import com.cdkj.huatuweitong.bean.ExhibitionCenterBean;
 import com.cdkj.huatuweitong.bean.FirstPageBanner;
@@ -173,6 +177,7 @@ public interface MyApiServer {
     @FormUrlEncoded
     @POST("api")
     Call<BaseResponseModel<CarModelActivityBean.CarsBean>> getCarDetails(@Field("code") String code, @Field("json") String json);
+
     /**
      * c车辆详情数据
      *
@@ -183,6 +188,7 @@ public interface MyApiServer {
     @FormUrlEncoded
     @POST("api")
     Call<BaseResponseModel<CarDetailsBean2>> getCarDetails2(@Field("code") String code, @Field("json") String json);
+
     /**
      * c车辆详情数据
      *
@@ -586,8 +592,6 @@ public interface MyApiServer {
     Call<BaseResponseModel<ZXSuccessIDBean>> upDataHKimg(@Field("code") String code, @Field("json") String json);
 
     /**
-     *
-     *
      * @param code
      * @return
      */
@@ -597,7 +601,7 @@ public interface MyApiServer {
 
 
     /**
-     * 新车系查询
+     * 车系查询
      *
      * @param code
      * @param json
@@ -606,6 +610,28 @@ public interface MyApiServer {
     @FormUrlEncoded
     @POST("api")
     Call<BaseResponseListModel<CarSystemListBean>> getCarSystemlListDatas(@Field("code") String code, @Field("json") String json);
+
+    /**
+     * 车型查询的分页
+     *
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<CarSystemListPagingBean>> getCarSystemlPagingtDatas(@Field("code") String code, @Field("json") String json);
+
+    /**
+     * 热门车系查询
+     *
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseListModel<CarSystemListBean>> getCarHotSystemlListDatas(@Field("code") String code, @Field("json") String json);
 
     /**
      * 新车系查询
@@ -628,7 +654,8 @@ public interface MyApiServer {
     @FormUrlEncoded
     @POST("api")
     Call<BaseResponseModel<InformationBean>> getInformation(@Field("code") String code, @Field("json") String json);
- /**
+
+    /**
      * 获取车贷计算器数据
      *
      * @param code
@@ -638,7 +665,7 @@ public interface MyApiServer {
     @POST("api")
     Call<BaseResponseModel<CarLoanCalculatorBean>> getCarLoanCalculator(@Field("code") String code, @Field("json") String json);
 
- /**
+    /**
      * 收藏
      *
      * @param code
@@ -647,6 +674,7 @@ public interface MyApiServer {
     @FormUrlEncoded
     @POST("api")
     Call<BaseResponseModel<CollectionBean>> collection(@Field("code") String code, @Field("json") String json);
+
     /**
      * 获取收藏
      *
@@ -656,6 +684,7 @@ public interface MyApiServer {
     @FormUrlEncoded
     @POST("api")
     Call<BaseResponseModel<MyCollectionBean>> getCollection(@Field("code") String code, @Field("json") String json);
+
     /**
      * 获取收藏
      *
@@ -665,6 +694,7 @@ public interface MyApiServer {
     @FormUrlEncoded
     @POST("api")
     Call<BaseResponseModel<DeleteCollectionBean>> deleteCollection(@Field("code") String code, @Field("json") String json);
+
     /**
      * 获取收藏
      *
@@ -675,5 +705,27 @@ public interface MyApiServer {
     @POST("api")
     Call<BaseResponseModel<CommonSuccerBean>> requerstPrice(@Field("code") String code, @Field("json") String json);
 
+
+    /**
+     * 获取车系数据
+     *
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<CarSystemBean>> getCarList(@Field("code") String code, @Field("json") String json);
+
+    /**
+     * 数据字典
+     *
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseListModel<DataDictionaryBean>> getDataDictionary(@Field("code") String code, @Field("json") String json);
 
 }

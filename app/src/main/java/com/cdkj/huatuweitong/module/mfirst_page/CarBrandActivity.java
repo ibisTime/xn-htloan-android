@@ -35,10 +35,10 @@ public class CarBrandActivity extends AbsRefreshListActivity<CarBrandActivityBea
         }
     }
 
-    public static void open(Context context,boolean isCheckAll) {
+    public static void open(Context context, boolean isCheckAll) {
         if (context != null) {
             Intent intent = new Intent(context, CarBrandActivity.class);
-            intent.putExtra(CdRouteHelper.DATASIGN,isCheckAll);
+            intent.putExtra(CdRouteHelper.DATASIGN, isCheckAll);
             context.startActivity(intent);
         }
     }
@@ -48,10 +48,10 @@ public class CarBrandActivity extends AbsRefreshListActivity<CarBrandActivityBea
         CarBrandAdapter adapter = new CarBrandAdapter(listData);
         adapter.setOnItemClickListener((adapter1, view, position) -> {
 
-            if (isCheckAll){
+            if (isCheckAll) {
                 CarSystemActivity.open(CarBrandActivity.this, listData.get(position));
                 finish();
-            }else{
+            } else {
                 EventBus.getDefault().post(listData.get(position));
                 finish();
             }
@@ -70,8 +70,8 @@ public class CarBrandActivity extends AbsRefreshListActivity<CarBrandActivityBea
         initRefreshHelper(10);
         mRefreshHelper.onDefaluteMRefresh(true);
 
-        if (getIntent()!=null) {
-            isCheckAll = getIntent().getBooleanExtra(CdRouteHelper.DATASIGN,false);
+        if (getIntent() != null) {
+            isCheckAll = getIntent().getBooleanExtra(CdRouteHelper.DATASIGN, false);
         }
 
     }
@@ -85,7 +85,7 @@ public class CarBrandActivity extends AbsRefreshListActivity<CarBrandActivityBea
         Map<String, String> map = new HashMap<>();
         map.put("start", pageindex + "");
         map.put("limit", limit + "");
-        map.put("location", "0");
+//        map.put("location", "1");//0 热门  1普通
         map.put("status", "1");
         Call call = RetrofitUtils.createApi(MyApiServer.class).getCarBrandDatas("630405", StringUtils.getJsonToString(map));
         addCall(call);

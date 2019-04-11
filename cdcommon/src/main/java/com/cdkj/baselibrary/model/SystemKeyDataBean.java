@@ -84,6 +84,13 @@ public class SystemKeyDataBean {
          * updateDatetime : Jun 12, 2018 12:24:21 PM
          * remark : 车贷期数管理的期数和利率
          */
+        public ListBean() {
+        }
+
+        public ListBean(String ckey, String cvalue) {
+            this.ckey = ckey;
+            this.cvalue = cvalue;
+        }
 
         private double id;
         private String type;

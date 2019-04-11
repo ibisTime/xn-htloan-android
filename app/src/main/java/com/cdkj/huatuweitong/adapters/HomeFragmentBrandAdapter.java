@@ -22,11 +22,11 @@ public class HomeFragmentBrandAdapter extends BaseQuickAdapter<BrandBean, BaseVi
     @Override
     protected void convert(BaseViewHolder helper, BrandBean item) {
         int position = helper.getPosition();
-        if (position % 4 == 0) {
+        if (position % 4 == 0 || mData.size() - 1 == position) {
             //如果是  最右面一个条目就不显示这个分割线
             helper.setGone(R.id.tv_lien, true);
         } else {
-            helper.setGone(R.id.tv_lien, false);
+            helper.setVisible(R.id.tv_lien, true);
         }
         helper.setText(R.id.tv_brand_name, item.getName());
         ImgUtils.loadQiniuImg(mContext, item.getLogo(), helper.getView(R.id.iv_brand_img));

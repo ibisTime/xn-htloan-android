@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.cdkj.baselibrary.appmanager.MyCdConfig;
@@ -18,7 +17,7 @@ import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.adapters.MyMessageAFAdapter;
 import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.MsgListModel;
-import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.cdkj.huatuweitong.common.WebViewActivity2;
 
 import java.util.HashMap;
 import java.util.List;
@@ -58,19 +57,16 @@ public class MyMessageActivityFragment extends AbsRefreshListFragment<MsgListMod
     public RecyclerView.Adapter getListAdapter(List listData) {
 
         MyMessageAFAdapter adapter = new MyMessageAFAdapter(listData);
-        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
 
-            }
+        adapter.setOnItemClickListener((adapter1, view, position) -> {
+            MsgListModel.ListBean item = (MsgListModel.ListBean) adapter1.getItem(position);
+            WebViewActivity2.openContent(mActivity, item.getTitle(), item.getContent());
         });
-        adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
-            @Override
-            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                switch (view.getId()) {
-                    case 0:
-                        break;
-                }
+
+        adapter.setOnItemChildClickListener((adapter12, view, position) -> {
+            switch (view.getId()) {
+                case 0:
+                    break;
             }
         });
         return adapter;
@@ -86,6 +82,7 @@ public class MyMessageActivityFragment extends AbsRefreshListFragment<MsgListMod
         map.put("pushType", "41");
         map.put("toKind", "C");
         map.put("status", "1");
+        map.put("type", type);
         map.put("fromSystemCode", MyCdConfig.SYSTEM_CODE);
         map.put("toSystemCode", MyCdConfig.SYSTEM_CODE);
 
@@ -98,7 +95,21 @@ public class MyMessageActivityFragment extends AbsRefreshListFragment<MsgListMod
         call.enqueue(new BaseResponseModelCallBack<MsgListModel>(mActivity) {
             @Override
             protected void onSuccess(MsgListModel data, String SucMessage) {
-                mRefreshHelper.setData(data.getList(), "暂无消息", 0);
+                String emptyStr = "暂无消息";
+                switch (type) {
+                    case "1":
+                        //提醒
+                        emptyStr = "暂无提醒消息";
+                        break;
+                    case "2":
+                        emptyStr = "暂无通知消息";
+                        break;
+                    case "3":
+                        emptyStr = "暂无公告消息";
+                        break;
+                }
+
+                mRefreshHelper.setData(data.getList(), emptyStr, 0);
             }
 
             @Override

@@ -30,8 +30,8 @@ public class MainActivity extends AbsBaseLoadActivity {
 
 
     public ActivityMainBinding mBinding;
-    private boolean checkFerst;//是否选中 首页界面(用于修改密码后跳转mainactivity )
     public static List<NodeModel> nodeModellist;
+    private int currentPostion;
 
     public static void open(Context context) {
         if (context != null) {
@@ -66,22 +66,29 @@ public class MainActivity extends AbsBaseLoadActivity {
 
             switch (i) {
                 case R.id.radio_main_tab_1:
-                    mBinding.pagerMain.setCurrentItem(0);
+                    currentPostion = 0;
+                    mBinding.pagerMain.setCurrentItem(currentPostion);
                     break;
                 case R.id.radio_main_tab_2:
-                    if (!SPUtilHelper.isLogin(MainActivity.this, false)) {
-                        //没有登陆点击其他的  还然他选中第一个  不然界面会错乱
-                        mBinding.layoutTab.radioMainTab1.setChecked(true);
-                        return;
-                    }
-                    mBinding.pagerMain.setCurrentItem(1);
+//                    if (!SPUtilHelper.isLogin(MainActivity.this, false)) {
+//                        //没有登陆点击其他的  还然他选中第一个  不然界面会错乱
+//                        mBinding.layoutTab.radioMainTab1.setChecked(true);
+//                        return;
+//                    }
+                    currentPostion = 1;
+                    mBinding.pagerMain.setCurrentItem(currentPostion);
                     break;
                 case R.id.radio_main_tab_3:
                     if (!SPUtilHelper.isLogin(MainActivity.this, false)) {
-                        mBinding.layoutTab.radioMainTab1.setChecked(true);
+                        if (currentPostion == 0) {
+                            mBinding.layoutTab.radioMainTab1.setChecked(true);
+                        } else {
+                            mBinding.layoutTab.radioMainTab2.setChecked(true);
+                        }
                         return;
                     }
-                    mBinding.pagerMain.setCurrentItem(2);
+                    currentPostion = 2;
+                    mBinding.pagerMain.setCurrentItem(currentPostion);
                     break;
                 default:
             }
@@ -107,7 +114,6 @@ public class MainActivity extends AbsBaseLoadActivity {
         mBinding.pagerMain.setOffscreenPageLimit(fragments.size());
 
     }
-
 
 
     /**

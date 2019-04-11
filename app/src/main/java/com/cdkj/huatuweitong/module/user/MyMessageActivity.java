@@ -20,9 +20,9 @@ import java.util.List;
 public class MyMessageActivity extends AbsBaseLoadActivity {
     ActivityMyMessageBinding mBinding;
 
-    public static void open(Context context){
-        if (context!=null){
-            Intent intent =new Intent(context,MyMessageActivity.class);
+    public static void open(Context context) {
+        if (context != null) {
+            Intent intent = new Intent(context, MyMessageActivity.class);
             context.startActivity(intent);
         }
     }
@@ -37,23 +37,23 @@ public class MyMessageActivity extends AbsBaseLoadActivity {
     @Override
     public void afterCreate(Bundle savedInstanceState) {
         mBaseBinding.titleView.setMidTitle("我的消息");
-        mBinding.viewindicator.setmLinWidth(25);
-        mBinding.viewindicator.setVisibleTabCount(4);
-        List<String> titls=new ArrayList<>();
-//        titls.add("提醒");
+        ////1 提醒 2 通知 3 公告
+        List<String> titls = new ArrayList<>();
+        titls.add("提醒");
 //        titls.add("催款");
-//        titls.add("通知");
-//        titls.add("公告");
+        titls.add("通知");
+        titls.add("公告");
         mBinding.viewindicator.setTabItemTitles(titls);
         mBinding.viewindicator.setViewPager(mBinding.viewpager, 0);
-
+        mBinding.viewindicator.setmLinWidth(25);
+        mBinding.viewindicator.setVisibleTabCount(titls.size());
 
         //设置fragment数据
         ArrayList fragments = new ArrayList<>();
 
         fragments.add(MyMessageActivityFragment.getInstance("1"));
-//        fragments.add(MyMessageActivityFragment.getInstance("1"));
-//        fragments.add(MyMessageActivityFragment.getInstance("1"));
+        fragments.add(MyMessageActivityFragment.getInstance("2"));
+        fragments.add(MyMessageActivityFragment.getInstance("3"));
 //        fragments.add(MyMessageActivityFragment.getInstance("1"));
 
 

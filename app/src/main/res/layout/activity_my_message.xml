@@ -4,18 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <com.cdkj.baselibrary.views.LineViewPagerIndicator
-            android:visibility="gone"
             android:id="@+id/viewindicator"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:background="@color/white">
-
-
         </com.cdkj.baselibrary.views.LineViewPagerIndicator>
 
 

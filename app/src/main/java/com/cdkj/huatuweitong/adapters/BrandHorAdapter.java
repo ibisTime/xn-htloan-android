@@ -28,12 +28,12 @@ public class BrandHorAdapter extends BaseQuickAdapter<BrandBean, BaseViewHolder>
             helper.setText(R.id.tv_brand_name, "");
         }
 
-        helper.setText(R.id.tv_sort, item.getSort());
+        helper.setText(R.id.tv_sort, item.getLetter());
 
         if (helper.getLayoutPosition() == 0){
             helper.setGone(R.id.ll_sort, true);
         }else {
-            if (!item.getSort().equals(getData().get(helper.getLayoutPosition()-1).getSort())){
+            if (!item.getLetter().equals(getData().get(helper.getLayoutPosition()-1).getLetter())){
                 helper.setGone(R.id.ll_sort, true);
             }else {
                 helper.setGone(R.id.ll_sort, false);
@@ -47,12 +47,11 @@ public class BrandHorAdapter extends BaseQuickAdapter<BrandBean, BaseViewHolder>
             return 0;
 
         for (int i = 0; i < getData().size(); i++) {
-            String sortStr = getData().get(i).getSort();
+            String sortStr = getData().get(i).getLetter();
             if (sortStr.equals(sort)) {
                 return i;
             }
         }
-
         return -1;
     }
 }

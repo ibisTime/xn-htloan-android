@@ -7,14 +7,15 @@
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="2dp">
 
     <ImageView
         android:id="@+id/iv_brand_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
-        android:src="@mipmap/ic_launcher" />
+        tools:src="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/tv_brand_name"

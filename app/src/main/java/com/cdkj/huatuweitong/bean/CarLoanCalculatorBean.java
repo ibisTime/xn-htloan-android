@@ -1,5 +1,7 @@
 package com.cdkj.huatuweitong.bean;
 
+import java.math.BigDecimal;
+
 /**
  * @updateDts 2019/3/27
  */
@@ -19,103 +21,103 @@ public class CarLoanCalculatorBean {
      * sybx : 2000   商业保险
      */
 
-    private long saleAmount;
-    private long sfAmount;
-    private long yjsfAmount;
-    private long dkAmount;
-    private long dkTotalAmount;
-    private long procedureAmount;
-    private long monthReply;
-    private long extraAmount;
-    private long totalAmount;
-    private long byhf;
-    private long sybx;
+    private BigDecimal saleAmount;
+    private BigDecimal sfAmount;
+    private BigDecimal yjsfAmount;
+    private BigDecimal dkAmount;
+    private BigDecimal dkTotalAmount;
+    private BigDecimal procedureAmount;
+    private BigDecimal monthReply;
+    private BigDecimal extraAmount;
+    private BigDecimal totalAmount;
+    private BigDecimal byhf;
+    private BigDecimal sybx;
 
-    public long getSaleAmount() {
+    public BigDecimal getSaleAmount() {
         return saleAmount;
     }
 
-    public void setSaleAmount(long saleAmount) {
+    public void setSaleAmount(BigDecimal saleAmount) {
         this.saleAmount = saleAmount;
     }
 
-    public long getSfAmount() {
+    public BigDecimal getSfAmount() {
         return sfAmount;
     }
 
-    public void setSfAmount(long sfAmount) {
+    public void setSfAmount(BigDecimal sfAmount) {
         this.sfAmount = sfAmount;
     }
 
-    public long getYjsfAmount() {
+    public BigDecimal getYjsfAmount() {
         return yjsfAmount;
     }
 
-    public void setYjsfAmount(long yjsfAmount) {
+    public void setYjsfAmount(BigDecimal yjsfAmount) {
         this.yjsfAmount = yjsfAmount;
     }
 
-    public long getDkAmount() {
+    public BigDecimal getDkAmount() {
         return dkAmount;
     }
 
-    public void setDkAmount(long dkAmount) {
+    public void setDkAmount(BigDecimal dkAmount) {
         this.dkAmount = dkAmount;
     }
 
-    public long getDkTotalAmount() {
+    public BigDecimal getDkTotalAmount() {
         return dkTotalAmount;
     }
 
-    public void setDkTotalAmount(long dkTotalAmount) {
+    public void setDkTotalAmount(BigDecimal dkTotalAmount) {
         this.dkTotalAmount = dkTotalAmount;
     }
 
-    public long getProcedureAmount() {
+    public BigDecimal getProcedureAmount() {
         return procedureAmount;
     }
 
-    public void setProcedureAmount(long procedureAmount) {
+    public void setProcedureAmount(BigDecimal procedureAmount) {
         this.procedureAmount = procedureAmount;
     }
 
-    public long getMonthReply() {
+    public BigDecimal getMonthReply() {
         return monthReply;
     }
 
-    public void setMonthReply(long monthReply) {
+    public void setMonthReply(BigDecimal monthReply) {
         this.monthReply = monthReply;
     }
 
-    public long getExtraAmount() {
+    public BigDecimal getExtraAmount() {
         return extraAmount;
     }
 
-    public void setExtraAmount(long extraAmount) {
+    public void setExtraAmount(BigDecimal extraAmount) {
         this.extraAmount = extraAmount;
     }
 
-    public long getTotalAmount() {
+    public BigDecimal getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(long totalAmount) {
+    public void setTotalAmount(BigDecimal totalAmount) {
         this.totalAmount = totalAmount;
     }
 
-    public long getByhf() {
+    public BigDecimal getByhf() {
         return byhf;
     }
 
-    public void setByhf(long byhf) {
+    public void setByhf(BigDecimal byhf) {
         this.byhf = byhf;
     }
 
-    public long getSybx() {
+    public BigDecimal getSybx() {
         return sybx;
     }
 
-    public void setSybx(long sybx) {
+    public void setSybx(BigDecimal sybx) {
         this.sybx = sybx;
     }
 }

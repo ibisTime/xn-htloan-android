@@ -4,13 +4,14 @@ package com.cdkj.huatuweitong.bean;
  * @updateDts 2019/3/13
  */
 public class BrandBean {
-
-    public BrandBean(String name) {
-        this.name = name;
-    }
-
     public BrandBean() {
     }
+
+    public BrandBean(String name, String letter) {
+        this.name = name;
+        this.letter = letter;
+    }
+
 
     /**
      * code : B201903071325473442783
