@@ -15,12 +15,15 @@ import android.widget.TextView;
 import com.cdkj.baselibrary.api.BaseResponseListModel;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.nets.BaseResponseListCallBack;
+import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
 import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.baselibrary.utils.ToastUtil;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.api.MyApiServer;
+import com.cdkj.huatuweitong.bean.CarSystemBean;
 import com.cdkj.huatuweitong.bean.CarSystemListBean;
+import com.cdkj.huatuweitong.bean.CarSystemPageBean;
 import com.cdkj.huatuweitong.databinding.ActivitySerchBinding;
 import com.scwang.smartrefresh.layout.util.DensityUtil;
 
@@ -38,8 +41,8 @@ public class SerchActivity extends AbsBaseLoadActivity {
 
     private ArrayList<String> labelData = new ArrayList<>();//标签数据
     //    private BaseResponseListCallBack<BrandBean> callback;
-    private List<CarSystemListBean> dataList;
-    private CarSystemListBean currentBean;
+    private List<CarSystemBean> dataList;
+    private CarSystemBean currentBean;
 
     public static void open(Context context) {
         Intent intent = new Intent();
@@ -75,22 +78,26 @@ public class SerchActivity extends AbsBaseLoadActivity {
     }
 
     /**
-     * 获取推荐车细数据
+     * 获取推荐车系数据
      */
     private void getCarSystem() {
 
         showLoadingDialog();
+        showLoadingDialog();
         Map<String, Serializable> map = new HashMap<>();
         map.put("status", "1");
         map.put("location", "0");//热门推荐
-
-        Call<BaseResponseListModel<CarSystemListBean>> carSystemlListDatas = RetrofitUtils.createApi(MyApiServer.class).getCarHotSystemlListDatas("630416", StringUtils.getJsonToString(map));
-        addCall(carSystemlListDatas);
-        carSystemlListDatas.enqueue(new BaseResponseListCallBack<CarSystemListBean>(this) {
+        map.put("start", "1");
+        map.put("limit", "200");
+        map.put("orderDir", "asc");
+        Call call = RetrofitUtils.createApi(MyApiServer.class)
+                .getCarSystemPage("630491", StringUtils.getJsonToString(map));
+        addCall(call);
+        call.enqueue(new BaseResponseModelCallBack<CarSystemPageBean>(this) {
             @Override
-            protected void onSuccess(List<CarSystemListBean> data, String SucMessage) {
-                dataList = data;
-                for (CarSystemListBean datum : data) {
+            protected void onSuccess(CarSystemPageBean data, String SucMessage) {
+                dataList = data.getList();
+                for (CarSystemBean datum : data.getList()) {
                     labelData.add(datum.getName());
                 }
                 initAddFlexboxLayou();

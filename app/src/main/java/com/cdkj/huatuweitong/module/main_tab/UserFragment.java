@@ -57,7 +57,8 @@ import retrofit2.Call;
  * Created by cdkj on 2018/5/1.
  */
 
-public class UserFragment extends BaseLazyFragment implements View.OnClickListener, TencentLoginInterface {
+public class UserFragment extends BaseLazyFragment implements View.OnClickListener,
+        TencentLoginInterface {
 
     private FragmentUserBinding mBinding;
 
@@ -73,7 +74,8 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+            @Nullable Bundle savedInstanceState) {
 
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_user, null, false);
         mBinding.linUserHead.setOnClickListener(this);
@@ -90,7 +92,6 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
         mBinding.rilCalculator.setOnClickListener(this);
         mBinding.rilFoot.setOnClickListener(this);
 
-
         mBinding.rilInterview.setOnClickListener(view -> {
             showRoomDialog();
         });
@@ -100,7 +101,9 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
 
     @Override
     protected void lazyLoad() {
-        if (mBinding == null) return;
+        if (mBinding == null) {
+            return;
+        }
         setUsetPotoImg();
 //        initData();
     }
@@ -121,14 +124,16 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
         Map<String, String> map = new HashMap();
         map.put("userId", SPUtilHelper.getUserId());
         showLoadingDialog();
-        Call call = RetrofitUtils.createApi(MyApiServer.class).getUserDetails("805121", StringUtils.getJsonToString(map));
+        Call call = RetrofitUtils.createApi(MyApiServer.class)
+                .getUserDetails("805121", StringUtils.getJsonToString(map));
         addCall(call);
         call.enqueue(new BaseResponseModelCallBack<UserFragmentBean>(mActivity) {
             @Override
             protected void onSuccess(UserFragmentBean data, String SucMessage) {
                 ImgUtils.loadQiniuLogo(mActivity, data.getPhoto(), mBinding.imgUserLogo);
                 if (!TextUtils.isEmpty(data.getMobile()) && TextUtils.isEmpty(data.getNickname())) {
-                    String defaultNick = "尾号为" + data.getMobile().substring(data.getMobile().length() - 4, data.getMobile().length());
+                    String defaultNick = "尾号为" + data.getMobile()
+                            .substring(data.getMobile().length() - 4, data.getMobile().length());
                     mBinding.tvUserName.setText(defaultNick);
                 } else {
 
@@ -140,11 +145,14 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
                 SPUtilHelper.saveUserId(data.getUserId());
                 SPUtilHelper.saveUserPhoneNum(data.getMobile());
                 SPUtilHelper.saveisTradepwdFlag(data.isTradepwdFlag());
-                SPUtilHelper.saveUserPhoto(TextUtils.isEmpty(data.getPhoto()) ? "" : data.getPhoto());
+                SPUtilHelper
+                        .saveUserPhoto(TextUtils.isEmpty(data.getPhoto()) ? "" : data.getPhoto());
                 SPUtilHelper.saveUserName(data.getNickname());
                 SPUtilHelper.saveIdCarde(data.getIdNo() == null ? "" : data.getIdNo());
                 SPUtilHelper.saveRealName(data.getRealName() == null ? "" : data.getRealName());
+
                 getUserAccount();
+                getUnreadCount();
             }
 
             @Override
@@ -166,7 +174,6 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
     }
 
     private void showPotoDialog() {
-
 
     }
 
@@ -248,7 +255,8 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
         map.put("currency", "");
         map.put("userId", SPUtilHelper.getUserId());
 
-        Call call = RetrofitUtils.createApi(MyApiServer.class).getAccount("802503", StringUtils.getJsonToString(map));
+        Call call = RetrofitUtils.createApi(MyApiServer.class)
+                .getAccount("802503", StringUtils.getJsonToString(map));
 
         addCall(call);
 
@@ -257,8 +265,9 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
             @Override
             protected void onSuccess(AccountListModel data, String SucMessage) {
 
-                if (data == null)
+                if (data == null) {
                     return;
+                }
 
                 for (AccountListModel.AccountListInsideModel model : data.getAccountList()) {
                     if (model.getCurrency().equals("JF")) {
@@ -332,23 +341,29 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
     protected boolean checkPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             List<String> permissions = new ArrayList<>();
-            if (PackageManager.PERMISSION_GRANTED != ActivityCompat.checkSelfPermission(mActivity, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            if (PackageManager.PERMISSION_GRANTED != ActivityCompat
+                    .checkSelfPermission(mActivity, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                 permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
             }
-            if (PackageManager.PERMISSION_GRANTED != ActivityCompat.checkSelfPermission(mActivity, Manifest.permission.CAMERA)) {
+            if (PackageManager.PERMISSION_GRANTED != ActivityCompat
+                    .checkSelfPermission(mActivity, Manifest.permission.CAMERA)) {
                 permissions.add(Manifest.permission.CAMERA);
             }
-            if (PackageManager.PERMISSION_GRANTED != ActivityCompat.checkSelfPermission(mActivity, Manifest.permission.RECORD_AUDIO)) {
+            if (PackageManager.PERMISSION_GRANTED != ActivityCompat
+                    .checkSelfPermission(mActivity, Manifest.permission.RECORD_AUDIO)) {
                 permissions.add(Manifest.permission.RECORD_AUDIO);
             }
-            if (PackageManager.PERMISSION_GRANTED != ActivityCompat.checkSelfPermission(mActivity, Manifest.permission.READ_PHONE_STATE)) {
+            if (PackageManager.PERMISSION_GRANTED != ActivityCompat
+                    .checkSelfPermission(mActivity, Manifest.permission.READ_PHONE_STATE)) {
                 permissions.add(Manifest.permission.READ_PHONE_STATE);
             }
-            if (PackageManager.PERMISSION_GRANTED != ActivityCompat.checkSelfPermission(mActivity, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            if (PackageManager.PERMISSION_GRANTED != ActivityCompat
+                    .checkSelfPermission(mActivity, Manifest.permission.READ_EXTERNAL_STORAGE)) {
                 permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE);
             }
             if (permissions.size() != 0) {
-                ActivityCompat.requestPermissions(mActivity, (String[]) permissions.toArray(new String[0]), 100);
+                ActivityCompat.requestPermissions(mActivity,
+                        (String[]) permissions.toArray(new String[0]), 100);
                 return false;
             }
         }
@@ -365,7 +380,8 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
         HashMap<String, String> map = new HashMap<>();
         map.put("roomId", roomid);
         map.put("userId", SPUtilHelper.getUserId());
-        Call<BaseResponseModel<Integer>> roomId = RetrofitUtils.createApi(MyApiServer.class).checkRoomId("632953", StringUtils.getJsonToString(map));
+        Call<BaseResponseModel<Integer>> roomId = RetrofitUtils.createApi(MyApiServer.class)
+                .checkRoomId("632953", StringUtils.getJsonToString(map));
         showLoadingDialog();
         roomId.enqueue(new BaseResponseModelCallBack<Integer>(mActivity) {
             @Override
@@ -378,6 +394,39 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
                 } else {
                     mHelper = new TencentLoginHelper(mActivity, UserFragment.this);
                     mHelper.login();
+                }
+            }
+
+            @Override
+            protected void onFinish() {
+                disMissLoading();
+            }
+        });
+    }
+
+    /**
+     * 获取用户账户
+     */
+    public void getUnreadCount() {
+
+        if (!SPUtilHelper.isLoginNoStart()) {  //没有登录不用请求
+            return;
+        }
+
+        Map<String, String> map = RetrofitUtils.getRequestMap();
+        Call call = RetrofitUtils.createApi(MyApiServer.class)
+                .getUnreadCount("805309", StringUtils.getJsonToString(map));
+
+        addCall(call);
+
+        call.enqueue(new BaseResponseModelCallBack<Integer>(mActivity) {
+
+            @Override
+            protected void onSuccess(Integer data, String SucMessage) {
+                if (data != null) {
+                    if (data > 0) {
+                        mBinding.rilMessage.setUnreadNum(data + "");
+                    }
                 }
             }
 

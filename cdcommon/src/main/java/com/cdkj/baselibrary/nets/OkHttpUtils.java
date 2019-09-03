@@ -108,7 +108,6 @@ public class OkHttpUtils {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
             @Override
             public void log(String message) {
-                LogUtil.I("okhttp:1__ " + message); //post请求FormUrlEncoded注解 unicode 转码
                 try {
                     LogUtil.I("okhttp: " + URLDecoder.decode(message, "utf-8")); //post请求FormUrlEncoded注解 unicode 转码
                 } catch (Exception e) {

@@ -34,12 +34,7 @@ import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.adapters.CarDetailsSettingAdapter;
 import com.cdkj.huatuweitong.adapters.CarDetailsSettingAllAdapter;
 import com.cdkj.huatuweitong.api.MyApiServer;
-import com.cdkj.huatuweitong.bean.CarDetailsSettingBean;
-import com.cdkj.huatuweitong.bean.CarModelActivityBean;
-import com.cdkj.huatuweitong.bean.CollectionBean;
-import com.cdkj.huatuweitong.bean.CommonSuccerBean;
-import com.cdkj.huatuweitong.bean.DataDictionaryBean;
-import com.cdkj.huatuweitong.bean.FirstPageBanner;
+import com.cdkj.huatuweitong.bean.*;
 import com.cdkj.huatuweitong.common.GlideFirstPageBannerImageLoader;
 import com.cdkj.huatuweitong.databinding.ActivityCarDetails2Binding;
 import com.cdkj.huatuweitong.databinding.DailogInquiryLayoutBinding;
@@ -65,7 +60,7 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
     private ActivityCarDetails2Binding mBinding;
     private String code;
     private String carCode;
-    private CarModelActivityBean.CarsBean currentBean;
+    private CarBean currentBean;
     private ArrayList<FirstPageBanner> mBanners;
     private StringBuilder sbConfig = new StringBuilder();
     private String telephone;
@@ -80,6 +75,18 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
     }
 
     @Override
+    public void topTitleViewRightClick() {
+        if (!SPUtilHelper.isLogin(this, false)) {
+            return;
+        }
+        if (TextUtils.equals("1", currentBean.getIsCollect())) {
+            cancelCollectionCarAndFootprint();
+        } else {
+            collectionCarAndFootprint("3");
+        }
+    }
+
+    @Override
     public View addMainView() {
         mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.activity_car_details2, null, false);
 
@@ -88,10 +95,12 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
 
     @Override
     public void afterCreate(Bundle savedInstanceState) {
-        setShowTitle(false);
+        setShowTitle(true);
         if (getIntent() != null) {
             code = getIntent().getStringExtra("code");
         }
+
+
         initDatas();
         initBanner();
         initSettingDatas();
@@ -99,6 +108,7 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
         initListener();
 
     }
+
 
     private void initListener() {
         mBinding.btnSelectPrice.setOnClickListener(v -> {
@@ -112,22 +122,8 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
             getKfPhone();
         });
 
-        mBinding.ivCollection.setOnClickListener(v -> {
-            if (!SPUtilHelper.isLogin(this, false)) {
-                return;
-            }
-            if (TextUtils.equals("1", currentBean.getIsCollect())) {
-                cancelCollectionCarAndFootprint();
-            } else {
-                collectionCarAndFootprint("3");
-            }
-        });
-
-        mBinding.ivBack.setOnClickListener(v -> {
-            finish();
-        });
         mBinding.llCalculator.setOnClickListener(v -> {
-            CarLoanCalculator2Activity.open(this, currentBean);
+//            CarLoanCalculator2Activity.open(this, currentBean);
         });
     }
 
@@ -162,7 +158,7 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
                 if (TextUtils.equals("3", type)) {
                     UITipDialog.showSuccess(CarDetailsActivity.this, "收藏成功");
                     currentBean.setIsCollect("1");
-                    mBinding.ivCollection.setImageResource(R.mipmap.icon_collection);
+                    mBaseBinding.titleView.setRightImg(R.mipmap.icon_collection);
                 }
             }
 
@@ -190,8 +186,7 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
             protected void onSuccess(CollectionBean data, String SucMessage) {
                 UITipDialog.showSuccess(CarDetailsActivity.this, "取消收藏");
                 currentBean.setIsCollect("0");
-                mBinding.ivCollection.setImageResource(R.mipmap.icon_un_collection);
-
+                mBaseBinding.titleView.setRightImg(R.mipmap.icon_un_collection);
             }
 
             @Override
@@ -322,14 +317,15 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
         Map<String, String> map = new HashMap<>();
         map.put("code", code);
         map.put("userId", SPUtilHelper.getUserId());
+        map.put("token", SPUtilHelper.getUserToken());
         Call call = RetrofitUtils.createApi(MyApiServer.class).getCarDetails("630427", StringUtils.getJsonToString(map));
 
         addCall(call);
         showLoadingDialog();
 
-        call.enqueue(new BaseResponseModelCallBack<CarModelActivityBean.CarsBean>(CarDetailsActivity.this) {
+        call.enqueue(new BaseResponseModelCallBack<CarBean>(CarDetailsActivity.this) {
             @Override
-            protected void onSuccess(CarModelActivityBean.CarsBean data, String SucMessage) {
+            protected void onSuccess(CarBean data, String SucMessage) {
 
                 showViewData(data);
                 getCarNumber();
@@ -353,10 +349,10 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
                     mBinding.homeBanner.startAutoPlay();
                 }
                 //显示上面的配置信息
-                List<CarModelActivityBean.CarsBean.CaonfigListBean> caonfigList = data.getCaonfigList();
+                List<CarBean.CaonfigListBean> caonfigList = data.getCaonfigList();
                 if (data != null && caonfigList.size() != 0) {
                     for (int i = 0; i < caonfigList.size(); i++) {
-                        CarModelActivityBean.CarsBean.CaonfigListBean.ConfigBean config = caonfigList.get(i).getConfig();
+                        CarBean.CaonfigListBean.ConfigBean config = caonfigList.get(i).getConfig();
 
                         if (config != null) {
                             sbConfig.append(config.getName());
@@ -366,7 +362,7 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
                     if (sbConfig.length() > 0) {
                         sbConfig.deleteCharAt(sbConfig.length() - 1);
                     }
-                    mBinding.tvMsg.setText(sbConfig.toString());
+
 
                 }
             }
@@ -389,22 +385,24 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
      *
      * @param data
      */
-    private void showViewData(CarModelActivityBean.CarsBean data) {
+    private void showViewData(CarBean data) {
         this.currentBean = data;
         carCode = data.getCode();
         if (TextUtils.equals("1", currentBean.getIsCollect())) {
-            mBinding.ivCollection.setImageResource(R.mipmap.icon_collection);
+            mBaseBinding.titleView.setRightImg(R.mipmap.icon_collection);
         } else {
-            mBinding.ivCollection.setImageResource(R.mipmap.icon_un_collection);
+            mBaseBinding.titleView.setRightImg(R.mipmap.icon_un_collection);
         }
 
+        mBaseBinding.titleView.setMidTitle(data.getName());
         mBinding.tvName.setText(data.getName());
 
         mBinding.tvPrice.setText(MoneyUtils.formatNum(data.getSalePrice()));
+        mBinding.tvMonthAmount.setText(MoneyUtils.formatNum(data.getMonthAmount()));
         mBinding.tvProcedures.setText(data.getProcedure());
         mBinding.tvCarLocation.setText(data.getFromPlace());
         mBinding.tvUpDate.setText(DateUtil.formatStringData(data.getUpdateDatetime(), DateUtil.DATE_YMD));
-
+        mBinding.tvMsg.setText(data.getDescription());
     }
 
     /**

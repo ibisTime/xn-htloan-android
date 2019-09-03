@@ -2,6 +2,7 @@ package com.cdkj.huatuweitong.adapters;
 
 import android.support.annotation.Nullable;
 
+import android.text.TextUtils;
 import com.cdkj.baselibrary.utils.DateUtil;
 import com.cdkj.baselibrary.utils.ImgUtils;
 import com.cdkj.baselibrary.utils.MoneyUtils;
@@ -40,28 +41,31 @@ public class MyCollectionAdapter extends BaseQuickAdapter<MyCollectionBean.ListB
         String type = "";
 
         MyCollectionBean.ListBean.CarBean car1 = item.getCar();
-        if (car1 != null)
-            switch (car1.getLevel()) {
-                case "0":
-                    type = "SUV";
-                    break;
-                case "1":
-                    type = "轿车";
-                    break;
-                case "2":
-                    type = "MPV";
-                    break;
-                case "3":
-                    type = "跑车";
-                    break;
-                case "4":
-                    type = "皮卡";
-                    break;
-                case "5":
-                    type = "房车";
-                    break;
+        if (car1 != null) {
+            if (!TextUtils.isEmpty(car1.getLevel())) {
+                switch (car1.getLevel()) {
+                    case "0":
+                        type = "SUV";
+                        break;
+                    case "1":
+                        type = "轿车";
+                        break;
+                    case "2":
+                        type = "MPV";
+                        break;
+                    case "3":
+                        type = "跑车";
+                        break;
+                    case "4":
+                        type = "皮卡";
+                        break;
+                    case "5":
+                        type = "房车";
+                        break;
+                }
             }
 
+        }
         helper.setText(R.id.tv_type, type);
         List<MyCollectionBean.ListBean.CarBean.CaonfigListBean> caonfigList = car.getCaonfigList();
         StringBuilder sb = new StringBuilder();

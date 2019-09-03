@@ -4,7 +4,7 @@ import android.support.annotation.Nullable;
 
 import com.cdkj.baselibrary.utils.ImgUtils;
 import com.cdkj.huatuweitong.R;
-import com.cdkj.huatuweitong.bean.InformationBean;
+import com.cdkj.huatuweitong.bean.InformationListBean;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
@@ -13,14 +13,14 @@ import java.util.List;
 /**
  * @updateDts 2019/3/13
  */
-public class InformationAdapter extends BaseQuickAdapter<InformationBean.ListBean, BaseViewHolder> {
+public class InformationAdapter extends BaseQuickAdapter<InformationListBean.ListBean, BaseViewHolder> {
 
-    public InformationAdapter(@Nullable List<InformationBean.ListBean> data) {
+    public InformationAdapter(@Nullable List<InformationListBean.ListBean> data) {
         super(R.layout.item_information, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, InformationBean.ListBean item) {
+    protected void convert(BaseViewHolder helper, InformationListBean.ListBean item) {
         ImgUtils.loadQiniuImg(mContext, item.getPic(), helper.getView(R.id.img_product));
         helper.setText(R.id.tv_title, item.getTitle());
         helper.setText(R.id.tv_mouth_money, item.getReadCount() + "次浏览");

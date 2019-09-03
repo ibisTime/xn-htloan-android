@@ -32,8 +32,11 @@ public class MyCdConfig {
     public static final String ALBUMNAME = "pic_" + PROJECTNAME;
 
     // 腾讯 实时音视频
-    public static final int SDKAPP_ID = 1400144984;
-    public static final int ACCOUNT_TYPE = 36862;
+//    public static final int SDKAPP_ID = 1400144984;
+//    public static final int ACCOUNT_TYPE = 36862;
+
+    public static final int SDKAPP_ID = 1400217932;
+    public static final int ACCOUNT_TYPE = 34620;
 
     public static final String User_Sig = "eJxlj1FvgjAUhd-5FYRXl62F1uGSPbFFQEhURqi*kGoLqSh0UIfE7L9PmYkk3tfvyzn3nDVd142vIHqm2211LFWqOskN-U03gPF0h1IKllKVWjV7gPwkRc1Tmile9xBijE0Aho5gvFQiEzcjNgG0gQ0mcIwQAGgMsPUKB37DirQv-Q*8OBChiY2Gish7GH7Gjrdw3D1ZEdy1pJ6v5IbaL03g0WzezNYzGiXJaNexY*h-F5C2Xu6vGUlIdVpm7hLuAl90C2cq91G0EUl3aMgHZ9NRHhduG74PKpU48NtC6-q6iawB-eF1I6qyFy77MDQtcD1D*9X*AFd7YWM_";
 }

@@ -2,125 +2,164 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cdkj.huatuweitong">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <uses-feature android:name="android.hardware.Camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
-        android:name=".BaseApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/logo2"
+        android:icon="@mipmap/logo_weiche"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/logo_round2"
+        android:name=".BaseApplication"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".WelcomeActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <!-- com.cdkj.baselibrary.activitys.login.LoginActivity -->
-        <activity android:name=".MainActivity" />
+        <!-- com.cdkj.baselibrary.activigetSignogin.LoginActivity -->
+        <activity android:name=".MainActivity"/>
         <activity
-            android:name=".module.mfirst_page.CarLoanCalculatorActivity"
             android:label="@string/title_activity_car_calculator"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".module.user.UserInfoUpdateActivity" />
-        <activity android:name=".module.user.UpDataLoginPSW" />
-        <activity android:name=".module.user.UpDataPhoneActivity" />
-        <activity android:name=".module.user.UserCreditActivity" />
-        <activity android:name=".module.user.AddressManagerActivity" />
-        <activity android:name=".module.reimbursement.CarLoanDetailsActivity" />
-        <activity android:name=".module.mfirst_page.CarDetailsActivity" />
-        <activity android:name=".module.mfirst_page.OrderSubmitActivity" />
-        <activity android:name=".module.mfirst_page.PayActivity" />
-        <activity android:name="com.cdkj.baselibrary.activitys.login.RegisterActivity" />
-        <activity android:name=".module.user.NickNameUpdateActivity" />
+            android:name=".module.mfirst_page.CarLoanCalculatorActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".module.user.UserInfoUpdateActivity"/>
+        <activity android:name=".module.user.UpDataLoginPSW"/>
+        <activity android:name=".module.user.UpDataPhoneActivity"/>
+        <activity android:name=".module.user.UserCreditActivity"/>
+        <activity android:name=".module.user.AddressManagerActivity"/>
+        <activity android:name=".module.reimbursement.CarLoanDetailsActivity"/>
+        <activity android:name=".module.mfirst_page.CarDetailsActivity"/>
+        <activity android:name=".module.mfirst_page.OrderSubmitActivity"/>
+        <activity android:name=".module.mfirst_page.PayActivity"/>
+        <activity android:name="com.cdkj.baselibrary.activitys.login.RegisterActivity"/>
+        <activity android:name=".module.user.NickNameUpdateActivity"/>
         <activity
             android:name=".module.mfirst_page.ExhibitionCenterActivity"
-            android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".module.user.MyCarLoanActivity" />
-        <activity android:name=".module.reimbursement.RepaymentPlanActivity" />
-        <activity android:name=".module.reimbursement.AdvanceDetailsActivity" />
-        <activity android:name=".module.product.ProductDetailsActivity" />
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".module.user.MyCarLoanActivity"/>
+        <activity android:name=".module.reimbursement.RepaymentPlanActivity"/>
+        <activity android:name=".module.reimbursement.AdvanceDetailsActivity"/>
+        <activity android:name=".module.product.ProductDetailsActivity"/>
         <!-- <activity android:name=".module.order.OrderListActivity" /> -->
-        <activity android:name=".module.order.AllOrderTabActivity" />
-        <activity android:name=".module.order.OrderDetailsActivity" />
-        <activity android:name=".module.user.MyCurrentActivity" />
-        <activity android:name=".module.user.MyMessageActivity" />
+        <activity android:name=".module.order.AllOrderTabActivity"/>
+        <activity android:name=".module.order.OrderDetailsActivity"/>
+        <activity android:name=".module.user.MyCurrentActivity"/>
+        <activity android:name=".module.user.MyMessageActivity"/>
         <activity
-            android:name=".module.user.AboutUsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_about_us"
-            android:theme="@style/FullscreenTheme" />
-        <activity android:name=".module.mfirst_page.CarBrandActivity" />
-        <activity android:name=".module.mfirst_page.CarModeldActivity" />
-        <activity android:name=".module.user.ConnectionServerActivity" />
-        <activity android:name=".module.mfirst_page.CarSystemActivity" />
-        <activity android:name=".module.user.MyAccountActivity" />
-        <activity android:name=".module.user.AccountDetailsActivity" />
-        <activity android:name=".module.user.AccountIntegralActivity" />
-        <activity android:name=".module.recharge.RechargeActivity" />
-        <activity android:name=".module.user.AccountIntegraActivity" />
-        <activity android:name=".module.recharge.PutForwardActivity" />
-        <activity android:name=".module.user.account.WithdrawActivity" />
-        <activity android:name=".module.mfirst_page.RecommendProductListActivity" />
-        <activity android:name=".module.user.interview.RoomActivity" />
+            android:name=".module.user.AboutUsActivity"
+            android:theme="@style/FullscreenTheme"/>
+        <activity android:name=".module.mfirst_page.CarBrandActivity"/>
+        <activity android:name=".module.mfirst_page.CarModeldActivity"/>
+        <activity android:name=".module.user.ConnectionServerActivity"/>
+        <activity android:name=".module.mfirst_page.CarSystemActivity"/>
+        <activity android:name=".module.user.MyAccountActivity"/>
+        <activity android:name=".module.user.AccountDetailsActivity"/>
+        <activity android:name=".module.user.AccountIntegralActivity"/>
+        <activity android:name=".module.recharge.RechargeActivity"/>
+        <activity android:name=".module.user.AccountIntegraActivity"/>
+        <activity android:name=".module.recharge.PutForwardActivity"/>
+        <activity android:name=".module.user.account.WithdrawActivity"/>
+        <activity android:name=".module.mfirst_page.RecommendProductListActivity"/>
+        <activity android:name=".module.user.interview.RoomActivity"/>
         <activity
             android:name=".module.user.zx.ZXListActivity"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
         <activity
             android:name=".module.user.zx.IDCardAuthenticationActivity"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
         <activity
             android:name=".module.user.zx.ZXBank4RZActivity"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
         <activity
             android:name=".module.user.zx.ZXYBActivity"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
         <activity
             android:name=".module.user.zx.ZXSAActivity"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
         <activity
             android:name=".module.user.zx.ZXSAListActivity"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
         <activity
             android:name=".module.user.zx.ZXSADetialsActivity"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
         <activity
             android:name=".module.user.zx.ZXSXActivity"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
         <activity
             android:name=".module.user.zx.ZXGJJActivity"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
         <activity
             android:name=".module.user.zx.ZXTBActivity"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
         <activity
             android:name=".module.user.zx.ZXJDActivity"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
         <activity
             android:name=".module.user.zx.ZXGSDActivity"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
         <activity
             android:name=".module.user.zx.ZXYYSActivity"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
         <activity
             android:name=".module.user.zx.ZXDSActivity"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
-        <activity android:name=".module.home_fragment.InformationActivity" />
-        <activity android:name=".module.vehicle_db.BrandActivity" />
-        <activity android:name=".module.vehicle_db.SerchActivity" />
-        <activity android:name=".module.vehicle_db.CarSystemListActivity" />
-        <activity android:name=".module.vehicle_db.CarListActivity" />
-        <activity android:name=".module.vehicle_db.CarDetailsActivity" />
-        <activity android:name=".common.WebViewActivity2" />
-        <activity android:name=".common.WebViewArticleActivity" />
-        <activity android:name=".module.user.MyCollectionListActivity" />
-        <activity android:name=".module.mfirst_page.CarLoanCalculator2Activity" />
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
+        <activity android:name=".module.home_fragment.InformationActivity"/>
+        <activity android:name=".module.vehicle_db.BrandActivity"/>
+        <activity android:name=".module.vehicle_db.SerchActivity"/>
+        <activity android:name=".module.vehicle_db.CarSystemListActivity"/>
+        <activity android:name=".module.vehicle_db.CarListActivity"/>
+        <activity android:name=".module.vehicle_db.CarDetailsActivity"/>
+        <activity android:name=".common.WebViewActivity2"/>
+        <activity android:name=".common.WebViewArticleActivity"/>
+        <activity android:name=".module.user.MyCollectionListActivity"/>
+        <activity android:name=".module.mfirst_page.CarLoanCalculator2Activity"/>
         <activity android:name=".module.other.ImgGraidActivity"></activity>
+        <activity android:name=".module.vehicle_db.CarTypeListActivity"/>
+        <activity android:name=".module.vehicle_db.CarMerchantDetailActivity"/>
+
+        <!--<receiver-->
+            <!--android:exported="true"-->
+            <!--android:name="com.cdkj.huatuweitong.receiver.MessageReceiver">-->
+            <!--<intent-filter>-->
+                <!--&lt;!&ndash; 接收消息透传 &ndash;&gt;-->
+                <!--<action android:name="com.tencent.android.tpush.action.PUSH_MESSAGE"/>-->
+                <!--&lt;!&ndash; 监听注册、反注册、设置/删除标签、通知被点击等处理结果 &ndash;&gt;-->
+                <!--<action android:name="com.tencent.android.tpush.action.FEEDBACK"/>-->
+            <!--</intent-filter>-->
+        <!--</receiver>-->
+
+        <activity
+            android:name="com.cdkj.huatuweitong.xinge.XinGeActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                    android:host="com.xg.push"
+                    android:path="/notify_detail"
+                    android:scheme="xgscheme"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -14,42 +14,96 @@ public class MsgListModel implements Serializable {
      * pageNO : 1
      * start : 0
      * pageSize : 10
-     * totalCount : 2
-     * totalPage : 1
-     * list : [{"id":32,"fromSystemCode":"CD-CYC000009","channelType":"4","pushType":"41","toSystemCode":"CD-CYC000009","toKind":"2","smsType":"2","smsTitle":"试吃员消息1","smsContent":"试吃员消息1","status":"1","createDatetime":"Jul 20, 2017 8:17:06 PM","topushDatetime":"Jul 20, 2017 8:17:06 PM","pushedDatetime":"Jul 20, 2017 8:17:12 PM","updater":"admin","updateDatetime":"Jul 20, 2017 8:17:12 PM","remark":""},{"id":31,"fromSystemCode":"CD-CYC000009","channelType":"4","pushType":"41","toSystemCode":"CD-CYC000009","toKind":"2","smsType":"2","smsTitle":"试吃员消息2","smsContent":"试吃员消息2","status":"1","createDatetime":"Jul 20, 2017 8:16:50 PM","topushDatetime":"Jul 20, 2017 8:16:50 PM","pushedDatetime":"Jul 20, 2017 8:16:54 PM","updater":"admin","updateDatetime":"Jul 20, 2017 8:16:54 PM","remark":""}]
+     * totalCount : 73
+     * totalPage : 8
+     * list : [{"code":"XX201909021607281197082","type":"2","refCode":"CN201908301052080054843","title":"yl测试1234","content":"2019-09-02 16:07:26","status":"1","isAlreadyRead":"0","createDatetime":"Sep 2, 2019 4:07:28 PM","updater":"U201907081023440007973","updateDatetime":"Sep 2, 2019 4:07:28 PM","sysUser":{"userId":"U201907081023440007973","type":"P","loginName":"cyl","mobile":"17611591955","realName":"柴运来","createDatetime":"Jul 8, 2019 10:23:44 AM","companyCode":"DP201800000000000000001","departmentCode":"DP201906061418149427263","postCode":"DP201906061418229735934","roleCode":"RO201800000000000001","jobNo":"005","updater":"U201907081023440007973","status":"1","teamCode":"BT201906121155146011574","postName":"业务员","departmentName":"业务部","companyName":"新疆有限公司","roleName":"超级管理员"}},{"code":"XX201909021553443625867","type":"2","refCode":"CN201908301052080054843","title":"yl测试123","content":"2019-09-02 15:53:43","status":"1","isAlreadyRead":"0","createDatetime":"Sep 2, 2019 3:53:44 PM","updater":"U201907081023440007973","updateDatetime":"Sep 2, 2019 3:53:44 PM","sysUser":{"userId":"U201907081023440007973","type":"P","loginName":"cyl","mobile":"17611591955","realName":"柴运来","createDatetime":"Jul 8, 2019 10:23:44 AM","companyCode":"DP201800000000000000001","departmentCode":"DP201906061418149427263","postCode":"DP201906061418229735934","roleCode":"RO201800000000000001","jobNo":"005","updater":"U201907081023440007973","status":"1","teamCode":"BT201906121155146011574","postName":"业务员","departmentName":"业务部","companyName":"新疆有限公司","roleName":"超级管理员"}},{"code":"XX201908292232378775635","type":"4","refCode":"C201908292225085441374","title":"新车型上架啦！","content":"2008款 悍马H200(进口) 6.2L 车型上新,优惠多多,快来看看","status":"1","isAlreadyRead":"0","createDatetime":"Aug 29, 2019 10:32:37 PM","updater":"U201908282032010175594","updateDatetime":"Aug 29, 2019 10:32:37 PM","sysUser":{"userId":"U201908282032010175594","type":"P","loginName":"wzl","mobile":"17611591111","realName":"wzl","createDatetime":"Aug 28, 2019 8:32:01 PM","companyCode":"DP201800000000000000001","departmentCode":"DP201906061418149427263","postCode":"DP201906061418229735934","roleCode":"RO201800000000000001","jobNo":"007","status":"1","archiveCode":"","postName":"业务员","departmentName":"业务部","companyName":"新疆有限公司","roleName":"超级管理员"}},{"code":"XX201908291934532555802","type":"2","refCode":"XX201908291934532555802","title":"资讯 标题3 审核通过","content":"资讯 标题3 的提交已由超级管理员审核通过","status":"1","createDatetime":"Aug 29, 2019 7:34:53 PM","designator":"U201908161546114122226","updater":"U201907081023440007973","updateDatetime":"Aug 29, 2019 7:34:53 PM","remark":"tgg","sysUser":{"userId":"U201907081023440007973","type":"P","loginName":"cyl","mobile":"17611591955","realName":"柴运来","createDatetime":"Jul 8, 2019 10:23:44 AM","companyCode":"DP201800000000000000001","departmentCode":"DP201906061418149427263","postCode":"DP201906061418229735934","roleCode":"RO201800000000000001","jobNo":"005","updater":"U201907081023440007973","status":"1","teamCode":"BT201906121155146011574","postName":"业务员","departmentName":"业务部","companyName":"新疆有限公司","roleName":"超级管理员"}},{"code":"XX201908291924245918264","type":"2","refCode":"CN201908201706209762937","title":"资讯 标题 审核通过","content":"资讯 标题 的提交已由超级管理员审核通过","status":"1","createDatetime":"Aug 29, 2019 7:24:24 PM","designator":"U201908161546114122226","updater":"U201907081023440007973","updateDatetime":"Aug 29, 2019 7:24:24 PM","remark":"tg","sysUser":{"userId":"U201907081023440007973","type":"P","loginName":"cyl","mobile":"17611591955","realName":"柴运来","createDatetime":"Jul 8, 2019 10:23:44 AM","companyCode":"DP201800000000000000001","departmentCode":"DP201906061418149427263","postCode":"DP201906061418229735934","roleCode":"RO201800000000000001","jobNo":"005","updater":"U201907081023440007973","status":"1","teamCode":"BT201906121155146011574","postName":"业务员","departmentName":"业务部","companyName":"新疆有限公司","roleName":"超级管理员"}},{"code":"XX201908291839159821330","type":"2","refCode":"XX201908291839159821330","title":"车型 2004款 玛莎拉蒂Coupe(进口) 4.2L 跑车版 审核通过","content":"车型 2004款 玛莎拉蒂Coupe(进口) 4.2L 跑车版 的提交已由超级管理员审核通过","status":"1","createDatetime":"Aug 29, 2019 6:39:15 PM","designator":"U201908161546114122226","updater":"U201907081023440007973","updateDatetime":"Aug 29, 2019 6:39:15 PM","remark":"","sysUser":{"userId":"U201907081023440007973","type":"P","loginName":"cyl","mobile":"17611591955","realName":"柴运来","createDatetime":"Jul 8, 2019 10:23:44 AM","companyCode":"DP201800000000000000001","departmentCode":"DP201906061418149427263","postCode":"DP201906061418229735934","roleCode":"RO201800000000000001","jobNo":"005","updater":"U201907081023440007973","status":"1","teamCode":"BT201906121155146011574","postName":"业务员","departmentName":"业务部","companyName":"新疆有限公司","roleName":"超级管理员"}},{"code":"XX201908291813266652248","type":"2","refCode":"CN201908291653431055920","title":"标题","content":"2019-08-29 18:13:26","status":"1","createDatetime":"Aug 29, 2019 6:13:26 PM","updater":"U201907081023440007973","updateDatetime":"Aug 29, 2019 6:13:26 PM","sysUser":{"userId":"U201907081023440007973","type":"P","loginName":"cyl","mobile":"17611591955","realName":"柴运来","createDatetime":"Jul 8, 2019 10:23:44 AM","companyCode":"DP201800000000000000001","departmentCode":"DP201906061418149427263","postCode":"DP201906061418229735934","roleCode":"RO201800000000000001","jobNo":"005","updater":"U201907081023440007973","status":"1","teamCode":"BT201906121155146011574","postName":"业务员","departmentName":"业务部","companyName":"新疆有限公司","roleName":"超级管理员"}},{"code":"XX201908291735109574634","type":"4","refCode":"1210306","title":"新车型上架啦！","content":"2011款 拓陆者 S 2.8L 至尊版 柴油 129马力 两驱 双排皮卡 车型上新,优惠多多,快来看看","status":"1","createDatetime":"Aug 29, 2019 5:35:10 PM","updater":"U201908282032010175594","updateDatetime":"Aug 29, 2019 5:35:10 PM","sysUser":{"userId":"U201908282032010175594","type":"P","loginName":"wzl","mobile":"17611591111","realName":"wzl","createDatetime":"Aug 28, 2019 8:32:01 PM","companyCode":"DP201800000000000000001","departmentCode":"DP201906061418149427263","postCode":"DP201906061418229735934","roleCode":"RO201800000000000001","jobNo":"007","status":"1","archiveCode":"","postName":"业务员","departmentName":"业务部","companyName":"新疆有限公司","roleName":"超级管理员"}},{"code":"XX201908291721465319699","type":"2","refCode":"CN201908291653431055920","title":"标题","content":"2019-08-29 17:21:46","status":"1","createDatetime":"Aug 29, 2019 5:21:46 PM","updater":"U201908282032010175594","updateDatetime":"Aug 29, 2019 5:21:46 PM","sysUser":{"userId":"U201908282032010175594","type":"P","loginName":"wzl","mobile":"17611591111","realName":"wzl","createDatetime":"Aug 28, 2019 8:32:01 PM","companyCode":"DP201800000000000000001","departmentCode":"DP201906061418149427263","postCode":"DP201906061418229735934","roleCode":"RO201800000000000001","jobNo":"007","status":"1","archiveCode":"","postName":"业务员","departmentName":"业务部","companyName":"新疆有限公司","roleName":"超级管理员"}},{"code":"XX201908291721097975964","type":"2","refCode":"CN201908291653431055920","title":"标题","content":"2019-08-29 17:21:09","status":"1","createDatetime":"Aug 29, 2019 5:21:09 PM","updater":"U201908282032010175594","updateDatetime":"Aug 29, 2019 5:21:09 PM","sysUser":{"userId":"U201908282032010175594","type":"P","loginName":"wzl","mobile":"17611591111","realName":"wzl","createDatetime":"Aug 28, 2019 8:32:01 PM","companyCode":"DP201800000000000000001","departmentCode":"DP201906061418149427263","postCode":"DP201906061418229735934","roleCode":"RO201800000000000001","jobNo":"007","status":"1","archiveCode":"","postName":"业务员","departmentName":"业务部","companyName":"新疆有限公司","roleName":"超级管理员"}}]
      */
 
+    private int pageNO;
+    private int start;
+    private int pageSize;
+    private int totalCount;
+    private int totalPage;
     private List<ListBean> list;
+
+    public int getPageNO() {
+        return pageNO;
+    }
+
+    public void setPageNO(int pageNO) {
+        this.pageNO = pageNO;
+    }
+
+    public int getStart() {
+        return start;
+    }
+
+    public void setStart(int start) {
+        this.start = start;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public int getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(int totalCount) {
+        this.totalCount = totalCount;
+    }
+
+    public int getTotalPage() {
+        return totalPage;
+    }
+
+    public void setTotalPage(int totalPage) {
+        this.totalPage = totalPage;
+    }
 
     public List<ListBean> getList() {
         return list;
     }
 
-    public void setList(List<ListBean> listX) {
-        this.list = listX;
+    public void setList(List<ListBean> list) {
+        this.list = list;
     }
 
-    public static class ListBean implements Serializable {
+    public static class ListBean {
+
         /**
-         * code : XX201812182205565342898
-         * type : 1
-         * title : 123
-         * content : 456<p>fs</p>
+         * code : XX201909021607281197082
+         * type : 2
+         * refCode : CN201908301052080054843
+         * title : yl测试1234
+         * content : 2019-09-02 16:07:26
          * status : 1
-         * createDatetime : Dec 18, 2018 10:05:56 PM
-         * updater : U201806141609052491026
-         * updateDatetime : Feb 7, 2019 12:13:15 PM
-         * remark :
+         * isAlreadyRead : 0
+         * createDatetime : Sep 2, 2019 4:07:28 PM
+         * updater : U201907081023440007973
+         * updateDatetime : Sep 2, 2019 4:07:28 PM
+         * sysUser : {"userId":"U201907081023440007973","type":"P","loginName":"cyl","mobile":"17611591955","realName":"柴运来","createDatetime":"Jul 8, 2019 10:23:44 AM","companyCode":"DP201800000000000000001","departmentCode":"DP201906061418149427263","postCode":"DP201906061418229735934","roleCode":"RO201800000000000001","jobNo":"005","updater":"U201907081023440007973","status":"1","teamCode":"BT201906121155146011574","postName":"业务员","departmentName":"业务部","companyName":"新疆有限公司","roleName":"超级管理员"}
+         * designator : U201908161546114122226
+         * remark : tgg
          */
 
         private String code;
         private String type;
+        private String refCode;
         private String title;
         private String content;
         private String status;
+        private String isAlreadyRead;
         private String createDatetime;
         private String updater;
         private String updateDatetime;
+        private SysUserBean sysUser;
+        private String designator;
         private String remark;
 
         public String getCode() {
@@ -66,6 +120,14 @@ public class MsgListModel implements Serializable {
 
         public void setType(String type) {
             this.type = type;
+        }
+
+        public String getRefCode() {
+            return refCode;
+        }
+
+        public void setRefCode(String refCode) {
+            this.refCode = refCode;
         }
 
         public String getTitle() {
@@ -92,6 +154,14 @@ public class MsgListModel implements Serializable {
             this.status = status;
         }
 
+        public String getIsAlreadyRead() {
+            return isAlreadyRead;
+        }
+
+        public void setIsAlreadyRead(String isAlreadyRead) {
+            this.isAlreadyRead = isAlreadyRead;
+        }
+
         public String getCreateDatetime() {
             return createDatetime;
         }
@@ -116,6 +186,22 @@ public class MsgListModel implements Serializable {
             this.updateDatetime = updateDatetime;
         }
 
+        public SysUserBean getSysUser() {
+            return sysUser;
+        }
+
+        public void setSysUser(SysUserBean sysUser) {
+            this.sysUser = sysUser;
+        }
+
+        public String getDesignator() {
+            return designator;
+        }
+
+        public void setDesignator(String designator) {
+            this.designator = designator;
+        }
+
         public String getRemark() {
             return remark;
         }
@@ -124,257 +210,191 @@ public class MsgListModel implements Serializable {
             this.remark = remark;
         }
 
+        public static class SysUserBean {
 
-//        /**
-//         * id : 32
-//         * fromSystemCode : CD-CYC000009
-//         * channelType : 4
-//         * pushType : 41
-//         * toSystemCode : CD-CYC000009
-//         * toKind : 2
-//         * smsType : 2
-//         * smsTitle : 试吃员消息1
-//         * smsContent : 试吃员消息1
-//         * status : 1
-//         * createDatetime : Jul 20, 2017 8:17:06 PM
-//         * topushDatetime : Jul 20, 2017 8:17:06 PM
-//         * pushedDatetime : Jul 20, 2017 8:17:12 PM
-//         * updater : admin
-//         * updateDatetime : Jul 20, 2017 8:17:12 PM
-//         * remark :
-//         */
-//
-//        private int id;
-//        private String fromSystemCode;
-//        private String channelType;
-//        private String pushType;
-//        private String toSystemCode;
-//        private String toKind;
-//        private String smsType;
-//        private String smsTitle;
-//        private String smsContent;
-//        private String status;
-//        private String createDatetime;
-//        private String topushDatetime;
-//        private String pushedDatetime;
-//        private String updater;
-//        private String updateDatetime;
-//        private String remark;
-//
-//        public int getId() {
-//            return id;
-//        }
-//
-//        public void setId(int id) {
-//            this.id = id;
-//        }
-//
-//        public String getFromSystemCode() {
-//            return fromSystemCode;
-//        }
-//
-//        public void setFromSystemCode(String fromSystemCode) {
-//            this.fromSystemCode = fromSystemCode;
-//        }
-//
-//        public String getChannelType() {
-//            return channelType;
-//        }
-//
-//        public void setChannelType(String channelType) {
-//            this.channelType = channelType;
-//        }
-//
-//        public String getPushType() {
-//            return pushType;
-//        }
-//
-//        public void setPushType(String pushType) {
-//            this.pushType = pushType;
-//        }
-//
-//        public String getToSystemCode() {
-//            return toSystemCode;
-//        }
-//
-//        public void setToSystemCode(String toSystemCode) {
-//            this.toSystemCode = toSystemCode;
-//        }
-//
-//        public String getToKind() {
-//            return toKind;
-//        }
-//
-//        public void setToKind(String toKind) {
-//            this.toKind = toKind;
-//        }
-//
-//        public String getSmsType() {
-//            return smsType;
-//        }
-//
-//        public void setSmsType(String smsType) {
-//            this.smsType = smsType;
-//        }
-//
-//        public String getSmsTitle() {
-//            return smsTitle;
-//        }
-//
-//        public void setSmsTitle(String smsTitle) {
-//            this.smsTitle = smsTitle;
-//        }
-//
-//        public String getSmsContent() {
-//            return smsContent;
-//        }
-//
-//        public void setSmsContent(String smsContent) {
-//            this.smsContent = smsContent;
-//        }
-//
-//        public String getStatus() {
-//            return status;
-//        }
-//
-//        public void setStatus(String status) {
-//            this.status = status;
-//        }
-//
-//        public String getCreateDatetime() {
-//            return createDatetime;
-//        }
-//
-//        public void setCreateDatetime(String createDatetime) {
-//            this.createDatetime = createDatetime;
-//        }
-//
-//        public String getTopushDatetime() {
-//            return topushDatetime;
-//        }
-//
-//        public void setTopushDatetime(String topushDatetime) {
-//            this.topushDatetime = topushDatetime;
-//        }
-//
-//        public String getPushedDatetime() {
-//            return pushedDatetime;
-//        }
-//
-//        public void setPushedDatetime(String pushedDatetime) {
-//            this.pushedDatetime = pushedDatetime;
-//        }
-//
-//        public String getUpdater() {
-//            return updater;
-//        }
-//
-//        public void setUpdater(String updater) {
-//            this.updater = updater;
-//        }
-//
-//        public String getUpdateDatetime() {
-//            return updateDatetime;
-//        }
-//
-//        public void setUpdateDatetime(String updateDatetime) {
-//            this.updateDatetime = updateDatetime;
-//        }
-//
-//        public String getRemark() {
-//            return remark;
-//        }
-//
-//        public void setRemark(String remark) {
-//            this.remark = remark;
-//        }
-//
-//        @Override
-//        public int describeContents() {
-//            return 0;
-//        }
-//
-//        @Override
-//        public void writeToParcel(Parcel dest, int flags) {
-//            dest.writeInt(this.id);
-//            dest.writeString(this.fromSystemCode);
-//            dest.writeString(this.channelType);
-//            dest.writeString(this.pushType);
-//            dest.writeString(this.toSystemCode);
-//            dest.writeString(this.toKind);
-//            dest.writeString(this.smsType);
-//            dest.writeString(this.smsTitle);
-//            dest.writeString(this.smsContent);
-//            dest.writeString(this.status);
-//            dest.writeString(this.createDatetime);
-//            dest.writeString(this.topushDatetime);
-//            dest.writeString(this.pushedDatetime);
-//            dest.writeString(this.updater);
-//            dest.writeString(this.updateDatetime);
-//            dest.writeString(this.remark);
-//        }
-//
-//        public ListBean() {
-//        }
-//
-//        protected ListBean(Parcel in) {
-//            this.id = in.readInt();
-//            this.fromSystemCode = in.readString();
-//            this.channelType = in.readString();
-//            this.pushType = in.readString();
-//            this.toSystemCode = in.readString();
-//            this.toKind = in.readString();
-//            this.smsType = in.readString();
-//            this.smsTitle = in.readString();
-//            this.smsContent = in.readString();
-//            this.status = in.readString();
-//            this.createDatetime = in.readString();
-//            this.topushDatetime = in.readString();
-//            this.pushedDatetime = in.readString();
-//            this.updater = in.readString();
-//            this.updateDatetime = in.readString();
-//            this.remark = in.readString();
-//        }
-//
-//        public static final Creator<ListBean> CREATOR = new Creator<ListBean>() {
-//            @Override
-//            public ListBean createFromParcel(Parcel source) {
-//                return new ListBean(source);
-//            }
-//
-//            @Override
-//            public ListBean[] newArray(int size) {
-//                return new ListBean[size];
-//            }
-//        };
+            /**
+             * userId : U201907081023440007973
+             * type : P
+             * loginName : cyl
+             * mobile : 17611591955
+             * realName : 柴运来
+             * createDatetime : Jul 8, 2019 10:23:44 AM
+             * companyCode : DP201800000000000000001
+             * departmentCode : DP201906061418149427263
+             * postCode : DP201906061418229735934
+             * roleCode : RO201800000000000001
+             * jobNo : 005
+             * updater : U201907081023440007973
+             * status : 1
+             * teamCode : BT201906121155146011574
+             * postName : 业务员
+             * departmentName : 业务部
+             * companyName : 新疆有限公司
+             * roleName : 超级管理员
+             */
+
+            private String userId;
+            private String type;
+            private String loginName;
+            private String mobile;
+            private String realName;
+            private String createDatetime;
+            private String companyCode;
+            private String departmentCode;
+            private String postCode;
+            private String roleCode;
+            private String jobNo;
+            private String updater;
+            private String status;
+            private String teamCode;
+            private String postName;
+            private String departmentName;
+            private String companyName;
+            private String roleName;
+
+            public String getUserId() {
+                return userId;
+            }
+
+            public void setUserId(String userId) {
+                this.userId = userId;
+            }
+
+            public String getType() {
+                return type;
+            }
+
+            public void setType(String type) {
+                this.type = type;
+            }
+
+            public String getLoginName() {
+                return loginName;
+            }
+
+            public void setLoginName(String loginName) {
+                this.loginName = loginName;
+            }
+
+            public String getMobile() {
+                return mobile;
+            }
+
+            public void setMobile(String mobile) {
+                this.mobile = mobile;
+            }
+
+            public String getRealName() {
+                return realName;
+            }
+
+            public void setRealName(String realName) {
+                this.realName = realName;
+            }
+
+            public String getCreateDatetime() {
+                return createDatetime;
+            }
+
+            public void setCreateDatetime(String createDatetime) {
+                this.createDatetime = createDatetime;
+            }
+
+            public String getCompanyCode() {
+                return companyCode;
+            }
+
+            public void setCompanyCode(String companyCode) {
+                this.companyCode = companyCode;
+            }
+
+            public String getDepartmentCode() {
+                return departmentCode;
+            }
+
+            public void setDepartmentCode(String departmentCode) {
+                this.departmentCode = departmentCode;
+            }
+
+            public String getPostCode() {
+                return postCode;
+            }
+
+            public void setPostCode(String postCode) {
+                this.postCode = postCode;
+            }
+
+            public String getRoleCode() {
+                return roleCode;
+            }
+
+            public void setRoleCode(String roleCode) {
+                this.roleCode = roleCode;
+            }
+
+            public String getJobNo() {
+                return jobNo;
+            }
+
+            public void setJobNo(String jobNo) {
+                this.jobNo = jobNo;
+            }
+
+            public String getUpdater() {
+                return updater;
+            }
+
+            public void setUpdater(String updater) {
+                this.updater = updater;
+            }
+
+            public String getStatus() {
+                return status;
+            }
+
+            public void setStatus(String status) {
+                this.status = status;
+            }
+
+            public String getTeamCode() {
+                return teamCode;
+            }
+
+            public void setTeamCode(String teamCode) {
+                this.teamCode = teamCode;
+            }
+
+            public String getPostName() {
+                return postName;
+            }
+
+            public void setPostName(String postName) {
+                this.postName = postName;
+            }
+
+            public String getDepartmentName() {
+                return departmentName;
+            }
+
+            public void setDepartmentName(String departmentName) {
+                this.departmentName = departmentName;
+            }
+
+            public String getCompanyName() {
+                return companyName;
+            }
+
+            public void setCompanyName(String companyName) {
+                this.companyName = companyName;
+            }
+
+            public String getRoleName() {
+                return roleName;
+            }
+
+            public void setRoleName(String roleName) {
+                this.roleName = roleName;
+            }
+        }
     }
-
-//    @Override
-//    public int describeContents() {
-//        return 0;
-//    }
-//
-//    @Override
-//    public void writeToParcel(Parcel dest, int flags) {
-//        dest.writeTypedList(this.list);
-//    }
-//
-//    public MsgListModel() {
-//    }
-
-//    protected MsgListModel(Parcel in) {
-//        this.list = in.createTypedArrayList(ListBean.CREATOR);
-//    }
-
-//    public static final Creator<MsgListModel> CREATOR = new Creator<MsgListModel>() {
-//        @Override
-//        public MsgListModel createFromParcel(Parcel source) {
-//            return new MsgListModel(source);
-//        }
-//
-//        @Override
-//        public MsgListModel[] newArray(int size) {
-//            return new MsgListModel[size];
-//        }
-//    };
 }

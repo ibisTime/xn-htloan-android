@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * @updateDts 2019/3/13
  */
-public class InformationBean {
+public class InformationListBean {
 
 
     /**

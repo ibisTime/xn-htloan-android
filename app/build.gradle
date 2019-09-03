@@ -16,6 +16,25 @@ android {
                 arguments = [moduleName: project.getName()]
             }
         }
+
+//        splits {
+//            abi {
+//                enable true
+//                reset()
+//                include 'x86', 'armeabi-v7a','x86_64'
+//                universalApk true
+//            }
+//        }
+
+        ndk {
+            //选择要添加的对应 cpu 类型的 .so 库。
+            abiFilters 'armeabi'
+        }
+
+        manifestPlaceholders = [
+                XG_ACCESS_ID:"2100342492",
+                XG_ACCESS_KEY : "A5DA843U8NKD",
+        ]
     }
 
     buildTypes {
@@ -67,7 +86,18 @@ dependencies {
     api rootProject.ext.arouterApi
 
     // 腾讯云 实时音视频
-    compile 'com.tencent.ilivesdk:ilivesdk:1.8.5'
+    implementation 'com.tencent.ilivesdk:ilivesdk:1.9.4.6.4'
+
+    //信鸽3.2.6以上的版本
+    //完整的信鸽依赖四个都必须有，如果发生依赖冲突请根据对应的依赖版本号选择高版本的依赖。（使用jcenter自动接入请确认libs中没有信鸽的相关jar包）
+    //信鸽jar，不包含厂商通道
+    implementation  'com.tencent.xinge:xinge:4.3.2-release'
+    //jg包
+    implementation'com.tencent.jg:jg:1.1'
+    //wup包
+    implementation 'com.tencent.wup:wup:1.0.0.E-Release'
+    //mid包，minSdkVersion 14
+    implementation 'com.tencent.mid:mid:4.0.7-Release'
 }
 ///格式化打完完成后APK名称中的时间
 def releaseTime() {

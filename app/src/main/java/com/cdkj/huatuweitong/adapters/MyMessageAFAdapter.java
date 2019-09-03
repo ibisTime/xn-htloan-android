@@ -1,6 +1,7 @@
 package com.cdkj.huatuweitong.adapters;
 
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -28,24 +29,23 @@ public class MyMessageAFAdapter extends BaseQuickAdapter<MsgListModel.ListBean, 
     @Override
     protected void convert(BaseViewHolder helper, MsgListModel.ListBean item) {
 
-        //判断上个条目和下个条目的时间是否一致  一致就不显示  不一致就显示
-
-//        tv_time//时间
-//                tv_title //标题
-//        tv_content//内容
-//                ll_money
+        TextView tvState = helper.getView(R.id.tv_state);
+        if (TextUtils.equals(item.getIsAlreadyRead(), "0")){
+            tvState.setText("未读");
+            tvState.setBackgroundResource(R.drawable.bg_user_message_un);
+        }else if (TextUtils.equals(item.getStatus(), "1")){
+            tvState.setText("已读");
+            tvState.setBackgroundResource(R.drawable.bg_user_message);
+        }
 
         TextView tv_time = helper.getView(R.id.tv_time);
         TextView tv_title = helper.getView(R.id.tv_title);
         TextView tv_content = helper.getView(R.id.tv_content);
-        String time = DateUtil.formatStringData(item.getUpdateDatetime(), DateUtil.DATE_YMD);
+        String time = DateUtil.formatStringData(item.getUpdateDatetime(), DateUtil.DEFAULT_DATE_FMT);
         tv_time.setText(time);
         tv_title.setText(item.getTitle());
 
         tv_content.setText(item.getContent());
-
-        LinearLayout ll_money = helper.getView(R.id.ll_money);//查看更多
-        ll_money.setVisibility(View.GONE);
 
     }
 }

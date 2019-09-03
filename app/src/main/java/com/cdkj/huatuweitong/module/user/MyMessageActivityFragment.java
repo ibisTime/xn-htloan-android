@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.cdkj.baselibrary.appmanager.MyCdConfig;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsRefreshListFragment;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
@@ -23,6 +24,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.cdkj.huatuweitong.common.WebViewArticleActivity;
+import com.cdkj.huatuweitong.module.vehicle_db.CarDetailsActivity;
 import retrofit2.Call;
 
 /**
@@ -32,6 +35,9 @@ public class MyMessageActivityFragment extends AbsRefreshListFragment<MsgListMod
 
 
     private String type;
+
+    private int limit = 1;
+    private int pageIndex = 10;
 
     public static Fragment getInstance(String type) {
 
@@ -44,7 +50,8 @@ public class MyMessageActivityFragment extends AbsRefreshListFragment<MsgListMod
     }
 
     @Override
-    protected void afterCreate(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    protected void afterCreate(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+            @Nullable Bundle savedInstanceState) {
         Bundle bundle = getArguments();
         if (bundle != null) {
             type = bundle.getString("type");
@@ -54,43 +61,60 @@ public class MyMessageActivityFragment extends AbsRefreshListFragment<MsgListMod
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+
+        if (mRefreshHelper != null) {
+            mRefreshHelper.onMRefresh(pageIndex, limit, true);
+        }
+    }
+
+    @Override
     public RecyclerView.Adapter getListAdapter(List listData) {
 
         MyMessageAFAdapter adapter = new MyMessageAFAdapter(listData);
-
         adapter.setOnItemClickListener((adapter1, view, position) -> {
             MsgListModel.ListBean item = (MsgListModel.ListBean) adapter1.getItem(position);
-            WebViewActivity2.openContent(mActivity, item.getTitle(), item.getContent());
-        });
 
-        adapter.setOnItemChildClickListener((adapter12, view, position) -> {
-            switch (view.getId()) {
-                case 0:
+            switch (item.getType()) {
+                case "1":
+                case "3":
+                    WebViewActivity2.open(mActivity, item.getRefCode());
+                    break;
+
+                case "2":
+                    WebViewArticleActivity.open(mActivity, item.getRefCode());
+                    break;
+
+                case "4":
+                    CarDetailsActivity.open(mActivity, item.getRefCode());
                     break;
             }
+
         });
+
         return adapter;
     }
 
     @Override
     public void getListRequest(int pageindex, int limit, boolean isShowDialog) {
 
+        pageIndex = pageindex;
+        this.limit = limit;
+
         Map<String, String> map = new HashMap<>();
-        map.put("channelType", "4");
         map.put("start", pageindex + "");
         map.put("limit", limit + "");
-        map.put("pushType", "41");
-        map.put("toKind", "C");
-        map.put("status", "1");
-        map.put("type", type);
-        map.put("fromSystemCode", MyCdConfig.SYSTEM_CODE);
-        map.put("toSystemCode", MyCdConfig.SYSTEM_CODE);
+        map.put("token", SPUtilHelper.getUserToken());
 
-        Call call = RetrofitUtils.createApi(MyApiServer.class).getMsgList("805305", StringUtils.getJsonToString(map));
+        Call call = RetrofitUtils.createApi(MyApiServer.class)
+                .getMsgList("805305", StringUtils.getJsonToString(map));
 
         addCall(call);
 
-        if (isShowDialog) showLoadingDialog();
+        if (isShowDialog) {
+            showLoadingDialog();
+        }
 
         call.enqueue(new BaseResponseModelCallBack<MsgListModel>(mActivity) {
             @Override

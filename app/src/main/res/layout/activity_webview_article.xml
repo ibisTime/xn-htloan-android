@@ -44,7 +44,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:text="人之初性本上,想想晋级习相远"
                     android:textColor="@color/text_black_cd"
                     android:textSize="20sp" />
 
@@ -67,7 +66,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:text="@string/app_name"
                     android:textColor="#31f5b4" />
 
                 <TextView
@@ -75,7 +73,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:text="2019-10-10"
                     android:textColor="@color/txt_gray" />
             </LinearLayout>
 

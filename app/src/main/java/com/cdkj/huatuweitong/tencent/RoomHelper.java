@@ -34,7 +34,7 @@ public class RoomHelper implements ILiveRoomOption.onExceptionListener, ILiveRoo
                 .imsupport(false)       // 不需要IM功能
                 .exceptionListener(this)  // 监听异常事件处理
                 .roomDisconnectListener(this)   // 监听房间中断事件
-                .controlRole("LiveMaster")  // 使用LiveMaster角色
+                .controlRole("ed640")  // 画面设定 此功能仅对 iLiveSDK 1.9.6 及之前的版本生效
                 .autoCamera(true)       // 进房间后自动打开摄像头并上行
                 .autoMic(true);         // 进房间后自动要开Mic并上行
 

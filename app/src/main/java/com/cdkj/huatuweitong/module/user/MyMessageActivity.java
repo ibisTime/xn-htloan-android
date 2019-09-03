@@ -39,10 +39,10 @@ public class MyMessageActivity extends AbsBaseLoadActivity {
         mBaseBinding.titleView.setMidTitle("我的消息");
         ////1 提醒 2 通知 3 公告
         List<String> titls = new ArrayList<>();
-        titls.add("提醒");
-//        titls.add("催款");
-        titls.add("通知");
-        titls.add("公告");
+        titls.add("");
+//        titls.add("提醒");
+//        titls.add("通知");
+//        titls.add("公告");
         mBinding.viewindicator.setTabItemTitles(titls);
         mBinding.viewindicator.setViewPager(mBinding.viewpager, 0);
         mBinding.viewindicator.setmLinWidth(25);
@@ -51,11 +51,10 @@ public class MyMessageActivity extends AbsBaseLoadActivity {
         //设置fragment数据
         ArrayList fragments = new ArrayList<>();
 
-        fragments.add(MyMessageActivityFragment.getInstance("1"));
-        fragments.add(MyMessageActivityFragment.getInstance("2"));
-        fragments.add(MyMessageActivityFragment.getInstance("3"));
 //        fragments.add(MyMessageActivityFragment.getInstance("1"));
-
+//        fragments.add(MyMessageActivityFragment.getInstance("2"));
+//        fragments.add(MyMessageActivityFragment.getInstance("3"));
+        fragments.add(MyMessageActivityFragment.getInstance(""));
 
         mBinding.viewpager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), fragments));
         mBinding.viewpager.setOffscreenPageLimit(fragments.size());

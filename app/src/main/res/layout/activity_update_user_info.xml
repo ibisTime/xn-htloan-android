@@ -35,8 +35,8 @@
 
             <ImageView
                 android:id="@+id/img_logo"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginRight="15dp"
                 android:src="@drawable/photo_default" />
 
@@ -54,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:img_right="@mipmap/ic_more"
-            app:txt_left="@string/nick_name" />
+            app:txt_left="个人信息" />
 
         <!--<View style="@style/style_split_line" />-->
         <View

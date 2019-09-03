@@ -9,85 +9,64 @@ package com.cdkj.huatuweitong.bean;
 
 public class UserFragmentBean {
 
-
     /**
-     * bankcardFlag : false
-     * blacklistFlag : false
-     * createDatetime : May 15, 2018 3:57:46 PM
-     * identifyFlag : false
-     * kind : C
-     * loginName : 13282838237
+     * userId : U201908081035371002602
+     * produceType : 0
+     * loginName : 13506537519
+     * mobile : 13506537519
+     * photo : IOS_1566205835572098_1125_1125.jpg
+     * nickname : 昵称
      * loginPwdStrength : 1
-     * mobile : 13282838237
-     * nickname : 嘿嘿
-     * photo : ANDROID_1526643458798_3120_4160.jpg
+     * idNo : 3303271999661616194
+     * realName : 郑勤宝
+     * province : 浙江省
+     * city : 杭州市
+     * area : 余杭区
+     * address : 张艺兴
      * status : 0
+     * deviceToken : af61da39ec68e43124cc00e725ec01f0b296b66a9cc93ffd06a34723eceb752c
+     * createDatetime : Aug 8, 2019 10:35:37 AM
+     * blacklistFlag : false
+     * identifyFlag : true
+     * bankcardFlag : false
      * tradepwdFlag : false
-     * userId : U201805151557468878485
      */
 
-    private boolean bankcardFlag;
-    private boolean blacklistFlag;
-    private String createDatetime;
-    private boolean identifyFlag;
-    private String kind;
-    private String loginName;
-    private String loginPwdStrength;
-    private String mobile;
-    private String nickname;
-    private String photo;
-    private String status;
-    private boolean tradepwdFlag;
     private String userId;
+    private String produceType;
+    private String loginName;
+    private String mobile;
+    private String photo;
+    private String nickname;
+    private String loginPwdStrength;
     private String idNo;
     private String realName;
+    private String province;
+    private String city;
+    private String area;
+    private String address;
+    private String status;
+    private String deviceToken;
+    private String createDatetime;
+    private boolean blacklistFlag;
+    private boolean identifyFlag;
+    private boolean bankcardFlag;
+    private boolean tradepwdFlag;
 
-    public String getIdNo() {
-        return idNo;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setIdNo(String idNo) {
-        this.idNo = idNo;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public boolean isBankcardFlag() {
-        return bankcardFlag;
+    public String getProduceType() {
+        return produceType;
     }
 
-    public void setBankcardFlag(boolean bankcardFlag) {
-        this.bankcardFlag = bankcardFlag;
-    }
-
-    public boolean isBlacklistFlag() {
-        return blacklistFlag;
-    }
-
-    public void setBlacklistFlag(boolean blacklistFlag) {
-        this.blacklistFlag = blacklistFlag;
-    }
-
-    public String getCreateDatetime() {
-        return createDatetime;
-    }
-
-    public void setCreateDatetime(String createDatetime) {
-        this.createDatetime = createDatetime;
-    }
-
-    public boolean isIdentifyFlag() {
-        return identifyFlag;
-    }
-
-    public void setIdentifyFlag(boolean identifyFlag) {
-        this.identifyFlag = identifyFlag;
-    }
-
-    public String getKind() {
-        return kind;
-    }
-
-    public void setKind(String kind) {
-        this.kind = kind;
+    public void setProduceType(String produceType) {
+        this.produceType = produceType;
     }
 
     public String getLoginName() {
@@ -98,28 +77,12 @@ public class UserFragmentBean {
         this.loginName = loginName;
     }
 
-    public String getLoginPwdStrength() {
-        return loginPwdStrength;
-    }
-
-    public void setLoginPwdStrength(String loginPwdStrength) {
-        this.loginPwdStrength = loginPwdStrength;
-    }
-
     public String getMobile() {
         return mobile;
     }
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
     }
 
     public String getPhoto() {
@@ -130,28 +93,28 @@ public class UserFragmentBean {
         this.photo = photo;
     }
 
-    public String getStatus() {
-        return status;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
-    public boolean isTradepwdFlag() {
-        return tradepwdFlag;
+    public String getLoginPwdStrength() {
+        return loginPwdStrength;
     }
 
-    public void setTradepwdFlag(boolean tradepwdFlag) {
-        this.tradepwdFlag = tradepwdFlag;
+    public void setLoginPwdStrength(String loginPwdStrength) {
+        this.loginPwdStrength = loginPwdStrength;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getIdNo() {
+        return idNo;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setIdNo(String idNo) {
+        this.idNo = idNo;
     }
 
     public String getRealName() {
@@ -160,5 +123,93 @@ public class UserFragmentBean {
 
     public void setRealName(String realName) {
         this.realName = realName;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getDeviceToken() {
+        return deviceToken;
+    }
+
+    public void setDeviceToken(String deviceToken) {
+        this.deviceToken = deviceToken;
+    }
+
+    public String getCreateDatetime() {
+        return createDatetime;
+    }
+
+    public void setCreateDatetime(String createDatetime) {
+        this.createDatetime = createDatetime;
+    }
+
+    public boolean isBlacklistFlag() {
+        return blacklistFlag;
+    }
+
+    public void setBlacklistFlag(boolean blacklistFlag) {
+        this.blacklistFlag = blacklistFlag;
+    }
+
+    public boolean isIdentifyFlag() {
+        return identifyFlag;
+    }
+
+    public void setIdentifyFlag(boolean identifyFlag) {
+        this.identifyFlag = identifyFlag;
+    }
+
+    public boolean isBankcardFlag() {
+        return bankcardFlag;
+    }
+
+    public void setBankcardFlag(boolean bankcardFlag) {
+        this.bankcardFlag = bankcardFlag;
+    }
+
+    public boolean isTradepwdFlag() {
+        return tradepwdFlag;
+    }
+
+    public void setTradepwdFlag(boolean tradepwdFlag) {
+        this.tradepwdFlag = tradepwdFlag;
     }
 }

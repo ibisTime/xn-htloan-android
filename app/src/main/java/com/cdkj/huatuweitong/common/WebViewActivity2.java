@@ -18,12 +18,15 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.cdkj.baselibrary.appmanager.MyCdConfig;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.model.IntroductionInfoModel;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
 import com.cdkj.baselibrary.utils.LogUtil;
 import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.R;
+import com.cdkj.huatuweitong.api.MyApiServer;
+import com.cdkj.huatuweitong.bean.MsgListModel;
 import com.cdkj.huatuweitong.databinding.ActivityWebview2Binding;
 
 import java.util.HashMap;
@@ -41,59 +44,21 @@ public class WebViewActivity2 extends AbsActivity {
 
     private ActivityWebview2Binding mBinding;
 
-//    private WebView webView;
-
     /**
-     * 加载activity
+     * 加载activity,加载富文本
      *
      * @param activity 上下文
      */
-    public static void openkey(Activity activity, String title, String code) {
+    public static void open(Context activity, String code) {
         if (activity == null) {
             return;
         }
 
         Intent intent = new Intent(activity, WebViewActivity2.class);
         intent.putExtra("code", code);
-        intent.putExtra("title", title);
         activity.startActivity(intent);
 
     }
-
-    /**
-     * 加载activity,加载富文本
-     *
-     * @param activity 上下文
-     */
-    public static void openContent(Context activity, String title, String content) {
-        if (activity == null) {
-            return;
-        }
-
-        Intent intent = new Intent(activity, WebViewActivity2.class);
-        intent.putExtra("content", content);
-        intent.putExtra("title", title);
-        activity.startActivity(intent);
-
-    }
-
-    /**
-     * 加载activity
-     *
-     * @param activity 上下文
-     */
-    public static void openURL(Activity activity, String title, String url) {
-        if (activity == null) {
-            return;
-        }
-
-        Intent intent = new Intent(activity, WebViewActivity2.class);
-        intent.putExtra("url", url);
-        intent.putExtra("title", title);
-        activity.startActivity(intent);
-
-    }
-
 
     @Override
     public View addMainView() {
@@ -169,48 +134,29 @@ public class WebViewActivity2 extends AbsActivity {
             return;
         }
 
-        setTopTitle(getIntent().getStringExtra("title"));
-        String url = getIntent().getStringExtra("url");
-        if (TextUtils.isEmpty(url)) {
-
-            if (TextUtils.isEmpty(getIntent().getStringExtra("content"))) {
-                getKeyUrl(getIntent().getStringExtra("code"));
-            } else {
-                showContent(getIntent().getStringExtra("content"));
-            }
-        } else {
-
-            LogUtil.E("打开url" + url);
-            mBinding.webview.loadUrl(url);
-        }
-
+        String code = getIntent().getStringExtra("code");
+        getDetail(code);
     }
 
-
-    public void getKeyUrl(String key) {
-
-        if (TextUtils.isEmpty(key)) {
-            return;
-        }
+    public void getDetail(String code) {
 
         Map<String, String> map = new HashMap<>();
-        map.put("key", key);
-        map.put("systemCode", MyCdConfig.SYSTEM_CODE);
-        map.put("companyCode", MyCdConfig.COMPANY_CODE);
+        map.put("code", code + "");
+        map.put("userId", SPUtilHelper.getUserId());
+        map.put("token", SPUtilHelper.getUserToken());
 
-        Call call = RetrofitUtils.getBaseAPiService().getKeySystemInfo("630047", StringUtils.getJsonToString(map));
+        Call call = RetrofitUtils.createApi(MyApiServer.class)
+                .getMsgDetail("805307", StringUtils.getJsonToString(map));
 
         addCall(call);
 
         showLoadingDialog();
 
-        call.enqueue(new BaseResponseModelCallBack<IntroductionInfoModel>(this) {
+        call.enqueue(new BaseResponseModelCallBack<MsgListModel.ListBean>(this) {
             @Override
-            protected void onSuccess(IntroductionInfoModel data, String SucMessage) {
-                if (TextUtils.isEmpty(data.getCvalue())) {
-                    return;
-                }
-                showContent(data.getCvalue());
+            protected void onSuccess(MsgListModel.ListBean data, String SucMessage) {
+                setTopTitle(data.getTitle());
+                showContent(data.getContent());
             }
 
             @Override

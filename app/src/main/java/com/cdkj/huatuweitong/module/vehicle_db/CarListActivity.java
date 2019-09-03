@@ -12,12 +12,16 @@ import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.interfaces.BaseRefreshCallBack;
 import com.cdkj.baselibrary.interfaces.RefreshHelper;
 import com.cdkj.baselibrary.nets.BaseResponseListCallBack;
+import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
 import com.cdkj.baselibrary.utils.MoneyUtils;
 import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.adapters.CarListAdapter;
+import com.cdkj.huatuweitong.adapters.CarTypeListAdapter;
 import com.cdkj.huatuweitong.api.MyApiServer;
+import com.cdkj.huatuweitong.bean.CarSelectPageBean;
+import com.cdkj.huatuweitong.bean.CarSystemBean;
 import com.cdkj.huatuweitong.bean.CarSystemListBean;
 import com.cdkj.huatuweitong.bean.FirstPageBanner;
 import com.cdkj.huatuweitong.common.GlideFirstPageBannerImageLoader;
@@ -35,12 +39,13 @@ import java.util.Map;
 import retrofit2.Call;
 
 public class CarListActivity extends AbsBaseLoadActivity {
+
     private ActivityCarListBinding mBinding;
     private RefreshHelper mRefreshHelper;
     private String currentCode;
     private ArrayList<String> imgList = new ArrayList<>();
     private String title;
-    private CarSystemListBean currenBean;
+    private CarSystemBean currentBean;
 
 
     public static void open(Context context, String code) {
@@ -49,7 +54,7 @@ public class CarListActivity extends AbsBaseLoadActivity {
         context.startActivity(intent);
     }
 
-    public static void open(Context context, CarSystemListBean bean) {
+    public static void open(Context context, CarSystemBean bean) {
         Intent intent = new Intent(context, CarListActivity.class);
         intent.putExtra("bean", bean);
         context.startActivity(intent);
@@ -57,7 +62,8 @@ public class CarListActivity extends AbsBaseLoadActivity {
 
     @Override
     public View addMainView() {
-        mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.activity_car_list, null, false);
+        mBinding = DataBindingUtil
+                .inflate(getLayoutInflater(), R.layout.activity_car_list, null, false);
         return mBinding.getRoot();
     }
 
@@ -65,7 +71,7 @@ public class CarListActivity extends AbsBaseLoadActivity {
     public void afterCreate(Bundle savedInstanceState) {
         if (getIntent() != null) {
             currentCode = getIntent().getStringExtra("data");
-            currenBean = (CarSystemListBean) getIntent().getSerializableExtra("bean");
+            currentBean = (CarSystemBean) getIntent().getSerializableExtra("bean");
         }
         initBanner();
         initListener();
@@ -108,10 +114,11 @@ public class CarListActivity extends AbsBaseLoadActivity {
 
             @Override
             public RecyclerView.Adapter getAdapter(List listData) {
-                CarListAdapter adapter = new CarListAdapter(listData);
+                CarTypeListAdapter adapter = new CarTypeListAdapter(listData);
                 adapter.setOnItemClickListener((adapter1, view, position) -> {
 
-                    CarSystemListBean.CarsBean item = (CarSystemListBean.CarsBean) adapter1.getItem(position);
+                    CarSelectPageBean.ListBean item = (CarSelectPageBean.ListBean) adapter1
+                            .getItem(position);
                     CarDetailsActivity.open(CarListActivity.this, item.getCode());
                 });
                 return adapter;
@@ -119,34 +126,34 @@ public class CarListActivity extends AbsBaseLoadActivity {
 
             @Override
             public void getListDataRequest(int pageindex, int limit, boolean isShowDialog) {
-                initDate(pageindex, limit, isShowDialog);
+//                initDate(pageindex, limit, isShowDialog);
+
+                initData(pageindex, limit, isShowDialog);
             }
         });
         mRefreshHelper.init(10);
 
-
+        mRefreshHelper.onDefaluteMRefresh(true);//不用请求接口了  全部用的是上个界面传递的数据
         mRefreshHelper.getmRefreshLayout().setEnableLoadmore(false);
         //如果是上个界面传递过来的数据 就不用请求数据了  如不穿过来的不是数据是 code  记去请求数据
-        if (currenBean == null) {
-            mRefreshHelper.getmRefreshLayout().setEnableRefresh(true);
-            mRefreshHelper.onDefaluteMRefresh(true);//不用请求接口了  全部用的是上个界面传递的数据
-        } else {
-            mRefreshHelper.getmRefreshLayout().setEnableRefresh(false);
+        if (currentBean != null) {
             steData();
         }
     }
 
     public void steData() {
-        if (currenBean == null) {
+        if (currentBean == null) {
             return;
         }
-        mBinding.tvNumber.setText(currenBean.getPicNumber() + "");
-        mBinding.tvPrice.setText(MoneyUtils.formatNum(currenBean.getLowest()) + "-" + MoneyUtils.formatNum(currenBean.getHighest()));
-        mBinding.tvTitle.setText(currenBean.getName());
-        title = currenBean.getName();
+        mBinding.tvNumber.setText(currentBean.getPicNumber() + "");
+        mBinding.tvPrice
+                .setText(MoneyUtils.formatNum(currentBean.getLowest()) + "-" + MoneyUtils.formatNum(
+                        currentBean.getHighest()));
+        mBinding.tvTitle.setText(currentBean.getName());
+        title = currentBean.getName();
         mBaseBinding.titleView.setMidTitle(title);
         //分割获取下页的图片数据
-        String[] split = currenBean.getAdvPic().split("\\|\\|");
+        String[] split = currentBean.getAdvPic().split("\\|\\|");
         imgList.addAll(Arrays.asList(split));
         //构造轮播图数据
         ArrayList<FirstPageBanner> mBanners = new ArrayList<>();
@@ -158,8 +165,8 @@ public class CarListActivity extends AbsBaseLoadActivity {
         mBinding.banner.setImages(mBanners);
         mBinding.banner.start();
 
-        List<CarSystemListBean.CarsBean> cars = currenBean.getCars();
-        mRefreshHelper.setData(cars, "暂无车型数据", 0);
+//        List<CarSystemListBean.CarsBean> cars = currentBean.getCars();
+//        mRefreshHelper.setData(cars, "暂无车型数据", 0);
 
     }
 
@@ -168,13 +175,16 @@ public class CarListActivity extends AbsBaseLoadActivity {
      * 获取热门车系  跳转到性情界面
      */
     private void initDate(int pageindex, int limit, boolean isShowDialog) {
-        if (isShowDialog)
+        if (isShowDialog) {
             showLoadingDialog();
+        }
         Map<String, Serializable> map = new HashMap<>();
         map.put("seriesCode", currentCode);
         map.put("status", "1");
 
-        Call<BaseResponseListModel<CarSystemListBean>> carSystemlListDatas = RetrofitUtils.createApi(MyApiServer.class).getCarSystemlListDatas("630426", StringUtils.getJsonToString(map));
+        Call<BaseResponseListModel<CarSystemListBean>> carSystemlListDatas = RetrofitUtils
+                .createApi(MyApiServer.class)
+                .getCarSystemlListDatas("630426", StringUtils.getJsonToString(map));
         addCall(carSystemlListDatas);
         carSystemlListDatas.enqueue(new BaseResponseListCallBack<CarSystemListBean>(this) {
             @Override
@@ -184,7 +194,9 @@ public class CarListActivity extends AbsBaseLoadActivity {
                     CarSystemListBean carSystemListBean = data.get(0);
 
                     mBinding.tvNumber.setText(carSystemListBean.getPicNumber() + "");
-                    mBinding.tvPrice.setText(MoneyUtils.formatNum(carSystemListBean.getLowest()) + "-" + MoneyUtils.formatNum(carSystemListBean.getHighest()));
+                    mBinding.tvPrice.setText(
+                            MoneyUtils.formatNum(carSystemListBean.getLowest()) + "-" + MoneyUtils
+                                    .formatNum(carSystemListBean.getHighest()));
                     mBinding.tvTitle.setText(carSystemListBean.getName());
                     title = carSystemListBean.getName();
                     mBaseBinding.titleView.setMidTitle(title);
@@ -206,6 +218,31 @@ public class CarListActivity extends AbsBaseLoadActivity {
                 } else {
                     mRefreshHelper.setData(new ArrayList(), "暂无车型数据", 0);
                 }
+            }
+
+            @Override
+            protected void onFinish() {
+                disMissLoading();
+            }
+        });
+    }
+
+    private void initData(int pageindex, int limit, boolean isShowDialog) {
+        if (isShowDialog) {
+            showLoadingDialog();
+        }
+        Map<String, Serializable> map = new HashMap<>();
+
+        map.put("seriesCode", currentBean.getCode());
+        map.put("start", pageindex + "");
+        map.put("limit", limit + "");
+
+        Call call = RetrofitUtils.createApi(MyApiServer.class)
+                .getCarTypePage("630492", StringUtils.getJsonToString(map));
+        call.enqueue(new BaseResponseModelCallBack<CarSelectPageBean>(CarListActivity.this) {
+            @Override
+            protected void onSuccess(CarSelectPageBean data, String SucMessage) {
+                mRefreshHelper.setData(data.getList(), "车型数据为空", 0);
             }
 
             @Override

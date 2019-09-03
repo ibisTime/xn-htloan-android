@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
@@ -26,7 +27,9 @@ import com.cdkj.baselibrary.utils.LogUtil;
 import com.cdkj.baselibrary.utils.QiNiuHelper;
 import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.R;
+import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.NickNameUpdateModel;
+import com.cdkj.huatuweitong.bean.UserFragmentBean;
 import com.cdkj.huatuweitong.databinding.ActivityUpdateUserInfoBinding;
 
 import org.greenrobot.eventbus.EventBus;
@@ -81,13 +84,11 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
             ImageSelectActivity.launch(this, PHOTOFLAG, false);
         });
         mBinding.rowNickName.setOnClickListener(v -> {
-            //昵称
-            NickNameUpdateActivity.open(this);
+            getUserInfo();
         });
         mBinding.rowPhone.setOnClickListener(v -> {
             //修改手机号
             UpDataPhoneActivity.open(UserInfoUpdateActivity.this);
-
         });
         mBinding.rowPsw.setOnClickListener(v -> {
             //修改密码
@@ -197,4 +198,25 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
         });
     }
 
+    public void getUserInfo() {
+
+        Map<String, String> map = new HashMap();
+        map.put("userId", SPUtilHelper.getUserId());
+        showLoadingDialog();
+        Call call = RetrofitUtils.createApi(MyApiServer.class)
+                .getUserDetails("805121", StringUtils.getJsonToString(map));
+        addCall(call);
+        call.enqueue(new BaseResponseModelCallBack<UserFragmentBean>(this) {
+            @Override
+            protected void onSuccess(UserFragmentBean data, String SucMessage) {
+                //昵称
+                NickNameUpdateActivity.open(UserInfoUpdateActivity.this, data);
+            }
+
+            @Override
+            protected void onFinish() {
+                disMissLoading();
+            }
+        });
+    }
 }

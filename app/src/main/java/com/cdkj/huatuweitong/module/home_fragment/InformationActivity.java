@@ -12,7 +12,7 @@ import com.cdkj.baselibrary.nets.RetrofitUtils;
 import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.adapters.InformationAdapter;
 import com.cdkj.huatuweitong.api.MyApiServer;
-import com.cdkj.huatuweitong.bean.InformationBean;
+import com.cdkj.huatuweitong.bean.InformationListBean;
 import com.cdkj.huatuweitong.common.WebViewArticleActivity;
 
 import java.util.ArrayList;
@@ -49,8 +49,8 @@ public class InformationActivity extends AbsRefreshListActivity {
     public RecyclerView.Adapter getListAdapter(List listData) {
         InformationAdapter informationAdapter = new InformationAdapter(listData);
         informationAdapter.setOnItemClickListener((adapter, view, position) -> {
-            InformationBean.ListBean item = (InformationBean.ListBean) adapter.getItem(position);
-            WebViewArticleActivity.openContent(this, item.getTitle(),item.getAuthor(),item.getUpdateDatetime(), item.getContext());
+            InformationListBean.ListBean item = (InformationListBean.ListBean) adapter.getItem(position);
+            WebViewArticleActivity.open(this, item.getCode());
 
         });
         return informationAdapter;
@@ -70,10 +70,10 @@ public class InformationActivity extends AbsRefreshListActivity {
         map.put("status", "1");//0待上架，1已上架，2已下架
 //        map.put("tag", "1");
 //        map.put("title", "1");
-        Call<BaseResponseModel<InformationBean>> information = RetrofitUtils.createApi(MyApiServer.class).getInformation("630455", StringUtils.getJsonToString(map));
-        information.enqueue(new BaseResponseModelCallBack<InformationBean>(this) {
+        Call<BaseResponseModel<InformationListBean>> information = RetrofitUtils.createApi(MyApiServer.class).getInformationList("630455", StringUtils.getJsonToString(map));
+        information.enqueue(new BaseResponseModelCallBack<InformationListBean>(this) {
             @Override
-            protected void onSuccess(InformationBean data, String SucMessage) {
+            protected void onSuccess(InformationListBean data, String SucMessage) {
                 mRefreshHelper.setData(data.getList(), "暂无资讯", 0);
             }
 
@@ -85,11 +85,11 @@ public class InformationActivity extends AbsRefreshListActivity {
         });
 
 
-        List<InformationBean> listData = new ArrayList<>();
-        listData.add(new InformationBean());
-        listData.add(new InformationBean());
-        listData.add(new InformationBean());
-        listData.add(new InformationBean());
+        List<InformationListBean> listData = new ArrayList<>();
+        listData.add(new InformationListBean());
+        listData.add(new InformationListBean());
+        listData.add(new InformationListBean());
+        listData.add(new InformationListBean());
 
     }
 }

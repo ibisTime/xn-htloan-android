@@ -25,6 +25,7 @@ import com.cdkj.baselibrary.R;
 public class RowInfoLayout extends LinearLayout {
 
     private TextView tvLeft;
+    private TextView tvUnreadNum;
     private TextView tvRight;
     private ImageView imgLeft;
     private ImageView imgRight;
@@ -110,7 +111,11 @@ public class RowInfoLayout extends LinearLayout {
 
     public String getRightTxt() {
         return tvRight.getText().toString();
+    }
 
+    public void setUnreadNum(String num) {
+        tvUnreadNum.setText(num);
+        tvUnreadNum.setVisibility(VISIBLE);
     }
 
 
@@ -118,6 +123,7 @@ public class RowInfoLayout extends LinearLayout {
         this.context = context;
         LayoutInflater.from(context).inflate(R.layout.layout_row_info, this, true);
         tvLeft = findViewById(R.id.tv_left);
+        tvUnreadNum = findViewById(R.id.tv_unread_num);
         tvRight = findViewById(R.id.tv_right);
         imgLeft = findViewById(R.id.img_left);
         imgRight = findViewById(R.id.img_right);

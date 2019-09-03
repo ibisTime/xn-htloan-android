@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.cdkj.baselibrary.api.BaseResponseListModel;
 import com.cdkj.baselibrary.api.BaseResponseModel;
 import com.cdkj.baselibrary.appmanager.CdRouteHelper;
 import com.cdkj.baselibrary.base.BaseLazyFragment;
@@ -24,22 +23,13 @@ import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
 import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.R;
-import com.cdkj.huatuweitong.adapters.HomeFragmentBrandAdapter;
-import com.cdkj.huatuweitong.adapters.HomeFragmentCarSystemAdapter;
-import com.cdkj.huatuweitong.adapters.HomeSelectedAdaapter;
-import com.cdkj.huatuweitong.adapters.InformationAdapter;
+import com.cdkj.huatuweitong.adapters.*;
 import com.cdkj.huatuweitong.api.MyApiServer;
-import com.cdkj.huatuweitong.bean.BrandBean;
-import com.cdkj.huatuweitong.bean.CarSystemListBean;
-import com.cdkj.huatuweitong.bean.FirstPageBanner;
-import com.cdkj.huatuweitong.bean.InformationBean;
+import com.cdkj.huatuweitong.bean.*;
 import com.cdkj.huatuweitong.common.GlideFirstPageBannerImageLoader;
 import com.cdkj.huatuweitong.common.WebViewArticleActivity;
 import com.cdkj.huatuweitong.databinding.FragmentHomeBinding;
-import com.cdkj.huatuweitong.module.home_fragment.InformationActivity;
-import com.cdkj.huatuweitong.module.vehicle_db.CarDetailsActivity;
-import com.cdkj.huatuweitong.module.vehicle_db.CarListActivity;
-import com.cdkj.huatuweitong.module.vehicle_db.CarSystemListActivity;
+import com.cdkj.huatuweitong.module.vehicle_db.*;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.listener.OnBannerListener;
 
@@ -49,6 +39,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.greenrobot.eventbus.EventBus;
 import retrofit2.Call;
 
 /**
@@ -59,7 +50,7 @@ public class HomeFragment extends BaseLazyFragment {
     private FragmentHomeBinding mBinding;
     private ArrayList<FirstPageBanner> mBanners;
     private RefreshHelper mRefreshHelper;
-    private HomeSelectedAdaapter homeSelectedAdaapter;
+    private HomeSelectedAdapter homeSelectedAdapter;
 
     public static HomeFragment getInstance() {
         HomeFragment fragment = new HomeFragment();
@@ -83,17 +74,19 @@ public class HomeFragment extends BaseLazyFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+            Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, null, false);
 
         initBanner();
         initBannerData();
         initBrandData();
         initCarSystemData();
+        getMerchantData();
         getSelectedData();
         initRefreshHelper();
         mRefreshHelper.onDefaluteMRefresh(true);
-        initOnclickLisenter();
+        initOnclickListener();
         return mBinding.getRoot();
     }
 
@@ -101,7 +94,8 @@ public class HomeFragment extends BaseLazyFragment {
         Map<String, String> map = RetrofitUtils.getRequestMap();
         map.put("location", "index_banner");
 
-        Call call = RetrofitUtils.createApi(MyApiServer.class).getFirstBanner("805806", StringUtils.getJsonToString(map));
+        Call call = RetrofitUtils.createApi(MyApiServer.class)
+                .getFirstBanner("805806", StringUtils.getJsonToString(map));
 
         addCall(call);
 
@@ -130,6 +124,44 @@ public class HomeFragment extends BaseLazyFragment {
     }
 
     /**
+     * 获取热门品牌数据  跳转到车系界面
+     */
+    private void initBrandData() {
+        showLoadingDialog();
+        Map<String, String> map = new HashMap<>();
+        map.put("status", "1");//0待上架，1已上架，2已下架
+        map.put("location", "0");//1 热门 0普通
+        map.put("start", "1");
+        map.put("limit", "100");
+        map.put("orderDir", "asc");
+        Call call = RetrofitUtils.createApi(MyApiServer.class)
+                .getBrandPage("630490", StringUtils.getJsonToString(map));
+        call.enqueue(new BaseResponseModelCallBack<BrandPageBean>(mActivity) {
+
+            @Override
+            protected void onSuccess(BrandPageBean data, String SucMessage) {
+
+                HomeFragmentBrandAdapter homeFragmentBrandAdapter = new HomeFragmentBrandAdapter(
+                        data.getList());
+                mBinding.rvBrand.setLayoutManager(new GridLayoutManager(mActivity, 4));
+                mBinding.rvBrand.setAdapter(homeFragmentBrandAdapter);
+                homeFragmentBrandAdapter.setOnItemClickListener((adapter, view, position) -> {
+                    BrandPageBean.ListBean item = (BrandPageBean.ListBean) adapter
+                            .getItem(position);
+                    CarSystemListActivity.open(mActivity, item.getCode());
+                });
+
+            }
+
+            @Override
+            protected void onFinish() {
+                disMissLoading();
+            }
+        });
+
+    }
+
+    /**
      * 获取热门车系  跳转到性情界面
      */
     private void initCarSystemData() {
@@ -137,13 +169,19 @@ public class HomeFragment extends BaseLazyFragment {
         Map<String, Serializable> map = new HashMap<>();
         map.put("status", "1");
         map.put("location", "0");//热门推荐
+        map.put("start", "1");
+        map.put("limit", "200");
         map.put("orderDir", "asc");
-        Call<BaseResponseListModel<CarSystemListBean>> carSystemlListDatas = RetrofitUtils.createApi(MyApiServer.class).getCarHotSystemlListDatas("630416", StringUtils.getJsonToString(map));
-        addCall(carSystemlListDatas);
-        carSystemlListDatas.enqueue(new BaseResponseListCallBack<CarSystemListBean>(mActivity) {
+        map.put("orderColumn", "order_no");
+        Call call = RetrofitUtils.createApi(MyApiServer.class)
+                .getCarSystemPage("630491", StringUtils.getJsonToString(map));
+        addCall(call);
+        call.enqueue(new BaseResponseModelCallBack<CarSystemPageBean>(mActivity) {
             @Override
-            protected void onSuccess(List<CarSystemListBean> data, String SucMessage) {
-                HomeFragmentCarSystemAdapter homeFragmentCarSystemAdapter = new HomeFragmentCarSystemAdapter(data);
+            protected void onSuccess(CarSystemPageBean data, String SucMessage) {
+
+                HomeFragmentCarSystemAdapter homeFragmentCarSystemAdapter = new HomeFragmentCarSystemAdapter(
+                        data.getList());
                 mBinding.rvCarSystem.setLayoutManager(new GridLayoutManager(mActivity, 3) {
                     @Override
                     public boolean canScrollVertically() {
@@ -152,7 +190,7 @@ public class HomeFragment extends BaseLazyFragment {
                 });
                 mBinding.rvCarSystem.setAdapter(homeFragmentCarSystemAdapter);
                 homeFragmentCarSystemAdapter.setOnItemClickListener((adapter, view, position) -> {
-                    CarSystemListBean item = (CarSystemListBean) adapter.getItem(position);
+                    CarSystemBean item = (CarSystemBean) adapter.getItem(position);
                     CarListActivity.open(mActivity, item);
                 });
             }
@@ -165,60 +203,110 @@ public class HomeFragment extends BaseLazyFragment {
     }
 
     /**
-     * 获取热门品牌数据  跳转到车系界面
+     * 获取优质车商
      */
-    private void initBrandData() {
+    private void getMerchantData() {
         showLoadingDialog();
         Map<String, String> map = new HashMap<>();
-        map.put("status", "1");//0待上架，1已上架，2已下架
-        map.put("location", "0");//1 热门 0普通
-        map.put("orderDir", "asc");
-        Call<BaseResponseListModel<BrandBean>> brandData = RetrofitUtils.createApi(MyApiServer.class).getBrandData("630406", StringUtils.getJsonToString(map));
-        brandData.enqueue(new BaseResponseListCallBack<BrandBean>(mActivity) {
+        map.put("isHighQuality", "1");
+        map.put("start", "1");
+        map.put("limit", "200");
+        Call call = RetrofitUtils.createApi(MyApiServer.class)
+                .getMerchantPage("632065", StringUtils.getJsonToString(map));
+        call.enqueue(new BaseResponseModelCallBack<MerchantPageBean>(mActivity) {
+
             @Override
-            protected void onSuccess(List<BrandBean> data, String SucMessage) {
-                HomeFragmentBrandAdapter homeFragmentBrandAdapter = new HomeFragmentBrandAdapter(data);
-                mBinding.rvBrand.setLayoutManager(new GridLayoutManager(mActivity, 4));
-                mBinding.rvBrand.setAdapter(homeFragmentBrandAdapter);
-                homeFragmentBrandAdapter.setOnItemClickListener((adapter, view, position) -> {
-                    BrandBean item = (BrandBean) adapter.getItem(position);
-                    CarSystemListActivity.open(mActivity, item.getCode());
+            protected void onSuccess(MerchantPageBean data, String SucMessage) {
+
+                HomeMerchantAdapter merchantAdapter = new HomeMerchantAdapter(data.getList());
+                mBinding.rvMerchant.setLayoutManager(
+                        new LinearLayoutManager(mActivity, LinearLayout.HORIZONTAL, false));
+                mBinding.rvMerchant.setAdapter(merchantAdapter);
+
+                merchantAdapter.setOnItemClickListener((adapter, view, position) -> {
+                    MerchantPageBean.ListBean item = (MerchantPageBean.ListBean) adapter
+                            .getItem(position);
+                    CarMerchantDetailActivity.open(mActivity, item.getCode());
                 });
+
             }
 
             @Override
             protected void onFinish() {
-                disMissLoading();
+
             }
         });
-
     }
 
-    private void initOnclickLisenter() {
+    /**
+     * 获取精选车源数据
+     */
+    private void getSelectedData() {
+        showLoadingDialog();
+        Map<String, String> map = new HashMap<>();
+        map.put("status", "1");//0待上架，1已上架，2已下架
+        map.put("location", "0");//1 热门 0普通
+        map.put("start", "1");
+        map.put("limit", "200");
+        map.put("orderDir", "asc");
+        Call call = RetrofitUtils.createApi(MyApiServer.class)
+                .getCarTypePage("630492", StringUtils.getJsonToString(map));
+        call.enqueue(new BaseResponseModelCallBack<CarSelectPageBean>(mActivity) {
+
+            @Override
+            protected void onSuccess(CarSelectPageBean data, String SucMessage) {
+
+                homeSelectedAdapter = new HomeSelectedAdapter(data.getList());
+                mBinding.rv1.setLayoutManager(
+                        new LinearLayoutManager(mActivity, LinearLayout.HORIZONTAL, false));
+                mBinding.rv1.setAdapter(homeSelectedAdapter);
+
+                homeSelectedAdapter.setOnItemClickListener((adapter, view, position) -> {
+
+                    CarSelectPageBean.ListBean item = (CarSelectPageBean.ListBean) adapter
+                            .getItem(position);
+                    CarDetailsActivity.open(mActivity, item.getCode());
+                });
+
+            }
+
+            @Override
+            protected void onFinish() {
+
+            }
+        });
+    }
+
+    private void initOnclickListener() {
 
         mBinding.tvAll.setOnClickListener(v -> {
-            InformationActivity.open(mActivity);
+            EventBus.getDefault().post(2);
+//            InformationActivity.open(mActivity);
         });
         mBinding.tvPrice3050.setOnClickListener(v -> {
             HashMap<String, Serializable> map = new HashMap<>();
-            map.put("priceStart", 300000000 + "");
-            map.put("priceEnd", 500000000 + "");
-            CarSystemListActivity.open(mActivity, map);
+            map.put("priceStart", "300000000");
+            map.put("priceEnd", "500000000");
+            CarTypeListActivity.open(mActivity, map);
         });
         mBinding.tvPrice5070.setOnClickListener(v -> {
             HashMap<String, Serializable> map = new HashMap<>();
-            map.put("priceStart", 500000000 + "");
-            map.put("priceEnd", 700000000 + "");
-            CarSystemListActivity.open(mActivity, map);
+            map.put("priceStart", "500000000");
+            map.put("priceEnd", "700000000");
+            CarTypeListActivity.open(mActivity, map);
         });
         mBinding.tvPrice70.setOnClickListener(v -> {
             HashMap<String, Serializable> map = new HashMap<>();
-            map.put("priceStart", 700000000 + "");
+            map.put("priceStart", "700000000");
             map.put("priceEnd", "");
-            CarSystemListActivity.open(mActivity, map);
+            CarTypeListActivity.open(mActivity, map);
         });
         mBinding.tvPriceOther.setOnClickListener(v -> {
-            CarSystemListActivity.open(mActivity, true);
+            HashMap<String, Serializable> map = new HashMap<>();
+            map.put("priceStart", "");
+            map.put("priceEnd", "");
+            map.put("isMore", "1");
+            CarTypeListActivity.open(mActivity, map);
         });
     }
 
@@ -242,6 +330,7 @@ public class HomeFragment extends BaseLazyFragment {
                 initBannerData();
                 initBrandData();
                 initCarSystemData();
+                getMerchantData();
                 getSelectedData();
             }
 
@@ -254,8 +343,9 @@ public class HomeFragment extends BaseLazyFragment {
             public RecyclerView.Adapter getAdapter(List listData) {
                 InformationAdapter informationAdapter = new InformationAdapter(listData);
                 informationAdapter.setOnItemClickListener((adapter, view, position) -> {
-                    InformationBean.ListBean item = (InformationBean.ListBean) adapter.getItem(position);
-                    WebViewArticleActivity.openContent(mActivity, item.getTitle(), item.getAuthor(), item.getUpdateDatetime(), item.getContext());
+                    InformationListBean.ListBean item = (InformationListBean.ListBean) adapter
+                            .getItem(position);
+                    WebViewArticleActivity.open(mActivity, item.getCode());
                 });
                 return informationAdapter;
             }
@@ -265,69 +355,36 @@ public class HomeFragment extends BaseLazyFragment {
                 getInformation(pageindex, limit, isShowDialog);
             }
         });
-        mBinding.rv2.setLayoutManager(new LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false) {
-            @Override
-            public boolean canScrollVertically() {
-                return false;
-            }
-        });
+        mBinding.rv2.setLayoutManager(
+                new LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false) {
+                    @Override
+                    public boolean canScrollVertically() {
+                        return false;
+                    }
+                });
         mRefreshHelper.init(10);
 
     }
 
-    /**
-     * 获取精选车源数据
-     */
-    private void getSelectedData() {
-        showLoadingDialog();
-        Map<String, String> map = new HashMap<>();
-        map.put("status", "1");//0待上架，1已上架，2已下架
-        map.put("location", "0");//1 热门 0普通
-        map.put("orderDir", "asc");
-        Call<BaseResponseListModel<CarSystemListBean>> selectCarList = RetrofitUtils.createApi(MyApiServer.class).getSelectCarList("630426", StringUtils.getJsonToString(map));
-        selectCarList.enqueue(new BaseResponseListCallBack<CarSystemListBean>(mActivity) {
-            @Override
-            protected void onSuccess(List<CarSystemListBean> data, String SucMessage) {
-                List<CarSystemListBean.CarsBean> carData = new ArrayList<>();
-                for (CarSystemListBean datum : data) {
-                    carData.addAll(datum.getCars());
-                }
-
-                homeSelectedAdaapter = new HomeSelectedAdaapter(carData);
-                mBinding.rv1.setLayoutManager(new LinearLayoutManager(mActivity, LinearLayout.HORIZONTAL, false));
-                mBinding.rv1.setAdapter(homeSelectedAdaapter);
-
-                homeSelectedAdaapter.setOnItemClickListener((adapter, view, position) -> {
-
-                    CarSystemListBean.CarsBean item = (CarSystemListBean.CarsBean) adapter.getItem(position);
-                    CarDetailsActivity.open(mActivity, item.getCode());
-                });
-            }
-
-
-            @Override
-            protected void onFinish() {
-
-            }
-        });
-    }
 
     /**
      * 获取资讯数据
      */
     private void getInformation(int pageindex, int limit, boolean isShowDialog) {
-        if (isShowDialog)
+        if (isShowDialog) {
             showLoadingDialog();
+        }
         Map<String, String> map = new HashMap<>();
         map.put("limit", limit + "");
         map.put("start", pageindex + "");
         map.put("status", "1");//0待上架，1已上架，2已下架
-//        map.put("tag", "1");
-//        map.put("title", "1");
-        Call<BaseResponseModel<InformationBean>> information = RetrofitUtils.createApi(MyApiServer.class).getInformation("630455", StringUtils.getJsonToString(map));
-        information.enqueue(new BaseResponseModelCallBack<InformationBean>(mActivity) {
+        map.put("location", "0");//1 热门 0普通
+        Call<BaseResponseModel<InformationListBean>> information = RetrofitUtils
+                .createApi(MyApiServer.class)
+                .getInformationList("630455", StringUtils.getJsonToString(map));
+        information.enqueue(new BaseResponseModelCallBack<InformationListBean>(mActivity) {
             @Override
-            protected void onSuccess(InformationBean data, String SucMessage) {
+            protected void onSuccess(InformationListBean data, String SucMessage) {
                 mRefreshHelper.setData(data.getList(), "暂无资讯", 0);
             }
 
@@ -357,7 +414,8 @@ public class HomeFragment extends BaseLazyFragment {
 
                 if (firstPageBanner.getUrl() != null) {
                     if (firstPageBanner.getUrl().indexOf("http") != -1) {
-                        CdRouteHelper.openWebViewActivityForUrl(firstPageBanner.getName(), firstPageBanner.getUrl());
+                        CdRouteHelper.openWebViewActivityForUrl(firstPageBanner.getName(),
+                                firstPageBanner.getUrl());
                     }
                 }
             }

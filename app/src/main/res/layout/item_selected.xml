@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="140dp"
+    android:layout_width="130dp"
     android:layout_height="wrap_content"
     android:layout_marginLeft="15dp"
     android:background="@color/white"
@@ -22,7 +22,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:textColor="@color/text_black_cd"
-        android:textSize="12sp"
+        android:textSize="14sp"
         android:text="抱抱抱抱抱抱抱抱抱抱抱抱抱抱抱抱抱抱" />
 
     <LinearLayout
@@ -43,6 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="900人关注"
+            android:textSize="12sp"
             android:textColor="@color/text_999" />
     </LinearLayout>
 

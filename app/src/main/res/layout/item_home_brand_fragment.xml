@@ -31,6 +31,7 @@
     </LinearLayout>
 
     <TextView
+        android:visibility="gone"
         android:id="@+id/tv_lien"
         android:layout_width="1dp"
         android:layout_height="24dp"

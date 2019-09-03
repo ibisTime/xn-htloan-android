@@ -100,7 +100,7 @@ public class SelectedFragment extends BaseLazyFragment {
 
         mBinding.btnSubmit.setOnClickListener(v -> {
             if (!TextUtils.isEmpty(strSelect)) {
-                CarSystemListActivity.open(mActivity, map);
+                CarTypeListActivity.open(mActivity, map);
             } else {
                 UITipDialog.showFall(mActivity, "请选择要筛选的条件");
             }
@@ -473,13 +473,13 @@ public class SelectedFragment extends BaseLazyFragment {
 
         if (TextUtils.isEmpty(strSelect)) {
             mBinding.tvSelect.setText("");
-            mBinding.btnSubmit.setText("有0款车型符合要求");
+//            mBinding.btnSubmit.setText("有0款车型符合要求");
         } else {
             mBinding.tvSelect.setText(strSelect);
-            //h获取有多少辆车匹配
-            if (carSystemlListDatas != null)
-                carSystemlListDatas.cancel();
-            getMatchingCarNumber();
+//            //h获取有多少辆车匹配
+//            if (carSystemlListDatas != null)
+//                carSystemlListDatas.cancel();
+//            getMatchingCarNumber();
         }
     }
 

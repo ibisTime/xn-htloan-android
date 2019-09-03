@@ -18,6 +18,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.cdkj.baselibrary.appmanager.MyCdConfig;
+import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.model.IntroductionInfoModel;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
@@ -25,6 +26,9 @@ import com.cdkj.baselibrary.utils.DateUtil;
 import com.cdkj.baselibrary.utils.LogUtil;
 import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.R;
+import com.cdkj.huatuweitong.api.MyApiServer;
+import com.cdkj.huatuweitong.bean.InformationListBean;
+import com.cdkj.huatuweitong.bean.MsgListModel;
 import com.cdkj.huatuweitong.databinding.ActivityWebviewArticleBinding;
 
 import java.util.HashMap;
@@ -47,60 +51,23 @@ public class WebViewArticleActivity extends AbsActivity {
     /**
      * 加载activity
      *
-     * @param activity 上下文
+     * @param context 上下文
      */
-    public static void openkey(Activity activity, String title, String code) {
-        if (activity == null) {
+    public static void open(Context context, String code) {
+        if (context == null) {
             return;
         }
 
-        Intent intent = new Intent(activity, WebViewArticleActivity.class);
+        Intent intent = new Intent(context, WebViewArticleActivity.class);
         intent.putExtra("code", code);
-        intent.putExtra("title", title);
-        activity.startActivity(intent);
+        context.startActivity(intent);
 
     }
-
-    /**
-     * 加载activity,加载富文本
-     *
-     * @param activity 上下文
-     */
-    public static void openContent(Context activity, String title, String author,String date,String content) {
-        if (activity == null) {
-            return;
-        }
-
-        Intent intent = new Intent(activity, WebViewArticleActivity.class);
-        intent.putExtra("content", content);
-        intent.putExtra("title", title);
-        intent.putExtra("author", author);
-        intent.putExtra("date", date);
-        activity.startActivity(intent);
-
-    }
-
-    /**
-     * 加载activity
-     *
-     * @param activity 上下文
-     */
-    public static void openURL(Activity activity, String title, String url) {
-        if (activity == null) {
-            return;
-        }
-
-        Intent intent = new Intent(activity, WebViewArticleActivity.class);
-        intent.putExtra("url", url);
-        intent.putExtra("title", title);
-        activity.startActivity(intent);
-
-    }
-
 
     @Override
     public View addMainView() {
-        mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.activity_webview_article, null, false);
+        mBinding = DataBindingUtil
+                .inflate(getLayoutInflater(), R.layout.activity_webview_article, null, false);
         return mBinding.getRoot();
     }
 
@@ -116,7 +83,8 @@ public class WebViewArticleActivity extends AbsActivity {
 
     private void initLayout() {
         //输入法
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE | WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE
+                | WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         mBinding.webview.getSettings().setJavaScriptEnabled(true);//js
         mBinding.webview.getSettings().setDefaultTextEncodingName("UTF-8");
@@ -150,9 +118,11 @@ public class WebViewArticleActivity extends AbsActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(WebViewArticleActivity.this);
                 builder.setMessage("ssl证书验证失败");
                 builder.setPositiveButton("继续", (dialog, which) -> mHandler.proceed());
-                builder.setNegativeButton(com.cdkj.baselibrary.R.string.cancel, (dialog, which) -> mHandler.cancel());
+                builder.setNegativeButton(com.cdkj.baselibrary.R.string.cancel,
+                        (dialog, which) -> mHandler.cancel());
                 builder.setOnKeyListener((dialog, keyCode, event) -> {
-                    if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                    if (event.getAction() == KeyEvent.ACTION_UP
+                            && keyCode == KeyEvent.KEYCODE_BACK) {
                         mHandler.cancel();
                         dialog.dismiss();
                         return true;
@@ -172,54 +142,36 @@ public class WebViewArticleActivity extends AbsActivity {
             return;
         }
 
-        setTopTitle("文章");
-//        setTopTitle(getIntent().getStringExtra("title"));
-        String url = getIntent().getStringExtra("url");
-        if (TextUtils.isEmpty(url)) {
-
-            if (TextUtils.isEmpty(getIntent().getStringExtra("content"))) {
-                getKeyUrl(getIntent().getStringExtra("code"));
-            } else {
-                mBinding.tvArticleTitle.setText(getIntent().getStringExtra("title"));
-                mBinding.tvAuthor.setText(getIntent().getStringExtra("author"));
-                String date = DateUtil.formatStringData(getIntent().getStringExtra("date"), DateUtil.DATE_YMD);
-                mBinding.tvDate.setText(date);
-
-                showContent(getIntent().getStringExtra("content"));
-            }
-        } else {
-
-            LogUtil.E("打开url" + url);
-            mBinding.webview.loadUrl(url);
-        }
-
+        getDetail(getIntent().getStringExtra("code"));
     }
 
 
-    public void getKeyUrl(String key) {
-
-        if (TextUtils.isEmpty(key)) {
-            return;
-        }
+    public void getDetail(String code) {
 
         Map<String, String> map = new HashMap<>();
-        map.put("key", key);
-        map.put("systemCode", MyCdConfig.SYSTEM_CODE);
-        map.put("companyCode", MyCdConfig.COMPANY_CODE);
+        map.put("code", code + "");
+        map.put("userId", SPUtilHelper.getUserId());
+        map.put("token", SPUtilHelper.getUserToken());
 
-        Call call = RetrofitUtils.getBaseAPiService().getKeySystemInfo("630047", StringUtils.getJsonToString(map));
+        Call call = RetrofitUtils.createApi(MyApiServer.class)
+                .getInformation("630456", StringUtils.getJsonToString(map));
 
         addCall(call);
 
         showLoadingDialog();
 
-        call.enqueue(new BaseResponseModelCallBack<IntroductionInfoModel>(this) {
+        call.enqueue(new BaseResponseModelCallBack<InformationListBean.ListBean>(this) {
             @Override
-            protected void onSuccess(IntroductionInfoModel data, String SucMessage) {
-                if (TextUtils.isEmpty(data.getCvalue())) {
-                    return;
-                }
-                showContent(data.getCvalue());
+            protected void onSuccess(InformationListBean.ListBean bean, String SucMessage) {
+
+                setTopTitle("文章");
+                mBinding.tvArticleTitle.setText(bean.getTitle());
+                mBinding.tvAuthor.setText(bean.getAuthor());
+                String date = DateUtil
+                        .formatStringData(bean.getUpdateDatetime(), DateUtil.DATE_YMD);
+                mBinding.tvDate.setText(date);
+
+                showContent(bean.getContext());
             }
 
             @Override
@@ -237,6 +189,7 @@ public class WebViewArticleActivity extends AbsActivity {
 
 
     private class MyWebViewClient1 extends WebChromeClient {
+
         @Override
         public void onProgressChanged(WebView view, int newProgress) {
             mBinding.pb.setProgress(newProgress);
