@@ -1,5 +1,6 @@
 package com.cdkj.huatuweitong.bean;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -7,7 +8,7 @@ import java.util.List;
  * @author : qianLei
  * @since : 2019/8/29 15:07
  */
-public class CarBean {
+public class CarBean implements Serializable {
 
 
     /**
@@ -65,6 +66,7 @@ public class CarBean {
     private String seriesCode;
     private String brandCode;
     private String brandName;
+    private String seriesName;
     private String version;
     private String displacement;
     private String fromPlace;
@@ -97,6 +99,8 @@ public class CarBean {
     private String updateDatetime;
     private String updaterName;
     private String isCollect;
+    private String level;
+    private String configName;
     private int collectNumber;
     private List<CaonfigListBean> caonfigList;
     private List<ConfigsBean> configs;
@@ -171,6 +175,14 @@ public class CarBean {
 
     public void setBrandName(String brandName) {
         this.brandName = brandName;
+    }
+
+    public String getSeriesName() {
+        return seriesName;
+    }
+
+    public void setSeriesName(String seriesName) {
+        this.seriesName = seriesName;
     }
 
     public String getVersion() {
@@ -453,7 +465,23 @@ public class CarBean {
         this.configs = configs;
     }
 
-    public static class CaonfigListBean {
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    public String getConfigName() {
+        return configName;
+    }
+
+    public void setConfigName(String configName) {
+        this.configName = configName;
+    }
+
+    public static class CaonfigListBean implements Serializable {
 
         /**
          * code : CCC201908291502333028508
@@ -509,7 +537,7 @@ public class CarBean {
             this.configName = configName;
         }
 
-        public static class ConfigBean {
+        public static class ConfigBean implements Serializable {
 
             /**
              * code : CC201904121426272621096
@@ -587,7 +615,7 @@ public class CarBean {
         }
     }
 
-    public static class ConfigsBean {
+    public static class ConfigsBean implements Serializable {
 
         /**
          * code : CC201904121426272621096

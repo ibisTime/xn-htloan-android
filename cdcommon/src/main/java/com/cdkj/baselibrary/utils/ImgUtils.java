@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
@@ -120,6 +121,8 @@ public class ImgUtils {
                 LogUtil.E("图片加载错误");
             }
         }
+
+        Log.e("loadLogo",imgid+"");
     }
 
     public static void loadQiniuLogo(Object obj, String imgid, ImageView img) {

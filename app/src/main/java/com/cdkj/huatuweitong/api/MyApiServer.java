@@ -315,39 +315,6 @@ public interface MyApiServer {
     Call<BaseResponseModel<AccountListModel>> getAccount(@Field("code") String code, @Field("json") String json);
 
     /**
-     * 车系(品牌)分页查询
-     *
-     * @param code
-     * @param json
-     * @return
-     */
-    @FormUrlEncoded
-    @POST("api")
-    Call<BaseResponseModel<ResponseInListModel<CarBrandActivityBean>>> getCarBrandDatas(@Field("code") String code, @Field("json") String json);
-
-    /**
-     * 车系分页查询
-     *
-     * @param code
-     * @param json
-     * @return
-     */
-    @FormUrlEncoded
-    @POST("api")
-    Call<BaseResponseModel<ResponseInListModel<CarSystemActivityBean>>> getCarSystemlDatas(@Field("code") String code, @Field("json") String json);
-
-    /**
-     * 车型分页查询
-     *
-     * @param code
-     * @param json
-     * @return
-     */
-    @FormUrlEncoded
-    @POST("api")
-    Call<BaseResponseListModel<CarModelActivityBean>> getCarModelDatas(@Field("code") String code, @Field("json") String json);
-
-    /**
      * 我的账户人民币金额
      *
      * @param code 802503

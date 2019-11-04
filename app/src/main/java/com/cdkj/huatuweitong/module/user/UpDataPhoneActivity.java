@@ -31,6 +31,8 @@ public class UpDataPhoneActivity extends AbsBaseLoadActivity implements SendCode
     ActivityUpDataPhoneBinding mBinding;
     private SendPhoneCoodePresenter mSendCOdePresenter;
 
+    private boolean isOld = true;
+
     public static void open(Context context) {
         if (context != null) {
             Intent intent = new Intent(context, UpDataPhoneActivity.class);
@@ -47,26 +49,38 @@ public class UpDataPhoneActivity extends AbsBaseLoadActivity implements SendCode
     @Override
     public void afterCreate(Bundle savedInstanceState) {
         mBaseBinding.titleView.setMidTitle(getString(R.string.UpDataPhoneActivityTitle));
+        mBinding.etOldPhone.setText(SPUtilHelper.getUserPhoneNum());
 
         mSendCOdePresenter = new SendPhoneCoodePresenter(this);
 
         mBinding.btnCheckCode.setOnClickListener(v -> {
 
-            mSendCOdePresenter.sendCodeRequest(mBinding.etPhone.getText().toString(), "805061", MyCdConfig.USERTYPE, UpDataPhoneActivity.this);
+            isOld = true;
+            mSendCOdePresenter.sendCodeRequest(SPUtilHelper.getUserPhoneNum(), "805061", MyCdConfig.USERTYPE, UpDataPhoneActivity.this);
+
+        });
+
+        mBinding.btnNewCheckCode.setOnClickListener(v -> {
+
+            isOld = false;
+            mSendCOdePresenter.sendCodeRequest(mBinding.etNewPhone.getText().toString(), "805061", MyCdConfig.USERTYPE, UpDataPhoneActivity.this);
 
         });
 
         mBinding.btnYesUpdataPsw.setOnClickListener(v -> {
-
-            if (TextUtils.isEmpty(mBinding.etPhone.getText().toString())) {
-                UITipDialog.showFall(UpDataPhoneActivity.this, getString(com.cdkj.baselibrary.R.string.please_input_phone));
-                return;
-            }
             if (TextUtils.isEmpty(mBinding.etCheckCode.getText().toString())) {
                 UITipDialog.showFall(UpDataPhoneActivity.this, getString(com.cdkj.baselibrary.R.string.please_input_verification_code));
                 return;
             }
-            reqeustUpPhoneNumber();
+            if (TextUtils.isEmpty(mBinding.etNewPhone.getText().toString())) {
+                UITipDialog.showFall(UpDataPhoneActivity.this, getString(com.cdkj.baselibrary.R.string.please_input_phone));
+                return;
+            }
+            if (TextUtils.isEmpty(mBinding.etNewCheckCode.getText().toString())) {
+                UITipDialog.showFall(UpDataPhoneActivity.this, getString(com.cdkj.baselibrary.R.string.please_input_verification_code));
+                return;
+            }
+            requestUpPhoneNumber();
         });
 
 
@@ -75,11 +89,13 @@ public class UpDataPhoneActivity extends AbsBaseLoadActivity implements SendCode
     /**
      * 请求接口修改手机号
      */
-    private void reqeustUpPhoneNumber() {
+    private void requestUpPhoneNumber() {
         HashMap<String, String> hashMap = new LinkedHashMap<String, String>();
         showLoadingDialog();
-        hashMap.put("newMobile", mBinding.etPhone.getText().toString());
-        hashMap.put("smsCaptcha", mBinding.etCheckCode.getText().toString());
+        hashMap.put("oldMobile", mBinding.etOldPhone.getText().toString());
+        hashMap.put("oldCaptcha", mBinding.etCheckCode.getText().toString());
+        hashMap.put("newMobile", mBinding.etNewPhone.getText().toString());
+        hashMap.put("newCaptcha", mBinding.etNewCheckCode.getText().toString());
         hashMap.put("userId", SPUtilHelper.getUserId());
 
         Call call = RetrofitUtils.getBaseAPiService().successRequest("805061", StringUtils.getJsonToString(hashMap));
@@ -88,7 +104,7 @@ public class UpDataPhoneActivity extends AbsBaseLoadActivity implements SendCode
             @Override
             protected void onSuccess(IsSuccessModes data, String SucMessage) {
                 if (data.isSuccess()) {
-                    SPUtilHelper.saveUserPhoneNum(mBinding.etPhone.getText().toString());
+                    SPUtilHelper.saveUserPhoneNum(mBinding.etNewPhone.getText().toString());
                     UITipDialog.showSuccess(UpDataPhoneActivity.this, getString(R.string.noupdata_phone_succer),dialog -> finish() );
                 } else {
                     UITipDialog.showFall(UpDataPhoneActivity.this, getString(R.string.noupdata_phone));
@@ -97,7 +113,6 @@ public class UpDataPhoneActivity extends AbsBaseLoadActivity implements SendCode
 
             @Override
             protected void onReqFailure(String errorCode, String errorMessage) {
-                // super.onReqFailure(errorCode, errorMessage);
                 Log.i("pppppp", "onReqFailure: "+errorMessage);
                 UITipDialog.showFall(UpDataPhoneActivity.this, errorMessage);
             }
@@ -114,7 +129,14 @@ public class UpDataPhoneActivity extends AbsBaseLoadActivity implements SendCode
 
     @Override
     public void CodeSuccess(String msg) {
-        mSubscription.add(AppUtils.startCodeDown(60, mBinding.btnCheckCode));
+        if (isOld){
+            mSubscription.add(AppUtils.startCodeDown(60, mBinding.btnCheckCode));
+        }else {
+            mSubscription.add(AppUtils.startCodeDown(60, mBinding.btnNewCheckCode));
+        }
+
+
+
     }
 
     @Override

@@ -8,10 +8,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
+import com.cdkj.baselibrary.api.BaseResponseListModel;
 import com.cdkj.baselibrary.api.BaseResponseModel;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.interfaces.BaseRefreshCallBack;
 import com.cdkj.baselibrary.interfaces.RefreshHelper;
+import com.cdkj.baselibrary.nets.BaseResponseListCallBack;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
 import com.cdkj.baselibrary.utils.ImgUtils;
@@ -26,6 +28,8 @@ import com.cdkj.huatuweitong.common.WebViewArticleActivity;
 import com.cdkj.huatuweitong.databinding.ActivityCarMerchantDetailBinding;
 import retrofit2.Call;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,6 +45,8 @@ public class CarMerchantDetailActivity extends AbsBaseLoadActivity {
     private String code;
 
     private RefreshHelper mRefreshHelper;
+
+    private List<DataDictionaryBean> list = new ArrayList<>();
 
     public static void open(Context context, String code) {
         Intent intent = new Intent(context, CarMerchantDetailActivity.class);
@@ -64,9 +70,7 @@ public class CarMerchantDetailActivity extends AbsBaseLoadActivity {
         init();
         initListener();
 
-        initRefreshHelper();
-        getMerchantData();
-        getSelectedData();
+        getCarNumber();
     }
 
     private void init() {
@@ -111,7 +115,11 @@ public class CarMerchantDetailActivity extends AbsBaseLoadActivity {
 
             MerchantBean.BrandListBean item = (MerchantBean.BrandListBean) adapter
                     .getItem(position);
-            CarSystemListActivity.open(this, item.getCode());
+
+            HashMap<String, Serializable> map = new HashMap<>();
+            map.put("brandCode", item.getCode());
+            map.put("carDealerCode", code);
+            CarTypeListActivity.open(this, map);
         });
 
         mBinding.rvMainBusiness
@@ -149,7 +157,7 @@ public class CarMerchantDetailActivity extends AbsBaseLoadActivity {
 
                         mAdapter.setOnItemClickListener((adapter, view, position) -> {
 
-                            CarSelectPageBean.ListBean item = (CarSelectPageBean.ListBean) adapter
+                            CarBean item = (CarBean) adapter
                                     .getItem(position);
                             CarDetailsActivity.open(CarMerchantDetailActivity.this, item.getCode());
                         });
@@ -166,6 +174,42 @@ public class CarMerchantDetailActivity extends AbsBaseLoadActivity {
     }
 
     /**
+     * 获取规格的值
+     */
+    private void getCarNumber() {
+        Map<String, String> map = new HashMap<>();
+        map.put("parentKey", "car_news_tag");
+
+        showLoadingDialog();
+        Call<BaseResponseListModel<DataDictionaryBean>> dataDictionary = RetrofitUtils
+                .createApi(MyApiServer.class)
+                .getDataDictionary("630036", StringUtils.getJsonToString(map));
+        addCall(dataDictionary);
+        dataDictionary.enqueue(new BaseResponseListCallBack<DataDictionaryBean>(this) {
+            @Override
+            protected void onSuccess(List<DataDictionaryBean> data, String SucMessage) {
+
+                if (data != null) {
+                    list.addAll(data);
+                }
+
+            }
+
+            @Override
+            protected void onFinish() {
+                disMissLoading();
+
+                initRefreshHelper();
+                mRefreshHelper.init(10);
+                mRefreshHelper.onDefaluteMRefresh(true);
+
+
+            }
+        });
+
+    }
+
+    /**
      * 获取微车资讯数据
      */
     private void initRefreshHelper() {
@@ -177,21 +221,13 @@ public class CarMerchantDetailActivity extends AbsBaseLoadActivity {
             }
 
             @Override
-            public void onRefresh(int pageindex, int limit) {
-                super.onRefresh(pageindex, limit);
-
-                getMerchantData();
-                getSelectedData();
-            }
-
-            @Override
             public RecyclerView getRecyclerView() {
                 return mBinding.rvActive;
             }
 
             @Override
             public RecyclerView.Adapter getAdapter(List listData) {
-                InformationAdapter informationAdapter = new InformationAdapter(listData);
+                InformationAdapter informationAdapter = new InformationAdapter(listData, list);
                 informationAdapter.setOnItemClickListener((adapter, view, position) -> {
                     InformationListBean.ListBean item = (InformationListBean.ListBean) adapter
                             .getItem(position);
@@ -204,6 +240,9 @@ public class CarMerchantDetailActivity extends AbsBaseLoadActivity {
             @Override
             public void getListDataRequest(int pageindex, int limit, boolean isShowDialog) {
                 getInformation(pageindex, limit, isShowDialog);
+
+                getMerchantData();
+                getSelectedData();
             }
         });
 
@@ -214,7 +253,6 @@ public class CarMerchantDetailActivity extends AbsBaseLoadActivity {
                         return false;
                     }
                 });
-        mRefreshHelper.init(10);
 
     }
 
@@ -243,7 +281,7 @@ public class CarMerchantDetailActivity extends AbsBaseLoadActivity {
 
             @Override
             protected void onFinish() {
-
+                disMissLoading();
             }
         });
     }

@@ -123,7 +123,7 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
         });
 
         mBinding.llCalculator.setOnClickListener(v -> {
-//            CarLoanCalculator2Activity.open(this, currentBean);
+            CarLoanCalculator2Activity.open(this, currentBean);
         });
     }
 
@@ -204,7 +204,7 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
             fullDialogView = DataBindingUtil.inflate(getLayoutInflater(), R.layout.dailog_inquiry_layout, null, false);
             fullBottomDialog = new FullBottomDialog(this, fullDialogView.getRoot());
             fullDialogView.incMiddle.tvProductTitle.setText(currentBean.getName());
-            fullDialogView.incMiddle.tvType.setText(levelNumber + " " + currentBean.getOutsideColor() + " / " + currentBean.getInsideColor() + " " + currentBean.getFromPlace());
+            fullDialogView.incMiddle.tvType.setText(levelNumber + " 外观:" + currentBean.getOutsideColor() + " 内饰" + currentBean.getInsideColor() + " " + currentBean.getFromPlace());
             fullDialogView.incMiddle.tvDate.setText(DateUtil.formatStringData(currentBean.getUpdateDatetime(), DateUtil.DATE_YMD));
             fullDialogView.incMiddle.tvPrice.setText(MoneyUtils.formatNum(currentBean.getSalePrice()));
             ImgUtils.loadQiniuImg(this, currentBean.getPic(), fullDialogView.incMiddle.imgProduct);
@@ -425,7 +425,7 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
                         break;
                     }
                 }
-                mBinding.tvType.setText(levelNumber + currentBean.getOutsideColor() + " " + currentBean.getInsideColor() + " " + currentBean.getFromPlace());
+                mBinding.tvType.setText(levelNumber +" 外观:"+ currentBean.getOutsideColor() + " 内饰:" + currentBean.getInsideColor() + " " + currentBean.getFromPlace());
             }
 
             @Override

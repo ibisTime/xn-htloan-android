@@ -20,10 +20,7 @@ import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.adapters.CarListAdapter;
 import com.cdkj.huatuweitong.adapters.CarTypeListAdapter;
 import com.cdkj.huatuweitong.api.MyApiServer;
-import com.cdkj.huatuweitong.bean.CarSelectPageBean;
-import com.cdkj.huatuweitong.bean.CarSystemBean;
-import com.cdkj.huatuweitong.bean.CarSystemListBean;
-import com.cdkj.huatuweitong.bean.FirstPageBanner;
+import com.cdkj.huatuweitong.bean.*;
 import com.cdkj.huatuweitong.common.GlideFirstPageBannerImageLoader;
 import com.cdkj.huatuweitong.databinding.ActivityCarListBinding;
 import com.cdkj.huatuweitong.module.other.ImgGraidActivity;
@@ -42,11 +39,10 @@ public class CarListActivity extends AbsBaseLoadActivity {
 
     private ActivityCarListBinding mBinding;
     private RefreshHelper mRefreshHelper;
-    private String currentCode;
+    private String currentCode = "";
     private ArrayList<String> imgList = new ArrayList<>();
     private String title;
     private CarSystemBean currentBean;
-
 
     public static void open(Context context, String code) {
         Intent intent = new Intent(context, CarListActivity.class);
@@ -117,7 +113,7 @@ public class CarListActivity extends AbsBaseLoadActivity {
                 CarTypeListAdapter adapter = new CarTypeListAdapter(listData);
                 adapter.setOnItemClickListener((adapter1, view, position) -> {
 
-                    CarSelectPageBean.ListBean item = (CarSelectPageBean.ListBean) adapter1
+                    CarBean item = (CarBean) adapter1
                             .getItem(position);
                     CarDetailsActivity.open(CarListActivity.this, item.getCode());
                 });
@@ -165,67 +161,9 @@ public class CarListActivity extends AbsBaseLoadActivity {
         mBinding.banner.setImages(mBanners);
         mBinding.banner.start();
 
-//        List<CarSystemListBean.CarsBean> cars = currentBean.getCars();
-//        mRefreshHelper.setData(cars, "暂无车型数据", 0);
 
     }
-
-
-    /**
-     * 获取热门车系  跳转到性情界面
-     */
-    private void initDate(int pageindex, int limit, boolean isShowDialog) {
-        if (isShowDialog) {
-            showLoadingDialog();
-        }
-        Map<String, Serializable> map = new HashMap<>();
-        map.put("seriesCode", currentCode);
-        map.put("status", "1");
-
-        Call<BaseResponseListModel<CarSystemListBean>> carSystemlListDatas = RetrofitUtils
-                .createApi(MyApiServer.class)
-                .getCarSystemlListDatas("630426", StringUtils.getJsonToString(map));
-        addCall(carSystemlListDatas);
-        carSystemlListDatas.enqueue(new BaseResponseListCallBack<CarSystemListBean>(this) {
-            @Override
-            protected void onSuccess(List<CarSystemListBean> data, String SucMessage) {
-
-                if (data != null && data.size() > 0) {
-                    CarSystemListBean carSystemListBean = data.get(0);
-
-                    mBinding.tvNumber.setText(carSystemListBean.getPicNumber() + "");
-                    mBinding.tvPrice.setText(
-                            MoneyUtils.formatNum(carSystemListBean.getLowest()) + "-" + MoneyUtils
-                                    .formatNum(carSystemListBean.getHighest()));
-                    mBinding.tvTitle.setText(carSystemListBean.getName());
-                    title = carSystemListBean.getName();
-                    mBaseBinding.titleView.setMidTitle(title);
-                    //分割获取下页的图片数据
-                    String[] split = carSystemListBean.getAdvPic().split("\\|\\|");
-                    imgList.addAll(Arrays.asList(split));
-                    //构造轮播图数据
-                    ArrayList<FirstPageBanner> mBanners = new ArrayList<>();
-                    for (String s : imgList) {
-                        FirstPageBanner firstPageBanner = new FirstPageBanner();
-                        firstPageBanner.setPic(s);
-                        mBanners.add(firstPageBanner);
-                    }
-                    mBinding.banner.setImages(mBanners);
-                    mBinding.banner.start();
-
-                    List<CarSystemListBean.CarsBean> cars = carSystemListBean.getCars();
-                    mRefreshHelper.setData(cars, "暂无车型数据", 0);
-                } else {
-                    mRefreshHelper.setData(new ArrayList(), "暂无车型数据", 0);
-                }
-            }
-
-            @Override
-            protected void onFinish() {
-                disMissLoading();
-            }
-        });
-    }
+    
 
     private void initData(int pageindex, int limit, boolean isShowDialog) {
         if (isShowDialog) {
@@ -233,7 +171,10 @@ public class CarListActivity extends AbsBaseLoadActivity {
         }
         Map<String, Serializable> map = new HashMap<>();
 
-        map.put("seriesCode", currentBean.getCode());
+        if (currentBean!=null){
+            map.put("seriesCode", currentBean.getCode());
+        }
+
         map.put("start", pageindex + "");
         map.put("limit", limit + "");
 

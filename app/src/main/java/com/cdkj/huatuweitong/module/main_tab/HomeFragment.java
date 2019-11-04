@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.cdkj.baselibrary.api.BaseResponseListModel;
 import com.cdkj.baselibrary.api.BaseResponseModel;
 import com.cdkj.baselibrary.appmanager.CdRouteHelper;
 import com.cdkj.baselibrary.base.BaseLazyFragment;
@@ -52,6 +53,8 @@ public class HomeFragment extends BaseLazyFragment {
     private RefreshHelper mRefreshHelper;
     private HomeSelectedAdapter homeSelectedAdapter;
 
+    private List<DataDictionaryBean> list = new ArrayList<>();
+
     public static HomeFragment getInstance() {
         HomeFragment fragment = new HomeFragment();
         Bundle bundle = new Bundle();
@@ -79,18 +82,19 @@ public class HomeFragment extends BaseLazyFragment {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, null, false);
 
         initBanner();
-        initBannerData();
-        initBrandData();
-        initCarSystemData();
+        getBannerData();
+        getBrandData();
+        getCarSystemData();
         getMerchantData();
         getSelectedData();
-        initRefreshHelper();
-        mRefreshHelper.onDefaluteMRefresh(true);
+
+        getCarNumber();
+
         initOnclickListener();
         return mBinding.getRoot();
     }
 
-    private void initBannerData() {
+    private void getBannerData() {
         Map<String, String> map = RetrofitUtils.getRequestMap();
         map.put("location", "index_banner");
 
@@ -126,7 +130,7 @@ public class HomeFragment extends BaseLazyFragment {
     /**
      * 获取热门品牌数据  跳转到车系界面
      */
-    private void initBrandData() {
+    private void getBrandData() {
         showLoadingDialog();
         Map<String, String> map = new HashMap<>();
         map.put("status", "1");//0待上架，1已上架，2已下架
@@ -164,7 +168,7 @@ public class HomeFragment extends BaseLazyFragment {
     /**
      * 获取热门车系  跳转到性情界面
      */
-    private void initCarSystemData() {
+    private void getCarSystemData() {
         showLoadingDialog();
         Map<String, Serializable> map = new HashMap<>();
         map.put("status", "1");
@@ -233,7 +237,7 @@ public class HomeFragment extends BaseLazyFragment {
 
             @Override
             protected void onFinish() {
-
+                disMissLoading();
             }
         });
     }
@@ -263,7 +267,7 @@ public class HomeFragment extends BaseLazyFragment {
 
                 homeSelectedAdapter.setOnItemClickListener((adapter, view, position) -> {
 
-                    CarSelectPageBean.ListBean item = (CarSelectPageBean.ListBean) adapter
+                    CarBean item = (CarBean) adapter
                             .getItem(position);
                     CarDetailsActivity.open(mActivity, item.getCode());
                 });
@@ -272,7 +276,7 @@ public class HomeFragment extends BaseLazyFragment {
 
             @Override
             protected void onFinish() {
-
+                disMissLoading();
             }
         });
     }
@@ -280,8 +284,7 @@ public class HomeFragment extends BaseLazyFragment {
     private void initOnclickListener() {
 
         mBinding.tvAll.setOnClickListener(v -> {
-            EventBus.getDefault().post(2);
-//            InformationActivity.open(mActivity);
+            EventBus.getDefault().post(new EventBean().setTag("setCurrentIndex").setValue("2"));
         });
         mBinding.tvPrice3050.setOnClickListener(v -> {
             HashMap<String, Serializable> map = new HashMap<>();
@@ -311,6 +314,39 @@ public class HomeFragment extends BaseLazyFragment {
     }
 
     /**
+     * 获取规格的值
+     */
+    private void getCarNumber() {
+        Map<String, String> map = new HashMap<>();
+        map.put("parentKey", "car_news_tag");
+
+        showLoadingDialog();
+        Call<BaseResponseListModel<DataDictionaryBean>> dataDictionary = RetrofitUtils
+                .createApi(MyApiServer.class)
+                .getDataDictionary("630036", StringUtils.getJsonToString(map));
+        addCall(dataDictionary);
+        dataDictionary.enqueue(new BaseResponseListCallBack<DataDictionaryBean>(mActivity) {
+            @Override
+            protected void onSuccess(List<DataDictionaryBean> data, String SucMessage) {
+
+                if (data != null) {
+                    list.addAll(data);
+                }
+
+            }
+
+            @Override
+            protected void onFinish() {
+                disMissLoading();
+
+                initRefreshHelper();
+                mRefreshHelper.onDefaluteMRefresh(true);
+            }
+        });
+
+    }
+
+    /**
      * 获取微车资讯数据
      */
     private void initRefreshHelper() {
@@ -327,9 +363,9 @@ public class HomeFragment extends BaseLazyFragment {
                 //刷新回调
 //                initCarRecommendBeanData();
 //                getBannerDataRequest();
-                initBannerData();
-                initBrandData();
-                initCarSystemData();
+                getBannerData();
+                getBrandData();
+                getCarSystemData();
                 getMerchantData();
                 getSelectedData();
             }
@@ -341,7 +377,7 @@ public class HomeFragment extends BaseLazyFragment {
 
             @Override
             public RecyclerView.Adapter getAdapter(List listData) {
-                InformationAdapter informationAdapter = new InformationAdapter(listData);
+                InformationAdapter informationAdapter = new InformationAdapter(listData, list);
                 informationAdapter.setOnItemClickListener((adapter, view, position) -> {
                     InformationListBean.ListBean item = (InformationListBean.ListBean) adapter
                             .getItem(position);
@@ -390,7 +426,7 @@ public class HomeFragment extends BaseLazyFragment {
 
             @Override
             protected void onFinish() {
-
+                disMissLoading();
             }
         });
     }

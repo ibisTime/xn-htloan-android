@@ -270,7 +270,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
-                            android:text="精选车源"
+                            android:text="精选车型"
                             android:textColor="#ff333333"
                             android:textSize="16sp"
                             />

@@ -17,9 +17,11 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.cdkj.baselibrary.api.BaseResponseListModel;
 import com.cdkj.baselibrary.appmanager.MyCdConfig;
 import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.model.IntroductionInfoModel;
+import com.cdkj.baselibrary.nets.BaseResponseListCallBack;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
 import com.cdkj.baselibrary.utils.DateUtil;
@@ -27,11 +29,14 @@ import com.cdkj.baselibrary.utils.LogUtil;
 import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.api.MyApiServer;
+import com.cdkj.huatuweitong.bean.DataDictionaryBean;
 import com.cdkj.huatuweitong.bean.InformationListBean;
 import com.cdkj.huatuweitong.bean.MsgListModel;
 import com.cdkj.huatuweitong.databinding.ActivityWebviewArticleBinding;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import retrofit2.Call;
@@ -46,7 +51,7 @@ public class WebViewArticleActivity extends AbsActivity {
 
     private ActivityWebviewArticleBinding mBinding;
 
-//    private WebView webView;
+    private List<DataDictionaryBean> list = new ArrayList<>();
 
     /**
      * 加载activity
@@ -142,9 +147,38 @@ public class WebViewArticleActivity extends AbsActivity {
             return;
         }
 
-        getDetail(getIntent().getStringExtra("code"));
+        getCarNumber();
+
     }
 
+    /**
+     * 获取规格的值
+     */
+    private void getCarNumber() {
+        Map<String, String> map = new HashMap<>();
+        map.put("parentKey", "car_news_tag");
+
+        showLoadingDialog();
+        Call<BaseResponseListModel<DataDictionaryBean>> dataDictionary = RetrofitUtils.createApi(MyApiServer.class).getDataDictionary("630036", StringUtils.getJsonToString(map));
+        addCall(dataDictionary);
+        dataDictionary.enqueue(new BaseResponseListCallBack<DataDictionaryBean>(this) {
+            @Override
+            protected void onSuccess(List<DataDictionaryBean> data, String SucMessage) {
+
+                if (data != null){
+                    list.addAll(data);
+                }
+
+            }
+
+            @Override
+            protected void onFinish() {
+                disMissLoading();
+                getDetail(getIntent().getStringExtra("code"));
+            }
+        });
+
+    }
 
     public void getDetail(String code) {
 
@@ -165,6 +199,16 @@ public class WebViewArticleActivity extends AbsActivity {
             protected void onSuccess(InformationListBean.ListBean bean, String SucMessage) {
 
                 setTopTitle("文章");
+
+                for (DataDictionaryBean dictionaryBean : list) {
+
+                    if (dictionaryBean.getDkey().equals(bean.getTag())){
+                        mBinding.tvYuanchuang.setText(dictionaryBean.getDvalue());
+                    }
+
+                }
+
+
                 mBinding.tvArticleTitle.setText(bean.getTitle());
                 mBinding.tvAuthor.setText(bean.getAuthor());
                 String date = DateUtil

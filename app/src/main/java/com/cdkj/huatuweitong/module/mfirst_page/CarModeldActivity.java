@@ -11,12 +11,14 @@ import com.cdkj.baselibrary.api.BaseResponseListModel;
 import com.cdkj.baselibrary.base.AbsRefreshListActivity;
 import com.cdkj.baselibrary.dialog.UITipDialog;
 import com.cdkj.baselibrary.nets.BaseResponseListCallBack;
+import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
 import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.adapters.CarModelAdapter;
 import com.cdkj.huatuweitong.api.MyApiServer;
-import com.cdkj.huatuweitong.bean.CarModelActivityBean;
-import com.cdkj.huatuweitong.bean.CarSystemActivityBean;
+import com.cdkj.huatuweitong.bean.CarBean;
+import com.cdkj.huatuweitong.bean.CarSelectPageBean;
+import com.cdkj.huatuweitong.bean.CarSystemBean;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import org.greenrobot.eventbus.EventBus;
@@ -27,11 +29,11 @@ import java.util.Map;
 
 import retrofit2.Call;
 
-public class CarModeldActivity extends AbsRefreshListActivity<CarModelActivityBean.CarsBean> {
+public class CarModeldActivity extends AbsRefreshListActivity<CarBean> {
 
-    private CarSystemActivityBean currentBean;
+    private CarSystemBean currentBean;
 
-    public static void open(Context context, CarSystemActivityBean carBrandActivityBean) {
+    public static void open(Context context, CarSystemBean carBrandActivityBean) {
         if (context != null) {
             Intent intent = new Intent(context, CarModeldActivity.class);
             intent.putExtra("bean", carBrandActivityBean);
@@ -41,7 +43,7 @@ public class CarModeldActivity extends AbsRefreshListActivity<CarModelActivityBe
     }
 
     @Override
-    public RecyclerView.Adapter getListAdapter(List<CarModelActivityBean.CarsBean> listData) {
+    public RecyclerView.Adapter getListAdapter(List<CarBean> listData) {
         CarModelAdapter adapter = new CarModelAdapter(listData);
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
@@ -62,9 +64,8 @@ public class CarModeldActivity extends AbsRefreshListActivity<CarModelActivityBe
     public void afterCreate(Bundle savedInstanceState) {
         mBaseBinding.titleView.setMidTitle("车型");
 
-
         if (getIntent() != null) {
-            currentBean = (CarSystemActivityBean) getIntent().getSerializableExtra("bean");
+            currentBean = (CarSystemBean) getIntent().getSerializableExtra("bean");
         }
         initRefreshHelper(10);
         mRefreshHelper.onDefaluteMRefresh(true);
@@ -79,21 +80,20 @@ public class CarModeldActivity extends AbsRefreshListActivity<CarModelActivityBe
         Map<String, String> map = new HashMap<>();
         map.put("start", pageindex + "");
         map.put("limit", limit + "");
-        map.put("location", "0");
         map.put("status", "1");
         map.put("brandCode", currentBean.getBrandCode());//品牌编号
         map.put("seriesCode", currentBean.getCode());//品牌编号
-        map.put("seriesName", currentBean.getName());//品牌编号
 
-        Call<BaseResponseListModel<CarModelActivityBean>> carModelDatas = RetrofitUtils.createApi(MyApiServer.class).getCarModelDatas("630426", StringUtils.getJsonToString(map));
-        addCall(carModelDatas);
+        Call call = RetrofitUtils.createApi(MyApiServer.class)
+                .getCarTypePage("630492", StringUtils.getJsonToString(map));
+        addCall(call);
         showLoadingDialog();
-        carModelDatas.enqueue(new BaseResponseListCallBack<CarModelActivityBean>(CarModeldActivity.this) {
+        call.enqueue(new BaseResponseModelCallBack<CarSelectPageBean>(CarModeldActivity.this) {
             @Override
-            protected void onSuccess(List<CarModelActivityBean> data, String SucMessage) {
-                if (data != null && data.size() > 0) {
+            protected void onSuccess(CarSelectPageBean data, String SucMessage) {
+                if (data != null && data.getList().size() > 0) {
 
-                    mRefreshHelper.setData(data.get(0).getCars(), "车型数据为空", 0);
+                    mRefreshHelper.setData(data.getList(), "车型数据为空", 0);
                 }
             }
 

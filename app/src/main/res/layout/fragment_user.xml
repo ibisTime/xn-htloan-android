@@ -11,7 +11,7 @@
         <TextView
             android:background="@color/colorPrimary"
             style="@style/title_top_style"
-            android:text="我的" />
+            android:text="玩会员" />
 
         <ScrollView
             android:layout_width="match_parent"

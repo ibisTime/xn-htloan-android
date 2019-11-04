@@ -13,10 +13,7 @@ import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.adapters.CarSystemListAdapter;
 import com.cdkj.huatuweitong.adapters.CarTypeListAdapter;
 import com.cdkj.huatuweitong.api.MyApiServer;
-import com.cdkj.huatuweitong.bean.CarSelectPageBean;
-import com.cdkj.huatuweitong.bean.CarSystemBean;
-import com.cdkj.huatuweitong.bean.CarSystemListBean;
-import com.cdkj.huatuweitong.bean.CarSystemPageBean;
+import com.cdkj.huatuweitong.bean.*;
 import retrofit2.Call;
 
 import java.io.Serializable;
@@ -26,9 +23,10 @@ import java.util.Map;
 
 public class CarTypeListActivity extends AbsRefreshListActivity {
 
-
     private HashMap<String, Serializable> selectMap;
 
+    private String brandCode;
+    private String carDealerCode;
 
     public static void open(Context context, HashMap selectMap) {
         Intent intent = new Intent(context, CarTypeListActivity.class);
@@ -51,7 +49,7 @@ public class CarTypeListActivity extends AbsRefreshListActivity {
     public RecyclerView.Adapter getListAdapter(List listData) {
         CarTypeListAdapter mAdapter = new CarTypeListAdapter(listData);
         mAdapter.setOnItemClickListener((adapter, view, position) -> {
-            CarSelectPageBean.ListBean item = (CarSelectPageBean.ListBean) mAdapter.getItem(position);
+            CarBean item = (CarBean) mAdapter.getItem(position);
             CarDetailsActivity.open(CarTypeListActivity.this, item.getCode());
         });
         return mAdapter;

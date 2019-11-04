@@ -1,7 +1,7 @@
 <resources>
     <!--<string name="app_name">浩源车网</string>-->
     <string name="app_name">微车生活名车体验馆</string>
-    <string name="mind">我的</string>
+    <string name="mind">玩会员</string>
     <string name="firstpage">首页</string>
     <string name="recommend_car">推荐车型</string>
     <string name="car_calculator">车贷计算器</string>

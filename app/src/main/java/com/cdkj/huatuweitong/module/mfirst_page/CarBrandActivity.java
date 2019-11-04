@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 
-import com.cdkj.baselibrary.api.ResponseInListModel;
 import com.cdkj.baselibrary.appmanager.CdRouteHelper;
 import com.cdkj.baselibrary.base.AbsRefreshListActivity;
 import com.cdkj.baselibrary.dialog.UITipDialog;
@@ -14,7 +13,7 @@ import com.cdkj.baselibrary.nets.RetrofitUtils;
 import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.adapters.CarBrandAdapter;
 import com.cdkj.huatuweitong.api.MyApiServer;
-import com.cdkj.huatuweitong.bean.CarBrandActivityBean;
+import com.cdkj.huatuweitong.bean.BrandPageBean;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -24,7 +23,7 @@ import java.util.Map;
 
 import retrofit2.Call;
 
-public class CarBrandActivity extends AbsRefreshListActivity<CarBrandActivityBean> {
+public class CarBrandActivity extends AbsRefreshListActivity<BrandPageBean.ListBean> {
 
     private boolean isCheckAll;
 
@@ -44,7 +43,7 @@ public class CarBrandActivity extends AbsRefreshListActivity<CarBrandActivityBea
     }
 
     @Override
-    public RecyclerView.Adapter getListAdapter(List<CarBrandActivityBean> listData) {
+    public RecyclerView.Adapter getListAdapter(List<BrandPageBean.ListBean> listData) {
         CarBrandAdapter adapter = new CarBrandAdapter(listData);
         adapter.setOnItemClickListener((adapter1, view, position) -> {
 
@@ -85,19 +84,17 @@ public class CarBrandActivity extends AbsRefreshListActivity<CarBrandActivityBea
         Map<String, String> map = new HashMap<>();
         map.put("start", pageindex + "");
         map.put("limit", limit + "");
-//        map.put("location", "1");//0 热门  1普通
         map.put("status", "1");
-        Call call = RetrofitUtils.createApi(MyApiServer.class).getCarBrandDatas("630405", StringUtils.getJsonToString(map));
+        Call call = RetrofitUtils.createApi(MyApiServer.class).getBrandPage("630490", StringUtils.getJsonToString(map));
         addCall(call);
-        call.enqueue(new BaseResponseModelCallBack<ResponseInListModel<CarBrandActivityBean>>(CarBrandActivity.this) {
+        call.enqueue(new BaseResponseModelCallBack<BrandPageBean>(CarBrandActivity.this) {
             @Override
-            protected void onSuccess(ResponseInListModel data, String SucMessage) {
+            protected void onSuccess(BrandPageBean data, String SucMessage) {
                 mRefreshHelper.setData(data.getList(), "品牌数据为空", 0);
             }
 
             @Override
             protected void onReqFailure(String errorCode, String errorMessage) {
-//                super.onReqFailure(errorCode, errorMessage);
                 UITipDialog.showFall(CarBrandActivity.this, errorMessage);
             }
 

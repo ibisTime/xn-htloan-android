@@ -8,6 +8,7 @@ import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -28,6 +29,7 @@ public class RowInfoLayout extends LinearLayout {
     private TextView tvUnreadNum;
     private TextView tvRight;
     private ImageView imgLeft;
+    private FrameLayout FlImgLeft;
     private ImageView imgRight;
     private String txtLeft;
     private String txtRight;
@@ -47,7 +49,8 @@ public class RowInfoLayout extends LinearLayout {
     public RowInfoLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        final TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RowInfoLayout, 0, 0);
+        final TypedArray typedArray = context
+                .obtainStyledAttributes(attrs, R.styleable.RowInfoLayout, 0, 0);
         txtLeft = typedArray.getString(R.styleable.RowInfoLayout_txt_left);
         txtRight = typedArray.getString(R.styleable.RowInfoLayout_txt_right);
         imgLeftId = typedArray.getResourceId(R.styleable.RowInfoLayout_img_left, 0);
@@ -77,9 +80,9 @@ public class RowInfoLayout extends LinearLayout {
         }
 
         if (imgLeftId != 0) {
-            imgLeft.setVisibility(VISIBLE);
+            FlImgLeft.setVisibility(VISIBLE);
         } else {
-            imgLeft.setVisibility(GONE);
+            FlImgLeft.setVisibility(GONE);
         }
         if (imgRightId != 0) {
             imgRight.setVisibility(VISIBLE);
@@ -113,9 +116,14 @@ public class RowInfoLayout extends LinearLayout {
         return tvRight.getText().toString();
     }
 
-    public void setUnreadNum(String num) {
-        tvUnreadNum.setText(num);
-        tvUnreadNum.setVisibility(VISIBLE);
+    public void setUnreadNum(Integer num) {
+        if (num > 0) {
+            tvUnreadNum.setVisibility(VISIBLE);
+        } else {
+            tvUnreadNum.setVisibility(GONE);
+        }
+
+        tvUnreadNum.setText(num+"");
     }
 
 
@@ -126,6 +134,7 @@ public class RowInfoLayout extends LinearLayout {
         tvUnreadNum = findViewById(R.id.tv_unread_num);
         tvRight = findViewById(R.id.tv_right);
         imgLeft = findViewById(R.id.img_left);
+        FlImgLeft = findViewById(R.id.fl_img_left);
         imgRight = findViewById(R.id.img_right);
     }
 

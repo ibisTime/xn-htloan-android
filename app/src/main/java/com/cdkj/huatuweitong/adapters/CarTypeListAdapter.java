@@ -6,6 +6,7 @@ import com.cdkj.baselibrary.utils.DateUtil;
 import com.cdkj.baselibrary.utils.ImgUtils;
 import com.cdkj.baselibrary.utils.MoneyUtils;
 import com.cdkj.huatuweitong.R;
+import com.cdkj.huatuweitong.bean.CarBean;
 import com.cdkj.huatuweitong.bean.CarSelectPageBean;
 import com.cdkj.huatuweitong.bean.CarSystemListBean;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -18,15 +19,14 @@ import java.util.List;
  * @updateDts 2018/5/22
  */
 
-public class CarTypeListAdapter extends
-        BaseQuickAdapter<CarSelectPageBean.ListBean, BaseViewHolder> {
+public class CarTypeListAdapter extends BaseQuickAdapter<CarBean, BaseViewHolder> {
 
-    public CarTypeListAdapter(@Nullable List<CarSelectPageBean.ListBean> data) {
+    public CarTypeListAdapter(@Nullable List<CarBean> data) {
         super(R.layout.item_car_list, data);//因为数据不全暂时先展示这个
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, CarSelectPageBean.ListBean item) {
+    protected void convert(BaseViewHolder helper, CarBean item) {
         ImgUtils.loadQiniuImg(mContext, item.getPic(), helper.getView(R.id.img_product));
         helper.setText(R.id.tv_product_title,
                 item.getBrandName() + "  " + item.getSeriesName() + "  " + item.getName());

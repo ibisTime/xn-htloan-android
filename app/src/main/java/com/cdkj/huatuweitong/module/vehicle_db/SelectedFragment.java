@@ -473,48 +473,9 @@ public class SelectedFragment extends BaseLazyFragment {
 
         if (TextUtils.isEmpty(strSelect)) {
             mBinding.tvSelect.setText("");
-//            mBinding.btnSubmit.setText("有0款车型符合要求");
         } else {
             mBinding.tvSelect.setText(strSelect);
-//            //h获取有多少辆车匹配
-//            if (carSystemlListDatas != null)
-//                carSystemlListDatas.cancel();
-//            getMatchingCarNumber();
         }
-    }
-
-
-    private void getMatchingCarNumber() {
-        Map<String, Serializable> mmap = new HashMap<>();
-        mmap.putAll(map);
-        mmap.put("status", "1");
-        carSystemlListDatas = RetrofitUtils.createApi(MyApiServer.class).getCarSystemlListDatas("630426", StringUtils.getJsonToString(mmap));
-        addCall(carSystemlListDatas);
-        carSystemlListDatas.enqueue(new BaseResponseListCallBack<CarSystemListBean>(mActivity) {
-            @Override
-            protected void onSuccess(List<CarSystemListBean> data, String SucMessage) {
-//                有168款车型符合要求data
-
-
-                int number = 0;
-                for (CarSystemListBean datum : data) {
-                    List<CarSystemListBean.CarsBean> cars = datum.getCars();
-                    number += cars.size();
-                }
-                mBinding.btnSubmit.setText("有" + number + "款车型符合要求");
-
-            }
-
-            @Override
-            protected void onReqFailure(String errorCode, String errorMessage) {
-                UITipDialog.showFall(mActivity, errorMessage);
-            }
-
-            @Override
-            protected void onFinish() {
-                disMissLoading();
-            }
-        });
     }
 
 }

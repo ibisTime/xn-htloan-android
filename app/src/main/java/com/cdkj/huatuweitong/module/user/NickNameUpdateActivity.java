@@ -45,6 +45,7 @@ public class NickNameUpdateActivity extends AbsBaseLoadActivity {
     public static void open(Context context, UserFragmentBean data) {
         if (context != null) {
             Intent intent = new Intent(context, NickNameUpdateActivity.class);
+            intent.putExtra("data", data);
             context.startActivity(intent);
         }
 
@@ -69,8 +70,21 @@ public class NickNameUpdateActivity extends AbsBaseLoadActivity {
         mBaseBinding.titleView.setMidTitle("个人信息");
         mBaseBinding.titleView.setRightTitle(getString(R.string.sure));
 
-        mBinding.etName.setText(SPUtilHelper.getUserName());
+        UserFragmentBean data = (UserFragmentBean) getIntent().getSerializableExtra("data");
+
+        mBinding.etName.setText(data.getNickname());
         mBinding.etName.setFilters(new NameLengthFilter[]{new NameLengthFilter(16)});
+
+        mBinding.etRealName.setText(data.getRealName());
+        mBinding.etId.setText(data.getIdNo());
+
+        mProvince = data.getProvince();
+        mCity = data.getCity();
+        mDistrict = data.getArea();
+
+        mBinding.tvLocation.setText(
+                String.format("%s%s%s", data.getProvince(), data.getCity(), data.getArea()));
+        mBinding.etAddress.setText(data.getAddress());
     }
 
     private void initListener() {
@@ -196,7 +210,7 @@ public class NickNameUpdateActivity extends AbsBaseLoadActivity {
                 EventBus.getDefault().post(nickNameUpdateModel);
 
                 UITipDialog.showSuccess(NickNameUpdateActivity.this,
-                        getString(R.string.update_nick_name_succ), dialogInterface -> {
+                        "信息保存成功", dialogInterface -> {
                             SPUtilHelper.saveUserName(string);
                             finish();
                         });

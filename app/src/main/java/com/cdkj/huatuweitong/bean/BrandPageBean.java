@@ -1,11 +1,12 @@
 package com.cdkj.huatuweitong.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * @updateDts 2019/3/13
  */
-public class BrandPageBean {
+public class BrandPageBean implements Serializable {
 
 
     /**
@@ -72,7 +73,7 @@ public class BrandPageBean {
         this.list = list;
     }
 
-    public static class ListBean {
+    public static class ListBean implements Serializable {
 
         /**
          * code : B201904131247298315740

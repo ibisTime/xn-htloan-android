@@ -105,7 +105,7 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
             return;
         }
         setUsetPotoImg();
-//        initData();
+        getUnreadCount();
     }
 
     @Override
@@ -130,7 +130,9 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
         call.enqueue(new BaseResponseModelCallBack<UserFragmentBean>(mActivity) {
             @Override
             protected void onSuccess(UserFragmentBean data, String SucMessage) {
+
                 ImgUtils.loadQiniuLogo(mActivity, data.getPhoto(), mBinding.imgUserLogo);
+
                 if (!TextUtils.isEmpty(data.getMobile()) && TextUtils.isEmpty(data.getNickname())) {
                     String defaultNick = "尾号为" + data.getMobile()
                             .substring(data.getMobile().length() - 4, data.getMobile().length());
@@ -424,9 +426,7 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
             @Override
             protected void onSuccess(Integer data, String SucMessage) {
                 if (data != null) {
-                    if (data > 0) {
-                        mBinding.rilMessage.setUnreadNum(data + "");
-                    }
+                    mBinding.rilMessage.setUnreadNum(data);
                 }
             }
 

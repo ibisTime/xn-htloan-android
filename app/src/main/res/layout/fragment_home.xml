@@ -8,6 +8,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:text="@string/app_name"
             style="@style/title_top_style" />
 
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
@@ -199,7 +200,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:text="精选车源"
+                            android:text="经典车型"
                             android:textColor="@color/text_black_cd"
                             android:textSize="16sp" />
 
@@ -236,7 +237,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:text="微车资讯"
+                            android:text="玩车资讯"
                             android:textColor="@color/text_black_cd"
                             android:textSize="16sp" />
 

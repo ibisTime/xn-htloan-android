@@ -14,9 +14,7 @@ import com.cdkj.baselibrary.nets.RetrofitUtils;
 import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.adapters.CarSystemAdapter;
 import com.cdkj.huatuweitong.api.MyApiServer;
-import com.cdkj.huatuweitong.bean.CarBrandActivityBean;
-import com.cdkj.huatuweitong.bean.CarModelActivityBean;
-import com.cdkj.huatuweitong.bean.CarSystemActivityBean;
+import com.cdkj.huatuweitong.bean.*;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import org.greenrobot.eventbus.EventBus;
@@ -31,16 +29,11 @@ import retrofit2.Call;
 /**
  * 车系选择
  */
-public class CarSystemActivity extends AbsRefreshListActivity<CarSystemActivityBean> {
-    private CarBrandActivityBean currentBean;
+public class CarSystemActivity extends AbsRefreshListActivity<CarSystemBean> {
 
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_car_system);
-//    }
+    private BrandPageBean.ListBean currentBean;
 
-    public static void open(Context context, CarBrandActivityBean carBrandActivityBean) {
+    public static void open(Context context, BrandPageBean.ListBean carBrandActivityBean) {
         if (context != null) {
             Intent intent = new Intent(context, CarSystemActivity.class);
             intent.putExtra("bean", carBrandActivityBean);
@@ -53,7 +46,7 @@ public class CarSystemActivity extends AbsRefreshListActivity<CarSystemActivityB
     public void afterCreate(Bundle savedInstanceState) {
         mBaseBinding.titleView.setMidTitle("车系");
         if (getIntent() != null) {
-            currentBean = (CarBrandActivityBean) getIntent().getSerializableExtra("bean");
+            currentBean = (BrandPageBean.ListBean) getIntent().getSerializableExtra("bean");
         }
         initRefreshHelper(10);
         mRefreshHelper.onDefaluteMRefresh(true);
@@ -61,7 +54,7 @@ public class CarSystemActivity extends AbsRefreshListActivity<CarSystemActivityB
     }
 
     @Override
-    public RecyclerView.Adapter getListAdapter(List<CarSystemActivityBean> listData) {
+    public RecyclerView.Adapter getListAdapter(List<CarSystemBean> listData) {
 
         CarSystemAdapter adapter = new CarSystemAdapter(listData);
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
@@ -88,15 +81,14 @@ public class CarSystemActivity extends AbsRefreshListActivity<CarSystemActivityB
         Map<String, String> map = new HashMap<>();
         map.put("start", pageindex + "");
         map.put("limit", limit + "");
-        map.put("location", "0");
         map.put("status", "1");
         map.put("brandCode", currentBean.getCode());//品牌编号
-        map.put("brandName", currentBean.getName());//品牌名称
-        Call call = RetrofitUtils.createApi(MyApiServer.class).getCarSystemlDatas("630415", StringUtils.getJsonToString(map));
+        Call call = RetrofitUtils.createApi(MyApiServer.class)
+                .getCarSystemPage("630491", StringUtils.getJsonToString(map));
         addCall(call);
-        call.enqueue(new BaseResponseModelCallBack<ResponseInListModel<CarSystemActivityBean>>(CarSystemActivity.this) {
+        call.enqueue(new BaseResponseModelCallBack<CarSystemPageBean>(CarSystemActivity.this) {
             @Override
-            protected void onSuccess(ResponseInListModel data, String SucMessage) {
+            protected void onSuccess(CarSystemPageBean data, String SucMessage) {
                 mRefreshHelper.setData(data.getList(), "车系数据为空", 0);
             }
 
@@ -121,8 +113,8 @@ public class CarSystemActivity extends AbsRefreshListActivity<CarSystemActivityB
      * @param bean
      */
     @Subscribe
-    public void breakCarModelActivityBean(CarModelActivityBean bean) {
-     //接受到车型数据 说明已经选择过了  所以 这个页面也要关闭
+    public void breakCarModelActivityBean(CarBean bean) {
+        //接受到车型数据 说明已经选择过了  所以 这个页面也要关闭
         finish();
     }
 }

@@ -19,12 +19,12 @@ import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.adapters.MyCarLoanFragmentAdapter;
 import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.MyCarLoanFragmentBean;
-import com.cdkj.huatuweitong.module.mfirst_page.CarLoanCalculatorActivity;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.cdkj.huatuweitong.module.mfirst_page.CarLoanCalculator2Activity;
 import retrofit2.Call;
 
 /**
@@ -67,7 +67,7 @@ public class MyCarLoanFragment extends AbsRefreshListFragment<MyCarLoanFragmentB
         adapter = new MyCarLoanFragmentAdapter(listData);
 
         adapter.setOnItemClickListener((mAdapter, view, position) -> {
-            CarLoanCalculatorActivity.open(mActivity, adapter.getItem(position).getCode());
+//            CarLoanCalculator2Activity.open(mActivity, adapter.getItem(position).getCode());
         });
         return adapter;
     }

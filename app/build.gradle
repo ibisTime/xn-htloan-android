@@ -42,6 +42,7 @@ android {
             buildConfigField "boolean", "LOG_DEBUG", "false"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
             android.applicationVariants.all { variant ->
                 variant.outputs.all {
                     outputFileName = "htwt_c_${defaultConfig.versionName}_${releaseTime()}.apk"
@@ -87,6 +88,10 @@ dependencies {
 
     // 腾讯云 实时音视频
     implementation 'com.tencent.ilivesdk:ilivesdk:1.9.4.6.4'
+//    implementation ('com.tencent.ilivesdk:ilivesdk:1.9.4.6.4')
+//            {
+//                exclude group: 'com.tencent.wup'
+//            }
 
     //信鸽3.2.6以上的版本
     //完整的信鸽依赖四个都必须有，如果发生依赖冲突请根据对应的依赖版本号选择高版本的依赖。（使用jcenter自动接入请确认libs中没有信鸽的相关jar包）
@@ -94,8 +99,8 @@ dependencies {
     implementation  'com.tencent.xinge:xinge:4.3.2-release'
     //jg包
     implementation'com.tencent.jg:jg:1.1'
-    //wup包
-    implementation 'com.tencent.wup:wup:1.0.0.E-Release'
+    //wup包 com.tencent.ilivesdk依赖库里面已经有了这个库，再次使用的话会出现重复依赖的问题
+//    implementation 'com.tencent.wup:wup:1.0.0.E-Release'
     //mid包，minSdkVersion 14
     implementation 'com.tencent.mid:mid:4.0.7-Release'
 }

@@ -20,17 +20,17 @@ import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.baselibrary.utils.ToastUtil;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.api.MyApiServer;
+import com.cdkj.huatuweitong.bean.CarBean;
 import com.cdkj.huatuweitong.bean.CarLoanCalculatorBean;
-import com.cdkj.huatuweitong.bean.CarModelActivityBean;
+import com.cdkj.huatuweitong.bean.CarSelectPageBean;
 import com.cdkj.huatuweitong.databinding.CarLoanCalculator2Binding;
-
-import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.greenrobot.eventbus.Subscribe;
 import retrofit2.Call;
 
 /**
@@ -39,7 +39,7 @@ import retrofit2.Call;
 public class CarLoanCalculator2Activity extends AbsBaseLoadActivity {
 
     private CarLoanCalculator2Binding mBinding;
-    private CarModelActivityBean.CarsBean carModelActivityBean;
+    private CarBean carModelActivityBean;
     private String[] ratSingData;//还款期数  获取系统参数
     private List<SystemKeyDataBean.ListBean> ratSingList;
     private int checkRatItem = -1;
@@ -52,7 +52,7 @@ public class CarLoanCalculator2Activity extends AbsBaseLoadActivity {
         }
     }
 
-    public static void open(Context context, CarModelActivityBean.CarsBean data) {
+    public static void open(Context context, CarBean data) {
         if (context != null) {
             Intent intent = new Intent(context, CarLoanCalculator2Activity.class);
             //上页数据
@@ -82,7 +82,7 @@ public class CarLoanCalculator2Activity extends AbsBaseLoadActivity {
      */
     private void init() {
         if (getIntent() != null) {
-            carModelActivityBean = (CarModelActivityBean.CarsBean) getIntent().getSerializableExtra("data");
+            carModelActivityBean = (CarBean) getIntent().getSerializableExtra("data");
             if (carModelActivityBean != null) {
                 mBinding.tvBrand.setText(carModelActivityBean.getBrandName() + carModelActivityBean.getSeriesName() + carModelActivityBean.getName());//车型
                 mBinding.tvAllModel.setText(MoneyUtils.showPrice(carModelActivityBean.getSalePrice()));
@@ -239,7 +239,7 @@ public class CarLoanCalculator2Activity extends AbsBaseLoadActivity {
      * @param bean
      */
     @Subscribe
-    public void breakCarModelActivityBean(CarModelActivityBean.CarsBean bean) {
+    public void breakCarModelActivityBean(CarBean bean) {
         this.carModelActivityBean = bean;
         mBinding.tvBrand.setText(bean.getBrandName() + bean.getName());//车型
         mBinding.tvAllModel.setText(MoneyUtils.showPrice(bean.getSalePrice()));

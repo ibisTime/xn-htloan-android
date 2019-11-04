@@ -1,5 +1,7 @@
 package com.cdkj.huatuweitong.bean;
 
+import java.io.Serializable;
+
 /**
  * @author 齐胜涛
  * @des ${TODO}
@@ -7,7 +9,7 @@ package com.cdkj.huatuweitong.bean;
  * Created by lenovo on 2018/5/18.
  */
 
-public class UserFragmentBean {
+public class UserFragmentBean implements Serializable {
 
     /**
      * userId : U201908081035371002602
@@ -36,14 +38,14 @@ public class UserFragmentBean {
     private String produceType;
     private String loginName;
     private String mobile;
-    private String photo;
+    private String photo = "";
     private String nickname;
     private String loginPwdStrength;
     private String idNo;
     private String realName;
-    private String province;
-    private String city;
-    private String area;
+    private String province = "";
+    private String city = "";
+    private String area = "";
     private String address;
     private String status;
     private String deviceToken;

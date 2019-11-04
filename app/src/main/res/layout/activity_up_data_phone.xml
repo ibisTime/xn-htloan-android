@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -24,11 +25,12 @@
             <TextView
                 android:layout_width="115dp"
                 android:layout_height="wrap_content"
-                android:text="@string/user_new_phone"
+                android:text="旧手机号"
                 android:textColor="@color/break_text" />
 
-            <EditText
-                android:id="@+id/et_phone"
+            <TextView
+                android:id="@+id/et_oldPhone"
+                android:textSize="18sp"
                 android:inputType="number"
                 android:maxLength="11"
                 android:background="@null"
@@ -83,68 +85,80 @@
 
         </LinearLayout>
 
-        <!--<View-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="10dp"-->
-            <!--android:background="@color/gray_line" />-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/gray_line" />
 
-        <!--<EditText-->
-            <!--android:id="@+id/et_new_phone"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="50dp"-->
-            <!--android:layout_marginLeft="15dp"-->
-            <!--android:layout_marginRight="15dp"-->
-            <!--android:background="@null"-->
-            <!--android:inputType="number"-->
-            <!--android:gravity="center_vertical"-->
-            <!--android:hint="新手机号"-->
-            <!--android:maxLength="11" />-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <!--<include layout="@layout/view_1dp_line" />-->
+            <TextView
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:text="@string/user_new_phone"
+                android:textColor="@color/break_text" />
 
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="50dp"-->
-            <!--android:layout_marginLeft="15dp"-->
-            <!--android:layout_marginRight="15dp"-->
-            <!--android:gravity="center_vertical"-->
-            <!--android:orientation="horizontal">-->
+            <EditText
+                android:id="@+id/et_newPhone"
+                android:inputType="number"
+                android:maxLength="11"
+                android:background="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/break_text"
+                tools:text="13938381438" />
 
-            <!--<TextView-->
-                <!--android:layout_width="115dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/check_code"-->
-                <!--android:textColor="@color/break_text" />-->
+        </LinearLayout>
 
-            <!--<EditText-->
-                <!--android:id="@+id/et_new_check_code"-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="1"-->
-                <!--android:background="@null"-->
-                <!--android:hint="请输入验证码"-->
-                <!--android:inputType="number"-->
-                <!--android:maxLength="6"-->
-                <!--android:singleLine="true"-->
-                <!--android:textColor="@color/break_text" />-->
+        <include layout="@layout/view_1dp_line" />
 
-            <!--<TextView-->
-                <!--android:id="@+id/tv_new_check_code"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_marginBottom="5dp"-->
-                <!--android:layout_marginTop="5dp"-->
-                <!--android:background="@drawable/blue_tv_round_bg"-->
-                <!--android:gravity="center"-->
-                <!--android:hint="@string/get_check_code"-->
-                <!--android:paddingLeft="10dp"-->
-                <!--android:paddingRight="10dp"-->
-                <!--android:textColor="@color/gray_text"-->
-                <!--android:textColorHint="@color/pink_text" />-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <!--</LinearLayout>-->
+            <TextView
+                android:layout_width="115dp"
+                android:layout_height="wrap_content"
+                android:text="@string/check_code"
+                android:textColor="@color/break_text" />
 
-        <!--android:textColor="@drawable/text_updata_psw_color"-->
+            <EditText
+                android:id="@+id/et_new_check_code"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="请输入验证码"
+                android:inputType="number"
+                android:maxLength="6"
+                android:singleLine="true"
+                android:textColor="@color/break_text" />
+
+            <Button
+                android:id="@+id/btn_new_check_code"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/blue_tv_round_bg"
+                android:gravity="center"
+                android:hint="@string/get_check_code"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/gray_text"
+                android:textColorHint="@color/white" />
+
+        </LinearLayout>
         <Button
             android:id="@+id/btn_yes_updata_psw"
             android:layout_width="match_parent"

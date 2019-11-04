@@ -17,6 +17,7 @@ import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.nets.BaseResponseListCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
 import com.cdkj.huatuweitong.api.MyApiServer;
+import com.cdkj.huatuweitong.bean.EventBean;
 import com.cdkj.huatuweitong.bean.NodeModel;
 import com.cdkj.huatuweitong.databinding.ActivityMainBinding;
 import com.cdkj.huatuweitong.module.main_tab.HomeFragment;
@@ -159,9 +160,16 @@ public class MainActivity extends AbsBaseLoadActivity {
     }
 
     @Subscribe
-    public void setCurrentIndex(int index) {
-        currentPostion = index;
-        mBinding.pagerMain.setCurrentItem(currentPostion);
+    public void setCurrentIndex(EventBean eventBean) {
+
+        if (eventBean.getTag().equals("setCurrentIndex")){
+            currentPostion = Integer.parseInt(eventBean.getValue());
+            mBinding.pagerMain.setCurrentItem(currentPostion);
+
+            mBinding.layoutTab.radiogroup.check(currentPostion);
+        }
+
+
     }
 
     private void register() {

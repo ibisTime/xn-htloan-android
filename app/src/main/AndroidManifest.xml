@@ -36,24 +36,16 @@
         </activity>
         <!-- com.cdkj.baselibrary.activigetSignogin.LoginActivity -->
         <activity android:name=".MainActivity"/>
-        <activity
-            android:label="@string/title_activity_car_calculator"
-            android:name=".module.mfirst_page.CarLoanCalculatorActivity"
-            android:theme="@style/AppTheme"/>
         <activity android:name=".module.user.UserInfoUpdateActivity"/>
         <activity android:name=".module.user.UpDataLoginPSW"/>
         <activity android:name=".module.user.UpDataPhoneActivity"/>
         <activity android:name=".module.user.UserCreditActivity"/>
         <activity android:name=".module.user.AddressManagerActivity"/>
         <activity android:name=".module.reimbursement.CarLoanDetailsActivity"/>
-        <activity android:name=".module.mfirst_page.CarDetailsActivity"/>
         <activity android:name=".module.mfirst_page.OrderSubmitActivity"/>
         <activity android:name=".module.mfirst_page.PayActivity"/>
         <activity android:name="com.cdkj.baselibrary.activitys.login.RegisterActivity"/>
         <activity android:name=".module.user.NickNameUpdateActivity"/>
-        <activity
-            android:name=".module.mfirst_page.ExhibitionCenterActivity"
-            android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".module.user.MyCarLoanActivity"/>
         <activity android:name=".module.reimbursement.RepaymentPlanActivity"/>
         <activity android:name=".module.reimbursement.AdvanceDetailsActivity"/>
@@ -123,7 +115,6 @@
         <activity
             android:name=".module.user.zx.ZXDSActivity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden"/>
-        <activity android:name=".module.home_fragment.InformationActivity"/>
         <activity android:name=".module.vehicle_db.BrandActivity"/>
         <activity android:name=".module.vehicle_db.SerchActivity"/>
         <activity android:name=".module.vehicle_db.CarSystemListActivity"/>
