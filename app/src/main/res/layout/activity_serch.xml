@@ -21,53 +21,72 @@
                 android:layout_width="15dp"
                 android:layout_height="15dp"
                 android:layout_marginLeft="15dp"
-                android:src="@mipmap/back_white" />
+                android:src="@mipmap/back_white"/>
 
-            <EditText
-                android:id="@+id/et_search"
+            <LinearLayout
+                android:id="@+id/ll_search"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="8dp"
+                android:layout_height="34dp"
                 android:layout_weight="1"
-                android:background="@color/white"
-                android:hint="请搜索品牌或车系"
+                android:layout_marginLeft="20dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:textColor="@color/text_999"
-                android:textSize="14sp" />
+                android:background="@drawable/shape_main_search"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:background="@mipmap/home_search"/>
+
+                <EditText
+                    android:id="@+id/et_search"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="@null"
+                    android:hint="品牌、车系、车型"
+                    android:textColor="#333333"
+                    android:textColorHint="#ffb3b3b3"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
 
             <TextView
                 android:id="@+id/tv_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
                 android:layout_marginRight="10dp"
                 android:padding="5dp"
                 android:text="搜索"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="16sp"/>
         </LinearLayout>
 
         <TextView
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
             android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:text="热门车系"
-            android:textColor="@color/text_999"
-            android:textSize="16sp" />
+            android:textColor="#ff333333"
+            android:textSize="16sp"/>
 
         <com.google.android.flexbox.FlexboxLayout
             android:id="@+id/fbl_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
-            app:flexWrap="wrap"
-            android:layout_marginRight="15dp">
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            app:flexWrap="wrap">
 
         </com.google.android.flexbox.FlexboxLayout>
 

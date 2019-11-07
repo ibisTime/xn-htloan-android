@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.cdkj.baselibrary.api.ResponseInListModel;
+import com.cdkj.baselibrary.appmanager.CdRouteHelper;
 import com.cdkj.baselibrary.appmanager.SPUtilHelper;
 import com.cdkj.baselibrary.base.AbsRefreshListFragment;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
@@ -31,13 +32,15 @@ import retrofit2.Call;
  * A simple {@link Fragment} subclass.
  */
 public class MyCarLoanFragment extends AbsRefreshListFragment<MyCarLoanFragmentBean> {
-    private MyCarLoanFragmentAdapter adapter;
-    String status;//状态  0未处理  1已处理
 
-    public static MyCarLoanFragment getInstance(String status) {
+    private MyCarLoanFragmentAdapter adapter;
+
+    String type;
+
+    public static MyCarLoanFragment getInstance(String type) {
         MyCarLoanFragment fragment = new MyCarLoanFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("status", status);
+        bundle.putString(CdRouteHelper.DATASIGN, type);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -55,7 +58,7 @@ public class MyCarLoanFragment extends AbsRefreshListFragment<MyCarLoanFragmentB
     @Override
     protected void afterCreate(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Bundle bunndle = getArguments();
-        status = bunndle.getString("status");
+        type = bunndle.getString(CdRouteHelper.DATASIGN);
 
         initRefreshHelper(10);
         mRefreshHelper.onDefaluteMRefresh(true);
@@ -81,7 +84,7 @@ public class MyCarLoanFragment extends AbsRefreshListFragment<MyCarLoanFragmentB
         Map<String, String> map = new HashMap<>();
         map.put("limit", limit + "");
         map.put("start", start + "");
-        map.put("status", status);
+        map.put("type", type);
         map.put("userId", SPUtilHelper.getUserId());
 
         Call call = RetrofitUtils.createApi(MyApiServer.class).getMyCarLoanFrgmentData("630435", StringUtils.getJsonToString(map));

@@ -43,7 +43,7 @@ public class BrandFragment extends BaseLazyFragment {
     private FragmentBrandBinding mBinding;
     private BrandVerAdapter hotBrandAdapter;
     private BrandHorAdapter allBrandAdapter;
-    //    private LetterAdapter letterAdapter;
+
     public static String[] letters = {"#", "A", "B", "C", "D", "E", "F", "G", "H", "I",
             "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V",
             "W", "X", "Y", "Z"};
@@ -68,6 +68,7 @@ public class BrandFragment extends BaseLazyFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_brand, null, false);
+
         initHotBrandRecycler();
         initAllRecycler();
         initHotBrandData();

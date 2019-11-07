@@ -7,17 +7,14 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.cdkj.baselibrary.api.BaseResponseListModel;
 import com.cdkj.baselibrary.base.AbsBaseLoadActivity;
 import com.cdkj.baselibrary.interfaces.BaseRefreshCallBack;
 import com.cdkj.baselibrary.interfaces.RefreshHelper;
-import com.cdkj.baselibrary.nets.BaseResponseListCallBack;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
 import com.cdkj.baselibrary.utils.MoneyUtils;
 import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.R;
-import com.cdkj.huatuweitong.adapters.CarListAdapter;
 import com.cdkj.huatuweitong.adapters.CarTypeListAdapter;
 import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.*;
@@ -71,7 +68,7 @@ public class CarListActivity extends AbsBaseLoadActivity {
         }
         initBanner();
         initListener();
-        initRceyclerView();
+        initRecyclerView();
     }
 
     private void initListener() {
@@ -96,7 +93,7 @@ public class CarListActivity extends AbsBaseLoadActivity {
     /**
      * 设置数据
      */
-    private void initRceyclerView() {
+    private void initRecyclerView() {
         mRefreshHelper = new RefreshHelper(this, new BaseRefreshCallBack(this) {
             @Override
             public View getRefreshLayout() {

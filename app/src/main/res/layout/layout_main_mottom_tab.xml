@@ -8,7 +8,7 @@
         android:layout_height="50dp"
         android:layout_gravity="bottom"
         android:orientation="horizontal"
-        android:weightSum="4">
+        android:weightSum="5">
 
         <RadioButton
             android:id="@+id/radio_main_tab_1"
@@ -17,26 +17,36 @@
             android:layout_gravity="bottom"
             android:checked="true"
             android:drawableTop="@drawable/main_buttom_tab_1"
-            android:text="@string/firstpage" />
+            android:text="玩分期" />
 
         <RadioButton
             android:id="@+id/radio_main_tab_2"
             style="@style/main_tab_radio"
-            android:drawableTop="@drawable/main_buttom_tab_2_car_type"
-            android:text="车型库" />
-        <!--android:text="@string/reimbursement"-->
+            android:drawableTop="@drawable/main_buttom_tab_2"
+            android:text="玩保险" />
 
         <RadioButton
             android:id="@+id/radio_main_tab_3"
             style="@style/main_tab_radio"
             android:drawableTop="@drawable/main_buttom_tab_3"
-            android:text="资讯" />
+            android:text="玩汽车" />
 
         <RadioButton
             android:id="@+id/radio_main_tab_4"
             style="@style/main_tab_radio"
             android:drawableTop="@drawable/main_buttom_tab_4"
+            android:text="玩售后" />
+
+        <RadioButton
+            android:id="@+id/radio_main_tab_5"
+            style="@style/main_tab_radio"
+            android:drawableTop="@drawable/main_buttom_tab_5"
             android:text="@string/mind" />
 
+        <!--<RadioButton-->
+            <!--android:id="@+id/radio_main_tab_6"-->
+            <!--style="@style/main_tab_radio"-->
+            <!--android:drawableTop="@drawable/main_buttom_tab_5"-->
+            <!--android:text="@string/mind" />-->
     </RadioGroup>
 </layout>

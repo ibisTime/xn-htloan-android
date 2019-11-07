@@ -54,6 +54,9 @@ public class UserFragmentBean implements Serializable {
     private boolean identifyFlag;
     private boolean bankcardFlag;
     private boolean tradepwdFlag;
+    private int newsCount;
+    private int followCount;
+    private int applyCount;
 
     public String getUserId() {
         return userId;
@@ -213,5 +216,29 @@ public class UserFragmentBean implements Serializable {
 
     public void setTradepwdFlag(boolean tradepwdFlag) {
         this.tradepwdFlag = tradepwdFlag;
+    }
+
+    public int getNewsCount() {
+        return newsCount;
+    }
+
+    public void setNewsCount(int newsCount) {
+        this.newsCount = newsCount;
+    }
+
+    public int getFollowCount() {
+        return followCount;
+    }
+
+    public void setFollowCount(int followCount) {
+        this.followCount = followCount;
+    }
+
+    public int getApplyCount() {
+        return applyCount;
+    }
+
+    public void setApplyCount(int applyCount) {
+        this.applyCount = applyCount;
     }
 }

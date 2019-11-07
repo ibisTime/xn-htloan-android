@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.widget.ImageView;
 
+import com.cdkj.baselibrary.utils.DateUtil;
 import com.cdkj.baselibrary.utils.ImgUtils;
 import com.cdkj.baselibrary.utils.MoneyUtils;
 import com.cdkj.huatuweitong.R;
@@ -14,6 +15,8 @@ import com.chad.library.adapter.base.BaseViewHolder;
 
 import java.util.List;
 
+import static com.cdkj.baselibrary.utils.DateUtil.DEFAULT_DATE_FMT;
+
 /**
  * @author 齐胜涛
  * @des ${TODO}
@@ -21,7 +24,9 @@ import java.util.List;
  * Created by lenovo on 2018/5/17.
  */
 
-public class MyCarLoanFragmentAdapter extends BaseQuickAdapter<MyCarLoanFragmentBean, BaseViewHolder> {
+public class MyCarLoanFragmentAdapter extends
+        BaseQuickAdapter<MyCarLoanFragmentBean, BaseViewHolder> {
+
     public MyCarLoanFragmentAdapter(@Nullable List<MyCarLoanFragmentBean> data) {
         super(R.layout.item_my_car_loan_fragment, data);
     }
@@ -47,9 +52,11 @@ public class MyCarLoanFragmentAdapter extends BaseQuickAdapter<MyCarLoanFragment
         helper.setText(R.id.tv_name, item.getSeriesName());
 
         helper.setText(R.id.tv_total_money, "总价: " + MoneyUtils.getShowPriceSign(item.getPrice()));
-        helper.setText(R.id.tv_one_pay, "首付: " + MoneyUtils.getShowPriceSign(item.getSfAmount()));
+        helper.setText(R.id.tv_one_pay, MoneyUtils.getShowPriceSign(item.getSfAmount()));
         ImageView ivLogo = helper.getView(R.id.iv_logo);
-        ImgUtils.loadQiniuImg(mContext,item.getCar().getPic(),ivLogo);
-//        iv_logo
+        ImgUtils.loadQiniuImg(mContext, item.getCar().getPic(), ivLogo);
+
+        helper.setText(R.id.tv_time,
+                DateUtil.formatStringData(item.getCreateDatetime(), DEFAULT_DATE_FMT));
     }
 }

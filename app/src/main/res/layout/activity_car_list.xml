@@ -21,7 +21,7 @@
             <!--srlEnablePreviewInEditMode 可以开启和关闭预览功能-->
             <com.scwang.smartrefresh.layout.header.ClassicsHeader
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"/>
 
             <android.support.v4.widget.NestedScrollView
                 android:layout_width="match_parent"
@@ -37,16 +37,16 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="220dp"
-                        android:layout_marginLeft="15dp"
                         android:layout_marginTop="15dp"
-                        android:layout_marginRight="15dp"
-                        android:layout_marginBottom="15dp">
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp">
 
                         <ImageView
                             android:id="@+id/iv_top_img"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:visibility="gone" />
+                            android:visibility="gone"/>
 
                         <com.youth.banner.Banner
                             android:id="@+id/banner"
@@ -57,65 +57,66 @@
                             app:indicator_drawable_unselected="@drawable/banner_un_select"
                             app:indicator_height="7dp"
                             app:indicator_margin="6dp"
-                            app:indicator_width="7dp" />
+                            app:indicator_width="7dp"/>
 
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="70dp"
                             android:layout_alignParentBottom="true"
-                            android:background="#50000000"
+                            android:background="#40000000"
                             android:orientation="vertical">
-
 
                             <TextView
                                 android:id="@+id/tv_title"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
                                 android:layout_marginLeft="15dp"
-                                android:layout_marginTop="5dp"
-                                android:layout_marginBottom="10dp"
                                 android:text="中大型车"
                                 android:textColor="@color/white"
-                                android:textSize="12sp" />
+                                android:textSize="12sp"/>
 
                             <TextView
                                 android:id="@+id/tv_price"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="15dp"
                                 android:layout_marginBottom="5dp"
+                                android:layout_marginLeft="15dp"
                                 android:text="20.4-500万"
                                 android:textColor="@color/white"
-                                android:textSize="16sp" />
+                                android:textSize="16sp"/>
                         </LinearLayout>
 
 
                         <LinearLayout
                             android:id="@+id/ll_pic_number"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginRight="15dp"
+                            android:layout_height="22dp"
                             android:layout_marginBottom="15dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentRight="true"
+
+                            android:background="@drawable/shape_car_list_pic_bg"
                             android:gravity="center"
-                            android:orientation="horizontal"
-                            android:padding="5dp">
+                            android:orientation="horizontal">
 
                             <ImageView
                                 android:layout_width="13dp"
-                                android:layout_height="10dp"
-                                android:src="@drawable/default_pic" />
+                                android:layout_height="11dp"
+                                android:layout_marginLeft="10dp"
+                                android:src="@mipmap/car_list_pic"/>
 
                             <TextView
                                 android:id="@+id/tv_number"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
-                                android:text="0"
-                                android:textColor="@color/white"
-                                android:textSize="12sp" />
+                                android:layout_marginLeft="4dp"
+                                android:layout_marginRight="7dp"
+                                android:text="549"
+                                android:textColor="#ffffffff"
+                                android:textSize="12sp"/>
 
                         </LinearLayout>
 
@@ -142,7 +143,7 @@
 
             <com.scwang.smartrefresh.layout.footer.ClassicsFooter
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"/>
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
     </LinearLayout>

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp">
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="姓名"
+                android:textColor="#ff999999"
+                android:textSize="16sp"
+                />
+
+            <EditText
+                android:id="@+id/edt_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="40dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="请输入姓名"
+                android:textColor="#333333"
+                android:textColorHint="#ffcccccc"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E6E6E6"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp">
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="电话"
+                android:textColor="#ff999999"
+                android:textSize="16sp"
+                />
+
+            <EditText
+                android:id="@+id/edt_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="40dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="请输入电话号"
+                android:inputType="phone"
+                android:textColor="#333333"
+                android:textColorHint="#ffcccccc"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E6E6E6"/>
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="55dp">
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="车型"
+                android:textColor="#ff999999"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:id="@+id/tv_car"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="40dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="请选择车型"
+                android:textColor="#333333"
+                android:textColorHint="#ffcccccc"
+                android:textSize="16sp"/>
+
+            <ImageView
+                android:background="@drawable/more_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E6E6E6"/>
+
+        <LinearLayout
+            android:id="@+id/ll_xsz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:text="行驶证上传"
+                android:textColor="#ff999999"
+                android:textSize="16sp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="105dp">
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/iv_qian"
+                        android:scaleType="fitXY"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@mipmap/baoxian_qian"/>
+
+                    <ImageView
+                        android:id="@+id/iv_qianPai"
+                        android:layout_width="27dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:background="@mipmap/baoxian_pai"/>
+
+                    <ImageView
+                        android:id="@+id/iv_qianDelete"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="right"
+                        android:background="@mipmap/baoxian_delete"
+                        android:visibility="gone"/>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="15dp">
+
+                    <ImageView
+                        android:id="@+id/iv_hou"
+                        android:scaleType="fitXY"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@mipmap/baoxian_hou"/>
+
+                    <ImageView
+                        android:id="@+id/iv_houPai"
+                        android:layout_width="27dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:background="@mipmap/baoxian_pai"/>
+
+                    <ImageView
+                        android:id="@+id/iv_houDelete"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="right"
+                        android:background="@mipmap/baoxian_delete"
+                        android:visibility="gone"/>
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="行驶证正面"
+                    android:textColor="#ff666666"
+                    android:textSize="12sp"
+                    />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="15dp"
+                    android:gravity="center"
+                    android:text="行驶证反面"
+                    android:textColor="#ff666666"
+                    android:textSize="12sp"
+                    />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_confirm"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="95dp"
+            android:background="@drawable/shape_std_btn"
+            android:text="确认提交"
+            android:textColor="#ffffffff"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+</layout>

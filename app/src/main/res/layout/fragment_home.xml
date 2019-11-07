@@ -8,8 +8,51 @@
         android:orientation="vertical">
 
         <TextView
+            style="@style/title_top_style"
             android:text="@string/app_name"
-            style="@style/title_top_style" />
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="33dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:background="#F89C44"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="21dp"
+                android:background="@mipmap/home_icon"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="@drawable/shape_main_search"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:background="@mipmap/home_search"/>
+
+                <EditText
+                    android:id="@+id/et_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:background="@null"
+                    android:textColor="#333333"
+                    android:hint="品牌、车系、车型"
+                    android:textColorHint="#ffb3b3b3"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/refreshLayout"
@@ -23,7 +66,7 @@
             <!--srlEnablePreviewInEditMode 可以开启和关闭预览功能-->
             <com.scwang.smartrefresh.layout.header.ClassicsHeader
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"/>
 
             <ScrollView
                 android:id="@+id/scrollView"
@@ -42,19 +85,19 @@
                     <com.youth.banner.Banner
                         android:id="@+id/home_banner"
                         android:layout_width="match_parent"
-                        android:layout_height="150dp"
+                        android:layout_height="115dp"
                         app:delay_time="4000"
                         app:indicator_drawable_selected="@drawable/banner_select"
                         app:indicator_drawable_unselected="@drawable/banner_un_select"
                         app:indicator_height="7dp"
                         app:indicator_margin="6dp"
-                        app:indicator_width="7dp" />
+                        app:indicator_width="7dp"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
-                        android:layout_marginLeft="15dp"
                         android:layout_marginTop="17dp"
+                        android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
                         android:orientation="horizontal">
 
@@ -66,12 +109,12 @@
                             android:gravity="center"
                             android:text="30-50万"
                             android:textColor="@color/text_black_cd"
-                            android:textSize="14sp" />
+                            android:textSize="14sp"/>
 
                         <TextView
                             android:layout_width="1dp"
                             android:layout_height="match_parent"
-                            android:background="#D8D8D8" />
+                            android:background="#D8D8D8"/>
 
                         <TextView
                             android:id="@+id/tv_price_50_70"
@@ -81,12 +124,12 @@
                             android:gravity="center"
                             android:text="50-70万"
                             android:textColor="@color/text_black_cd"
-                            android:textSize="14sp" />
+                            android:textSize="14sp"/>
 
                         <TextView
                             android:layout_width="1dp"
                             android:layout_height="match_parent"
-                            android:background="#D8D8D8" />
+                            android:background="#D8D8D8"/>
 
                         <TextView
                             android:id="@+id/tv_price_70"
@@ -96,12 +139,12 @@
                             android:gravity="center"
                             android:text="70万以上"
                             android:textColor="@color/text_black_cd"
-                            android:textSize="14sp" />
+                            android:textSize="14sp"/>
 
                         <TextView
                             android:layout_width="1dp"
                             android:layout_height="match_parent"
-                            android:background="#D8D8D8" />
+                            android:background="#D8D8D8"/>
 
                         <TextView
                             android:id="@+id/tv_price_other"
@@ -111,7 +154,7 @@
                             android:gravity="center"
                             android:text="更多"
                             android:textColor="@color/text_black_cd"
-                            android:textSize="14sp" />
+                            android:textSize="14sp"/>
 
                     </LinearLayout>
 
@@ -119,10 +162,10 @@
                         android:id="@+id/rv_brand"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
                         android:layout_marginTop="15dp"
-                        android:layout_marginRight="15dp"
-                        android:layout_marginBottom="17dp">
+                        android:layout_marginBottom="17dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp">
 
                     </android.support.v7.widget.RecyclerView>
 
@@ -130,9 +173,9 @@
                         android:id="@+id/rv_car_system"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
                         android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp"
-                        android:layout_marginBottom="20dp">
+                        android:layout_marginRight="15dp">
 
                     </android.support.v7.widget.RecyclerView>
 
@@ -143,12 +186,12 @@
                         android:layout_height="10dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:background="@color/line_color_broad" />
+                        android:background="@color/line_color_broad"/>
 
                     <LinearLayout
-                        android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="10dp"
                         android:gravity="center_vertical"
@@ -157,11 +200,11 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
                             android:layout_weight="1"
+                            android:layout_gravity="center"
                             android:text="优质车商"
                             android:textColor="@color/text_black_cd"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"/>
 
                     </LinearLayout>
 
@@ -184,12 +227,12 @@
                         android:layout_height="10dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
-                        android:background="@color/line_color_broad" />
+                        android:background="@color/line_color_broad"/>
 
                     <LinearLayout
-                        android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="10dp"
                         android:gravity="center_vertical"
@@ -198,30 +241,30 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
                             android:layout_weight="1"
+                            android:layout_gravity="center"
                             android:text="经典车型"
                             android:textColor="@color/text_black_cd"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"/>
 
                     </LinearLayout>
 
                     <!--<RelativeLayout-->
-                        <!--android:id="@+id/lin_recycler1"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:descendantFocusability="blocksDescendants">-->
+                    <!--android:id="@+id/lin_recycler1"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:descendantFocusability="blocksDescendants">-->
 
-                        <android.support.v7.widget.RecyclerView
-                            android:id="@+id/rv_1"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-                        </android.support.v7.widget.RecyclerView>
+                    </android.support.v7.widget.RecyclerView>
 
                     <!--</RelativeLayout>-->
 
-                    <View style="@style/style_split_line_broad" />
+                    <View style="@style/style_split_line_broad"/>
 
                     <LinearLayout
                         android:id="@+id/ll_recommend_product"
@@ -235,38 +278,38 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
                             android:layout_weight="1"
+                            android:layout_gravity="center"
                             android:text="玩车资讯"
                             android:textColor="@color/text_black_cd"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"/>
 
                         <TextView
                             android:id="@+id/tv_all"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
                             android:layout_marginLeft="10dp"
+                            android:layout_gravity="center"
                             android:padding="5dp"
                             android:text="查看更多"
                             android:textColor="@color/text_999"
-                            android:textSize="12sp" />
+                            android:textSize="12sp"/>
 
                     </LinearLayout>
 
                     <!--<RelativeLayout-->
-                        <!--android:id="@+id/lin_recycler"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:descendantFocusability="blocksDescendants">-->
+                    <!--android:id="@+id/lin_recycler"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:descendantFocusability="blocksDescendants">-->
 
-                        <android.support.v7.widget.RecyclerView
-                            android:id="@+id/rv_2"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:nestedScrollingEnabled="false">
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:nestedScrollingEnabled="false">
 
-                        </android.support.v7.widget.RecyclerView>
+                    </android.support.v7.widget.RecyclerView>
                     <!--</RelativeLayout>-->
 
 
@@ -276,7 +319,7 @@
 
             <com.scwang.smartrefresh.layout.footer.ClassicsFooter
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"/>
         </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
     </LinearLayout>

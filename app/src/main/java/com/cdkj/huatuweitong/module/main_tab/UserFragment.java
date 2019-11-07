@@ -29,20 +29,19 @@ import com.cdkj.baselibrary.utils.ToastUtil;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.AccountListModel;
+import com.cdkj.huatuweitong.bean.EventBean;
 import com.cdkj.huatuweitong.bean.UserFragmentBean;
 import com.cdkj.huatuweitong.databinding.FragmentUserBinding;
+import com.cdkj.huatuweitong.databinding.FrgUserBinding;
 import com.cdkj.huatuweitong.module.mfirst_page.CarLoanCalculator2Activity;
 import com.cdkj.huatuweitong.module.order.AllOrderTabActivity;
-import com.cdkj.huatuweitong.module.user.AccountIntegraActivity;
-import com.cdkj.huatuweitong.module.user.ConnectionServerActivity;
-import com.cdkj.huatuweitong.module.user.MyAccountActivity;
-import com.cdkj.huatuweitong.module.user.MyCarLoanActivity;
-import com.cdkj.huatuweitong.module.user.MyCollectionListActivity;
-import com.cdkj.huatuweitong.module.user.MyCurrentActivity;
-import com.cdkj.huatuweitong.module.user.MyMessageActivity;
-import com.cdkj.huatuweitong.module.user.UserInfoUpdateActivity;
+import com.cdkj.huatuweitong.module.user.*;
 import com.cdkj.huatuweitong.module.user.interview.RoomActivity;
+import com.cdkj.huatuweitong.module.user.message.UserMessageActivity;
 import com.cdkj.huatuweitong.module.user.zx.ZXListActivity;
+import com.cdkj.huatuweitong.module.vehicle_db.CarMerchantPageActivity;
+import com.cdkj.huatuweitong.module.vehicle_db.CarPageActivity;
+import com.cdkj.huatuweitong.module.vehicle_db.InfoPageActivity;
 import com.cdkj.huatuweitong.tencent.TencentLoginHelper;
 import com.cdkj.huatuweitong.tencent.logininterface.TencentLoginInterface;
 
@@ -51,6 +50,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.greenrobot.eventbus.EventBus;
 import retrofit2.Call;
 
 /**
@@ -60,7 +60,7 @@ import retrofit2.Call;
 public class UserFragment extends BaseLazyFragment implements View.OnClickListener,
         TencentLoginInterface {
 
-    private FragmentUserBinding mBinding;
+    private FrgUserBinding mBinding;
 
     private int roomId;
     private TencentLoginHelper mHelper;
@@ -77,20 +77,22 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
 
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_user, null, false);
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.frg_user, null, false);
         mBinding.linUserHead.setOnClickListener(this);
         mBinding.rflMyCarLoan.setOnClickListener(this);
-        mBinding.rflMyOrder.setOnClickListener(this);
-        mBinding.rilCredit.setOnClickListener(this);
+//        mBinding.rflMyOrder.setOnClickListener(this);
+//        mBinding.rilCredit.setOnClickListener(this);
         mBinding.rilMessage.setOnClickListener(this);
-        mBinding.rifCallPhone.setOnClickListener(this);
-        mBinding.rifAboutUs.setOnClickListener(this);
-        mBinding.llCoin.setOnClickListener(this);
-        mBinding.llTicket.setOnClickListener(this);
-        mBinding.rilZx.setOnClickListener(this);
+//        mBinding.rifCallPhone.setOnClickListener(this);
+//        mBinding.rifAboutUs.setOnClickListener(this);
+//        mBinding.llCoin.setOnClickListener(this);
+//        mBinding.llTicket.setOnClickListener(this);
+//        mBinding.rilZx.setOnClickListener(this);
         mBinding.rilCollection.setOnClickListener(this);
         mBinding.rilCalculator.setOnClickListener(this);
-        mBinding.rilFoot.setOnClickListener(this);
+//        mBinding.rilFoot.setOnClickListener(this);
+
+        initListener();
 
         mBinding.rilInterview.setOnClickListener(view -> {
             showRoomDialog();
@@ -99,13 +101,40 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
         return mBinding.getRoot();
     }
 
+    private void initListener() {
+
+        mBinding.rilVideo.setOnClickListener(view -> {
+            CarVideoActivity.open(mActivity);
+        });
+
+        mBinding.rilInfo.setOnClickListener(view -> {
+            InfoPageActivity.open(mActivity);
+        });
+
+        mBinding.rilCar.setOnClickListener(view -> {
+            CarPageActivity.open(mActivity);
+        });
+
+        mBinding.rilBuy.setOnClickListener(view -> {
+            EventBus.getDefault().post(new EventBean().setTag("setCurrentIndex").setValue("0"));
+        });
+
+        mBinding.rilShouhou.setOnClickListener(view -> {
+            EventBus.getDefault().post(new EventBean().setTag("setCurrentIndex").setValue("3"));
+        });
+
+        mBinding.rilMerchant.setOnClickListener(view -> {
+            CarMerchantPageActivity.open(mActivity);
+        });
+
+    }
+
     @Override
     protected void lazyLoad() {
         if (mBinding == null) {
             return;
         }
-        setUsetPotoImg();
-        getUnreadCount();
+        initData();
     }
 
     @Override
@@ -143,6 +172,8 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
                 }
 
                 mBinding.tvUserPhone.setText(data.getMobile());
+                mBinding.tvAttention.setText(data.getFollowCount() + "");
+                mBinding.tvApply.setText(data.getApplyCount() + "");
 
                 SPUtilHelper.saveUserId(data.getUserId());
                 SPUtilHelper.saveUserPhoneNum(data.getMobile());
@@ -153,7 +184,7 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
                 SPUtilHelper.saveIdCarde(data.getIdNo() == null ? "" : data.getIdNo());
                 SPUtilHelper.saveRealName(data.getRealName() == null ? "" : data.getRealName());
 
-                getUserAccount();
+//                getUserAccount();
                 getUnreadCount();
             }
 
@@ -205,7 +236,7 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
                 break;
             case R.id.ril_message:
                 //我的消息
-                MyMessageActivity.open(mActivity);
+                UserMessageActivity.open(mActivity);
                 break;
             case R.id.ril_collection:
                 //我的收藏
@@ -217,7 +248,7 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
                 break;
             case R.id.rfl_my_car_loan:
                 //我的车贷申请
-                MyCarLoanActivity.open(mActivity);
+                MyApplyActivity.open(mActivity);
                 break;
             case R.id.rfl_my_order:
                 //我的商品订单
@@ -237,7 +268,6 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
                 break;
             case R.id.rif_about_us:
                 //关于我们
-//                AboutUsActivity.open(mActivity);
                 CdRouteHelper.openWebViewActivityForkey("关于我们", "about_us");//630047
                 break;
         }
@@ -246,50 +276,50 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
     /**
      * 获取用户账户
      */
-    public void getUserAccount() {
-
-        if (!SPUtilHelper.isLoginNoStart()) {  //没有登录不用请求
-            return;
-        }
-
-        Map<String, String> map = RetrofitUtils.getRequestMap();
-
-        map.put("currency", "");
-        map.put("userId", SPUtilHelper.getUserId());
-
-        Call call = RetrofitUtils.createApi(MyApiServer.class)
-                .getAccount("802503", StringUtils.getJsonToString(map));
-
-        addCall(call);
-
-        call.enqueue(new BaseResponseModelCallBack<AccountListModel>(mActivity) {
-
-            @Override
-            protected void onSuccess(AccountListModel data, String SucMessage) {
-
-                if (data == null) {
-                    return;
-                }
-
-                for (AccountListModel.AccountListInsideModel model : data.getAccountList()) {
-                    if (model.getCurrency().equals("JF")) {
-                        mBinding.tvTicket.setText(MoneyUtils.showPrice(model.getAmount()));
-                        mBinding.tvTicket.setTag(model.getAccountNumber());
-                    } else if (model.getCurrency().equals("CNY")) {
-                        mBinding.tvAmount.setText(MoneyUtils.showPrice(model.getAmount()));
-                        mBinding.tvAmount.setTag(model.getAccountNumber());
-                    } else {
-
-                    }
-                }
-            }
-
-            @Override
-            protected void onFinish() {
-                disMissLoading();
-            }
-        });
-    }
+//    public void getUserAccount() {
+//
+//        if (!SPUtilHelper.isLoginNoStart()) {  //没有登录不用请求
+//            return;
+//        }
+//
+//        Map<String, String> map = RetrofitUtils.getRequestMap();
+//
+//        map.put("currency", "");
+//        map.put("userId", SPUtilHelper.getUserId());
+//
+//        Call call = RetrofitUtils.createApi(MyApiServer.class)
+//                .getAccount("802503", StringUtils.getJsonToString(map));
+//
+//        addCall(call);
+//
+//        call.enqueue(new BaseResponseModelCallBack<AccountListModel>(mActivity) {
+//
+//            @Override
+//            protected void onSuccess(AccountListModel data, String SucMessage) {
+//
+//                if (data == null) {
+//                    return;
+//                }
+//
+//                for (AccountListModel.AccountListInsideModel model : data.getAccountList()) {
+//                    if (model.getCurrency().equals("JF")) {
+//                        mBinding.tvTicket.setText(MoneyUtils.showPrice(model.getAmount()));
+//                        mBinding.tvTicket.setTag(model.getAccountNumber());
+//                    } else if (model.getCurrency().equals("CNY")) {
+//                        mBinding.tvAmount.setText(MoneyUtils.showPrice(model.getAmount()));
+//                        mBinding.tvAmount.setTag(model.getAccountNumber());
+//                    } else {
+//
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            protected void onFinish() {
+//                disMissLoading();
+//            }
+//        });
+//    }
 
     /**
      * 设置显示用户面签房间号
@@ -426,7 +456,10 @@ public class UserFragment extends BaseLazyFragment implements View.OnClickListen
             @Override
             protected void onSuccess(Integer data, String SucMessage) {
                 if (data != null) {
-                    mBinding.rilMessage.setUnreadNum(data);
+                    if (data > 0) {
+                        mBinding.ivMsg.setVisibility(View.VISIBLE);
+                    }
+                    mBinding.tvMsg.setText(data + "");
                 }
             }
 

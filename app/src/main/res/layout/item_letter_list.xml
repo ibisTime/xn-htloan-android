@@ -9,8 +9,8 @@
 
         <TextView
             android:id="@+id/tv_sort"
-            android:paddingBottom="5dp"
-            android:textSize="14sp"
+            android:paddingBottom="6dp"
+            android:textSize="9sp"
             tools:text="A"
             android:textColor="@color/text_999"
             android:layout_width="match_parent"

@@ -1,13 +1,19 @@
 package com.cdkj.huatuweitong.module.user;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
 import com.cdkj.baselibrary.activitys.BankCardListActivity;
 import com.cdkj.baselibrary.activitys.FindPwdActivity;
 import com.cdkj.baselibrary.activitys.ImageSelectActivity;
@@ -21,11 +27,7 @@ import com.cdkj.baselibrary.model.IsSuccessModes;
 import com.cdkj.baselibrary.model.eventmodels.EventFinishAll;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
-import com.cdkj.baselibrary.utils.CameraHelper;
-import com.cdkj.baselibrary.utils.ImgUtils;
-import com.cdkj.baselibrary.utils.LogUtil;
-import com.cdkj.baselibrary.utils.QiNiuHelper;
-import com.cdkj.baselibrary.utils.StringUtils;
+import com.cdkj.baselibrary.utils.*;
 import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.NickNameUpdateModel;
@@ -56,7 +58,8 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
 
     @Override
     public View addMainView() {
-        mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.activity_update_user_info, null, false);
+        mBinding = DataBindingUtil
+                .inflate(getLayoutInflater(), R.layout.activity_update_user_info, null, false);
         return mBinding.getRoot();
     }
 
@@ -76,7 +79,7 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
     }
 
     private void initOnclick() {
-        Log.e("pppppp", "initOnclick: "+SPUtilHelper.getUserPhoto());
+        Log.e("pppppp", "initOnclick: " + SPUtilHelper.getUserPhoto());
         ImgUtils.loadQiniuLogo(this, SPUtilHelper.getUserPhoto(), mBinding.imgLogo);
 
         mBinding.layoutLogo.setOnClickListener(v -> {
@@ -84,7 +87,8 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
             ImageSelectActivity.launch(this, PHOTOFLAG, false);
         });
         mBinding.rowNickName.setOnClickListener(v -> {
-            getUserInfo();
+//            getUserInfo();
+            showUnDoDialog(SPUtilHelper.getUserName());
         });
         mBinding.rowPhone.setOnClickListener(v -> {
             //修改手机号
@@ -96,7 +100,8 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
         });
         mBinding.rowPayPsw.setOnClickListener(v -> {
             //修改支付密码
-            PayPwdModifyActivity.open(this, SPUtilHelper.isTradepwdFlag(), SPUtilHelper.getUserPhoneNum());
+            PayPwdModifyActivity
+                    .open(this, SPUtilHelper.isTradepwdFlag(), SPUtilHelper.getUserPhoneNum());
 
         });
         mBinding.rowReceiveAddress.setOnClickListener(v -> {
@@ -128,7 +133,9 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
      */
     @Subscribe
     public void nickUpdateSucc(NickNameUpdateModel nickNameUpdateModel) {
-        if (nickNameUpdateModel == null) return;
+        if (nickNameUpdateModel == null) {
+            return;
+        }
         mBinding.rowNickName.setTvRight(nickNameUpdateModel.getName());
     }
 
@@ -177,12 +184,14 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
         map.put("userId", SPUtilHelper.getUserId());
         map.put("photo", key);
         map.put("token", SPUtilHelper.getUserToken());
-        Call call = RetrofitUtils.getBaseAPiService().successRequest("805080", StringUtils.getJsonToString(map));
+        Call call = RetrofitUtils.getBaseAPiService()
+                .successRequest("805080", StringUtils.getJsonToString(map));
         addCall(call);
         call.enqueue(new BaseResponseModelCallBack<IsSuccessModes>(UserInfoUpdateActivity.this) {
             @Override
             protected void onSuccess(IsSuccessModes data, String SucMessage) {
-                UITipDialog.showSuccess(UserInfoUpdateActivity.this, getString(R.string.update_logo_succ));
+                UITipDialog.showSuccess(UserInfoUpdateActivity.this,
+                        getString(R.string.update_logo_succ));
                 ImgUtils.loadQiniuLogo(UserInfoUpdateActivity.this, key, mBinding.imgLogo);
             }
 
@@ -211,6 +220,81 @@ public class UserInfoUpdateActivity extends AbsBaseLoadActivity {
             protected void onSuccess(UserFragmentBean data, String SucMessage) {
                 //昵称
                 NickNameUpdateActivity.open(UserInfoUpdateActivity.this, data);
+            }
+
+            @Override
+            protected void onFinish() {
+                disMissLoading();
+            }
+        });
+    }
+
+    private void showUnDoDialog(String nick) {
+        View view = LayoutInflater.from(this)
+                .inflate(R.layout.dialog_nick, null);
+        Dialog dialog = new Dialog(this, R.style.TipsDialog);
+        dialog.setContentView(view);
+
+        EditText etNick = view.findViewById(R.id.et_nick);
+        etNick.setHint(nick);
+
+        view.findViewById(R.id.tv_confirm).setOnClickListener(view1 -> {
+            if (TextUtils.isEmpty(etNick.getText())){
+                ToastUtil.show(UserInfoUpdateActivity.this, "请输入昵称");
+                return;
+            }
+
+            updateNickNameRequest(etNick.getText().toString());
+            dialog.dismiss();
+        });
+
+        view.findViewById(R.id.tv_cancel).setOnClickListener(view1 -> {
+            dialog.dismiss();
+        });
+
+        dialog.getWindow()
+                .setLayout(ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT);
+        dialog.getWindow().setGravity(Gravity.CENTER);
+
+        dialog.show();
+    }
+
+    /**
+     * 更新昵称
+     *
+     * @param string
+     */
+    private void updateNickNameRequest(String string) {
+
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("nickname", string);
+        map.put("userId", SPUtilHelper.getUserId());
+        Call call = RetrofitUtils.getBaseAPiService()
+                .successRequest("805084", StringUtils.getJsonToString(map));
+
+        addCall(call);
+
+        showLoadingDialog();
+
+        call.enqueue(new BaseResponseModelCallBack<IsSuccessModes>(this) {
+            @Override
+            protected void onSuccess(IsSuccessModes data, String SucMessage) {
+
+                NickNameUpdateModel nickNameUpdateModel = new NickNameUpdateModel(); //通知上一页
+                nickNameUpdateModel.setName(string);
+                EventBus.getDefault().post(nickNameUpdateModel);
+
+                UITipDialog.showSuccess(UserInfoUpdateActivity.this,
+                        "信息保存成功", dialogInterface -> {
+                            SPUtilHelper.saveUserName(string);
+                            finish();
+                        });
+            }
+
+            @Override
+            protected void onReqFailure(String errorCode, String errorMessage) {
+                UITipDialog.showFall(UserInfoUpdateActivity.this, errorMessage);
             }
 
             @Override

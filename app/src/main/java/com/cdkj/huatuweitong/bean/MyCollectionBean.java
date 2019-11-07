@@ -244,6 +244,7 @@ public class MyCollectionBean {
             private String status;
             private String updater;
             private String updateDatetime;
+            private String configName;
             private List<CaonfigListBean> caonfigList;
 
             public String getCode() {
@@ -500,6 +501,14 @@ public class MyCollectionBean {
 
             public void setUpdateDatetime(String updateDatetime) {
                 this.updateDatetime = updateDatetime;
+            }
+
+            public String getConfigName() {
+                return configName;
+            }
+
+            public void setConfigName(String configName) {
+                this.configName = configName;
             }
 
             public List<CaonfigListBean> getCaonfigList() {

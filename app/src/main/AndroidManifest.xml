@@ -35,7 +35,10 @@
             </intent-filter>
         </activity>
         <!-- com.cdkj.baselibrary.activigetSignogin.LoginActivity -->
-        <activity android:name=".MainActivity"/>
+        <activity
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".module.user.UserInfoUpdateActivity"/>
         <activity android:name=".module.user.UpDataLoginPSW"/>
         <activity android:name=".module.user.UpDataPhoneActivity"/>
@@ -129,14 +132,14 @@
         <activity android:name=".module.vehicle_db.CarMerchantDetailActivity"/>
 
         <!--<receiver-->
-            <!--android:exported="true"-->
-            <!--android:name="com.cdkj.huatuweitong.receiver.MessageReceiver">-->
-            <!--<intent-filter>-->
-                <!--&lt;!&ndash; 接收消息透传 &ndash;&gt;-->
-                <!--<action android:name="com.tencent.android.tpush.action.PUSH_MESSAGE"/>-->
-                <!--&lt;!&ndash; 监听注册、反注册、设置/删除标签、通知被点击等处理结果 &ndash;&gt;-->
-                <!--<action android:name="com.tencent.android.tpush.action.FEEDBACK"/>-->
-            <!--</intent-filter>-->
+        <!--android:exported="true"-->
+        <!--android:name="com.cdkj.huatuweitong.receiver.MessageReceiver">-->
+        <!--<intent-filter>-->
+        <!--&lt;!&ndash; 接收消息透传 &ndash;&gt;-->
+        <!--<action android:name="com.tencent.android.tpush.action.PUSH_MESSAGE"/>-->
+        <!--&lt;!&ndash; 监听注册、反注册、设置/删除标签、通知被点击等处理结果 &ndash;&gt;-->
+        <!--<action android:name="com.tencent.android.tpush.action.FEEDBACK"/>-->
+        <!--</intent-filter>-->
         <!--</receiver>-->
 
         <activity
@@ -151,6 +154,16 @@
                     android:scheme="xgscheme"/>
             </intent-filter>
         </activity>
+        <activity android:name=".wanshouhou.ShouhouIssueActivity"/>
+        <activity android:name=".wanbaoxian.CarApplyActivity"/>
+        <activity android:name=".module.vehicle_db.CarMerchantPageActivity"/>
+        <activity android:name=".module.vehicle_db.CarShowActivity"/>
+        <activity android:name=".module.vehicle_db.InfoPageActivity"/>
+        <activity android:name=".module.user.message.UserMessageActivity"/>
+        <activity android:name=".module.user.MyApplyActivity"/>
+        <activity android:name=".module.user.CarVideoActivity"/>
+        <activity android:name=".module.vehicle_db.CarPageActivity"/>
+        <activity android:name=".module.user.message.UserMessageDActivity"/>
     </application>
 
 </manifest>

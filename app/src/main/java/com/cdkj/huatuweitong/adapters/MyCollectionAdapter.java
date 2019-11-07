@@ -16,7 +16,9 @@ import java.util.List;
 /**
  * @updateDts 2019/3/14
  */
-public class MyCollectionAdapter extends BaseQuickAdapter<MyCollectionBean.ListBean, BaseViewHolder> {
+public class MyCollectionAdapter extends
+        BaseQuickAdapter<MyCollectionBean.ListBean, BaseViewHolder> {
+
     public MyCollectionAdapter(@Nullable List<MyCollectionBean.ListBean> data) {
         super(R.layout.item_car_list, data);
     }
@@ -28,15 +30,16 @@ public class MyCollectionAdapter extends BaseQuickAdapter<MyCollectionBean.ListB
         helper.setChecked(R.id.cb_select, item.isSelect());
         helper.addOnClickListener(R.id.cb_select);
 
-
         MyCollectionBean.ListBean.CarBean car = item.getCar();
-        if (car == null)
+        if (car == null) {
             return;
+        }
         ImgUtils.loadQiniuImg(mContext, car.getPic(), helper.getView(R.id.img_product));
 
         helper.setText(R.id.tv_product_title, car.getName());
 
-        helper.setText(R.id.tv_date, DateUtil.formatStringData(car.getUpdateDatetime(), DateUtil.DATE_YMD));
+        helper.setText(R.id.tv_date,
+                DateUtil.formatStringData(car.getUpdateDatetime(), DateUtil.DATE_YMD));
         helper.setText(R.id.tv_price, MoneyUtils.formatNum(car.getSalePrice()) + "");
         String type = "";
 
@@ -67,21 +70,25 @@ public class MyCollectionAdapter extends BaseQuickAdapter<MyCollectionBean.ListB
 
         }
         helper.setText(R.id.tv_type, type);
-        List<MyCollectionBean.ListBean.CarBean.CaonfigListBean> caonfigList = car.getCaonfigList();
-        StringBuilder sb = new StringBuilder();
-        if (caonfigList != null && caonfigList.size() != 0) {
-            for (int i = 0; i < caonfigList.size(); i++) {
-                MyCollectionBean.ListBean.CarBean.CaonfigListBean.ConfigBean caonfigListBean = caonfigList.get(i).getConfig();
-                if (caonfigListBean != null) {
-                    sb.append(caonfigListBean.getName());
-                    sb.append(",");
-                }
-            }
-            if (sb.length() > 0) {
-                sb.deleteCharAt(sb.length() - 1);
-            }
-            helper.setText(R.id.tv_slogan, sb.toString());
-        }
+
+        helper.setGone(R.id.tv_slogan, !TextUtils.isEmpty(item.getCar().getConfigName()));
+        helper.setText(R.id.tv_slogan, item.getCar().getConfigName());
+
+//        List<MyCollectionBean.ListBean.CarBean.CaonfigListBean> caonfigList = car.getCaonfigList();
+//        StringBuilder sb = new StringBuilder();
+//        if (caonfigList != null && caonfigList.size() != 0) {
+//            for (int i = 0; i < caonfigList.size(); i++) {
+//                MyCollectionBean.ListBean.CarBean.CaonfigListBean.ConfigBean caonfigListBean = caonfigList.get(i).getConfig();
+//                if (caonfigListBean != null) {
+//                    sb.append(caonfigListBean.getName());
+//                    sb.append(",");
+//                }
+//            }
+//            if (sb.length() > 0) {
+//                sb.deleteCharAt(sb.length() - 1);
+//            }
+//            helper.setText(R.id.tv_slogan, sb.toString());
+//        }
 
     }
 }

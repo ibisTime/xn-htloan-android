@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#028EFF</color>
-    <color name="colorPrimaryDark">#028EFF</color>
-    <color name="colorAccent">#028EFF</color>
+    <color name="colorPrimary">#F89C44</color>
+    <color name="colorPrimaryDark">#F89C44</color>
+    <color name="colorAccent">#F89C44</color>
 
 
-    <color name="app_main_txt_select_un">#616161</color>
-    <color name="app_main_txt_select">#2F93ED</color>
+    <color name="app_main_txt_select_un">#ffb3b3b3</color>
+    <color name="app_main_txt_select">#F89C44</color>
     <color name="orange">#fc712a</color>
     <color name="text_gray_666666">#666666</color>
-    <color name="blue">#028eff</color>
+    <color name="blue">#F89C44</color>
 
 
     <color name="white_car_loan">#fafafa</color>

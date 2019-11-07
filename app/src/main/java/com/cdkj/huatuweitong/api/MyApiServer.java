@@ -5,6 +5,7 @@ import com.cdkj.baselibrary.api.BaseResponseModel;
 import com.cdkj.baselibrary.api.ResponseInListModel;
 import com.cdkj.huatuweitong.bean.*;
 
+import com.cdkj.huatuweitong.wanshouhou.bean.ShouhouIssueBean;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -706,4 +707,37 @@ public interface MyApiServer {
     @FormUrlEncoded
     @POST("api")
     Call<BaseResponseModel<Integer>> getUnreadCount(@Field("code") String code, @Field("json") String json);
+
+    /**
+     * 获取账户列表
+     *
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<MainResourceBean>> getMainResource(@Field("code") String code, @Field("json") String json);
+
+    /**
+     * 分页查询问题
+     *
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<ShouhouIssueBean>> getShouhouIssuePage(@Field("code") String code, @Field("json") String json);
+
+    /**
+     * 分页查询问题
+     *
+     * @param code
+     * @param json
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("api")
+    Call<BaseResponseModel<SysConfigBean>> getSysConfig(@Field("code") String code, @Field("json") String json);
 }

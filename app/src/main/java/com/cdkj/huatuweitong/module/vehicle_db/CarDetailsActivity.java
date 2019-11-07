@@ -6,13 +6,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
 
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.cdkj.baselibrary.api.BaseResponseListModel;
 import com.cdkj.baselibrary.api.BaseResponseModel;
 import com.cdkj.baselibrary.appmanager.SPUtilHelper;
@@ -24,18 +29,14 @@ import com.cdkj.baselibrary.model.eventmodels.EventFinishAll;
 import com.cdkj.baselibrary.nets.BaseResponseListCallBack;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
-import com.cdkj.baselibrary.utils.DateUtil;
-import com.cdkj.baselibrary.utils.ImgUtils;
-import com.cdkj.baselibrary.utils.MoneyUtils;
-import com.cdkj.baselibrary.utils.PermissionHelper;
-import com.cdkj.baselibrary.utils.StringUtils;
+import com.cdkj.baselibrary.utils.*;
 import com.cdkj.huatuweitong.MainActivity;
 import com.cdkj.huatuweitong.R;
-import com.cdkj.huatuweitong.adapters.CarDetailsSettingAdapter;
-import com.cdkj.huatuweitong.adapters.CarDetailsSettingAllAdapter;
+import com.cdkj.huatuweitong.adapters.*;
 import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.*;
 import com.cdkj.huatuweitong.common.GlideFirstPageBannerImageLoader;
+import com.cdkj.huatuweitong.common.WebViewArticleActivity;
 import com.cdkj.huatuweitong.databinding.ActivityCarDetails2Binding;
 import com.cdkj.huatuweitong.databinding.DailogInquiryLayoutBinding;
 import com.cdkj.huatuweitong.databinding.DialogInquirySuccerBinding;
@@ -43,18 +44,17 @@ import com.cdkj.huatuweitong.dialog.FullBottomDialog;
 import com.cdkj.huatuweitong.module.mfirst_page.CarLoanCalculator2Activity;
 import com.cdkj.huatuweitong.utlis.DataHelper;
 import com.cdkj.huatuweitong.utlis.OnSystemKeyListener;
+import com.google.android.flexbox.FlexboxLayout;
 import com.youth.banner.BannerConfig;
 
 import org.greenrobot.eventbus.EventBus;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import retrofit2.Call;
 
 public class CarDetailsActivity extends AbsBaseLoadActivity {
+
     private FullBottomDialog fullBottomDialog;
     private DailogInquiryLayoutBinding fullDialogView;
     private ActivityCarDetails2Binding mBinding;
@@ -67,6 +67,8 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
     private String levelNumber = "";//规格的值
     private FullBottomDialog fullBottomSuccerDialog;
     private DialogInquirySuccerBinding fullBottomSuccerView;
+
+    private List<DataDictionaryBean> list = new ArrayList<>();
 
     public static void open(Context context, String code) {
         Intent intent = new Intent(context, CarDetailsActivity.class);
@@ -88,7 +90,8 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
 
     @Override
     public View addMainView() {
-        mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.activity_car_details2, null, false);
+        mBinding = DataBindingUtil
+                .inflate(getLayoutInflater(), R.layout.activity_car_details2, null, false);
 
         return mBinding.getRoot();
     }
@@ -100,11 +103,12 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
             code = getIntent().getStringExtra("code");
         }
 
-
         initDatas();
         initBanner();
-        initSettingDatas();
-        initSettingDatas2();
+        initConfigDatas();
+
+//        initSettingDatas();
+//        initSettingDatas2();
         initListener();
 
     }
@@ -125,6 +129,14 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
         mBinding.llCalculator.setOnClickListener(v -> {
             CarLoanCalculator2Activity.open(this, currentBean);
         });
+
+        mBinding.llMerchant.setOnClickListener(view -> {
+
+            if (currentBean.getCarDealer() != null) {
+                CarMerchantDetailActivity.open(this, currentBean.getCarDealer().getCode());
+            }
+
+        });
     }
 
     /**
@@ -143,14 +155,17 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
      * type   //0 分享，1 足迹，2 关注，3 收藏，4 点赞
      */
     private void collectionCarAndFootprint(String type) {
-        if (TextUtils.isEmpty(carCode))
+        if (TextUtils.isEmpty(carCode)) {
             return;
+        }
         Map map = new HashMap<String, String>();
         map.put("creater", SPUtilHelper.getUserId());
         map.put("toCode", carCode);
         map.put("toType", "0");//0 车，1 资讯
         map.put("type", type);//0 分享，1 足迹，2 关注，3 收藏，4 点赞
-        Call<BaseResponseModel<CollectionBean>> collection = RetrofitUtils.createApi(MyApiServer.class).collection("630460", StringUtils.getJsonToString(map));
+        Call<BaseResponseModel<CollectionBean>> collection = RetrofitUtils
+                .createApi(MyApiServer.class)
+                .collection("630460", StringUtils.getJsonToString(map));
         showLoadingDialog();
         collection.enqueue(new BaseResponseModelCallBack<CollectionBean>(this) {
             @Override
@@ -174,12 +189,15 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
      * type   //0 分享，1 足迹，2 关注，3 收藏，4 点赞
      */
     private void cancelCollectionCarAndFootprint() {
-        if (TextUtils.isEmpty(carCode))
+        if (TextUtils.isEmpty(carCode)) {
             return;
+        }
         Map map = new HashMap();
         map.put("carCode", currentBean.getCode());
         map.put("userId", SPUtilHelper.getUserId());
-        Call<BaseResponseModel<CollectionBean>> collection = RetrofitUtils.createApi(MyApiServer.class).collection("630462", StringUtils.getJsonToString(map));
+        Call<BaseResponseModel<CollectionBean>> collection = RetrofitUtils
+                .createApi(MyApiServer.class)
+                .collection("630462", StringUtils.getJsonToString(map));
         showLoadingDialog();
         collection.enqueue(new BaseResponseModelCallBack<CollectionBean>(this) {
             @Override
@@ -201,13 +219,20 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
      */
     private void showBottomDialog() {
         if (fullBottomDialog == null) {
-            fullDialogView = DataBindingUtil.inflate(getLayoutInflater(), R.layout.dailog_inquiry_layout, null, false);
+            fullDialogView = DataBindingUtil
+                    .inflate(getLayoutInflater(), R.layout.dailog_inquiry_layout, null, false);
             fullBottomDialog = new FullBottomDialog(this, fullDialogView.getRoot());
             fullDialogView.incMiddle.tvProductTitle.setText(currentBean.getName());
-            fullDialogView.incMiddle.tvType.setText(levelNumber + " 外观:" + currentBean.getOutsideColor() + " 内饰" + currentBean.getInsideColor() + " " + currentBean.getFromPlace());
-            fullDialogView.incMiddle.tvDate.setText(DateUtil.formatStringData(currentBean.getUpdateDatetime(), DateUtil.DATE_YMD));
-            fullDialogView.incMiddle.tvPrice.setText(MoneyUtils.formatNum(currentBean.getSalePrice()));
+            fullDialogView.incMiddle.tvType.setText(
+                    levelNumber + " 外观:" + currentBean.getOutsideColor() + " 内饰" + currentBean
+                            .getInsideColor() + " " + currentBean.getFromPlace());
+            fullDialogView.incMiddle.tvDate.setText(
+                    DateUtil.formatStringData(currentBean.getUpdateDatetime(), DateUtil.DATE_YMD));
+            fullDialogView.incMiddle.tvPrice
+                    .setText(MoneyUtils.formatNum(currentBean.getSalePrice()));
             ImgUtils.loadQiniuImg(this, currentBean.getPic(), fullDialogView.incMiddle.imgProduct);
+
+            fullDialogView.incMiddle.tvSlogan.setVisibility(View.VISIBLE);
             fullDialogView.incMiddle.tvSlogan.setText(sbConfig.toString());
         }
         //更新数据
@@ -224,8 +249,9 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
             requerstPrice(name, phone);
         });
 
-        if (!fullBottomDialog.isShowing())
+        if (!fullBottomDialog.isShowing()) {
             fullBottomDialog.show();
+        }
 
     }
 
@@ -234,7 +260,8 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
      */
     private void showBottomSuccerDialog() {
         if (fullBottomSuccerDialog == null) {
-            fullBottomSuccerView = DataBindingUtil.inflate(getLayoutInflater(), R.layout.dialog_inquiry_succer, null, false);
+            fullBottomSuccerView = DataBindingUtil
+                    .inflate(getLayoutInflater(), R.layout.dialog_inquiry_succer, null, false);
             fullBottomSuccerDialog = new FullBottomDialog(this, fullBottomSuccerView.getRoot());
             fullBottomSuccerView.ivClos.setOnClickListener(v -> fullBottomSuccerDialog.dismiss());
             fullBottomSuccerView.btnConfim.setOnClickListener(v -> {
@@ -242,8 +269,65 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
                 MainActivity.open(this);
             });
         }
-        if (!fullBottomSuccerDialog.isShowing())
+        if (!fullBottomSuccerDialog.isShowing()) {
             fullBottomSuccerDialog.show();
+        }
+    }
+
+    /**
+     * 获取车的配置
+     */
+    private void initConfigDatas() {
+        //1是带图片的  配置  0是不带图片的配置
+        Map<String, String> map = new HashMap<>();
+        map.put("carCode", code);
+        Call call = RetrofitUtils.createApi(MyApiServer.class)
+                .getCarDetailsSetting("630448", StringUtils.getJsonToString(map));
+        call.enqueue(new BaseResponseListCallBack<CarDetailsSettingBean>(CarDetailsActivity.this) {
+            @Override
+            protected void onSuccess(List<CarDetailsSettingBean> data, String SucMessage) {
+
+                for (CarDetailsSettingBean bean : data) {
+
+                    FlexboxLayout.LayoutParams layoutParams = new FlexboxLayout.LayoutParams(
+                            FlexboxLayout.LayoutParams.WRAP_CONTENT,
+                            DisplayHelper.dp2px(CarDetailsActivity.this, 25));
+                    layoutParams.bottomMargin = DisplayHelper.dp2px(CarDetailsActivity.this, 10);
+                    layoutParams.rightMargin = DisplayHelper.dp2px(CarDetailsActivity.this, 10);
+                    TextView textView = createText(bean.getConfig().getName());
+
+                    mBinding.flexLayout.addView(textView, layoutParams);
+
+                }
+
+            }
+
+            @Override
+            protected void onFinish() {
+
+            }
+        });
+
+    }
+
+    /**
+     * 根据文本创建TextView用于显示助记词
+     *
+     * @param word
+     */
+    public TextView createText(String word) {
+
+        TextView textView = new TextView(this);
+        textView.setText("  " + word + "  ");
+        textView.setTextSize(12f);
+        textView.setGravity(Gravity.CENTER);
+        textView.setTextColor(Color.parseColor("#666666"));
+        textView.setBackgroundResource(R.drawable.shape_car_config);
+        textView.setPadding(10, 0,
+                10, 0);
+
+        return textView;
+
     }
 
     /**
@@ -254,18 +338,21 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
         Map<String, String> map = new HashMap<>();
         map.put("carCode", code);
         map.put("isPic", "0");
-        Call call = RetrofitUtils.createApi(MyApiServer.class).getCarDetailsSetting("630448", StringUtils.getJsonToString(map));
+        Call call = RetrofitUtils.createApi(MyApiServer.class)
+                .getCarDetailsSetting("630448", StringUtils.getJsonToString(map));
         call.enqueue(new BaseResponseListCallBack<CarDetailsSettingBean>(CarDetailsActivity.this) {
             @Override
             protected void onSuccess(List<CarDetailsSettingBean> data, String SucMessage) {
 
-                CarDetailsSettingAllAdapter carDetailsSettingAllAdapter = new CarDetailsSettingAllAdapter(data);
-                mBinding.rvCarSettingAll.setLayoutManager(new GridLayoutManager(CarDetailsActivity.this, 2) {
-                    @Override
-                    public boolean canScrollVertically() {
-                        return false;
-                    }
-                });
+                CarDetailsSettingAllAdapter carDetailsSettingAllAdapter = new CarDetailsSettingAllAdapter(
+                        data);
+                mBinding.rvCarSettingAll
+                        .setLayoutManager(new GridLayoutManager(CarDetailsActivity.this, 2) {
+                            @Override
+                            public boolean canScrollVertically() {
+                                return false;
+                            }
+                        });
                 mBinding.rvCarSettingAll.setAdapter(carDetailsSettingAllAdapter);
 
 
@@ -287,17 +374,20 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
         Map<String, String> map = new HashMap<>();
         map.put("carCode", code);
         map.put("isPic", "1");
-        Call call = RetrofitUtils.createApi(MyApiServer.class).getCarDetailsSetting("630448", StringUtils.getJsonToString(map));
+        Call call = RetrofitUtils.createApi(MyApiServer.class)
+                .getCarDetailsSetting("630448", StringUtils.getJsonToString(map));
         call.enqueue(new BaseResponseListCallBack<CarDetailsSettingBean>(CarDetailsActivity.this) {
             @Override
             protected void onSuccess(List<CarDetailsSettingBean> data, String SucMessage) {
-                CarDetailsSettingAdapter carDetailsSettingAdapter = new CarDetailsSettingAdapter(data);
-                mBinding.rvCarSetting.setLayoutManager(new GridLayoutManager(CarDetailsActivity.this, 4) {
-                    @Override
-                    public boolean canScrollVertically() {
-                        return false;
-                    }
-                });
+                CarDetailsSettingAdapter carDetailsSettingAdapter = new CarDetailsSettingAdapter(
+                        data);
+                mBinding.rvCarSetting
+                        .setLayoutManager(new GridLayoutManager(CarDetailsActivity.this, 4) {
+                            @Override
+                            public boolean canScrollVertically() {
+                                return false;
+                            }
+                        });
                 mBinding.rvCarSetting.setAdapter(carDetailsSettingAdapter);
             }
 
@@ -318,7 +408,8 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
         map.put("code", code);
         map.put("userId", SPUtilHelper.getUserId());
         map.put("token", SPUtilHelper.getUserToken());
-        Call call = RetrofitUtils.createApi(MyApiServer.class).getCarDetails("630427", StringUtils.getJsonToString(map));
+        Call call = RetrofitUtils.createApi(MyApiServer.class)
+                .getCarDetails("630427", StringUtils.getJsonToString(map));
 
         addCall(call);
         showLoadingDialog();
@@ -401,8 +492,22 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
         mBinding.tvMonthAmount.setText(MoneyUtils.formatNum(data.getMonthAmount()));
         mBinding.tvProcedures.setText(data.getProcedure());
         mBinding.tvCarLocation.setText(data.getFromPlace());
-        mBinding.tvUpDate.setText(DateUtil.formatStringData(data.getUpdateDatetime(), DateUtil.DATE_YMD));
+        mBinding.tvUpDate
+                .setText(DateUtil.formatStringData(data.getUpdateDatetime(), DateUtil.DATE_YMD));
         mBinding.tvMsg.setText(data.getDescription());
+
+        if (data.getCarDealer() != null) {
+
+            mBinding.llMerchant.setVisibility(View.VISIBLE);
+
+            ImgUtils.loadQiniuImg(this, data.getCarDealer().getShopLogo(),
+                    mBinding.ivMerchantAvatar);
+            mBinding.tvMerchantName.setText(data.getCarDealer().getFullName());
+
+            getActiveConfig();
+            getSelectedData();
+        }
+
     }
 
     /**
@@ -413,7 +518,9 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
         map.put("parentKey", "car_version");
 
         showLoadingDialog();
-        Call<BaseResponseListModel<DataDictionaryBean>> dataDictionary = RetrofitUtils.createApi(MyApiServer.class).getDataDictionary("630036", StringUtils.getJsonToString(map));
+        Call<BaseResponseListModel<DataDictionaryBean>> dataDictionary = RetrofitUtils
+                .createApi(MyApiServer.class)
+                .getDataDictionary("630036", StringUtils.getJsonToString(map));
         addCall(dataDictionary);
         dataDictionary.enqueue(new BaseResponseListCallBack<DataDictionaryBean>(this) {
             @Override
@@ -425,7 +532,9 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
                         break;
                     }
                 }
-                mBinding.tvType.setText(levelNumber +" 外观:"+ currentBean.getOutsideColor() + " 内饰:" + currentBean.getInsideColor() + " " + currentBean.getFromPlace());
+                mBinding.tvType.setText(
+                        levelNumber + " 外观:" + currentBean.getOutsideColor() + " 内饰:" + currentBean
+                                .getInsideColor() + " " + currentBean.getFromPlace());
             }
 
             @Override
@@ -437,6 +546,141 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
     }
 
     /**
+     * 获取规格的值
+     */
+    private void getActiveConfig() {
+        Map<String, String> map = new HashMap<>();
+        map.put("parentKey", "car_news_tag");
+
+        showLoadingDialog();
+        Call<BaseResponseListModel<DataDictionaryBean>> dataDictionary = RetrofitUtils
+                .createApi(MyApiServer.class)
+                .getDataDictionary("630036", StringUtils.getJsonToString(map));
+        addCall(dataDictionary);
+        dataDictionary.enqueue(new BaseResponseListCallBack<DataDictionaryBean>(this) {
+            @Override
+            protected void onSuccess(List<DataDictionaryBean> data, String SucMessage) {
+
+                if (data != null) {
+                    list.addAll(data);
+                }
+
+            }
+
+            @Override
+            protected void onFinish() {
+                disMissLoading();
+                getInformation();
+            }
+        });
+
+    }
+
+    /**
+     * 获取资讯数据
+     */
+    private void getInformation() {
+
+        Map<String, String> map = new HashMap<>();
+        map.put("carDealerCode", currentBean.getCarDealer().getCode());
+        map.put("limit", "2");
+        map.put("start", "1");
+        map.put("status", "1");//0待上架，1已上架，2已下架
+
+        Call<BaseResponseModel<InformationListBean>> information = RetrofitUtils
+                .createApi(MyApiServer.class)
+                .getInformationList("630455", StringUtils.getJsonToString(map));
+
+        showLoadingDialog();
+
+        information.enqueue(new BaseResponseModelCallBack<InformationListBean>(this) {
+            @Override
+            protected void onSuccess(InformationListBean data, String SucMessage) {
+
+                InformationAdapter informationAdapter = new InformationAdapter(data.getList(),
+                        list);
+                informationAdapter.setOnItemClickListener((adapter, view, position) -> {
+                    InformationListBean.ListBean item = (InformationListBean.ListBean) adapter
+                            .getItem(position);
+                    WebViewArticleActivity
+                            .open(CarDetailsActivity.this, item.getCode());
+                });
+                mBinding.rvActive.setAdapter(informationAdapter);
+                mBinding.rvActive.setLayoutManager(new LinearLayoutManager(CarDetailsActivity.this,
+                        LinearLayoutManager.VERTICAL, false) {
+                    @Override
+                    public boolean canScrollVertically() {
+                        return false;
+                    }
+                });
+
+                if (null == data.getList() || 0 == data.getList().size()) {
+                    mBinding.llActive.setVisibility(View.GONE);
+                } else {
+                    mBinding.llActive.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            protected void onFinish() {
+                disMissLoading();
+            }
+        });
+    }
+
+    /**
+     * 获取精选车源数据
+     */
+    private void getSelectedData() {
+        showLoadingDialog();
+        Map<String, String> map = new HashMap<>();
+        map.put("status", "1");//0待上架，1已上架，2已下架
+        map.put("carDealerCode", currentBean.getCarDealer().getCode());
+        map.put("isReferee", "1");
+        map.put("start", "1");
+        map.put("limit", "200");
+        map.put("orderDir", "asc");
+        Call call = RetrofitUtils.createApi(MyApiServer.class)
+                .getCarTypePage("630492", StringUtils.getJsonToString(map));
+        call.enqueue(
+                new BaseResponseModelCallBack<CarSelectPageBean>(this) {
+
+                    @Override
+                    protected void onSuccess(CarSelectPageBean data, String SucMessage) {
+
+                        CarTypeListAdapter mAdapter = new CarTypeListAdapter(data.getList());
+                        mBinding.rvRecommend
+                                .setLayoutManager(new LinearLayoutManager(CarDetailsActivity.this,
+                                        LinearLayout.VERTICAL, false) {
+                                    @Override
+                                    public boolean canScrollVertically() {
+                                        return false;
+                                    }
+                                });
+                        mBinding.rvRecommend.setAdapter(mAdapter);
+
+                        mAdapter.setOnItemClickListener((adapter, view, position) -> {
+
+                            CarBean item = (CarBean) adapter
+                                    .getItem(position);
+                            CarDetailsActivity.open(CarDetailsActivity.this, item.getCode());
+                        });
+
+                        if (null == data.getList() || 0 == data.getList().size()) {
+                            mBinding.llRecommend.setVisibility(View.GONE);
+                        } else {
+                            mBinding.llRecommend.setVisibility(View.VISIBLE);
+                        }
+                    }
+
+                    @Override
+                    protected void onFinish() {
+                        disMissLoading();
+                    }
+                });
+    }
+
+    /**
      * 询底价
      */
     private void requerstPrice(String name, String phone) {
@@ -444,11 +688,14 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
         map.put("carCode", carCode);
         map.put("name", name);
         map.put("userId", SPUtilHelper.getUserId());
+        map.put("token", SPUtilHelper.getUserToken());
         map.put("userMobile", phone);
 
         map.put("periods", "12");//后面这个一个入参是 之前接口遗留的  随便传入一个就好
         map.put("saleDesc", "计算器信息");//后面这个一个入参是 之前接口遗留的  随便传入一个就好
-        Call<BaseResponseModel<CommonSuccerBean>> baseResponseModelCall = RetrofitUtils.createApi(MyApiServer.class).requerstPrice("630430", StringUtils.getJsonToString(map));
+        Call<BaseResponseModel<CommonSuccerBean>> baseResponseModelCall = RetrofitUtils
+                .createApi(MyApiServer.class)
+                .requerstPrice("630430", StringUtils.getJsonToString(map));
         baseResponseModelCall.enqueue(new BaseResponseModelCallBack<CommonSuccerBean>(this) {
             @Override
             protected void onSuccess(CommonSuccerBean data, String SucMessage) {
@@ -493,7 +740,8 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
 
         Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + telephone));
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE)
+                != PackageManager.PERMISSION_GRANTED) {
             return;
         }
         startActivity(intent);

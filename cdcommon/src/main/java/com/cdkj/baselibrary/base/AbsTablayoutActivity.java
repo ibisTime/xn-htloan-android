@@ -35,7 +35,7 @@ public abstract class AbsTablayoutActivity extends AbsBaseLoadActivity {
         initViewPager();
     }
 
-    private void initViewPager() {
+    public void initViewPager() {
 
         tablayoutAdapter = new TablayoutAdapter(getSupportFragmentManager());
 
