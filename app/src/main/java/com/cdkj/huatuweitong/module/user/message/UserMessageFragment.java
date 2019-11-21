@@ -19,6 +19,7 @@ import com.cdkj.huatuweitong.api.MyApiServer;
 import com.cdkj.huatuweitong.bean.MsgListModel;
 import com.cdkj.huatuweitong.module.user.message.adapter.UserMessageAdapter;
 import com.cdkj.huatuweitong.module.user.message.bean.UserMessageBean;
+import com.cdkj.huatuweitong.module.vehicle_db.CarDetailsActivity;
 import retrofit2.Call;
 
 import java.util.ArrayList;
@@ -77,7 +78,15 @@ public class UserMessageFragment extends AbsRefreshListFragment<MsgListModel.Lis
     public RecyclerView.Adapter getListAdapter(List<MsgListModel.ListBean> listData) {
         UserMessageAdapter adapter = new UserMessageAdapter(listData);
         adapter.setOnItemClickListener((adapter1, view, position) -> {
-            UserMessageDActivity.open(mActivity, adapter.getItem(position).getCode());
+
+            MsgListModel.ListBean item = adapter.getItem(position);
+            if (item.getType().equals("4")) {
+                CarDetailsActivity.open(mActivity, item.getRefCode());
+            } else {
+                UserMessageDActivity.open(mActivity, item.getCode());
+            }
+
+
         });
         return adapter;
     }

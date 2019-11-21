@@ -69,40 +69,40 @@ public class BrandFragment extends BaseLazyFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_brand, null, false);
 
-        initHotBrandRecycler();
+//        initHotBrandRecycler();
         initAllRecycler();
         initHotBrandData();
         initAllBrandData();
         initLetter();
-        initListener();
+//        initListener();
         return mBinding.getRoot();
     }
 
-    private void initListener() {
-        mBinding.tvOrther.setOnClickListener(v -> {
-            BrandActivity.open(mActivity);
-        });
-    }
+//    private void initListener() {
+//        mBinding.tvOrther.setOnClickListener(v -> {
+//            BrandActivity.open(mActivity);
+//        });
+//    }
 
     /*
     初始化上面recycler
      */
-    private void initHotBrandRecycler() {
-        hotBrandAdapter = new BrandVerAdapter(null);
-        mBinding.rvHotBrand.setLayoutManager(new GridLayoutManager(mActivity, 5) {
-            @Override
-            public boolean canScrollVertically() {
-                return false;
-            }
-        });
-        mBinding.rvHotBrand.setAdapter(hotBrandAdapter);
-
-        hotBrandAdapter.setOnItemClickListener((adapter, view, position) -> {
-            BrandBean item = (BrandBean) adapter.getItem(position);
-
-            CarSystemListActivity.open(mActivity, item.getCode());
-        });
-    }
+//    private void initHotBrandRecycler() {
+//        hotBrandAdapter = new BrandVerAdapter(null);
+//        mBinding.rvHotBrand.setLayoutManager(new GridLayoutManager(mActivity, 5) {
+//            @Override
+//            public boolean canScrollVertically() {
+//                return false;
+//            }
+//        });
+//        mBinding.rvHotBrand.setAdapter(hotBrandAdapter);
+//
+//        hotBrandAdapter.setOnItemClickListener((adapter, view, position) -> {
+//            BrandBean item = (BrandBean) adapter.getItem(position);
+//
+//            CarSystemListActivity.open(mActivity, item.getCode());
+//        });
+//    }
 
 
     /**

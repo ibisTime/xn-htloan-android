@@ -28,10 +28,10 @@ public class UserMessageAdapter extends BaseQuickAdapter<MsgListModel.ListBean, 
     @Override
     protected void convert(BaseViewHolder helper, MsgListModel.ListBean item) {
 
-        if (TextUtils.equals(item.getIsAlreadyRead(), "0")) {
+        if (TextUtils.equals(item.getIsAlreadyRead(), "0")) { // 未读
             helper.setGone(R.id.tv_status, true);
             helper.setTextColor(R.id.tv_name, Color.parseColor("#333333"));
-        } else if (TextUtils.equals(item.getStatus(), "1")) {
+        } else if (TextUtils.equals(item.getIsAlreadyRead(), "1")) { // 已读
             helper.setGone(R.id.tv_status, false);
             helper.setTextColor(R.id.tv_name, Color.parseColor("#999999"));
         }

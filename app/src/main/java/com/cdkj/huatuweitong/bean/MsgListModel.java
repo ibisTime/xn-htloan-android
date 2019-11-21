@@ -98,7 +98,7 @@ public class MsgListModel implements Serializable {
         private String title;
         private String content;
         private String status;
-        private String isAlreadyRead;
+        private String isAlreadyRead = "1";
         private String createDatetime;
         private String updater;
         private String updateDatetime;

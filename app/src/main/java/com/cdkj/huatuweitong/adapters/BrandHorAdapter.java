@@ -9,6 +9,7 @@ import com.cdkj.huatuweitong.bean.BrandBean;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -53,5 +54,26 @@ public class BrandHorAdapter extends BaseQuickAdapter<BrandBean, BaseViewHolder>
             }
         }
         return -1;
+    }
+
+    public int getSortPosition(String sort) {
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < getData().size(); i++) {
+
+            String sortStr = getData().get(i).getLetter();
+
+            if (sortStr.equals(sort)) {
+                break;
+            }
+
+            if (!list.contains(sortStr)){
+                list.add(sortStr);
+            }
+
+
+
+        }
+
+        return list.size();
     }
 }

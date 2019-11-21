@@ -42,6 +42,7 @@ import com.cdkj.huatuweitong.databinding.DailogInquiryLayoutBinding;
 import com.cdkj.huatuweitong.databinding.DialogInquirySuccerBinding;
 import com.cdkj.huatuweitong.dialog.FullBottomDialog;
 import com.cdkj.huatuweitong.module.mfirst_page.CarLoanCalculator2Activity;
+import com.cdkj.huatuweitong.share.ShareActivity;
 import com.cdkj.huatuweitong.utlis.DataHelper;
 import com.cdkj.huatuweitong.utlis.OnSystemKeyListener;
 import com.google.android.flexbox.FlexboxLayout;
@@ -77,15 +78,8 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
     }
 
     @Override
-    public void topTitleViewRightClick() {
-        if (!SPUtilHelper.isLogin(this, false)) {
-            return;
-        }
-        if (TextUtils.equals("1", currentBean.getIsCollect())) {
-            cancelCollectionCarAndFootprint();
-        } else {
-            collectionCarAndFootprint("3");
-        }
+    protected boolean canLoadTopTitleView() {
+        return false;
     }
 
     @Override
@@ -93,12 +87,13 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
         mBinding = DataBindingUtil
                 .inflate(getLayoutInflater(), R.layout.activity_car_details2, null, false);
 
+
+
         return mBinding.getRoot();
     }
 
     @Override
     public void afterCreate(Bundle savedInstanceState) {
-        setShowTitle(true);
         if (getIntent() != null) {
             code = getIntent().getStringExtra("code");
         }
@@ -137,6 +132,22 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
             }
 
         });
+
+        mBinding.flLike.setOnClickListener(view -> {
+            if (!SPUtilHelper.isLogin(this, false)) {
+                return;
+            }
+            if (TextUtils.equals("1", currentBean.getIsCollect())) {
+                cancelCollectionCarAndFootprint();
+            } else {
+                collectionCarAndFootprint("3");
+            }
+        });
+
+        mBinding.flShare.setOnClickListener(view -> {
+            ShareActivity.open(CarDetailsActivity.this,
+                    "http://h5.htwt.hichengdai.com/vehicleDetail?code=" + code, "分享", "欢迎使用会玩车");
+        });
     }
 
     /**
@@ -173,7 +184,7 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
                 if (TextUtils.equals("3", type)) {
                     UITipDialog.showSuccess(CarDetailsActivity.this, "收藏成功");
                     currentBean.setIsCollect("1");
-                    mBaseBinding.titleView.setRightImg(R.mipmap.icon_collection);
+                    mBinding.ivLike.setImageResource(R.mipmap.icon_collection);
                 }
             }
 
@@ -204,7 +215,7 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
             protected void onSuccess(CollectionBean data, String SucMessage) {
                 UITipDialog.showSuccess(CarDetailsActivity.this, "取消收藏");
                 currentBean.setIsCollect("0");
-                mBaseBinding.titleView.setRightImg(R.mipmap.icon_un_collection);
+                mBinding.ivLike.setImageResource(R.mipmap.icon_un_collection);
             }
 
             @Override
@@ -480,12 +491,12 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
         this.currentBean = data;
         carCode = data.getCode();
         if (TextUtils.equals("1", currentBean.getIsCollect())) {
-            mBaseBinding.titleView.setRightImg(R.mipmap.icon_collection);
+            mBinding.ivLike.setImageResource(R.mipmap.icon_collection);
         } else {
-            mBaseBinding.titleView.setRightImg(R.mipmap.icon_un_collection);
+            mBinding.ivLike.setImageResource(R.mipmap.icon_un_collection);
         }
 
-        mBaseBinding.titleView.setMidTitle(data.getName());
+        mBinding.tvTitle.setText(data.getName());
         mBinding.tvName.setText(data.getName());
 
         mBinding.tvPrice.setText(MoneyUtils.formatNum(data.getSalePrice()));

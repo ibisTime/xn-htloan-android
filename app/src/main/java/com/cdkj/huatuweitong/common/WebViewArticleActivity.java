@@ -17,6 +17,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.cdkj.baselibrary.activitys.WebViewActivity;
 import com.cdkj.baselibrary.api.BaseResponseListModel;
 import com.cdkj.baselibrary.appmanager.MyCdConfig;
 import com.cdkj.baselibrary.appmanager.SPUtilHelper;
@@ -39,6 +40,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.cdkj.huatuweitong.share.ShareActivity;
+import com.cdkj.huatuweitong.utlis.WxUtil;
 import retrofit2.Call;
 
 
@@ -80,6 +83,13 @@ public class WebViewArticleActivity extends AbsActivity {
     public void afterCreate(Bundle savedInstanceState) {
         setSubLeftImgState(true);
         setTopLineState(true);
+
+        setTopTitle("文章");
+        setSubRightImgAndClick(R.mipmap.active_share, view -> {
+            ShareActivity.open(WebViewArticleActivity.this,
+                    "http://h5.htwt.hichengdai.com/articleDetail?code=" + getIntent()
+                            .getStringExtra("code"), "分享", "欢迎使用会玩车");
+        });
 
         initLayout();
 
@@ -159,13 +169,15 @@ public class WebViewArticleActivity extends AbsActivity {
         map.put("parentKey", "car_news_tag");
 
         showLoadingDialog();
-        Call<BaseResponseListModel<DataDictionaryBean>> dataDictionary = RetrofitUtils.createApi(MyApiServer.class).getDataDictionary("630036", StringUtils.getJsonToString(map));
+        Call<BaseResponseListModel<DataDictionaryBean>> dataDictionary = RetrofitUtils
+                .createApi(MyApiServer.class)
+                .getDataDictionary("630036", StringUtils.getJsonToString(map));
         addCall(dataDictionary);
         dataDictionary.enqueue(new BaseResponseListCallBack<DataDictionaryBean>(this) {
             @Override
             protected void onSuccess(List<DataDictionaryBean> data, String SucMessage) {
 
-                if (data != null){
+                if (data != null) {
                     list.addAll(data);
                 }
 
@@ -198,16 +210,13 @@ public class WebViewArticleActivity extends AbsActivity {
             @Override
             protected void onSuccess(InformationListBean.ListBean bean, String SucMessage) {
 
-                setTopTitle("文章");
-
                 for (DataDictionaryBean dictionaryBean : list) {
 
-                    if (dictionaryBean.getDkey().equals(bean.getTag())){
+                    if (dictionaryBean.getDkey().equals(bean.getTag())) {
                         mBinding.tvYuanchuang.setText(dictionaryBean.getDvalue());
                     }
 
                 }
-
 
                 mBinding.tvArticleTitle.setText(bean.getTitle());
                 mBinding.tvAuthor.setText(bean.getAuthor());

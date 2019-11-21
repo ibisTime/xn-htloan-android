@@ -24,6 +24,7 @@ import com.cdkj.huatuweitong.bean.MainResourceBean;
 import com.cdkj.huatuweitong.databinding.FrgFenqiBinding;
 import com.cdkj.huatuweitong.wanbaoxian.CarApplyActivity;
 import com.cdkj.huatuweitong.wanfenqi.adapter.FenqiAdapter;
+import com.github.chrisbanes.photoview.PhotoView;
 import com.leochuan.CarouselLayoutManager;
 import com.leochuan.CenterSnapHelper;
 import retrofit2.Call;
@@ -188,13 +189,19 @@ public class FenqiFragment extends BaseLazyFragment {
         Dialog dialog = new Dialog(mActivity, R.style.TipsDialog);
         dialog.setContentView(view);
 
-        TextView tvTitle = view.findViewById(R.id.tv_title);
-        tvTitle.setText(title);
+//        TextView tvTitle = view.findViewById(R.id.tv_title);
+//        tvTitle.setText(title);
+//
+//        ImageView ivInfo = view.findViewById(R.id.iv_info);
+//        ImgUtils.loadQiniuImg(this, pic, ivInfo);
 
-        ImageView ivInfo = view.findViewById(R.id.iv_info);
-        ImgUtils.loadQiniuImg(this, pic, ivInfo);
+        PhotoView photoView = view.findViewById(R.id.photoview);
+        ImgUtils.loadQiniuImg(this, pic, photoView);
+        photoView.setOnClickListener(view1 -> {
+            dialog.dismiss();
+        });
 
-        view.findViewById(R.id.fl_close).setOnClickListener(view1 -> {
+        view.findViewById(R.id.ll_root).setOnClickListener(view1 -> {
             dialog.dismiss();
         });
 

@@ -30,6 +30,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.cdkj.huatuweitong.module.vehicle_db.VehicleDBFragment;
 import com.cdkj.huatuweitong.wanbaoxian.BaoxianFrgment;
 import com.cdkj.huatuweitong.wanfenqi.FenqiFragment;
 import com.cdkj.huatuweitong.wanshouhou.ShouhouFragment;

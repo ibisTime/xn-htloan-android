@@ -82,4 +82,8 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="copyright">\@2017CON版权所有</string>
+
+    <string name="share_succ">分享成功</string>
+    <string name="share_fail">分享失败</string>
+    <string name="share_cancel">取消分享</string>
 </resources>

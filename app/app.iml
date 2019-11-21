@@ -148,6 +148,7 @@
     <orderEntry type="library" name="com.android.support:support-v4-27.0.2" level="project" />
     <orderEntry type="library" name="com.qiniu:qiniu-android-sdk:7.3.15@jar" level="project" />
     <orderEntry type="library" name="com.scwang.smartrefresh:SmartRefreshLayout-1.0.3" level="project" />
+    <orderEntry type="library" name="com.tencent.mm.opensdk:wechat-sdk-android-without-mta:5.5.8@jar" level="project" />
     <orderEntry type="library" name="com.android.support:appcompat-v7-27.0.2" level="project" />
     <orderEntry type="library" name="com.android.support:support-annotations:27.0.2@jar" level="project" />
     <orderEntry type="library" name="com.android.support:design-27.0.2" level="project" />

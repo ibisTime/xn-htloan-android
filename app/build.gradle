@@ -37,6 +37,15 @@ android {
         ]
     }
 
+    signingConfigs {
+        config {
+            storeFile file("../htwt.jks")
+            storePassword "htwt123456"
+            keyAlias "htwt"
+            keyPassword "htwt123456"
+        }
+    }
+
     buildTypes {
         release {
             buildConfigField "boolean", "LOG_DEBUG", "false"
@@ -107,6 +116,8 @@ dependencies {
     compile 'cn.jzvd:jiaozivideoplayer:7.0.5'
     // 卡片滑动效果
     implementation 'rouchuan.viewpagerlayoutmanager:viewpagerlayoutmanager:2.0.22'
+    // 微信
+    api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
 }
 ///格式化打完完成后APK名称中的时间
 def releaseTime() {

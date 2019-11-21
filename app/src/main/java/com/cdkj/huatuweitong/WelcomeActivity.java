@@ -28,7 +28,7 @@ public class WelcomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         // 用于第一次安装APP，进入到除这个启动activity的其他activity，点击home键，再点击桌面启动图标时，
-        // 系统会重启此activty，而不是直接打开之前已经打开过的activity，因此需要关闭此activity
+        // 系统会重启此activty，而不是直接打开之前已经BrandVerAdapter打开过的activity，因此需要关闭此activity
 
         try {
             if (getIntent() != null

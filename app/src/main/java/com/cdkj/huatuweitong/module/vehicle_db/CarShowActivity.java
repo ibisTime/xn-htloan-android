@@ -21,6 +21,7 @@ import com.cdkj.baselibrary.nets.BaseResponseListCallBack;
 import com.cdkj.baselibrary.nets.BaseResponseModelCallBack;
 import com.cdkj.baselibrary.nets.RetrofitUtils;
 import com.cdkj.baselibrary.utils.DateUtil;
+import com.cdkj.baselibrary.utils.DisplayHelper;
 import com.cdkj.baselibrary.utils.ImgUtils;
 import com.cdkj.baselibrary.utils.StringUtils;
 import com.cdkj.huatuweitong.MainActivity;
@@ -90,6 +91,10 @@ public class CarShowActivity extends AbsBaseLoadActivity {
     }
 
     private void initListener() {
+        mBinding.flBack.setOnClickListener(view -> {
+            finish();
+        });
+
         mBinding.tvAll.setOnClickListener(v -> {
         });
 
@@ -112,19 +117,23 @@ public class CarShowActivity extends AbsBaseLoadActivity {
                     }
                 });
         mBinding.rvLetter.setAdapter(letterAdapter);
-        letterAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                int cposition = allBrandAdapter.getPositionBySort(letters[position]);
-                if (cposition != -1) {
+        letterAdapter.setOnItemClickListener((adapter, view, position) -> {
+            int cposition = allBrandAdapter.getPositionBySort(letters[position]);
+            int sposition = allBrandAdapter.getSortPosition(letters[position]);
+            if (cposition != -1) {
 //                    scrollToPosition 会把不在屏幕的 Item 移动到屏幕上，原来在上方的 Item 移动到 可见 Item 的第一项，在下方的移动到屏幕可见 Item 的最后一项。已经显示的 Item 不会移动。
-                    mBinding.rvBrand.scrollToPosition(cposition);
-//                    scrollToPositionWithOffset 会把 Item 移动到可见 Item 的第一项，即使它已经在可见 Item 之中。另外它还有 offset 参数，表示 Item 移动到第一项后跟 RecyclerView 上边界或下边界之间的距离（默认是 0）
-                    LinearLayoutManager mLayoutManager =
-                            (LinearLayoutManager) mBinding.rvBrand.getLayoutManager();
-                    mLayoutManager.scrollToPositionWithOffset(cposition, 0);
-                }
+//                mBinding.rvBrand.smoothScrollToPosition(cposition);
+////                    scrollToPositionWithOffset 会把 Item 移动到可见 Item 的第一项，即使它已经在可见 Item 之中。另外它还有 offset 参数，表示 Item 移动到第一项后跟 RecyclerView 上边界或下边界之间的距离（默认是 0）
+//                LinearLayoutManager mLayoutManager =
+//                        (LinearLayoutManager) mBinding.rvBrand.getLayoutManager();
+//                mLayoutManager.scrollToPositionWithOffset(cposition, 0);
+
+                mBinding.slRoot.scrollTo(0,
+                        mBinding.llHead.getHeight() + (cposition * DisplayHelper.dp2px(this, 65))
+                                + (sposition) * DisplayHelper.dp2px(this, 20));
             }
+
+
         });
 
     }
