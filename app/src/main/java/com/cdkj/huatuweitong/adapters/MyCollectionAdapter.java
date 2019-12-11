@@ -3,6 +3,7 @@ package com.cdkj.huatuweitong.adapters;
 import android.support.annotation.Nullable;
 
 import android.text.TextUtils;
+import android.view.View;
 import com.cdkj.baselibrary.utils.DateUtil;
 import com.cdkj.baselibrary.utils.ImgUtils;
 import com.cdkj.baselibrary.utils.MoneyUtils;
@@ -10,6 +11,7 @@ import com.cdkj.huatuweitong.R;
 import com.cdkj.huatuweitong.bean.MyCollectionBean;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.google.android.flexbox.FlexboxLayout;
 
 import java.util.List;
 
@@ -71,8 +73,10 @@ public class MyCollectionAdapter extends
         }
         helper.setText(R.id.tv_type, type);
 
-        helper.setGone(R.id.tv_slogan, !TextUtils.isEmpty(item.getCar().getConfigName()));
-        helper.setText(R.id.tv_slogan, item.getCar().getConfigName());
+//        helper.setGone(R.id.tv_slogan, !TextUtils.isEmpty(item.getCar().getConfigName()));
+//        helper.setText(R.id.tv_slogan, item.getCar().getConfigName());
+
+        helper.setGone(R.id.tv_config, false);
 
 //        List<MyCollectionBean.ListBean.CarBean.CaonfigListBean> caonfigList = car.getCaonfigList();
 //        StringBuilder sb = new StringBuilder();

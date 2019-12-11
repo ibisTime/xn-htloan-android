@@ -87,8 +87,6 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
         mBinding = DataBindingUtil
                 .inflate(getLayoutInflater(), R.layout.activity_car_details2, null, false);
 
-
-
         return mBinding.getRoot();
     }
 
@@ -100,7 +98,7 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
 
         initDatas();
         initBanner();
-        initConfigDatas();
+//        initConfigDatas();
 
 //        initSettingDatas();
 //        initSettingDatas2();
@@ -146,7 +144,12 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
 
         mBinding.flShare.setOnClickListener(view -> {
             ShareActivity.open(CarDetailsActivity.this,
-                    "http://h5.htwt.hichengdai.com/vehicleDetail?code=" + code, "分享", "欢迎使用会玩车");
+                    "http://h5.htwt.hichengdai.com/vehicleDetail?code=" + code,
+                    currentBean.getName(), "欢迎使用会玩车");
+        });
+
+        mBinding.flBack.setOnClickListener(view -> {
+            finish();
         });
     }
 
@@ -243,8 +246,11 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
                     .setText(MoneyUtils.formatNum(currentBean.getSalePrice()));
             ImgUtils.loadQiniuImg(this, currentBean.getPic(), fullDialogView.incMiddle.imgProduct);
 
-            fullDialogView.incMiddle.tvSlogan.setVisibility(View.VISIBLE);
-            fullDialogView.incMiddle.tvSlogan.setText(sbConfig.toString());
+//            fullDialogView.incMiddle.tvSlogan.setVisibility(View.VISIBLE);
+//            fullDialogView.incMiddle.tvSlogan.setText(sbConfig.toString());
+
+            fullDialogView.incMiddle.tvConfig.setVisibility(View.VISIBLE);
+            fullDialogView.incMiddle.tvConfig.setText(currentBean.getCarConfig());
         }
         //更新数据
 
@@ -451,22 +457,24 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
                     mBinding.homeBanner.startAutoPlay();
                 }
                 //显示上面的配置信息
-                List<CarBean.CaonfigListBean> caonfigList = data.getCaonfigList();
-                if (data != null && caonfigList.size() != 0) {
-                    for (int i = 0; i < caonfigList.size(); i++) {
-                        CarBean.CaonfigListBean.ConfigBean config = caonfigList.get(i).getConfig();
-
-                        if (config != null) {
-                            sbConfig.append(config.getName());
-                            sbConfig.append(" ");
-                        }
-                    }
-                    if (sbConfig.length() > 0) {
-                        sbConfig.deleteCharAt(sbConfig.length() - 1);
-                    }
-
-
-                }
+//                if (null == data.getCaonfigList()) {
+//                    return;
+//                }
+//                List<CarBean.CaonfigListBean> caonfigList = data.getCaonfigList();
+//                if (data != null && caonfigList.size() != 0) {
+//                    for (int i = 0; i < caonfigList.size(); i++) {
+//                        CarBean.CaonfigListBean.ConfigBean config = caonfigList.get(i).getConfig();
+//
+//                        if (config != null) {
+//                            sbConfig.append(config.getName());
+//                            sbConfig.append(" ");
+//                        }
+//                    }
+//                    if (sbConfig.length() > 0) {
+//                        sbConfig.deleteCharAt(sbConfig.length() - 1);
+//                    }
+//
+//                }
             }
 
             @Override
@@ -501,7 +509,11 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
 
         mBinding.tvPrice.setText(MoneyUtils.formatNum(data.getSalePrice()));
         mBinding.tvMonthAmount.setText(MoneyUtils.formatNum(data.getMonthAmount()));
-        mBinding.tvProcedures.setText(data.getProcedure());
+
+        if (!TextUtils.isEmpty(data.getProcedure())) {
+            mBinding.tvProcedures.setText(data.getProcedure().equals("0") ? "齐全" : "不齐全");
+        }
+
         mBinding.tvCarLocation.setText(data.getFromPlace());
         mBinding.tvUpDate
                 .setText(DateUtil.formatStringData(data.getUpdateDatetime(), DateUtil.DATE_YMD));
@@ -519,6 +531,7 @@ public class CarDetailsActivity extends AbsBaseLoadActivity {
             getSelectedData();
         }
 
+        mBinding.tvConfig.setText(data.getCarConfig());
     }
 
     /**

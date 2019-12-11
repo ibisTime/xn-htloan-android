@@ -102,6 +102,7 @@ public class CarBean implements Serializable {
     private String isCollect;
     private String level;
     private String configName;
+    private String carConfig;
     private int collectNumber;
     private List<CaonfigListBean> caonfigList;
     private List<ConfigsBean> configs;
@@ -489,6 +490,14 @@ public class CarBean implements Serializable {
 
     public void setLevel(String level) {
         this.level = level;
+    }
+
+    public String getCarConfig() {
+        return carConfig;
+    }
+
+    public void setCarConfig(String carConfig) {
+        this.carConfig = carConfig;
     }
 
     public String getConfigName() {

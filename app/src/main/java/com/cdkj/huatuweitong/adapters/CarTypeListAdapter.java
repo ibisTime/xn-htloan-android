@@ -35,8 +35,7 @@ public class CarTypeListAdapter extends BaseQuickAdapter<CarBean, BaseViewHolder
     @Override
     protected void convert(BaseViewHolder helper, CarBean item) {
         ImgUtils.loadQiniuImg(mContext, item.getPic(), helper.getView(R.id.img_product));
-        helper.setText(R.id.tv_product_title,
-                item.getBrandName() + "  " + item.getSeriesName() + "  " + item.getName());
+        helper.setText(R.id.tv_product_title, item.getName());
 
         String type = "";
         if (item.getLevel() != null) {
@@ -67,21 +66,23 @@ public class CarTypeListAdapter extends BaseQuickAdapter<CarBean, BaseViewHolder
                 DateUtil.formatStringData(item.getUpdateDatetime(), DateUtil.DATE_YMD));
         helper.setText(R.id.tv_price, MoneyUtils.formatNum(item.getSalePrice()));
 
-        FlexboxLayout flexLayout = helper.getView(R.id.flex_layout);
-        flexLayout.removeAllViews();
-        helper.setGone(R.id.flex_layout, !TextUtils.isEmpty(item.getConfigName()));
-        for (String s : item.getConfigName().split("  ")) {
+        helper.setGone(R.id.tv_config, false);
 
-            FlexboxLayout.LayoutParams layoutParams = new FlexboxLayout.LayoutParams(
-                    FlexboxLayout.LayoutParams.WRAP_CONTENT,
-                    DisplayHelper.dp2px(mContext, 25));
-            layoutParams.bottomMargin = 10;
-            layoutParams.rightMargin = 10;
-            TextView textView = createText(s);
-
-            flexLayout.addView(textView, layoutParams);
-
-        }
+//        FlexboxLayout flexLayout = helper.getView(R.id.flex_layout);
+//        flexLayout.removeAllViews();
+//        helper.setGone(R.id.flex_layout, !TextUtils.isEmpty(item.getConfigName()));
+//        for (String s : item.getConfigName().split("  ")) {
+//
+//            FlexboxLayout.LayoutParams layoutParams = new FlexboxLayout.LayoutParams(
+//                    FlexboxLayout.LayoutParams.WRAP_CONTENT,
+//                    DisplayHelper.dp2px(mContext, 25));
+//            layoutParams.bottomMargin = 10;
+//            layoutParams.rightMargin = 10;
+//            TextView textView = createText(s);
+//
+//            flexLayout.addView(textView, layoutParams);
+//
+//        }
 
     }
 

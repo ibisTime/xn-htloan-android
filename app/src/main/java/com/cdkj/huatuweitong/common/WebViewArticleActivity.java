@@ -50,11 +50,13 @@ import retrofit2.Call;
  */
 public class WebViewArticleActivity extends AbsActivity {
 
-    private SslErrorHandler mHandler;
-
     private ActivityWebviewArticleBinding mBinding;
 
+    private SslErrorHandler mHandler;
+
     private List<DataDictionaryBean> list = new ArrayList<>();
+
+    private InformationListBean.ListBean currentBean;
 
     /**
      * 加载activity
@@ -88,7 +90,7 @@ public class WebViewArticleActivity extends AbsActivity {
         setSubRightImgAndClick(R.mipmap.active_share, view -> {
             ShareActivity.open(WebViewArticleActivity.this,
                     "http://h5.htwt.hichengdai.com/articleDetail?code=" + getIntent()
-                            .getStringExtra("code"), "分享", "欢迎使用会玩车");
+                            .getStringExtra("code"), currentBean.getTitle(), "欢迎使用会玩车");
         });
 
         initLayout();
@@ -217,6 +219,8 @@ public class WebViewArticleActivity extends AbsActivity {
                     }
 
                 }
+
+                currentBean = bean;
 
                 mBinding.tvArticleTitle.setText(bean.getTitle());
                 mBinding.tvAuthor.setText(bean.getAuthor());

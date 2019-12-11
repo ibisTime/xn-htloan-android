@@ -25,7 +25,7 @@
                 android:textSize="@dimen/top_center_title_size"/>
 
             <FrameLayout
-                android:id="@+id/fram_img_back"
+                android:id="@+id/fl_back"
                 android:layout_width="55dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="left"
@@ -484,8 +484,24 @@
                         android:textSize="16sp"/>
                 </LinearLayout>
 
+                <TextView
+                    android:id="@+id/tv_config"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:padding="8dp"
+                    android:background="@drawable/shape_car_detail_msg"
+                    android:lineSpacingMultiplier="1.2"
+                    android:textColor="@color/text_999"
+                    android:textSize="12sp"
+                    tools:text="智能卡,一键启动一般格式是:#AARRGGBB。AA就是透明度值(这里我透明度"/>
+
                 <com.google.android.flexbox.FlexboxLayout
                     android:id="@+id/flex_layout"
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"

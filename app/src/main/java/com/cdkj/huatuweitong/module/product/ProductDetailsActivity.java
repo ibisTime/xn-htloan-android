@@ -209,6 +209,7 @@ public class ProductDetailsActivity extends AbsBaseLoadActivity {
         ImgUtils.loadQiniuImg(this, StringUtils.getAsPicListIndexOne(data.getAdvPic()), dialogBinding.ivImg);
         dialogBinding.tvName.setText(data.getName());
         dialogBinding.tvPrice.setText(MoneyUtils.getShowPriceSign(data.getPrice()));
+        dialogBinding.tvConfig.setText(data.getCarConfig());
 
         if (data.getProductSpecsList() != null && data.getProductSpecsList().size() > 0) {
             RecommendProductBean.ProductSpecsListBean productSpecsListBean = data.getProductSpecsList().get(0);
@@ -240,6 +241,7 @@ public class ProductDetailsActivity extends AbsBaseLoadActivity {
                 specViewList.add(tv2);
                 dialogBinding.flexboxSpec.addView(tv2, layoutParams);
             }
+
             if (i >= 0) {
                 //如果有规格数据  就默认选择第一个规格
                 specViewStateChange(0);//默认选择第一个规格

@@ -223,7 +223,7 @@ public class MyCollectionBean {
             private String level;
             private String version;
             private String structure;
-            private double displacement;
+            private String displacement;
             private String fromPlace;
             private String procedure;
             private BigDecimal originalPrice;
@@ -335,11 +335,11 @@ public class MyCollectionBean {
                 this.structure = structure;
             }
 
-            public double getDisplacement() {
+            public String getDisplacement() {
                 return displacement;
             }
 
-            public void setDisplacement(double displacement) {
+            public void setDisplacement(String displacement) {
                 this.displacement = displacement;
             }
 

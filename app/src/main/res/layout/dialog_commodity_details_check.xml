@@ -131,8 +131,23 @@
                     android:text="规格"
                     android:textColor="@color/txt_gray" />
 
+                <TextView
+                    android:id="@+id/tv_config"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="43dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:padding="8dp"
+                    android:background="@drawable/shape_car_detail_msg"
+                    android:lineSpacingMultiplier="1.2"
+                    android:textColor="@color/text_999"
+                    android:textSize="12sp"
+                    tools:text="智能卡,一键启动一般格式是:#AARRGGBB。AA就是透明度值(这里我透明度"/>
+
                 <com.google.android.flexbox.FlexboxLayout
                     android:id="@+id/flexbox_spec"
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_guige"

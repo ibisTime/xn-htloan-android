@@ -82,7 +82,6 @@ public class CarShowActivity extends AbsBaseLoadActivity {
 
         initListener();
 
-        initLetter();
         initAllRecycler();
 
         initRefreshHelper();
@@ -106,8 +105,8 @@ public class CarShowActivity extends AbsBaseLoadActivity {
     /**
      * 设置右边的小字母
      */
-    private void initLetter() {
-        List<String> lettersList = Arrays.asList(letters);
+    private void initLetter(List<String> lettersList) {
+//        List<String> lettersList = Arrays.asList(letters);
         LetterRVAdapter letterAdapter = new LetterRVAdapter(lettersList);
         mBinding.rvLetter.setLayoutManager(
                 new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false) {
@@ -296,6 +295,15 @@ public class CarShowActivity extends AbsBaseLoadActivity {
                         }
                     }
                 }
+
+                List<String> list = new ArrayList<>();
+                for (BrandBean bean : data) {
+                    if (!list.contains(bean.getLetter())){
+                        list.add(bean.getLetter());
+                    }
+                }
+                initLetter(list);
+
                 allBrandAdapter.replaceData(data);
             }
 

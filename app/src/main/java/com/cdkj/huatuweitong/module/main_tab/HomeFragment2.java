@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import cn.jzvd.Jzvd;
 import com.cdkj.baselibrary.api.BaseResponseListModel;
 import com.cdkj.baselibrary.api.BaseResponseModel;
 import com.cdkj.baselibrary.appmanager.CdRouteHelper;
@@ -80,6 +81,13 @@ public class HomeFragment2 extends BaseLazyFragment {
         if (mBinding != null) {
             mBinding.homeBanner.stopAutoPlay();
         }
+        Jzvd.releaseAllVideos();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Jzvd.releaseAllVideos();
     }
 
     @Override

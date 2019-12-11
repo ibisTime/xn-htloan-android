@@ -1,11 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
 
-    <ImageView
-        android:id="@+id/img_start"
+    </data>
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/img_start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.youth.banner.Banner
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:visibility="gone"
+            app:image_scale_type="fit_xy"
+            app:indicator_drawable_selected="@drawable/banner_select"
+            app:indicator_drawable_unselected="@drawable/banner_un_select"
+            app:indicator_height="7dp"
+            app:indicator_margin="6dp"
+            app:indicator_width="7dp"/>
+
+        <TextView
+            android:id="@+id/tv_jump"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:layout_marginRight="15dp"
+            android:layout_gravity="right"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:background="@drawable/shaeap_bleak_transparent"
+            android:text="剩余10秒跳过"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:visibility="gone"/>
+
+    </FrameLayout>
+</layout>

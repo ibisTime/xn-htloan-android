@@ -61,7 +61,7 @@ public class BaoxianFrgment extends BaseLazyFragment {
 
     @Override
     protected void onInvisible() {
-
+        Jzvd.releaseAllVideos();
     }
 
     @Override

@@ -48,6 +48,7 @@ public class RecommendProductBean {
     private BigDecimal price;
     private int creditScore;
     private String status;
+    private String carConfig;
     private String updater;
     private String updateDatetime;
     private String remark;
@@ -156,6 +157,14 @@ public class RecommendProductBean {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getCarConfig() {
+        return carConfig;
+    }
+
+    public void setCarConfig(String carConfig) {
+        this.carConfig = carConfig;
     }
 
     public String getUpdater() {
